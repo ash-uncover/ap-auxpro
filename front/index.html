@@ -2,21 +2,40 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		</meta>
 		<meta charset="utf-8">
-		</meta>
+
 		<meta content="IE=edge" http-equiv="X-UA-Compatible">
-		</meta>
 		<meta content="width=device-width, initial-scale=1" name="viewport">
-		</meta>
-		<title>
-			ap-auxpro
-		</title>
+
+		<title>AuXpros</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,500" rel="stylesheet">
+        
+		<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCdEku3Q5NJItJW7GhFaFPz_PjxKaD-bWk"></script>
+
+		<script type="text/javascript">
+            ap = {
+                preload: false,
+                listeners: []
+            }
+            ap.onPreload = function () {
+                this.preload = true;
+                let l = this.listeners.length;
+                for (let i = 0; i < l; i++) {
+                    this.listeners[i]();
+                }
+            }.bind(ap);
+        </script>
+
 	</head>
 	<body>
-		<div id="app" class="app">
-		</div>
-		<script src="/bundle.js">
+		<div id="app" class="ap-auxpro"></div>
+
+		<script src="/bundle.js"></script>
+
+		<script type="text/javascript">
+			ap.onPreload()
 		</script>
+
 	</body>
 </html>

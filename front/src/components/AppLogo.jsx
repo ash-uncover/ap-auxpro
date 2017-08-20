@@ -19,9 +19,7 @@ class AppLogo extends React.Component {
 
 	render() {
 		return (
-			<div className='ap-applogo'>
-				AppLogo
-			</div>
+			<div className='ap-applogo' onClick={this.onClick} />
 		)
 	}
 

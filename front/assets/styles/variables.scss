@@ -1,0 +1,29 @@
+$ap-primary-color: #1D70B6;
+$ap-secondary-color: #3A3C3E;
+$ap-primary-gradient:linear-gradient(to bottom,#337ab7 0,#265a88 100%);
+
+$ap-default-color: #E0E0E0;
+$ap-default-secondary-color: #C3C3C3;
+$ap-default-gradient: linear-gradient(to bottom,#fff 0,#e0e0e0 100%);
+
+$ap-success-color: #5CB85C;
+$ap-success-secondary-color: #449D44;
+$ap-success-gradient:linear-gradient(to bottom,#5cb85c 0,#419641 100%);
+
+$ap-info-color: #5BC0DE;
+$ap-info-secondary-color: #31B0D5;
+$ap-info-gradient:linear-gradient(to bottom,#5bc0de 0,#2aabd2 100%);
+
+$ap-warning-color: #F0AD4E;
+$ap-warning-secondary-color: #EC971F;
+$ap-warning-gradient:linear-gradient(to bottom,#f0ad4e 0,#eb9316 100%);
+
+$ap-danger-color: #D9534F;
+$ap-danger-secondary-color: #C9302C;
+$ap-danger-gradient:linear-gradient(to bottom,#d9534f 0,#c12e2a 100%);
+
+$ap-background-color: #E3EDFD;
+$ap-background-hightlight-color: #F9F9F9;
+
+$ap-standard-text: #E3E3E3;
+$ap-inactive-text: transparentize($ap-secondary-color, 0.4);
