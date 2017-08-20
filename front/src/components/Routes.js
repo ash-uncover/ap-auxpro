@@ -3,7 +3,8 @@ import AppLogo from 'components/AppLogo'
 import AppHome from 'components/home/AppHome'
 import AppAuth from 'components/auth/AppAuth'
 import Login from 'components/auth/login/Login'
-import Register from 'components/auth/register/Register'
+import RegisterAuxiliary from 'components/auth/register/auxiliary/RegisterAuxiliary'
+import RegisterService from 'components/auth/register/service/RegisterService'
 import Recover from 'components/auth/recover/Recover'
 import Logout from 'components/auth/logout/Logout'
 import Infos from 'components/infos/Infos'
@@ -52,7 +53,8 @@ import Redirect from 'components/Redirect'
 
 let appAuthRoutes = [
 	{ path: '/login', component: Login },
-	{ path: '/register', component: Register },
+	{ path: '/register/auxiliary', component: RegisterAuxiliary },
+	{ path: '/register/service', component: RegisterService },
 	{ path: '/recover', component: Recover },
 	{ path: '/logout', component: Logout },
 ]

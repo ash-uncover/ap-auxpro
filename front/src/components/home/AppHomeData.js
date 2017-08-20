@@ -7,10 +7,33 @@ class AppHomeData extends BaseData {
 	register(obj) {
 		super.register(obj)
 		
+		// Callbacks
+		this.obj.onLogon = this.onLogon.bind(this)
+		this.obj.onRegisterAux = this.onRegisterAux.bind(this)
+		this.obj.onRegisterSad = this.onRegisterSad.bind(this)
+		this.obj.onNavDGE = this.onNavDGE.bind(this)
+
+		// State
 		this.obj.state = {}
 	}
 
 	unregister() {
+	}
+
+	onLogon() {
+
+	}
+
+	onRegisterAux() {
+		
+	}
+
+	onRegisterSad() {
+		
+	}
+
+	onNavDGE() {
+ 		window.open('http://www.entreprises.gouv.fr/services-a-la-personne/annuaire-des-organismes-services-a-la-personne', '_blank').focus()
 	}
 
 }
