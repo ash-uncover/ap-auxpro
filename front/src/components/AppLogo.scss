@@ -1,16 +1,12 @@
 .ap-applogo {
-	transform: translateY(-60px);
-	width: 100%;
-    flex-grow: 1;
-    align-self: center;
-
-    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
     background: url('/assets/images/auxpro-background.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-
-	transition: opacity 5s;
-	-webkit-transition: opacity 5s;	
 }
