@@ -8,9 +8,9 @@ class AppHomeData extends BaseData {
 		super.register(obj)
 		
 		// Callbacks
-		this.obj.onLogon = this.onLogon.bind(this)
-		this.obj.onRegisterAux = this.onRegisterAux.bind(this)
-		this.obj.onRegisterSad = this.onRegisterSad.bind(this)
+		this.obj.onLogon = AppHelper.navigate.bind(AppHelper, '/auth/login')
+		this.obj.onRegisterAux = AppHelper.navigate.bind(AppHelper, '/auth/register/auxiliary')
+		this.obj.onRegisterSad = AppHelper.navigate.bind(AppHelper, '/auth/register/service')
 		this.obj.onNavDGE = this.onNavDGE.bind(this)
 
 		// State
@@ -18,18 +18,6 @@ class AppHomeData extends BaseData {
 	}
 
 	unregister() {
-	}
-
-	onLogon() {
-
-	}
-
-	onRegisterAux() {
-		
-	}
-
-	onRegisterSad() {
-		
 	}
 
 	onNavDGE() {

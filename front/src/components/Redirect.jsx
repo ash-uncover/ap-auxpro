@@ -20,7 +20,7 @@ class Redirect extends React.Component {
 	render() {
 		return (
 			<div className='ap-redirect'>
-				Redirect
+				PAGE NOT FOUND - 404
 			</div>
 		)
 	}

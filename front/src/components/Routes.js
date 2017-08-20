@@ -54,9 +54,9 @@ import Redirect from 'components/Redirect'
 
 let appAuthRoutes = [
 	{ path: '/login', component: Login },
-	{ path: '/register', component: Register },
 	{ path: '/register/auxiliary', component: RegisterAuxiliary },
 	{ path: '/register/service', component: RegisterService },
+	{ path: '/register', component: Register },
 	{ path: '/recover', component: Recover },
 	{ path: '/logout', component: Logout },
 ]
