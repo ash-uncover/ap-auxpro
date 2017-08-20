@@ -1,14 +1,12 @@
 import App from 'components/App'
 import AppLogo from 'components/AppLogo'
 import AppHome from 'components/home/AppHome'
-import AppAuth from 'components/auth/AppAuth'
 import Login from 'components/auth/login/Login'
-import Register from 'components/auth/register/Register'
 import RegisterAuxiliary from 'components/auth/register/auxiliary/RegisterAuxiliary'
 import RegisterService from 'components/auth/register/service/RegisterService'
+import Register from 'components/auth/register/Register'
 import Recover from 'components/auth/recover/Recover'
 import Logout from 'components/auth/logout/Logout'
-import Infos from 'components/infos/Infos'
 import CGU from 'components/infos/cgu/CGU'
 import CGV from 'components/infos/cgv/CGV'
 import Confidential from 'components/infos/confidential/Confidential'
@@ -52,24 +50,6 @@ import AuxiliaryOffer from 'components/auxiliary/offers/AuxiliaryOffer'
 import AuxiliaryService from 'components/auxiliary/services/AuxiliaryService'
 import Redirect from 'components/Redirect'
 
-let appAuthRoutes = [
-	{ path: '/login', component: Login },
-	{ path: '/register/auxiliary', component: RegisterAuxiliary },
-	{ path: '/register/service', component: RegisterService },
-	{ path: '/register', component: Register },
-	{ path: '/recover', component: Recover },
-	{ path: '/logout', component: Logout },
-]
-let infosRoutes = [
-	{ path: '/cgu', component: CGU },
-	{ path: '/cgv', component: CGV },
-	{ path: '/confidential', component: Confidential },
-	{ path: '/contact', component: Contact },
-	{ path: '/faq', component: FAQ },
-	{ path: '/help', component: Help },
-	{ path: '/presentation', component: Presentation },
-	{ path: '/services', component: Services },
-]
 let serviceRoutes = [
 	{ path: '/home', component: ServiceHome },
 	{ path: '/tuto', component: ServiceTuto },
@@ -108,8 +88,20 @@ let auxiliaryRoutes = [
 let appRoutes = [
 	{ component: AppLogo },
 	{ path: '/home', component: AppHome },
-	{ path: '/auth', component: AppAuth, routes: appAuthRoutes },
-	{ path: '/infos', component: Infos, routes: infosRoutes },
+	{ path: '/auth/login', component: Login },
+	{ path: '/auth/register/auxiliary', component: RegisterAuxiliary },
+	{ path: '/auth/register/service', component: RegisterService },
+	{ path: '/auth/register', component: Register },
+	{ path: '/auth/recover', component: Recover },
+	{ path: '/auth/logout', component: Logout },
+	{ path: '/infos/cgu', component: CGU },
+	{ path: '/infos/cgv', component: CGV },
+	{ path: '/infos/confidential', component: Confidential },
+	{ path: '/infos/contact', component: Contact },
+	{ path: '/infos/faq', component: FAQ },
+	{ path: '/infos/help', component: Help },
+	{ path: '/infos/presentation', component: Presentation },
+	{ path: '/infos/services', component: Services },
 	{ path: '/service', component: Service, routes: serviceRoutes },
 	{ path: '/auxiliary', component: Auxiliary, routes: auxiliaryRoutes },
 	{ path: '/*', component: Redirect },
