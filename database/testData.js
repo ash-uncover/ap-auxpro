@@ -22,7 +22,7 @@ db.apauth.insert({
 	"type":"service",
 	"active":true,
 	"registrationDate":[2016, 2, 23, 0, 0],
-	"v":true
+	"registered":true
 })
 
 /* DB-AUXILIARY
