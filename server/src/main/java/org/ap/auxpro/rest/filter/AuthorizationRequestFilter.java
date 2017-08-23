@@ -6,7 +6,6 @@ import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.PreMatching;
 import org.ap.web.rest.security.*;
 import org.ap.web.internal.APWebException;
-
 import javax.ws.rs.core.Response.Status;
 import org.ap.auxpro.storage.ApauthCollection;
 import org.ap.auxpro.storage.ApauthData;
