@@ -6,6 +6,7 @@ import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.PreMatching;
 import org.ap.web.rest.security.*;
 import org.ap.web.internal.APWebException;
+
 import javax.ws.rs.core.Response.Status;
 import org.ap.auxpro.storage.ApauthCollection;
 import org.ap.auxpro.storage.ApauthData;
@@ -36,7 +37,7 @@ public class AuthorizationRequestFilter implements ContainerRequestFilter {
 				if (dataAuth == null) {
 					dataAuth = ApauthCollection.getByEmail(credentials[0]);
 				}
-				if (dataAuth == null || !credentials[1].equals(dataAuth.getPassword()) || !dataAuth.getRegistered()) {
+				if (dataAuth == null || !credentials[1].equals(dataAuth.getPassword()) || dataAuth.getRegistered() == null || !dataAuth.getRegistered()) {
 					throw new WebApplicationException(Status.UNAUTHORIZED);
 				}
 				
