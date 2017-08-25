@@ -3,6 +3,8 @@ import AuthHelper from 'helpers/AuthHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
 import ImageHelper from 'helpers/ImageHelper'
 
+import AuxiliaryUtils from 'utils/entities/AuxiliaryUtils'
+
 import { BaseData } from 'ap-react-bootstrap'
 
 class AuxiliaryHeaderData extends BaseData {
@@ -35,10 +37,10 @@ class AuxiliaryHeaderData extends BaseData {
 			this.setState({ 
 				avatar: auxiliary.avatar,
 				avatarImage: avatarImage,
-				name: auxiliary.civility + ' ' + auxiliary.firstName + ' ' + auxiliary.lastName,
+				name: AuxiliaryUtils.getFullName(auxiliary),
 				email: auxiliary.email,
 				diploma: auxiliary.diploma,
-				address: auxiliary.address + ' ' + auxiliary.postalCode + ' ' + auxiliary.city
+				address: AuxiliaryUtils.getAddress(auxiliary)
 			})
 			if (!avatarImage) {
 				ImageHelper.getImage(auxiliary.avatar)
