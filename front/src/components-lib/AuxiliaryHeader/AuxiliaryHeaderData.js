@@ -28,6 +28,8 @@ class AuxiliaryHeaderData extends BaseData {
 	}
 
 	unregister() {
+		AuxiliaryHelper.unregister(this)
+		ImageHelper.unregister(this)
 	}
 
 	_onAuxiliaryUpdate() {
