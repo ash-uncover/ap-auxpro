@@ -26,15 +26,23 @@ class AuxiliaryHeaderData extends BaseData {
 
 	_onAuxiliaryUpdate() {
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId())
-		this.setState({ auxiliary: auxiliary })
 		if (auxiliary) {
-			ImageHelper.getImage(auxiliary.avatar)
+			this.setState({ 
+				avatar: auxiliary.avatar,
+				name: auxiliary.civility + ' ' + auxiliary.firstName + ' ' + auxiliary.lastName,
+				email: auxiliary.email,
+				diploma: auxiliary.diploma,
+				address: auxiliary.address + ' ' + auxiliary.postalCode + ' ' + auxiliary.city
+			})
+			if (!ImageHelper.getData(auxiliary.avatar)) {
+				ImageHelper.getImage(auxiliary.avatar)
+			}
 		}
 	}
 	_onImageUpdate() {
-		let auxiliary = this.getState('auxiliary')
-		if (auxiliary && auxiliary.avatar) {
-			this.setState({ avatar: ImageHelper.getData(auxiliary.avatar) })
+		let avatar = this.getState('avatar')
+		if (avatar) {
+			this.setState({ avatarImage: ImageHelper.getData(avatar) })
 		}
 	}
 }
