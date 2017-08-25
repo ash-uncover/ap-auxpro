@@ -7,6 +7,12 @@ class ServiceData extends BaseData {
 	register(obj) {
 		super.register(obj)
 		
+		/* TODO > find a way to generate this stuff */
+		if (AuthHelper.getType() !== 'service') {
+			AppHelper.navigate('/home')
+			return;
+		}
+
 		this.obj.state = {}
 	}
 

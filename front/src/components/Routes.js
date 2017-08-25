@@ -1,12 +1,13 @@
 import App from 'components/App'
 import AppLogo from 'components/AppLogo'
 import AppHome from 'components/home/AppHome'
+import Auth from 'components/auth/Auth'
 import Login from 'components/auth/login/Login'
 import RegisterAuxiliary from 'components/auth/register/auxiliary/RegisterAuxiliary'
 import RegisterService from 'components/auth/register/service/RegisterService'
 import Register from 'components/auth/register/Register'
 import Recover from 'components/auth/recover/Recover'
-import Logout from 'components/auth/logout/Logout'
+import Logout from 'components/logout/Logout'
 import CGU from 'components/infos/cgu/CGU'
 import CGV from 'components/infos/cgv/CGV'
 import Confidential from 'components/infos/confidential/Confidential'
@@ -50,6 +51,13 @@ import AuxiliaryOffer from 'components/auxiliary/offers/AuxiliaryOffer'
 import AuxiliaryService from 'components/auxiliary/services/AuxiliaryService'
 import Redirect from 'components/Redirect'
 
+let authRoutes = [
+	{ path: '/login', component: Login },
+	{ path: '/register/auxiliary', component: RegisterAuxiliary },
+	{ path: '/register/service', component: RegisterService },
+	{ path: '/register', component: Register },
+	{ path: '/recover', component: Recover },
+]
 let serviceRoutes = [
 	{ path: '/home', component: ServiceHome },
 	{ path: '/tuto', component: ServiceTuto },
@@ -88,12 +96,8 @@ let auxiliaryRoutes = [
 let appRoutes = [
 	{ component: AppLogo },
 	{ path: '/home', component: AppHome },
-	{ path: '/auth/login', component: Login },
-	{ path: '/auth/register/auxiliary', component: RegisterAuxiliary },
-	{ path: '/auth/register/service', component: RegisterService },
-	{ path: '/auth/register', component: Register },
-	{ path: '/auth/recover', component: Recover },
-	{ path: '/auth/logout', component: Logout },
+	{ path: '/auth', component: Auth, routes: authRoutes },
+	{ path: '/logout', component: Logout },
 	{ path: '/infos/cgu', component: CGU },
 	{ path: '/infos/cgv', component: CGV },
 	{ path: '/infos/confidential', component: Confidential },

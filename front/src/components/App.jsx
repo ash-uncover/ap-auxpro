@@ -37,7 +37,7 @@ class App extends React.Component {
             <Navbar fixedTop>
             <Navbar.Header brandText='AuXpros' brandLink="/" onNavigate={AppHelper.navigate}/>
                 <Navbar.Group right>
-                    <Navbar.Link text='Déconnexion' link='/auth/logout' onNavigate={AppHelper.navigate}/>
+                    <Navbar.Link text='Déconnexion' link='/logout' onNavigate={AppHelper.navigate}/>
                 </Navbar.Group>
             </Navbar>
         </header>
@@ -48,7 +48,7 @@ class App extends React.Component {
             <Navbar fixedTop>
             <Navbar.Header brandText='AuXpros' brandLink="/" onNavigate={AppHelper.navigate}/>
                 <Navbar.Group right>
-                    <Navbar.Link text='Déconnexion' link='/auth/logout' onNavigate={AppHelper.navigate}/>
+                    <Navbar.Link text='Déconnexion' link='/logout' onNavigate={AppHelper.navigate}/>
                 </Navbar.Group>
             </Navbar>
         </header>

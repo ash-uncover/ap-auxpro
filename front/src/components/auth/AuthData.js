@@ -3,13 +3,13 @@ import AuthHelper from 'helpers/AuthHelper'
 
 import { BaseData } from 'ap-react-bootstrap'
 
-class AuxiliaryData extends BaseData {
+class AuthData extends BaseData {
 
 	register(obj) {
 		super.register(obj)
 		
 		/* TODO > find a way to generate this stuff */
-		if (AuthHelper.getType() !== 'auxiliary') {
+		if (AuthHelper.getType()) {
 			AppHelper.navigate('/home')
 			return;
 		}
@@ -21,5 +21,5 @@ class AuxiliaryData extends BaseData {
 	}
 
 }
-var AuxiliaryObj = new AuxiliaryData()
-export default AuxiliaryObj
+var AuthObj = new AuthData()
+export default AuthObj
