@@ -20,7 +20,7 @@ class AuxiliaryHome extends React.Component {
 
 	render() {
 		return (
-			<Panel className='ap-auxiliary-home' footer=' ' >
+			<Panel className='ap-auxiliary-home'>
 				<Panel.Header>
 					Auxiliary Home Header
 				</Panel.Header>

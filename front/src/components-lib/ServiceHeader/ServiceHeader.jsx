@@ -20,13 +20,15 @@ class ServiceHeader extends React.Component {
 
 	render() {
 		return (
-			<Panel className='ap-service-header hidden-xs' header=' ' footer=' ' >
-				<Col sm={4}>
-					ma photo
-				</Col>
-				<Col sm={8}>
-					Mes infos
-				</Col>
+			<Panel className='ap-service-header hidden-xs'>
+				<Panel.Body>
+					<Col sm={4}>
+						ma photo
+					</Col>
+					<Col sm={8}>
+						Mes infos
+					</Col>
+				</Panel.Body>
 			</Panel>
 		)
 	}

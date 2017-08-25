@@ -20,7 +20,7 @@ class ServiceHome extends React.Component {
 
 	render() {
 		return (
-			<Panel className='ap-service-home' footer=' ' >
+			<Panel className='ap-service-home'>
 				<Panel.Header>
 					Service Home Header
 				</Panel.Header>

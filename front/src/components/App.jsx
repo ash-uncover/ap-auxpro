@@ -23,10 +23,10 @@ class App extends React.Component {
     _buildHeaderNoAuth() { return (
         <header className='hidden-print ap-app-header'>
             <Navbar fixedTop>
-            <Navbar.Header brandText='AuXpros' brandLink="/" onNavigate={AppHelper.navigate}/>
+            <Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
                 <Navbar.Group right>
-                    <Navbar.Link text='Connexion' link='/auth/login' onNavigate={AppHelper.navigate}/>
-                    <Navbar.Link text="S'inscrire"  link='/auth/register' onNavigate={AppHelper.navigate}/>
+                    {this.__buildLink('Connexion','/auth/login')}
+                    {this.__buildLink("S'inscrire",'/auth/register')}
                 </Navbar.Group>
             </Navbar>
         </header>
@@ -35,9 +35,14 @@ class App extends React.Component {
     _buildHeaderAuxiliary() { return (
         <header className='hidden-print ap-app-header'>
             <Navbar fixedTop>
-            <Navbar.Header brandText='AuXpros' brandLink="/" onNavigate={AppHelper.navigate}/>
+            <Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
                 <Navbar.Group right>
-                    <Navbar.Link text='Déconnexion' link='/logout' onNavigate={AppHelper.navigate}/>
+                    {this.__buildLink('Accueil','/auxiliary/home')}
+                    {this.__buildLink('Profil','/auxiliary/infos')}
+                    {this.__buildLink('Planing','/auxiliary/planing')}
+                    {this.__buildLink('Zone','/auxiliary/zone')}
+                    {this.__buildLink('Offres','/auxiliary/offers')}
+                    {this.__buildLink('Déconnexion','/logout')}
                 </Navbar.Group>
             </Navbar>
         </header>
@@ -46,13 +51,22 @@ class App extends React.Component {
     _buildHeaderService() {return (
         <header className='hidden-print ap-app-header'>
             <Navbar fixedTop>
-            <Navbar.Header brandText='AuXpros' brandLink="/" onNavigate={AppHelper.navigate}/>
+            <Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
                 <Navbar.Group right>
-                    <Navbar.Link text='Déconnexion' link='/logout' onNavigate={AppHelper.navigate}/>
+                    {this.__buildLink('Accueil','/service/home')}
+                    {this.__buildLink('Profil','/service/infos')}
+                    {this.__buildLink('Zone','/service/zone')}
+                    {this.__buildLink('Usagers','/service/customers')}
+                    {this.__buildLink('Interventions','/service/interventions')}
+                    {this.__buildLink('Déconnexion','/logout')}
                 </Navbar.Group>
             </Navbar>
         </header>
     )}
+
+    __buildLink(text, link) {
+        return (<Navbar.Link text={text} link={link} onNavigate={AppHelper.navigate}/>)
+    }
 
 	render() {
 		return (

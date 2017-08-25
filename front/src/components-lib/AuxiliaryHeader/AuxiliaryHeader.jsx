@@ -20,13 +20,15 @@ class AuxiliaryHeader extends React.Component {
 
 	render() {
 		return (
-			<Panel className='ap-auxiliary-header hidden-xs' header=' ' footer=' ' >
-				<Col sm={4}>
-					ma photo
-				</Col>
-				<Col sm={8}>
-					Mes infos
-				</Col>
+			<Panel className='ap-auxiliary-header hidden-xs'>
+				<Panel.Body>
+					<Col sm={4}>
+						ma photo
+					</Col>
+					<Col sm={8}>
+						Mes infos
+					</Col>
+				</Panel.Body>
 			</Panel>
 		)
 	}
