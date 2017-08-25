@@ -1,4 +1,6 @@
 import AppHelper from 'helpers/AppHelper'
+import AuthHelper from 'helpers/AuthHelper'
+
 import { BaseData } from 'ap-react-bootstrap'
 import { StoreRegistry } from 'ap-flux'
 import { browserHistory } from 'react-router'
@@ -23,15 +25,18 @@ class AppData extends BaseData {
 
 		this.obj.state = {
 			preload: ap.preload,
-			busy: !!AppHelper.getData('/app/busy')
+			busy: !!AppHelper.getData('/app/busy'),
+			authType: null
 		}
 
-		StoreRegistry.register('APP_STORE/path', this, this._onAppStorePathUpdate.bind(this));
-		StoreRegistry.register('APP_STORE/app/busy', this, this._onAppBusyUpdate.bind(this));
+		AppHelper.register('/path', this, this._onAppStorePathUpdate.bind(this));
+		AppHelper.register('/app/busy', this, this._onAppBusyUpdate.bind(this));
+		AuthHelper.register(this, this._onAuthChanged.bind(this))
 	}
 
 	unregister() {
-		StoreRegistry.unregister('APP_STORE', this);
+		AppHelper.unregister(this);
+		AuthHelper.unregister(this);
 	}
 
 	_onAppStorePathUpdate() {
@@ -51,6 +56,22 @@ class AppData extends BaseData {
 
 	_onAppBusyUpdate() {
 		this.setState({ busy: !!AppHelper.getData('/app/busy') });
+	}
+
+	_onAuthChanged() {
+		if (AuthHelper.getToken()) {
+			switch (AuthHelper.getType()) {
+			case 'auxiliary':
+			case 'service':
+				this.setState({ authType: AuthHelper.getType() })
+				break
+			default:
+				this.setState({ authType: null })
+				break
+			}	
+		} else {
+			this.setState({ authType: null })
+		}
 	}
 
 	onNavigateExternal(url) {

@@ -20,19 +20,47 @@ class App extends React.Component {
 		AppData.unregister()
 	}
 
+    _buildHeaderNoAuth() { return (
+        <header className='hidden-print ap-app-header'>
+            <Navbar fixedTop>
+            <Navbar.Header brandText='AuXpros' brandLink="/" onNavigate={AppHelper.navigate}/>
+                <Navbar.Group right>
+                    <Navbar.Link text='Connexion' link='/auth/login' onNavigate={AppHelper.navigate}/>
+                    <Navbar.Link text="S'inscrire"  link='/auth/register' onNavigate={AppHelper.navigate}/>
+                </Navbar.Group>
+            </Navbar>
+        </header>
+    )}
+
+    _buildHeaderAuxiliary() { return (
+        <header className='hidden-print ap-app-header'>
+            <Navbar fixedTop>
+            <Navbar.Header brandText='AuXpros' brandLink="/" onNavigate={AppHelper.navigate}/>
+                <Navbar.Group right>
+                    <Navbar.Link text='Déconnexion' link='/auth/logout' onNavigate={AppHelper.navigate}/>
+                </Navbar.Group>
+            </Navbar>
+        </header>
+    )}
+
+    _buildHeaderService() {return (
+        <header className='hidden-print ap-app-header'>
+            <Navbar fixedTop>
+            <Navbar.Header brandText='AuXpros' brandLink="/" onNavigate={AppHelper.navigate}/>
+                <Navbar.Group right>
+                    <Navbar.Link text='Déconnexion' link='/auth/logout' onNavigate={AppHelper.navigate}/>
+                </Navbar.Group>
+            </Navbar>
+        </header>
+    )}
+
 	render() {
 		return (
 			<div className='ap-app'>
 				
-				<header className='hidden-print ap-app-header'>
-					<Navbar fixedTop>
-					<Navbar.Header brandText='AuXpros' brandLink="/" onNavigate={AppHelper.navigate}/>
-						<Navbar.Group right>
-							<Navbar.Link text='Connexion' link='/auth/login' onNavigate={AppHelper.navigate}/>
-							<Navbar.Link text="S'inscrire"  link='/auth/register' onNavigate={AppHelper.navigate}/>
-						</Navbar.Group>
-					</Navbar>
-				</header>
+				{ this.state.authType === 'auxiliary' ? this._buildHeaderAuxiliary() : null }
+                { this.state.authType === 'service' ? this._buildHeaderService() : null }
+                { this.state.authType === null ? this._buildHeaderNoAuth() : null }
 
 				<Grid.Container className='ap-app-main-content'>
 					{this.props.children}
