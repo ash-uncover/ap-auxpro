@@ -12,7 +12,11 @@ class AuxiliaryHeaderData extends BaseData {
 
 		this.obj.state = {
 			avatar: '',
-			auxiliary: null
+			avatarImage: null,
+			name: '',
+			address: '',
+			email: '',
+			diploma: ''
 		}
 
 		this._onAuxiliaryUpdate()
