@@ -23,7 +23,7 @@ class AuxiliaryHeader extends React.Component {
 			<Panel className='ap-auxiliary-header hidden-xs'>
 				<Panel.Body>
 					<Col sm={4}>
-						ma photo
+						<img alt='Ma photo' className='ap-header-img' src={this.state.avatar} />
 					</Col>
 					<Col sm={8}>
 						Mes infos

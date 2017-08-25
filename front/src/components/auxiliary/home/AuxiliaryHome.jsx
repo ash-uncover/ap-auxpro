@@ -18,7 +18,7 @@ class AuxiliaryHome extends React.Component {
 		AuxiliaryHomeData.unregister()
 	}
 
-	render() {
+	render() {  
 		return (
 			<Panel className='ap-auxiliary-home'>
 				<Panel.Header>
@@ -33,6 +33,5 @@ class AuxiliaryHome extends React.Component {
 			</Panel>
 		)
 	}
-
 }
 export default AuxiliaryHome
