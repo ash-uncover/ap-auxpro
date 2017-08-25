@@ -18,6 +18,13 @@ class AuxiliaryHeader extends React.Component {
 		AuxiliaryHeaderData.unregister()
 	}
 
+	_buildFromGroup(label, value) { return (
+		<Form.Group>
+			<Form.Label className='col-sm-2'>{label}</Form.Label>
+			<Form.Static className='col-sm-10'>{value}</Form.Static>
+		</Form.Group>
+	)}
+
 	render() {
 		return (
 			<Panel className='ap-auxiliary-header hidden-xs'>
@@ -27,22 +34,10 @@ class AuxiliaryHeader extends React.Component {
 					</Col>
 					<Col sm={8} md={9} lg={10}>
 						<Form horizontal>
-							<Form.Group>
-								<Form.Label className='col-sm-2'>Nom</Form.Label>
-								<Form.Static className='col-sm-10'>{this.state.name}</Form.Static>
-							</Form.Group>
-							<Form.Group>
-								<Form.Label className='col-sm-2'>Adresse</Form.Label>
-								<Form.Static className='col-sm-10'>{this.state.address}</Form.Static>
-							</Form.Group>
-							<Form.Group>
-								<Form.Label className='col-sm-2'>Email</Form.Label>
-								<Form.Static className='col-sm-10'>{this.state.email}</Form.Static>
-							</Form.Group>
-							<Form.Group>
-								<Form.Label className='col-sm-2'>Diplome</Form.Label>
-								<Form.Static className='col-sm-10'>{this.state.diploma}</Form.Static>
-							</Form.Group>
+							{this._buildFromGroup('Nom', this.state.name)}
+							{this._buildFromGroup('Adresse', this.state.address)}
+							{this._buildFromGroup('Email', this.state.email)}
+							{this._buildFromGroup('Diplome', this.state.diploma)}
 						</Form>
 					</Col>
 				</Panel.Body>

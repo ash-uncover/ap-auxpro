@@ -18,6 +18,13 @@ class ServiceHeader extends React.Component {
 		ServiceHeaderData.unregister()
 	}
 
+	_buildFromGroup(label, value) { return (
+		<Form.Group>
+			<Form.Label className='col-sm-2'>{label}</Form.Label>
+			<Form.Static className='col-sm-10'>{value}</Form.Static>
+		</Form.Group>
+	)}
+
 	render() {
 		return (
 			<Panel className='ap-service-header hidden-xs'>
@@ -27,22 +34,10 @@ class ServiceHeader extends React.Component {
 					</Col>
 					<Col sm={8} md={9} lg={10}>
 						<Form horizontal>
-							<Form.Group>
-								<Form.Label className='col-sm-2'>Société</Form.Label>
-								<Form.Static className='col-sm-10'>{this.state.society}</Form.Static>
-							</Form.Group>
-							<Form.Group>
-								<Form.Label className='col-sm-2'>Adresse</Form.Label>
-								<Form.Static className='col-sm-10'>{this.state.address}</Form.Static>
-							</Form.Group>
-							<Form.Group>
-								<Form.Label className='col-sm-2'>Email</Form.Label>
-								<Form.Static className='col-sm-10'>{this.state.email}</Form.Static>
-							</Form.Group>
-							<Form.Group>
-								<Form.Label className='col-sm-2'>Raison Sociale</Form.Label>
-								<Form.Static className='col-sm-10'>{this.state.socialReason}</Form.Static>
-							</Form.Group>
+							{this._buildFromGroup('Société', this.state.society)}
+							{this._buildFromGroup('Adresse', this.state.address)}
+							{this._buildFromGroup('Email', this.state.email)}
+							{this._buildFromGroup('Raison Sociale', this.state.socialReason)}
 						</Form>
 					</Col>
 				</Panel.Body>
