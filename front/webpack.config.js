@@ -23,6 +23,13 @@ module.exports = {
         extensions: ['.js', '.jsx']
     },
 
+    plugins: [
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery'
+        })
+    ],
+    
     module: {
         rules: [
             {
