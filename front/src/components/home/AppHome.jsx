@@ -21,7 +21,7 @@ class AppHome extends React.Component {
 
 	render() {
 		return (
-			<div className='ap-apphome'>
+			<div className='ap-app-home'>
 				<Col sm={4}>
 					<Button
 						block

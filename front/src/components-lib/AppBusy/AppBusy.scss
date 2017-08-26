@@ -1,0 +1,21 @@
+.ap-app-busy {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+
+	.ap-app-busy-background {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(0, 0, 0, 0.25);
+	}
+
+	.ap-busy-circles {
+		height: 100%;
+	}
+}
