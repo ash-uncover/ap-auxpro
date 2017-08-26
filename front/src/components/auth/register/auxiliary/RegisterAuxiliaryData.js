@@ -40,6 +40,7 @@ class RegisterAuxiliaryData extends BaseData {
 
 	onSubmit() {
 		let email = this.getState('email')
+		console.log(encodeURIComponent(email))
 		AppHelper.setBusy(true).
 		then(function() {
 			return AuxiliaryHelper.postAuxiliary({
@@ -50,7 +51,8 @@ class RegisterAuxiliaryData extends BaseData {
 		}.bind(this)).
 		then(function () {
 			setTimeout(AppHelper.setBusy, 200)
-			AppHelper.navigate('/auth/register/confirm/' + encodeURI(email))
+
+			AppHelper.navigate('/auth/register/confirm/' + encodeURIComponent(email))
 		}).
 		catch(function (error) {
 			setTimeout(AppHelper.setBusy, 200)

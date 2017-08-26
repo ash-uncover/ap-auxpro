@@ -15,7 +15,7 @@ class RegisterConfirmData extends BaseData {
 		this.obj.onChangeNoError = this.onChangeNoError.bind(this)
 
 		this.obj.state = {
-			email: !!email ? decodeURI(email) : '',
+			email: !!email ? decodeURIComponent(email) : '',
 			emailSet: !!email,
 			token: ''
 		}
@@ -35,7 +35,6 @@ class RegisterConfirmData extends BaseData {
 	}
 
 	onSubmit() {
-		console.log(this.getState())
 		AppHelper.setBusy(true).
 		then(function() {
 			return AuthHelper.postAuthRegister({

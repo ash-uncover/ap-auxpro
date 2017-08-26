@@ -33,7 +33,7 @@ class RegisterConfirm extends React.Component {
 				</Panel.Header>
 				<Panel.Body>
 					<p>Votre compte a bien été confirmé.</p>
-					<p>Vous pouvez à présent utiliser vos identifiants pour vous conencter à nos services.</p>
+					<p>Vous pouvez à présent utiliser vos identifiants pour vous connecter à nos services.</p>
 				</Panel.Body>
 				<Panel.Footer>
 				</Panel.Footer>

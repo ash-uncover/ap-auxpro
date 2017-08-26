@@ -43,7 +43,7 @@ class Login extends React.Component {
 						<Form.Group>
 							<Form.Label 
 								htmlFor='loginPassword'>
-								Code de confirmation
+								Mot de passe
 							</Form.Label>
 							<Form.Input 
 								id='loginPassword'
