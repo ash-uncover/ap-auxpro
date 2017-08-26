@@ -2,9 +2,7 @@ import React from 'react'
 import ImageData from 'components-lib/Image/ImageData'
 import './Image.scss'
 
-import { Base } from 'ap-react-bootstrap'
-
-class APImage extends React.Component {
+class Image extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -30,4 +28,4 @@ class APImage extends React.Component {
 	}
 
 }
-export default APImage
+export default Image

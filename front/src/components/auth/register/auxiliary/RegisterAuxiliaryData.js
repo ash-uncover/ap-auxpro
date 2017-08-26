@@ -6,12 +6,47 @@ class RegisterAuxiliaryData extends BaseData {
 
 	register(obj) {
 		super.register(obj)
-		
-		this.obj.state = {}
+
+		this.obj.onCancel = AppHelper.navigate.bind(AppHelper, '/home')
+		this.obj.onSubmit = this.onSubmit.bind(this)
+
+		this.obj.onChangeNoError = this.onChangeNoError.bind(this)
+
+		this.obj.state = {
+			email: '',
+			password: '',
+			confirm: '',
+			errorLastTry: false,
+			errorJustHappened: false,
+			errorMessage: ''
+		}
 	}
 
 	unregister() {
 	}
+
+	onChangeNoError() {
+		this.onChange(...arguments)
+		this.setState({
+			errorJustHappened: false,
+			errorMessage: ''
+		})
+	}
+
+	onSubmit() {
+		AppHelper.setBusy(true).
+		then(function() {
+			
+		}.bind(this)).
+		then(function () {
+			setTimeout(AppHelper.setBusy, 200)
+		}).
+		catch(function () {
+			setTimeout(AppHelper.setBusy, 200)
+			console.error('Logon error')
+		})
+	}
+
 
 }
 var RegisterAuxiliaryObj = new RegisterAuxiliaryData()

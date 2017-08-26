@@ -4,6 +4,8 @@ import './Login.scss'
 
 import { Panel, Form, Grid, Button } from 'ap-react-bootstrap'
 
+import Link from 'components-lib/Link/Link'
+
 class Login extends React.Component {
 
 	constructor(props) {
@@ -47,6 +49,7 @@ class Login extends React.Component {
 							value={this.state.password}
 							onChange={this.onChangeNoError.bind(this, 'password')} />
 					</Form.Group>
+					<Link link='/auth/recover'>Mot de passe oublié ?</Link>
 					{this.state.errorJustHappened && this.state.errorMessage}
 				</Form>
 			</Panel.Body>
