@@ -10,9 +10,9 @@ class AppHomeData extends BaseData {
 		
 		/* TODO > find a way to generate this stuff */
 		if (AuthHelper.getType() === 'auxiliary') {
-			AppHelper.navigate('/auxiliary/home')
+			AppHelper.navigate('/auxiliary')
 		} else if (AuthHelper.getType() === 'service') {
-			AppHelper.navigate('/service/home')
+			AppHelper.navigate('/service')
 		}
 
 		// Callbacks

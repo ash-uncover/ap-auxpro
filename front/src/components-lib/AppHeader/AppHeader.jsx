@@ -29,12 +29,13 @@ class AppHeader extends React.Component {
 		)
 	}
 
-	_buildLink(text, link) { 
+	_buildLink(text, link, disabled) { 
 		return (
 			<Navbar.Link 
 				text={text} 
 				link={link} 
 				onNavigate={AppHelper.navigate} 
+				disabled={disabled}
 				active={(AppHelper.getData('/path') || '').startsWith(link)} />
 		)
 	}
@@ -43,21 +44,21 @@ class AppHeader extends React.Component {
 		switch (this.state.authType) {
 			case 'auxiliary': return (
 				<Navbar.Group right>
-					{this._buildLink('Accueil','/auxiliary/home')}
-					{this._buildLink('Profil','/auxiliary/infos')}
-					{this._buildLink('Planing','/auxiliary/planing')}
-					{this._buildLink('Zone','/auxiliary/zone')}
-					{this._buildLink('Offres','/auxiliary/offers')}
+					{this._buildLink('Accueil','/auxiliary/home', this.state.tutoMode)}
+					{this._buildLink('Profil','/auxiliary/infos', this.state.tutoMode)}
+					{this._buildLink('Planing','/auxiliary/planing', this.state.tutoMode)}
+					{this._buildLink('Zone','/auxiliary/zone', this.state.tutoMode)}
+					{this._buildLink('Offres','/auxiliary/offers', this.state.tutoMode)}
 					{this._buildLink('Déconnexion','/logout')}
 				</Navbar.Group>
 			)
 			case 'service': return (
 				<Navbar.Group right>
-					{this._buildLink('Accueil','/service/home')}
-					{this._buildLink('Profil','/service/infos')}
-					{this._buildLink('Zone','/service/zone')}
-					{this._buildLink('Usagers','/service/customers')}
-					{this._buildLink('Interventions','/service/interventions')}
+					{this._buildLink('Accueil','/service/home', this.state.tutoMode)}
+					{this._buildLink('Profil','/service/infos', this.state.tutoMode)}
+					{this._buildLink('Zone','/service/zone', this.state.tutoMode)}
+					{this._buildLink('Usagers','/service/customers', this.state.tutoMode)}
+					{this._buildLink('Interventions','/service/interventions', this.state.tutoMode)}
 					{this._buildLink('Déconnexion','/logout')}
 				</Navbar.Group>
 			)
@@ -71,6 +72,8 @@ class AppHeader extends React.Component {
 	}
 
 	render() {
+		console.log('REEREEEEEEEEEEEEENGER')
+		console.log(this.state)
 		return (
 			<header className='hidden-print ap-app-header'>
 				<Navbar fixedTop>

@@ -19,12 +19,20 @@ class Auxiliary extends React.Component {
 	}
 
 	render() {
-		return (
-			<div className='ap-auxiliary'>
-				<AuxiliaryHeader />
-				{this.props.children}
-			</div>
-		)
+		if (this.state.loaded) {
+			return (
+				<div className='ap-auxiliary'>
+					{this.state.showHeader ?
+						<AuxiliaryHeader />
+					: null }
+					{this.props.children}
+				</div>
+			)
+		} else {
+			return (
+				<div className='ap-auxiliary' />
+			)
+		}
 	}
 
 }

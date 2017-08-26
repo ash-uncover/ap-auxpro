@@ -66,7 +66,7 @@ class LoginData extends BaseData {
 			switch (AuthHelper.getType()) {
 			case 'auxiliary':
 			case 'service':
-				AppHelper.navigate('/' + AuthHelper.getType() + '/home')
+				AppHelper.navigate('/home')
 				break
 			default:
 				AppHelper.navigate('/')

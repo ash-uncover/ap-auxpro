@@ -1,5 +1,18 @@
+// Variables
+@import 'assets/styles/variables';
+
 .ap-auxiliary-header {
+	
 	.ap-image {
-		max-height: 175px;
+		max-height: 180px;
+		border: 8px solid $ap-primary-color;
+	}
+
+	.ap-panel-body {
+		padding: 30px;
+	}
+
+	.ap-form-group:last-child {
+		margin-bottom: 0;
 	}
 }

@@ -37,7 +37,7 @@ class AuxiliaryHeaderData extends BaseData {
 				name: AuxiliaryUtils.getFullName(auxiliary),
 				address: AuxiliaryUtils.getAddress(auxiliary),
 				email: AuthHelper.getEmail(),
-				diploma: auxiliary.diploma
+				diploma: AuxiliaryUtils.getDiploma(auxiliary)
 			})
 		}
 	}
