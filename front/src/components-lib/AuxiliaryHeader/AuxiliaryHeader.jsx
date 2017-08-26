@@ -22,7 +22,7 @@ class AuxiliaryHeader extends React.Component {
 	_buildFromGroup(label, value) { return (
 		<Form.Group>
 			<Form.Label className='col-sm-2'>{label}</Form.Label>
-			<Form.Static className='col-sm-10'>{value}</Form.Static>
+			<Form.Static className='col-sm-10 user-select-text'>{value}</Form.Static>
 		</Form.Group>
 	)}
 

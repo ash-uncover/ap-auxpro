@@ -20,52 +20,64 @@ class App extends React.Component {
 		AppData.unregister()
 	}
 
-    _buildHeaderNoAuth() { return (
-        <header className='hidden-print ap-app-header'>
-            <Navbar fixedTop>
-            <Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
-                <Navbar.Group right>
-                    {this.__buildLink('Connexion','/auth/login')}
-                    {this.__buildLink("S'inscrire",'/auth/register')}
-                </Navbar.Group>
-            </Navbar>
-        </header>
-    )}
+    _buildHeaderNoAuth() { 
+        return (
+            <header className='hidden-print ap-app-header'>
+                <Navbar fixedTop>
+                <Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
+                    <Navbar.Group right>
+                        {this.__buildLink('Connexion','/auth/login')}
+                        {this.__buildLink("S'inscrire",'/auth/register')}
+                    </Navbar.Group>
+                </Navbar>
+            </header>
+        )
+    }
 
-    _buildHeaderAuxiliary() { return (
-        <header className='hidden-print ap-app-header'>
-            <Navbar fixedTop>
-            <Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
-                <Navbar.Group right>
-                    {this.__buildLink('Accueil','/auxiliary/home')}
-                    {this.__buildLink('Profil','/auxiliary/infos')}
-                    {this.__buildLink('Planing','/auxiliary/planing')}
-                    {this.__buildLink('Zone','/auxiliary/zone')}
-                    {this.__buildLink('Offres','/auxiliary/offers')}
-                    {this.__buildLink('Déconnexion','/logout')}
-                </Navbar.Group>
-            </Navbar>
-        </header>
-    )}
+    _buildHeaderAuxiliary() { 
+        return (
+            <header className='hidden-print ap-app-header'>
+                <Navbar fixedTop>
+                <Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
+                    <Navbar.Group right>
+                        {this.__buildLink('Accueil','/auxiliary/home')}
+                        {this.__buildLink('Profil','/auxiliary/infos')}
+                        {this.__buildLink('Planing','/auxiliary/planing')}
+                        {this.__buildLink('Zone','/auxiliary/zone')}
+                        {this.__buildLink('Offres','/auxiliary/offers')}
+                        {this.__buildLink('Déconnexion','/logout')}
+                    </Navbar.Group>
+                </Navbar>
+            </header>
+        )
+    }
 
-    _buildHeaderService() {return (
-        <header className='hidden-print ap-app-header'>
-            <Navbar fixedTop>
-            <Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
-                <Navbar.Group right>
-                    {this.__buildLink('Accueil','/service/home')}
-                    {this.__buildLink('Profil','/service/infos')}
-                    {this.__buildLink('Zone','/service/zone')}
-                    {this.__buildLink('Usagers','/service/customers')}
-                    {this.__buildLink('Interventions','/service/interventions')}
-                    {this.__buildLink('Déconnexion','/logout')}
-                </Navbar.Group>
-            </Navbar>
-        </header>
-    )}
+    _buildHeaderService() {
+        return (
+            <header className='hidden-print ap-app-header'>
+                <Navbar fixedTop>
+                <Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
+                    <Navbar.Group right>
+                        {this.__buildLink('Accueil','/service/home')}
+                        {this.__buildLink('Profil','/service/infos')}
+                        {this.__buildLink('Zone','/service/zone')}
+                        {this.__buildLink('Usagers','/service/customers')}
+                        {this.__buildLink('Interventions','/service/interventions')}
+                        {this.__buildLink('Déconnexion','/logout')}
+                    </Navbar.Group>
+                </Navbar>
+            </header>
+        )
+    }
 
-    __buildLink(text, link) {
-        return (<Navbar.Link text={text} link={link} onNavigate={AppHelper.navigate}/>)
+    __buildLink(text, link) { 
+        return (
+            <Navbar.Link 
+                text={text} 
+                link={link} 
+                onNavigate={AppHelper.navigate} 
+                active={(AppHelper.getData('/path') || '').startsWith(link)} />
+        )
     }
 
 	render() {

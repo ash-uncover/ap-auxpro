@@ -25,6 +25,10 @@ body {
 		height: 100%;
 		user-select: none;
 
+		.user-select-text {
+			user-select: text;			
+		}
+
 		.ap-app-header {
 			height: 10%;
 		}
