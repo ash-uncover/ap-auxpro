@@ -16,5 +16,4 @@ import boot from 'boot'
 // Our root component handling routing in the application
 import Routes from 'components/Routes'
 import { AppRouter } from 'ap-react-bootstrap'
-
 render((<AppRouter routes={Routes} onUpdate={boot.onUpdate} />), document.getElementById('app'))
