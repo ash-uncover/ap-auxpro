@@ -51,7 +51,11 @@ class AppHeader extends React.Component {
 		return (
             <header className='hidden-print ap-app-header'>
                 <Navbar fixedTop>
-                	<Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
+                	<Navbar.Header 
+                        brandText='AuXpros'
+                        brandImage='assets/images/auxpro-logo.png'
+                        brandLink='/home'
+                        onNavigate={AppHelper.navigate} />
                     <Navbar.Group>
                         {this._buildText('AUX','auxiliary')}
                         {this._buildText('SAD','service')}
@@ -69,7 +73,11 @@ class AppHeader extends React.Component {
 		return (
             <header className='hidden-print ap-app-header'>
                 <Navbar fixedTop>
-               		<Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
+               		<Navbar.Header 
+                        brandText='AuXpros'
+                        brandImage='assets/images/auxpro-logo.png'
+                        brandLink='/home'
+                        onNavigate={AppHelper.navigate} />
                     <Navbar.Group>
                         {this._buildText('AUX','auxiliary')}
                         {this._buildText('SAD','service')}
@@ -91,7 +99,11 @@ class AppHeader extends React.Component {
 		return (
             <header className='hidden-print ap-app-header'>
                 <Navbar fixedTop>
-                	<Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
+                	<Navbar.Header 
+                        brandText='AuXpros'
+                        brandImage='assets/images/auxpro-logo.png'
+                        brandLink='/home'
+                        onNavigate={AppHelper.navigate} />
                     <Navbar.Group>
                         {this._buildText('AUX','auxiliary')}
                         {this._buildText('SAD','service')}
