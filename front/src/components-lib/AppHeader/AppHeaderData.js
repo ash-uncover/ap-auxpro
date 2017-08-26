@@ -61,8 +61,6 @@ class AppHeaderData extends BaseData {
 	_onAuxiliaryChanged() {
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId())
 		if (auxiliary) {
-			console.log('HERREEEEEEEEEEEEEEEEEEEE')
-			console.log(auxiliary)
 			this.setState({ tutoMode: !auxiliary.isTutoSkipped })
 		}
 	}

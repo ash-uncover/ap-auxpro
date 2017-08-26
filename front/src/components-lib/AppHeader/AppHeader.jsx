@@ -72,8 +72,6 @@ class AppHeader extends React.Component {
 	}
 
 	render() {
-		console.log('REEREEEEEEEEEEEEENGER')
-		console.log(this.state)
 		return (
 			<header className='hidden-print ap-app-header'>
 				<Navbar fixedTop>

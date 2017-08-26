@@ -14,11 +14,9 @@
     "bootstrap": "^3.3.7",
     "moment": "^2.18.1",
     "react": "^15.5.4",
-    "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.1",
     "react-marked": "^0.3.1",
     "react-router": "^3.0.0",
-    "react-router-bootstrap": "^0.23.1",
     "ap-flux": "git+https://github.com/ash-uncover/ap-flux.git",
     "ap-react-bootstrap": "git+https://github.com/ash-uncover/ap-react-bootstrap.git"
   },
