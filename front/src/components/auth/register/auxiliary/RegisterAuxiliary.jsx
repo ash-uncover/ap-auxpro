@@ -4,6 +4,8 @@ import './RegisterAuxiliary.scss'
 
 import { Panel, Form, Grid, Button } from 'ap-react-bootstrap'
 
+import Link from 'components-lib/Link/Link'
+
 class RegisterAuxiliary extends React.Component {
 
 	constructor(props) {
@@ -19,6 +21,7 @@ class RegisterAuxiliary extends React.Component {
 	}
 
 	render() {
+		let submitDisable = !this.state.email || !this.state.password || !this.state.confirm || (this.state.password !== this.state.confirm)
 		return (
 			<Panel className='ap-register-auxiliary'>
 				<Panel.Header>
@@ -59,6 +62,7 @@ class RegisterAuxiliary extends React.Component {
 								value={this.state.confirm}
 								onChange={this.onChangeNoError.bind(this, 'confirm')} />
 						</Form.Group>
+						<Link link='/auth/register/confirm'>J'ai déjà un code.</Link>
 						{this.state.errorJustHappened && this.state.errorMessage}
 					</Form>
 				</Panel.Body>
@@ -78,8 +82,8 @@ class RegisterAuxiliary extends React.Component {
 							<Button 
 								block 
 								bsSize='large' 
-								bsStyle='success'
-								disabled={!this.state.email || !this.state.password || !this.state.confirm || (this.state.password !== this.state.confirm)}
+								bsStyle={submitDisable ? 'default' : 'success'}
+								disabled={submitDisable}
 								onClick={this.onSubmit}>
 								Créer mon compte
 							</Button>

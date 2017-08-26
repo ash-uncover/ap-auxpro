@@ -54,9 +54,10 @@ class LoginData extends BaseData {
 		then(function () {
 			setTimeout(AppHelper.setBusy, 200)
 		}).
-		catch(function () {
+		catch(function (error) {
 			setTimeout(AppHelper.setBusy, 200)
 			console.error('Logon error')
+			console.error(error)
 		})
 	}
 
