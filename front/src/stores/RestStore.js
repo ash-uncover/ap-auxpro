@@ -41,7 +41,7 @@ ImageStore.handleGetImage = function(result, params) {
 	let source = 'data:' + result.type + ';base64,' + btoaResult
 	let content = ImageStore.getContent()
 	content[params.id] = source
-	ImageStore.notify()
+	ImageStore.notifyPath('/' + params.id)
 }
 
 RestStore.handleLogout = function(results, params) {

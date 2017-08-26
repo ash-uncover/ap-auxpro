@@ -3,6 +3,7 @@ import ServiceHeaderData from 'components-lib/ServiceHeader/ServiceHeaderData'
 import './ServiceHeader.scss'
 
 import { Col, Panel, Form } from 'ap-react-bootstrap'
+import Image from 'components-lib/Image/Image'
 
 class ServiceHeader extends React.Component {
 
@@ -30,7 +31,7 @@ class ServiceHeader extends React.Component {
 			<Panel className='ap-service-header hidden-xs'>
 				<Panel.Body>
 					<Col sm={4} md={3} lg={2}>
-						<img alt='Ma photo' className='ap-header-img' src={this.state.avatarImage} />
+						<Image alt='Ma photo' id={this.state.avatar} />
 					</Col>
 					<Col sm={8} md={9} lg={10}>
 						<Form horizontal>

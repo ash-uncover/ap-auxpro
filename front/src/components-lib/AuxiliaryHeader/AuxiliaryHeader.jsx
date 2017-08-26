@@ -3,6 +3,7 @@ import AuxiliaryHeaderData from 'components-lib/AuxiliaryHeader/AuxiliaryHeaderD
 import './AuxiliaryHeader.scss'
 
 import { Col, Panel, Form } from 'ap-react-bootstrap'
+import Image from 'components-lib/Image/Image'
 
 class AuxiliaryHeader extends React.Component {
 
@@ -30,7 +31,7 @@ class AuxiliaryHeader extends React.Component {
 			<Panel className='ap-auxiliary-header hidden-xs'>
 				<Panel.Body>
 					<Col sm={4} md={3} lg={2}>
-						<img alt='Ma photo' className='ap-header-img' src={this.state.avatarImage} />
+						<Image alt='Ma photo' id={this.state.avatar} />
 					</Col>
 					<Col sm={8} md={9} lg={10}>
 						<Form horizontal>
