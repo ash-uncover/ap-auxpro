@@ -35,9 +35,9 @@ class AuxiliaryHeaderData extends BaseData {
 			this.setState({ 
 				avatar: auxiliary.avatar,
 				name: AuxiliaryUtils.getFullName(auxiliary),
-				email: auxiliary.email,
-				diploma: auxiliary.diploma,
-				address: AuxiliaryUtils.getAddress(auxiliary)
+				address: AuxiliaryUtils.getAddress(auxiliary),
+				email: AuthHelper.getEmail(),
+				diploma: auxiliary.diploma
 			})
 		}
 	}

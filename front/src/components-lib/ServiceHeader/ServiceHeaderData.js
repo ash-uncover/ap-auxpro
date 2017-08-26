@@ -36,7 +36,7 @@ class ServiceHeaderData extends BaseData {
 				avatar: service.avatar,
 				society: service.socialReason,
 				address: ServiceUtils.getAddress(service),
-				email: service.email,
+				email: AuthHelper.getEmail(),
 				socialReason: service.function
 			})
 		}
