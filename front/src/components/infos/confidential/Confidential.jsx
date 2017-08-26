@@ -22,8 +22,10 @@ class Confidential extends React.Component {
 	render() {
 		return (
 			<Panel className='ap-confidential'>
-				<Panel.Body>
-				<h2>Confidentialité</h2>
+				<Panel.Header>
+					<h2>Confidentialité</h2>
+				</Panel.Header>
+				<Panel.Body>				
 					<ol type='1'>
 						<h3><li>Collecte de l’information</li></h3>
 						<p>Lorsque vous vous inscrivez sur AUXPROS, nous recueillons des informations. Ces informations recueillies incluent votre nom, adresse e-mail, numéro de téléphone, adresse. Les infos demandées de votre DNR sont incomplètes (7 chiffres) et permettent de vérifier la cohérence de vos données recueillies.</p>

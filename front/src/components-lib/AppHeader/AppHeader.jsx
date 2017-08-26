@@ -76,7 +76,7 @@ class AppHeader extends React.Component {
 				<Navbar fixedTop>
 					<Navbar.Header 
 						brandText='AuXpros'
-						brandImage='assets/images/auxpro-logo.png'
+						brandImage='/assets/images/auxpro-logo.png'
 						brandLink='/home'
 						onNavigate={AppHelper.navigate} />
 					<Navbar.Group>

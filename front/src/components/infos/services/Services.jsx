@@ -22,8 +22,10 @@ class Services extends React.Component {
 	render() {
 		return (
 			<Panel className='ap-services'>
-				<Panel.Body>
+				<Panel.Header>
 					<h2>Nos services</h2>
+				</Panel.Header>
+				<Panel.Body>
 					<p>Nos services sont :</p>
 					<br/>
 					<p><b>AuXpros</b> permet aux <b>Auxiliaires de vie</b> qui recherchent du travail ou qui désirent un complément à leurs activités d’être sollicitées en fonction de leurs compétences, de leurs disponibilités, et de la zone d’intervention géographique souhaitée, de se voir proposer par des organismes de services d’aides à la personne des missions correspondantes.</p>

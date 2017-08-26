@@ -22,8 +22,10 @@ class CGV extends React.Component {
 	render() {
 		return (
 			<Panel className='ap-cgv'>
-				<Panel.Body>
+				<Panel.Header>
 					<h2>Conditions Générales de Vente de site internet AuXpros</h2>
+				</Panel.Header>
+				<Panel.Body>
 					<ol type='1'>
 						<h3><li>Mentions légales</li></h3>
 							<p>Le site : www.auxpros.fr est édité et exploité par la société AUXPROS</p>

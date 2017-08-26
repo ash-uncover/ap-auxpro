@@ -21,8 +21,10 @@ class CGU extends React.Component {
 
 	render() { return (
 		<Panel className='ap-cgu'>
-			<Panel.Body>
+			<Panel.Header>
 				<h2>Conditions Générales d’Utilisation (CGU) du site internet Auxpros en date du 31/10/2016.</h2>
+			</Panel.Header>
+			<Panel.Body>
 				<ol type='1'>
 					<h3><li>Object</li></h3>
 						<p>Les présentes conditions générales d’utilisation (ci-après les « CGU ») ont pour objet de définir les modalités et conditions d’utilisation des services proposés sur le site Auxpros (ci-après les «services »), ainsi que les droits et obligations dans ce cadre.</p>

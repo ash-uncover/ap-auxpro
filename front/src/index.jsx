@@ -16,4 +16,13 @@ import boot from 'boot'
 // Our root component handling routing in the application
 import Routes from 'components/Routes'
 import { AppRouter } from 'ap-react-bootstrap'
-render((<AppRouter routes={Routes}/>), document.getElementById('app'))
+
+function _onUpdate() {
+	window.scrollTo(0, 0)
+	let element = document.getElementsByClassName('ap-auxpro')[0]
+	if (element) {
+		element.scrollTop = 0
+	}
+}
+
+render((<AppRouter routes={Routes} onUpdate={_onUpdate} />), document.getElementById('app'))

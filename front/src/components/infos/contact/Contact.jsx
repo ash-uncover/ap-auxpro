@@ -22,8 +22,10 @@ class Contact extends React.Component {
 	render() {
 		return (
 			<Panel className='ap-contact'>
-				<Panel.Body>
+				<Panel.Header>
 					<h2>Contact</h2>
+				</Panel.Header>
+				<Panel.Body>
 					<a href='mailto:contact@auxpros.fr' target='_top'>contact@auxpros.fr</a>				
 				</Panel.Body>
 			</Panel>
