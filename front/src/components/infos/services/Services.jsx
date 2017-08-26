@@ -21,8 +21,8 @@ class Services extends React.Component {
 
 	render() {
 		return (
-			<div className='ap-services'>
-				<Panel>
+			<Panel className='ap-services'>
+				<Panel.Body>
 					<h2>Nos services</h2>
 					<p>Nos services sont :</p>
 					<br/>
@@ -31,8 +31,8 @@ class Services extends React.Component {
 					<p><b>AuXpros</b> permet aux <b>Organismes de services d’aides à la personne</b> de connaitre sur une simple consultation les possibilités de réponse aux demandes d’aides faites par un Usager. Et de solliciter les intervenants de proximité potentiellement disponibles qui leurs paraissent réunir les meilleures aptitudes pour satisfaire les besoins.</p>
 					<br/>
 					<p><b>AuXpros</b> permet aux <b>Usagers</b> de connaître tous les organismes d’aides à la personnes existants et de sélectionner parmi toutes les offres de services celles qui lui conviendront le mieux</p>
-				</Panel>
-			</div>
+				</Panel.Body>
+			</Panel>
 		)
 	}
 

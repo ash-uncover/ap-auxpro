@@ -21,8 +21,8 @@ class CGV extends React.Component {
 
 	render() {
 		return (
-			<div className='ap-cgv'>
-				<Panel>
+			<Panel className='ap-cgv'>
+				<Panel.Body>
 					<h2>Conditions Générales de Vente de site internet AuXpros</h2>
 					<ol type='1'>
 						<h3><li>Mentions légales</li></h3>
@@ -83,8 +83,8 @@ class CGV extends React.Component {
 						<h3><li>Pénalités de retard</li></h3>
 							<p>Conformément aux dispositions légales et réglementaires, à défaut de règlement à l’échéance prévue, des pénalités de retard d'un montant égal au dernier taux appliqué par la Banque Centrale Européenne majoré de 10 points seront appliquées sur le montant TTC de la somme restant due, sans qu’aucune mise en demeure ne soit nécessaire. Le taux applicable pendant le premier semestre de l’année concernée est le taux en vigueur au 1er janvier de l’année en question et celui applicable pour le second semestre de l’année concernée est le taux en vigueur au 1er juillet de l’année en question. En outre, une indemnité forfaitaire de 40 € pour frais de recouvrement pourra être réclamée.</p>
 					</ol>
-				</Panel>
-			</div>
+				</Panel.Body>
+			</Panel>
 		)
 	}
 

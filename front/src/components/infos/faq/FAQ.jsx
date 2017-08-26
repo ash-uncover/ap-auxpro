@@ -29,7 +29,7 @@ class FAQ extends React.Component {
 	// }
 
 	render() { return (
-		<div className='ap-faq'>
+		<div className='ap-faq ap-infos'>
 			
 		</div>
 	)}

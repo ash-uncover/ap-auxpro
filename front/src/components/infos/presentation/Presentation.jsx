@@ -21,8 +21,8 @@ class Presentation extends React.Component {
 
 	render() {
 		return (
-			<div className='ap-presentation'>
-				<Panel>
+			<Panel className='ap-presentation'>
+				<Panel.Body>
 					<h2>Qui sommes nous ?</h2>
 					<p><b>AuXpros</b> est une plateforme de mise en relation d’organismes d’aides à la personne et d’auxiliaires de vie. Née des expériences accumulées et des réflexions constatées d’un dirigeant d’un service d’aide à la personne et d’un contrôleur de gestion.</p>
 					<br/>
@@ -35,8 +35,8 @@ class Presentation extends React.Component {
 					<p><b>Nos réponses :</b></p>
 					<p>Permettre cette mise en relation grâce à « un matching » qui tient compte à la fois des demandes, des besoins des usagers et des compétences, de la disponibilité des intervenants ainsi que de leurs zones géographiques d’interventions souhaitées.</p>
 					<p>Enfin un outil disponible propre à sécuriser et à soutenir le souhait bien compréhensible de vouloir rester chez soi.</p>	
-				</Panel>
-			</div>
+				</Panel.Body>
+			</Panel>
 		)
 	}
 

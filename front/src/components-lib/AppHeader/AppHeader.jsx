@@ -3,6 +3,7 @@ import AppHeaderData from 'components-lib/AppHeader/AppHeaderData'
 import './AppHeader.scss'
 
 import AppHelper from 'helpers/AppHelper'
+import AuthHelper from 'helpers/AuthHelper'
 
 import { Navbar } from 'ap-react-bootstrap'
 
@@ -19,6 +20,14 @@ class AppHeader extends React.Component {
 	componentWillUnmount() {
 		AppHeaderData.unregister()
 	}
+
+    _buildText(text, type) { 
+        return (
+            <Navbar.Text 
+                text={text} 
+                active={(AuthHelper.getType() || '') === type} />
+        )
+    }
 
 	_buildLink(text, link) { 
         return (
@@ -43,6 +52,10 @@ class AppHeader extends React.Component {
             <header className='hidden-print ap-app-header'>
                 <Navbar fixedTop>
                 	<Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
+                    <Navbar.Group>
+                        {this._buildText('AUX','auxiliary')}
+                        {this._buildText('SAD','service')}
+                    </Navbar.Group>
                     <Navbar.Group right>
                         {this._buildLink('Connexion','/auth/login')}
                         {this._buildLink("S'inscrire",'/auth/register')}
@@ -57,6 +70,10 @@ class AppHeader extends React.Component {
             <header className='hidden-print ap-app-header'>
                 <Navbar fixedTop>
                		<Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
+                    <Navbar.Group>
+                        {this._buildText('AUX','auxiliary')}
+                        {this._buildText('SAD','service')}
+                    </Navbar.Group>
                     <Navbar.Group right>
                         {this._buildLink('Accueil','/auxiliary/home')}
                         {this._buildLink('Profil','/auxiliary/infos')}
@@ -75,6 +92,10 @@ class AppHeader extends React.Component {
             <header className='hidden-print ap-app-header'>
                 <Navbar fixedTop>
                 	<Navbar.Header brandText='AuXpros' brandLink="/home" onNavigate={AppHelper.navigate}/>
+                    <Navbar.Group>
+                        {this._buildText('AUX','auxiliary')}
+                        {this._buildText('SAD','service')}
+                    </Navbar.Group>
                     <Navbar.Group right>
                         {this._buildLink('Accueil','/service/home')}
                         {this._buildLink('Profil','/service/infos')}

@@ -19,7 +19,7 @@ class Help extends React.Component {
 
 	render() {
 		return (
-			<div className='ap-help'>
+			<div className='ap-help ap-infos'>
 				Help
 			</div>
 		)
