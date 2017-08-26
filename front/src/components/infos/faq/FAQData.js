@@ -12,7 +12,7 @@ class FAQData extends BaseData {
 		// Dispatcher.issue('GET_HELP_FAQS', {token: Utils.encode('guest', 'guest')})
 		this.obj.state = {}
 
-		// FAQHelper.register(this, this.buildData.bind(this))
+		// HelpfaqHelper.register('', this, this.buildData.bind(this))
 	}
 
 	unregister() {

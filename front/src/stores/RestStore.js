@@ -62,7 +62,7 @@ RestStore.handleGetAuxiliary = function(result, params) {
 	if (!content.auxiliary)
 		content.auxiliary = {};
 	content.auxiliary[result.id] = result;
-	RestStore.notifyPath('/auxiliary')
+	RestStore.notifyPath('/auxiliary/' + result.id)
 }
 
 RestStore.handleGetAuxiliaryServices = function(result, params) {
@@ -133,7 +133,7 @@ RestStore.handleGetCustomer = function(result, params) {
 	if (!content.customer)
 		content.customer = {};
 	content.customer[result.id] = result;
-	RestStore.notifyPath('/customer')
+	RestStore.notifyPath('/customer/' + result.id)
 }
 
 RestStore.handleGetCustomerInterventions = function(result, params) {
@@ -150,7 +150,7 @@ RestStore.handleGetGeozone = function(result, params) {
 	if (!content.geozone)
 		content.geozone = {};
 	content.geozone[result.id] = result;
-	RestStore.notifyPath('/geozone')
+	RestStore.notifyPath('/geozone/' + result.id)
 }
 
 RestStore.handleGetHelpTopics = function(result, params) {
@@ -176,7 +176,7 @@ RestStore.handleGetIndisponibility = function(result, params) {
 	if (!content.indisponibility)
 		content.indisponibility = {};
 	content.indisponibility[result.id] = result;
-	RestStore.notifyPath('/indisponibility')
+	RestStore.notifyPath('/indisponibility/' + result.id)
 }
 
 RestStore.handleGetIntervention = function(result, params) {
@@ -184,7 +184,7 @@ RestStore.handleGetIntervention = function(result, params) {
 	if (!content.intervention)
 		content.intervention = {};
 	content.intervention[result.id] = result;
-	RestStore.notifyPath('/intervention')
+	RestStore.notifyPath('/intervention/' + result.id)
 }
 
 RestStore.handleGetInterventionMatch = function(result, params) {
@@ -214,7 +214,7 @@ RestStore.handleGetMission = function(result, params) {
 	if (!content.mission)
 		content.mission = {};
 	content.mission[result.id] = result;
-	RestStore.notifyPath('/mission')
+	RestStore.notifyPath('/mission/' + result.id)
 }
 
 RestStore.handleGetOffer = function(result, params) {
@@ -222,7 +222,7 @@ RestStore.handleGetOffer = function(result, params) {
 	if (!content.offer)
 		content.offer = {};
 	content.offer[result.id] = result;
-	RestStore.notifyPath('/offer')
+	RestStore.notifyPath('/offer/' + result.id)
 }
 
 RestStore.handleGetServices = function(result, params) {
@@ -239,7 +239,7 @@ RestStore.handleGetService = function(result, params) {
 	if (!content.service)
 		content.service = {};
 	content.service[result.id] = result;
-	RestStore.notifyPath('/service')
+	RestStore.notifyPath('/service/' + result.id)
 }
 
 RestStore.handleGetServiceAuxiliarys = function(result, params) {

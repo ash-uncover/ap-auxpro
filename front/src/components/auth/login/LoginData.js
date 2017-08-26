@@ -9,7 +9,7 @@ class LoginData extends BaseData {
 	register(obj) {
 		super.register(obj)
 
-		AuthHelper.register(this, this.onLogon.bind(this))
+		AuthHelper.register('', this, this.onLogon.bind(this))
 		ErrorHelper.register('GET_AUTH', this, this.onLogonError.bind(this))
 
 		this.obj.onCancel = this.onCancel.bind(this)

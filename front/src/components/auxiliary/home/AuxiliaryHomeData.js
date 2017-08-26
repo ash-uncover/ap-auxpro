@@ -11,7 +11,7 @@ class AuxiliaryHomeData extends BaseData {
 
 		this.obj.state = {}
 
-		AuxiliaryHelper.register(this, this._onAuxiliaryUpdate.bind(this))
+		AuxiliaryHelper.register(AuthHelper.getEntityId(), this, this._onAuxiliaryUpdate.bind(this))
 	}
 
 	unregister() {

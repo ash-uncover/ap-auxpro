@@ -31,7 +31,7 @@ class AppData extends BaseData {
 
 		AppHelper.register('/path', this, this._onAppStorePathUpdate.bind(this));
 		AppHelper.register('/app/busy', this, this._onAppBusyUpdate.bind(this));
-		AuthHelper.register(this, this._onAuthChanged.bind(this))
+		AuthHelper.register('', this, this._onAuthChanged.bind(this))
 	}
 
 	unregister() {

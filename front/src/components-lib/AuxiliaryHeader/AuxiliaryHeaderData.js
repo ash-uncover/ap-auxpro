@@ -23,8 +23,8 @@ class AuxiliaryHeaderData extends BaseData {
 
 		this._onAuxiliaryUpdate()
 
-		AuxiliaryHelper.register(this, this._onAuxiliaryUpdate.bind(this))
-		ImageHelper.register(this, this._onImageUpdate.bind(this))
+		AuxiliaryHelper.register(AuthHelper.getEntityId(), this, this._onAuxiliaryUpdate.bind(this))
+		ImageHelper.register('', this, this._onImageUpdate.bind(this))
 	}
 
 	unregister() {

@@ -23,8 +23,8 @@ class ServiceHeaderData extends BaseData {
 
 		this._onServiceUpdate()
 
-		ServiceHelper.register(this, this._onServiceUpdate.bind(this))
-		ImageHelper.register(this, this._onImageUpdate.bind(this))
+		ServiceHelper.register(AuthHelper.getEntityId(), this, this._onServiceUpdate.bind(this))
+		ImageHelper.register('', this, this._onImageUpdate.bind(this))
 	}
 
 	unregister() {
