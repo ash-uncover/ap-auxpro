@@ -15,9 +15,8 @@ class AuxiliaryHomeData extends BaseData {
 	}
 
 	unregister() {
+		AuxiliaryHelper.unregister(this)
 	}
-
-
 
 	_onAuxiliaryUpdate() {
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId())
