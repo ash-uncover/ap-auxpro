@@ -11,7 +11,7 @@ let SLIDES = [
 	{ src: '/assets/images/tutoaux4.JPG', alt: 'Image tutorial 4'  },
 	{ src: '/assets/images/tutoaux5.JPG', alt: 'Image tutorial 5'  },
 	{ src: '/assets/images/tutoaux6.JPG', alt: 'Image tutorial 6'  }
-];
+]
 
 class AuxiliaryTutoData extends BaseData {
 

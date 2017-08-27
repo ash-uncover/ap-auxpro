@@ -63,7 +63,7 @@ class RegisterService extends React.Component {
 								onChange={this.onChangeNoError.bind(this, 'confirm')} />
 						</Form.Group>
 						<Link link='/auth/register/confirm'>J'ai déjà un code.</Link>
-						{this.state.errorJustHappened && this.state.errorMessage}
+						<p>{this.state.errorJustHappened && this.state.errorMessage}</p>
 					</Form>
 				</Panel.Body>
 				<Panel.Footer>

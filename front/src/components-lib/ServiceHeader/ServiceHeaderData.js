@@ -4,6 +4,7 @@ import ServiceHelper from 'helpers/ServiceHelper'
 import ImageHelper from 'helpers/ImageHelper'
 
 import ServiceUtils from 'utils/entities/ServiceUtils'
+import StringUtils from 'utils/StringUtils'
 
 import { BaseData } from 'ap-react-bootstrap'
 
@@ -34,10 +35,10 @@ class ServiceHeaderData extends BaseData {
 		if (service) {
 			this.setState({ 
 				avatar: service.avatar,
-				society: service.socialReason,
-				address: ServiceUtils.getAddress(service),
+				society: StringUtils.valueOrMissing(service.socialReason),
+				address: StringUtils.valueOrMissing(ServiceUtils.getAddress(service)),
 				email: AuthHelper.getEmail(),
-				socialReason: service.function
+				socialReason: StringUtils.valueOrMissing(service.function)
 			})
 		}
 	}

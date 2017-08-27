@@ -30,8 +30,8 @@ class AuxiliaryHeader extends React.Component {
 		return (
 			<Panel className='ap-auxiliary-header hidden-xs'>
 				<Panel.Body>
-					<Col sm={4} md={3} lg={2}>
-						<Image alt='Ma photo' id={this.state.avatar} />
+					<Col sm={4} md={3} lg={2} className='ap-image-column'>
+						<Image alt='<Ma photo>' id={this.state.avatar} className={this.state.avatar ? '' : 'ap-no-image'} />
 					</Col>
 					<Col sm={8} md={9} lg={10}>
 						<Form horizontal>

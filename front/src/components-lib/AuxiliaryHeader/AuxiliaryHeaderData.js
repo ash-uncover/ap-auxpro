@@ -4,6 +4,7 @@ import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
 import ImageHelper from 'helpers/ImageHelper'
 
 import AuxiliaryUtils from 'utils/entities/AuxiliaryUtils'
+import StringUtils from 'utils/StringUtils'
 
 import { BaseData } from 'ap-react-bootstrap'
 
@@ -34,10 +35,10 @@ class AuxiliaryHeaderData extends BaseData {
 		if (auxiliary) {
 			this.setState({ 
 				avatar: auxiliary.avatar,
-				name: AuxiliaryUtils.getFullName(auxiliary),
-				address: AuxiliaryUtils.getAddress(auxiliary),
+				name: StringUtils.valueOrMissing(AuxiliaryUtils.getFullName(auxiliary)),
+				address: StringUtils.valueOrMissing(AuxiliaryUtils.getAddress(auxiliary)),
 				email: AuthHelper.getEmail(),
-				diploma: AuxiliaryUtils.getDiploma(auxiliary)
+				diploma: StringUtils.valueOrMissing(auxiliary.diploma)
 			})
 		}
 	}

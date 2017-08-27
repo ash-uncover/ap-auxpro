@@ -3,9 +3,18 @@
 
 .ap-auxiliary-header {
 	
+	.ap-image-column {
+		text-align: center;
+		font-style: italic;
+	}
+
 	.ap-image {
 		max-height: 180px;
-		border: 8px solid $ap-primary-color;
+		border: 8px solid $ap-primary-color;		
+	}
+
+	.ap-no-image.ap-image {
+		border: 0;
 	}
 
 	.ap-panel-body {

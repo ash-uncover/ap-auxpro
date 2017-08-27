@@ -4,7 +4,6 @@ import './AuxiliaryTuto.scss'
 
 import { Carousel, Button } from 'ap-react-bootstrap'
 
-
 class AuxiliaryTuto extends React.Component {
 
 	constructor(props) {

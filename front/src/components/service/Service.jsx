@@ -19,12 +19,20 @@ class Service extends React.Component {
 	}
 
 	render() {
-		return (
-			<div className='ap-service'>
-				<ServiceHeader />
-				{this.props.children}
-			</div>
-		)
+		if (this.state.loaded) {
+			return (
+				<div className='ap-service'>
+					{this.state.showHeader ?
+						<ServiceHeader />
+					: null }
+					{this.props.children}
+				</div>
+			)
+		} else {
+			return (
+				<div className='ap-service' />
+			)
+		}
 	}
 
 }
