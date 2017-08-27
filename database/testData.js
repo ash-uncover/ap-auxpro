@@ -103,6 +103,86 @@ db.service.insert({
 
 
 /* ****************************************************************************************
+ * DB-CUSTOMER
+ */
+
+db.customer.insert({
+	"id":"szc1",
+	"serviceId":"sadz",
+	"civility":"Mme",
+	"firstName":"Monique",
+	"lastName":"Martin",
+	"birthDate":[NumberInt(1957), NumberInt(4), NumberInt(25)],
+	"nationality":"Française",
+	"email":"monique.martin@outlook.fr",
+	"phone":"0101010101",
+	"address":"65 rue Guy Moquet",
+	"postalCode":NumberInt(75017),
+	"city":"Paris",
+	"country":"France",
+	"lattitude":48.892779,
+	"longitude":2.326340,
+	"skillAdministrative":NumberInt(0),
+	"skillChildhood":NumberInt(2),
+	"skillCompagny":NumberInt(5),
+	"skillDoityourself":NumberInt(0),
+	"skillHousework":NumberInt(1),
+	"skillNursing":NumberInt(3),
+	"skillShopping":NumberInt(4)
+})
+
+db.customer.insert({
+	"id":"szc2",
+	"serviceId":"sadz",
+	"civility":"Mr",
+	"firstName":"André",
+	"lastName":"Remy",
+	"birthDate":[NumberInt(1945), NumberInt(4), NumberInt(25)],
+	"nationality":"Française",
+	"email":"andre.remy@outlook.fr",
+	"phone":"0101010101",
+	"address":"7 rue des Dames",
+	"postalCode":NumberInt(75017),
+	"city": "Paris",
+	"country": "France",
+	"lattitude":48.885367,
+	"longitude":2.325658,
+	"skillAdministrative":NumberInt(1),
+	"skillChildhood":NumberInt(0),
+	"skillCompagny":NumberInt(3),
+	"skillDoityourself":NumberInt(4),
+	"skillHousework":NumberInt(2),
+	"skillNursing":NumberInt(5),
+	"skillShopping":NumberInt(1)
+})
+
+db.customer.insert({
+	"id":"szc3",
+	"serviceId":"sadz",
+	"civility":"Mr",
+	"firstName":"Maurice",
+	"lastName":"Durant",
+	"birthDate":[NumberInt(1962), NumberInt(11), NumberInt(3)],
+	"nationality":"Française",
+	"email":"maurice.durant@outlook.fr",
+	"phone":"0101010101",
+	"address":"5 rue de Logelbach",
+	"postalCode":NumberInt(75017),
+	"city": "Paris",
+	"country": "France",
+	"lattitude":48.881188,
+	"longitude":2.307961,
+	"skillAdministrative":NumberInt(0),
+	"skillChildhood":NumberInt(0),
+	"skillCompagny":NumberInt(5),
+	"skillDoityourself":NumberInt(0),
+	"skillHousework":NumberInt(0),
+	"skillNursing":NumberInt(0),
+	"skillShopping":NumberInt(2)
+})
+
+
+/* ****************************************************************************************
  * DB-HELPTOPIC
  */
 db.helptopic.insert({

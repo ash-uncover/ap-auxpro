@@ -1,5 +1,6 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
+import CustomerHelper from 'helpers/CustomerHelper'
 import ServiceHelper from 'helpers/ServiceHelper'
 
 import { BaseData } from 'ap-react-bootstrap'
@@ -28,7 +29,9 @@ class ServiceData extends BaseData {
 			return;
 		}
 
-		ServiceHelper.getService(AuthHelper.getEntityId()).then(this._onLoad.bind(this))
+		ServiceHelper.getService(AuthHelper.getEntityId()).
+		then(CustomerHelper.getServiceCustomers.bind(CustomerHelper,AuthHelper.getEntityId())).
+		then(this._onLoad.bind(this))
 
 		AppHelper.register('/path', this, this._onAppStorePathUpdate.bind(this));
 	}
