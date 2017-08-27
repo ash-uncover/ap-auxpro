@@ -4,6 +4,8 @@ import './Recover.scss'
 
 import { Panel, Form, Grid, Button } from 'ap-react-bootstrap'
 
+import Link from 'components-lib/Link/Link'
+
 class Recover extends React.Component {
 
 	constructor(props) {
@@ -19,6 +21,7 @@ class Recover extends React.Component {
 	}
 
 	render() {
+		let submitDisabled = !this.state.email
 		return (
 			<Panel className='ap-recover'>
 				<Panel.Header>
@@ -28,15 +31,16 @@ class Recover extends React.Component {
 					<Form>
 						<Form.Group>
 							<Form.Label 
-								htmlFor='loginUsername'>
-								Nom d'utilisateur ou addresse mail
+								htmlFor='recoverEmail'>
+								Addresse électronique
 							</Form.Label>
 							<Form.Input 
-								id='loginUsername'
+								id='recoverEmail'
 								type='text'
-								value={this.state.username}
-								onChange={this.onChange.bind(this, 'username')} />
+								value={this.state.email}
+								onChange={this.onChange.bind(this, 'email')} />
 						</Form.Group>
+						<Link link='/auth/recover/confirm'>J'ai déjà un code.</Link>
 					</Form>
 				</Panel.Body>
 				<Panel.Footer>
@@ -55,8 +59,8 @@ class Recover extends React.Component {
 							<Button 
 								block 
 								bsSize='large' 
-								bsStyle='success'
-								disabled={!this.state.username}
+								bsStyle={ submitDisabled ? 'default' : 'success' }
+								disabled={submitDisabled}
 								onClick={this.onSubmit}>
 								Récupération
 							</Button>
