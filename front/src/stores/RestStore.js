@@ -1,6 +1,6 @@
 import { Dispatcher, StoreBase } from 'ap-flux'
 import { Utils } from 'ap-react-bootstrap'
-import InterventionUtils from 'utils/entities/InterventionUtils'
+import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 
 var AuthStore = new StoreBase ({ name: 'AUTH_STORE', content: {} })
 var ImageStore = new StoreBase ({ name: 'IMAGE_STORE', content: {} })

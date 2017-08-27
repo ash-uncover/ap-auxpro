@@ -2,14 +2,19 @@ import React from 'react'
 import ServiceCustomerData from 'components/service/customers/ServiceCustomerData'
 import './ServiceCustomer.scss'
 
-import CustomerUtils from 'utils/entities/CustomerUtils'
+import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
+
+import SkillTile from 'components-lib/SkillTile/SkillTile'
 
 class ServiceCustomer extends React.Component {
 
 	constructor(props) {
 		super(props)
+
+		this.buildSkill = this._buildSkill.bind(this)
+		this.sortSkills = this._sortSkills.bind(this)
 	}
 
 	componentWillMount() {
@@ -26,6 +31,44 @@ class ServiceCustomer extends React.Component {
 			<Form.Static className='col-sm-7 col-md-8 user-select-text'>{value}</Form.Static>
 		</Form.Group>
 	)}
+
+	_prepareSkills() {
+		let skills = []
+		if (this.state.skillHousework) {
+			skills.push({ title: 'Entretien maison', value: this.state.skillHousework})
+		}
+		if (this.state.skillChildhood) {
+			skills.push({ title: 'Aide petite enfance', value: this.state.skillChildhood})
+		}
+		if (this.state.skillShopping) {
+			skills.push({ title: 'Courses & aide au repas', value: this.state.skillShopping})
+		}
+		if (this.state.skillNursing) {
+			skills.push({ title: 'Nursing', value: this.state.skillNursing})
+		}
+		if (this.state.skillCompagny) {
+			skills.push({ title: 'Dame de compagnie', value: this.state.skillCompagny})
+		}
+		if (this.state.skillAdministrative) {
+			skills.push({ title: 'Aide administrative', value: this.state.skillAdministrative})
+		}
+		if (this.state.skillDoityourself) {
+			skills.push({ title: 'Petit bricolage', value: this.state.skillDoityourself})
+		}
+		return skills.sort(this.sortSkills)
+	}
+
+	_buildSkills() {
+		return this._prepareSkills().map(this.buildSkill)
+	}
+	
+	_sortSkills(s1, s2) {
+		return s2.value - s1.value
+	}
+
+	_buildSkill(skill, index) {
+		return (<SkillTile key={index} {...skill} />)
+	}
 
 	render() {
 		return (
@@ -57,6 +100,7 @@ class ServiceCustomer extends React.Component {
 								</Grid.Col>
 							</Grid.Row>
 							<h4>Besoins</h4>
+							{this._buildSkills()}
 						</Form>
 					</Panel.Body>
 					<Panel.Footer>

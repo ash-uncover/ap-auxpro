@@ -24,7 +24,14 @@ class ServiceCustomerData extends BaseData {
 			city: customer.city,
 			country: customer.country,
 			phone: customer.phone,
-			email: customer.email
+			email: customer.email,
+			skillAdministrative: customer.skillAdministrative,
+			skillChildhood: customer.skillChildhood,
+			skillCompagny: customer.skillCompagny,
+			skillDoityourself: customer.skillDoityourself,
+			skillHousework: customer.skillHousework,
+			skillNursing: customer.skillNursing,
+			skillShopping: customer.skillShopping
 		}
 	}
 

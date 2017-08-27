@@ -3,8 +3,8 @@ import AuthHelper from 'helpers/AuthHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
 import ImageHelper from 'helpers/ImageHelper'
 
-import AuxiliaryUtils from 'utils/entities/AuxiliaryUtils'
-import StringUtils from 'utils/StringUtils'
+import AuxiliaryUtils from 'utils-lib/entities/AuxiliaryUtils'
+import StringUtils from 'utils-lib/StringUtils'
 
 import { BaseData } from 'ap-react-bootstrap'
 

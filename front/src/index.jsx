@@ -1,6 +1,6 @@
 
 // Globally import the bootstrap css
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 // React modules
 import React from 'react'
 import { render } from 'react-dom'

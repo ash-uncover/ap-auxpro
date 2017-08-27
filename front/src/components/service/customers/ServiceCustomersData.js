@@ -8,8 +8,6 @@ class ServiceCustomersData extends BaseData {
 	register(obj) {
 		super.register(obj)
 		
-		CustomerHelper.register('', this, this.onCustomersUpdate.bind(this))
-
 		this.obj.onSearch = this.onSearch.bind(this)
 
 		this.obj.onCreate = this.onCreate.bind(this)
@@ -22,10 +20,12 @@ class ServiceCustomersData extends BaseData {
 			customers: Utils.map(CustomerHelper.getData()),
 			search: ''
 		}
+
+		CustomerHelper.register('', this, this.onCustomersUpdate.bind(this))
 	}
 
 	unregister() {
-		CustomerHelper.unregister()
+		CustomerHelper.unregister(this)
 	}
 
 	onCustomersUpdate() {

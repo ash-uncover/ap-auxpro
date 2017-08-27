@@ -5,8 +5,8 @@ import './ServiceCustomers.scss'
 import { Panel, Form, Grid, Button, Glyphicon, SearchBar } from 'ap-react-bootstrap'
 import ServiceCustomerTile from 'components-lib/ServiceCustomerTile/ServiceCustomerTile'
 
-import StringUtils from 'utils/StringUtils'
-import CustomerUtils from 'utils/entities/CustomerUtils'
+import StringUtils from 'utils-lib/StringUtils'
+import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 
 class ServiceCustomers extends React.Component {
 
