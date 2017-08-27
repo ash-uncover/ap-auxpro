@@ -23,7 +23,7 @@ class Image extends React.Component {
 
 	render() {
 		return (
-			<img className={'ap-image' + this.props.className ? ' ' + this.props.className : ''} alt={this.props.alt} src={this.state.src} />
+			<img className={'ap-image' + (this.props.className ? ' ' + this.props.className : '')} alt={this.props.alt} src={this.state.src} />
 		)
 	}
 

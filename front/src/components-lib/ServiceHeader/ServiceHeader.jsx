@@ -21,8 +21,8 @@ class ServiceHeader extends React.Component {
 
 	_buildFromGroup(label, value) { return (
 		<Form.Group>
-			<Form.Label className='col-sm-2'>{label}</Form.Label>
-			<Form.Static className='col-sm-10 user-select-text'>{value}</Form.Static>
+			<Form.Label className='col-sm-4 col-md-3 col-lg-2'>{label}</Form.Label>
+			<Form.Static className='col-sm-8 col-md-9 col-lg-10 user-select-text'>{value}</Form.Static>
 		</Form.Group>
 	)}
 

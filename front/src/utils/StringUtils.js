@@ -19,8 +19,16 @@ class StringUtils {
 
 	static easenSearch(value) {
 		return value.toLowerCase()
+			.replaceAll('à', 'a')
 			.replaceAll('é', 'e')
 			.replaceAll('è', 'e')
+			.replaceAll('ê', 'e')
+			.replaceAll('î', 'i')
+			.replaceAll('ï', 'i')
+			.replaceAll('ô', 'o')
+			.replaceAll('ö', 'o')
+			.replaceAll('û', 'u')
+			.replaceAll('ù', 'u')
 	}
 }
 

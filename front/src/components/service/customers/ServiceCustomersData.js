@@ -12,6 +12,8 @@ class ServiceCustomersData extends BaseData {
 
 		this.obj.onSearch = this.onSearch.bind(this)
 
+		this.obj.onCreate = this.onCreate.bind(this)
+
 		this.obj.onView = this.onView.bind(this)
 		this.obj.onEdit = this.onEdit.bind(this)
 		this.obj.onDelete = this.onDelete.bind(this)
@@ -27,7 +29,11 @@ class ServiceCustomersData extends BaseData {
 	}
 
 	onCustomersUpdate() {
-		
+		this.setState({ customers: Utils.map(CustomerHelper.getData()) })
+	}
+
+	onCreate(value) {
+		AppHelper.navigate('/service/customers/new')
 	}
 
 	onSearch(value) {
@@ -35,11 +41,11 @@ class ServiceCustomersData extends BaseData {
 	}
 
 	onView(customer) {
-		console.log('view customer ' + customer.id)
+		AppHelper.navigate('/service/customers/' + customer.id)
 	}
 
 	onEdit(customer) {
-		console.log('edit customer ' + customer.id)
+		AppHelper.navigate('/service/customers/' + customer.id + '/edit')
 	}
 
 	onDelete(customer) {
