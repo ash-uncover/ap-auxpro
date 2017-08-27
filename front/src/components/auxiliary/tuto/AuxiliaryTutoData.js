@@ -41,7 +41,7 @@ class AuxiliaryTutoData extends BaseData {
 		then(AuxiliaryHelper.putAuxiliary.bind(AuxiliaryHelper, {
 			id: AuthHelper.getEntityId(),
 			isTutoSkipped: true
-		}).
+		})).
 		then(AuxiliaryHelper.getAuxiliary.bind(AuxiliaryHelper, AuthHelper.getEntityId())).
 		then(AppHelper.navigate.bind(AppHelper, '/auxiliary/home')).
 		then(setTimeout(AppHelper.setBusy, 200)).
@@ -49,7 +49,7 @@ class AuxiliaryTutoData extends BaseData {
 			setTimeout(AppHelper.setBusy, 200)
 			console.error('Tuto complete error')
 			console.error(error)
-		})
+		}) 
 	}
 
 }

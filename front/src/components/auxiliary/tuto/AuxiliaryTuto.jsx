@@ -20,7 +20,7 @@ class AuxiliaryTuto extends React.Component {
 	}
 
 	render() {
-		console.log(this.state)
+		let completeDisabled = (this.state.maxIndex < AuxiliaryTutoData.SLIDES.length - 1)
 		return (
 			<div className='ap-auxiliary-tuto'>
 				<Carousel 
@@ -28,13 +28,16 @@ class AuxiliaryTuto extends React.Component {
 					slides={AuxiliaryTutoData.SLIDES} 
 					preventArrowCycling={true} 
 					onSlideChange={this.onSlideChange} />
-				{this.state.maxIndex === AuxiliaryTutoData.SLIDES.length - 1 ?
-					<div>
-						<Button onClick={this.onFinishTutorial}>
-							J'ai compris
+					<br/>
+					<div className='ap-auxiliary-tuto-button'>
+						<Button 
+							onClick={this.onFinishTutorial} 
+							bsSize='lg'
+							bsStyle={completeDisabled ? 'default' : 'success'}
+							disabled={completeDisabled}>
+							Terminer le tutorial
 						</Button>
 					</div>
-				: null }
 			</div>
 		)
 	}
