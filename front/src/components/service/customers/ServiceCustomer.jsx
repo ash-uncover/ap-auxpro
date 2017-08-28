@@ -2,11 +2,14 @@ import React from 'react'
 import ServiceCustomerData from 'components/service/customers/ServiceCustomerData'
 import './ServiceCustomer.scss'
 
-import CustomerUtils from 'utils-lib/entities/CustomerUtils'
-
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 
 import SkillTile from 'components-lib/SkillTile/SkillTile'
+
+import Skills from 'utils/constants/Skills'
+
+import CustomerUtils from 'utils-lib/entities/CustomerUtils'
+import SkillUtils from 'utils-lib/entities/SkillUtils'
 
 class ServiceCustomer extends React.Component {
 
@@ -34,26 +37,11 @@ class ServiceCustomer extends React.Component {
 
 	_prepareSkills() {
 		let skills = []
-		if (this.state.skillHousework) {
-			skills.push({ title: 'Entretien maison', value: this.state.skillHousework})
-		}
-		if (this.state.skillChildhood) {
-			skills.push({ title: 'Aide petite enfance', value: this.state.skillChildhood})
-		}
-		if (this.state.skillShopping) {
-			skills.push({ title: 'Courses & aide au repas', value: this.state.skillShopping})
-		}
-		if (this.state.skillNursing) {
-			skills.push({ title: 'Nursing', value: this.state.skillNursing})
-		}
-		if (this.state.skillCompagny) {
-			skills.push({ title: 'Dame de compagnie', value: this.state.skillCompagny})
-		}
-		if (this.state.skillAdministrative) {
-			skills.push({ title: 'Aide administrative', value: this.state.skillAdministrative})
-		}
-		if (this.state.skillDoityourself) {
-			skills.push({ title: 'Petit bricolage', value: this.state.skillDoityourself})
+		for (let i = 0; i < Skills.VALUES.length; i++) {
+			let skill = Skills.VALUES[i]
+			if (this.state[skill.key]) {
+				skills.push({ title: SkillUtils.getName(skill), value: this.state[skill.key] })
+			}
 		}
 		return skills.sort(this.sortSkills)
 	}
