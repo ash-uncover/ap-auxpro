@@ -2,7 +2,7 @@ import React from 'react'
 import ServiceCustomersData from 'components/service/customers/ServiceCustomersData'
 import './ServiceCustomers.scss'
 
-import { Panel, Form, Grid, Button, Glyphicon, SearchBar } from 'ap-react-bootstrap'
+import { Panel, Form, Grid, Button, Glyphicon, SearchBar, TextUtils } from 'ap-react-bootstrap'
 import ServiceCustomerTile from 'components-lib/ServiceCustomerTile/ServiceCustomerTile'
 
 import StringUtils from 'utils-lib/StringUtils'
@@ -30,18 +30,18 @@ class ServiceCustomers extends React.Component {
 		if (l === 0) {
 			return ''
 		} else {
-			return l + ' ' + StringUtils.plurify('usager', l) + ' ' + StringUtils.plurify('correspondant', l)
+			return l + ' ' + TextUtils.pluralize('usager', l) + ' ' + TextUtils.pluralize('correspondant', l)
 		}
 	}
 
 	buildCustomers() {
-		return this.state.customers.filter(this.filterCustomers).map(this.buildCustomer)
+		return this.state.customers.map(this.buildCustomer)
 	}
 
 	_filterCustomers(customer) {
 		if (this.state.search) {
-			let easenName = StringUtils.easenSearch(CustomerUtils.getName(customer))
-			let easenSearch = StringUtils.easenSearch(this.state.search)
+			let easenName = TextUtils.easenSearch(CustomerUtils.getName(customer))
+			let easenSearch = TextUtils.easenSearch(this.state.search)
 			return easenName.indexOf(easenSearch) !== -1
 		}
 		return true

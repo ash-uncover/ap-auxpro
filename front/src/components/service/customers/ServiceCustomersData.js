@@ -1,13 +1,17 @@
 import AppHelper from 'helpers/AppHelper'
 import CustomerHelper from 'helpers/CustomerHelper'
 
-import { BaseData, Utils } from 'ap-react-bootstrap'
+import { BaseData, Utils, TextUtils } from 'ap-react-bootstrap'
+
+import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 
 class ServiceCustomersData extends BaseData {
 
 	register(obj) {
 		super.register(obj)
 		
+		this.filterCustomers = this._filterCustomers.bind(this)
+
 		this.obj.onSearch = this.onSearch.bind(this)
 
 		this.obj.onCreate = this.onCreate.bind(this)
@@ -29,7 +33,7 @@ class ServiceCustomersData extends BaseData {
 	}
 
 	onCustomersUpdate() {
-		this.setState({ customers: Utils.map(CustomerHelper.getData()) })
+		this.setState({ customers: Utils.map(CustomerHelper.getData()).filter(this.filterCustomers) })
 	}
 
 	onCreate(value) {
@@ -37,7 +41,10 @@ class ServiceCustomersData extends BaseData {
 	}
 
 	onSearch(value) {
-		this.setState({ search: value })
+		this.setState({ 
+			search: value,
+			customers: Utils.map(CustomerHelper.getData()).filter(this._filterCustomers.bind(this, TextUtils.easenSearch(value)))
+		})
 	}
 
 	onView(customer) {
@@ -50,6 +57,14 @@ class ServiceCustomersData extends BaseData {
 
 	onDelete(customer) {
 		console.log('delete customer ' + customer.id)
+	}
+
+	_filterCustomers(value, customer) {
+		if (value) {
+			let easenName = TextUtils.easenSearch(CustomerUtils.getName(customer))
+			return easenName.indexOf(value) !== -1
+		}
+		return true
 	}
 }
 var ServiceCustomersObj = new ServiceCustomersData()

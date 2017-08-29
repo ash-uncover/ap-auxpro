@@ -109,10 +109,10 @@ class ServiceCustomerEdit extends React.Component {
 						<Form horizontal>
 							<h4>Informations</h4>
 							<Grid.Row>
-								<Grid.Col sm={6} md={5} mdOffset={1} lg={4} lgOffset={2}>
+								<Grid.Col sm={6} lg={5} lgOffset={1}>
 									{ServiceCustomerEditData.FIELDS_FORM1.map(this.buildFormGroup)}
 								</Grid.Col>
-								<Grid.Col sm={6} md={5} lg={4}>
+								<Grid.Col sm={6} lg={5}>
 									{ServiceCustomerEditData.FIELDS_FORM2.map(this.buildFormGroup)}	
 								</Grid.Col>
 							</Grid.Row>
