@@ -61,9 +61,7 @@ class ServiceCustomerEdit extends React.Component {
 					placeholder='Saisir adresse.'
 					onChange={this.onChangeAddress.bind(this)} />
 				)
-			case 'date': 
-			console.log(this.state[field.key])
-			return (
+			case 'date': return (
 				<Form.Date 
 					date={this.state[field.key][2]}
 					month={this.state[field.key][1]}

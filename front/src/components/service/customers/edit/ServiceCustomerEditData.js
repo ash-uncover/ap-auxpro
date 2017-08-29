@@ -18,20 +18,20 @@ let FIELDS_FORM0 = [
 	CustomerFields.LONGITUDE
 ]
 let FIELDS_FORM1 = [
-	Object.assign({ form: 'select' }, CustomerFields.CIVILITY),
-	Object.assign({ form: 'input' }, CustomerFields.LAST_NAME),
-	Object.assign({ form: 'input' }, CustomerFields.FIRST_NAME),
-	Object.assign({ form: 'date' }, CustomerFields.BIRTH_DATE),
-	Object.assign({ form: 'select', values: NationalityUtils.getNationalities() }, CustomerFields.NATIONALITY),
-	Object.assign({ form: 'input' }, CustomerFields.PHONE),
+	Object.assign({ defaultValue: '', form: 'select' }, CustomerFields.CIVILITY),
+	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.LAST_NAME),
+	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.FIRST_NAME),
+	Object.assign({ defaultValue: [undefined,undefined,undefined], form: 'date' }, CustomerFields.BIRTH_DATE),
+	Object.assign({ defaultValue: 'FR', form: 'select', values: NationalityUtils.getNationalities() }, CustomerFields.NATIONALITY),
+	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.PHONE),
 ]
 let FIELDS_FORM2 = [
 	{ form: 'address', key: 'addressSearch', name: 'Adresse' },
-	Object.assign({ form: 'static' }, CustomerFields.ADDRESS),
-	Object.assign({ form: 'static' }, CustomerFields.POSTAL_CODE),
-	Object.assign({ form: 'static' }, CustomerFields.CITY),
-	Object.assign({ form: 'static' }, CustomerFields.COUNTRY),	
-	Object.assign({ form: 'input' }, CustomerFields.EMAIL)
+	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.ADDRESS),
+	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.POSTAL_CODE),
+	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.CITY),
+	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.COUNTRY),	
+	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.EMAIL)
 ]
 let FIELDS_FORM3 = [
 	CustomerFields.SKILL_ADMINISTRATIVE,
@@ -68,7 +68,6 @@ class ServiceCustomerEditData extends BaseData {
 	}
 
 	onChangeDirty() {
-		console.log(arguments)
 		this.onChange(...arguments)
 		this.setState({
 			dirty: true,
@@ -109,7 +108,7 @@ class ServiceCustomerEditData extends BaseData {
 		this.obj.state.customerName = this.customerId !== 'new' ? CustomerUtils.getFullName(customer) : 'Nouvel usager'
 		for (let i = 0; i < FIELDS.length; i++) {
 			let field = FIELDS[i]
-			this.obj.state[field.key] = customer ? customer[field.key] : field.defaultValue
+			this.obj.state[field.key] = (customer && customer[field.key]) || field.defaultValue
 		}
 	}
 }
