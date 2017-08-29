@@ -2,10 +2,12 @@ import React from 'react'
 import ServiceCustomerEditData from 'components/service/customers/edit/ServiceCustomerEditData'
 import './ServiceCustomerEdit.scss'
 
-import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
+import { Button, Panel, Form, Grid, Google } from 'ap-react-bootstrap'
 
 import SkillTile from 'components-lib/SkillTile/SkillTile'
+import SkillTileAdd from 'components-lib/SkillTile/SkillTileAdd'
 
+import CustomerFields from 'utils/entities/CustomerFields'
 import Skills from 'utils/constants/Skills'
 
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
@@ -16,6 +18,8 @@ class ServiceCustomerEdit extends React.Component {
 	constructor(props) {
 		super(props)
 
+		this.buildFormGroup = this._buildFormGroup.bind(this)
+		this.buildFormControl = this._buildFormControl.bind(this)
 		this.buildSkill = this._buildSkill.bind(this)
 		this.sortSkills = this._sortSkills.bind(this)
 	}
@@ -28,14 +32,53 @@ class ServiceCustomerEdit extends React.Component {
 		ServiceCustomerEditData.unregister()
 	}
 
-	_buildFromGroup(label, value) { return (
-		<Form.Group>
-			<Form.Label className='col-sm-5 col-md-4'>{label}</Form.Label>
-			<Form.Static className='col-sm-7 col-md-8 user-select-text'>{value}</Form.Static>
+	_buildFormGroup(field) { return (
+		<Form.Group key={field.key}>
+			<Form.Label className='col-sm-5 col-md-4'>
+				{field.name || CustomerUtils.getFieldName(field.key)}
+			</Form.Label>
+			<Grid.Col sm={7} md={8}>
+				{this.buildFormControl(field)}
+			</Grid.Col>
 		</Form.Group>
 	)}
 
-	_prepareSkills() {
+	_buildFormControl(field) {
+		switch (field.form) {
+			case 'input': return (
+				<Form.Input 
+					value={this.state[field.key]} 
+					onChange={this.onChangeDirty.bind(this, field.key)} />
+				)
+			case 'select': return (
+				<Form.Select 
+					values={field.values}
+					value={this.state[field.key]}
+					onChange={this.onChangeDirty.bind(this, field.key)} />
+				)
+			case 'address': return (
+				<Google.Autocomplete 
+					placeholder='Saisir adresse.'
+					onChange={this.onChangeAddress.bind(this)} />
+				)
+			case 'date': 
+			console.log(this.state[field.key])
+			return (
+				<Form.Date 
+					date={this.state[field.key][2]}
+					month={this.state[field.key][1]}
+					year={this.state[field.key][0]}
+					onChange={this.onChangeDirty.bind(this, field.key)} />
+				)
+			default: return (
+				<Form.Static>
+					{this.state[field.key]}
+				</Form.Static>
+			)
+		}
+	}
+
+	_buildSkills() {
 		let skills = []
 		for (let i = 0; i < Skills.VALUES.length; i++) {
 			let skill = Skills.VALUES[i]
@@ -43,13 +86,9 @@ class ServiceCustomerEdit extends React.Component {
 				skills.push({ title: SkillUtils.getName(skill), value: this.state[skill.key] })
 			}
 		}
-		return skills.sort(this.sortSkills)
+		return skills.sort(this.sortSkills).map(this.buildSkill)
 	}
 
-	_buildSkills() {
-		return this._prepareSkills().map(this.buildSkill)
-	}
-	
 	_sortSkills(s1, s2) {
 		return s2.value - s1.value
 	}
@@ -59,42 +98,41 @@ class ServiceCustomerEdit extends React.Component {
 	}
 
 	render() {
+		let submitDisabled = !this.state.dirty || !this.state.customerValid
 		return (
 			<div className='ap-service-customer-edit'>
 				<Button block bsStyle='primary' onClick={this.onBack}>Annuler</Button>
 				<br/>
 				<Panel>
 					<Panel.Header>
-						{CustomerUtils.getFullName(this.state.customer)}
+						{this.state.customerName}
 					</Panel.Header>
 					<Panel.Body>
 						<Form horizontal>
 							<h4>Informations</h4>
 							<Grid.Row>
 								<Grid.Col sm={6} md={5} mdOffset={1} lg={4} lgOffset={2}>
-									{this._buildFromGroup('Civilité', this.state.civility)}
-									{this._buildFromGroup('Nom', this.state.lastName)}
-									{this._buildFromGroup('Prénom', this.state.firstName)}
-									{this._buildFromGroup('Date de naissance', this.state.birthDate)}
-									{this._buildFromGroup('Nationalité', this.state.nationality)}
+									{ServiceCustomerEditData.FIELDS_FORM1.map(this.buildFormGroup)}
 								</Grid.Col>
 								<Grid.Col sm={6} md={5} lg={4}>
-									{this._buildFromGroup('Adresse', this.state.address)}
-									{this._buildFromGroup('Code postal', this.state.postalCode)}
-									{this._buildFromGroup('Ville', this.state.city)}
-									{this._buildFromGroup('Pays', this.state.country)}
-									{this._buildFromGroup('Téléphone', this.state.phone)}
-									{this._buildFromGroup('Email', this.state.email)}
+									{ServiceCustomerEditData.FIELDS_FORM2.map(this.buildFormGroup)}	
 								</Grid.Col>
 							</Grid.Row>
 							<h4>Besoins</h4>
 							{this._buildSkills()}
+							<SkillTileAdd onClick={this.onSkillAdd}/>
 						</Form>
 					</Panel.Body>
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
-				<Button block bsStyle='success' onClick={this.onSubmit}>Enregistrer</Button>
+				<Button 
+					block 
+					bsStyle={submitDisabled ? 'default' : 'success'}
+					disabled={submitDisabled}
+					onClick={this.onSubmit}>
+					{ this.state.mode === ServiceCustomerEditData.MODES.CREATE ? 'Créer utilisateur' : 'Enregistrer modifications' }
+				</Button>
 				<br/>
 			</div>
 		)

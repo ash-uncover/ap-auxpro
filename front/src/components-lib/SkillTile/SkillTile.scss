@@ -1,11 +1,48 @@
 .ap-skill-tile {
 	padding-bottom: 10px;
 
-	.ap-panel {
-		
+	.ap-panel:hover {
+		box-shadow: 0 1px 1px rgba(0,0,0,.15);
 	}
 
 	.ap-panel-body {
 		text-align: center;
+		height: 80px;
+	}
+}
+
+.ap-skill-tile-add {
+
+	.ap-panel:hover {
+		box-shadow: 0 1px 1px rgba(0,0,0,.15);
+	}
+
+	.ap-skill-tile-add-glyph {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	
+		.ap-glyphicon {
+			font-size: 200%;
+			border: 2px solid rgba(0,0,0,0.15);
+			color: rgba(0,0,0,0.15);
+			padding: 8px 5px 8px 8px;
+			border-radius: 50%;
+		}
+
+		&:focus, 
+		&:hover {
+			.ap-glyphicon {
+				border: 2px solid rgba(0,0,0,0.3);
+				color: rgba(0,0,0,0.3);
+			}
+		}
+
+		&:active {
+			.ap-glyphicon {
+				border: 2px solid rgba(0,0,0,0.5);
+				color: rgba(0,0,0,0.5);
+			}
+		}
 	}
 }

@@ -65,7 +65,8 @@ class ServiceCustomers extends React.Component {
 				<Button 
 					block 
 					bsSize='lg'
-					bsStyle='primary'>
+					bsStyle='primary'
+					onClick={this.onCreate}>
 					Saisir un nouvel usager
 				</Button>
 				<br/>

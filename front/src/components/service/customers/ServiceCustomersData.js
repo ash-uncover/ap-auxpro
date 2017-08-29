@@ -33,7 +33,7 @@ class ServiceCustomersData extends BaseData {
 	}
 
 	onCreate(value) {
-		AppHelper.navigate('/service/customers/new')
+		AppHelper.navigate('/service/customers/new/edit')
 	}
 
 	onSearch(value) {
