@@ -8,7 +8,7 @@ class CustomerFields {
 		return {
 			key: 'lastName',
 			type: 'string',
-			validator: Validators.NotNull,
+			validator: Validators.NonEmptyString,
 		}
 	}
 
@@ -16,6 +16,7 @@ class CustomerFields {
 		return {
 			key: 'country',
 			type: 'string',
+			validator: Validators.NonEmptyString,
 		}
 	}
 
@@ -24,6 +25,7 @@ class CustomerFields {
 			key: 'civility',
 			type: 'string',
 			values: Civility.VALUES,
+			validator: Validators.NonNull,
 		}
 	}
 
@@ -31,6 +33,7 @@ class CustomerFields {
 		return {
 			key: 'address',
 			type: 'string',
+			validator: Validators.NonEmptyString,
 		}
 	}
 
@@ -45,6 +48,7 @@ class CustomerFields {
 		return {
 			key: 'city',
 			type: 'string',
+			validator: Validators.NonEmptyString,
 		}
 	}
 
@@ -59,6 +63,7 @@ class CustomerFields {
 		return {
 			key: 'postalCode',
 			type: 'number',
+			validator: Validators.PostalCode,
 		}
 	}
 
@@ -94,7 +99,7 @@ class CustomerFields {
 		return {
 			key: 'firstName',
 			type: 'string',
-			validator: Validators.NotNull,
+			validator: Validators.NonEmptyString,
 		}
 	}
 
@@ -102,6 +107,7 @@ class CustomerFields {
 		return {
 			key: 'nationality',
 			type: 'string',
+			validator: Validators.NonNull,
 		}
 	}
 
@@ -109,6 +115,7 @@ class CustomerFields {
 		return {
 			key: 'phone',
 			type: 'string',
+			validator: Validators.Phone,
 		}
 	}
 

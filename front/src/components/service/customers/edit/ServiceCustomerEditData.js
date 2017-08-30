@@ -18,7 +18,7 @@ let FIELDS_FORM0 = [
 	CustomerFields.LONGITUDE
 ]
 let FIELDS_FORM1 = [
-	Object.assign({ defaultValue: '', form: 'select' }, CustomerFields.CIVILITY),
+	Object.assign({ defaultValue: 'Mme', form: 'select' }, CustomerFields.CIVILITY),
 	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.LAST_NAME),
 	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.FIRST_NAME),
 	Object.assign({ defaultValue: [undefined,undefined,undefined], form: 'date' }, CustomerFields.BIRTH_DATE),
@@ -67,12 +67,14 @@ class ServiceCustomerEditData extends BaseData {
 	unregister() {
 	}
 
-	onChangeDirty() {
-		this.onChange(...arguments)
-		this.setState({
+	onChangeDirty(id, event, value) {
+		let data = {
 			dirty: true,
 			customerValid: true
-		})
+		}
+		data[id] = value
+		data[id + 'Default'] = null
+		this.setState(data)
 	}
 
 	onChangeAddress(address) {
@@ -108,12 +110,17 @@ class ServiceCustomerEditData extends BaseData {
 		this.obj.state.customerName = this.customerId !== 'new' ? CustomerUtils.getFullName(customer) : 'Nouvel usager'
 		for (let i = 0; i < FIELDS.length; i++) {
 			let field = FIELDS[i]
-			this.obj.state[field.key] = (customer && customer[field.key]) || field.defaultValue
+			let value = customer && customer[field.key]
+			this.obj.state[field.key] = value || field.defaultValue
+			if (field.defaultValue && this.obj.state[field.key] === field.defaultValue) {
+				this.obj.state[field.key + 'Default'] = 'warning'
+			}
 		}
 	}
 }
 
 let ServiceCustomerEditObj = new ServiceCustomerEditData()
+ServiceCustomerEditObj.FIELDS = FIELDS
 ServiceCustomerEditObj.FIELDS_FORM1 = FIELDS_FORM1
 ServiceCustomerEditObj.FIELDS_FORM2 = FIELDS_FORM2
 ServiceCustomerEditObj.FIELDS_FORM3 = FIELDS_FORM3

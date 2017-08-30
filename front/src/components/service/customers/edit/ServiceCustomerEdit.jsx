@@ -32,16 +32,22 @@ class ServiceCustomerEdit extends React.Component {
 		ServiceCustomerEditData.unregister()
 	}
 
-	_buildFormGroup(field) { return (
-		<Form.Group key={field.key}>
-			<Form.Label className='col-sm-5 col-md-4'>
-				{field.name || CustomerUtils.getFieldName(field.key)}
-			</Form.Label>
-			<Grid.Col sm={7} md={8}>
-				{this.buildFormControl(field)}
-			</Grid.Col>
-		</Form.Group>
-	)}
+	_buildFormGroup(field) { 
+		let state = this.state[field.key + 'Default']
+		if (!state && field.validator) {
+			state = field.validator.getState(this.state[field.key])
+		}
+		return (
+			<Form.Group key={field.key} state={state}>
+				<Form.Label className='col-sm-5 col-md-4'>
+					{field.name || CustomerUtils.getFieldName(field.key)}
+				</Form.Label>
+				<Grid.Col sm={7} md={8}>
+					{this.buildFormControl(field)}
+				</Grid.Col>
+			</Form.Group>
+		)
+	}
 
 	_buildFormControl(field) {
 		switch (field.form) {
@@ -95,8 +101,18 @@ class ServiceCustomerEdit extends React.Component {
 		return (<SkillTile key={index} {...skill} />)
 	}
 
+	checkValidity() {
+		for (let i = 0 ; i < ServiceCustomerEditData.FIELDS.length ; i++) {
+			let field = ServiceCustomerEditData.FIELDS[i]
+			if (field.validator && field.validator.getState(this.state[field.key]) === 'error') {
+				return false
+			}
+		}
+		return true
+	}
+
 	render() {
-		let submitDisabled = !this.state.dirty || !this.state.customerValid
+		let submitDisabled = !this.state.dirty || !this.checkValidity()
 		return (
 			<div className='ap-service-customer-edit'>
 				<Button block bsStyle='primary' onClick={this.onBack}>Annuler</Button>
@@ -108,6 +124,10 @@ class ServiceCustomerEdit extends React.Component {
 					<Panel.Body>
 						<Form horizontal>
 							<h4>Informations</h4>
+							<p>
+								Veuillez remplir les informations relatives à l'usager<br/>
+								Les champs marqués en rouge sont obligatoires, les champs marqués en orange possèdent une valeur par défaut que vous devriez vérifier
+							</p>
 							<Grid.Row>
 								<Grid.Col sm={6} lg={5} lgOffset={1}>
 									{ServiceCustomerEditData.FIELDS_FORM1.map(this.buildFormGroup)}
@@ -117,6 +137,7 @@ class ServiceCustomerEdit extends React.Component {
 								</Grid.Col>
 							</Grid.Row>
 							<h4>Besoins</h4>
+							<p>Veuillez saisir les besoins de l'usager</p>
 							{this._buildSkills()}
 							<SkillTileAdd onClick={this.onSkillAdd}/>
 						</Form>

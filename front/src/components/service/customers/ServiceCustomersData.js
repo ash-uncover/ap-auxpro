@@ -33,7 +33,7 @@ class ServiceCustomersData extends BaseData {
 	}
 
 	onCustomersUpdate() {
-		this.setState({ customers: Utils.map(CustomerHelper.getData()).filter(this.filterCustomers) })
+		this.setState({ customers: Utils.map(CustomerHelper.getData()) })
 	}
 
 	onCreate(value) {
