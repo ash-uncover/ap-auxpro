@@ -1,4 +1,5 @@
 import AppHelper from 'helpers/AppHelper'
+import AuthHelper from 'helpers/AuthHelper'
 
 import CustomerHelper from 'helpers/CustomerHelper'
 
@@ -21,12 +22,12 @@ let FIELDS_FORM1 = [
 	Object.assign({ defaultValue: 'Mme', form: 'select' }, CustomerFields.CIVILITY),
 	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.LAST_NAME),
 	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.FIRST_NAME),
-	Object.assign({ defaultValue: [undefined,undefined,undefined], form: 'date' }, CustomerFields.BIRTH_DATE),
+	Object.assign({ defaultValue: [1950,1,1], form: 'date' }, CustomerFields.BIRTH_DATE),
 	Object.assign({ defaultValue: 'FR', form: 'select', values: NationalityUtils.getNationalities() }, CustomerFields.NATIONALITY),
 	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.PHONE),
 ]
 let FIELDS_FORM2 = [
-	{ form: 'address', key: 'addressSearch', name: 'Adresse' },
+	{ form: 'address', key: 'addressSearch', name: 'Adresse', isCustom: true },
 	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.ADDRESS),
 	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.POSTAL_CODE),
 	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.CITY),
@@ -62,9 +63,12 @@ class ServiceCustomerEditData extends BaseData {
 		}
 
 		this._onCustomerUpdate()
+
+		CustomerHelper.register('', this, this.onCustomerUpdate.bind(this))
 	}
 
 	unregister() {
+		CustomerHelper.unregister(this)
 	}
 
 	onChangeDirty(id, event, value) {
@@ -95,9 +99,44 @@ class ServiceCustomerEditData extends BaseData {
 		console.log('add skill')
 	}
 
+	buildCustomer() {
+		let result = {
+			serviceId: AuthHelper.getEntityId()
+		}
+		if (this.customerId !== 'new') {
+			result.id = this.customerId
+		}
+		for (let i = 0 ; i < FIELDS.length ; i++) {
+			let field = FIELDS[i]
+			if (!field.isCustom && typeof this.getState(field.key) !== 'undefined') {
+				result[field.key] = this.getState(field.key)
+			}
+		}
+		return result
+	}
+
 	onSubmit() {
-		console.log('submit')
-		//AppHelper.navigateBack.bind(AppHelper)
+		AppHelper.setBusy(true).
+		then(function() {
+			let customer = this.buildCustomer()
+			if (this.getState('mode') === MODES.CREATE) {
+				return CustomerHelper.postCustomer(customer)
+			} else {
+				return CustomerHelper.putCustomer(customer)
+			}
+		}.bind(this)).
+		then(function () {
+			return CustomerHelper.getServiceCustomers(AuthHelper.getEntityId())
+		}).
+		then(function () {
+			AppHelper.navigateBack()
+			setTimeout(AppHelper.setBusy, 200)
+		}).
+		catch(function (error) {
+			setTimeout(AppHelper.setBusy, 200)
+			console.error('Customer submit error')
+			console.error(error)
+		})
 	}
 
 	onCustomerUpdate() {
@@ -112,7 +151,7 @@ class ServiceCustomerEditData extends BaseData {
 			let field = FIELDS[i]
 			let value = customer && customer[field.key]
 			this.obj.state[field.key] = value || field.defaultValue
-			if (field.defaultValue && this.obj.state[field.key] === field.defaultValue) {
+			if (field.defaultValue && this.obj.state[field.key] === field.defaultValue && this.obj.state.mode === MODES.CREATE) {
 				this.obj.state[field.key + 'Default'] = 'warning'
 			}
 		}
