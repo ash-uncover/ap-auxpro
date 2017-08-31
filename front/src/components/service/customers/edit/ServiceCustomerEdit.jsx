@@ -36,6 +36,7 @@ class ServiceCustomerEdit extends React.Component {
 		let state = this.state[field.key + 'Default']
 		if (!state && field.validator) {
 			state = field.validator.getState(this.state[field.key])
+			
 		}
 		return (
 			<Form.Group key={field.key} state={state}>
@@ -112,6 +113,7 @@ class ServiceCustomerEdit extends React.Component {
 	}
 
 	render() {
+		console.log(this.state)
 		let submitDisabled = !this.state.dirty || !this.checkValidity()
 		return (
 			<div className='ap-service-customer-edit'>

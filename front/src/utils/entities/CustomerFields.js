@@ -71,6 +71,7 @@ class CustomerFields {
 		return {
 			key: 'birthDate',
 			type: 'number',
+			validator: Validators.BeforeToday,
 		}
 	}
 

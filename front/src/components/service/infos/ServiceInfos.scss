@@ -1,3 +1,14 @@
-.ap-serviceinfos {
+// Variables
+@import 'assets/styles/variables';
 
+.ap-service-infos {
+	
+	.ap-service-infos-image-container {
+		text-align: center;
+		.ap-image {
+			max-height: 150px;
+			border-radius: 50%;
+			border: 5px solid $ap-primary-color;
+		}
+	}
 }
