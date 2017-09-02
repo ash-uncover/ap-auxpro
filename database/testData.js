@@ -85,7 +85,7 @@ db.service.insert({
 	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
 	"avatar":"0000000000Z",
 	"isTutoSkipped":true,
-	"function":"Mand",
+	"function":"MAND",
 	"socialReason":"L'Escargot",
 	"siret":"65657897896548",
 	"phone":"0123456789",

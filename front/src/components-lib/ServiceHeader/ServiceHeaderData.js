@@ -4,6 +4,7 @@ import ServiceHelper from 'helpers/ServiceHelper'
 import ImageHelper from 'helpers/ImageHelper'
 
 import ServiceUtils from 'utils-lib/entities/ServiceUtils'
+import SocFunctionUtils from 'utils-lib/entities/SocFunctionUtils'
 import StringUtils from 'utils-lib/StringUtils'
 
 import { BaseData } from 'ap-react-bootstrap'
@@ -38,7 +39,7 @@ class ServiceHeaderData extends BaseData {
 				society: StringUtils.valueOrMissing(service.socialReason),
 				address: StringUtils.valueOrMissing(ServiceUtils.getAddress(service)),
 				email: AuthHelper.getEmail(),
-				socialReason: StringUtils.valueOrMissing(service.function)
+				socialReason: StringUtils.valueOrMissing(SocFunctionUtils.getName(service.function))
 			})
 		}
 	}

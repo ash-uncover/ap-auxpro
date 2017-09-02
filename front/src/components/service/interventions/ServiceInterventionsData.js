@@ -7,10 +7,42 @@ class ServiceInterventionsData extends BaseData {
 	register(obj) {
 		super.register(obj)
 		
+		this.obj.onCreate = this.onCreate.bind(this)
+
+		this.obj.buildPrestations = this.buildPrestations.bind(this)
+		this.obj.buildPrestationsNumberLabel = this.buildPrestationsNumberLabel.bind(this)
+		this.obj.buildMatchings = this.buildMatchings.bind(this)
+		this.obj.buildMatchingsNumberLabel = this.buildMatchingsNumberLabel.bind(this)
+		this.obj.buildInterventions = this.buildInterventions.bind(this)
+		this.obj.buildInterventionsNumberLabel = this.buildInterventionsNumberLabel.bind(this)
+
 		this.obj.state = {}
 	}
 
 	unregister() {
+	}
+
+	onCreate() {
+		
+	}
+
+	buildPrestations() {
+
+	}
+	buildPrestationsNumberLabel() {
+
+	}
+	buildMatchings() {
+
+	}
+	buildMatchingsNumberLabel() {
+
+	}
+	buildInterventions() {
+
+	}
+	buildInterventionsNumberLabel() {
+
 	}
 
 }

@@ -6,14 +6,16 @@ import ServiceHelper from 'helpers/ServiceHelper'
 
 import ServiceFields from 'utils/entities/ServiceFields'
 
+import SocFunctionUtils from 'utils-lib/entities/SocFunctionUtils'
+
 let FIELDS_FORM0 = [
 	ServiceFields.AVATAR
 ]
 let FIELDS_FORM1 = [
 	ServiceFields.SOCIAL_REASON,
-	ServiceFields.FUNCTION,
+	Object.assign({ formatter: SocFunctionUtils.getName }, ServiceFields.FUNCTION),
 	ServiceFields.SIRET,
-	Object.assign({ formatter: Formatters.Phone }, ServiceFields.PHONE)
+	Object.assign({ formatter: Formatters.Phone.getFormattedValue }, ServiceFields.PHONE)
 	
 ]
 let FIELDS_FORM2 = [
@@ -25,7 +27,7 @@ let FIELDS_FORM2 = [
 let FIELDS_FORM3 = [
 	ServiceFields.EMAIL,
 	ServiceFields.ACCOUNT_TYPE,
-	Object.assign({ formatter: Formatters.Date }, ServiceFields.ACCOUNT_EXPIRY_DATE)
+	Object.assign({ formatter: Formatters.Date.getFormattedValue }, ServiceFields.ACCOUNT_EXPIRY_DATE)
 ]
 
 let FIELDS = FIELDS_FORM0.concat(FIELDS_FORM1).concat(FIELDS_FORM2).concat(FIELDS_FORM3)
@@ -61,7 +63,7 @@ class ServiceInfosData extends BaseData {
 		for (let i = 0; i < FIELDS.length; i++) {
 			let field = FIELDS[i]
 			if (field.formatter) {
-				this.obj.state[field.key] = field.formatter.getFormattedValue(service[field.key])
+				this.obj.state[field.key] = field.formatter(service[field.key])
 			} else {
 				this.obj.state[field.key] = service[field.key]
 			}
