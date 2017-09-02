@@ -5,169 +5,226 @@ import Civility from 'utils/constants/Civility'
 class CustomerFields {
 
 	static get LAST_NAME() {
-		return {
-			key: 'lastName',
-			type: 'string',
-			validator: Validators.NonEmptyString,
-		}
+		return _LAST_NAME
 	}
 
 	static get COUNTRY() {
-		return {
-			key: 'country',
-			type: 'string',
-			validator: Validators.NonEmptyString,
-		}
+		return _COUNTRY
 	}
 
 	static get CIVILITY() {
-		return {
-			key: 'civility',
-			type: 'string',
-			values: Civility.VALUES,
-			validator: Validators.NonNull,
-		}
+		return _CIVILITY
 	}
 
 	static get ADDRESS() {
-		return {
-			key: 'address',
-			type: 'string',
-			validator: Validators.NonEmptyString,
-		}
+		return _ADDRESS
 	}
 
 	static get SKILL_NURSING() {
-		return {
-			key: 'skillNursing',
-			type: 'number',
-		}
+		return _SKILL_NURSING
 	}
 
 	static get CITY() {
-		return {
-			key: 'city',
-			type: 'string',
-			validator: Validators.NonEmptyString,
-		}
+		return _CITY
 	}
 
 	static get LATTITUDE() {
-		return {
-			key: 'lattitude',
-			type: 'number',
-		}
+		return _LATTITUDE
 	}
 
 	static get POSTAL_CODE() {
-		return {
-			key: 'postalCode',
-			type: 'number',
-			validator: Validators.PostalCode,
-		}
+		return _POSTAL_CODE
 	}
 
 	static get BIRTH_DATE() {
-		return {
-			key: 'birthDate',
-			type: 'number',
-			validator: Validators.BeforeToday,
-		}
+		return _BIRTH_DATE
 	}
 
 	static get SKILL_CHILDHOOD() {
-		return {
-			key: 'skillChildhood',
-			type: 'number',
-		}
+		return _SKILL_CHILDHOOD
 	}
 
 	static get SKILL_COMPAGNY() {
-		return {
-			key: 'skillCompagny',
-			type: 'number',
-		}
+		return _SKILL_COMPAGNY
 	}
 
 	static get SKILL_SHOPPING() {
-		return {
-			key: 'skillShopping',
-			type: 'number',
-		}
+		return _SKILL_SHOPPING
 	}
 
 	static get FIRST_NAME() {
-		return {
-			key: 'firstName',
-			type: 'string',
-			validator: Validators.NonEmptyString,
-		}
+		return _FIRST_NAME
 	}
 
 	static get NATIONALITY() {
-		return {
-			key: 'nationality',
-			type: 'string',
-			validator: Validators.NonNull,
-		}
+		return _NATIONALITY
 	}
 
 	static get PHONE() {
-		return {
-			key: 'phone',
-			type: 'string',
-			validator: Validators.Phone,
-		}
+		return _PHONE
 	}
 
 	static get SKILL_ADMINISTRATIVE() {
-		return {
-			key: 'skillAdministrative',
-			type: 'number',
-		}
+		return _SKILL_ADMINISTRATIVE
 	}
 
 	static get SKILL_HOUSEWORK() {
-		return {
-			key: 'skillHousework',
-			type: 'number',
-		}
+		return _SKILL_HOUSEWORK
 	}
 
 	static get SKILL_DOITYOURSELF() {
-		return {
-			key: 'skillDoityourself',
-			type: 'number',
-		}
+		return _SKILL_DOITYOURSELF
 	}
 
 	static get ID() {
-		return {
-			key: 'id',
-			type: 'string',
-		}
+		return _ID
 	}
 
 	static get SERVICE_ID() {
-		return {
-			key: 'serviceId',
-			type: 'string',
-		}
+		return _SERVICE_ID
 	}
 
 	static get EMAIL() {
-		return {
-			key: 'email',
-			type: 'string',
-		}
+		return _EMAIL
 	}
 
 	static get LONGITUDE() {
-		return {
-			key: 'longitude',
-			type: 'number',
+		return _LONGITUDE
+	}
+
+	static get VALUES() {
+		return [
+			_LAST_NAME,
+			_COUNTRY,
+			_CIVILITY,
+			_ADDRESS,
+			_SKILL_NURSING,
+			_CITY,
+			_LATTITUDE,
+			_POSTAL_CODE,
+			_BIRTH_DATE,
+			_SKILL_CHILDHOOD,
+			_SKILL_COMPAGNY,
+			_SKILL_SHOPPING,
+			_FIRST_NAME,
+			_NATIONALITY,
+			_PHONE,
+			_SKILL_ADMINISTRATIVE,
+			_SKILL_HOUSEWORK,
+			_SKILL_DOITYOURSELF,
+			_ID,
+			_SERVICE_ID,
+			_EMAIL,
+			_LONGITUDE,
+		]
+	}
+
+	static get(id) {
+		for (let i = 0 ; i < CustomerFields.VALUES.length ; i++) {
+			if (CustomerFields.VALUES[i].key === id) {
+				return CustomerFields.VALUES[i]
+			}
 		}
 	}
 
+}
+let _LAST_NAME = {
+	key: 'lastName',
+	type: 'string',
+	validator: Validators.NonEmptyString,
+}
+let _COUNTRY = {
+	key: 'country',
+	type: 'string',
+	validator: Validators.NonEmptyString,
+}
+let _CIVILITY = {
+	key: 'civility',
+	type: 'string',
+	values: Civility.VALUES,
+	validator: Validators.NonNull,
+}
+let _ADDRESS = {
+	key: 'address',
+	type: 'string',
+	validator: Validators.NonEmptyString,
+}
+let _SKILL_NURSING = {
+	key: 'skillNursing',
+	type: 'number',
+}
+let _CITY = {
+	key: 'city',
+	type: 'string',
+	validator: Validators.NonEmptyString,
+}
+let _LATTITUDE = {
+	key: 'lattitude',
+	type: 'number',
+}
+let _POSTAL_CODE = {
+	key: 'postalCode',
+	type: 'number',
+	validator: Validators.PostalCode,
+}
+let _BIRTH_DATE = {
+	key: 'birthDate',
+	type: 'number',
+	validator: Validators.BeforeToday,
+}
+let _SKILL_CHILDHOOD = {
+	key: 'skillChildhood',
+	type: 'number',
+}
+let _SKILL_COMPAGNY = {
+	key: 'skillCompagny',
+	type: 'number',
+}
+let _SKILL_SHOPPING = {
+	key: 'skillShopping',
+	type: 'number',
+}
+let _FIRST_NAME = {
+	key: 'firstName',
+	type: 'string',
+	validator: Validators.NonEmptyString,
+}
+let _NATIONALITY = {
+	key: 'nationality',
+	type: 'string',
+	validator: Validators.NonNull,
+}
+let _PHONE = {
+	key: 'phone',
+	type: 'string',
+	validator: Validators.Phone,
+}
+let _SKILL_ADMINISTRATIVE = {
+	key: 'skillAdministrative',
+	type: 'number',
+}
+let _SKILL_HOUSEWORK = {
+	key: 'skillHousework',
+	type: 'number',
+}
+let _SKILL_DOITYOURSELF = {
+	key: 'skillDoityourself',
+	type: 'number',
+}
+let _ID = {
+	key: 'id',
+	type: 'string',
+}
+let _SERVICE_ID = {
+	key: 'serviceId',
+	type: 'string',
+}
+let _EMAIL = {
+	key: 'email',
+	type: 'string',
+}
+let _LONGITUDE = {
+	key: 'longitude',
+	type: 'number',
 }
 export default CustomerFields

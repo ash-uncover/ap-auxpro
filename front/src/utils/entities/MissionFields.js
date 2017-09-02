@@ -5,90 +5,127 @@ import MissionStatus from 'utils/constants/MissionStatus'
 class MissionFields {
 
 	static get DATE() {
-		return {
-			key: 'date',
-			type: 'number',
-		}
+		return _DATE
 	}
 
 	static get AUX_STATUS() {
-		return {
-			key: 'auxStatus',
-			type: 'string',
-			values: MissionStatus.VALUES,
-		}
+		return _AUX_STATUS
 	}
 
 	static get AUX_STATUS_CHANGED() {
-		return {
-			key: 'auxStatusChanged',
-			type: 'number',
-		}
+		return _AUX_STATUS_CHANGED
 	}
 
 	static get AUXILIARY_ID() {
-		return {
-			key: 'auxiliaryId',
-			type: 'string',
-		}
+		return _AUXILIARY_ID
 	}
 
 	static get HIDE_TO_AUX() {
-		return {
-			key: 'hideToAux',
-			type: 'boolean',
-		}
+		return _HIDE_TO_AUX
 	}
 
 	static get CUSTOMER_ID() {
-		return {
-			key: 'customerId',
-			type: 'string',
-		}
+		return _CUSTOMER_ID
 	}
 
 	static get SAD_STATUS() {
-		return {
-			key: 'sadStatus',
-			type: 'string',
-			values: MissionStatus.VALUES,
-		}
+		return _SAD_STATUS
 	}
 
 	static get SAD_STATUS_CHANGED() {
-		return {
-			key: 'sadStatusChanged',
-			type: 'number',
-		}
+		return _SAD_STATUS_CHANGED
 	}
 
 	static get ID() {
-		return {
-			key: 'id',
-			type: 'string',
-		}
+		return _ID
 	}
 
 	static get SERVICE_ID() {
-		return {
-			key: 'serviceId',
-			type: 'string',
-		}
+		return _SERVICE_ID
 	}
 
 	static get INTERVENTION_ID() {
-		return {
-			key: 'interventionId',
-			type: 'string',
-		}
+		return _INTERVENTION_ID
 	}
 
 	static get HIDE_TO_SAD() {
-		return {
-			key: 'hideToSad',
-			type: 'boolean',
+		return _HIDE_TO_SAD
+	}
+
+	static get VALUES() {
+		return [
+			_DATE,
+			_AUX_STATUS,
+			_AUX_STATUS_CHANGED,
+			_AUXILIARY_ID,
+			_HIDE_TO_AUX,
+			_CUSTOMER_ID,
+			_SAD_STATUS,
+			_SAD_STATUS_CHANGED,
+			_ID,
+			_SERVICE_ID,
+			_INTERVENTION_ID,
+			_HIDE_TO_SAD,
+		]
+	}
+
+	static get(id) {
+		for (let i = 0 ; i < MissionFields.VALUES.length ; i++) {
+			if (MissionFields.VALUES[i].key === id) {
+				return MissionFields.VALUES[i]
+			}
 		}
 	}
 
+}
+let _DATE = {
+	key: 'date',
+	type: 'number',
+}
+let _AUX_STATUS = {
+	key: 'auxStatus',
+	type: 'string',
+	values: MissionStatus.VALUES,
+}
+let _AUX_STATUS_CHANGED = {
+	key: 'auxStatusChanged',
+	type: 'number',
+}
+let _AUXILIARY_ID = {
+	key: 'auxiliaryId',
+	type: 'string',
+}
+let _HIDE_TO_AUX = {
+	key: 'hideToAux',
+	type: 'boolean',
+}
+let _CUSTOMER_ID = {
+	key: 'customerId',
+	type: 'string',
+}
+let _SAD_STATUS = {
+	key: 'sadStatus',
+	type: 'string',
+	values: MissionStatus.VALUES,
+}
+let _SAD_STATUS_CHANGED = {
+	key: 'sadStatusChanged',
+	type: 'number',
+}
+let _ID = {
+	key: 'id',
+	type: 'string',
+}
+let _SERVICE_ID = {
+	key: 'serviceId',
+	type: 'string',
+}
+let _INTERVENTION_ID = {
+	key: 'interventionId',
+	type: 'string',
+}
+let _HIDE_TO_SAD = {
+	key: 'hideToSad',
+	type: 'boolean',
 }
 export default MissionFields

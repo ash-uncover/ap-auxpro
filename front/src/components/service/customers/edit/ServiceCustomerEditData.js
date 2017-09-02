@@ -31,7 +31,7 @@ let FIELDS_FORM2 = [
 	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.ADDRESS),
 	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.POSTAL_CODE),
 	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.CITY),
-	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.COUNTRY),	
+	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.COUNTRY),
 	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.EMAIL)
 ]
 let FIELDS_FORM3 = [

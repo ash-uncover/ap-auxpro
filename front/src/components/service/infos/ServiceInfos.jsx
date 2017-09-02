@@ -60,7 +60,7 @@ class ServiceInfos extends React.Component {
 								</Grid.Col>
 							</Grid.Row>
 						</Form>
-						<Button block bsStyle='primary'>Modifier mes informations</Button>
+						<Button block bsStyle='primary' onClick={this.onModifySociety}>Modifier mes informations</Button>
 					</Panel.Body>
 					<Panel.Footer>
 					</Panel.Footer>
@@ -78,7 +78,7 @@ class ServiceInfos extends React.Component {
 								</Grid.Col>
 							</Grid.Row>
 						</Form>
-						<Button block bsStyle='primary'>Modifier mon compte</Button>
+						<Button block bsStyle='primary' onClick={this.onModifyAccount}>Modifier mon compte</Button>
 					</Panel.Body>
 					<Panel.Footer>
 					</Panel.Footer>

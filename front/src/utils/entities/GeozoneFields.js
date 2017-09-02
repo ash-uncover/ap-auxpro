@@ -5,68 +5,99 @@ import GeozoneType from 'utils/constants/GeozoneType'
 class GeozoneFields {
 
 	static get AUXILIARY_ID() {
-		return {
-			key: 'auxiliaryId',
-			type: 'string',
-		}
+		return _AUXILIARY_ID
 	}
 
 	static get ADDRESS() {
-		return {
-			key: 'address',
-			type: 'string',
-		}
+		return _ADDRESS
 	}
 
 	static get LATTITUDE() {
-		return {
-			key: 'lattitude',
-			type: 'number',
-		}
+		return _LATTITUDE
 	}
 
 	static get CITY() {
-		return {
-			key: 'city',
-			type: 'string',
-		}
+		return _CITY
 	}
 
 	static get POSTAL_CODE() {
-		return {
-			key: 'postalCode',
-			type: 'string',
-		}
+		return _POSTAL_CODE
 	}
 
 	static get ID() {
-		return {
-			key: 'id',
-			type: 'string',
-		}
+		return _ID
 	}
 
 	static get TYPE() {
-		return {
-			key: 'type',
-			type: 'string',
-			values: GeozoneType.VALUES,
-		}
+		return _TYPE
 	}
 
 	static get RADIUS() {
-		return {
-			key: 'radius',
-			type: 'number',
-		}
+		return _RADIUS
 	}
 
 	static get LONGITUDE() {
-		return {
-			key: 'longitude',
-			type: 'number',
+		return _LONGITUDE
+	}
+
+	static get VALUES() {
+		return [
+			_AUXILIARY_ID,
+			_ADDRESS,
+			_LATTITUDE,
+			_CITY,
+			_POSTAL_CODE,
+			_ID,
+			_TYPE,
+			_RADIUS,
+			_LONGITUDE,
+		]
+	}
+
+	static get(id) {
+		for (let i = 0 ; i < GeozoneFields.VALUES.length ; i++) {
+			if (GeozoneFields.VALUES[i].key === id) {
+				return GeozoneFields.VALUES[i]
+			}
 		}
 	}
 
+}
+let _AUXILIARY_ID = {
+	key: 'auxiliaryId',
+	type: 'string',
+}
+let _ADDRESS = {
+	key: 'address',
+	type: 'string',
+}
+let _LATTITUDE = {
+	key: 'lattitude',
+	type: 'number',
+}
+let _CITY = {
+	key: 'city',
+	type: 'string',
+}
+let _POSTAL_CODE = {
+	key: 'postalCode',
+	type: 'string',
+}
+let _ID = {
+	key: 'id',
+	type: 'string',
+}
+let _TYPE = {
+	key: 'type',
+	type: 'string',
+	values: GeozoneType.VALUES,
+}
+let _RADIUS = {
+	key: 'radius',
+	type: 'number',
+}
+let _LONGITUDE = {
+	key: 'longitude',
+	type: 'number',
 }
 export default GeozoneFields

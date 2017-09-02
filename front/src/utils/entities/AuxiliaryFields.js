@@ -6,307 +6,406 @@ import AccountType from 'utils/constants/AccountType'
 class AuxiliaryFields {
 
 	static get DIPLOMA_IMAGE() {
-		return {
-			key: 'diplomaImage',
-			type: 'string',
-		}
+		return _DIPLOMA_IMAGE
 	}
 
 	static get COUNTRY() {
-		return {
-			key: 'country',
-			type: 'string',
-		}
+		return _COUNTRY
 	}
 
 	static get LAST_NAME() {
-		return {
-			key: 'lastName',
-			type: 'string',
-		}
+		return _LAST_NAME
 	}
 
 	static get DIPLOMA_VALIDATED() {
-		return {
-			key: 'diplomaValidated',
-			type: 'boolean',
-		}
+		return _DIPLOMA_VALIDATED
 	}
 
 	static get CIVILITY() {
-		return {
-			key: 'civility',
-			type: 'string',
-			values: Civility.VALUES,
-		}
+		return _CIVILITY
 	}
 
 	static get CITY() {
-		return {
-			key: 'city',
-			type: 'string',
-		}
+		return _CITY
 	}
 
 	static get POSTAL_CODE() {
-		return {
-			key: 'postalCode',
-			type: 'number',
-		}
+		return _POSTAL_CODE
 	}
 
 	static get IS_TUTO_SKIPPED() {
-		return {
-			key: 'isTutoSkipped',
-			type: 'boolean',
-		}
+		return _IS_TUTO_SKIPPED
 	}
 
 	static get DESCRIPTION() {
-		return {
-			key: 'description',
-			type: 'string',
-		}
+		return _DESCRIPTION
 	}
 
 	static get SOCIAL_NUMBER() {
-		return {
-			key: 'socialNumber',
-			type: 'string',
-		}
+		return _SOCIAL_NUMBER
 	}
 
 	static get ACCOUNT_EXPIRY_DATE() {
-		return {
-			key: 'accountExpiryDate',
-			type: 'number',
-		}
+		return _ACCOUNT_EXPIRY_DATE
 	}
 
 	static get SKILL_SHOPPING() {
-		return {
-			key: 'skillShopping',
-			type: 'number',
-		}
+		return _SKILL_SHOPPING
 	}
 
 	static get NOTIFY_OFFERS_SMS() {
-		return {
-			key: 'notifyOffersSms',
-			type: 'boolean',
-		}
+		return _NOTIFY_OFFERS_SMS
 	}
 
 	static get NOTIFY_AUXPROS() {
-		return {
-			key: 'notifyAuxpros',
-			type: 'boolean',
-		}
+		return _NOTIFY_AUXPROS
 	}
 
 	static get BIRTH_COUNTRY() {
-		return {
-			key: 'birthCountry',
-			type: 'string',
-		}
+		return _BIRTH_COUNTRY
 	}
 
 	static get ADDRESS_CHECKED() {
-		return {
-			key: 'addressChecked',
-			type: 'boolean',
-		}
+		return _ADDRESS_CHECKED
 	}
 
 	static get DIPLOMA() {
-		return {
-			key: 'diploma',
-			type: 'string',
-		}
+		return _DIPLOMA
 	}
 
 	static get SKILL_DOITYOURSELF() {
-		return {
-			key: 'skillDoityourself',
-			type: 'number',
-		}
+		return _SKILL_DOITYOURSELF
 	}
 
 	static get ID() {
-		return {
-			key: 'id',
-			type: 'string',
-		}
+		return _ID
 	}
 
 	static get EMAIL() {
-		return {
-			key: 'email',
-			type: 'string',
-		}
+		return _EMAIL
 	}
 
 	static get LONGITUDE() {
-		return {
-			key: 'longitude',
-			type: 'number',
-		}
+		return _LONGITUDE
 	}
 
 	static get SKILL_NURSING() {
-		return {
-			key: 'skillNursing',
-			type: 'number',
-		}
+		return _SKILL_NURSING
 	}
 
 	static get ADDRESS() {
-		return {
-			key: 'address',
-			type: 'string',
-		}
+		return _ADDRESS
 	}
 
 	static get LATTITUDE() {
-		return {
-			key: 'lattitude',
-			type: 'number',
-		}
+		return _LATTITUDE
 	}
 
 	static get ACCOUNT_TYPE() {
-		return {
-			key: 'accountType',
-			type: 'string',
-			values: AccountType.VALUES,
-		}
+		return _ACCOUNT_TYPE
 	}
 
 	static get NOTIFY_PARTNERS() {
-		return {
-			key: 'notifyPartners',
-			type: 'boolean',
-		}
+		return _NOTIFY_PARTNERS
 	}
 
 	static get BIRTH_CITY() {
-		return {
-			key: 'birthCity',
-			type: 'string',
-		}
+		return _BIRTH_CITY
 	}
 
 	static get AVATAR() {
-		return {
-			key: 'avatar',
-			type: 'string',
-		}
+		return _AVATAR
 	}
 
 	static get ARE_SKILL_SET() {
-		return {
-			key: 'areSkillSet',
-			type: 'boolean',
-		}
+		return _ARE_SKILL_SET
 	}
 
 	static get BIRTH_DATE() {
-		return {
-			key: 'birthDate',
-			type: 'number',
-		}
+		return _BIRTH_DATE
 	}
 
 	static get SKILL_CHILDHOOD() {
-		return {
-			key: 'skillChildhood',
-			type: 'number',
-		}
+		return _SKILL_CHILDHOOD
 	}
 
 	static get SKILL_COMPAGNY() {
-		return {
-			key: 'skillCompagny',
-			type: 'number',
-		}
+		return _SKILL_COMPAGNY
 	}
 
 	static get FIRST_NAME() {
-		return {
-			key: 'firstName',
-			type: 'string',
-		}
+		return _FIRST_NAME
 	}
 
 	static get SKILL_ANSWERS() {
-		return {
-			key: 'skillAnswers',
-			type: 'number',
-		}
+		return _SKILL_ANSWERS
 	}
 
 	static get NATIONALITY() {
-		return {
-			key: 'nationality',
-			type: 'string',
-		}
+		return _NATIONALITY
 	}
 
 	static get IS_ENTREPRENEUR() {
-		return {
-			key: 'isEntrepreneur',
-			type: 'boolean',
-		}
+		return _IS_ENTREPRENEUR
 	}
 
 	static get PHONE() {
-		return {
-			key: 'phone',
-			type: 'string',
-		}
+		return _PHONE
 	}
 
 	static get SKILL_ADMINISTRATIVE() {
-		return {
-			key: 'skillAdministrative',
-			type: 'number',
-		}
+		return _SKILL_ADMINISTRATIVE
 	}
 
 	static get PHONE_CHECKED() {
-		return {
-			key: 'phoneChecked',
-			type: 'boolean',
-		}
+		return _PHONE_CHECKED
 	}
 
 	static get SKILL_HOUSEWORK() {
-		return {
-			key: 'skillHousework',
-			type: 'number',
-		}
+		return _SKILL_HOUSEWORK
 	}
 
 	static get ID_CARD_NUMBER() {
-		return {
-			key: 'idCardNumber',
-			type: 'number',
-		}
+		return _ID_CARD_NUMBER
 	}
 
 	static get EMAIL_CHECKED() {
-		return {
-			key: 'emailChecked',
-			type: 'boolean',
-		}
+		return _EMAIL_CHECKED
 	}
 
 	static get NOTIFY_OFFERS_MAIL() {
-		return {
-			key: 'notifyOffersMail',
-			type: 'boolean',
+		return _NOTIFY_OFFERS_MAIL
+	}
+
+	static get VALUES() {
+		return [
+			_DIPLOMA_IMAGE,
+			_COUNTRY,
+			_LAST_NAME,
+			_DIPLOMA_VALIDATED,
+			_CIVILITY,
+			_CITY,
+			_POSTAL_CODE,
+			_IS_TUTO_SKIPPED,
+			_DESCRIPTION,
+			_SOCIAL_NUMBER,
+			_ACCOUNT_EXPIRY_DATE,
+			_SKILL_SHOPPING,
+			_NOTIFY_OFFERS_SMS,
+			_NOTIFY_AUXPROS,
+			_BIRTH_COUNTRY,
+			_ADDRESS_CHECKED,
+			_DIPLOMA,
+			_SKILL_DOITYOURSELF,
+			_ID,
+			_EMAIL,
+			_LONGITUDE,
+			_SKILL_NURSING,
+			_ADDRESS,
+			_LATTITUDE,
+			_ACCOUNT_TYPE,
+			_NOTIFY_PARTNERS,
+			_BIRTH_CITY,
+			_AVATAR,
+			_ARE_SKILL_SET,
+			_BIRTH_DATE,
+			_SKILL_CHILDHOOD,
+			_SKILL_COMPAGNY,
+			_FIRST_NAME,
+			_SKILL_ANSWERS,
+			_NATIONALITY,
+			_IS_ENTREPRENEUR,
+			_PHONE,
+			_SKILL_ADMINISTRATIVE,
+			_PHONE_CHECKED,
+			_SKILL_HOUSEWORK,
+			_ID_CARD_NUMBER,
+			_EMAIL_CHECKED,
+			_NOTIFY_OFFERS_MAIL,
+		]
+	}
+
+	static get(id) {
+		for (let i = 0 ; i < AuxiliaryFields.VALUES.length ; i++) {
+			if (AuxiliaryFields.VALUES[i].key === id) {
+				return AuxiliaryFields.VALUES[i]
+			}
 		}
 	}
 
+}
+let _DIPLOMA_IMAGE = {
+	key: 'diplomaImage',
+	type: 'string',
+}
+let _COUNTRY = {
+	key: 'country',
+	type: 'string',
+}
+let _LAST_NAME = {
+	key: 'lastName',
+	type: 'string',
+}
+let _DIPLOMA_VALIDATED = {
+	key: 'diplomaValidated',
+	type: 'boolean',
+}
+let _CIVILITY = {
+	key: 'civility',
+	type: 'string',
+	values: Civility.VALUES,
+}
+let _CITY = {
+	key: 'city',
+	type: 'string',
+}
+let _POSTAL_CODE = {
+	key: 'postalCode',
+	type: 'number',
+}
+let _IS_TUTO_SKIPPED = {
+	key: 'isTutoSkipped',
+	type: 'boolean',
+}
+let _DESCRIPTION = {
+	key: 'description',
+	type: 'string',
+}
+let _SOCIAL_NUMBER = {
+	key: 'socialNumber',
+	type: 'string',
+}
+let _ACCOUNT_EXPIRY_DATE = {
+	key: 'accountExpiryDate',
+	type: 'number',
+}
+let _SKILL_SHOPPING = {
+	key: 'skillShopping',
+	type: 'number',
+}
+let _NOTIFY_OFFERS_SMS = {
+	key: 'notifyOffersSms',
+	type: 'boolean',
+}
+let _NOTIFY_AUXPROS = {
+	key: 'notifyAuxpros',
+	type: 'boolean',
+}
+let _BIRTH_COUNTRY = {
+	key: 'birthCountry',
+	type: 'string',
+}
+let _ADDRESS_CHECKED = {
+	key: 'addressChecked',
+	type: 'boolean',
+}
+let _DIPLOMA = {
+	key: 'diploma',
+	type: 'string',
+}
+let _SKILL_DOITYOURSELF = {
+	key: 'skillDoityourself',
+	type: 'number',
+}
+let _ID = {
+	key: 'id',
+	type: 'string',
+}
+let _EMAIL = {
+	key: 'email',
+	type: 'string',
+}
+let _LONGITUDE = {
+	key: 'longitude',
+	type: 'number',
+}
+let _SKILL_NURSING = {
+	key: 'skillNursing',
+	type: 'number',
+}
+let _ADDRESS = {
+	key: 'address',
+	type: 'string',
+}
+let _LATTITUDE = {
+	key: 'lattitude',
+	type: 'number',
+}
+let _ACCOUNT_TYPE = {
+	key: 'accountType',
+	type: 'string',
+	values: AccountType.VALUES,
+}
+let _NOTIFY_PARTNERS = {
+	key: 'notifyPartners',
+	type: 'boolean',
+}
+let _BIRTH_CITY = {
+	key: 'birthCity',
+	type: 'string',
+}
+let _AVATAR = {
+	key: 'avatar',
+	type: 'string',
+}
+let _ARE_SKILL_SET = {
+	key: 'areSkillSet',
+	type: 'boolean',
+}
+let _BIRTH_DATE = {
+	key: 'birthDate',
+	type: 'number',
+}
+let _SKILL_CHILDHOOD = {
+	key: 'skillChildhood',
+	type: 'number',
+}
+let _SKILL_COMPAGNY = {
+	key: 'skillCompagny',
+	type: 'number',
+}
+let _FIRST_NAME = {
+	key: 'firstName',
+	type: 'string',
+}
+let _SKILL_ANSWERS = {
+	key: 'skillAnswers',
+	type: 'number',
+}
+let _NATIONALITY = {
+	key: 'nationality',
+	type: 'string',
+}
+let _IS_ENTREPRENEUR = {
+	key: 'isEntrepreneur',
+	type: 'boolean',
+}
+let _PHONE = {
+	key: 'phone',
+	type: 'string',
+}
+let _SKILL_ADMINISTRATIVE = {
+	key: 'skillAdministrative',
+	type: 'number',
+}
+let _PHONE_CHECKED = {
+	key: 'phoneChecked',
+	type: 'boolean',
+}
+let _SKILL_HOUSEWORK = {
+	key: 'skillHousework',
+	type: 'number',
+}
+let _ID_CARD_NUMBER = {
+	key: 'idCardNumber',
+	type: 'number',
+}
+let _EMAIL_CHECKED = {
+	key: 'emailChecked',
+	type: 'boolean',
+}
+let _NOTIFY_OFFERS_MAIL = {
+	key: 'notifyOffersMail',
+	type: 'boolean',
 }
 export default AuxiliaryFields

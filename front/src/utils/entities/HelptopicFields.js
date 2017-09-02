@@ -4,25 +4,44 @@ import { Validators } from 'ap-react-bootstrap'
 class HelptopicFields {
 
 	static get ID() {
-		return {
-			key: 'id',
-			type: 'string',
-		}
+		return _ID
 	}
 
 	static get TITLE() {
-		return {
-			key: 'title',
-			type: 'string',
-		}
+		return _TITLE
 	}
 
 	static get CONTENT() {
-		return {
-			key: 'content',
-			type: 'string',
+		return _CONTENT
+	}
+
+	static get VALUES() {
+		return [
+			_ID,
+			_TITLE,
+			_CONTENT,
+		]
+	}
+
+	static get(id) {
+		for (let i = 0 ; i < HelptopicFields.VALUES.length ; i++) {
+			if (HelptopicFields.VALUES[i].key === id) {
+				return HelptopicFields.VALUES[i]
+			}
 		}
 	}
 
+}
+let _ID = {
+	key: 'id',
+	type: 'string',
+}
+let _TITLE = {
+	key: 'title',
+	type: 'string',
+}
+let _CONTENT = {
+	key: 'content',
+	type: 'string',
 }
 export default HelptopicFields

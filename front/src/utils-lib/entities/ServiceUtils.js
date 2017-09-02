@@ -21,8 +21,8 @@ class ServiceUtils {
 			case ServiceFields.FUNCTION.key: return 'Fonctionnement'
 			case ServiceFields.ADDRESS_CHECKED.key: return 'Adresse vérifiée'
 			case ServiceFields.EMAIL_CHECKED.key: return 'Adresse électronique vérifiée'
-			case ServiceFields.SOCIAL_REASON.key: 'Nom de société'
-			case ServiceFields.EMAIL.key: return 'Adresse électronique'
+			case ServiceFields.SOCIAL_REASON.key: return 'Société'
+			case ServiceFields.EMAIL.key: return 'Email'
 			case ServiceFields.LONGITUDE.key: return 'Longitude'
 		}
 		return '! UNKNOWN FIELD !'

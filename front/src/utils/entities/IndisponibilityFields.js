@@ -4,60 +4,89 @@ import { Validators } from 'ap-react-bootstrap'
 class IndisponibilityFields {
 
 	static get PERIOD() {
-		return {
-			key: 'period',
-			type: 'string',
-		}
+		return _PERIOD
 	}
 
 	static get AUXILIARY_ID() {
-		return {
-			key: 'auxiliaryId',
-			type: 'string',
-		}
+		return _AUXILIARY_ID
 	}
 
 	static get END_DATE() {
-		return {
-			key: 'endDate',
-			type: 'number',
-		}
+		return _END_DATE
 	}
 
 	static get DAYS() {
-		return {
-			key: 'days',
-			type: 'string',
-		}
+		return _DAYS
 	}
 
 	static get START_TIME() {
-		return {
-			key: 'startTime',
-			type: 'number',
-		}
+		return _START_TIME
 	}
 
 	static get END_TIME() {
-		return {
-			key: 'endTime',
-			type: 'number',
-		}
+		return _END_TIME
 	}
 
 	static get ID() {
-		return {
-			key: 'id',
-			type: 'string',
-		}
+		return _ID
 	}
 
 	static get START_DATE() {
-		return {
-			key: 'startDate',
-			type: 'number',
+		return _START_DATE
+	}
+
+	static get VALUES() {
+		return [
+			_PERIOD,
+			_AUXILIARY_ID,
+			_END_DATE,
+			_DAYS,
+			_START_TIME,
+			_END_TIME,
+			_ID,
+			_START_DATE,
+		]
+	}
+
+	static get(id) {
+		for (let i = 0 ; i < IndisponibilityFields.VALUES.length ; i++) {
+			if (IndisponibilityFields.VALUES[i].key === id) {
+				return IndisponibilityFields.VALUES[i]
+			}
 		}
 	}
 
+}
+let _PERIOD = {
+	key: 'period',
+	type: 'string',
+}
+let _AUXILIARY_ID = {
+	key: 'auxiliaryId',
+	type: 'string',
+}
+let _END_DATE = {
+	key: 'endDate',
+	type: 'number',
+}
+let _DAYS = {
+	key: 'days',
+	type: 'string',
+}
+let _START_TIME = {
+	key: 'startTime',
+	type: 'number',
+}
+let _END_TIME = {
+	key: 'endTime',
+	type: 'number',
+}
+let _ID = {
+	key: 'id',
+	type: 'string',
+}
+let _START_DATE = {
+	key: 'startDate',
+	type: 'number',
 }
 export default IndisponibilityFields

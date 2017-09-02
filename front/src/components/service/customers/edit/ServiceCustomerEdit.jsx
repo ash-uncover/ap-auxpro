@@ -113,7 +113,6 @@ class ServiceCustomerEdit extends React.Component {
 	}
 
 	render() {
-		console.log(this.state)
 		let submitDisabled = !this.state.dirty || !this.checkValidity()
 		return (
 			<div className='ap-service-customer-edit'>

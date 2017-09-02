@@ -30,4 +30,4 @@ class SocFunction {
 let _MAND = { key: 'MAND' }
 let _PREST = { key: 'PREST' }
 let _BOTH = { key: 'BOTH' }
-export default SocFunction 
+export default SocFunction

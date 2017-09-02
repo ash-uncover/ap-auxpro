@@ -5,96 +5,135 @@ import InterventionStatus from 'utils/constants/InterventionStatus'
 class InterventionFields {
 
 	static get PERIOD() {
-		return {
-			key: 'period',
-			type: 'string',
-		}
+		return _PERIOD
 	}
 
 	static get AUXILIARY_ID() {
-		return {
-			key: 'auxiliaryId',
-			type: 'string',
-		}
+		return _AUXILIARY_ID
 	}
 
 	static get END_DATE() {
-		return {
-			key: 'endDate',
-			type: 'number',
-		}
+		return _END_DATE
 	}
 
 	static get SAD_STATUS_CHANGED() {
-		return {
-			key: 'sadStatusChanged',
-			type: 'number',
-		}
+		return _SAD_STATUS_CHANGED
 	}
 
 	static get CUSTOMER_ID() {
-		return {
-			key: 'customerId',
-			type: 'string',
-		}
+		return _CUSTOMER_ID
 	}
 
 	static get SAD_STATUS() {
-		return {
-			key: 'sadStatus',
-			type: 'string',
-			values: InterventionStatus.VALUES,
-		}
+		return _SAD_STATUS
 	}
 
 	static get DAYS() {
-		return {
-			key: 'days',
-			type: 'string',
-		}
+		return _DAYS
 	}
 
 	static get START_TIME() {
-		return {
-			key: 'startTime',
-			type: 'number',
-		}
+		return _START_TIME
 	}
 
 	static get END_TIME() {
-		return {
-			key: 'endTime',
-			type: 'number',
-		}
+		return _END_TIME
 	}
 
 	static get ID() {
-		return {
-			key: 'id',
-			type: 'string',
-		}
+		return _ID
 	}
 
 	static get SERVICE_ID() {
-		return {
-			key: 'serviceId',
-			type: 'string',
-		}
+		return _SERVICE_ID
 	}
 
 	static get HIDE_TO_SAD() {
-		return {
-			key: 'hideToSad',
-			type: 'boolean',
-		}
+		return _HIDE_TO_SAD
 	}
 
 	static get START_DATE() {
-		return {
-			key: 'startDate',
-			type: 'number',
+		return _START_DATE
+	}
+
+	static get VALUES() {
+		return [
+			_PERIOD,
+			_AUXILIARY_ID,
+			_END_DATE,
+			_SAD_STATUS_CHANGED,
+			_CUSTOMER_ID,
+			_SAD_STATUS,
+			_DAYS,
+			_START_TIME,
+			_END_TIME,
+			_ID,
+			_SERVICE_ID,
+			_HIDE_TO_SAD,
+			_START_DATE,
+		]
+	}
+
+	static get(id) {
+		for (let i = 0 ; i < InterventionFields.VALUES.length ; i++) {
+			if (InterventionFields.VALUES[i].key === id) {
+				return InterventionFields.VALUES[i]
+			}
 		}
 	}
 
+}
+let _PERIOD = {
+	key: 'period',
+	type: 'string',
+}
+let _AUXILIARY_ID = {
+	key: 'auxiliaryId',
+	type: 'string',
+}
+let _END_DATE = {
+	key: 'endDate',
+	type: 'number',
+}
+let _SAD_STATUS_CHANGED = {
+	key: 'sadStatusChanged',
+	type: 'number',
+}
+let _CUSTOMER_ID = {
+	key: 'customerId',
+	type: 'string',
+}
+let _SAD_STATUS = {
+	key: 'sadStatus',
+	type: 'string',
+	values: InterventionStatus.VALUES,
+}
+let _DAYS = {
+	key: 'days',
+	type: 'string',
+}
+let _START_TIME = {
+	key: 'startTime',
+	type: 'number',
+}
+let _END_TIME = {
+	key: 'endTime',
+	type: 'number',
+}
+let _ID = {
+	key: 'id',
+	type: 'string',
+}
+let _SERVICE_ID = {
+	key: 'serviceId',
+	type: 'string',
+}
+let _HIDE_TO_SAD = {
+	key: 'hideToSad',
+	type: 'boolean',
+}
+let _START_DATE = {
+	key: 'startDate',
+	type: 'number',
 }
 export default InterventionFields
