@@ -27,7 +27,7 @@ let FIELDS_FORM1 = [
 	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.PHONE),
 ]
 let FIELDS_FORM2 = [
-	{ form: 'address', key: 'addressSearch', name: 'Adresse', isCustom: true },
+	{ form: 'address', key: 'addressSearch', name: 'Adresse' },
 	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.ADDRESS),
 	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.POSTAL_CODE),
 	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.CITY),
@@ -52,11 +52,13 @@ class ServiceCustomerEditData extends BaseData {
 		this.customerId = customerId
 
 		this.obj.onBack = AppHelper.navigateBack.bind(AppHelper)
-		this.obj.onChangeDirty = this.onChangeDirty.bind(this)
-		this.obj.onChangeAddress = this.onChangeAddress.bind(this)
-		this.obj.onSkillAdd = this.onSkillAdd.bind(this)
 
-		this.obj.onSubmit = this.onSubmit.bind(this)
+		this.declareFunction('onChangeDirty')
+		this.declareFunction('onChangeAddress')
+		this.declareFunction('onSkillAdd')
+
+		this.declareFunction('onCancel')
+		this.declareFunction('onSubmit')
 		
 		this.obj.state = {
 			mode: customerId !== 'new' ? MODES.EDIT : MODES.CREATE
@@ -70,6 +72,32 @@ class ServiceCustomerEditData extends BaseData {
 	unregister() {
 		CustomerHelper.unregister(this)
 	}
+
+
+	// Store notifications //
+	// --------------------------------------------------------------------------------
+
+	onCustomerUpdate() {
+		this._onCustomerUpdate()
+		this.setState({})
+	}
+
+	_onCustomerUpdate() {
+		let customer = CustomerHelper.getData(this.customerId) || {}
+		this.obj.state.customerName = this.customerId !== 'new' ? CustomerUtils.getFullName(customer) : 'Nouvel usager'
+		for (let i = 0; i < FIELDS.length; i++) {
+			let field = FIELDS[i]
+			let value = customer && customer[field.key]
+			this.obj.state[field.key] = value || field.defaultValue
+			if (field.defaultValue && this.obj.state[field.key] === field.defaultValue && this.obj.state.mode === MODES.CREATE) {
+				this.obj.state[field.key + 'Default'] = 'warning'
+			}
+		}
+	}
+
+
+	// View callbacks //
+	// --------------------------------------------------------------------------------
 
 	onChangeDirty(id, event, value) {
 		let data = {
@@ -99,20 +127,22 @@ class ServiceCustomerEditData extends BaseData {
 		console.log('add skill')
 	}
 
+	onCancel() {
+		AppHelper.navigateBack()
+	}
+
 	buildCustomer() {
-		let result = {
-			serviceId: AuthHelper.getEntityId()
-		}
-		if (this.customerId !== 'new') {
-			result.id = this.customerId
-		}
+		let customer = (this.getState('mode') === MODES.CREATE) ?
+			{ serviceId: AuthHelper.getEntityId() } :
+			CustomerHelper.getData(this.customerId)
+			
 		for (let i = 0 ; i < FIELDS.length ; i++) {
 			let field = FIELDS[i]
-			if (!field.isCustom && typeof this.getState(field.key) !== 'undefined') {
-				result[field.key] = this.getState(field.key)
+			if (CustomerFields.get(field.key)) {
+				customer[field.key] = this.getState(field.key)
 			}
 		}
-		return result
+		return customer
 	}
 
 	onSubmit() {
@@ -137,24 +167,6 @@ class ServiceCustomerEditData extends BaseData {
 			console.error('Customer submit error')
 			console.error(error)
 		})
-	}
-
-	onCustomerUpdate() {
-		this._onCustomerUpdate()
-		this.setState({})
-	}
-
-	_onCustomerUpdate() {
-		let customer = CustomerHelper.getData(this.customerId) || {}
-		this.obj.state.customerName = this.customerId !== 'new' ? CustomerUtils.getFullName(customer) : 'Nouvel usager'
-		for (let i = 0; i < FIELDS.length; i++) {
-			let field = FIELDS[i]
-			let value = customer && customer[field.key]
-			this.obj.state[field.key] = value || field.defaultValue
-			if (field.defaultValue && this.obj.state[field.key] === field.defaultValue && this.obj.state.mode === MODES.CREATE) {
-				this.obj.state[field.key + 'Default'] = 'warning'
-			}
-		}
 	}
 }
 

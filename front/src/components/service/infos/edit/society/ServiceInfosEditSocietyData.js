@@ -19,7 +19,7 @@ let FIELDS_FORM1 = [
 	
 ]
 let FIELDS_FORM2 = [
-	{ form: 'address', key: 'addressSearch', name: 'Adresse', isCustom: true },
+	{ form: 'address', key: 'addressSearch', name: 'Adresse' },
 	Object.assign({ defaultValue: '', form: 'static' }, ServiceFields.ADDRESS),
 	Object.assign({ defaultValue: '', form: 'static' }, ServiceFields.POSTAL_CODE),
 	Object.assign({ defaultValue: '', form: 'static' }, ServiceFields.CITY),
@@ -98,9 +98,7 @@ class ServiceInfosEditSocietyData extends BaseData {
 		let service = ServiceHelper.getData(AuthHelper.getEntityId())
 		for (let i = 0 ; i < FIELDS.length ; i++) {
 			let field = FIELDS[i]
-			console.log('field ' + field.key + ' ' + ServiceFields[field.key.toUpperCase()])
-			if (!field.isCustom && ServiceFields.get(field.key)) {
-				console.log('updating ' + this.getState(field.key))
+			if (ServiceFields.get(field.key)) {
 				service[field.key] = this.getState(field.key)
 			}
 		}
