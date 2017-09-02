@@ -71,6 +71,13 @@ class ServiceInfos extends React.Component {
 						Mon compte AuXpros
 					</Panel.Header>
 					<Panel.Body>
+						<Form horizontal>
+							<Grid.Row>
+								<Grid.Col xs={12}>
+									{ServiceInfosData.FIELDS_FORM3.map(this.buildFormGroup)}
+								</Grid.Col>
+							</Grid.Row>
+						</Form>
 						<Button block bsStyle='primary'>Modifier mon compte</Button>
 					</Panel.Body>
 					<Panel.Footer>

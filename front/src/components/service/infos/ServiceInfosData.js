@@ -1,6 +1,6 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
-import { BaseData } from 'ap-react-bootstrap'
+import { BaseData, Formatters } from 'ap-react-bootstrap'
 
 import ServiceHelper from 'helpers/ServiceHelper'
 
@@ -13,7 +13,8 @@ let FIELDS_FORM1 = [
 	ServiceFields.SOCIAL_REASON,
 	ServiceFields.FUNCTION,
 	ServiceFields.SIRET,
-	ServiceFields.PHONE
+	Object.assign({ formatter: Formatters.Phone }, ServiceFields.PHONE)
+	
 ]
 let FIELDS_FORM2 = [
 	ServiceFields.ADDRESS,
@@ -22,6 +23,9 @@ let FIELDS_FORM2 = [
 	ServiceFields.COUNTRY
 ]
 let FIELDS_FORM3 = [
+	ServiceFields.EMAIL,
+	ServiceFields.ACCOUNT_TYPE,
+	Object.assign({ formatter: Formatters.Date }, ServiceFields.ACCOUNT_EXPIRY_DATE)
 ]
 
 let FIELDS = FIELDS_FORM0.concat(FIELDS_FORM1).concat(FIELDS_FORM2).concat(FIELDS_FORM3)
@@ -56,7 +60,11 @@ class ServiceInfosData extends BaseData {
 		let service = ServiceHelper.getData(AuthHelper.getEntityId()) || {}
 		for (let i = 0; i < FIELDS.length; i++) {
 			let field = FIELDS[i]
-			this.obj.state[field.key] = service[field.key]
+			if (field.formatter) {
+				this.obj.state[field.key] = field.formatter.getFormattedValue(service[field.key])
+			} else {
+				this.obj.state[field.key] = service[field.key]
+			}
 		}
 	}
 
