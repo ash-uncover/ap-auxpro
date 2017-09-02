@@ -27,6 +27,8 @@ import ServiceInfos from 'components/service/infos/ServiceInfos'
 import ServiceInfosEditAccount from 'components/service/infos/edit/account/ServiceInfosEditAccount'
 import ServiceInfosEditPhoto from 'components/service/infos/edit/photo/ServiceInfosEditPhoto'
 import ServiceInfosEditSociety from 'components/service/infos/edit/society/ServiceInfosEditSociety'
+import ServiceInfosEditEmail from 'components/service/infos/edit/email/ServiceInfosEditEmail'
+import ServiceInfosEditPassword from 'components/service/infos/edit/password/ServiceInfosEditPassword'
 import ServiceZone from 'components/service/zone/ServiceZone'
 import ServiceCustomers from 'components/service/customers/ServiceCustomers'
 import ServiceCustomerEdit from 'components/service/customers/edit/ServiceCustomerEdit'
@@ -73,6 +75,8 @@ let serviceRoutes = [
 	{ path: '/infos/edit/account', component: ServiceInfosEditAccount },
 	{ path: '/infos/edit/photo', component: ServiceInfosEditPhoto },
 	{ path: '/infos/edit/society', component: ServiceInfosEditSociety },
+	{ path: '/infos/edit/email', component: ServiceInfosEditEmail },
+	{ path: '/infos/edit/password', component: ServiceInfosEditPassword },
 	{ path: '/zone', component: ServiceZone },
 	{ path: '/customers', component: ServiceCustomers },
 	{ path: '/customers/:customerId/edit', component: ServiceCustomerEdit },

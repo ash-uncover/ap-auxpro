@@ -7,10 +7,7 @@ import { BaseData } from 'ap-react-bootstrap'
 
 // Header not be displayed for the following path
 let PATHS_NO_HEADER = [
-	'/service/tuto',
-	'/service/infos/edit/account',
-	'/service/infos/edit/society',
-	'/service/infos/edit/photo'
+	'/service/tuto'
 ]
 
 class ServiceData extends BaseData {
