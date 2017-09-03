@@ -22,7 +22,7 @@ class AccountEditPasswordChange extends React.Component {
 		let submitDisabled = this.isSubmitDisabled()
 		return (
 			<div className='ap-service-infos-edit-password'>
-				<Button block bsStyle='primary' onClick={this.onCancel}>Annuler</Button>
+				<Button block bsStyle='primary' onClick={this.onCancel}>Retour au profil</Button>
 				<br/>
 				<Panel>
 					<Panel.Header>

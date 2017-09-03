@@ -82,7 +82,7 @@ class ServiceInfosEditSociety extends React.Component {
 		let submitDiabled = !this.state.dirty || !this.checkValidity()
 		return (
 			<div className='ap-service-infos-edit-society'>
-				<Button block bsStyle='primary' onClick={this.onCancel}>Annuler</Button>
+				<Button block bsStyle='primary' onClick={this.onCancel}>Retour au profil</Button>
 				<br/>
 				<Panel>
 					<Panel.Header>
