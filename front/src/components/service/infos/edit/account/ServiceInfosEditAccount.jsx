@@ -1,5 +1,5 @@
 import React from 'react'
-import ServiceInfosEditAccountData from 'components/service/infos/edit/account/ServiceInfosEditAccountData'
+import ServiceInfosEditAccountData from './ServiceInfosEditAccountData'
 import './ServiceInfosEditAccount.scss'
 
 import ServiceUtils from 'utils-lib/entities/ServiceUtils'
@@ -21,6 +21,7 @@ class ServiceInfosEditAccount extends React.Component {
 	}
 
 	render() {
+		let submitDisabled = this.isSubmitDisabled()
 		return (
 			<div className='ap-service-infos-edit-account'>
 				<Button block bsStyle='primary' onClick={this.onCancel}>Annuler</Button>
@@ -35,43 +36,41 @@ class ServiceInfosEditAccount extends React.Component {
 						<p>
 							Le type d'abonnement AuXpros auquel vous souscrivez détermine le degrès d'accès que vous avez à nos services.
 							<br/>
-							Si votre compte n'est pas PREMIUM vous ne pourrez pas utiliser les fonctionalités de MATCHING pour émettre vos offres vers des auxiliarires de vie.
+							Si votre compte n'est pas PREMIUM vous ne pourrez pas utiliser les fonctionalités de MATCHING pour émettre vos offres vers des auxiliaires de vie.
 						</p>
 						<Form horizontal>
 							<Form.Group>
 								<Form.Label className='col-sm-4 col-md-3'>Type de compte</Form.Label>
-								<Form.Static className='col-sm-8 col-md-9'>Lol</Form.Static>
+								<Form.Static className='col-sm-8 col-md-9'>{this.state.accountType}</Form.Static>
 							</Form.Group>
 							<Form.Group>
 								<Form.Label className='col-sm-4 col-md-3'>Date d'expiration</Form.Label>
-								<Form.Static className='col-sm-8 col-md-9'>Kiko</Form.Static>
+								<Form.Static className='col-sm-8 col-md-9'>{this.state.accountExpiryDate}</Form.Static>
 							</Form.Group>
 							<Form.Group>
 								<Form.Label className='col-sm-4 col-md-3' htmlFor='accountCode'>
 									Saisir un code AuXpros
 								</Form.Label>
 								<Grid.Col sm={8} md={9}>
-									<Form.Input id='accountCode' />
+									<Form.Input 
+										id='accountCode' 
+										value={this.state.accountCode}
+										onChange={this.onChange.bind(this, 'accountCode')} />
 								</Grid.Col>
 							</Form.Group>
 							<Grid.Row>
 								<Grid.Col sm={8} smOffset={4} md={9} mdOffset={3}>
-									{this.state.error}
-									<Button block bsStyle='success'>
+									<p className='ap-error'>{this.state.errorMessage}</p>
+									<Button 
+										block 
+										bsStyle={submitDisabled ? 'default' : 'success'}
+										disabled={submitDisabled}
+										onClick={this.onSendCode}>
 										Ajouter code AuXpros
 									</Button>
 								</Grid.Col>
 							</Grid.Row>
 						</Form>
-						<h4>Mes informations de connection</h4>
-						<p>
-							Vous pouvez modifier vos identifiants de connection nécessaires pour accèder à nos services.
-							<br/>
-							Prenez soin de bien mémoriser vos nouveaux identifiants.
-						</p>
-						<Button block bsStyle='warning'>Modifier mon adresse électronique</Button>
-						<br/>
-						<Button block bsStyle='warning'>Modifier mon mot de passe</Button>
 					</Panel.Body>
 
 					<Panel.Footer>
@@ -80,6 +79,5 @@ class ServiceInfosEditAccount extends React.Component {
 			</div>
 		)
 	}
-
 }
 export default ServiceInfosEditAccount

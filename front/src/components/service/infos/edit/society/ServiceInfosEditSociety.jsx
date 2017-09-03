@@ -1,5 +1,5 @@
 import React from 'react'
-import ServiceInfosEditSocietyData from 'components/service/infos/edit/society/ServiceInfosEditSocietyData'
+import ServiceInfosEditSocietyData from './ServiceInfosEditSocietyData'
 import './ServiceInfosEditSociety.scss'
 
 import ServiceUtils from 'utils-lib/entities/ServiceUtils'

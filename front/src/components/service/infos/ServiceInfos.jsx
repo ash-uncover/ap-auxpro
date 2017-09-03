@@ -1,5 +1,5 @@
 import React from 'react'
-import ServiceInfosData from 'components/service/infos/ServiceInfosData'
+import ServiceInfosData from './ServiceInfosData'
 import './ServiceInfos.scss'
 
 import ServiceUtils from 'utils-lib/entities/ServiceUtils'
@@ -71,22 +71,20 @@ class ServiceInfos extends React.Component {
 						Mon compte AuXpros
 					</Panel.Header>
 					<Panel.Body>
-						<Form horizontal>
-							<Grid.Row>
-								<Grid.Col xs={12}>
-									{ServiceInfosData.FIELDS_FORM3.map(this.buildFormGroup)}
-								</Grid.Col>
-							</Grid.Row>
-						</Form>
+						<h4>Type de compte</h4>
 						<Button block bsStyle='primary' onClick={this.onModifyAccount}>Modifier mon compte</Button>
+
+						<h4>Adresse électronique</h4>
+						<Button block bsStyle='primary' onClick={this.onModifyEmail}>Modifier mon adresse électronique</Button>
+
+						<h4>Mot de passe</h4>
+						<Button block bsStyle='primary' onClick={this.onModifyPassword}>Modifier mon mot de passe</Button>
 					</Panel.Body>
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
-
 			</div>
 		)
 	}
-
 }
 export default ServiceInfos

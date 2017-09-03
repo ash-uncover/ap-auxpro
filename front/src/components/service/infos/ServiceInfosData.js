@@ -36,10 +36,11 @@ class ServiceInfosData extends BaseData {
 
 	register(obj) {
 		super.register(obj)
-		
-		this.obj.onModifySociety = AppHelper.navigate.bind(AppHelper, '/service/infos/edit/society')
-		this.obj.onModifyPhoto = AppHelper.navigate.bind(AppHelper, '/service/infos/edit/photo')
-		this.obj.onModifyAccount = AppHelper.navigate.bind(AppHelper, '/service/infos/edit/account')
+
+		this.declareFunction('onModifySociety')
+		this.declareFunction('onModifyAccount')
+		this.declareFunction('onModifyEmail')
+		this.declareFunction('onModifyPassword')
 
 		this.obj.state = {}
 
@@ -47,6 +48,7 @@ class ServiceInfosData extends BaseData {
 	}
 
 	unregister() {
+		
 	}
 
 
@@ -70,11 +72,24 @@ class ServiceInfosData extends BaseData {
 		}
 	}
 
+
 	// View callbacks //
 	// --------------------------------------------------------------------------------
 
+	onModifySociety() {
+		AppHelper.navigate('/service/infos/edit/society')
+	}
+	onModifyAccount() {
+		AppHelper.navigate('/service/infos/edit/account')
+	}
+	onModifyEmail() {
+		AppHelper.navigate('/service/infos/edit/email')
+	}
+	onModifyPassword() {
+		AppHelper.navigate('/service/infos/edit/password')
+	}
 }
-var ServiceInfosObj = new ServiceInfosData()
+let ServiceInfosObj = new ServiceInfosData()
 ServiceInfosObj.FIELDS = FIELDS
 ServiceInfosObj.FIELDS_FORM1 = FIELDS_FORM1
 ServiceInfosObj.FIELDS_FORM2 = FIELDS_FORM2

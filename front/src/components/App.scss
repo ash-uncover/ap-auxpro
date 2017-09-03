@@ -25,6 +25,10 @@ body {
 		height: 100%;
 		user-select: none;
 
+		.ap-error {
+			color: $ap-danger-color;
+		}
+
 		.user-select-text {
 			user-select: text;
 		}
