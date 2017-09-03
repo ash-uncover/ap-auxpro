@@ -12,10 +12,8 @@ class SocFunctionUtils {
 	}
 
 	static getValues() {
-		console.log(SocFunction.VALUES)
 		return SocFunction.VALUES.reduce(function (filtered, value) { 
 			let name = SocFunctionUtils.getName(value.key)
-			console.log(value.key + ' > ' + name)
 			if (name) {
 				filtered.push({
 					key: value.key,

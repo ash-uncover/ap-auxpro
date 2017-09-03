@@ -20,8 +20,6 @@ class AccountEditPasswordBase extends React.Component {
 	}
 
 	render() {
-		console.log('HERREEEEEEEEEEEE')
-		console.log(this.state)
 		switch (this.state.state) {
 		case AccountEditPasswordBaseData.STATES.CHANGE: return (
 			<AccountEditPasswordChange onNext={this.onNext} />
