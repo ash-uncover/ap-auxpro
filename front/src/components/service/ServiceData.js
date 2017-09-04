@@ -1,6 +1,9 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
+import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
 import CustomerHelper from 'helpers/CustomerHelper'
+import InterventionHelper from 'helpers/InterventionHelper'
+import OfferHelper from 'helpers/OfferHelper'
 import ServiceHelper from 'helpers/ServiceHelper'
 
 import { BaseData } from 'ap-react-bootstrap'
@@ -27,7 +30,14 @@ class ServiceData extends BaseData {
 		}
 
 		ServiceHelper.getService(AuthHelper.getEntityId()).
-		then(CustomerHelper.getServiceCustomers.bind(CustomerHelper,AuthHelper.getEntityId())).
+		then(function () {
+			return Promise.all([
+				AuxiliaryHelper.getAuxiliarys(AuthHelper.getEntityId()),
+				CustomerHelper.getServiceCustomers(AuthHelper.getEntityId()),
+				InterventionHelper.getServiceInterventions(AuthHelper.getEntityId()),
+				OfferHelper.getServiceOffers(AuthHelper.getEntityId())
+			])
+		}).
 		then(this._onLoad.bind(this))
 
 		AppHelper.register('/path', this, this._onAppStorePathUpdate.bind(this));

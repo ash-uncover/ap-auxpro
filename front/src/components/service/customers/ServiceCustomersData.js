@@ -32,32 +32,40 @@ class ServiceCustomersData extends BaseData {
 		CustomerHelper.unregister(this)
 	}
 
+
+	// Store notification //
+	// --------------------------------------------------------------------------------
+
 	onCustomersUpdate() {
 		this.setState({ customers: Utils.map(CustomerHelper.getData()) })
 	}
 
+
+	// View callbacks //
+	// --------------------------------------------------------------------------------
+
 	onCreate(value) {
 		AppHelper.navigate('/service/customers/new/edit')
 	}
-
 	onSearch(value) {
 		this.setState({ 
 			search: value,
 			customers: Utils.map(CustomerHelper.getData()).filter(this._filterCustomers.bind(this, TextUtils.easenSearch(value)))
 		})
 	}
-
 	onView(customer) {
 		AppHelper.navigate('/service/customers/' + customer.id)
 	}
-
 	onEdit(customer) {
 		AppHelper.navigate('/service/customers/' + customer.id + '/edit')
 	}
-
 	onDelete(customer) {
 		console.log('delete customer ' + customer.id)
 	}
+
+
+	// Internal methods //
+	// --------------------------------------------------------------------------------
 
 	_filterCustomers(value, customer) {
 		if (value) {

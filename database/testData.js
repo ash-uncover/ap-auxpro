@@ -14,6 +14,90 @@ db.apauth.insert({
 	"registered":true
 })
 db.apauth.insert({
+	"id":"userauxb",
+	"entityId":"auxb",
+	"username":"b",
+	"email":"jean.edouard@kikomail.lol",
+	"password":"b",
+	"roles":["aux"],
+	"type":"auxiliary",
+	"active":true,
+	"registrationDate":[2016, 2, 16, 0, 0],
+	"registered":true
+})
+db.apauth.insert({
+	"id":"userauxc",
+	"entityId":"auxc",
+	"username":"c",
+	"email":"rachel.caudran@kikomail.lol",
+	"password":"c",
+	"roles":["aux"],
+	"type":"auxiliary",
+	"active":true,
+	"registrationDate":[2016, 2, 17, 0, 0],
+	"registered":true
+})
+db.apauth.insert({
+	"id":"userauxd",
+	"entityId":"auxd",
+	"username":"d",
+	"email":"catherine.bijard@kikomail.lol",
+	"password":"d",
+	"roles":["aux"],
+	"type":"auxiliary",
+	"active":true,
+	"registrationDate":[2016, 2, 18, 0, 0],
+	"registered":true
+})
+db.apauth.insert({
+	"id":"userauxe",
+	"entityId":"auxe",
+	"username":"e",
+	"email":"julie.roustaud@kikomail.lol",
+	"password":"e",
+	"roles":["aux"],
+	"type":"auxiliary",
+	"active":true,
+	"registrationDate":[2016, 2, 19, 0, 0],
+	"registered":true
+})
+db.apauth.insert({
+	"id":"userauxf",
+	"entityId":"auxf",
+	"username":"f",
+	"email":"mathilde.lepont@kikomail.lol",
+	"password":"f",
+	"roles":["aux"],
+	"type":"auxiliary",
+	"active":true,
+	"registrationDate":[2016, 2, 20, 0, 0],
+	"registered":true
+})
+db.apauth.insert({
+	"id":"userauxg",
+	"entityId":"auxg",
+	"username":"g",
+	"email":"sabrina.ternic@kikomail.lol",
+	"password":"g",
+	"roles":["aux"],
+	"type":"auxiliary",
+	"active":true,
+	"registrationDate":[2016, 2, 21, 0, 0],
+	"registered":true
+})
+db.apauth.insert({
+	"id":"userauxh",
+	"entityId":"auxh",
+	"username":"h",
+	"email":"herve.paoli@kikomail.lol",
+	"password":"h",
+	"roles":["aux"],
+	"type":"auxiliary",
+	"active":true,
+	"registrationDate":[2016, 2, 22, 0, 0],
+	"registered":true
+})
+db.apauth.insert({
 	"id":"usersadz",
 	"entityId":"sadz",
 	"username":"z",
@@ -73,6 +157,304 @@ db.auxiliary.insert({
 	"diplomaImage":"000000000DA",
 	"idCardNumber":NumberLong(123456789012)
 })
+db.auxiliary.insert({
+	"id":"auxb",
+	"userId":"userauxb",
+	"accountType": "Premium",
+	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
+	"notifyOffersMail":false,
+	"notifyOffersSms":false,
+	"avatar":"0000000000B",
+	"isTutoSkipped":true,
+	"civility":"Mr",
+	"lastName":"De Lorme",
+	"firstName":"Jean-Edouard",
+	"email":"jean.edouard@kikomail.lol",
+	"emailChecked":true,
+	"phone":"0102030405",
+	"phoneChecked":true,
+	"address":"15B rue Victor Meric",
+	"postalCode":NumberInt(92110),
+	"city":"Clichy",
+	"country":"France",
+	"lattitude":48.901569,
+	"longitude":2.306130,
+	"addressChecked":false,
+	"description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	"socialNumber":"1800192",
+	"birthCity":"Paris",
+	"birthCountry":"France",
+	"birthDate":[NumberInt(1980),NumberInt(1),NumberInt(3)],
+	"nationality":"Française",
+	"isEntrepreneur":false,
+	"areSkillSet":true,
+	"skillAnswers":[NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0)],
+	"skillAdministrative":NumberInt(2),
+	"skillChildhood":NumberInt(5),
+	"skillCompagny":NumberInt(3),
+	"skillDoityourself":NumberInt(4),
+	"skillHousework":NumberInt(3),
+	"skillNursing":NumberInt(2),
+	"skillShopping":NumberInt(0),
+	"diploma":"Diplôme de Trucmuche",
+	"diplomaImage":"000000000DB",
+	"idCardNumber":NumberLong(123456789012)
+})
+db.auxiliary.insert({
+	"id":"auxc",
+	"userId":"userauxc",
+	"accountType": "Premium",
+	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
+	"notifyOffersMail":true,
+	"notifyOffersSms":false,
+	"avatar":"0000000000C",
+	"isTutoSkipped":false,
+	"civility":"Mme",
+	"lastName":"Caudran",
+	"firstName":"Rachel",
+	"email":"rachel.caudran@kikomail.lol",
+	"emailChecked":true,
+	"phone":"0101010101",
+	"phoneChecked":true,
+	"address":"20 rue Mederic",
+	"postalCode":NumberInt(75017),
+	"city":"Paris",
+	"country":"France",
+	"lattitude":48.880903,
+	"longitude":2.304171,
+	"addressChecked":true,
+	"description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	"socialNumber":"2840575",
+	"birthCity":"Paris",
+	"birthCountry":"France",
+	"birthDate":[NumberInt(1984),NumberInt(5),NumberInt(9)],
+	"nationality":"Française",
+	"isEntrepreneur":false,
+	"areSkillSet":true,
+	"skillAnswers":[NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0)],
+	"skillAdministrative":NumberInt(1),
+	"skillChildhood":NumberInt(5),
+	"skillCompagny":NumberInt(3),
+	"skillDoityourself":NumberInt(1),
+	"skillHousework":NumberInt(1),
+	"skillNursing":NumberInt(4),
+	"skillShopping":NumberInt(1),
+	"diploma":"BTS Auxiliaire",
+	"diplomaImage":"000000000DC",
+	"idCardNumber":NumberLong(123456789012)
+})
+db.auxiliary.insert({
+	"id":"auxd",
+	"userId":"userauxd",
+	"accountType": "Premium",
+	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
+	"notifyOffersMail":false,
+	"notifyOffersSms":true,
+	"avatar":"0000000000D",
+	"isTutoSkipped":true,
+	"civility":"Mme",
+	"lastName":"Bijard",
+	"firstName":"Catherine",
+	"email":"catherine.bijard@kikomail.lol",
+	"emailChecked":true,
+	"phone":"0101010101",
+	"phoneChecked":true,
+	"address":"2 place Vendome",
+	"postalCode":NumberInt(75001),
+	"city":"Paris",
+	"country":"France",
+	"lattitude":48.866601,
+	"longitude":2.328614,
+	"addressChecked":true,
+	"description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	"socialNumber":"2720175",
+	"birthCity":"Paris",
+	"birthCountry":"France",
+	"birthDate":[NumberInt(1972),NumberInt(1),NumberInt(3)],
+	"nationality":"Française",
+	"isEntrepreneur":false,
+	"areSkillSet":true,
+	"skillAnswers":[NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0)],
+	"skillAdministrative":NumberInt(4),
+	"skillChildhood":NumberInt(2),
+	"skillCompagny":NumberInt(5),
+	"skillDoityourself":NumberInt(1),
+	"skillHousework":NumberInt(2),
+	"skillNursing":NumberInt(4),
+	"skillShopping":NumberInt(1),
+	"diploma":"Diplome d'infirmière",
+	"diplomaImage":"000000000DD",
+	"idCardNumber":NumberLong(123456789012)
+})
+db.auxiliary.insert({
+	"id":"auxe",
+	"userId":"userauxe",
+	"accountType": "Premium",
+	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
+	"notifyOffersMail":false,
+	"notifyOffersSms":false,
+	"avatar":"0000000000E",
+	"isTutoSkipped":true,
+	"civility":"Mme",
+	"lastName":"Roustaud",
+	"firstName":"Julie",
+	"email":"julie.roustaud@kikomail.lol",
+	"emailChecked":true,
+	"phone":"0101010101",
+	"phoneChecked":true,
+	"address":"47 boulevard de Clichy",
+	"postalCode":NumberInt(75014),
+	"city":"Paris",
+	"country":"France",
+	"lattitude":48.883266,
+	"longitude":2.334079,
+	"addressChecked":true,
+	"description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	"socialNumber":"2800175",
+	"birthCity":"Paris",
+	"birthCountry":"France",
+	"birthDate":[NumberInt(1980),NumberInt(1),NumberInt(3)],
+	"nationality":"Française",
+	"isEntrepreneur":false,
+	"areSkillSet":true,
+	"skillAnswers":[NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0)],
+	"skillAdministrative":NumberInt(4),
+	"skillChildhood":NumberInt(2),
+	"skillCompagny":NumberInt(5),
+	"skillDoityourself":NumberInt(1),
+	"skillHousework":NumberInt(2),
+	"skillNursing":NumberInt(4),
+	"skillShopping":NumberInt(1),
+	"diploma":"Diplome de Trucmuche",
+	"diplomaImage":"000000000DE",
+	"idCardNumber":NumberLong(123456789012)
+})
+db.auxiliary.insert({
+	"id":"auxf",
+	"userId":"userauxf",
+	"notifyOffersMail":false,
+	"notifyOffersSms":false,
+	"avatar":"0000000000F",
+	"isTutoSkipped":true,
+	"civility":"Mme",
+	"lastName":"Lepont",
+	"firstName":"Mathilde",
+	"email":"mathilde.lepont@kikomail.lol",
+	"emailChecked":true,
+	"phone":"0101010101",
+	"phoneChecked":true,
+	"address":"154 rue Ordener",
+	"postalCode":NumberInt(75018),
+	"city":"Paris",
+	"country":"France",
+	"lattitude":48.893647,
+	"longitude":2.336426,
+	"addressChecked":true,
+	"description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	"socialNumber":"2800175",
+	"birthCity":"Paris",
+	"birthCountry":"France",
+	"birthDate":[NumberInt(1980),NumberInt(1),NumberInt(3)],
+	"nationality":"Française",
+	"isEntrepreneur":false,
+	"areSkillSet":true,
+	"skillAnswers":[NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0)],
+	"skillAdministrative":NumberInt(4),
+	"skillChildhood":NumberInt(2),
+	"skillCompagny":NumberInt(5),
+	"skillDoityourself":NumberInt(1),
+	"skillHousework":NumberInt(2),
+	"skillNursing":NumberInt(4),
+	"skillShopping":NumberInt(1),
+	"diploma":"Diplome de Trucmuche",
+	"diplomaImage":"000000000DF",
+	"idCardNumber":NumberLong(123456789012)
+})
+db.auxiliary.insert({
+	"id":"auxg",
+	"userId":"userauxg",
+	"notifyOffersMail":false,
+	"notifyOffersSms":false,
+	"avatar":"0000000000G",
+	"isTutoSkipped":true,
+	"civility":"Mme",
+	"lastName":"Ternic",
+	"firstName":"Sabrina",
+	"email":"sabrina.ternic@kikomail.lol",
+	"emailChecked":true,
+	"phone":"0101010101",
+	"phoneChecked":true,
+	"address":"21 rue Pierre Curie",
+	"postalCode":NumberInt(92110),
+	"city":"Clichy",
+	"country":"France",
+	"lattitude":48.902706,
+	"longitude":2.315156,
+	"addressChecked":true,
+	"description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	"socialNumber":"2800192",
+	"birthCity":"Paris",
+	"birthCountry":"France",
+	"birthDate":[NumberInt(1980),NumberInt(1),NumberInt(3)],
+	"nationality":"Française",
+	"isEntrepreneur":false,
+	"areSkillSet":true,
+	"skillAnswers":[NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0)],
+	"skillAdministrative":NumberInt(4),
+	"skillChildhood":NumberInt(2),
+	"skillCompagny":NumberInt(5),
+	"skillDoityourself":NumberInt(1),
+	"skillHousework":NumberInt(2),
+	"skillNursing":NumberInt(4),
+	"skillShopping":NumberInt(1),
+	"diploma":"Diplome de Trucmuche",
+	"diplomaImage":"000000000DG",
+	"idCardNumber":NumberLong(123456789012)
+})
+db.auxiliary.insert({
+	"id":"auxh",
+	"userId":"userauxh",
+	"accountType": "Premium",
+	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
+	"notifyOffersMail":false,
+	"notifyOffersSms":false,
+	"avatar":"0000000000H",
+	"isTutoSkipped":true,
+	"civility":"Mr",
+	"lastName":"Paoli",
+	"firstName":"Hervé",
+	"email":"herve.paoli@kikomail.lol",
+	"emailChecked":true,
+	"phone":"0101010101",
+	"phoneChecked":true,
+	"address":"9 rue Roquepine",
+	"postalCode":NumberInt(75008),
+	"city":"Paris",
+	"country":"France",
+	"lattitude":48.873169,
+	"longitude":2.319081,
+	"addressChecked":true,
+	"description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	"socialNumber":"1800175",
+	"birthCity":"Paris",
+	"birthCountry":"France",
+	"birthDate":[NumberInt(1980),NumberInt(1),NumberInt(3)],
+	"nationality":"Française",
+	"isEntrepreneur":false,
+	"areSkillSet":true,
+	"skillAnswers":[NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0), NumberInt(0)],
+	"skillAdministrative":NumberInt(5),
+	"skillChildhood":NumberInt(5),
+	"skillCompagny":NumberInt(5),
+	"skillDoityourself":NumberInt(5),
+	"skillHousework":NumberInt(5),
+	"skillNursing":NumberInt(5),
+	"skillShopping":NumberInt(5),
+	"diploma":"Diplome de Trucmuche",
+	"diplomaImage":"000000000DH",
+	"idCardNumber":NumberLong(123456789012)
+})
+
 
 
 /* ****************************************************************************************
@@ -102,10 +484,10 @@ db.service.insert({
 })
 
 
+
 /* ****************************************************************************************
  * DB-CUSTOMER
  */
-
 db.customer.insert({
 	"id":"szc1",
 	"serviceId":"sadz",
@@ -180,6 +562,301 @@ db.customer.insert({
 	"skillNursing":NumberInt(0),
 	"skillShopping":NumberInt(2)
 })
+
+
+db.customer.insert({
+	"id":"szc4",
+	"serviceId":"sadz",
+	"civility":"Mme",
+	"firstName":"Georgette",
+	"lastName":"Boulard",
+	"birthDate":[NumberInt(1922), NumberInt(12), NumberInt(28)],
+	"nationality":"FR",
+	"email":"georgette.boulard@outlook.fr",
+	"phone":"0101010101",
+	"address":"67 rue Ampere",
+	"postalCode":NumberInt(75017),
+	"city": "Paris",
+	"country": "France",
+	"lattitude":48.885310,
+	"longitude":2.300468,
+	"skillAdministrative":NumberInt(3),
+	"skillChildhood":NumberInt(0),
+	"skillCompagny":NumberInt(2),
+	"skillDoityourself":NumberInt(2),
+	"skillHousework":NumberInt(4),
+	"skillNursing":NumberInt(5),
+	"skillShopping":NumberInt(4)
+})
+
+db.customer.insert({
+	"id":"szc5",
+	"serviceId":"sadz",
+	"civility":"Mme",
+	"firstName":"Simone",
+	"lastName":"Carfe",
+	"birthDate":[NumberInt(1933), NumberInt(1), NumberInt(7)],
+	"nationality":"FR",
+	"email":"simone.carfe@outlook.fr",
+	"phone":"0101010101",
+	"address":"21 rue des Tapisseries",
+	"postalCode":NumberInt(75017),
+	"city": "Paris",
+	"country": "France",
+	"lattitude":48.888980,
+	"longitude":2.307791,
+	"skillAdministrative":NumberInt(5),
+	"skillChildhood":NumberInt(0),
+	"skillCompagny":NumberInt(3),
+	"skillDoityourself":NumberInt(1),
+	"skillHousework":NumberInt(0),
+	"skillNursing":NumberInt(3),
+	"skillShopping":NumberInt(2)
+})
+
+db.customer.insert({
+	"id":"szc6",
+	"serviceId":"sadz",
+	"civility":"Mme",
+	"firstName":"Ginette",
+	"lastName":"De Trimes",
+	"birthDate":[NumberInt(1941), NumberInt(6), NumberInt(14)],
+	"nationality":"FR",
+	"email":"ginette.carfe@outlook.fr",
+	"phone":"0101010101",
+	"address":"87 rue de Levis",
+	"postalCode":NumberInt(75017),
+	"city": "Paris",
+	"country": "France",
+	"lattitude":48.884824,
+	"longitude":2.311516,
+	"skillAdministrative":NumberInt(0),
+	"skillChildhood":NumberInt(5),
+	"skillCompagny":NumberInt(1),
+	"skillDoityourself":NumberInt(2),
+	"skillHousework":NumberInt(4),
+	"skillNursing":NumberInt(0),
+	"skillShopping":NumberInt(1)
+})
+
+db.customer.insert({
+	"id":"szc7",
+	"serviceId":"sadz",
+	"civility":"Mr",
+	"firstName":"Alfred",
+	"lastName":"Rambert",
+	"birthDate":[NumberInt(1941), NumberInt(1), NumberInt(1)],
+	"nationality":"FR",
+	"email":"alfred.rambert@outlook.fr",
+	"phone":"0101010101",
+	"address":"18 rue de Saint-Senoch",
+	"postalCode":NumberInt(75017),
+	"city": "Paris",
+	"country": "France",
+	"lattitude":48.882348,
+	"longitude":2.294248,
+	"skillAdministrative":NumberInt(2),
+	"skillChildhood":NumberInt(2),
+	"skillCompagny":NumberInt(3),
+	"skillDoityourself":NumberInt(2),
+	"skillHousework":NumberInt(2),
+	"skillNursing":NumberInt(3),
+	"skillShopping":NumberInt(2)
+})
+
+
+
+/* ****************************************************************************************
+ * DB-INTERVENTION
+ */
+db.intervention.insert({
+	"id":"szc11",
+	"customerId":"szc1",
+	"serviceId":"sadz",
+	"period":"ONE",
+	"startDate":[NumberInt(2017),NumberInt(4),NumberInt(28)],
+	"startTime":[NumberInt(14),NumberInt(0)],
+	"endTime":[NumberInt(16),NumberInt(0)]
+})
+
+db.intervention.insert({
+	"id":"szc12",
+	"customerId":"szc1",
+	"serviceId":"sadz",
+	"period":"P1W",
+	"startDate":[NumberInt(2017),NumberInt(4),NumberInt(29)],
+	"endDate":[NumberInt(2017),NumberInt(12),NumberInt(29)],
+	"startTime":[NumberInt(8),NumberInt(30)],
+	"endTime":[NumberInt(12),NumberInt(0)],
+	"days":["MONDAY","FRIDAY"]
+})
+
+db.intervention.insert({
+	"id":"szc1aa1",
+	"customerId":"szc1",
+	"serviceId":"sadz",
+	"auxiliaryId":"auxa",
+	"period":"ONE",
+	"startDate":[NumberInt(2017),NumberInt(3),NumberInt(16)],
+	"startTime":[NumberInt(14),NumberInt(0)],
+	"endTime":[NumberInt(16),NumberInt(0)]
+})
+
+db.intervention.insert({
+	"id":"szc1aa2",
+	"customerId":"szc1",
+	"serviceId":"sadz",
+	"auxiliaryId":"auxa",
+	"period":"P1W",
+	"startDate":[NumberInt(2017),NumberInt(4),NumberInt(14)],
+	"endDate":[NumberInt(2017),NumberInt(4),NumberInt(30)],
+	"startTime":[NumberInt(14),NumberInt(15)],
+	"endTime":[NumberInt(18),NumberInt(45)],
+	"days":["SATURDAY"]
+})
+
+db.intervention.insert({
+	"id":"szc4aa3",
+	"customerId":"szc4",
+	"serviceId":"sadz",
+	"auxiliaryId":"auxa",
+	"period":"ONE",
+	"startDate":[NumberInt(2017),NumberInt(4),NumberInt(1)],
+	"startTime":[NumberInt(11),NumberInt(15)],
+	"endTime":[NumberInt(14),NumberInt(15)]
+})
+
+db.intervention.insert({
+	"id":"szc5aa4",
+	"customerId":"szc5",
+	"serviceId":"sadz",
+	"auxiliaryId":"auxa",
+	"period":"P2W",
+	"startDate":[NumberInt(2017),NumberInt(4),NumberInt(2)],
+	"endDate":[NumberInt(2017),NumberInt(6),NumberInt(2)],
+	"startTime":[NumberInt(8),NumberInt(0)],
+	"endTime":[NumberInt(12),NumberInt(0)],
+	"days":["WEDNESDAY"]
+})
+
+db.intervention.insert({
+	"id":"szc3aa5",
+	"customerId":"szc3",
+	"serviceId":"sadz",
+	"auxiliaryId":"auxa",
+	"period":"P2W",
+	"startDate":[NumberInt(2017),NumberInt(4),NumberInt(15)],
+	"endDate":[NumberInt(2017),NumberInt(6),NumberInt(15)],
+	"startTime":[NumberInt(10),NumberInt(0)],
+	"endTime":[NumberInt(16),NumberInt(0)],
+	"days":["THURSDAY","TUESDAY"]
+})
+
+db.intervention.insert({
+	"id":"szc6ah1",
+	"customerId":"szc6",
+	"serviceId":"sadz",
+	"auxiliaryId": "auxh",
+	"period":"ONE",
+	"startDate":[NumberInt(2017),NumberInt(4),NumberInt(1)],
+	"startTime":[NumberInt(11),NumberInt(15)],
+	"endTime":[NumberInt(14),NumberInt(15)]
+})
+
+db.intervention.insert({
+	"id":"szc2ah2",
+	"customerId":"szc2",
+	"serviceId":"sadz",
+	"auxiliaryId": "auxh",
+	"period":"P4W",
+	"startDate":[NumberInt(2017),NumberInt(4),NumberInt(2)],
+	"endDate":[NumberInt(2017),NumberInt(6),NumberInt(2)],
+	"startTime":[NumberInt(8),NumberInt(0)],
+	"endTime":[NumberInt(12),NumberInt(0)],
+	"days":["WEDNESDAY"]
+})
+
+db.intervention.insert({
+	"id":"szc7ah3",
+	"customerId":"szc7",
+	"serviceId":"sadz",
+	"auxiliaryId": "auxh",
+	"period":"P4W",
+	"startDate":[NumberInt(2017),NumberInt(4),NumberInt(15)],
+	"endDate":[NumberInt(2017),NumberInt(6),NumberInt(15)],
+	"startTime":[NumberInt(10),NumberInt(0)],
+	"endTime":[NumberInt(16),NumberInt(0)],
+	"days":["THURSDAY"]
+})
+
+db.intervention.insert({
+	"id":"szc41",
+	"customerId":"szc4",
+	"serviceId":"sadz",
+	"period":"ONE",
+	"startDate":[NumberInt(2017),NumberInt(5),NumberInt(1)],
+	"startTime":[NumberInt(11),NumberInt(15)],
+	"endTime":[NumberInt(14),NumberInt(15)]
+})
+
+
+
+/* ****************************************************************************************
+ * DB-OFFERS
+ */
+db.offer.insert({
+	"id":"szc41aa",
+	"auxiliaryId":"auxa",
+	"serviceId":"sadz",
+	"customerId":"szc4",
+	"interventionId":"szc41",
+	"creationDate":[NumberInt(2017), NumberInt(3), NumberInt(19)],
+	"sadStatus":"PENDING",
+	"sadStatusChanged":[NumberInt(2017), NumberInt(3), NumberInt(19)],
+	"auxStatus":"ACCEPTED",
+	"auxStatusChanged":[NumberInt(2017), NumberInt(3), NumberInt(25)],
+	"hideToAux":false,
+	"hideToSad":false
+})
+db.offer.insert({
+	"id":"szc41ah",
+	"auxiliaryId":"auxh",
+	"serviceId":"sadz",
+	"customerId":"szc4",
+	"interventionId":"szc41",
+	"creationDate":[NumberInt(2017), NumberInt(3), NumberInt(19)],
+	"sadStatus":"PENDING",
+	"sadStatusChanged":[NumberInt(2017), NumberInt(3), NumberInt(19)],
+	"auxStatus":"DECLINED",
+	"auxStatusChanged":[NumberInt(2017), NumberInt(3), NumberInt(25)],
+	"hideToAux":false,
+	"hideToSad":false
+})
+db.offer.insert({
+	"id":"szc11aa",
+	"auxiliaryId":"auxa",
+	"serviceId":"sadz",
+	"customerId":"szc1",
+	"interventionId":"szc11",
+	"creationDate":[NumberInt(2017), NumberInt(1), NumberInt(19)],
+	"sadStatus":"PENDING",
+	"sadStatusChanged":[NumberInt(2017), NumberInt(1), NumberInt(19)],
+	"hideToAux":false,
+	"hideToSad":false
+})
+db.offer.insert({
+	"id":"szc11ab",
+	"auxiliaryId":"auxb",
+	"serviceId":"sadz",
+	"customerId":"szc1",
+	"interventionId":"szc11",
+	"creationDate":[NumberInt(2017), NumberInt(1), NumberInt(20)],
+	"sadStatus":"PENDING",
+	"sadStatusChanged":[NumberInt(2017), NumberInt(1), NumberInt(20)],
+	"hideToAux":false,
+	"hideToSad":false
+})
+
 
 
 /* ****************************************************************************************
