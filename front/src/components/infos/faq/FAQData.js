@@ -1,5 +1,5 @@
 import AppHelper from 'helpers/AppHelper'
-import { BaseData, Utils } from 'ap-react-bootstrap'
+import { BaseData, Utils, TextUtils } from 'ap-react-bootstrap'
 
 import HelpfaqHelper from 'helpers/HelpfaqHelper'
 
@@ -58,7 +58,7 @@ class FAQData extends BaseData {
 
 	_filterTopics(topic) {
 		if (this.getState('query')) {
-			return topic.title.toUpperCase().indexOf(this.getState('query').toUpperCase()) !== -1
+			return TextUtils.easenSearch(topic.title).indexOf(TextUtils.easenSearch(this.getState('query'))) !== -1
 		} else {
 			return true;
 		}
