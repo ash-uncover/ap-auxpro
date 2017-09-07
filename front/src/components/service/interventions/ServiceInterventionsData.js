@@ -10,11 +10,19 @@ class ServiceInterventionsData extends BaseData {
 	register(obj) {
 		super.register(obj)
 		
-		this.declareFunction('onCreate')
-		this.declareFunction('onView')
-		this.declareFunction('onEdit')
-		this.declareFunction('onMatch')
-		this.declareFunction('onDelete')
+		this.declareFunction('onCreateIntervention')
+		this.declareFunction('onEditIntervention')		
+		this.declareFunction('onMatchIntervention')
+		this.declareFunction('onDeleteIntervention')
+
+		this.declareFunction('onFollowMatching')
+		this.declareFunction('onCancelMatching')
+
+		this.declareFunction('onCancelIntervention')
+
+		this.declareFunction('onViewCustomer')
+		this.declareFunction('onViewAuxiliary')
+
 
 		this.obj.state = {
 			pending: [],
@@ -68,26 +76,32 @@ class ServiceInterventionsData extends BaseData {
 	// View callbacks //
 	// --------------------------------------------------------------------------------
 
-	onCreate() {
-		
+	onCreateIntervention() {
+		AppHelper.navigate('/service/interventions/new')
 	}
-	onView(interventionId) {
-		
+	onEditIntervention(interventionId) {
+		AppHelper.navigate('/service/interventions/' + interventionId)
 	}
-	onEdit(interventionId) {
-		
+	onMatchIntervention(interventionId) {
+		console.log('onMatchIntervention')
 	}
-	onMatch(interventionId) {
-		
+	onDeleteIntervention(interventionId) {
+		console.log('onDeleteIntervention')	
 	}
-	onFollow(interventionId) {
-		
+	onFollowMatching(interventionId) {
+		console.log('onFollowMatching')
 	}
-	onCancel(interventionId) {
-		
+	onCancelMatching(interventionId) {
+		console.log('onCancelMatching')
 	}
-	onDelete(interventionId) {
-		
+	onCancelIntervention(interventionId) {
+		console.log('onCancelIntervention')	
+	}
+	onViewCustomer(customerId) {
+		console.log('onViewCustomer')	
+	}
+	onViewAuxiliary(auxiliaryId) {
+		console.log('onViewAuxiliary')	
 	}
 
 

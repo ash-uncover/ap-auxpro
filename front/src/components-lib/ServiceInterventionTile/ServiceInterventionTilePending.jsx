@@ -11,7 +11,7 @@ class ServiceInterventionTilePending extends React.Component {
 
 	render() {
 		return (
-			<Grid.Col sm={6} md={4} lg={3} className='ap-service-intervention-tile ap-intervention-pending'>
+			<Grid.Col sm={6} md={4} className='ap-service-intervention-tile ap-intervention-pending'>
 				<Panel>
 					<Panel.Header>
 						<p>Demande de prestation</p>						

@@ -35,8 +35,7 @@ class ServiceCustomerEdit extends React.Component {
 	_buildFormGroup(field) { 
 		let state = this.state[field.key + 'Default']
 		if (!state && field.validator) {
-			state = field.validator.getState(this.state[field.key])
-			
+			state = field.validator.getState(this.state[field.key])	
 		}
 		return (
 			<Form.Group key={field.key} state={state}>

@@ -39,7 +39,11 @@ class ServiceInterventions extends React.Component {
 
 	_buildPending(intervention) {
 		return (
-			<ServiceInterventionTilePending key={intervention.id}>
+			<ServiceInterventionTilePending 
+				key={intervention.id}
+				onEdit={this.onEditIntervention.bind(this, intervention.id)}
+				onMatch={this.onMatchIntervention.bind(this, intervention.id)}
+				onDelete={this.onDeleteIntervention.bind(this, intervention.id)}>
 				{this.__buildCustomerContent(intervention.customerId)}
 				<Text text={InterventionUtils.getText(intervention)} />
 			</ServiceInterventionTilePending>
@@ -47,7 +51,10 @@ class ServiceInterventions extends React.Component {
 	}
 	_buildOffered(intervention) {
 		return (
-			<ServiceInterventionTileOffered key={intervention.id}>
+			<ServiceInterventionTileOffered 
+				key={intervention.id}
+				onFollow={this.onFollowMatching.bind(this, intervention.id)}
+				onCancel={this.onCancelMatching.bind(this, intervention.id)}>
 				{this.__buildCustomerContent(intervention.customerId)}
 				<Text text={InterventionUtils.getText(intervention)} />
 			</ServiceInterventionTileOffered>
@@ -56,11 +63,16 @@ class ServiceInterventions extends React.Component {
 	_buildPlanned(intervention) {
 		let auxiliary = AuxiliaryHelper.getData(intervention.auxiliaryId)
 		return (
-			<ServiceInterventionTilePlanned key={intervention.id}>
+			<ServiceInterventionTilePlanned 
+				key={intervention.id}
+				onCancel={this.onCancelIntervention.bind(this, intervention.id)}>
 				{this.__buildCustomerContent(intervention.customerId)}
 				<Text text={InterventionUtils.getText(intervention)} />
-				<div>
+				<div className='ap-intile-strong'>
 					<b>Assurée par {AuxiliaryUtils.getFullName(auxiliary)}</b>
+					<Button bsSize='xs' className='ap-intile-action' onClick={this.onViewAuxiliary.bind(this, auxiliary.id)}>
+						<Glyphicon glyph='user' />
+					</Button>
 				</div>
 			</ServiceInterventionTilePlanned>
 		)
@@ -69,9 +81,9 @@ class ServiceInterventions extends React.Component {
 	__buildCustomerContent(customerId) {
 		let customer = CustomerHelper.getData(customerId)
 		return (
-			<div>
+			<div className='ap-intile-strong'>
 				<b>{CustomerUtils.getFullName(customer)}</b>
-				<Button bsSize='xs' className='ap-intile-action'>
+				<Button bsSize='xs' className='ap-intile-action' onClick={this.onViewCustomer.bind(this, customerId)}>
 					<Glyphicon glyph='user' />
 				</Button>
 			</div>
@@ -97,7 +109,7 @@ class ServiceInterventions extends React.Component {
 				<Button 
 					block 
 					bsStyle='primary'
-					onClick={this.onCreate}>
+					onClick={this.onCreateIntervention}>
 					Saisir nouvelle prestation
 				</Button>
 				<br/>

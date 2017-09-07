@@ -11,7 +11,7 @@ class ServiceInterventionTilePlanned extends React.Component {
 
 	render() {
 		return (
-			<Grid.Col sm={6} md={4} lg={3} className='ap-service-intervention-tile ap-intervention-planned'>
+			<Grid.Col sm={6} md={4} className='ap-service-intervention-tile ap-intervention-planned'>
 				<Panel>
 					<Panel.Header>
 						<p>Intervention planifiée</p>						

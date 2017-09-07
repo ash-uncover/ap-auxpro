@@ -1,4 +1,4 @@
-import RecurencePeriod from 'utils-lib/constants/RecurencePeriod'
+import RecurencePeriod from 'utils/constants/RecurencePeriod'
 
 class RecurencePeriodUtils {
 
@@ -9,6 +9,17 @@ class RecurencePeriodUtils {
 			case RecurencePeriod.P2W.key: return 'Prestation une semaine sur deux'
 			case RecurencePeriod.P3W.key: return 'Prestation une semaine sur trois'
 			case RecurencePeriod.P4W.key: return 'Prestation une semaine sur quatre'
+		}
+		return ''
+	}
+
+	static getShortName(func) {
+		switch (func) {
+			case RecurencePeriod.ONE.key: return 'Unique'
+			case RecurencePeriod.P1W.key: return 'Hebdomadaire'
+			case RecurencePeriod.P2W.key: return 'Une semaine sur deux'
+			case RecurencePeriod.P3W.key: return 'Une semaine sur trois'
+			case RecurencePeriod.P4W.key: return 'Une semaine sur quatre'
 		}
 		return ''
 	}

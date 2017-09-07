@@ -4,8 +4,10 @@ import OfferHelper from 'helpers/OfferHelper'
 
 import OfferStatus from 'utils/constants/OfferStatus'
 
+import InterventionFields from 'utils/entities/InterventionFields'
+import RecurencePeriod from 'utils/constants/RecurencePeriod'
+
 import InterventionType from 'utils-lib/constants/InterventionType'
-import RecurencePeriod from 'utils-lib/constants/RecurencePeriod'
 
 import DayUtils from 'utils-lib/entities/DayUtils'
 import RecurencePeriodUtils from 'utils-lib/entities/RecurencePeriodUtils'
@@ -14,6 +16,21 @@ class InterventionUtils {
 
 	static storeInterventionMatch(result, params) {
 		
+	}
+
+	static getFieldName(field) {
+		switch (field) {
+		case InterventionFields.PERIOD.key: return 'Périodicité'
+		case InterventionFields.AUXILIARY_ID.key: return 'Auxiliaire'
+		case InterventionFields.END_DATE.key: return 'Fin'
+		case InterventionFields.CUSTOMER_ID.key: return 'Usager'
+		case InterventionFields.DAYS.key: return 'Jours'
+		case InterventionFields.START_TIME.key: return 'De'
+		case InterventionFields.END_TIME.key: return 'A'
+		case InterventionFields.SERVICE_ID.key: return 'Service'
+		case InterventionFields.START_DATE.key: return 'Début'
+		case InterventionFields.SAD_STATUS.key: return 'Statut'
+		}
 	}
 
 	static getType(intervention) {
