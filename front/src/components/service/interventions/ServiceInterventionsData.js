@@ -30,7 +30,7 @@ class ServiceInterventionsData extends BaseData {
 			planned: []
 		}
 
-		InterventionHelper.register('', this, this.onInterventionsUpdate.bind(this))
+		InterventionHelper.register('/', this, this.onInterventionsUpdate.bind(this))
 		this._onInterventionsUpdate()
 	}
 
@@ -77,10 +77,10 @@ class ServiceInterventionsData extends BaseData {
 	// --------------------------------------------------------------------------------
 
 	onCreateIntervention() {
-		AppHelper.navigate('/service/interventions/new')
+		AppHelper.navigate('/service/interventions/new/edit')
 	}
 	onEditIntervention(interventionId) {
-		AppHelper.navigate('/service/interventions/' + interventionId)
+		AppHelper.navigate('/service/interventions/' + interventionId + '/edit')
 	}
 	onMatchIntervention(interventionId) {
 		console.log('onMatchIntervention')

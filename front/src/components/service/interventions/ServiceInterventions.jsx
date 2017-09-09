@@ -91,7 +91,7 @@ class ServiceInterventions extends React.Component {
 	}
 
 	buildPendingLabel() {
-		let l = this.state.pending.length
+		let l = this.state.pending && this.state.pending.length || 0
 		return l + ' ' + TextUtils.pluralize('demande', l) + ' de prestation'
 	}
 	buildOfferedLabel() {

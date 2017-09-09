@@ -14,17 +14,22 @@ class FormSelectWeekDays extends React.Component {
 
 	onChange(value, event) {
 		let current = this.props.values || []
+		let result = current
 		let index = current.indexOf(value)
 		if (index === -1 && event.target.checked) {
 			if (this.props.onChange) {
-				this.props.onChange(event, current.concat([ value ]))
+				result = current.concat([ value ])
 			}
 		} else if (index !== -1 && !event.target.checked) {
 			if (this.props.onChange) {
-				current.splice(index, 1)
-				this.props.onChange(event, current)
+				result.splice(index, 1)
 			}
 		}
+		this.props.onChange(event, result.sort(this._sortDays))
+	}
+
+	_sortDays(d1, d2) {
+		return (Day.get(d1).index - Day.get(d2).index)
 	}
 
 	_buildDaySwitch(day) {
@@ -32,7 +37,7 @@ class FormSelectWeekDays extends React.Component {
 			<Form.Switch 
 				key={day.key}
 				text={DayUtils.getName(day.key)}
-				value={this.props.values && this.props.values.indexOf(day.key) !== - 1} 
+				value={(this.props.values && this.props.values.indexOf(day.key) !== - 1) || false}
 				onChange={this.onChange.bind(this, day.key)} />
 		)
 	}

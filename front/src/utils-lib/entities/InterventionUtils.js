@@ -1,4 +1,5 @@
 import { Utils, MomentHelper } from 'ap-react-bootstrap'
+import moment from 'moment'
 
 import OfferHelper from 'helpers/OfferHelper'
 
@@ -73,6 +74,52 @@ class InterventionUtils {
 		}
 
 		return text
+	}
+
+	static checkValidity(intervention) {
+		let hasError = false
+		let errors = {}
+		// Check validator for each field
+		for (let i = 0 ; i < InterventionFields.VALUES.length ; i++) {
+			let field = InterventionFields.VALUES[i]
+			if (field.validator && field.validator.getState(intervention[field.key]) === 'error') {
+				errors[field.key] = 'Valeur invalide'
+				hasError = true
+			}
+		}
+		if (hasError) {
+			return errors
+		}
+		// Check start date is in the future
+		let startDate = MomentHelper.fromLocalDate(intervention.startDate)
+		if (moment().startOf('day').isAfter(startDate)) {
+			errors.startDate = 'La date de début ne peut être dans le passé'
+			hasError = true
+		}
+		// Check start time is before end time
+		if (intervention.startTime[0] > intervention.endTime[0] || (intervention.startTime[0] === intervention.endTime[0] && intervention.startTime[1] >= intervention.endTime[1])) {
+			errors.startTime = "L'horaire de fin doit être après l'horaire de début"
+			errors.endTime = "L'horaire de fin doit être après l'horaire de début"
+			hasError = true
+		}
+		if (intervention.period !== 'ONE') {
+			// Check end date is after start date
+			let endDate = MomentHelper.fromLocalDate(intervention.endDate)
+			if (startDate.isAfter(endDate)) {
+				errors.startDate = 'La date de fin doit être après la date de début'
+				errors.endDate = 'La date de fin doit être après la date de début'
+				hasError = true
+			}
+			// Check at least one day is selected
+			if (intervention.days.length === 0) {
+				errors.days = 'Vous devez sélectionner au moins un jour'
+				hasError = true
+			}
+		}
+		if (hasError) {
+			return errors
+		}
+		return null
 	}
 }
 export default InterventionUtils

@@ -29,16 +29,19 @@ class ServiceIntervention extends React.Component {
 	// --------------------------------------------------------------------------------
 
 	_buildFormGroup(field) {
+		if (this.state.period === 'ONE' && field.key === 'endDate') {
+			return null
+		}
 		let state = null
 		if (field.validator) {
 			state = field.validator.getState(this.state[field.key])	
 		}
 		return (
 			<Form.Group key={field.key}>
-				<Form.Label className='col-sm-5 col-md-4'>
+				<Form.Label className='col-sm-4'>
 					{field.name || InterventionUtils.getFieldName(field.key)}
 				</Form.Label>
-				<Grid.Col sm={7} md={8}>
+				<Grid.Col sm={8}>
 					{this.buildFormControl(field)}
 				</Grid.Col>
 			</Form.Group>
@@ -97,7 +100,9 @@ class ServiceIntervention extends React.Component {
 
 
 	render() {
-		let submitDisabled = !this.state.dirty || !this.checkValidity()
+		let errors = InterventionUtils.checkValidity(this.state)
+		console.log(errors)
+		let submitDisabled = !this.state.dirty ||  errors !== null
 		console.log(this.state)
 		return (
 			<div className='ap-service-intervention'>
@@ -114,16 +119,21 @@ class ServiceIntervention extends React.Component {
 					</Panel.Header>
 					<Panel.Body>
 						<Grid.Row>
-							<Grid.Col sm={8} md={7} mdOffset={1} lg={4} lgOffset={2}>
-								<Form horizontal className='row'>
+							<Grid.Col sm={8} md={7} lg={6} lgOffset={1}>
+								<Form horizontal>
 									{ServiceInterventionData.FIELDS_FORM1.map(this.buildFormGroup)}
 								</Form>
 							</Grid.Col>
-							<Grid.Col sm={4} md={4} lg={4}>
-								<Grid.Row>
-									<FormSelectWeekDays values={this.state.days} onChange={this.onChangeDirty.bind(this, 'days')}/>
-								</Grid.Row>
-							</Grid.Col>							
+							{ this.state.period !== 'ONE' ?
+							<Grid.Col sm={3} smOffset={1}>
+								<Form>
+									<Form.Group>
+										<Form.Label>Jours</Form.Label>
+										<FormSelectWeekDays values={this.state.days} onChange={this.onChangeDirty.bind(this, 'days')}/>
+									</Form.Group>
+								</Form>
+							</Grid.Col>
+							: null }
 						</Grid.Row>
 					</Panel.Body>
 					<Panel.Footer>
