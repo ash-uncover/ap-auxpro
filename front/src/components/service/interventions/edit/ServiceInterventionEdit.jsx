@@ -108,12 +108,12 @@ class ServiceInterventionEdit extends React.Component {
 					block 
 					bsStyle='primary'
 					onClick={this.onCancel}>
-					Annuler
-					</Button>
+					Retour
+				</Button>
 				<br/>
 				<Panel> 
 					<Panel.Header>
-						Demande de prestation
+						{ this.state.mode === ServiceInterventionEditData.MODES.CREATE ? 'Nouvelle demande de prestation' : 'Modifier demande de prestation' }
 					</Panel.Header>
 					<Panel.Body>
 						<Grid.Row>
@@ -142,8 +142,9 @@ class ServiceInterventionEdit extends React.Component {
 					bsStyle={submitDisabled ? 'default' : 'success'}
 					disabled={submitDisabled}
 					onClick={this.onSubmit}>
-					Enregistrer modifications
+					{ this.state.mode === ServiceInterventionEditData.MODES.CREATE ? 'Créer demande de prestation' : 'Enregistrer modifications' }
 				</Button>
+				<br/>
 			</div>
 		)
 	}

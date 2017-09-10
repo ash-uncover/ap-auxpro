@@ -15,9 +15,13 @@ class ImageData extends BaseData {
 
 		this._onImageUpdate()
 
+		console.log('--------------------------------------')
+		console.log(id)
+
 		if (id) {
-			ImageHelper.register(id, this, this._onImageUpdate.bind(this))
+			ImageHelper.register(id, this, this.onImageUpdate.bind(this))
 			if (!ImageHelper.getData(id)) {
+				console.log('LOAD')
 				ImageHelper.getImage(id)
 			}
 		}
@@ -27,8 +31,14 @@ class ImageData extends BaseData {
 		ImageHelper.unregister(this)
 	}
 
+	onImageUpdate() {
+		console.log('LOADEEEDDDDDDDDDDD')
+		this._onImageUpdate()
+		this.forceUpdate()
+	}
+
 	_onImageUpdate() {
-		this.setState({ src: ImageHelper.getData(this.id) })
+		this.obj.state.src = ImageHelper.getData(this.id)
 	}
 }
 var ImageObj = new ImageData()

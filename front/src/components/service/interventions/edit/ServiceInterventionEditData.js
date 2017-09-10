@@ -7,15 +7,12 @@ import { BaseData, Day, Formatters, Utils, MomentHelper } from 'ap-react-bootstr
 
 import RecurencePeriod from 'utils/constants/RecurencePeriod'
 
+import InterventionType from 'utils-lib/constants/InterventionType'
+
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 import InterventionFields from 'utils/entities/InterventionFields'
 import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 import RecurencePeriodUtils from 'utils-lib/entities/RecurencePeriodUtils'
-
-let MODES = {
-	CREATE: 'CREATE',
-	EDIT: 'EDIT'
-}
 
 class ServiceInterventionEditData extends BaseData {
 
@@ -24,6 +21,10 @@ class ServiceInterventionEditData extends BaseData {
 		this.FIELDS_FORM1 = []
 		this.FIELDS_FORM2 = []
 		this.FIELDS = []
+		this.MODES = {
+			CREATE: 'CREATE',
+			EDIT: 'EDIT'
+		}
 	}
 
 	register(obj, interventionId) {
@@ -36,9 +37,16 @@ class ServiceInterventionEditData extends BaseData {
 		this.declareFunction('onSubmit')
 
 		this.obj.state = {
-			mode: interventionId !== 'new' ? MODES.EDIT : MODES.CREATE
+			mode: interventionId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
 		}
 
+		if (this.getState('mode') === this.MODES.EDIT) {
+			let type = InterventionUtils.getType(InterventionHelper.getData(interventionId))
+			if (type === InterventionType.OFFERED || type === InterventionType.PLANNED) {
+				AppHelper.navigate('/service/interventions/' + interventionId)
+				return
+			}
+		}
 		let defaultDate = MomentHelper.toLocalDate(moment())
 		let customers = this.getCustomers()
 
@@ -103,7 +111,7 @@ class ServiceInterventionEditData extends BaseData {
 		AppHelper.setBusy(true).
 		then(function() {
 			let intervention = this.buildIntervention()
-			if (this.getState('mode') === MODES.CREATE) {
+			if (this.getState('mode') === this.MODES.CREATE) {
 				return InterventionHelper.postIntervention(intervention)
 			} else {
 				return InterventionHelper.putIntervention(intervention)
@@ -144,7 +152,7 @@ class ServiceInterventionEditData extends BaseData {
 	}
 
 	buildIntervention() {
-		let intervention = (this.getState('mode') === MODES.CREATE) ?
+		let intervention = (this.getState('mode') === this.MODES.CREATE) ?
 			{ serviceId: AuthHelper.getEntityId() } :
 			InterventionHelper.getData(this.interventionId)
 			

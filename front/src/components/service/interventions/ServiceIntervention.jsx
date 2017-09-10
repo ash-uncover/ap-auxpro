@@ -88,22 +88,9 @@ class ServiceIntervention extends React.Component {
 		}
 	}
 
-	checkValidity() {
-		for (let i = 0 ; i < ServiceInterventionData.FIELDS.length ; i++) {
-			let field = ServiceInterventionData.FIELDS[i]
-			if (field.validator && field.validator.getState(this.state[field.key]) === 'error') {
-				return false
-			}
-		}
-		return true
-	}
-
-
 	render() {
 		let errors = InterventionUtils.checkValidity(this.state)
-		console.log(errors)
-		let submitDisabled = !this.state.dirty ||  errors !== null
-		console.log(this.state)
+		let submitDisabled = !this.state.dirty || errors !== null
 		return (
 			<div className='ap-service-intervention'>
 				<Button 
@@ -146,6 +133,7 @@ class ServiceIntervention extends React.Component {
 					onClick={this.onSubmit}>
 					Enregistrer modifications
 				</Button>
+
 			</div>
 		)
 	}

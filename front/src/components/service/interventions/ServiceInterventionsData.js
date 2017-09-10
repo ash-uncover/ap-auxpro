@@ -83,7 +83,20 @@ class ServiceInterventionsData extends BaseData {
 		AppHelper.navigate('/service/interventions/' + interventionId + '/edit')
 	}
 	onMatchIntervention(interventionId) {
-		console.log('onMatchIntervention')
+		InterventionUtils.storeInterventionMatch(null, { id: interventionId })
+		AppHelper.setBusy(true).
+		then(function () {
+			return InterventionHelper.getInterventionMatch(interventionId)	
+		}).
+		then(function() {
+			setTimeout(function () { AppHelper.setBusy() }, 200)
+			AppHelper.navigate('/service/interventions/' + interventionId + '/match')
+		}).
+		catch(function (error) {
+			setTimeout(function () { AppHelper.setBusy() }, 200)
+			console.error('Unable to load matches:')
+			console.error(error)
+		})
 	}
 	onDeleteIntervention(interventionId) {
 		console.log('onDeleteIntervention')	
