@@ -1,6 +1,6 @@
 import React from 'react'
 import AuxiliaryMatchListItemData from './AuxiliaryMatchListItemData'
-import './AuxiliaryMatchListItem.scss'
+import './AuxiliaryListItem.scss'
 
 import { BaseComponent, Grid, Glyphicon, List, RaterStar, Button } from 'ap-react-bootstrap'
 
@@ -11,7 +11,7 @@ class AuxiliaryMatchListItem extends BaseComponent {
 	constructor(props) {
 		super(props)
 		// Base classes
-		this.baseClasses = [ 'ap-auxiliary-match-item' ]
+		this.baseClasses = [ 'ap-auxiliary-list-item', 'ap-auxiliary-list-item-match' ]
 		// Sub components properties
 		this.ListGroupItemLinkProps = {}
 		// Component properties

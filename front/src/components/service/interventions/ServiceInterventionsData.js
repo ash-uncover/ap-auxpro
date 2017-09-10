@@ -102,7 +102,7 @@ class ServiceInterventionsData extends BaseData {
 		console.log('onDeleteIntervention')	
 	}
 	onFollowMatching(interventionId) {
-		console.log('onFollowMatching')
+		AppHelper.navigate('/service/interventions/' + interventionId + '/follow')
 	}
 	onCancelMatching(interventionId) {
 		console.log('onCancelMatching')

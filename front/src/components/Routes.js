@@ -36,6 +36,7 @@ import ServiceInterventions from 'components/service/interventions/ServiceInterv
 import ServiceInterventionEdit from 'components/service/interventions/edit/ServiceInterventionEdit'
 import ServiceIntervention from 'components/service/interventions/ServiceIntervention'
 import ServiceInterventionMatch from 'components/service/interventions/match/ServiceInterventionMatch'
+import ServiceInterventionFollow from 'components/service/interventions/follow/ServiceInterventionFollow'
 import ServiceAuxiliaries from 'components/service/auxiliaries/ServiceAuxiliaries'
 import ServiceAuxiliary from 'components/service/auxiliaries/ServiceAuxiliary'
 import Auxiliary from 'components/auxiliary/Auxiliary'
@@ -83,6 +84,7 @@ let serviceRoutes = [
 	{ path: '/interventions/:interventionId/edit', component: ServiceInterventionEdit },
 	{ path: '/interventions/:interventionId', component: ServiceIntervention },
 	{ path: '/interventions/:interventionId/match', component: ServiceInterventionMatch },
+	{ path: '/interventions/:interventionId/follow', component: ServiceInterventionFollow },
 	{ path: '/auxiliaries', component: ServiceAuxiliaries },
 	{ path: '/auxiliaries/:auxiliaryId', component: ServiceAuxiliary },
 ]

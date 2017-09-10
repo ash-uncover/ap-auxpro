@@ -850,6 +850,7 @@ db.offer.insert({
 	"creationDate":[NumberInt(2017), NumberInt(1), NumberInt(19)],
 	"sadStatus":"PENDING",
 	"sadStatusChanged":[NumberInt(2017), NumberInt(1), NumberInt(19)],
+	"auxStatus":"PENDING",
 	"hideToAux":false,
 	"hideToSad":false
 })
@@ -862,6 +863,7 @@ db.offer.insert({
 	"creationDate":[NumberInt(2017), NumberInt(1), NumberInt(20)],
 	"sadStatus":"PENDING",
 	"sadStatusChanged":[NumberInt(2017), NumberInt(1), NumberInt(20)],
+	"auxStatus":"PENDING",
 	"hideToAux":false,
 	"hideToSad":false
 })

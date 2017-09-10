@@ -6,6 +6,9 @@ import OfferHelper from 'helpers/OfferHelper'
 import { BaseData, MomentHelper } from 'ap-react-bootstrap'
 import moment from 'moment'
 
+import InterventionType from 'utils-lib/constants/InterventionType'
+import InterventionUtils from 'utils-lib/entities/InterventionUtils'
+
 class ServiceInterventionMatchData extends BaseData {
 
 	register(obj, interventionId) {
@@ -19,6 +22,10 @@ class ServiceInterventionMatchData extends BaseData {
 		this.declareFunction('onClick')
 
 		let intervention = InterventionHelper.getData(interventionId)
+		if (InterventionUtils.getType(intervention) !== InterventionType.PENDING) {
+			AppHelper.navigate('/service/interventions/' + interventionId)
+			return
+		}
 
 		this.obj.state = {
 			matches: intervention.match,

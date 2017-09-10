@@ -141,5 +141,18 @@ class InterventionUtils {
 		}
 		return null
 	}
+
+	static getOffers(intervention) {
+		let result = []
+		let offers = Utils.map(OfferHelper.getData())
+		for (let i = 0; i < offers.length; i++) {
+			let offer = offers[i]
+			if (offer.interventionId === intervention.id) {
+				result.push(offer)
+			}
+		}
+		return result
+	}
+
 }
 export default InterventionUtils

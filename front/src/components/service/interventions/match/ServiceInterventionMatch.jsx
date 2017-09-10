@@ -4,7 +4,7 @@ import './ServiceInterventionMatch.scss'
 
 import { Button, Panel, Form, Grid, List, TextUtils } from 'ap-react-bootstrap'
 
-import AuxiliaryMatchListItem from 'components-lib/AuxiliaryMatchListItem/AuxiliaryMatchListItem'
+import AuxiliaryMatchListItem from 'components-lib/AuxiliaryListItem/AuxiliaryMatchListItem'
 
 class ServiceInterventionMatch extends React.Component {
 
@@ -40,6 +40,8 @@ class ServiceInterventionMatch extends React.Component {
 	}
 
 	render() {
+		console.log('heeeeeeeeeeere')
+		console.log(this.state)
 		return (
 			<div className='ap-service-intervention-match'>
 				<Button 
