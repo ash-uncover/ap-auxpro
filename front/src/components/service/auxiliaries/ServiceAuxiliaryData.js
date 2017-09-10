@@ -6,11 +6,17 @@ class ServiceAuxiliaryData extends BaseData {
 
 	register(obj, auxiliaryId) {
 		super.register(obj)
+
+		this.declareFunction('onCancel')
 		
 		this.obj.state = {}
 	}
 
 	unregister() {
+	}
+
+	onCancel() {
+		AppHelper.navigateBack()
 	}
 
 }

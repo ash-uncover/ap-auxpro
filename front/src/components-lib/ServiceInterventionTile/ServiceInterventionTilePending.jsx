@@ -15,13 +15,22 @@ class ServiceInterventionTilePending extends React.Component {
 				<Panel>
 					<Panel.Header>
 						<p>Demande de prestation</p>						
-						<Button bsSize='xs' onClick={this.props.onEdit}>
+						<Button 
+							bsSize='xs' 
+							tooltip='Modifier demande'
+							onClick={this.props.onEdit}>
 							<Glyphicon glyph='pencil'/>
 						</Button>
-						<Button bsSize='xs' onClick={this.props.onMatch}>
+						<Button 
+							bsSize='xs' 
+							tooltip='MATCHING!'
+							onClick={this.props.onMatch}>
 							<Glyphicon glyph='flash'/>
 						</Button>
-						<Button bsSize='xs' onClick={this.props.onDelete}>
+						<Button 
+							bsSize='xs' 
+							tooltip='Supprimer demande'
+							onClick={this.props.onDelete}>
 							<Glyphicon glyph='remove'/>
 						</Button>
 					</Panel.Header>

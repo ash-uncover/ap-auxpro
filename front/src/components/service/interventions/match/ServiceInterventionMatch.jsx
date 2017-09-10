@@ -2,7 +2,7 @@ import React from 'react'
 import ServiceInterventionMatchData from './ServiceInterventionMatchData'
 import './ServiceInterventionMatch.scss'
 
-import { Button, Panel, Form, Grid, List } from 'ap-react-bootstrap'
+import { Button, Panel, Form, Grid, List, TextUtils } from 'ap-react-bootstrap'
 
 import AuxiliaryMatchListItem from 'components-lib/AuxiliaryMatchListItem/AuxiliaryMatchListItem'
 
@@ -10,6 +10,7 @@ class ServiceInterventionMatch extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.buildMatches = this._buildMatches.bind(this)
 	}
 
 	componentWillMount() {
@@ -24,15 +25,17 @@ class ServiceInterventionMatch extends React.Component {
 	// Rendering functions //
 	// --------------------------------------------------------------------------------
 
-	buildMatches(match) {
-		console.log(match)
+	_buildMatches(match) {
+		let active = this.state.selected.indexOf(match.auxiliaryId) !== -1
 		return (
 			<AuxiliaryMatchListItem 
 				key={match.auxiliaryId}
 				auxiliaryId={match.auxiliaryId}
 				geoScore={match.geoScore}
 				timeScore={match.timeScore}
-				skillScore={match.skillScore} />
+				skillScore={match.skillScore}
+				active={active}
+				onClick={this.onClick.bind(this, match.auxiliaryId)} />
 		)
 	}
 
@@ -72,10 +75,10 @@ class ServiceInterventionMatch extends React.Component {
 				</Grid.Row>
 				<Panel> 
 					<Panel.Header>
-						Nouvelle demande de prestation
+						Résultats matching
 					</Panel.Header>
 					<Panel.Body>
-						Sélectionnez des auxiliaires de vie
+						Sélectionnez des auxiliaires de vie pour leur proposer une offre d'intervention.
 					</Panel.Body>
 					<List.GroupLink>
 						{this.state.matches.map(this.buildMatches)}
@@ -85,10 +88,10 @@ class ServiceInterventionMatch extends React.Component {
 				</Panel>
 				<Button 
 					block 
-					bsStyle={!this.state.offersSelected ? 'default' : 'success'}
-					disabled={!this.state.offersSelected}
+					bsStyle={!this.state.selected.length ? 'default' : 'success'}
+					disabled={!this.state.selected.length}
 					onClick={this.onSubmit}>
-					Envoyer offres{ this.state.offersSelected ? ' (' + this.state.offersSelected + ')' : null }
+					Envoyer {TextUtils.pluralize('offre', this.state.selected.length)}{ this.state.selected.length ? ' (' + this.state.selected.length + ')' : null }
 				</Button>
 				<br/>
 			</div>

@@ -111,10 +111,10 @@ class ServiceInterventionsData extends BaseData {
 		console.log('onCancelIntervention')	
 	}
 	onViewCustomer(customerId) {
-		console.log('onViewCustomer')	
+		AppHelper.navigate('/service/customers/' + customerId)
 	}
 	onViewAuxiliary(auxiliaryId) {
-		console.log('onViewAuxiliary')	
+		AppHelper.navigate('/service/auxiliaries/' + auxiliaryId)
 	}
 
 

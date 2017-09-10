@@ -70,7 +70,11 @@ class ServiceInterventions extends React.Component {
 				<Text text={InterventionUtils.getText(intervention)} />
 				<div className='ap-intile-strong'>
 					<b>Assurée par {AuxiliaryUtils.getFullName(auxiliary)}</b>
-					<Button bsSize='xs' className='ap-intile-action' onClick={this.onViewAuxiliary.bind(this, auxiliary.id)}>
+					<Button 
+						bsSize='xs' 
+						className='ap-intile-action' 
+						tooltip='Voir détail auxiliaire'
+						onClick={this.onViewAuxiliary.bind(this, auxiliary.id)}>
 						<Glyphicon glyph='user' />
 					</Button>
 				</div>
@@ -83,7 +87,11 @@ class ServiceInterventions extends React.Component {
 		return (
 			<div className='ap-intile-strong'>
 				<b>{CustomerUtils.getFullName(customer)}</b>
-				<Button bsSize='xs' className='ap-intile-action' onClick={this.onViewCustomer.bind(this, customerId)}>
+				<Button 
+					className='ap-intile-action'
+					bsSize='xs'
+					tooltip='Voir détail usager'
+					onClick={this.onViewCustomer.bind(this, customerId)}>
 					<Glyphicon glyph='user' />
 				</Button>
 			</div>

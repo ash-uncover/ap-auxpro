@@ -15,7 +15,10 @@ class ServiceInterventionTilePlanned extends React.Component {
 				<Panel>
 					<Panel.Header>
 						<p>Intervention planifiée</p>						
-						<Button bsSize='xs' onClick={this.props.onCancel}>
+						<Button 
+							bsSize='xs' 
+							tooltip='Annuler intervention'
+							onClick={this.props.onCancel}>
 							<Glyphicon glyph='remove'/>
 						</Button>
 					</Panel.Header>

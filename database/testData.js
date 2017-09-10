@@ -1,4 +1,13 @@
 /* ****************************************************************************************
+ * DB-APMAIL
+ */
+db.apmail.insert({
+	"id":"mail_offer_send",
+	"subject":"Nouvelle offre sur AuXpros.fr",
+	"content":"Bonjour {user},\n\nVous avez reçu une nouvelle offre de prestation sur AuXpros.fr\nConnectez vous sur www.auxpros.fr pour la visualiser"
+})
+
+/* ****************************************************************************************
  * DB-APAUTH
  */
 db.apauth.insert({

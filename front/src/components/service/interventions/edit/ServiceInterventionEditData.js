@@ -118,7 +118,7 @@ class ServiceInterventionEditData extends BaseData {
 			}
 		}.bind(this)).
 		then(function () {
-			return InterventionHelper.getServiceInterventionEdits(AuthHelper.getEntityId())
+			return InterventionHelper.getServiceInterventions(AuthHelper.getEntityId())
 		}).
 		then(function () {
 			AppHelper.navigateBack()

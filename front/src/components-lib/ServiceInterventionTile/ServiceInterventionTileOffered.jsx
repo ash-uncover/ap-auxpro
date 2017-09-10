@@ -15,10 +15,16 @@ class ServiceInterventionTileOffered extends React.Component {
 				<Panel>
 					<Panel.Header>
 						<p>MATCHING</p>						
-						<Button bsSize='xs' onClick={this.props.onFollow}>
+						<Button 
+							bsSize='xs' 
+							tooltip='Suivi MATCHING'
+							onClick={this.props.onFollow}>
 							<Glyphicon glyph='cloud-upload'/>
 						</Button>
-						<Button bsSize='xs' onClick={this.props.onCancel}>
+						<Button 
+							bsSize='xs' 
+							tooltip='Annuler MATCHING'
+							onClick={this.props.onCancel}>
 							<Glyphicon glyph='remove'/>
 						</Button>
 					</Panel.Header>

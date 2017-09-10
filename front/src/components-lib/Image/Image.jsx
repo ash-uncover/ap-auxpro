@@ -1,13 +1,26 @@
 import React from 'react'
 import './Image.scss'
 
+import { BaseComponent } from 'ap-react-bootstrap'
+
 import ImageHelper from 'helpers/ImageHelper'
 
-class Image extends React.Component {
+class Image extends BaseComponent {
 
 	constructor(props) {
 		super(props)
+		// Base classes
+		this.baseClasses = [ 'ap-image' ]
 		this.state = {}
+		// Component properties
+		this.propsInfos = {
+			required : {
+				id: {}
+			},
+			optionnal : {
+				alt: {}
+			}
+		}
 	}
 
 	componentWillMount() {
@@ -38,8 +51,12 @@ class Image extends React.Component {
 	}
 
 	render() {
+		this.buildProps('Image')
 		return (
-			<img className={'ap-image' + (this.props.className ? ' ' + this.props.className : '')} alt={this.props.alt} src={this.state.src} />
+			<img 
+				className={this.className} 
+				alt={this.props.alt} 
+				src={this.state.src} />
 		)
 	}
 

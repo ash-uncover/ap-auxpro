@@ -9,6 +9,8 @@ class AuxiliaryMatchListItemData extends BaseData {
 	register(obj, auxiliaryId) {
 		super.register(obj)
 
+		this.declareFunction('onShowAuxliaryDetails')
+
 		this.auxiliaryId = auxiliaryId
 
 		let auxiliary = AuxiliaryHelper.getData(auxiliaryId)
@@ -21,6 +23,10 @@ class AuxiliaryMatchListItemData extends BaseData {
 	}
 
 	unregister() {
+	}
+
+	onShowAuxliaryDetails() {
+		AppHelper.navigate('/service/auxiliaries/' + this.auxiliaryId)
 	}
 
 }
