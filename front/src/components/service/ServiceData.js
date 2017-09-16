@@ -3,6 +3,7 @@ import AuthHelper from 'helpers/AuthHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
 import CustomerHelper from 'helpers/CustomerHelper'
 import InterventionHelper from 'helpers/InterventionHelper'
+import MissionHelper from 'helpers/MissionHelper'
 import OfferHelper from 'helpers/OfferHelper'
 import ServiceHelper from 'helpers/ServiceHelper'
 
@@ -35,7 +36,8 @@ class ServiceData extends BaseData {
 				AuxiliaryHelper.getAuxiliarys(AuthHelper.getEntityId()),
 				CustomerHelper.getServiceCustomers(AuthHelper.getEntityId()),
 				InterventionHelper.getServiceInterventions(AuthHelper.getEntityId()),
-				OfferHelper.getServiceOffers(AuthHelper.getEntityId())
+				OfferHelper.getServiceOffers(AuthHelper.getEntityId()),
+				MissionHelper.getServiceMissions(AuthHelper.getEntityId())
 			])
 		}).
 		then(this._onLoad.bind(this))

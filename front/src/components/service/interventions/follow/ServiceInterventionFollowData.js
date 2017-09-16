@@ -1,6 +1,7 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import InterventionHelper from 'helpers/InterventionHelper'
+import MissionHelper from 'helpers/MissionHelper'
 import OfferHelper from 'helpers/OfferHelper'
 
 import { BaseData, MomentHelper } from 'ap-react-bootstrap'
