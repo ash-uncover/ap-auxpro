@@ -31,7 +31,7 @@ class AccountEditEmailDemandInitial extends React.Component {
 						<p>
 							Afin de vous permettre de modifier votre adresse électronique, nous souhaitons vérifier votre identité.
 							<br/>
-							Veuillez saisir votre mot de passe pour recevoir un code de confirmation sur votre adresse électronique actuelle.
+							Un code de confirmation va être envoyé sur votre adresse électronique actuelle.
 							Ce code sera nécessaire pour poursuivre le changement d'adresse électronique.
 						</p>
 						<Button 

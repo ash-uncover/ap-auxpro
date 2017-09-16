@@ -1,3 +1,58 @@
+// Variables
+@import 'assets/styles/variables';
+
 .ap-image {
 	
+}
+
+.ap-image-uploader {
+	
+	.ap-image-uploader-images {
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+
+		.ap-image-uploader-image {
+			border: 3px solid $ap-primary-color;
+			border-radius: 3px;
+			object-fit: cover;
+			
+			&:not([src]) {
+				background: rgba(0, 0, 0, 0.2);
+			}
+
+			&.ap-image-uploader-image-big {
+				width: 150px;
+				height: 150px;
+				margin-right: 25px;
+			}
+			&.ap-image-uploader-image-med {
+				width: 100px;
+				height: 100px;	
+				margin-right: 25px;
+			}
+			&.ap-image-uploader-image-small {
+				width: 60px;
+				height: 60px;
+			}
+		}		
+	}
+
+	.ap-image-uploader-controls {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		.ap-error {
+		}
+		.ap-image-uploader-label {
+			width: 360px;
+			text-align: center;
+		}
+		.ap-image-uploader-input {
+			display: none;
+		}
+	}
+
 }

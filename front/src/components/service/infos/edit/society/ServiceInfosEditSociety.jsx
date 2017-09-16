@@ -6,7 +6,7 @@ import ServiceUtils from 'utils-lib/entities/ServiceUtils'
 
 import { Button, Panel, Form, Grid, Google } from 'ap-react-bootstrap'
 
-import Image from 'components-lib/Image/Image'
+import ImageUploader from 'components-lib/Image/ImageUploader'
 
 class ServiceInfosEditSociety extends React.Component {
 
@@ -58,7 +58,7 @@ class ServiceInfosEditSociety extends React.Component {
 			case 'address': return (
 				<Google.Autocomplete 
 					placeholder='Saisir adresse.'
-					onChange={this.onChangeAddress.bind(this)} />
+					onChange={this.onChangeAddress} />
 				)
 			default: return (
 				<Form.Static>
@@ -92,10 +92,10 @@ class ServiceInfosEditSociety extends React.Component {
 						<Form horizontal>
 							<Grid.Row>
 								<Grid.Col xs={12} className='ap-service-infos-image-container'>
-									<Image 
+									<ImageUploader 
 										className={this.state.avatar ? '' : 'ap-no-image'}
-										alt='<Ma photo>' 
-										id={this.state.avatar} />
+										src={this.state.avatarSrc}
+										onChange={this.onChangeImage} />
 								</Grid.Col>
 								<Grid.Col sm={6} lg={5} lgOffset={1}>
 									{ServiceInfosEditSocietyData.FIELDS_FORM1.map(this.buildFormGroup)}

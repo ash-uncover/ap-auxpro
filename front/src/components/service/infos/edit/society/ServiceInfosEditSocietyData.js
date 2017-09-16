@@ -1,5 +1,6 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
+import ImageHelper from 'helpers/ImageHelper'
 import { BaseData, Formatters } from 'ap-react-bootstrap'
 
 import ServiceHelper from 'helpers/ServiceHelper'
@@ -36,6 +37,7 @@ class ServiceInfosEditSocietyData extends BaseData {
 		this.declareFunction('onSubmit')
 		this.declareFunction('onChangeDirty')
 		this.declareFunction('onChangeAddress')
+		this.declareFunction('onChangeImage')
 
 		this.obj.state = {}
 
@@ -60,6 +62,9 @@ class ServiceInfosEditSocietyData extends BaseData {
 			let field = FIELDS[i]
 			let value = service[field.key]
 			this.obj.state[field.key] = value || field.defaultValue
+		}
+		if (service.avatar) {
+			this.obj.state.avatarSrc = ImageHelper.getData(this.obj.state.avatar)
 		}
 	}
 
@@ -90,6 +95,15 @@ class ServiceInfosEditSocietyData extends BaseData {
 		this.setState(data)
 	}
 
+	onChangeImage(file) {
+		console.log(file)
+		let data = {
+			dirty: true,
+			avatarFile: file
+		}
+		this.setState(data)
+	}
+
 	onCancel() {
 		AppHelper.navigateBack()
 	}
@@ -108,7 +122,20 @@ class ServiceInfosEditSocietyData extends BaseData {
 	onSubmit() {
 		AppHelper.setBusy(true).
 		then(function() {
+			let promises = []
+			if (this.getState('avatarFile')) {
+				promises.push(ImageHelper.postImage({
+					name: 'img',
+					file: this.getState('avatarFile')
+				}))
+			}
+			return Promise.all(promises)
+		}.bind(this)).
+		then(function (oResult) {
 			let service = this.buildService()
+			if (this.getState('avatarFile')) {
+				service.avatar = oResult[0].id
+			}
 			return ServiceHelper.putService(service)
 		}.bind(this)).
 		then(function () {
