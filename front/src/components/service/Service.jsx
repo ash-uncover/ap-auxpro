@@ -1,5 +1,5 @@
 import React from 'react'
-import ServiceData from 'components/service/ServiceData'
+import ServiceData from './ServiceData'
 import './Service.scss'
 
 import ServiceHeader from 'components-lib/ServiceHeader/ServiceHeader'

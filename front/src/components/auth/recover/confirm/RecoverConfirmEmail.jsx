@@ -1,5 +1,5 @@
 import React from 'react'
-import RecoverConfirmEmailData from 'components/auth/recover/confirm/RecoverConfirmEmailData'
+import RecoverConfirmEmailData from './RecoverConfirmEmailData'
 import './RecoverConfirmEmail.scss'
 
 import RecoverConfirm from 'components/auth/recover/confirm/RecoverConfirm'

@@ -1,5 +1,5 @@
 import React from 'react'
-import AuxiliaryHomeData from 'components/auxiliary/home/AuxiliaryHomeData'
+import AuxiliaryHomeData from './AuxiliaryHomeData'
 import './AuxiliaryHome.scss'
 
 import { Panel } from 'ap-react-bootstrap'

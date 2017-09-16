@@ -1,5 +1,5 @@
 import React from 'react'
-import AuxiliaryData from 'components/auxiliary/AuxiliaryData'
+import AuxiliaryData from './AuxiliaryData'
 import './Auxiliary.scss'
 
 import AuxiliaryHeader from 'components-lib/AuxiliaryHeader/AuxiliaryHeader'

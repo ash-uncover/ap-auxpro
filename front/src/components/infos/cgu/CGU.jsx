@@ -1,5 +1,5 @@
 import React from 'react'
-import CGUData from 'components/infos/cgu/CGUData'
+import CGUData from './CGUData'
 import './CGU.scss'
 import { Panel } from 'ap-react-bootstrap'
 

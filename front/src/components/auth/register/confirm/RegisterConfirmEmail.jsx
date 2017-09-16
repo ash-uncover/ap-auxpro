@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterConfirmEmailData from 'components/auth/register/confirm/RegisterConfirmEmailData'
+import RegisterConfirmEmailData from './RegisterConfirmEmailData'
 import './RegisterConfirmEmail.scss'
 
 import RegisterConfirm from 'components/auth/register/confirm/RegisterConfirm'

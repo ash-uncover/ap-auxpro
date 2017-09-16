@@ -1,5 +1,5 @@
 import React from 'react'
-import AuxiliaryTutoData from 'components/auxiliary/tuto/AuxiliaryTutoData'
+import AuxiliaryTutoData from './AuxiliaryTutoData'
 import './AuxiliaryTuto.scss'
 
 import { Carousel, Button } from 'ap-react-bootstrap'

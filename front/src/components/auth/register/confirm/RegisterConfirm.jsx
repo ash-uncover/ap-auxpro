@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterConfirmData from 'components/auth/register/confirm/RegisterConfirmData'
+import RegisterConfirmData from './RegisterConfirmData'
 import './RegisterConfirm.scss'
 
 import { Panel, Form, Grid, Button } from 'ap-react-bootstrap'

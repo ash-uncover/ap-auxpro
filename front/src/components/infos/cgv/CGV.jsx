@@ -1,5 +1,5 @@
 import React from 'react'
-import CGVData from 'components/infos/cgv/CGVData'
+import CGVData from './CGVData'
 import './CGV.scss'
 import { Panel } from 'ap-react-bootstrap'
 

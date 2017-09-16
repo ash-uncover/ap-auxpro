@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterData from 'components/auth/register/RegisterData'
+import RegisterData from './RegisterData'
 import './Register.scss'
 
 import { Col, Button } from 'ap-react-bootstrap'

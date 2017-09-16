@@ -1,5 +1,5 @@
 import React from 'react'
-import AppData from 'components/AppData'
+import AppData from './AppData'
 import './App.scss'
 
 import AppHelper from 'helpers/AppHelper'

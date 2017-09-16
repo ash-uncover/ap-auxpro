@@ -1,5 +1,5 @@
 import React from 'react'
-import ContactData from 'components/infos/contact/ContactData'
+import ContactData from './ContactData'
 import './Contact.scss'
 import { Panel } from 'ap-react-bootstrap'
 

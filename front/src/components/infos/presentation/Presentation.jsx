@@ -1,5 +1,5 @@
 import React from 'react'
-import PresentationData from 'components/infos/presentation/PresentationData'
+import PresentationData from './PresentationData'
 import './Presentation.scss'
 import { Panel } from 'ap-react-bootstrap'
 

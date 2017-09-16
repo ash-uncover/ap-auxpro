@@ -1,5 +1,5 @@
 import React from 'react'
-import ServiceCustomerData from 'components/service/customers/ServiceCustomerData'
+import ServiceCustomerData from './ServiceCustomerData'
 import './ServiceCustomer.scss'
 
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'

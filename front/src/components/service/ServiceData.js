@@ -9,7 +9,7 @@ import ServiceHelper from 'helpers/ServiceHelper'
 
 import { BaseData } from 'ap-react-bootstrap'
 
-// Header not be displayed for the following path
+// Header will not be displayed for the following paths
 let PATHS_NO_HEADER = [
 	'/service/tuto'
 ]

@@ -1,5 +1,5 @@
 import React from 'react'
-import ServiceInterventionsData from 'components/service/interventions/ServiceInterventionsData'
+import ServiceInterventionsData from './ServiceInterventionsData'
 import './ServiceInterventions.scss'
 
 import { Panel, Form, Grid, Button, Glyphicon, SearchBar, TextUtils } from 'ap-react-bootstrap'

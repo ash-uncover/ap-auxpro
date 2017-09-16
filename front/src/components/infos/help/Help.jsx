@@ -1,5 +1,5 @@
 import React from 'react'
-import HelpData from 'components/infos/help/HelpData'
+import HelpData from './HelpData'
 import './Help.scss'
 
 import { Panel, SearchBar } from 'ap-react-bootstrap'

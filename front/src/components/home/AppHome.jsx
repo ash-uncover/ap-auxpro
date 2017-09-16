@@ -1,5 +1,5 @@
 import React from 'react'
-import AppHomeData from 'components/home/AppHomeData'
+import AppHomeData from './AppHomeData'
 import './AppHome.scss'
 
 import { Row, Col, Panel, Button } from 'ap-react-bootstrap'

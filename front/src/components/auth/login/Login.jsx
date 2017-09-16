@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginData from 'components/auth/login/LoginData'
+import LoginData from './LoginData'
 import './Login.scss'
 
 import { Panel, Form, Grid, Button } from 'ap-react-bootstrap'

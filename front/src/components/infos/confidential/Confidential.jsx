@@ -1,5 +1,5 @@
 import React from 'react'
-import ConfidentialData from 'components/infos/confidential/ConfidentialData'
+import ConfidentialData from './ConfidentialData'
 import './Confidential.scss'
 import { Panel } from 'ap-react-bootstrap'
 

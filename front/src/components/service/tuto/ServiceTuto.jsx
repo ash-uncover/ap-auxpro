@@ -1,5 +1,5 @@
 import React from 'react'
-import ServiceTutoData from 'components/service/tuto/ServiceTutoData'
+import ServiceTutoData from './ServiceTutoData'
 import './ServiceTuto.scss'
 
 import { Carousel, Button } from 'ap-react-bootstrap'

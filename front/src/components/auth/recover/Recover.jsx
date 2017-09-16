@@ -1,5 +1,5 @@
 import React from 'react'
-import RecoverData from 'components/auth/recover/RecoverData'
+import RecoverData from './RecoverData'
 import './Recover.scss'
 
 import { Panel, Form, Grid, Button } from 'ap-react-bootstrap'

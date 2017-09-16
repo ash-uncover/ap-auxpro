@@ -1,5 +1,5 @@
 import React from 'react'
-import RecoverConfirmData from 'components/auth/recover/confirm/RecoverConfirmData'
+import RecoverConfirmData from './RecoverConfirmData'
 import './RecoverConfirm.scss'
 
 import { Panel, Form, Grid, Button } from 'ap-react-bootstrap'

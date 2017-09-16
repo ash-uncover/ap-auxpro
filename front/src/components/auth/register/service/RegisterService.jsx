@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterServiceData from 'components/auth/register/service/RegisterServiceData'
+import RegisterServiceData from './RegisterServiceData'
 import './RegisterService.scss'
 
 import { Panel, Form, Grid, Button } from 'ap-react-bootstrap'

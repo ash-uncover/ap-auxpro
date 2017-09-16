@@ -1,5 +1,5 @@
 import React from 'react'
-import ServiceHomeData from 'components/service/home/ServiceHomeData'
+import ServiceHomeData from './ServiceHomeData'
 import './ServiceHome.scss'
 
 import { Panel } from 'ap-react-bootstrap'

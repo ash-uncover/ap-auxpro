@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterAuxiliaryData from 'components/auth/register/auxiliary/RegisterAuxiliaryData'
+import RegisterAuxiliaryData from './RegisterAuxiliaryData'
 import './RegisterAuxiliary.scss'
 
 import { Panel, Form, Grid, Button } from 'ap-react-bootstrap'
