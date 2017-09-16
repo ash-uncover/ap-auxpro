@@ -6,7 +6,7 @@ import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
 import InterventionHelper from 'helpers/InterventionHelper'
 import OfferHelper from 'helpers/OfferHelper'
 
-import OfferStatus from 'utils/constants/OfferStatus'
+import InterventionStatus from 'utils/constants/InterventionStatus'
 
 import InterventionFields from 'utils/entities/InterventionFields'
 import RecurencePeriod from 'utils/constants/RecurencePeriod'
@@ -61,7 +61,7 @@ class InterventionUtils {
 		let offers = Utils.map(OfferHelper.getData())
  		for (let i = 0 ; i < offers.length ; i++) {
 			let offer = offers[i]
-			if (offer.interventionId === intervention.id && offer.sadStatus !== OfferStatus.CANCELED.key) {
+			if (offer.interventionId === intervention.id && offer.sadStatus !== InterventionStatus.CANCELED.key) {
 				return InterventionType.OFFERED
 			}
 		}

@@ -16,8 +16,9 @@ import java.util.Map;
 import javax.ws.rs.core.SecurityContext;
 
 import org.ap.auxpro.bean.InterventionBean;
+import org.ap.auxpro.constants.EInterventionStatus;
 import org.ap.auxpro.constants.EMissionStatus;
-import org.ap.auxpro.constants.EOfferStatus;
+import org.ap.auxpro.constants.EOfferStatusSad;
 import org.ap.auxpro.constants.ERecurencePeriod;
 import org.ap.auxpro.storage.AuxiliaryCollection;
 import org.ap.auxpro.storage.AuxiliaryData;
@@ -171,8 +172,8 @@ public class InterventionHelper {
 		intervention.startDate = bean.startDate;
 
 		if (intervention.getAuxiliaryId() != null) {
-			EOfferStatus status = EOfferStatus.getByName(intervention.sadStatus);
-			if (EOfferStatus._PENDING.equals(status)) {
+			EInterventionStatus status = EInterventionStatus.getByName(intervention.sadStatus);
+			if (EInterventionStatus._PENDING.equals(status)) {
 				// Create Missions
 				switch (ERecurencePeriod.getByName(intervention.getPeriod())) {
 				case _O_N_E:
@@ -200,19 +201,19 @@ public class InterventionHelper {
 				for (OfferData offer : offers) {
 					offer.setSadStatusChanged(TimeHelper.toIntegers(LocalDate.now()));
 					if (offer.getAuxiliaryId().equals(intervention.getAuxiliaryId())) {
-						offer.setSadStatus(EOfferStatus._CONFIRMED.getName());
+						offer.setSadStatus(EOfferStatusSad._CONFIRMED.getName());
 					} else {
-						offer.setSadStatus(EOfferStatus._REJECTED.getName());
+						offer.setSadStatus(EOfferStatusSad._REJECTED.getName());
 					}
 					offer.setHideToSad(true);
 					OfferCollection.update(offer);
 				}
-			} else if (EOfferStatus._CANCELED.equals(status)) {
+			} else if (EOfferStatusSad._CANCELED.equals(status)) {
 				// Cancel missions
 				List<MissionData> missions = MissionCollection.get(eq("interventionId", intervention.getId()));
 				for (MissionData mission : missions) {
 					if (TimeHelper.toLocalDate(mission.getDate()).isAfter(LocalDate.now())) {
-						mission.setSadStatus(EOfferStatus._CANCELED.getName());
+						mission.setSadStatus(EOfferStatusSad._CANCELED.getName());
 						mission.setSadStatusChanged(TimeHelper.toIntegers(LocalDate.now()));
 						MissionCollection.update(mission);
 					}

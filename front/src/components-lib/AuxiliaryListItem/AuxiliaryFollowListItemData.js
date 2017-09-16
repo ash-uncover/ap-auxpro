@@ -3,6 +3,8 @@ import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
 import OfferHelper from 'helpers/OfferHelper'
 import { BaseData } from 'ap-react-bootstrap'
 
+import OfferStatusAux from 'utils/constants/OfferStatusAux'
+
 import AuxiliaryUtils from 'utils-lib/entities/AuxiliaryUtils'
 
 class AuxiliaryMatchListItemData extends BaseData {
@@ -16,12 +18,12 @@ class AuxiliaryMatchListItemData extends BaseData {
 
 		let offer = OfferHelper.getData(offerId)
 		let auxiliary = AuxiliaryHelper.getData(offer.auxiliaryId)
-		console.log(offer)
+
 		this.obj.state = {
 			avatar: auxiliary.avatar,
 			name: AuxiliaryUtils.getFullName(auxiliary),
 			address: AuxiliaryUtils.getAddress(auxiliary),
-			status: offer.auxStatus
+			status: OfferStatusAux.get(offer.auxStatus)
 		}
 	}
 

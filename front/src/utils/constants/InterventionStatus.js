@@ -6,39 +6,24 @@ class InterventionStatus {
 		return _PENDING
 	}
 
-	static get ACCEPTED() {
-		return _ACCEPTED
+	static get MATCHING() {
+		return _MATCHING
 	}
 
-	static get DECLINED() {
-		return _DECLINED
+	static get ONGOING() {
+		return _ONGOING
 	}
 
 	static get CANCELED() {
 		return _CANCELED
 	}
 
-	static get CONFIRMED() {
-		return _CONFIRMED
-	}
-
-	static get REJECTED() {
-		return _REJECTED
-	}
-
-	static get EXPIRED() {
-		return _EXPIRED
-	}
-
 	static get VALUES() {
 		return [
 			_PENDING,
-			_ACCEPTED,
-			_DECLINED,
+			_MATCHING,
+			_ONGOING,
 			_CANCELED,
-			_CONFIRMED,
-			_REJECTED,
-			_EXPIRED,
 		]
 	}
 
@@ -48,10 +33,7 @@ class InterventionStatus {
 
 }
 let _PENDING = { key: 'Pending' }
-let _ACCEPTED = { key: 'Accepted' }
-let _DECLINED = { key: 'Declined' }
+let _MATCHING = { key: 'Matching' }
+let _ONGOING = { key: 'OnGoing' }
 let _CANCELED = { key: 'Canceled' }
-let _CONFIRMED = { key: 'Confirmed' }
-let _REJECTED = { key: 'Rejected' }
-let _EXPIRED = { key: 'Expired' }
 export default InterventionStatus

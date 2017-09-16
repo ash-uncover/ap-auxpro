@@ -6,6 +6,9 @@ import { BaseComponent, Grid, Glyphicon, List, RaterStar, Button } from 'ap-reac
 
 import Image from 'components-lib/Image/Image'
 
+import OfferStatusAux from 'utils/constants/OfferStatusAux'
+import OfferStatusAuxUtils from 'utils-lib/entities/OfferStatusAuxUtils'
+
 class AuxiliaryFollowListItem extends BaseComponent {
 
 	constructor(props) {
@@ -54,11 +57,18 @@ class AuxiliaryFollowListItem extends BaseComponent {
 					</Grid.Col>
 					<Grid.Col xs={6} sm={3}>
 						<h5>Statut offre</h5>
-						{this.state.status}
+						{OfferStatusAuxUtils.getName(this.state.status.key)}
 					</Grid.Col>
 					<Grid.Col xs={6} sm={3}>
-						<h5>Statut offre</h5>
-						{this.state.status}
+						<br/>
+						{this.state.status === OfferStatusAux.ACCEPTED ? 
+							<Button
+								block
+								bsStyle='success'
+								onClick={this.props.onConfirm}>
+								Confirmer
+							</Button>
+						: null }
 					</Grid.Col>
 				</Grid.Row>
 			</List.Item>

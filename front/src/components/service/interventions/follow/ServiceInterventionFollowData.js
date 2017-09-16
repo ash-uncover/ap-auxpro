@@ -41,8 +41,30 @@ class ServiceInterventionFollowData extends BaseData {
 	onCancel() {
 		AppHelper.navigateBack()
 	}
-	onConfirm() {
-		
+	onConfirm(auxiliaryId) {
+		let intervention = InterventionHelper.getData(this.interventionId)
+		intervention.auxiliaryId = auxiliaryId
+
+		AppHelper.setBusy(true).
+		then(function () {
+			return InterventionHelper.putIntervention(intervention)
+		}).
+		then(function () {
+			return Promise.all([
+				InterventionHelper.getServiceInterventions(AuthHelper.getEntityId()),
+				OfferHelper.getServiceOffers(AuthHelper.getEntityId()),
+				MissionHelper.getServiceMissions(AuthHelper.getEntityId())
+			])
+		}.bind(this)).
+		then(function () {
+			setTimeout(function () { AppHelper.setBusy() }, 200)
+			AppHelper.navigateBack()
+		}).
+		catch(function (error) {
+			setTimeout(function () { AppHelper.setBusy() }, 200)
+			console.log('Error while confirming offer')
+			console.log(error)
+		})
 	}
 }
 var ServiceInterventionFollowObj = new ServiceInterventionFollowData()
