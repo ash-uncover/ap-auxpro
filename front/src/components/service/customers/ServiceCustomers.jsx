@@ -64,7 +64,6 @@ class ServiceCustomers extends React.Component {
 			<div className='ap-service-customers'>
 				<Button 
 					block 
-					bsSize='lg'
 					bsStyle='primary'
 					onClick={this.onCreate}>
 					Saisir un nouvel usager

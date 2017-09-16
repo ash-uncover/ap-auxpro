@@ -6,8 +6,11 @@
 	.ap-service-infos-image-container {
 		text-align: center;
 		.ap-image {
-			max-height: 120px;
-			border: 5px solid $ap-primary-color;
+			height: 120px;
+			width: 120px;
+			object-fit: cover;
+			border: 3px solid $ap-primary-color;
+			border-radius: 3px;
 		}
 	}
 }

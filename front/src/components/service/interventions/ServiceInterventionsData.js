@@ -101,14 +101,23 @@ class ServiceInterventionsData extends BaseData {
 	onDeleteIntervention(interventionId) {
 		console.log('onDeleteIntervention')	
 	}
+	onConfirmDeleteIntervention(interventionId) {
+		console.log('onConfirmDeleteIntervention')	
+	}
 	onFollowMatching(interventionId) {
 		AppHelper.navigate('/service/interventions/' + interventionId + '/follow')
 	}
 	onCancelMatching(interventionId) {
 		console.log('onCancelMatching')
 	}
+	onConfirmCancelMatching(interventionId) {
+		console.log('onConfirmCancelMatching')
+	}
 	onCancelIntervention(interventionId) {
 		console.log('onCancelIntervention')	
+	}
+	onConfirmCancelIntervention(interventionId) {
+		console.log('onConfirmCancelIntervention')	
 	}
 	onViewCustomer(customerId) {
 		AppHelper.navigate('/service/customers/' + customerId)
