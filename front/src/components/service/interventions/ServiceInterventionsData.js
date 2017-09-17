@@ -1,5 +1,6 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
+import CustomerHelper from 'helpers/CustomerHelper'
 import InterventionHelper from 'helpers/InterventionHelper'
 import OfferHelper from 'helpers/OfferHelper'
 
@@ -46,7 +47,7 @@ class ServiceInterventionsData extends BaseData {
 
 		InterventionHelper.register('', this, this.onInterventionsUpdate.bind(this))
 		OfferHelper.register('', this, this.onInterventionsUpdate.bind(this))
-		
+
 		this._onInterventionsUpdate()
 	}
 
@@ -86,7 +87,8 @@ class ServiceInterventionsData extends BaseData {
 		}
 	}
 	_filterInterventions(intervention, index) {
-		return !intervention.hideToSad
+		let customer = CustomerHelper.getData(intervention.customerId)
+		return customer && !intervention.hideToSad
 	}
 
 	// View callbacks //
