@@ -3,6 +3,7 @@ import ServiceCustomersData from './ServiceCustomersData'
 import './ServiceCustomers.scss'
 
 import { Panel, Form, Grid, Button, Glyphicon, SearchBar, TextUtils } from 'ap-react-bootstrap'
+import ModalDialog from 'components-lib/Modal/ModalDialog'
 import ServiceCustomerTile from 'components-lib/ServiceCustomerTile/ServiceCustomerTile'
 
 import StringUtils from 'utils-lib/StringUtils'
@@ -85,6 +86,14 @@ class ServiceCustomers extends React.Component {
 				<Grid.Row>
 					{this.buildCustomers()}
 				</Grid.Row>
+
+				<ModalDialog 
+					title="Supprimer l'usager ?"
+					show={this.state.showDeleteCustomer}
+					onCancel={this.onCancelDelete}
+					onConfirm={this.onConfirmDelete}>
+					Êtes-vous sûr ?
+				</ModalDialog>
 			</div>
 		)
 	}

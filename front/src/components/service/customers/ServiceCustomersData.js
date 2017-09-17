@@ -1,4 +1,5 @@
 import AppHelper from 'helpers/AppHelper'
+import AuthHelper from 'helpers/AuthHelper'
 import CustomerHelper from 'helpers/CustomerHelper'
 
 import { BaseData, Utils, TextUtils } from 'ap-react-bootstrap'
@@ -12,13 +13,16 @@ class ServiceCustomersData extends BaseData {
 		
 		this.filterCustomers = this._filterCustomers.bind(this)
 
-		this.obj.onSearch = this.onSearch.bind(this)
+		this.declareFunction('onSearch')
 
-		this.obj.onCreate = this.onCreate.bind(this)
+		this.declareFunction('onCreate')
 
-		this.obj.onView = this.onView.bind(this)
-		this.obj.onEdit = this.onEdit.bind(this)
-		this.obj.onDelete = this.onDelete.bind(this)
+		this.declareFunction('onView')
+		this.declareFunction('onEdit')
+
+		this.declareFunction('onDelete')
+		this.declareFunction('onCancelDelete')
+		this.declareFunction('onConfirmDelete')
 		
 		this.obj.state = {
 			customers: Utils.map(CustomerHelper.getData()),
@@ -59,8 +63,26 @@ class ServiceCustomersData extends BaseData {
 	onEdit(customer) {
 		AppHelper.navigate('/service/customers/' + customer.id + '/edit')
 	}
+
 	onDelete(customer) {
-		console.log('delete customer ' + customer.id)
+		this.customer = customer
+		this.setState({ showDeleteCustomer: true })
+	}
+	onCancelDelete() {
+		this.customer = null
+		this.setState({ showDeleteCustomer: false })
+	}
+	onConfirmDelete() {
+		CustomerHelper.deleteCustomer(this.customer.id).
+		then(function () {
+			CustomerHelper.getServiceCustomers(AuthHelper.getEntityId())
+			this.customer = null
+			this.setState({ showDeleteCustomer: false })
+		}.bind(this)).
+		catch(function (error) {
+			console.error('Error while deleting customer')
+			console.error(error)
+		})	
 	}
 
 

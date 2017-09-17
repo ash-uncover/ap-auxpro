@@ -1,6 +1,12 @@
 import AppHelper from 'helpers/AppHelper'
+import AuthHelper from 'helpers/AuthHelper'
 import InterventionHelper from 'helpers/InterventionHelper'
-import { BaseData, Utils } from 'ap-react-bootstrap'
+import OfferHelper from 'helpers/OfferHelper'
+
+import { BaseData, Utils, MomentHelper } from 'ap-react-bootstrap'
+import moment from 'moment'
+
+import OfferStatusSad from 'utils/constants/OfferStatusSad'
 
 import InterventionType from 'utils-lib/constants/InterventionType'
 import InterventionUtils from 'utils-lib/entities/InterventionUtils'
@@ -13,12 +19,20 @@ class ServiceInterventionsData extends BaseData {
 		this.declareFunction('onCreateIntervention')
 		this.declareFunction('onEditIntervention')		
 		this.declareFunction('onMatchIntervention')
+		
 		this.declareFunction('onDeleteIntervention')
+		this.declareFunction('onCancelDeleteIntervention')
+		this.declareFunction('onConfirmDeleteIntervention')
 
 		this.declareFunction('onFollowMatching')
+
 		this.declareFunction('onCancelMatching')
+		this.declareFunction('onCancelCancelMatching')
+		this.declareFunction('onConfirmCancelMatching')
 
 		this.declareFunction('onCancelIntervention')
+		this.declareFunction('onCancelCancelIntervention')
+		this.declareFunction('onConfirmCancelIntervention')
 
 		this.declareFunction('onViewCustomer')
 		this.declareFunction('onViewAuxiliary')
@@ -30,7 +44,9 @@ class ServiceInterventionsData extends BaseData {
 			planned: []
 		}
 
-		InterventionHelper.register('/', this, this.onInterventionsUpdate.bind(this))
+		InterventionHelper.register('', this, this.onInterventionsUpdate.bind(this))
+		OfferHelper.register('', this, this.onInterventionsUpdate.bind(this))
+		
 		this._onInterventionsUpdate()
 	}
 
@@ -98,30 +114,90 @@ class ServiceInterventionsData extends BaseData {
 			console.error(error)
 		})
 	}
+
 	onDeleteIntervention(interventionId) {
-		console.log('onDeleteIntervention')	
+		this.intervention = InterventionHelper.getData(interventionId)
+		this.setState({ showDeleteIntervention: true })
 	}
-	onConfirmDeleteIntervention(interventionId) {
-		console.log('onConfirmDeleteIntervention')	
+	onCancelDeleteIntervention() {
+		this.intervention = null
+		this.setState({ showDeleteIntervention: false })
 	}
+	onConfirmDeleteIntervention() {
+		this.setState({ showDeleteIntervention: false })
+		this.intervention.hideToSad = true
+		InterventionHelper.putIntervention(this.intervention).
+		then(function () {
+			InterventionHelper.getIntervention(this.intervention.id)
+			this.intervention = null
+		}.bind(this)).
+		catch(function (error) {
+			console.error('Error while deleting intervention')
+			console.error(error)
+		})		
+	}
+
 	onFollowMatching(interventionId) {
 		AppHelper.navigate('/service/interventions/' + interventionId + '/follow')
 	}
+
 	onCancelMatching(interventionId) {
-		console.log('onCancelMatching')
+		this.intervention = InterventionHelper.getData(interventionId)
+		this.setState({ showCancelMatching: true })
 	}
-	onConfirmCancelMatching(interventionId) {
-		console.log('onConfirmCancelMatching')
+	onCancelCancelMatching(interventionId) {
+		this.intervention = null
+		this.setState({ showCancelMatching: false })
 	}
+	onConfirmCancelMatching() {
+		this.setState({ showCancelMatching: false })
+
+		let offers = Utils.filter(OfferHelper.getData(), function (offer) {
+			return this.intervention.id === offer.interventionId
+		}.bind(this))
+		Promise.all(offers.map(function (offer) {
+			offer.sadStatus = OfferStatusSad.CANCELED.key,
+			offer.sadStatusChanged = MomentHelper.toLocalDate(moment())
+			return OfferHelper.putOffer(offer)
+		})).
+		then(function () {
+			OfferHelper.getServiceOffers(AuthHelper.getEntityId())
+			this.intervention = null		
+		}.bind(this)).
+		catch(function (error) {
+			console.error('Error while canceling matching')
+			console.error(error);
+		})
+	}
+
 	onCancelIntervention(interventionId) {
-		console.log('onCancelIntervention')	
+		this.intervention = InterventionHelper.getData(interventionId)
+		this.setState({ showCancelIntervention: true })
 	}
-	onConfirmCancelIntervention(interventionId) {
-		console.log('onConfirmCancelIntervention')	
+	onCancelCancelIntervention(interventionId) {
+		this.intervention = null
+		this.setState({ showCancelIntervention: false })
 	}
+	onConfirmCancelIntervention() {
+		this.intervention.sadStatus = 'CANCELED'
+		this.intervention.sadStatusChanged = MomentHelper.toLocalDate(moment()),
+		this.intervention.hideToSad = true
+		InterventionHelper.putIntervention(this.intervention).
+		then(function () {
+			InterventionHelper.getIntervention(this.intervention.id)
+			this.intervention = null
+			this.setState({ showCancelIntervention: false })
+		}.bind(this)).
+		catch(function (error) {
+			console.error('Error while stopping intervention')
+			console.error(error)
+		})	
+	}
+
 	onViewCustomer(customerId) {
 		AppHelper.navigate('/service/customers/' + customerId)
 	}
+
 	onViewAuxiliary(auxiliaryId) {
 		AppHelper.navigate('/service/auxiliaries/' + auxiliaryId)
 	}

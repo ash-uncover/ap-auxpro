@@ -11,7 +11,7 @@ import ServiceInterventionTilePending from 'components-lib/ServiceInterventionTi
 import ServiceInterventionTileOffered from 'components-lib/ServiceInterventionTile/ServiceInterventionTileOffered'
 import ServiceInterventionTilePlanned from 'components-lib/ServiceInterventionTile/ServiceInterventionTilePlanned'
 import Text from 'components-lib/Text/Text'
-import Modal from 'components-lib/Modal/Modal'
+import ModalDialog from 'components-lib/Modal/ModalDialog'
 
 import AuxiliaryUtils from 'utils-lib/entities/AuxiliaryUtils'
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
@@ -167,9 +167,31 @@ class ServiceInterventions extends React.Component {
 					</Panel.Footer>
 				</Panel>
 				: null }
-				<Modal show={this.state.modal}>
-					KIKO
-				</Modal>
+
+				<ModalDialog 
+					title="Supprimer l'intervention ?"
+					show={this.state.showDeleteIntervention}
+					onCancel={this.onCancelDeleteIntervention}
+					onConfirm={this.onConfirmDeleteIntervention}>
+					Êtes-vous sûr ?
+				</ModalDialog>
+
+				<ModalDialog 
+					title='Annuler le MATCHING ?'
+					show={this.state.showCancelMatching}
+					onCancel={this.onCancelCancelMatching}
+					onConfirm={this.onConfirmCancelMatching}>
+					Êtes-vous sûr ?
+				</ModalDialog>
+
+				<ModalDialog 
+					title="Annuler l'intervention ?"
+					show={this.state.showCancelIntervention}
+					onCancel={this.onCancelCancelIntervention}
+					onConfirm={this.onConfirmCancelIntervention}>
+					Êtes-vous sûr ?
+				</ModalDialog>
+				
 			</div>
 		)
 	}

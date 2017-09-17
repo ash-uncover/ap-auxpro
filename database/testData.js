@@ -4,7 +4,12 @@
 db.apmail.insert({
 	"id":"mail_offer_send",
 	"subject":"Nouvelle offre sur AuXpros.fr",
-	"content":"Bonjour {user},\n\nVous avez reçu une nouvelle offre de prestation sur AuXpros.fr\nConnectez vous sur www.auxpros.fr pour la visualiser"
+	"content":"Bonjour {user},\n\nVous avez reçu une nouvelle offre de prestation sur AuXpros.fr\nConnectez vous sur www.auxpros.fr pour la visualiser.\n\n*Ceci est un message généré automatiqument, merci de ne pas répondre.*"
+})
+db.apmail.insert({
+	"id":"mail_offer_accepted",
+	"subject":"Offre acceptée sur AuXpros.fr",
+	"content":"Bonjour,\n\nUne de vos offres a été acceptée sur AuXpros.fr\nConnectez vous sur www.auxpros.fr pour visualiser le statut de vos offres.\n\n*Ceci est un message généré automatiqument, merci de ne pas répondre.*"
 })
 
 /* ****************************************************************************************

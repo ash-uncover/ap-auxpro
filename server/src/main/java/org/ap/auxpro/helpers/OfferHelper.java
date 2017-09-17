@@ -8,7 +8,13 @@ import java.time.LocalDate;
 import javax.ws.rs.core.SecurityContext;
 
 import org.ap.auxpro.bean.OfferBean;
+import org.ap.auxpro.constants.EOfferStatusAux;
+import org.ap.auxpro.constants.EOfferStatusSad;
 import org.ap.auxpro.internal.MailSender;
+import org.ap.auxpro.storage.OfferCollection;
+import org.ap.auxpro.storage.OfferData;
+import org.ap.auxpro.storage.ServiceCollection;
+import org.ap.auxpro.storage.ServiceData;
 import org.ap.common.TimeHelper;
 import org.ap.web.internal.APWebException;
 import org.ap.web.internal.UUIDGenerator;
@@ -55,8 +61,38 @@ public class OfferHelper {
 	}
 
 	public static Object putOffer(SecurityContext sc, String id, OfferBean offerBean) throws APWebException {
-		// TODO Auto-generated method stub
-		return null;
+		OfferData offer = new OfferData();
+		offer.id = id;
+		offer.auxStatus = offerBean.auxStatus;
+		offer.auxStatusChanged = offerBean.auxStatusChanged;
+		offer.auxiliaryId = offerBean.auxiliaryId;
+		offer.hideToAux = offerBean.hideToAux;
+		offer.customerId = offerBean.customerId;
+		offer.sadStatus = offerBean.sadStatus;
+		offer.sadStatusChanged = offerBean.sadStatusChanged;
+		offer.serviceId = offerBean.serviceId;
+		offer.creationDate = offerBean.creationDate;
+		offer.interventionId = offerBean.interventionId;
+		offer.hideToSad = offerBean.hideToSad;
+
+		OfferCollection.update(offer);
+		
+		boolean isAuxAcc = offer.auxStatus != null && EOfferStatusAux._ACCEPTED.equals(EOfferStatusAux.getByName(offer.auxStatus));
+		boolean isSadConf = offer.sadStatus != null && EOfferStatusSad._CONFIRMED.equals(EOfferStatusSad.getByName(offer.sadStatus));
+		boolean isSadCan = offer.sadStatus != null && EOfferStatusSad._CANCELED.equals(EOfferStatusSad.getByName(offer.sadStatus));
+
+		if (isAuxAcc && !isSadConf && !isSadCan) {
+			try {
+				// Send notification mail
+				ServiceData service = ServiceCollection.getById(offerBean.serviceId);
+				MailSender.sendServiceOffer(service.email);
+			} catch (Exception e) {
+				// Still the offer was updated so we dont want to crash here
+				e.printStackTrace();
+			}
+		}
+
+		return "";
 	}
 
 }

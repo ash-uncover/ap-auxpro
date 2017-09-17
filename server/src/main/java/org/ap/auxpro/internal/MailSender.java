@@ -11,11 +11,18 @@ import org.ap.web.internal.APWebException;
 public class MailSender extends MailSenderBase {
 
 	public static final String MAIL_OFFER_SEND = "mail_offer_send";
+	public static final String MAIL_OFFER_ACCEPTED = "mail_offer_accepted";
 	
 	public static void sendAuxiliaryOffer(String email, String firstName) throws APWebException {
 		ApmailData mail = ApmailCollection.getById(MAIL_OFFER_SEND);
 		Map<String, String> keys = new HashMap<String, String>();
 		keys.put("user", firstName);
+		sendTextMail(EConfigProperties.SMTP_USER.getValue(), EConfigProperties.SMTP_USERNAME.getValue(), email, format(mail.getSubject(), keys), format(mail.getContent(), keys));
+	}
+	
+	public static void sendServiceOffer(String email) throws APWebException {
+		ApmailData mail = ApmailCollection.getById(MAIL_OFFER_ACCEPTED);
+		Map<String, String> keys = new HashMap<String, String>();
 		sendTextMail(EConfigProperties.SMTP_USER.getValue(), EConfigProperties.SMTP_USERNAME.getValue(), email, format(mail.getSubject(), keys), format(mail.getContent(), keys));
 	}
 }
