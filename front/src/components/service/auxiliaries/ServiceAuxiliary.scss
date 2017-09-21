@@ -1,3 +1,32 @@
-.ap-serviceauxiliary {
+// Variables
+@import 'assets/styles/variables';
 
+.ap-service-auxiliary {
+
+	.ap-image-column {
+		text-align: center;
+		font-style: italic;
+
+		.ap-image {
+			height: 100px;
+			width: 100px;
+			border: 3px solid $ap-primary-color;
+			border-radius: 3px;
+			object-fit: cover;
+		}
+	}
+
+	.ap-info-column>p:first-child {
+		margin-top: 10px;
+	}
+
+	.ap-diploma-column {
+		text-align: center;
+		font-style: italic;
+
+		.ap-diploma-image {
+			width: 80%;
+			object-fit: cover;
+		}
+	}
 }
