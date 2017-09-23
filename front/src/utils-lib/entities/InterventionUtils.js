@@ -7,9 +7,9 @@ import InterventionHelper from 'helpers/InterventionHelper'
 import OfferHelper from 'helpers/OfferHelper'
 
 import InterventionStatus from 'utils/constants/InterventionStatus'
+import RecurencePeriod from 'utils/constants/RecurencePeriod'
 
 import InterventionFields from 'utils/entities/InterventionFields'
-import RecurencePeriod from 'utils/constants/RecurencePeriod'
 
 import InterventionType from 'utils-lib/constants/InterventionType'
 
@@ -66,6 +66,39 @@ class InterventionUtils {
 			}
 		}
 		return InterventionType.PENDING;
+	}
+
+	static isActive(intervention) {
+		if (!intervention.auxiliaryId) {
+			return false
+		}
+		if (intervention.sadStatus === 'CANCELED') {
+			return false
+		}
+		return InterventionUtils.isCurrent(intervention)
+	}
+
+	static isCurrent(intervention) {
+		let period = RecurencePeriod.get(intervention.period)
+		let startDate = MomentHelper.fromLocalDate(intervention.startDate);
+		let currentDate = moment().startOf('day');
+		switch (period) {
+		case RecurencePeriod.ONE:
+			if (currentDate.isAfter(startDate)) {
+				return false
+			}
+			break
+		case RecurencePeriod.P1W:
+		case RecurencePeriod.P2W:
+		case RecurencePeriod.P3W:
+		case RecurencePeriod.P4W:
+			let endDate = MomentHelper.fromLocalDate(intervention.endDate)
+			if (currentDate.isAfter(endDate)) {
+				return false
+			}
+			break
+		}
+		return true
 	}
 
 	static getText(intervention) {

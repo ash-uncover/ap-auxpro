@@ -711,7 +711,7 @@ db.intervention.insert({
 	"serviceId":"sadz",
 	"auxiliaryId":"auxa",
 	"period":"ONE",
-	"startDate":[NumberInt(2017),NumberInt(3),NumberInt(16)],
+	"startDate":[NumberInt(2017),NumberInt(12),NumberInt(16)],
 	"startTime":[NumberInt(14),NumberInt(0)],
 	"endTime":[NumberInt(16),NumberInt(0)]
 })
