@@ -7,6 +7,7 @@ var webpack = require('webpack');
 module.exports = {
 
     entry: path.resolve(__dirname, './src/index.jsx'),
+	devtool: 'source-map',
 
     output: {
         path: path.resolve(__dirname, 'build'), 
@@ -15,8 +16,8 @@ module.exports = {
 
     devServer: {
         host: '0.0.0.0',
-        port: 8080,
-        historyApiFallback: true
+		historyApiFallback: true,
+        port: 8080
     },
 
     resolve: {
@@ -24,13 +25,13 @@ module.exports = {
         extensions: ['.js', '.jsx']
     },
 
-    plugins: [
-        new webpack.ProvidePlugin({
-            jQuery: 'jquery',
-            $: 'jquery'
-        })
-    ],
-    
+	plugins: [
+		 new webpack.ProvidePlugin({
+			jQuery: 'jquery',
+			$: 'jquery'
+		})
+	],
+
     module: {
         rules: [
             {
