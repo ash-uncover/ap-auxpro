@@ -8,7 +8,7 @@ import SkillTile from 'components-lib/SkillTile/SkillTile'
 import SkillTileAdd from 'components-lib/SkillTile/SkillTileAdd'
 
 import CustomerFields from 'utils/entities/CustomerFields'
-import Skills from 'utils/constants/Skills'
+
 
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 import SkillUtils from 'utils-lib/entities/SkillUtils'
@@ -21,7 +21,6 @@ class ServiceCustomerEdit extends React.Component {
 		this.buildFormGroup = this._buildFormGroup.bind(this)
 		this.buildFormControl = this._buildFormControl.bind(this)
 		this.buildSkill = this._buildSkill.bind(this)
-		this.sortSkills = this._sortSkills.bind(this)
 	}
 
 	componentWillMount() {
@@ -82,24 +81,19 @@ class ServiceCustomerEdit extends React.Component {
 		}
 	}
 
-	_buildSkills() {
-		let skills = []
-		for (let i = 0; i < Skills.VALUES.length; i++) {
-			let skill = Skills.VALUES[i]
-			if (this.state[skill.key]) {
-				skills.push({ title: SkillUtils.getName(skill), value: this.state[skill.key] })
-			}
+	_buildSkill(skill) {
+		if (this.state.showAllSkills || this.state[skill.key]) {
+			return (
+				<SkillTile
+					key={skill.key}
+					title={SkillUtils.getName(skill)}
+					value={this.state[skill.key]}
+					starMax={5}
+					onChange={this.onChangeDirty.bind(this, skill.key)}/>
+			)
 		}
-		return skills.sort(this.sortSkills).map(this.buildSkill)
 	}
 
-	_sortSkills(s1, s2) {
-		return s2.value - s1.value
-	}
-
-	_buildSkill(skill, index) {
-		return (<SkillTile key={index} {...skill} />)
-	}
 
 	checkValidity() {
 		for (let i = 0 ; i < ServiceCustomerEditData.FIELDS.length ; i++) {
@@ -138,8 +132,10 @@ class ServiceCustomerEdit extends React.Component {
 							</Grid.Row>
 							<h4>Besoins</h4>
 							<p>Veuillez saisir les besoins de l'usager</p>
-							{this._buildSkills()}
-							<SkillTileAdd onClick={this.onSkillAdd}/>
+							{this.state.skills.map(this.buildSkill)}
+							{!this.state.showAllSkills ?
+								<SkillTileAdd onClick={this.onSkillAdd}/>
+							: null }
 						</Form>
 					</Panel.Body>
 					<Panel.Footer>

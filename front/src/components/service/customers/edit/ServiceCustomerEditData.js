@@ -5,6 +5,8 @@ import CustomerHelper from 'helpers/CustomerHelper'
 
 import { BaseData, Nationality } from 'ap-react-bootstrap'
 
+import Skills from 'utils/constants/Skills'
+
 import CustomerFields from 'utils/entities/CustomerFields'
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 import NationalityUtils from 'utils-lib/geo/NationalityUtils'
@@ -35,12 +37,13 @@ let FIELDS_FORM2 = [
 	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.EMAIL)
 ]
 let FIELDS_FORM3 = [
-	CustomerFields.SKILL_ADMINISTRATIVE,
-	CustomerFields.SKILL_CHILDHOOD,
-	CustomerFields.SKILL_COMPAGNY,
-	CustomerFields.SKILL_HOUSEWORK,
-	CustomerFields.SKILL_NURSING,
-	CustomerFields.SKILL_SHOPPING
+	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_ADMINISTRATIVE),
+	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_CHILDHOOD),
+	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_COMPAGNY),
+	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_DOITYOURSELF),
+	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_HOUSEWORK),
+	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_NURSING),
+	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_SHOPPING)
 ]
 let FIELDS = FIELDS_FORM0.concat(FIELDS_FORM1).concat(FIELDS_FORM2).concat(FIELDS_FORM3)
 
@@ -50,6 +53,9 @@ class ServiceCustomerEditData extends BaseData {
 		super.register(obj)
 
 		this.customerId = customerId
+
+		this.sortSkills = this._sortSkills.bind(this)
+		this.sortSkillsSecondary = this._sortSkillsSecondary.bind(this)
 
 		this.obj.onBack = AppHelper.navigateBack.bind(AppHelper)
 
@@ -93,6 +99,21 @@ class ServiceCustomerEditData extends BaseData {
 				this.obj.state[field.key + 'Default'] = 'warning'
 			}
 		}
+		this.obj.state.skills = Skills.VALUES.sort(this.sortSkills)
+		this.obj.state.showAllSkills = false		
+	}
+
+	_sortSkills(s1, s2) {
+		return this.getState(s2.key) - this.getState(s1.key)
+	}
+	_sortSkillsSecondary(s1, s2) {
+		if (this.getState(s2.key) === 0) {
+			return -1
+		}
+		if (this.getState(s1.key) === 0) {
+			return 1
+		}
+		return 0
 	}
 
 
@@ -124,7 +145,10 @@ class ServiceCustomerEditData extends BaseData {
 	}
 
 	onSkillAdd() {
-		console.log('add skill')
+		this.setState({ 
+			skills: Skills.VALUES.sort(this.sortSkillsSecondary),
+			showAllSkills: true 
+		})
 	}
 
 	onCancel() {
