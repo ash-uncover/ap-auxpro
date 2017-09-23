@@ -96,7 +96,6 @@ class ServiceInfosEditSocietyData extends BaseData {
 	}
 
 	onChangeImage(file) {
-		console.log(file)
 		let data = {
 			dirty: true,
 			avatarFile: file

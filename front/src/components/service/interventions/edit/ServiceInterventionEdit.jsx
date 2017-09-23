@@ -100,7 +100,6 @@ class ServiceInterventionEdit extends React.Component {
 
 	render() {
 		let errors = InterventionUtils.checkValidity(this.state)
-		console.log(errors)
 		let submitDisabled = !this.state.dirty ||  errors !== null
 		return (
 			<div className='ap-service-intervention-edit'>

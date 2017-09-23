@@ -40,8 +40,6 @@ class ServiceInterventionMatch extends React.Component {
 	}
 
 	render() {
-		console.log('heeeeeeeeeeere')
-		console.log(this.state)
 		return (
 			<div className='ap-service-intervention-match'>
 				<Button 

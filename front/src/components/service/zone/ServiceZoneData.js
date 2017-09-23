@@ -172,38 +172,36 @@ class ServiceZoneData extends BaseData {
 	}
 
 	resolveInterventions() {
-		let customerIds = []
-		Utils.forEach(InterventionHelper.getData(), function (intervention) {
-			if (InterventionUtils.isActive(intervention) && customerIds.indexOf(intervention.customerId) === -1) {
-				customerIds.push(intervention.customerId)
-			}
-		})
-		return customerIds.map(function (customerId) {
-			return CustomerHelper.getData(customerId)
-		})
+		return this._resolveCustomerWithIntervention().map(CustomerHelper.getData)
 	}
+
 	resolveCustomers() {
-		let customerIds = []
-		Utils.forEach(InterventionHelper.getData(), function (intervention) {
-			if (InterventionUtils.isActive(intervention) && customerIds.indexOf(intervention.customerId) === -1) {
-				customerIds.push(intervention.customerId)
+		let exclude = this._resolveCustomerWithIntervention()
+		return Utils.reduce(CustomerHelper.getData(), function (customers, customer) {
+			if (exclude.indexOf(customer.id) === -1) {
+				customers.push(customer)
 			}
-		})
-		return Utils.filter(CustomerHelper.getData(), function (customer) {
-			return customerIds.indexOf(customer.id) === -1
-		})
+			return customers
+		}, [])
 	}
 
 	resolveAuxiliaries() {
-		let auxiliaries = {}
-		Utils.forEach(InterventionHelper.getData(), function (intervention) {
-			if (intervention.auxiliaryId && !auxiliaries[intervention.auxiliaryId]) {
-				auxiliaries[intervention.auxiliaryId] = AuxiliaryHelper.getData(intervention.auxiliaryId)
+		return Utils.reduce(InterventionHelper.getData(), function (auxiliaries, intervention) {
+			if (intervention.auxiliaryId && auxiliaries.indexOf(intervention.auxiliaryId) === -1) {
+				auxiliaries.push(intervention.auxiliaryId)
 			}
-		})
-		return Utils.map(auxiliaries)
+			return auxiliaries
+		}, []).map(AuxiliaryHelper.getData)
 	}
 
+	_resolveCustomerWithIntervention() {
+		return Utils.reduce(InterventionHelper.getData(), function (customers, intervention) {
+			if (InterventionUtils.isActive(intervention) && customers.indexOf(intervention.customerId) === -1) {
+				customers.push(intervention.customerId)
+			}
+			return customers
+		}, [])
+	}
 
 }
 let ServiceZoneObj = new ServiceZoneData()
