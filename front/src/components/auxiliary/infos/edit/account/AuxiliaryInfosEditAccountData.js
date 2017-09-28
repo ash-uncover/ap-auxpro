@@ -14,5 +14,5 @@ class AuxiliaryInfosEditAccountData extends BaseData {
 	}
 
 }
-var AuxiliaryInfosEditAccountObj = new AuxiliaryInfosEditAccountData()
+let AuxiliaryInfosEditAccountObj = new AuxiliaryInfosEditAccountData()
 export default AuxiliaryInfosEditAccountObj

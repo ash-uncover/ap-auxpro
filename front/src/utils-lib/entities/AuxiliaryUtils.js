@@ -45,7 +45,7 @@ class AuxiliaryUtils {
 			case AuxiliaryFields.SKILL_CHILDHOOD.key: return ''
 			case AuxiliaryFields.SKILL_HOUSEWORK.key: return ''
 			case AuxiliaryFields.SKILL_COMPAGNY.key: return ''
-			case AuxiliaryFields.IS_ENTREPRENEUR.key: return ''
+			case AuxiliaryFields.IS_ENTREPRENEUR.key: return 'Auto-entrepreneur ?'
 		}
 		return '! UNKNOWN FIELD !'
 	}

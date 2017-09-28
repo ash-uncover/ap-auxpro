@@ -63,8 +63,8 @@ class ServiceInterventionFollowData extends BaseData {
 		}).
 		catch(function (error) {
 			setTimeout(function () { AppHelper.setBusy() }, 200)
-			console.log('Error while confirming offer')
-			console.log(error)
+			console.error('Error while confirming offer')
+			console.error(error)
 		})
 	}
 }

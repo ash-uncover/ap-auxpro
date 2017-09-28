@@ -2,10 +2,13 @@ import React from 'react'
 import AuxiliaryInfosData from './AuxiliaryInfosData'
 import './AuxiliaryInfos.scss'
 
-import AuxiliaryUtils from 'utils-lib/entities/AuxiliaryUtils'
-
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 
+import AuxiliaryUtils from 'utils-lib/entities/AuxiliaryUtils'
+import SkillUtils from 'utils-lib/entities/SkillUtils'
+import Skills from 'utils/constants/Skills'
+
+import SkillTile from 'components-lib/SkillTile/SkillTile'
 import Image from 'components-lib/Image/Image'
 
 class AuxiliaryInfos extends React.Component {
@@ -13,6 +16,9 @@ class AuxiliaryInfos extends React.Component {
 	constructor(props) {
 		super(props)
 		this.buildFormGroup = this._buildFormGroup.bind(this)
+
+		this.buildSkill = this._buildSkill.bind(this)
+		this.sortSkills = this._sortSkills.bind(this)
 	}
 
 	componentWillMount() {
@@ -22,6 +28,30 @@ class AuxiliaryInfos extends React.Component {
 	componentWillUnmount() {
 		AuxiliaryInfosData.unregister()
 	}
+
+	_prepareSkills() {
+		let skills = []
+		for (let i = 0; i < Skills.VALUES.length; i++) {
+			let skill = Skills.VALUES[i]
+			if (this.state[skill.key]) {
+				skills.push({ title: SkillUtils.getName(skill), value: this.state[skill.key] })
+			}
+		}
+		return skills.sort(this.sortSkills)
+	}
+
+	_buildSkills() {
+		return this._prepareSkills().map(this.buildSkill)
+	}
+	
+	_sortSkills(s1, s2) {
+		return s2.value - s1.value
+	}
+
+	_buildSkill(skill, index) {
+		return (<SkillTile key={index} {...skill} />)
+	}
+
 
 	_buildFormGroup(field) { 
 		return (
@@ -41,9 +71,10 @@ class AuxiliaryInfos extends React.Component {
 			<div className='ap-auxiliary-infos'>
 				<Panel>
 					<Panel.Header>
-						Mes information personnelles
+						Mes informations
 					</Panel.Header>
 					<Panel.Body>
+						<h4>Mes informations personelles</h4>
 						<Form horizontal>
 							<Grid.Row>
 								<Grid.Col xs={12} className='ap-auxiliary-infos-image-container'>
@@ -60,7 +91,21 @@ class AuxiliaryInfos extends React.Component {
 								</Grid.Col>
 							</Grid.Row>
 						</Form>
-						<Button block bsStyle='primary' onClick={this.onModifyPerso}>Modifier mes informations personelles</Button>
+						<h4>Mes informations profesionelles</h4>
+						<Form horizontal>
+							<Grid.Row>
+								<Grid.Col sm={10} smOffset={1} md={8} mdOffset={2}>
+									{AuxiliaryInfosData.FIELDS_FORM4.map(this.buildFormGroup)}
+								</Grid.Col>
+								<Grid.Col xs={12} className='ap-auxiliary-infos-image-container'>
+									<Image 
+										className={this.state.diplomaImage ? '' : 'ap-no-image'}
+										alt='<Ma photo>' 
+										id={this.state.diplomaImage} />
+								</Grid.Col>
+							</Grid.Row>
+						</Form>
+						<Button block bsStyle='primary' onClick={this.onModifyInfos}>Modifier mes informations</Button>
 					</Panel.Body>
 					<Panel.Footer>
 					</Panel.Footer>
@@ -68,23 +113,23 @@ class AuxiliaryInfos extends React.Component {
 
 				<Panel>
 					<Panel.Header>
-						Mes informations profresionelles
+						Mes compétences
 					</Panel.Header>
 					<Panel.Body>
-						<Form horizontal>
-							<Grid.Row>
-								<Grid.Col sm={6} lg={5} lgOffset={1}>
-								</Grid.Col>
-								<Grid.Col sm={6} lg={5}>
-								</Grid.Col>
-							</Grid.Row>
-						</Form>
-						<Button block bsStyle='primary' onClick={this.onModifyPro}>Modifier mes informations profesionelles</Button>
+						{this.state.areSkillSet ?
+							this._buildSkills()
+						:
+							<p>Vous devez remplir le questionnaire afin d'obtenir vos score de compétences.</p>
+						}
+						{this.state.areSkillSet ?
+							<Button block bsStyle='primary' onClick={this.onModifyQuestionary}>Voir mon questionnaire</Button>
+						:
+							<Button block bsStyle='primary' onClick={this.onViewQuestionary}>Remplir le questionnaire AuXpros</Button>
+						}
 					</Panel.Body>
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
-
 
 				<Panel>
 					<Panel.Header>

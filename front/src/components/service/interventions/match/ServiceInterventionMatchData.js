@@ -76,8 +76,8 @@ class ServiceInterventionMatchData extends BaseData {
 		}).
 		catch(function (error) {
 			setTimeout(function () { AppHelper.setBusy() }, 200)
-			console.log('Error while creating offers')
-			console.log(error)
+			console.error('Error while creating offers')
+			console.error(error)
 		})
 		
 	}

@@ -19,7 +19,7 @@ class AuxiliaryInfosEditAccount extends React.Component {
 
 	render() {
 		return (
-			<div className='ap-auxiliaryinfoseditaccount'>
+			<div className='ap-auxiliary-infos-edit-account'>
 				AuxiliaryInfosEditAccount
 			</div>
 		)

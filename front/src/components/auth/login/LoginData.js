@@ -70,11 +70,11 @@ class LoginData extends BaseData {
 				break
 			default:
 				AppHelper.navigate('/')
-				console.log("type d'utilisateur non supporté")
+				console.error("type d'utilisateur non supporté")
 				break
 			}	
 		} else {
-			console.log('Utilisateur non connecté')
+			console.error('Utilisateur non connecté')
 			AppHelper.navigate('/')
 		}
 	}

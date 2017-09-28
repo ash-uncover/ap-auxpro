@@ -43,10 +43,10 @@ import Auxiliary from 'components/auxiliary/Auxiliary'
 import AuxiliaryHome from 'components/auxiliary/home/AuxiliaryHome'
 import AuxiliaryTuto from 'components/auxiliary/tuto/AuxiliaryTuto'
 import AuxiliaryInfos from 'components/auxiliary/infos/AuxiliaryInfos'
+import AuxiliaryInfosEditInfos from 'components/auxiliary/infos/edit/infos/AuxiliaryInfosEditInfos'
 import AuxiliaryInfosEditAccount from 'components/auxiliary/infos/edit/account/AuxiliaryInfosEditAccount'
-import AuxiliaryInfosEditPerso from 'components/auxiliary/infos/edit/perso/AuxiliaryInfosEditPerso'
-import AuxiliaryInfosEditPhoto from 'components/auxiliary/infos/edit/photo/AuxiliaryInfosEditPhoto'
-import AuxiliaryInfosEditPro from 'components/auxiliary/infos/edit/pro/AuxiliaryInfosEditPro'
+import AuxiliaryInfosEditEmail from 'components/auxiliary/infos/edit/email/AuxiliaryInfosEditEmail'
+import AuxiliaryInfosEditPassword from 'components/auxiliary/infos/edit/password/AuxiliaryInfosEditPassword'
 import AuxiliaryInfosQuestionary from 'components/auxiliary/infos/questionary/AuxiliaryInfosQuestionary'
 import AuxiliaryInfosEditQuestionary from 'components/auxiliary/infos/edit/questionary/AuxiliaryInfosEditQuestionary'
 import AuxiliaryPlaning from 'components/auxiliary/planing/AuxiliaryPlaning'
@@ -92,10 +92,10 @@ let auxiliaryRoutes = [
 	{ path: '/home', component: AuxiliaryHome },
 	{ path: '/tuto', component: AuxiliaryTuto },
 	{ path: '/infos', component: AuxiliaryInfos },
+	{ path: '/infos/edit/infos', component: AuxiliaryInfosEditInfos },
 	{ path: '/infos/edit/account', component: AuxiliaryInfosEditAccount },
-	{ path: '/infos/edit/perso', component: AuxiliaryInfosEditPerso },
-	{ path: '/infos/edit/photo', component: AuxiliaryInfosEditPhoto },
-	{ path: '/infos/edit/pro', component: AuxiliaryInfosEditPro },
+	{ path: '/infos/edit/email', component: AuxiliaryInfosEditEmail },
+	{ path: '/infos/edit/password', component: AuxiliaryInfosEditPassword },
 	{ path: '/infos/questionary', component: AuxiliaryInfosQuestionary },
 	{ path: '/infos/edit/questionary', component: AuxiliaryInfosEditQuestionary },
 	{ path: '/planing', component: AuxiliaryPlaning },
