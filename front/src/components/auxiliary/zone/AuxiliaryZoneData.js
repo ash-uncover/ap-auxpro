@@ -1,6 +1,9 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
+import CustomerHelper from 'helpers/CustomerHelper'
+import InterventionHelper from 'helpers/InterventionHelper'
+import ServiceHelper from 'helpers/ServiceHelper'
 
 import { BaseData, Utils } from 'ap-react-bootstrap'
 
@@ -38,11 +41,29 @@ class AuxiliaryZoneData extends BaseData {
 			centerLongitude: Number(this.auxliary.longitude)
 		}
 
+		let test = ServiceHelper.getData()
 		this.homeMarkers = [ this.buildHomeMarker() ]
-		this.obj.state.markers = this.homeMarkers
+		this.serviceMarkers = this.resolveServices().map(this.buildServiceMarker.bind(this))
+
+		this.obj.state.markers = this.homeMarkers.concat(this.serviceMarkers)
 	}
 
 	unregister() {
+	}
+
+	_onMarkerClicked(marker) {
+		let service = null
+		switch(marker.type) {
+		case INFO_TYPE.HOME:
+			break
+		case INFO_TYPE.SERVICE:
+			service = ServiceHelper.getData(marker.id)
+			break
+		}
+		this.setState({ 
+			infoType: marker.type,
+			service: service
+		})
 	}
 
 	buildHomeMarker() { 
@@ -56,15 +77,35 @@ class AuxiliaryZoneData extends BaseData {
 		}
 	}
 
-	_onMarkerClicked(marker) {
-		console.log(marker)
-		switch(marker.type) {
-		case INFO_TYPE.HOME:
-			break
+	buildServiceMarker(service) {
+		return {
+			id: service.id,
+			type: INFO_TYPE.SERVICE,
+			lattitude: service.lattitude,
+			longitude: service.longitude,
+			title: service.socialReason,
+			icon: ICONS.SERVICE,
+			onClick: this.onMarkerClicked.bind(this)
 		}
-		this.setState({ 
-			infoType: marker.type,
-		})
+	}
+
+	resolveServices() {
+		let exclude = this.resolveServiceWithIntervention()
+		return Utils.reduce(ServiceHelper.getData(), function (services, service) {
+			if (exclude.indexOf(service.id) === -1) {
+				services.push(service)
+			}
+			return services
+		}, [])
+	}
+
+	resolveServiceWithIntervention() {
+		return Utils.reduce(InterventionHelper.getData(), function (services, intervention) {
+			if (InterventionUtils.isActive(intervention) && services.indexOf(intervention.serviceId) === -1) {
+				services.push(intervention.serviceId)
+			}
+			return services
+		}, [])
 	}
 
 }

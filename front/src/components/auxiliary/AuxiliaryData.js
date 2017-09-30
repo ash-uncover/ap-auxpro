@@ -1,6 +1,7 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
+import ServiceHelper from 'helpers/ServiceHelper'
 
 import { BaseData } from 'ap-react-bootstrap'
 
@@ -30,7 +31,12 @@ class AuxiliaryData extends BaseData {
 			return;
 		}
 
-		AuxiliaryHelper.getAuxiliary(AuthHelper.getEntityId()).then(this._onLoad.bind(this))
+		AuxiliaryHelper.getAuxiliary(AuthHelper.getEntityId()).
+		then(function () {
+			return Promise.all([
+				ServiceHelper.getServices()
+			])
+		}).then(this._onLoad.bind(this))
 
 		AppHelper.register('/path', this, this._onAppStorePathUpdate.bind(this));
 	}

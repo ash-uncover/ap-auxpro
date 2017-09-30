@@ -28,6 +28,16 @@ class AuxiliaryZone extends React.Component {
 		)
 	}
 
+	_buildFilter(value, label) {
+		return (
+			<Form.Switch 
+				key={value}
+				text={label}
+				value={this.state[value]}
+				onChange={null} />
+		)
+	}
+
 	render() {
 		return (
 			<Grid.Row className='ap-auxiliaryzone'>
@@ -54,7 +64,20 @@ class AuxiliaryZone extends React.Component {
 					</Panel>
 				</Grid.Col>
 				<Grid.Col sm={4}>
-				{this.state.infoType === AuxiliaryZoneData.INFO_TYPE.HOME ? 
+					<Panel>
+						<Panel.Header>
+							Filtres
+						</Panel.Header>
+						<Panel.Body>
+							{this._buildFilter('showOffers', 'Afficher Offres')}
+							{this._buildFilter('showInterventions', 'Afficher mes Usagers')}
+							{this._buildFilter('showServices', 'Afficher mes SAD')}
+							{this._buildFilter('showAllServices', 'Afficher tous les SAD')}
+						</Panel.Body>
+						<Panel.Footer>
+						</Panel.Footer>
+					</Panel>
+					{this.state.infoType === AuxiliaryZoneData.INFO_TYPE.HOME ? 
 						<Panel>
 							<Panel.Header>
 								Mon domicile
@@ -63,6 +86,20 @@ class AuxiliaryZone extends React.Component {
 								<p><strong>{this.state.auxliary.civility + ' ' + this.state.auxliary.lastName + ' ' + this.state.auxliary.firstName}</strong></p>
 								<div>{this.state.auxliary.address}</div>
 								<div>{this.state.auxliary.postalCode + ' ' + this.state.auxliary.city}</div>
+							</Panel.Body>
+							<Panel.Footer>
+							</Panel.Footer>
+						</Panel>
+					: null }
+					{this.state.infoType === AuxiliaryZoneData.INFO_TYPE.SERVICE ? 
+						<Panel>
+							<Panel.Header>
+								Service
+							</Panel.Header>
+							<Panel.Body>
+								<p><strong>{this.state.service.socialReason}</strong></p>
+								<div>{this.state.service.address}</div>
+								<div>{this.state.service.postalCode + ' ' + this.state.service.city}</div>
 							</Panel.Body>
 							<Panel.Footer>
 							</Panel.Footer>

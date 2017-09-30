@@ -33,7 +33,7 @@ class ServiceData extends BaseData {
 		ServiceHelper.getService(AuthHelper.getEntityId()).
 		then(function () {
 			return Promise.all([
-				AuxiliaryHelper.getAuxiliarys(AuthHelper.getEntityId()),
+				AuxiliaryHelper.getAuxiliarys(),
 				CustomerHelper.getServiceCustomers(AuthHelper.getEntityId()),
 				InterventionHelper.getServiceInterventions(AuthHelper.getEntityId()),
 				OfferHelper.getServiceOffers(AuthHelper.getEntityId()),
