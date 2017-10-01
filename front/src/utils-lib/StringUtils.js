@@ -12,4 +12,5 @@ class StringUtils {
 
 }
 
+StringUtils.MISSING_VALUE = MISSING_VALUE
 export default StringUtils

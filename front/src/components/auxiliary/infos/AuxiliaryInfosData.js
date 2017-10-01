@@ -4,7 +4,9 @@ import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
 import { BaseData, Formatters } from 'ap-react-bootstrap'
 
 import AuxiliaryFields from 'utils/entities/AuxiliaryFields'
+
 import BooleanUtils from 'utils-lib/BooleanUtils'
+import StringUtils from 'utils-lib/StringUtils'
 
 let FIELDS_FORM0 = [
 	AuxiliaryFields.AVATAR
@@ -81,6 +83,7 @@ class AuxiliaryInfosData extends BaseData {
 		let service = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
 		for (let i = 0; i < FIELDS.length; i++) {
 			let field = FIELDS[i]
+			let value = service[field.key]
 			if (field.formatter) {
 				this.obj.state[field.key] = field.formatter(service[field.key])
 			} else {

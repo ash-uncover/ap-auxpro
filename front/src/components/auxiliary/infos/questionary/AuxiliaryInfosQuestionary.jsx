@@ -41,8 +41,7 @@ class AuxiliaryInfosQuestionary extends React.Component {
 
 	_buildAnswers(skillAnswers, qIndex, answers) {
 		return answers.map(function (answer, index) {
-			let key = qIndex + '-' + index
-			
+			let key = qIndex + '-' + index			
 			return (
 				<Form.Radio disabled
 					key={key}
@@ -50,7 +49,7 @@ class AuxiliaryInfosQuestionary extends React.Component {
 					value={key}
 					className={index === skillAnswers[qIndex] ? 'selected' : ''}
 					checked={index === skillAnswers[qIndex]} >
-					{answer + ' '}
+					{answer}
 				</Form.Radio>
 			)
 		}.bind(this));

@@ -5,9 +5,12 @@
 	
 	.ap-service-infos-image-container {
 		text-align: center;
+		font-style: italic;
 		.ap-image {
 			height: 120px;
+			min-height: 120px;
 			width: 120px;
+			min-width: 120px;
 			object-fit: cover;
 			border: 3px solid $ap-primary-color;
 			border-radius: 3px;
