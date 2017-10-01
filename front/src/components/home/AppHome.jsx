@@ -66,10 +66,9 @@ class AppHome extends React.Component {
 						</div>
 					</Col>
 				</Row>
-				<iframe width="420" height="315" src="https://www.youtube.com/embed/uvnzjrS9f0E"></iframe>
+				<iframe width="420" height="315" src="https://www.youtube.com/embed/79hXWPst6HE"></iframe>
 			</div>
 		)
 	}
-
 }
 export default AppHome
