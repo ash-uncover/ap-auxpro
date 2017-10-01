@@ -24,6 +24,7 @@ class ImageUploader extends BaseComponent {
 				onChange: {}
 			},
 			optionnal : {
+				id: {},
 				src: {},
 				maxSize: { defaultValue: 2100000, store: this.imageProps },
 				types: { defaultValue: MimeTypes.IMAGES, store: this.imageProps }
@@ -79,13 +80,13 @@ class ImageUploader extends BaseComponent {
 					: <br/> }
 
 					<label 
-						htmlFor='file-upload' 
+						htmlFor={this.props.id || 'file-upload'}
 						className='ap-image-uploader-label btn btn-primary'>
 					    Sélectionnez un fichier
 					</label>
 
 					<input 
-						id='file-upload'
+						id={this.props.id || 'file-upload'}
 						className='ap-image-uploader-input'
 						ref={(c) => this.fileInput = c} 
 						type='file' 

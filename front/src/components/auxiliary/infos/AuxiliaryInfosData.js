@@ -1,11 +1,12 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
-import { BaseData, Formatters } from 'ap-react-bootstrap'
+import { BaseData, Formatters, MomentHelper } from 'ap-react-bootstrap'
 
 import AuxiliaryFields from 'utils/entities/AuxiliaryFields'
 
 import BooleanUtils from 'utils-lib/BooleanUtils'
+import NationalityUtils from 'utils-lib/geo/NationalityUtils'
 import StringUtils from 'utils-lib/StringUtils'
 
 let FIELDS_FORM0 = [
@@ -25,10 +26,10 @@ let FIELDS_FORM2 = [
 	AuxiliaryFields.POSTAL_CODE,
 	AuxiliaryFields.CITY,
 	AuxiliaryFields.COUNTRY,
-	AuxiliaryFields.NATIONALITY,
+	Object.assign({ formatter: NationalityUtils.getNationalityFem }, AuxiliaryFields.NATIONALITY),
 	AuxiliaryFields.BIRTH_CITY,
 	AuxiliaryFields.BIRTH_COUNTRY,
-	AuxiliaryFields.BIRTH_DATE
+	Object.assign({ formatter: MomentHelper.localDateToHumanDate }, AuxiliaryFields.BIRTH_DATE)
 ]
 let FIELDS_FORM3 = [
 	AuxiliaryFields.DIPLOMA_IMAGE
@@ -80,17 +81,17 @@ class AuxiliaryInfosData extends BaseData {
 	}
 
 	_onAuxiliaryUpdate() {
-		let service = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
+		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
 		for (let i = 0; i < FIELDS.length; i++) {
 			let field = FIELDS[i]
-			let value = service[field.key]
+			let value = auxiliary[field.key]
 			if (field.formatter) {
-				this.obj.state[field.key] = field.formatter(service[field.key])
+				this.obj.state[field.key] = field.formatter(auxiliary[field.key])
 			} else {
-				this.obj.state[field.key] = service[field.key]
+				this.obj.state[field.key] = auxiliary[field.key]
 			}
 		}
-		this.obj.state.areSkillSet = service.areSkillSet
+		this.obj.state.areSkillSet = auxiliary.areSkillSet
 	}
 
 

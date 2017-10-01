@@ -11,7 +11,7 @@ class AppFooter extends React.Component {
 		super(props)
 
 		this.onNavigateFacebook = this.onNavigateExternal.bind(this, 'https://www.facebook.com/Auxpros')
-		this.onNavigateYoutube = this.onNavigateExternal.bind(this, 'https://www.youtube.com/watch?v=c3G8MM8muk8')
+		this.onNavigateYoutube = this.onNavigateExternal.bind(this, 'https://www.youtube.com/channel/UC0E73ybLlgPiLQohO1UGEqA/featured')
 		this.onNavigateTwitter = this.onNavigateExternal.bind(this, 'https://twitter.com/AuXpros')
 
 		this.onNavigatePresentation = AppHelper.navigate.bind(AppHelper, '/infos/presentation')

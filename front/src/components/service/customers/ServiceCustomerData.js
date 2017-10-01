@@ -1,7 +1,7 @@
 import AppHelper from 'helpers/AppHelper'
 import CustomerHelper from 'helpers/CustomerHelper'
 
-import { BaseData, Formatters, Nationality } from 'ap-react-bootstrap'
+import { BaseData, Formatters, Nationality, MomentHelper } from 'ap-react-bootstrap'
 
 import CustomerFields from 'utils/entities/CustomerFields'
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
@@ -11,7 +11,7 @@ let FIELDS_FORM1 = [
 	CustomerFields.CIVILITY,
 	CustomerFields.LAST_NAME,
 	CustomerFields.FIRST_NAME,
-	CustomerFields.BIRTH_DATE,
+	Object.assign({ formatter: MomentHelper.localDateToHumanDate }, CustomerFields.BIRTH_DATE),
 	Object.assign({ formatter: NationalityUtils.getNationalityFem }, CustomerFields.NATIONALITY),
 	Object.assign({ formatter: Formatters.Phone.getFormattedValue }, CustomerFields.PHONE)
 ]
