@@ -19,7 +19,6 @@ let FIELDS_FORM1 = [
 	Object.assign({ defaultValue: 'Mme', form: 'select' }, AuxiliaryFields.CIVILITY),
 	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.FIRST_NAME),
 	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.LAST_NAME),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.EMAIL),
 	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.PHONE),
 	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.SOCIAL_NUMBER),
 	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.ID_CARD_NUMBER)

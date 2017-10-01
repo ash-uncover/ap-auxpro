@@ -241,10 +241,12 @@ let _DIPLOMA_IMAGE = {
 let _COUNTRY = {
 	key: 'country',
 	type: 'string',
+	validator: Validators.NonEmptyString,
 }
 let _LAST_NAME = {
 	key: 'lastName',
 	type: 'string',
+	validator: Validators.NonEmptyString,
 }
 let _DIPLOMA_VALIDATED = {
 	key: 'diplomaValidated',
@@ -254,14 +256,17 @@ let _CIVILITY = {
 	key: 'civility',
 	type: 'string',
 	values: Civility.VALUES,
+	validator: Validators.NonNull,
 }
 let _CITY = {
 	key: 'city',
 	type: 'string',
+	validator: Validators.NonEmptyString,
 }
 let _POSTAL_CODE = {
 	key: 'postalCode',
 	type: 'number',
+	validator: Validators.PostalCode,
 }
 let _IS_TUTO_SKIPPED = {
 	key: 'isTutoSkipped',
@@ -270,10 +275,12 @@ let _IS_TUTO_SKIPPED = {
 let _DESCRIPTION = {
 	key: 'description',
 	type: 'string',
+	validator: Validators.Tweet,
 }
 let _SOCIAL_NUMBER = {
 	key: 'socialNumber',
 	type: 'string',
+	validator: Validators.SocialNumberShort,
 }
 let _ACCOUNT_EXPIRY_DATE = {
 	key: 'accountExpiryDate',
@@ -294,6 +301,7 @@ let _NOTIFY_AUXPROS = {
 let _BIRTH_COUNTRY = {
 	key: 'birthCountry',
 	type: 'string',
+	validator: Validators.NonEmptyString,
 }
 let _ADDRESS_CHECKED = {
 	key: 'addressChecked',
@@ -302,6 +310,7 @@ let _ADDRESS_CHECKED = {
 let _DIPLOMA = {
 	key: 'diploma',
 	type: 'string',
+	validator: Validators.NonEmptyString,
 }
 let _SKILL_DOITYOURSELF = {
 	key: 'skillDoityourself',
@@ -326,6 +335,7 @@ let _SKILL_NURSING = {
 let _ADDRESS = {
 	key: 'address',
 	type: 'string',
+	validator: Validators.NonEmptyString,
 }
 let _LATTITUDE = {
 	key: 'lattitude',
@@ -343,6 +353,7 @@ let _NOTIFY_PARTNERS = {
 let _BIRTH_CITY = {
 	key: 'birthCity',
 	type: 'string',
+	validator: Validators.NonEmptyString,
 }
 let _AVATAR = {
 	key: 'avatar',
@@ -355,6 +366,7 @@ let _ARE_SKILL_SET = {
 let _BIRTH_DATE = {
 	key: 'birthDate',
 	type: 'number',
+	validator: Validators.BeforeToday,
 }
 let _SKILL_CHILDHOOD = {
 	key: 'skillChildhood',
@@ -367,6 +379,7 @@ let _SKILL_COMPAGNY = {
 let _FIRST_NAME = {
 	key: 'firstName',
 	type: 'string',
+	validator: Validators.NonEmptyString,
 }
 let _SKILL_ANSWERS = {
 	key: 'skillAnswers',
@@ -375,14 +388,17 @@ let _SKILL_ANSWERS = {
 let _NATIONALITY = {
 	key: 'nationality',
 	type: 'string',
+	validator: Validators.NonNull,
 }
 let _IS_ENTREPRENEUR = {
 	key: 'isEntrepreneur',
 	type: 'boolean',
+	validator: Validators.NonNull,
 }
 let _PHONE = {
 	key: 'phone',
 	type: 'string',
+	validator: Validators.Phone,
 }
 let _SKILL_ADMINISTRATIVE = {
 	key: 'skillAdministrative',
@@ -399,6 +415,7 @@ let _SKILL_HOUSEWORK = {
 let _ID_CARD_NUMBER = {
 	key: 'idCardNumber',
 	type: 'number',
+	validator: Validators.IDCardNumber,
 }
 let _EMAIL_CHECKED = {
 	key: 'emailChecked',

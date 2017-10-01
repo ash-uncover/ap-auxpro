@@ -16,7 +16,6 @@ let FIELDS_FORM1 = [
 	AuxiliaryFields.CIVILITY,
 	AuxiliaryFields.FIRST_NAME,
 	AuxiliaryFields.LAST_NAME,
-	AuxiliaryFields.EMAIL,
 	AuxiliaryFields.PHONE,
 	AuxiliaryFields.SOCIAL_NUMBER,
 	AuxiliaryFields.ID_CARD_NUMBER
