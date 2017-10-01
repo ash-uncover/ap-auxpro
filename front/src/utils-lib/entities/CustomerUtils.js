@@ -28,6 +28,13 @@ class CustomerUtils {
 		return customer.civility + ' ' + customer.firstName + ' ' + customer.lastName
 	}
 
+	static getShortName(customer) {
+		if (!customer.civility || !customer.firstName || !customer.lastName) {
+			return null
+		}
+		return customer.civility + ' ' + customer.firstName + ' ' + customer.lastName.substring(0, 1) + '.'
+	}	
+
 	static getName(customer) {
 		if (!customer.firstName || !customer.lastName) {
 			return null
@@ -42,5 +49,11 @@ class CustomerUtils {
 		return customer.address + ' ' + customer.postalCode + ' ' + customer.city
 	}
 
+	static getShortAddress(customer) {
+		if (!customer.postalCode || !customer.city) {
+			return null
+		}
+		return customer.postalCode + ' ' + customer.city
+	}
 }
 export default CustomerUtils

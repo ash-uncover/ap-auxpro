@@ -12,5 +12,15 @@ class OfferStatusSadUtils {
 		return ''
 	}
 
+	static getNamePlural(func) {
+		switch (func) {
+			case OfferStatusSad.PENDING.key: return 'En attente'
+			case OfferStatusSad.CANCELED.key: return 'Annulées'
+			case OfferStatusSad.CONFIRMED.key: return 'Confirmées'
+			case OfferStatusSad.REJECTED.key: return 'Rejectées'
+		}
+		return ''
+	}
+
 }
 export default OfferStatusSadUtils 
