@@ -122,9 +122,9 @@ class AuxiliaryInfos extends React.Component {
 							<p>Vous devez remplir le questionnaire afin d'obtenir vos score de compétences.</p>
 						}
 						{this.state.areSkillSet ?
-							<Button block bsStyle='primary' onClick={this.onModifyQuestionary}>Voir mon questionnaire</Button>
+							<Button block bsStyle='primary' onClick={this.onViewQuestionary}>Voir mon questionnaire</Button>
 						:
-							<Button block bsStyle='primary' onClick={this.onViewQuestionary}>Remplir le questionnaire AuXpros</Button>
+							<Button block bsStyle='primary' onClick={this.onModifyQuestionary}>Remplir le questionnaire AuXpros</Button>
 						}
 					</Panel.Body>
 					<Panel.Footer>

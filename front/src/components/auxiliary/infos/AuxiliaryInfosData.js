@@ -55,7 +55,7 @@ class AuxiliaryInfosData extends BaseData {
 		
 		this.declareFunction('onModifyInfos')
 		this.declareFunction('onModifyQuestionary')
-		this.declareFunction('onShowQuestionary')
+		this.declareFunction('onViewQuestionary')
 		this.declareFunction('onModifyAccount')
 		this.declareFunction('onModifyEmail')
 		this.declareFunction('onModifyPassword')
@@ -100,7 +100,7 @@ class AuxiliaryInfosData extends BaseData {
 	onModifyQuestionary() {
 		AppHelper.navigate('/auxiliary/infos/edit/questionary')
 	}
-	onShowQuestionary() {
+	onViewQuestionary() {
 		AppHelper.navigate('/auxiliary/infos/questionary')
 	}
 	onModifyAccount() {
@@ -120,4 +120,5 @@ AuxiliaryInfosObj.FIELDS_FORM1 = FIELDS_FORM1
 AuxiliaryInfosObj.FIELDS_FORM2 = FIELDS_FORM2
 AuxiliaryInfosObj.FIELDS_FORM3 = FIELDS_FORM3
 AuxiliaryInfosObj.FIELDS_FORM4 = FIELDS_FORM4
+AuxiliaryInfosObj.FIELDS_FORM5 = FIELDS_FORM5
 export default AuxiliaryInfosObj

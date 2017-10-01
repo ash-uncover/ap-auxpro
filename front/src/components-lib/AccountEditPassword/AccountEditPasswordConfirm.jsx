@@ -32,7 +32,7 @@ class AccountEditPasswordConfirm extends React.Component {
 						block 
 						bsStyle='primary'
 						onClick={this.onComplete}>
-						Retour au profile
+						Retour au profil
 					</Button>
 				</Panel.Body>
 			</Panel>
