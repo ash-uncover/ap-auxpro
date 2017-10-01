@@ -21,7 +21,7 @@ db.apauth.insert({
 	"username":"a",
 	"email":"sylvie.charpentier@kiko.mail",
 	"password":"a",
-	"roles":["aux"],
+	"roles":["auxiliary","apauth"],
 	"type":"auxiliary",
 	"active":true,
 	"registrationDate":[2016, 2, 15, 0, 0],
@@ -33,7 +33,7 @@ db.apauth.insert({
 	"username":"b",
 	"email":"jean.edouard@kikomail.lol",
 	"password":"b",
-	"roles":["aux"],
+	"roles":["auxiliary","apauth"],
 	"type":"auxiliary",
 	"active":true,
 	"registrationDate":[2016, 2, 16, 0, 0],
@@ -45,7 +45,7 @@ db.apauth.insert({
 	"username":"c",
 	"email":"rachel.caudran@kikomail.lol",
 	"password":"c",
-	"roles":["aux"],
+	"roles":["auxiliary","apauth"],
 	"type":"auxiliary",
 	"active":true,
 	"registrationDate":[2016, 2, 17, 0, 0],
@@ -57,7 +57,7 @@ db.apauth.insert({
 	"username":"d",
 	"email":"catherine.bijard@kikomail.lol",
 	"password":"d",
-	"roles":["aux"],
+	"roles":["auxiliary","apauth"],
 	"type":"auxiliary",
 	"active":true,
 	"registrationDate":[2016, 2, 18, 0, 0],
@@ -69,7 +69,7 @@ db.apauth.insert({
 	"username":"e",
 	"email":"julie.roustaud@kikomail.lol",
 	"password":"e",
-	"roles":["aux"],
+	"roles":["auxiliary","apauth"],
 	"type":"auxiliary",
 	"active":true,
 	"registrationDate":[2016, 2, 19, 0, 0],
@@ -81,7 +81,7 @@ db.apauth.insert({
 	"username":"f",
 	"email":"mathilde.lepont@kikomail.lol",
 	"password":"f",
-	"roles":["aux"],
+	"roles":["auxiliary","apauth"],
 	"type":"auxiliary",
 	"active":true,
 	"registrationDate":[2016, 2, 20, 0, 0],
@@ -93,7 +93,7 @@ db.apauth.insert({
 	"username":"g",
 	"email":"sabrina.ternic@kikomail.lol",
 	"password":"g",
-	"roles":["aux"],
+	"roles":["auxiliary","apauth"],
 	"type":"auxiliary",
 	"active":true,
 	"registrationDate":[2016, 2, 21, 0, 0],
@@ -105,7 +105,7 @@ db.apauth.insert({
 	"username":"h",
 	"email":"herve.paoli@kikomail.lol",
 	"password":"h",
-	"roles":["aux"],
+	"roles":["auxiliary","apauth"],
 	"type":"auxiliary",
 	"active":true,
 	"registrationDate":[2016, 2, 22, 0, 0],
@@ -124,6 +124,18 @@ db.apauth.insert({
 	"registered":true
 })
 
+db.apauth.insert({ 
+	"id":"antoine",
+	"entityId":"auxantoine",
+	"username":"maillard.antoine@gmail.com",
+	"email":"maillard.antoine@gmail.com",
+	"password":"a",
+	"roles":["auxiliary","apauth"],
+	"type":"auxiliary",
+	"active":true,
+	"registrationDate":[2017, 10, 1, 12, 4, 9, 345000000],
+	"registered":true
+})
 
 /* ****************************************************************************************
  * DB-AUXILIARY
@@ -469,7 +481,52 @@ db.auxiliary.insert({
 	"idCardNumber":NumberLong(123456789012)
 })
 
-
+db.auxiliary.insert({
+	"authId":"antoine",
+	"id":"auxantoine",
+	"diplomaImage":null,
+	"country":null,
+	"lastName":null,
+	"diplomaValidated":null,
+	"civility":null,
+	"city":null,
+	"postalCode":null,
+	"isTutoSkipped":true,
+	"description":null,
+	"socialNumber":null,
+	"accountExpiryDate":null,
+	"skillShopping":null,
+	"notifyOffersSms":null,
+	"notifyAuxpros":null,
+	"birthCountry":null,
+	"addressChecked":null,
+	"diploma":null,
+	"skillDoityourself":null,
+	"email":null,
+	"longitude":null,
+	"skillNursing":null,
+	"address":null,
+	"lattitude":null,
+	"accountType":null,
+	"notifyPartners":null,
+	"birthCity":null,
+	"avatar":null,
+	"areSkillSet":null,
+	"birthDate":null,
+	"skillChildhood":null,
+	"skillCompagny":null,
+	"firstName":null,
+	"skillAnswers":null,
+	"nationality":null,
+	"isEntrepreneur":null,
+	"phone":null,
+	"skillAdministrative":null,
+	"phoneChecked":null,
+	"skillHousework":null,
+	"idCardNumber":null,
+	"emailChecked":null,
+	"notifyOffersMail" : null 
+})
 
 /* ****************************************************************************************
  * DB-SERVICE
