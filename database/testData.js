@@ -745,7 +745,7 @@ db.intervention.insert({
 	"customerId":"szc1",
 	"serviceId":"sadz",
 	"period":"ONE",
-	"startDate":[NumberInt(2017),NumberInt(4),NumberInt(28)],
+	"startDate":[NumberInt(2018),NumberInt(4),NumberInt(28)],
 	"startTime":[NumberInt(14),NumberInt(0)],
 	"endTime":[NumberInt(16),NumberInt(0)]
 })
@@ -755,8 +755,8 @@ db.intervention.insert({
 	"customerId":"szc1",
 	"serviceId":"sadz",
 	"period":"P1W",
-	"startDate":[NumberInt(2017),NumberInt(4),NumberInt(29)],
-	"endDate":[NumberInt(2017),NumberInt(12),NumberInt(29)],
+	"startDate":[NumberInt(2018),NumberInt(4),NumberInt(29)],
+	"endDate":[NumberInt(2018),NumberInt(12),NumberInt(29)],
 	"startTime":[NumberInt(8),NumberInt(30)],
 	"endTime":[NumberInt(12),NumberInt(0)],
 	"days":["MONDAY","FRIDAY"]
@@ -865,7 +865,7 @@ db.intervention.insert({
 	"customerId":"szc4",
 	"serviceId":"sadz",
 	"period":"ONE",
-	"startDate":[NumberInt(2017),NumberInt(5),NumberInt(1)],
+	"startDate":[NumberInt(2018),NumberInt(5),NumberInt(1)],
 	"startTime":[NumberInt(11),NumberInt(15)],
 	"endTime":[NumberInt(14),NumberInt(15)]
 })
