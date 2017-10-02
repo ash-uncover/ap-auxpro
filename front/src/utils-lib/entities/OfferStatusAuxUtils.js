@@ -11,5 +11,14 @@ class OfferStatusAuxUtils {
 		return ''
 	}
 
+	static getNamePlural(func) {
+		switch (func) {
+			case OfferStatusAux.PENDING.key: return 'En attente'
+			case OfferStatusAux.ACCEPTED.key: return 'Acceptées'
+			case OfferStatusAux.DECLINED.key: return 'Déclinées'
+		}
+		return ''
+	}
+
 }
 export default OfferStatusAuxUtils 

@@ -38,23 +38,9 @@ class AuxiliaryOfferTilePending extends React.Component {
 					<Panel.Body>
 						<div className='ap-intile-strong'>
 							<b>Proposé par {this.state.serviceName}</b>
-							<Button 
-								className='ap-intile-action'
-								bsSize='xs'
-								tooltip='Voir détail usager'
-								onClick={this.onViewService}>
-								<Glyphicon glyph='user' />
-							</Button>
 						</div>
 						<div className='ap-intile-strong'>
 							<b>Chez {this.state.customerName}</b>
-							<Button 
-								className='ap-intile-action'
-								bsSize='xs'
-								tooltip='Voir détail usager'
-								onClick={this.onViewCustomer}>
-								<Glyphicon glyph='user' />
-							</Button>
 						</div>
 						<p>{this.state.customerAddress}</p>
 					</Panel.Body>

@@ -31,7 +31,7 @@ class ServiceInterventionFollow extends React.Component {
 				key={offer.id}
 				auxiliaryId={offer.auxiliaryId}
 				offerId={offer.id}
-				onConfirm={this.onConfirm.bind(this, offer.auxiliaryId)} />
+				onConfirm={this.onConfirm.bind(this, offer)} />
 		)
 	}
 

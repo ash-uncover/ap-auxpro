@@ -5,7 +5,11 @@ import MissionHelper from 'helpers/MissionHelper'
 import OfferHelper from 'helpers/OfferHelper'
 
 import { BaseData, MomentHelper } from 'ap-react-bootstrap'
+
 import moment from 'moment'
+
+import InterventionStatus from 'utils/constants/InterventionStatus'
+import OfferStatusSad from 'utils/constants/OfferStatusSad'
 
 import InterventionType from 'utils-lib/constants/InterventionType'
 import InterventionUtils from 'utils-lib/entities/InterventionUtils'
@@ -42,13 +46,22 @@ class ServiceInterventionFollowData extends BaseData {
 	onCancel() {
 		AppHelper.navigateBack()
 	}
-	onConfirm(auxiliaryId) {
+	onConfirm(offer) {
 		let intervention = InterventionHelper.getData(this.interventionId)
-		intervention.auxiliaryId = auxiliaryId
+		
+		intervention.auxiliaryId = offer.auxiliaryId
+		intervention.sadStatus = InterventionStatus.ONGOING.key
+		intervention.sadStatusChanged = MomentHelper.toLocalDate(moment())
+
+		offer.sadStatus = OfferStatusSad.CONFIRMED.key
+		offer.sadStatusChanged = MomentHelper.toLocalDate(moment())
 
 		AppHelper.setBusy(true).
 		then(function () {
-			return InterventionHelper.putIntervention(intervention)
+			return Promise.all([
+				InterventionHelper.putIntervention(intervention),
+				OfferHelper.putOffer(offer)
+			])
 		}).
 		then(function () {
 			return Promise.all([
