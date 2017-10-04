@@ -933,6 +933,534 @@ db.offer.insert({
 
 
 /* ****************************************************************************************
+ * DB-MISSION
+ */
+db.mission.insert({
+	"id":"szc1aa1-1",
+	"customerId":"szc1",
+	"serviceId":"sadz",
+	"auxiliaryId":"auxa",
+	"interventionId":"szc1aa1",
+	"sadStatus":"PENDING",
+	"date":[NumberInt(2017),NumberInt(3),NumberInt(16)]
+})
+
+db.mission.insert({
+	"id":"szc1aa2-1",
+	"customerId":"szc1",
+	"serviceId":"sadz",
+	"auxiliaryId":"auxa",
+	"interventionId":"szc1aa2",
+	"sadStatus":"PENDING",
+	"date":[NumberInt(2017),NumberInt(4),NumberInt(15)]
+})
+
+db.mission.insert({
+	"id":"szc1aa2-2",
+	"customerId":"szc1",
+	"serviceId":"sadz",
+	"auxiliaryId":"auxa",
+	"interventionId":"szc1aa2",
+	"sadStatus":"PENDING",
+	"date":[NumberInt(2017),NumberInt(4),NumberInt(22)]
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(4),NumberInt(1)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc4",
+    "id": "9b8f1105-9df6-45a5-958b-c15a87e64382",
+    "serviceId": "sadz",
+    "interventionId": "szc4aa3",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(4),NumberInt(5)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc5",
+    "id": "13a28f87-ac93-48e5-9fb9-cf2f6894ce4b",
+    "serviceId": "sadz",
+    "interventionId": "szc5aa4",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(4),NumberInt(12)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc5",
+    "id": "1175e66f-6f91-47cf-adc2-cc5a23ba33e5",
+    "serviceId": "sadz",
+    "interventionId": "szc5aa4",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(4),NumberInt(19)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc5",
+    "id": "6bfbe348-9482-4425-8cab-3376f7f7ddf5",
+    "serviceId": "sadz",
+    "interventionId": "szc5aa4",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(4),NumberInt(26)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc5",
+    "id": "b344cc21-8324-4a5f-878c-3b35debcdd3e",
+    "serviceId": "sadz",
+    "interventionId": "szc5aa4",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(3)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc5",
+    "id": "1248a7bb-b18a-4392-a1cd-2890cb00c558",
+    "serviceId": "sadz",
+    "interventionId": "szc5aa4",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(10)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc5",
+    "id": "4a9363eb-e165-4d4f-bb1c-5c83da6a220b",
+    "serviceId": "sadz",
+    "interventionId": "szc5aa4",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(17)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc5",
+    "id": "a3dfa339-a617-490d-b069-c7c8e6c32786",
+    "serviceId": "sadz",
+    "interventionId": "szc5aa4",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(24)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc5",
+    "id": "99c011a3-ae90-45f3-9b97-1026f263c9e4",
+    "serviceId": "sadz",
+    "interventionId": "szc5aa4",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(31)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc5",
+    "id": "aebf364d-60ee-48ec-8ba2-508c8eded6ff",
+    "serviceId": "sadz",
+    "interventionId": "szc5aa4",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(4),NumberInt(18)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "907cdcda-bd83-4eb8-a419-824ae1112585",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(4),NumberInt(20)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "1769ed17-494e-4231-a694-539b27c8daee",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(4),NumberInt(25)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "310553e9-1e20-4115-9df9-e25fcd5a530e",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(4),NumberInt(27)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "47b5cb38-a314-4572-8410-ff3e355b5722",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(2)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "47ff03a9-9a96-40d3-bdf6-a9b91c3f1d20",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(4)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "7e8f39b1-098e-48b1-abce-5f3610b0088b",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(9)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "d3563e7d-61fa-42cf-a554-44193f8a0ae6",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(11)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "e955e0ab-98ac-4438-8d81-dd2d0c25bf7a",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(16)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "a49d07b9-8ad1-4def-a939-9e05cd991000",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(18)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "124f2c96-854b-43ad-9ce9-c8117367f995",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(23)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "d9202143-2530-43ad-80d7-54d69fb3d8e5",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(25)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "94d378cd-6c00-4fcb-be78-ff98b96d548a",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(5),NumberInt(30)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "9646d057-f64d-457e-b7fa-dd40b56c54a9",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(6),NumberInt(1)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "1fcfd7d2-172d-41e5-a2a9-c17e3574c466",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(6),NumberInt(6)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "c59b7ec0-f7b6-4fa1-9bea-b49cb0da1009",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(6),NumberInt(8)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "045849ec-09eb-41ee-b68a-28b91a83e838",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(6),NumberInt(13)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "bdcb62e3-3a16-4da6-b798-d6e50354854c",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+ 
+db.mission.insert({
+    "date": [NumberInt(2017),NumberInt(6),NumberInt(15)],
+    "auxiliaryId": "auxa",
+    "customerId": "szc3",
+    "id": "c9eb95a6-181c-4275-81b5-293e53045065",
+    "serviceId": "sadz",
+    "interventionId": "szc3aa5",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(4), NumberInt(1)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc6",
+    "id": "606b5a54-7786-4f3c-980b-eeb918ebd4f8",
+    "serviceId": "sadz",
+    "interventionId": "szc6ah1",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(4), NumberInt(5)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc2",
+    "id": "e577fa40-73f2-490b-a403-ece1ac2806f5",
+    "serviceId": "sadz",
+    "interventionId": "szc2ah2",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(4), NumberInt(12)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc2",
+    "id": "de52b2dc-eca6-4b5d-8ca0-66f4df2816aa",
+    "serviceId": "sadz",
+    "interventionId": "szc2ah2",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(4), NumberInt(19)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc2",
+    "id": "faf5cb8b-6d19-4361-8ad8-0049a61ffd4c",
+    "serviceId": "sadz",
+    "interventionId": "szc2ah2",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(4), NumberInt(26)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc2",
+    "id": "a2086806-9603-4888-93d9-98cacd4a1b38",
+    "serviceId": "sadz",
+    "interventionId": "szc2ah2",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(5), NumberInt(3)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc2",
+    "id": "b8461993-a70b-4ade-a267-457cf377c0f1",
+    "serviceId": "sadz",
+    "interventionId": "szc2ah2",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(5), NumberInt(10)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc2",
+    "id": "d86ec1a7-c8e9-494e-b205-3c7b296451e4",
+    "serviceId": "sadz",
+    "interventionId": "szc2ah2",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(5), NumberInt(17)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc2",
+    "id": "8c810267-1631-449f-8cff-5311c09f3d38",
+    "serviceId": "sadz",
+    "interventionId": "szc2ah2",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(5), NumberInt(24)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc2",
+    "id": "aaed58f5-197d-46da-9b61-36bc2dfb7b36",
+    "serviceId": "sadz",
+    "interventionId": "szc2ah2",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(5), NumberInt(31)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc2",
+    "id": "26866f2e-4642-4b8c-a14d-6c9e6f43862c",
+    "serviceId": "sadz",
+    "interventionId": "szc2ah2",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(4), NumberInt(20)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc7",
+    "id": "83c2641e-4dbb-43c6-b058-c80a114662c8",
+    "serviceId": "sadz",
+    "interventionId": "szc7ah3",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(4), NumberInt(27)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc7",
+    "id": "4d478b8d-00d3-487c-bba2-876b15539891",
+    "serviceId": "sadz",
+    "interventionId": "szc7ah3",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(5), NumberInt(4)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc7",
+    "id": "c55707df-ebf9-49a9-9524-2f933aad2c3f",
+    "serviceId": "sadz",
+    "interventionId": "szc7ah3",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(5), NumberInt(11)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc7",
+    "id": "1eb6804d-383d-470f-a867-9a0651e450e3",
+    "serviceId": "sadz",
+    "interventionId": "szc7ah3",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(5), NumberInt(18)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc7",
+    "id": "d0f91e95-cd88-41c4-b54d-32f0131cd215",
+    "serviceId": "sadz",
+    "interventionId": "szc7ah3",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(5), NumberInt(25)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc7",
+    "id": "80622a92-eec5-4d25-bc94-f46a6ba48c4f",
+    "serviceId": "sadz",
+    "interventionId": "szc7ah3",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(6), NumberInt(1)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc7",
+    "id": "b16dfe9a-3b74-40e0-ab3a-c456ffb2d529",
+    "serviceId": "sadz",
+    "interventionId": "szc7ah3",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(6), NumberInt(8)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc7",
+    "id": "f5858db3-137b-4267-acf5-e85b130ad44a",
+    "serviceId": "sadz",
+    "interventionId": "szc7ah3",
+    "sadStatus": "PENDING"
+})
+
+db.mission.insert({
+    "date": [NumberInt(2017), NumberInt(6), NumberInt(15)],
+    "auxiliaryId": "auxh",
+    "customerId": "szc7",
+    "id": "57591ee5-bbe2-47ef-8564-5af089c49082",
+    "serviceId": "sadz",
+    "interventionId": "szc7ah3",
+    "sadStatus": "PENDING"
+})
+
+
+
+/* ****************************************************************************************
+ * DB-INDISPONIBILITY
+ */
+db.indisponibility.insert({
+	"id":"auxa-1",
+	"auxiliaryId":"auxa",
+	"period":"ONE",
+	"startDate":[NumberInt(2017),NumberInt(10),NumberInt(29)],
+	"startTime":[NumberInt(14),NumberInt(0)],
+	"endTime":[NumberInt(19),NumberInt(30)]
+})
+db.indisponibility.insert({
+	"id":"auxa-2",
+	"auxiliaryId":"auxa",
+	"period":"P2W",
+	"startDate":[NumberInt(2017),NumberInt(10),NumberInt(15)],
+	"endDate":[NumberInt(2018),NumberInt(5),NumberInt(15)],
+	"startTime":[NumberInt(12),NumberInt(0)],
+	"endTime":[NumberInt(14),NumberInt(00)],
+	"days":["TUESDAY","FRIDAY"]
+})
+
+
+/* ****************************************************************************************
  * DB-HELPTOPIC
  */
 db.helptopic.insert({

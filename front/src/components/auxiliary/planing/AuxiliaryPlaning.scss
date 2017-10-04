@@ -1,3 +1,37 @@
-.ap-auxiliaryplaning {
+// Variables
+@import 'assets/styles/variables';
 
+.ap-auxiliary-planing {
+
+	.ap-form-switch {
+		label {
+			font-weight: bold;
+		}
+	}
+
+	.legend-item {
+		display: inline-block;
+		margin-bottom: 5px;
+	}
+	.legend-color {
+		display: inline-block;
+		height: 17px;
+		width: 17px;
+		border: 1px solid black;
+		transform: translateY(3px);
+		margin-right: 15px;
+
+		&.legend-success {
+			background-color: $ap-success-color
+		}
+		&.legend-info {
+			background-color: $ap-info-color
+		}
+		&.legend-warning {
+			background-color: $ap-warning-color
+		}
+		&.legend-danger {
+			background-color: $ap-danger-color
+		}
+	}
 }
