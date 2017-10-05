@@ -19,6 +19,7 @@ class AuxiliaryPlaning extends React.Component {
 	}
 
 	render() {
+		console.log(this.state)
 		return (
 			<div className='ap-auxiliary-planing row'>
 				<Grid.Col className='hidden-print' sm={2} md={2} lg={3}>
@@ -69,7 +70,9 @@ class AuxiliaryPlaning extends React.Component {
 						</Panel.Header>
 						<Panel.Body>
 							<Calendar 
-								specialsInfo={this.state.missions ? this.state.missions : []}
+								specialsInfo={this.state.showMissions ? this.state.missionsPlanned : []}
+								specialsSuccess={this.state.showMissions ? this.state.missionsCompleted : []}
+								specialsDanger={this.state.showMissions ? this.state.missionsCanceled : []}
 								specialsWarning={this.state.showIndisponibilities ? this.state.indisponibilities : []} />
 							<Grid.Col className='legend-item' xs={12} sm={6} >
 								<div className='legend-color legend-danger'/>Intervention annulée

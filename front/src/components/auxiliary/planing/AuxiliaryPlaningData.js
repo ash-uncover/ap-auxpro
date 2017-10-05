@@ -15,32 +15,44 @@ import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 import IndisponibilityUtils from 'utils-lib/entities/IndisponibilityUtils'
 import RecurencePeriodUtils from 'utils-lib/entities/RecurencePeriodUtils'
 
+import moment from 'moment'
+
 class AuxiliaryPlaningData extends BaseData {
 
 	register(obj) {
 		super.register(obj)
 
-		this.filterMission = this._filterMission.bind(this)
+		this.reduceMission = this._reduceMission.bind(this)
 
 		this.declareFunction('onCreateIndisponibility')
 		
+		let missions = this.buildMissions()
 		this.obj.state = {
 			filterCustomer: '__ALL__',
 			filterService: '__ALL__',
 			filterStatus: '__ALL__',
 			showIndisponibilities: true,
-			showInterventions: true,
+			showMissions: true,
 			indisponibilities: this.buildIndisponibilities(),
-			missions: this.buildMissions()
+			missionsPlanned: missions.planned,
+			missionsCompleted: missions.completed,
+			missionsCanceled: missions.canceled
 		}
+
+		IndisponibilityHelper.register('', this, this.onIndisponibilitiesUpdate.bind(this))
 	}
 
 	unregister() {
+		IndisponibilityHelper.unregister(this)
 	}
 
 
 	// Store data management //
 	// --------------------------------------------------------------------------------
+
+	onIndisponibilitiesUpdate() {
+
+	}
 
 	buildIndisponibilities() {
 		return Utils.reduce(IndisponibilityHelper.getData(), function (absences, indisponibility) {
@@ -83,11 +95,28 @@ class AuxiliaryPlaningData extends BaseData {
 	}
 
 	buildMissions() {
-		return Utils.filter(MissionHelper.getData(), this.filterMission)
+		return Utils.reduce(MissionHelper.getData(), this.reduceMission, {
+			planned: [], 
+			completed: [], 
+			canceled: []
+		})
 	}
 
-	_filterMission(mission) {
-		return true
+	_reduceMission(missions, mission) {
+		let sadStatus = MissionStatus.get(mission.sadStatus)
+		if (sadStatus === MissionStatus.CANCELED) {
+			missions.canceled.push(mission)
+		} else if (sadStatus === MissionStatus.PENDING) {
+			let isFuture = MomentHelper.fromLocalDate(mission.date).isSameOrAfter(moment().startOf('day'))
+			if (isFuture) {
+				missions.planned.push(mission)
+			} else {
+				missions.completed.push(mission)
+			}
+		} else {
+			missions.completed.push(mission)
+		}
+		return missions
 	}
 
 
