@@ -18,8 +18,11 @@ class AuxiliaryPlaning extends React.Component {
 		AuxiliaryPlaningData.unregister()
 	}
 
+	displayHours(hours) {
+		return hours[0] + 'h' + (hours[1] < 10 ? '0' : '') + hours[1]
+	}
+
 	render() {
-		console.log(this.state)
 		return (
 			<div className='ap-auxiliary-planing row'>
 				<Grid.Col className='hidden-print' sm={2} md={2} lg={3}>
@@ -88,7 +91,10 @@ class AuxiliaryPlaning extends React.Component {
 								specialsInfo={this.state.showMissions ? this.state.missionsPlanned : []}
 								specialsSuccess={this.state.showMissions ? this.state.missionsCompleted : []}
 								specialsDanger={this.state.showMissions ? this.state.missionsCanceled : []}
-								specialsWarning={this.state.showIndisponibilities ? this.state.indisponibilities : []} />
+								specialsWarning={this.state.showIndisponibilities ? this.state.indisponibilities : []}
+								onDaySelect={this.onDaySelect}
+								onMonthChange={this.onMonthChange}
+								onYearChange={this.onMonthChange} />
 							<Grid.Col className='legend-item' xs={12} sm={6} >
 								<div className='legend-color legend-danger'/>Intervention annulée
 							</Grid.Col>
@@ -112,6 +118,27 @@ class AuxiliaryPlaning extends React.Component {
 							Information
 						</Panel.Header>
 						<Panel.Body>
+							<b>Interventions</b>
+							<table style={{width:'100%'}}>
+								<tbody>
+									<tr>
+										<td>Planifiées:</td>
+										<td><b>{this.displayHours(this.state.hoursPlanned)}</b></td>
+									</tr>
+									<tr>
+										<td>Réalisées:</td>
+										<td><b>{this.displayHours(this.state.hoursCompleted)}</b></td>
+									</tr>
+									<tr>
+										<td>Annulées:</td>
+										<td><b>{this.displayHours(this.state.hoursCanceled)}</b></td>
+									</tr>
+									<tr>
+										<td>Total:</td>
+										<td><b>{this.displayHours(this.state.hoursTotal)}</b></td>
+									</tr>
+								</tbody>
+							</table>
 						</Panel.Body>
 						<Panel.Footer>
 						</Panel.Footer>

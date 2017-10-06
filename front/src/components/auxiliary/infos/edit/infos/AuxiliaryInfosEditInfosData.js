@@ -96,8 +96,6 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 	// --------------------------------------------------------------------------------
 
 	onChangeDirty(id, event, value) {
-		console.log(id)
-		console.log(value)
 		let data = {
 			dirty: true,
 			auxiliaryValid: true

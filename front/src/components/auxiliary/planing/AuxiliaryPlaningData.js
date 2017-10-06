@@ -24,6 +24,7 @@ class AuxiliaryPlaningData extends BaseData {
 		super.register(obj)
 
 		this.reduceMission = this._reduceMission.bind(this)
+		this.buildMissionHour = this._buildMissionHour.bind(this)		
 
 		this.declareFunction('onFilterCustomer')
 		this.declareFunction('onFilterService')
@@ -35,8 +36,13 @@ class AuxiliaryPlaningData extends BaseData {
 		this.declareFunction('onConfirmDeleteIndisponibility')
 
 		this.declareFunction('onPrintPlaning')
+
+		this.declareFunction('onDaySelect')
+		this.declareFunction('onMonthChange')
 		
 		this.obj.state = {
+			selectedDay: MomentHelper.toLocalDate(moment()),
+			selectedMonth: MomentHelper.toLocalDate(moment()),
 			showIndisponibilities: true,
 			showMissions: true,
 			filterCustomer: '__ALL__',
@@ -56,6 +62,8 @@ class AuxiliaryPlaningData extends BaseData {
 		this.obj.state.missionsPlanned = missions.planned
 		this.obj.state.missionsCompleted = missions.completed
 		this.obj.state.missionsCanceled = missions.canceled
+
+		this.buildHours()
 
 		IndisponibilityHelper.register('', this, this.onIndisponibilitiesUpdate.bind(this))
 	}
@@ -213,6 +221,42 @@ class AuxiliaryPlaningData extends BaseData {
 		return missions
 	}
 
+	buildHours() {
+		this.obj.state.hoursPlanned = this.getState('missionsPlanned').reduce(this.buildMissionHour, [0, 0])
+		this.obj.state.hoursCompleted = this.getState('missionsCompleted').reduce(this.buildMissionHour, [0, 0])
+		this.obj.state.hoursCanceled = this.getState('missionsCanceled').reduce(this.buildMissionHour, [0, 0])
+		this.obj.state.hoursTotal = [0, 0]
+		this._addTimeDurations(this.obj.state.hoursTotal, this.obj.state.hoursPlanned)
+		this._addTimeDurations(this.obj.state.hoursTotal, this.obj.state.hoursCompleted)
+		this._addTimeDurations(this.obj.state.hoursTotal, this.obj.state.hoursCanceled)
+	}
+
+	_buildMissionHour(time, mission) {
+		let selectedMonth = this.getState('selectedMonth')
+		if (mission.date[0] !== selectedMonth[0] || mission.date[1] !== selectedMonth[1]) {
+			return time
+		}
+		let intervention = InterventionHelper.getData(mission.interventionId)
+		let hours = intervention.endTime[0] - intervention.startTime[0]
+		let minutes = intervention.endTime[1] - intervention.startTime[1]
+		return this._addTimeDurations(time, [hours, minutes])				
+	}
+
+	_addTimeDurations(total, add) {
+		total[0] += add[0]
+		if (add[1] < 0) {
+			total[0] -= 1
+			total[1] += (60 + add[1])
+		} else {
+			total[1] += add[1]
+		}
+		if (total[1] >= 60) {
+			total[0] += 1
+			total[1] = total[1] % 60
+		}
+		return total
+	}
+
 
 	// View callbacks //
 	// --------------------------------------------------------------------------------
@@ -240,6 +284,15 @@ class AuxiliaryPlaningData extends BaseData {
 
 	onCreateIndisponibility() {
 
+	}
+
+	onDaySelect(value) {
+		this.setState({ selectedDay: value })
+	}
+	onMonthChange(value) {
+		this.obj.state.selectedMonth = value
+		this.buildHours()
+		this.forceUpdate()
 	}
 
 	onDeleteIndisponibility() {
