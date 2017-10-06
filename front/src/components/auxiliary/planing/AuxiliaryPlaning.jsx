@@ -28,15 +28,24 @@ class AuxiliaryPlaning extends React.Component {
 							Actions
 						</Panel.Header>
 						<Panel.Body>
-							<Form.Switch text='Voir interventions'/>
-							<Form.Switch text='Voir indisponibilités'/>
+							<Form.Switch 
+								text='Voir interventions' 
+								value={this.state.showMissions}
+								onChange={this.onChange.bind(this, 'showMissions')} />
+							<Form.Switch 
+								text='Voir indisponibilités' 
+								value={this.state.showIndisponibilities}
+								onChange={this.onChange.bind(this, 'showIndisponibilities')}/>
 							<Form horizontal>
 								<Form.Group>
 									<Form.Label className='col-sm-5 col-md-4'>
 										Usager
 									</Form.Label>
 									<Grid.Col sm={7} md={8}>
-										<Form.Select values={[]} />
+										<Form.Select 
+											values={this.state.customers}
+											value={this.state.filterCustomer}
+											onChange={this.onFilterCustomer} />
 									</Grid.Col>
 								</Form.Group>
 								<Form.Group>
@@ -44,7 +53,10 @@ class AuxiliaryPlaning extends React.Component {
 										SAD
 									</Form.Label>
 									<Grid.Col sm={7} md={8}>
-										<Form.Select values={[]} />
+										<Form.Select 
+											values={this.state.services}
+											value={this.state.filterService}
+											onChange={this.onFilterService} />
 									</Grid.Col>
 								</Form.Group>
 								<Form.Group>
@@ -52,7 +64,10 @@ class AuxiliaryPlaning extends React.Component {
 										Interventions
 									</Form.Label>
 									<Grid.Col sm={7} md={8}>
-										<Form.Select values={[]} />
+										<Form.Select 
+											values={this.state.statuses}
+											value={this.state.filterStatus}
+											onChange={this.onFilterStatus} />
 									</Grid.Col>
 								</Form.Group>
 							</Form>

@@ -11,6 +11,7 @@ import { BaseData, Utils, MomentHelper, Day } from 'ap-react-bootstrap'
 import MissionStatus from 'utils/constants/MissionStatus'
 import RecurencePeriod from 'utils/constants/RecurencePeriod'
 
+import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 import IndisponibilityUtils from 'utils-lib/entities/IndisponibilityUtils'
 import RecurencePeriodUtils from 'utils-lib/entities/RecurencePeriodUtils'
@@ -24,20 +25,37 @@ class AuxiliaryPlaningData extends BaseData {
 
 		this.reduceMission = this._reduceMission.bind(this)
 
+		this.declareFunction('onFilterCustomer')
+		this.declareFunction('onFilterService')
+		this.declareFunction('onFilterStatus')
+
 		this.declareFunction('onCreateIndisponibility')
+		this.declareFunction('onDeleteIndisponibility')
+		this.declareFunction('onCancelDeleteIndisponibility')
+		this.declareFunction('onConfirmDeleteIndisponibility')
+
+		this.declareFunction('onPrintPlaning')
 		
-		let missions = this.buildMissions()
 		this.obj.state = {
+			showIndisponibilities: true,
+			showMissions: true,
 			filterCustomer: '__ALL__',
 			filterService: '__ALL__',
 			filterStatus: '__ALL__',
-			showIndisponibilities: true,
-			showMissions: true,
-			indisponibilities: this.buildIndisponibilities(),
-			missionsPlanned: missions.planned,
-			missionsCompleted: missions.completed,
-			missionsCanceled: missions.canceled
+			customers: this.buildCustomers(),
+			services: this.buildServices(),
+			statuses: [
+				{ key: '__ALL__', value: 'Toutes' },
+				{ key: 'COMPLETED', value: 'Réalisées' },
+				{ key: 'PENDING', value: 'Planifiées' },
+				{ key: 'CANCELED', value: 'Annulées' }
+			]
 		}
+		this.obj.state.indisponibilities = this.buildIndisponibilities()
+		let missions = this.buildMissions()
+		this.obj.state.missionsPlanned = missions.planned
+		this.obj.state.missionsCompleted = missions.completed
+		this.obj.state.missionsCanceled = missions.canceled
 
 		IndisponibilityHelper.register('', this, this.onIndisponibilitiesUpdate.bind(this))
 	}
@@ -52,6 +70,52 @@ class AuxiliaryPlaningData extends BaseData {
 
 	onIndisponibilitiesUpdate() {
 
+	}
+
+	buildCustomers() {
+		let customerIds = Utils.reduce(InterventionHelper.getData(), this.getCustomers, [])
+		let customers = customerIds.map(this.buildCustomer)
+		customers.unshift({
+			key: '__ALL__',
+			value: 'Tous'
+		})
+		return customers
+	}
+
+	getCustomers(customers, intervention) {
+		if (customers.indexOf(intervention.customerId) === -1) {
+			customers.push(intervention.customerId)
+		}
+		return customers
+	}
+
+	buildCustomer(customerId) {
+		return {
+			key: customerId,
+			value: CustomerUtils.getFullName(CustomerHelper.getData(customerId))
+		}
+	}
+
+	buildServices() {
+		let serviceIds = Utils.reduce(InterventionHelper.getData(), this.getServices, [])
+		let services = serviceIds.map(this.buildService)
+		services.unshift({
+			key: '__ALL__',
+			value: 'Tous'
+		})
+		return services
+	}
+	getServices(services, intervention) {
+		if (services.indexOf(intervention.serviceId) === -1) {
+			services.push(intervention.serviceId)
+		}
+		return services
+	}
+	buildService(serviceId) {
+		return {
+			key: serviceId,
+			value: ServiceHelper.getData(serviceId).socialReason
+		}
 	}
 
 	buildIndisponibilities() {
@@ -103,6 +167,36 @@ class AuxiliaryPlaningData extends BaseData {
 	}
 
 	_reduceMission(missions, mission) {
+		// Check if mission is filtered
+		if (this.getState('filterCustomer') !== '__ALL__' && mission.customerId !== this.getState('filterCustomer')) {
+			return missions
+		}
+		if (this.getState('filterService') !== '__ALL__' && mission.serviceId !== this.getState('filterService')) {
+			return missions
+		}
+		if (this.getState('filterStatus') !== '__ALL__') {
+			let missionDate = MomentHelper.fromLocalDate(mission.date)
+			let currentDate = moment().startOf('day')
+			console.log(this.getState('filterStatus'))
+			switch (this.getState('filterStatus')) {
+				case 'PENDING':
+					if (missionDate.isBefore(currentDate)){
+						return missions
+					}
+					break
+				case 'COMPLETED':
+					if (missionDate.isSameOrAfter(currentDate)) {
+						return missions
+					}
+					break
+				default:
+					if (mission.sadStatus !== this.getState('filterStatus')) {
+						return missions
+					}
+					break
+			}
+		}
+		// Put mission in the correct array
 		let sadStatus = MissionStatus.get(mission.sadStatus)
 		if (sadStatus === MissionStatus.CANCELED) {
 			missions.canceled.push(mission)
@@ -123,7 +217,42 @@ class AuxiliaryPlaningData extends BaseData {
 	// View callbacks //
 	// --------------------------------------------------------------------------------
 
+	onFilterCustomer(event, value) {
+		this._onFilterUpdate('filterCustomer', value)
+	}
+	
+	onFilterService(event, value) {
+		this._onFilterUpdate('filterService', value)
+	}
+	
+	onFilterStatus(event, value) {
+		this._onFilterUpdate('filterStatus', value)
+	}
+
+	_onFilterUpdate(filter, value) {
+		this.obj.state[filter] = value
+		let missions = this.buildMissions()
+		this.obj.state.missionsPlanned = missions.planned
+		this.obj.state.missionsCompleted = missions.completed
+		this.obj.state.missionsCanceled = missions.canceled
+		this.forceUpdate()
+	}
+
 	onCreateIndisponibility() {
+
+	}
+
+	onDeleteIndisponibility() {
+
+	}
+	onCancelDeleteIndisponibility() {
+
+	}
+	onConfirmDeleteIndisponibility() {
+
+	}
+
+	onPrintPlaning() {
 
 	}
 
