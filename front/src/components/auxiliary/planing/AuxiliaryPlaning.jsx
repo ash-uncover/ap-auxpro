@@ -2,7 +2,7 @@ import React from 'react'
 import AuxiliaryPlaningData from './AuxiliaryPlaningData'
 import './AuxiliaryPlaning.scss'
 
-import { Grid, Panel, Form, Button, Calendar } from 'ap-react-bootstrap'
+import { Grid, Panel, Form, Button, Calendar, MomentHelper } from 'ap-react-bootstrap'
 
 class AuxiliaryPlaning extends React.Component {
 
@@ -115,11 +115,10 @@ class AuxiliaryPlaning extends React.Component {
 				<Grid.Col sm={2} md={3} lg={4}>
 					<Panel>
 						<Panel.Header>
-							Information
+							Interventions {MomentHelper.fromLocalDate(this.state.selectedMonth).format('MMMM YYYY')}
 						</Panel.Header>
 						<Panel.Body>
-							<b>Interventions</b>
-							<table style={{width:'100%'}}>
+							<table>
 								<tbody>
 									<tr>
 										<td>Planifiées:</td>

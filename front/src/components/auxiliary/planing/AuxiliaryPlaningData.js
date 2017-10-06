@@ -279,6 +279,7 @@ class AuxiliaryPlaningData extends BaseData {
 		this.obj.state.missionsPlanned = missions.planned
 		this.obj.state.missionsCompleted = missions.completed
 		this.obj.state.missionsCanceled = missions.canceled
+		this.buildHours()
 		this.forceUpdate()
 	}
 
