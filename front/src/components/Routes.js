@@ -50,6 +50,7 @@ import AuxiliaryInfosEditPassword from 'components/auxiliary/infos/edit/password
 import AuxiliaryInfosQuestionary from 'components/auxiliary/infos/questionary/AuxiliaryInfosQuestionary'
 import AuxiliaryInfosEditQuestionary from 'components/auxiliary/infos/edit/questionary/AuxiliaryInfosEditQuestionary'
 import AuxiliaryPlaning from 'components/auxiliary/planing/AuxiliaryPlaning'
+import AuxiliaryIndisponibility from 'components/auxiliary/indisponibilities/AuxiliaryIndisponibility'
 import AuxiliaryIndisponibilityEdit from 'components/auxiliary/indisponibilities/edit/AuxiliaryIndisponibilityEdit'
 import AuxiliaryZone from 'components/auxiliary/zone/AuxiliaryZone'
 import AuxiliaryOffers from 'components/auxiliary/offers/AuxiliaryOffers'
@@ -99,6 +100,7 @@ let auxiliaryRoutes = [
 	{ path: '/infos/questionary', component: AuxiliaryInfosQuestionary },
 	{ path: '/infos/edit/questionary', component: AuxiliaryInfosEditQuestionary },
 	{ path: '/planing', component: AuxiliaryPlaning },
+	{ path: '/indisponibilities/:indisponibilityId', component: AuxiliaryIndisponibility },
 	{ path: '/indisponibilities/:indisponibilityId/edit', component: AuxiliaryIndisponibilityEdit },
 	{ path: '/zone', component: AuxiliaryZone },
 	{ path: '/offers', component: AuxiliaryOffers },

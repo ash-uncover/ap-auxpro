@@ -351,7 +351,7 @@ class AuxiliaryPlaningData extends BaseData {
 	}
 
 	onCreateIndisponibility() {
-
+		AppHelper.navigate('/auxiliary/indisponibilities/new/edit')
 	}
 
 	onDaySelect(value) {
