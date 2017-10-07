@@ -26,6 +26,9 @@ class AuxiliaryPlaningData extends BaseData {
 		this.reduceMission = this._reduceMission.bind(this)
 		this.buildMissionHour = this._buildMissionHour.bind(this)		
 
+		this.declareFunction('onToggleMissions')
+		this.declareFunction('onToggleIndisponibilities')
+
 		this.declareFunction('onFilterCustomer')
 		this.declareFunction('onFilterService')
 		this.declareFunction('onFilterStatus')
@@ -62,8 +65,9 @@ class AuxiliaryPlaningData extends BaseData {
 		this.obj.state.missionsPlanned = missions.planned
 		this.obj.state.missionsCompleted = missions.completed
 		this.obj.state.missionsCanceled = missions.canceled
-
+		
 		this.buildHours()
+		this.buildInformation()
 
 		IndisponibilityHelper.register('', this, this.onIndisponibilitiesUpdate.bind(this))
 	}
@@ -257,9 +261,72 @@ class AuxiliaryPlaningData extends BaseData {
 		return total
 	}
 
+	buildInformation() {
+		this.obj.state.informationIndisponibilities = this.buildInformationIndisponibilities()
+		this.obj.state.informationPlanned = this.buildInformationPlanned()
+		this.obj.state.informationCompleted = this.buildInformationCompleted()
+		this.obj.state.informationCanceled = this.buildInformationCanceled()
+	}
+	buildInformationIndisponibilities() {
+		if (!this.getState('showIndisponibilities')) {
+			return []
+		}
+		let selectedDate = this.getState('selectedDay')
+		return this.getState('indisponibilities').reduce(function (indisponibilities, indiponibility) {
+			let date = indiponibility.date
+			if (date[0] === selectedDate[0] && date[1] === selectedDate[1] && date[2] === selectedDate[2]) {
+				indisponibilities.push(indiponibility)
+			}
+			return indisponibilities
+		}, [])
+	}
+	buildInformationPlanned() {
+		return this._buildInformationMission('missionsPlanned')
+	}
+	buildInformationCompleted() {
+		return this._buildInformationMission('missionsCompleted')
+	}
+	buildInformationCanceled() {
+		return this._buildInformationMission('missionsCanceled')
+	}
+	_buildInformationMission(type) {
+		if (!this.getState('showMissions')) {
+			return []
+		}
+		let selectedDate = this.getState('selectedDay')
+		return this.getState(type).reduce(function (missions, mission) {
+			let date = mission.date
+			if (date[0] === selectedDate[0] && date[1] === selectedDate[1] && date[2] === selectedDate[2]) {
+				let customer = CustomerHelper.getData(mission.customerId)
+				let intervention = InterventionHelper.getData(mission.interventionId)
+				missions.push({
+					id: mission.id,
+					startTime: intervention.startTime,
+					endTime: intervention.endTime,
+					customer: CustomerUtils.getFullName(customer)
+				})
+			}
+			return missions
+		}, [])
+	}
+
 
 	// View callbacks //
 	// --------------------------------------------------------------------------------
+
+	onToggleMissions(event, value) {
+		this.obj.state.showMissions = value
+		this.buildHours()
+		this.buildInformation()
+		this.forceUpdate()
+	}
+
+	onToggleIndisponibilities(event, value) {
+		this.obj.state.showIndisponibilities = value
+		this.buildHours()
+		this.buildInformation()
+		this.forceUpdate()
+	}
 
 	onFilterCustomer(event, value) {
 		this._onFilterUpdate('filterCustomer', value)
@@ -273,13 +340,13 @@ class AuxiliaryPlaningData extends BaseData {
 		this._onFilterUpdate('filterStatus', value)
 	}
 
-	_onFilterUpdate(filter, value) {
+	_onFilterUpdate(filter, value, keepHours) {
 		this.obj.state[filter] = value
 		let missions = this.buildMissions()
 		this.obj.state.missionsPlanned = missions.planned
 		this.obj.state.missionsCompleted = missions.completed
 		this.obj.state.missionsCanceled = missions.canceled
-		this.buildHours()
+		this.buildInformation()
 		this.forceUpdate()
 	}
 
@@ -288,7 +355,9 @@ class AuxiliaryPlaningData extends BaseData {
 	}
 
 	onDaySelect(value) {
-		this.setState({ selectedDay: value })
+		this.obj.state.selectedDay = value
+		this.buildInformation()
+		this.forceUpdate()
 	}
 	onMonthChange(value) {
 		this.obj.state.selectedMonth = value

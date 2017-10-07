@@ -22,6 +22,24 @@ class AuxiliaryPlaning extends React.Component {
 		return hours[0] + 'h' + (hours[1] < 10 ? '0' : '') + hours[1]
 	}
 
+	buildIndisponibility(indisponibility) {
+		return (
+			<li key={indisponibility.indisponibilityId}>
+				De {MomentHelper.localTimeToHumanTime(indisponibility.startTime)} à {MomentHelper.localTimeToHumanTime(indisponibility.endTime)}			
+			</li>
+		)
+	}
+
+	buildMission(mission) {
+		return (
+			<li key={mission.id}>
+				Chez {mission.customer}
+				<br/>
+				De {MomentHelper.localTimeToHumanTime(mission.startTime)} à {MomentHelper.localTimeToHumanTime(mission.endTime)}			
+			</li>
+		)
+	}
+
 	render() {
 		return (
 			<div className='ap-auxiliary-planing row'>
@@ -34,11 +52,11 @@ class AuxiliaryPlaning extends React.Component {
 							<Form.Switch 
 								text='Voir interventions' 
 								value={this.state.showMissions}
-								onChange={this.onChange.bind(this, 'showMissions')} />
+								onChange={this.onToggleMissions} />
 							<Form.Switch 
 								text='Voir indisponibilités' 
 								value={this.state.showIndisponibilities}
-								onChange={this.onChange.bind(this, 'showIndisponibilities')}/>
+								onChange={this.onToggleIndisponibilities}/>
 							<Form horizontal>
 								<Form.Group>
 									<Form.Label className='col-sm-5 col-md-4'>
@@ -138,6 +156,56 @@ class AuxiliaryPlaning extends React.Component {
 									</tr>
 								</tbody>
 							</table>
+						</Panel.Body>
+						<Panel.Footer>
+						</Panel.Footer>
+					</Panel>
+					<Panel>
+						<Panel.Header>
+							Informations {MomentHelper.localDateToHumanDate(this.state.selectedDay)}
+						</Panel.Header>
+						<Panel.Body>
+							{ !this.state.informationIndisponibilities.length &&
+							  !this.state.informationPlanned.length	&&
+							  !this.state.informationCompleted.length &&
+							  !this.state.informationCanceled.length ?
+								'Aucune information'
+							: null }
+							{ this.state.informationIndisponibilities.length ? 
+								<b>Indisponibilités</b>
+							: null }
+							{ this.state.informationIndisponibilities.length ? 
+								<ul>
+									{this.state.informationIndisponibilities.map(this.buildIndisponibility)}
+								</ul>
+							: null }
+
+							{ this.state.informationPlanned.length ? 
+								<b>Interventions planifiées</b>
+							: null }
+							{ this.state.informationPlanned.length ? 
+								<ul>
+									{this.state.informationPlanned.map(this.buildMission)}
+								</ul>
+							: null }
+
+							{ this.state.informationCanceled.length ? 
+								<b>Interventions annulées</b>
+							: null }
+							{ this.state.informationCanceled.length ? 
+								<ul>
+									{this.state.informationCanceled.map(this.buildMission)}
+								</ul>
+							: null }
+
+							{ this.state.informationCompleted.length ? 
+								<b>Interventions réalisées</b>
+							: null }
+							{ this.state.informationCompleted.length ? 
+								<ul>
+									{this.state.informationCompleted.map(this.buildMission)}
+								</ul>
+							: null }
 						</Panel.Body>
 						<Panel.Footer>
 						</Panel.Footer>
