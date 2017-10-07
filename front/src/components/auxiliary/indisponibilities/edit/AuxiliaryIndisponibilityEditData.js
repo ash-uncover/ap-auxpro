@@ -107,9 +107,9 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 	}
 
 	onSubmit() {
+		let indisponibility = this.buildIndisponibility()
 		AppHelper.setBusy(true).
 		then(function() {
-			let indisponibility = this.buildIndisponibility()
 			if (this.getState('mode') === this.MODES.CREATE) {
 				return IndisponibilityHelper.postIndisponibility(indisponibility)
 			} else {
@@ -117,9 +117,12 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 			}
 		}.bind(this)).
 		then(function (result) {
-			console.log(result)
-			return IndisponibilityHelper.getAuxiliaryIndisponibilitys(AuthHelper.getEntityId())
-		}).
+			if (this.getState('mode') === this.MODES.CREATE) {
+				return IndisponibilityHelper.getIndisponibility(result.id)
+			} else {
+				return IndisponibilityHelper.getIndisponibility(indisponibility.id)
+			}
+		}.bind(this)).
 		then(function () {
 			AppHelper.navigateBack()
 			setTimeout(AppHelper.setBusy, 200)
