@@ -36,9 +36,6 @@ class AuxiliaryPlaningData extends BaseData {
 		this.declareFunction('onCreateIndisponibility')
 		this.declareFunction('onEditIndisponibility')
 		this.declareFunction('onViewIndisponibility')
-		this.declareFunction('onDeleteIndisponibility')
-		this.declareFunction('onCancelDeleteIndisponibility')
-		this.declareFunction('onConfirmDeleteIndisponibility')
 
 		this.declareFunction('onPrintPlaning')
 
@@ -371,16 +368,6 @@ class AuxiliaryPlaningData extends BaseData {
 	}
 	onEditIndisponibility(indisponibilityId) {
 		AppHelper.navigate('/auxiliary/indisponibilities/' + indisponibilityId + '/edit')
-	}
-
-	onDeleteIndisponibility() {
-
-	}
-	onCancelDeleteIndisponibility() {
-
-	}
-	onConfirmDeleteIndisponibility() {
-
 	}
 
 	onPrintPlaning() {

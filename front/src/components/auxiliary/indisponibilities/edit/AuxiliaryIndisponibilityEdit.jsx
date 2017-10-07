@@ -4,6 +4,7 @@ import './AuxiliaryIndisponibilityEdit.scss'
 
 import { Button, Panel, Grid, Form } from 'ap-react-bootstrap'
 import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeekDays'
+import ModalDialog from 'components-lib/Modal/ModalDialog'
 
 import IndisponibilityUtils from 'utils-lib/entities/IndisponibilityUtils'
 
@@ -107,14 +108,46 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
-				<Button 
-					block 
-					bsStyle={submitDisabled ? 'default' : 'success'}
-					disabled={submitDisabled}
-					onClick={this.onSubmit}>
-					{ this.state.mode === AuxiliaryIndisponibilityEditData.MODES.CREATE ? 'Créer indisponibilité' : 'Enregistrer modifications' }
-				</Button>
+				{ this.state.mode === AuxiliaryIndisponibilityEditData.MODES.CREATE ?
+					<Button 
+						block 
+						bsStyle={submitDisabled ? 'default' : 'success'}
+						disabled={submitDisabled}
+						onClick={this.onSubmit}>
+						Créer indisponibilité
+					</Button>
+				:
+					<Grid.Row>
+						<Grid.Col sm={6}>
+							<Button 
+								block 
+								bsStyle='danger'
+								onClick={this.onDelete}>
+								Supprimer indisponibilité
+							</Button>
+						</Grid.Col>
+						<br className='visible-xs-block'/>
+						<Grid.Col sm={6}>
+							<Button 
+								block 
+								bsStyle={submitDisabled ? 'default' : 'success'}
+								disabled={submitDisabled}
+								onClick={this.onSubmit}>
+								Enregistrer modifications
+							</Button>
+						</Grid.Col>
+					</Grid.Row>
+				}
 				<br/>
+				<ModalDialog 
+					title="Supprimer l'indisponibilité ?"
+					show={this.state.showDelete}
+					onCancel={this.onCancelDelete}
+					onConfirm={this.onConfirmDelete}>
+					Êtes-vous sûr ?
+					<br/>
+					Toutes les occurences seront supprimées
+				</ModalDialog>
 			</div>
 		)
 	}

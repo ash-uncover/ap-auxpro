@@ -2,12 +2,13 @@ import React from 'react'
 import AuxiliaryPlaningData from './AuxiliaryPlaningData'
 import './AuxiliaryPlaning.scss'
 
-import { Grid, Panel, Form, Button, Calendar, MomentHelper } from 'ap-react-bootstrap'
+import { Grid, Panel, Form, Button, Calendar, MomentHelper, Glyphicon } from 'ap-react-bootstrap'
 
 class AuxiliaryPlaning extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.buildIndisponibility = this._buildIndisponibility.bind(this)
 	}
 
 	componentWillMount() {
@@ -22,10 +23,13 @@ class AuxiliaryPlaning extends React.Component {
 		return hours[0] + 'h' + (hours[1] < 10 ? '0' : '') + hours[1]
 	}
 
-	buildIndisponibility(indisponibility) {
+	_buildIndisponibility(indisponibility) {
 		return (
-			<li key={indisponibility.indisponibilityId}>
-				De {MomentHelper.localTimeToHumanTime(indisponibility.startTime)} à {MomentHelper.localTimeToHumanTime(indisponibility.endTime)}			
+			<li className='ap-planing-indisponibility' key={indisponibility.indisponibilityId}>
+				De {MomentHelper.localTimeToHumanTime(indisponibility.startTime)} à {MomentHelper.localTimeToHumanTime(indisponibility.endTime)}
+				<Button bsSize='xs' onClick={this.onEditIndisponibility.bind(this, indisponibility.indisponibilityId)} tooltip='Voir indisponibilité'>
+					<Glyphicon glyph='search' />
+				</Button>
 			</li>
 		)
 	}
@@ -43,7 +47,38 @@ class AuxiliaryPlaning extends React.Component {
 	render() {
 		return (
 			<div className='ap-auxiliary-planing row'>
-				<Grid.Col className='hidden-print' sm={2} md={2} lg={3}>
+				<Grid.Col sm={12} mdPush={3} md={6}>
+					<Panel>
+						<Panel.Header>
+							Planning mensuel
+						</Panel.Header>
+						<Panel.Body>
+							<Calendar 
+								specialsInfo={this.state.showMissions ? this.state.missionsPlanned : []}
+								specialsSuccess={this.state.showMissions ? this.state.missionsCompleted : []}
+								specialsDanger={this.state.showMissions ? this.state.missionsCanceled : []}
+								specialsWarning={this.state.showIndisponibilities ? this.state.indisponibilities : []}
+								onDaySelect={this.onDaySelect}
+								onMonthChange={this.onMonthChange}
+								onYearChange={this.onMonthChange} />
+							<Grid.Col className='legend-item hidden-print' xs={12} sm={6} >
+								<div className='legend-color legend-danger'/>Intervention annulée
+							</Grid.Col>
+							<Grid.Col className='legend-item hidden-print' xs={12} sm={6} >
+								<div className='legend-color legend-info'/>Intervention planifiée
+							</Grid.Col>
+							<Grid.Col className='legend-item hidden-print' xs={12} sm={6} >
+								<div className='legend-color legend-success'/>Intervention réalisée
+							</Grid.Col>
+							<Grid.Col className='legend-item hidden-print' xs={12} sm={6} >
+								<div className='legend-color legend-warning'/>Vos indisponibilités
+							</Grid.Col>
+						</Panel.Body>
+						<Panel.Footer>
+						</Panel.Footer>
+					</Panel>
+				</Grid.Col>
+				<Grid.Col className='hidden-print' sm={6} mdPull={6} md={3}>
 					<Panel>
 						<Panel.Header>
 							Actions
@@ -109,38 +144,7 @@ class AuxiliaryPlaning extends React.Component {
 						</Panel.Footer>
 					</Panel>
 				</Grid.Col>
-				<Grid.Col sm={8} md={7} lg={5}>
-					<Panel>
-						<Panel.Header>
-							Planning mensuel
-						</Panel.Header>
-						<Panel.Body>
-							<Calendar 
-								specialsInfo={this.state.showMissions ? this.state.missionsPlanned : []}
-								specialsSuccess={this.state.showMissions ? this.state.missionsCompleted : []}
-								specialsDanger={this.state.showMissions ? this.state.missionsCanceled : []}
-								specialsWarning={this.state.showIndisponibilities ? this.state.indisponibilities : []}
-								onDaySelect={this.onDaySelect}
-								onMonthChange={this.onMonthChange}
-								onYearChange={this.onMonthChange} />
-							<Grid.Col className='legend-item hidden-print' xs={12} sm={6} >
-								<div className='legend-color legend-danger'/>Intervention annulée
-							</Grid.Col>
-							<Grid.Col className='legend-item hidden-print' xs={12} sm={6} >
-								<div className='legend-color legend-info'/>Intervention planifiée
-							</Grid.Col>
-							<Grid.Col className='legend-item hidden-print' xs={12} sm={6} >
-								<div className='legend-color legend-success'/>Intervention réalisée
-							</Grid.Col>
-							<Grid.Col className='legend-item hidden-print' xs={12} sm={6} >
-								<div className='legend-color legend-warning'/>Vos indisponibilités
-							</Grid.Col>
-						</Panel.Body>
-						<Panel.Footer>
-						</Panel.Footer>
-					</Panel>
-				</Grid.Col>
-				<Grid.Col sm={2} md={3} lg={4}>
+				<Grid.Col sm={6} md={3}>
 					<Panel className='hidden-print'>
 						<Panel.Header>
 							Interventions {MomentHelper.fromLocalDate(this.state.selectedMonth).format('MMMM YYYY')}

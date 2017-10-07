@@ -69,6 +69,9 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 		this.declareFunction('onChangeDirty')
 
 		this.declareFunction('onCancel')
+		this.declareFunction('onDelete')
+		this.declareFunction('onCancelDelete')
+		this.declareFunction('onConfirmDelete')
 		this.declareFunction('onSubmit')
 		
 		this.obj.state = {
@@ -104,6 +107,33 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 		this.obj.state[id + 'Default'] = null
 		this.obj.state.indisponibilityValid = this.checkIndisponibility()
 		this.forceUpdate()
+	}
+
+	onDelete() {
+		this.setState({ showDelete: true })
+	}
+	onCancelDelete() {
+		this.setState({ showDelete: false })
+	}
+	onConfirmDelete() {
+		AppHelper.setBusy(true).
+		then(function() {
+			return IndisponibilityHelper.deleteIndisponibility(this.indisponibilityId)
+		}.bind(this)).
+		then(function (result) {
+			return IndisponibilityHelper.getAuxiliaryIndisponibilitys(AuthHelper.getEntityId())
+		}.bind(this)).
+		then(function () {
+			AppHelper.navigateBack()
+			setTimeout(AppHelper.setBusy, 200)
+		}).
+		catch(function (error) {
+			setTimeout(AppHelper.setBusy, 200)
+			console.error('Indisponibility submit error')
+			console.error(error)
+		})
+
+		this.setState({ showDelete: false })
 	}
 
 	onSubmit() {
