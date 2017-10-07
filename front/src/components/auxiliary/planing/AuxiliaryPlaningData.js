@@ -34,6 +34,8 @@ class AuxiliaryPlaningData extends BaseData {
 		this.declareFunction('onFilterStatus')
 
 		this.declareFunction('onCreateIndisponibility')
+		this.declareFunction('onEditIndisponibility')
+		this.declareFunction('onViewIndisponibility')
 		this.declareFunction('onDeleteIndisponibility')
 		this.declareFunction('onCancelDeleteIndisponibility')
 		this.declareFunction('onConfirmDeleteIndisponibility')
@@ -350,10 +352,6 @@ class AuxiliaryPlaningData extends BaseData {
 		this.forceUpdate()
 	}
 
-	onCreateIndisponibility() {
-		AppHelper.navigate('/auxiliary/indisponibilities/new/edit')
-	}
-
 	onDaySelect(value) {
 		this.obj.state.selectedDay = value
 		this.buildInformation()
@@ -363,6 +361,16 @@ class AuxiliaryPlaningData extends BaseData {
 		this.obj.state.selectedMonth = value
 		this.buildHours()
 		this.forceUpdate()
+	}
+
+	onCreateIndisponibility() {
+		AppHelper.navigate('/auxiliary/indisponibilities/new/edit')
+	}
+	onViewIndisponibility(indisponibilityId) {
+		AppHelper.navigate('/auxiliary/indisponibilities/' + indisponibilityId)
+	}
+	onEditIndisponibility(indisponibilityId) {
+		AppHelper.navigate('/auxiliary/indisponibilities/' + indisponibilityId + '/edit')
 	}
 
 	onDeleteIndisponibility() {
@@ -376,7 +384,7 @@ class AuxiliaryPlaningData extends BaseData {
 	}
 
 	onPrintPlaning() {
-
+		window.print()
 	}
 
 }

@@ -34,7 +34,19 @@ class IndisponibilityUtils {
 			break;
 		}
 		return text;
-	}	
+	}
+
+	static getFieldName(field) {
+		switch (field) {
+		case IndisponibilityFields.AUXILIARY_ID.key: return 'Auxiliaire'
+		case IndisponibilityFields.PERIOD.key: return 'Périodicité'
+		case IndisponibilityFields.START_DATE.key: return 'Début'
+		case IndisponibilityFields.END_DATE.key: return 'Fin'
+		case IndisponibilityFields.START_TIME.key: return 'De'
+		case IndisponibilityFields.END_TIME.key: return 'A'
+		case IndisponibilityFields.DAYS.key: return 'Jours'
+		}
+	}
 
 }
 export default IndisponibilityUtils

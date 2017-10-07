@@ -92,8 +92,18 @@ class AuxiliaryPlaning extends React.Component {
 									</Grid.Col>
 								</Form.Group>
 							</Form>
-							<Button bsStyle='warning' block>Ajouter une indisponibilité</Button>
-							<Button bsStyle='info' block>Imprimer mon planning</Button>
+							<Button 
+								bsStyle='warning' 
+								onClick={this.onCreateIndisponibility}
+								block>
+								Ajouter une indisponibilité
+							</Button>
+							<Button 
+								bsStyle='info' 								
+								onClick={this.onPrintPlaning}
+								block>
+								Imprimer mon planning
+							</Button>
 						</Panel.Body>
 						<Panel.Footer>
 						</Panel.Footer>
@@ -113,16 +123,16 @@ class AuxiliaryPlaning extends React.Component {
 								onDaySelect={this.onDaySelect}
 								onMonthChange={this.onMonthChange}
 								onYearChange={this.onMonthChange} />
-							<Grid.Col className='legend-item' xs={12} sm={6} >
+							<Grid.Col className='legend-item hidden-print' xs={12} sm={6} >
 								<div className='legend-color legend-danger'/>Intervention annulée
 							</Grid.Col>
-							<Grid.Col className='legend-item' xs={12} sm={6} >
+							<Grid.Col className='legend-item hidden-print' xs={12} sm={6} >
 								<div className='legend-color legend-info'/>Intervention planifiée
 							</Grid.Col>
-							<Grid.Col className='legend-item' xs={12} sm={6} >
+							<Grid.Col className='legend-item hidden-print' xs={12} sm={6} >
 								<div className='legend-color legend-success'/>Intervention réalisée
 							</Grid.Col>
-							<Grid.Col className='legend-item' xs={12} sm={6} >
+							<Grid.Col className='legend-item hidden-print' xs={12} sm={6} >
 								<div className='legend-color legend-warning'/>Vos indisponibilités
 							</Grid.Col>
 						</Panel.Body>
@@ -131,7 +141,7 @@ class AuxiliaryPlaning extends React.Component {
 					</Panel>
 				</Grid.Col>
 				<Grid.Col sm={2} md={3} lg={4}>
-					<Panel>
+					<Panel className='hidden-print'>
 						<Panel.Header>
 							Interventions {MomentHelper.fromLocalDate(this.state.selectedMonth).format('MMMM YYYY')}
 						</Panel.Header>
