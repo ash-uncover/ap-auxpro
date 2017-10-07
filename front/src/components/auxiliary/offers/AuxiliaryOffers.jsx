@@ -45,14 +45,18 @@ class AuxiliaryOffers extends React.Component {
 		return (
 			<Button 
 				bsStyle={this.state.filterState === status ? 'primary' : 'default'}
-				onClick={this.onFilterState.bind(this, status)}>
+				onClick={this.onFilterState.bind(this, status)}
+				disabled={!(this.state.offers[key] || []).length}>
 				{ (OfferStatusSadUtils.getNamePlural(key) || OfferStatusAuxUtils.getNamePlural(key)) + ' (' + offers.length + ')' }
 			</Button>
 		)
 	}
 
 	showStatus(status) {
-		return !this.state.filterState || this.state.filterState === status
+		let isInFilter = !this.state.filterState || this.state.filterState === status
+		let hasValues = (this.state.offers[status.key] || []).length
+		return isInFilter && hasValues
+			
 	}
 
 	buildOffers(status) {

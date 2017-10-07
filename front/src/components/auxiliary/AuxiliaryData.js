@@ -13,12 +13,7 @@ import { BaseData, ArraySet, Utils } from 'ap-react-bootstrap'
 
 // Header not be displayed for the following path
 let PATHS_NO_HEADER = [
-	'/auxiliary/tuto',
-	'/auxiliary/infos/edit/account',
-	'/auxiliary/infos/edit/perso',
-	'/auxiliary/infos/edit/photo',
-	'/auxiliary/infos/edit/pro',
-	'/auxiliary/infos/edit/questionary'
+	'/auxiliary/tuto'
 ]
 
 class AuxiliaryData extends BaseData {
