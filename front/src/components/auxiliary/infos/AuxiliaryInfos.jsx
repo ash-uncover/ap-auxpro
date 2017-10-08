@@ -3,6 +3,7 @@ import AuxiliaryInfosData from './AuxiliaryInfosData'
 import './AuxiliaryInfos.scss'
 
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
+import Gauge from 'components-lib/Gauge/Gauge'
 
 import AuxiliaryUtils from 'utils-lib/entities/AuxiliaryUtils'
 import SkillUtils from 'utils-lib/entities/SkillUtils'
@@ -68,87 +69,101 @@ class AuxiliaryInfos extends React.Component {
 
 	render() {
 		return (
-			<div className='ap-auxiliary-infos'>
-				<Panel>
-					<Panel.Header>
-						Mes informations
-					</Panel.Header>
-					<Panel.Body>
-						<h4>Mes informations personelles</h4>
-						<Form horizontal>
-							<Grid.Row>
-								<Grid.Col xs={12} className='ap-auxiliary-infos-image-container'>
-									<Image 
-										className={this.state.avatar ? '' : 'ap-no-image'}
-										alt='<Ma photo>' 
-										id={this.state.avatar} />
-								</Grid.Col>
-								<Grid.Col sm={6} lg={5} lgOffset={1}>
-									{AuxiliaryInfosData.FIELDS_FORM1.map(this.buildFormGroup)}
-								</Grid.Col>
-								<Grid.Col sm={6} lg={5}>
-									{AuxiliaryInfosData.FIELDS_FORM2.map(this.buildFormGroup)}
-								</Grid.Col>
-							</Grid.Row>
-						</Form>
-						<h4>Mes informations profesionelles</h4>
-						<Form horizontal>
-							<Grid.Row>
-								<Grid.Col sm={10} smOffset={1} md={8} mdOffset={2}>
-									{AuxiliaryInfosData.FIELDS_FORM4.map(this.buildFormGroup)}
-								</Grid.Col>
-								<Grid.Col xs={12} className='ap-auxiliary-infos-image-container'>
-									<Image 
-										className={this.state.diplomaImage ? '' : 'ap-no-image'}
-										alt='<Ma photo>' 
-										id={this.state.diplomaImage} />
-								</Grid.Col>
-							</Grid.Row>
-						</Form>
-						<Button block bsStyle='primary' onClick={this.onModifyInfos}>Modifier mes informations</Button>
-					</Panel.Body>
-					<Panel.Footer>
-					</Panel.Footer>
-				</Panel>
+			<Grid.Row className='ap-auxiliary-infos'>
+				<Grid.Col smPush={9} sm={3}>
+					<Panel>
+						<Panel.Header>
+							Profil rempli a 
+						</Panel.Header>
+						<Panel.Body>
+							<Gauge value={60} />
+						</Panel.Body>
+						<Panel.Footer>
+						</Panel.Footer>
+					</Panel>
+				</Grid.Col>
+				<Grid.Col smPull={3} sm={9}>
+					<Panel>
+						<Panel.Header>
+							Mes informations
+						</Panel.Header>
+						<Panel.Body>
+							<h4>Mes informations personelles</h4>
+							<Form horizontal>
+								<Grid.Row>
+									<Grid.Col xs={12} className='ap-auxiliary-infos-image-container'>
+										<Image 
+											className={this.state.avatar ? '' : 'ap-no-image'}
+											alt='<Ma photo>' 
+											id={this.state.avatar} />
+									</Grid.Col>
+									<Grid.Col sm={6} lg={5} lgOffset={1}>
+										{AuxiliaryInfosData.FIELDS_FORM1.map(this.buildFormGroup)}
+									</Grid.Col>
+									<Grid.Col sm={6} lg={5}>
+										{AuxiliaryInfosData.FIELDS_FORM2.map(this.buildFormGroup)}
+									</Grid.Col>
+								</Grid.Row>
+							</Form>
+							<h4>Mes informations profesionelles</h4>
+							<Form horizontal>
+								<Grid.Row>
+									<Grid.Col sm={10} smOffset={1} md={8} mdOffset={2}>
+										{AuxiliaryInfosData.FIELDS_FORM4.map(this.buildFormGroup)}
+									</Grid.Col>
+									<Grid.Col xs={12} className='ap-auxiliary-infos-image-container'>
+										<Image 
+											className={this.state.diplomaImage ? '' : 'ap-no-image'}
+											alt='<Ma photo>' 
+											id={this.state.diplomaImage} />
+									</Grid.Col>
+								</Grid.Row>
+							</Form>
+							<Button block bsStyle='primary' onClick={this.onModifyInfos}>Modifier mes informations</Button>
+						</Panel.Body>
+						<Panel.Footer>
+						</Panel.Footer>
+					</Panel>
 
-				<Panel>
-					<Panel.Header>
-						Mes compétences
-					</Panel.Header>
-					<Panel.Body>
-						{this.state.areSkillSet ?
-							this._buildSkills()
-						:
-							<p>Vous devez remplir le questionnaire afin d'obtenir vos score de compétences.</p>
-						}
-						{this.state.areSkillSet ?
-							<Button block bsStyle='primary' onClick={this.onViewQuestionary}>Voir mon questionnaire</Button>
-						:
-							<Button block bsStyle='primary' onClick={this.onModifyQuestionary}>Remplir le questionnaire AuXpros</Button>
-						}
-					</Panel.Body>
-					<Panel.Footer>
-					</Panel.Footer>
-				</Panel>
+					<Panel>
+						<Panel.Header>
+							Mes compétences
+						</Panel.Header>
+						<Panel.Body>
+							{this.state.areSkillSet ?
+								this._buildSkills()
+							:
+								<p>Vous devez remplir le questionnaire afin d'obtenir vos score de compétences.</p>
+							}
+							{this.state.areSkillSet ?
+								<Button block bsStyle='primary' onClick={this.onViewQuestionary}>Voir mon questionnaire</Button>
+							:
+								<Button block bsStyle='primary' onClick={this.onModifyQuestionary}>Remplir le questionnaire AuXpros</Button>
+							}
+						</Panel.Body>
+						<Panel.Footer>
+						</Panel.Footer>
+					</Panel>
 
-				<Panel>
-					<Panel.Header>
-						Mon compte AuXpros
-					</Panel.Header>
-					<Panel.Body>
-						<h4>Type de compte</h4>
-						<Button block bsStyle='primary' onClick={this.onModifyAccount}>Modifier mon compte</Button>
+					<Panel>
+						<Panel.Header>
+							Mon compte AuXpros
+						</Panel.Header>
+						<Panel.Body>
+							<h4>Type de compte</h4>
+							<Button block bsStyle='primary' onClick={this.onModifyAccount}>Modifier mon compte</Button>
 
-						<h4>Adresse électronique</h4>
-						<Button block bsStyle='primary' onClick={this.onModifyEmail}>Modifier mon adresse électronique</Button>
+							<h4>Adresse électronique</h4>
+							<Button block bsStyle='primary' onClick={this.onModifyEmail}>Modifier mon adresse électronique</Button>
 
-						<h4>Mot de passe</h4>
-						<Button block bsStyle='primary' onClick={this.onModifyPassword}>Modifier mon mot de passe</Button>
-					</Panel.Body>
-					<Panel.Footer>
-					</Panel.Footer>
-				</Panel>
-			</div>
+							<h4>Mot de passe</h4>
+							<Button block bsStyle='primary' onClick={this.onModifyPassword}>Modifier mon mot de passe</Button>
+						</Panel.Body>
+						<Panel.Footer>
+						</Panel.Footer>
+					</Panel>
+				</Grid.Col>
+			</Grid.Row>
 		)
 	}
 }
