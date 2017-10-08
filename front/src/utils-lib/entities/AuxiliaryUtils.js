@@ -50,11 +50,27 @@ class AuxiliaryUtils {
 		return '! UNKNOWN FIELD !'
 	}
 
+	static getAge(auxiliary) {
+		return String(moment(auxiliary.birthDate).toNow(true))
+	}
+
 	static getFullName(auxiliary) {
 		if (!auxiliary.civility || !auxiliary.firstName || !auxiliary.lastName) {
 			return null
 		}
 		return auxiliary.civility + ' ' + auxiliary.firstName + ' ' + auxiliary.lastName
+	}
+	static getShortName(auxiliary) {
+		if (!auxiliary.civility || !auxiliary.firstName || !auxiliary.lastName) {
+			return null
+		}
+		return auxiliary.civility + ' ' + auxiliary.firstName + ' ' + auxiliary.lastName.substring(0, 1) + '.'
+	}
+	static getNameFL(auxiliary) {
+		return auxiliary.lastName + ' ' + auxiliary.firstName
+	}
+	static getNameLF(auxiliary) {
+		return auxiliary.firstName + ' ' + auxiliary.lastName
 	}
 
 	static getAddress(auxiliary) {
@@ -62,6 +78,9 @@ class AuxiliaryUtils {
 			return null
 		}
 		return auxiliary.address + ' ' + auxiliary.postalCode + ' ' + auxiliary.city
+	}
+	static getShortAddress(auxiliary) {
+		return auxiliary.postalCode + ' ' + auxiliary.city
 	}
 
 }

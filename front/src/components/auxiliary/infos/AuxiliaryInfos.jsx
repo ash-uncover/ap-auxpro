@@ -76,7 +76,7 @@ class AuxiliaryInfos extends React.Component {
 							Profil rempli a 
 						</Panel.Header>
 						<Panel.Body>
-							<Gauge value={60} />
+							<Gauge value={this.state.profilProgression} />
 						</Panel.Body>
 						<Panel.Footer>
 						</Panel.Footer>
@@ -109,7 +109,7 @@ class AuxiliaryInfos extends React.Component {
 							<Form horizontal>
 								<Grid.Row>
 									<Grid.Col sm={10} smOffset={1} md={8} mdOffset={2}>
-										{AuxiliaryInfosData.FIELDS_FORM4.map(this.buildFormGroup)}
+										{AuxiliaryInfosData.FIELDS_FORM3.map(this.buildFormGroup)}
 									</Grid.Col>
 									<Grid.Col xs={12} className='ap-auxiliary-infos-image-container'>
 										<Image 
@@ -119,6 +119,7 @@ class AuxiliaryInfos extends React.Component {
 									</Grid.Col>
 								</Grid.Row>
 							</Form>
+							<br/>
 							<Button block bsStyle='primary' onClick={this.onModifyInfos}>Modifier mes informations</Button>
 						</Panel.Body>
 						<Panel.Footer>

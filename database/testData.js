@@ -143,6 +143,8 @@ db.apauth.insert({
 db.auxiliary.insert({
 	"id":"auxa",
 	"userId":"userauxa",
+	"profilCompleted":true,
+	"profilProgression":NumberInt(80),
 	"accountType": "Premium",
 	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
 	"notifyOffersMail":true,
@@ -186,6 +188,8 @@ db.auxiliary.insert({
 db.auxiliary.insert({
 	"id":"auxb",
 	"userId":"userauxb",
+	"profilCompleted":true,
+	"profilProgression":NumberInt(80),
 	"accountType": "Premium",
 	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
 	"notifyOffersMail":false,
@@ -229,6 +233,8 @@ db.auxiliary.insert({
 db.auxiliary.insert({
 	"id":"auxc",
 	"userId":"userauxc",
+	"profilCompleted":true,
+	"profilProgression":NumberInt(80),
 	"accountType": "Premium",
 	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
 	"notifyOffersMail":true,
@@ -272,6 +278,8 @@ db.auxiliary.insert({
 db.auxiliary.insert({
 	"id":"auxd",
 	"userId":"userauxd",
+	"profilCompleted":true,
+	"profilProgression":NumberInt(80),
 	"accountType": "Premium",
 	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
 	"notifyOffersMail":false,
@@ -315,6 +323,8 @@ db.auxiliary.insert({
 db.auxiliary.insert({
 	"id":"auxe",
 	"userId":"userauxe",
+	"profilCompleted":true,
+	"profilProgression":NumberInt(80),
 	"accountType": "Premium",
 	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
 	"notifyOffersMail":false,
@@ -358,6 +368,8 @@ db.auxiliary.insert({
 db.auxiliary.insert({
 	"id":"auxf",
 	"userId":"userauxf",
+	"profilCompleted":true,
+	"profilProgression":NumberInt(80),
 	"notifyOffersMail":false,
 	"notifyOffersSms":false,
 	"avatar":"0000000000F",
@@ -399,6 +411,8 @@ db.auxiliary.insert({
 db.auxiliary.insert({
 	"id":"auxg",
 	"userId":"userauxg",
+	"profilCompleted":true,
+	"profilProgression":NumberInt(80),
 	"notifyOffersMail":false,
 	"notifyOffersSms":false,
 	"avatar":"0000000000G",
@@ -440,6 +454,8 @@ db.auxiliary.insert({
 db.auxiliary.insert({
 	"id":"auxh",
 	"userId":"userauxh",
+	"profilCompleted":true,
+	"profilProgression":NumberInt(80),
 	"accountType": "Premium",
 	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
 	"notifyOffersMail":false,
@@ -484,6 +500,8 @@ db.auxiliary.insert({
 db.auxiliary.insert({
 	"authId":"antoine",
 	"id":"auxantoine",
+	"profilCompleted":false,
+	"profilProgression":NumberInt(30),
 	"diplomaImage":null,
 	"country":null,
 	"lastName":null,
