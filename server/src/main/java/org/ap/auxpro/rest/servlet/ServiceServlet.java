@@ -279,7 +279,6 @@ public class ServiceServlet extends APServletBase {
 				bean.diploma = data.getDiploma();
 				bean.skillDoityourself = data.getSkillDoityourself();
 				bean.id = data.getId();
-				bean.email = data.getEmail();
 				bean.longitude = data.getLongitude();
 				bean.skillNursing = data.getSkillNursing();
 				bean.address = data.getAddress();
@@ -301,7 +300,6 @@ public class ServiceServlet extends APServletBase {
 				bean.phoneChecked = data.getPhoneChecked();
 				bean.skillHousework = data.getSkillHousework();
 				bean.idCardNumber = data.getIdCardNumber();
-				bean.emailChecked = data.getEmailChecked();
 				bean.notifyOffersMail = data.getNotifyOffersMail();
 				
 				beanList.add(bean);

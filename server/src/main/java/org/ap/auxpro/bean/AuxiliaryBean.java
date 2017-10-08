@@ -26,7 +26,6 @@ public class AuxiliaryBean {
 	public String diploma;
 	public Integer skillDoityourself;
 	public String id;
-	public String email;
 	public Double longitude;
 	public Integer skillNursing;
 	public String address;
@@ -48,7 +47,6 @@ public class AuxiliaryBean {
 	public Boolean phoneChecked;
 	public Integer skillHousework;
 	public Long idCardNumber;
-	public Boolean emailChecked;
 	public Boolean notifyOffersMail;
 
 }

@@ -79,7 +79,6 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.diploma = data.getDiploma();
 				bean.skillDoityourself = data.getSkillDoityourself();
 				bean.id = data.getId();
-				bean.email = data.getEmail();
 				bean.longitude = data.getLongitude();
 				bean.skillNursing = data.getSkillNursing();
 				bean.address = data.getAddress();
@@ -101,7 +100,6 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.phoneChecked = data.getPhoneChecked();
 				bean.skillHousework = data.getSkillHousework();
 				bean.idCardNumber = data.getIdCardNumber();
-				bean.emailChecked = data.getEmailChecked();
 				bean.notifyOffersMail = data.getNotifyOffersMail();
 				
 				beanList.add(bean);
@@ -209,7 +207,6 @@ public class AuxiliaryServlet extends APServletBase {
 			bean.diploma = data.getDiploma();
 			bean.skillDoityourself = data.getSkillDoityourself();
 			bean.id = data.getId();
-			bean.email = data.getEmail();
 			bean.longitude = data.getLongitude();
 			bean.skillNursing = data.getSkillNursing();
 			bean.address = data.getAddress();
@@ -231,7 +228,6 @@ public class AuxiliaryServlet extends APServletBase {
 			bean.phoneChecked = data.getPhoneChecked();
 			bean.skillHousework = data.getSkillHousework();
 			bean.idCardNumber = data.getIdCardNumber();
-			bean.emailChecked = data.getEmailChecked();
 			bean.notifyOffersMail = data.getNotifyOffersMail();
 			
 			return Response.status(Status.OK).entity(bean).build();
@@ -276,7 +272,6 @@ public class AuxiliaryServlet extends APServletBase {
 			data.setAddressChecked(auxiliaryBean.addressChecked);
 			data.setDiploma(auxiliaryBean.diploma);
 			data.setSkillDoityourself(auxiliaryBean.skillDoityourself);
-			data.setEmail(auxiliaryBean.email);
 			data.setLongitude(auxiliaryBean.longitude);
 			data.setSkillNursing(auxiliaryBean.skillNursing);
 			data.setAddress(auxiliaryBean.address);
@@ -298,7 +293,6 @@ public class AuxiliaryServlet extends APServletBase {
 			data.setPhoneChecked(auxiliaryBean.phoneChecked);
 			data.setSkillHousework(auxiliaryBean.skillHousework);
 			data.setIdCardNumber(auxiliaryBean.idCardNumber);
-			data.setEmailChecked(auxiliaryBean.emailChecked);
 			data.setNotifyOffersMail(auxiliaryBean.notifyOffersMail);
 			// Store the updated data object
 			AuxiliaryCollection.updateNull(data);

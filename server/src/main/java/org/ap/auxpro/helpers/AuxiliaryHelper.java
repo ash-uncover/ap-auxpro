@@ -11,7 +11,27 @@ import org.ap.web.internal.APWebException;
 public class AuxiliaryHelper {
 	
 	public static void beforePutAuxiliary(SecurityContext sc, String id, AuxiliaryBean auxiliaryBean) throws APWebException {
-		// TODO Auto-generated method stub
+		// Get actual auxiliary
+		AuxiliaryData auxiliary = AuxiliaryCollection.getById(id);
+		// Check profil progress & completion
+		boolean profilCompleted = true;
+		int profilProgress = 0;
+		// Check skills
+		if (auxiliaryBean.areSkillSet) {
+			profilProgress += 30;
+		}
+		// Check avatar
+		if (auxiliaryBean.avatar != null) {
+			profilProgress += 10;
+		}
+		// Check civil info
+		// 
+		if (auxiliaryBean.civility != null) {
+			profilProgress += 10;
+		}
+		
+		auxiliaryBean.profilProgression = profilProgress;
+		auxiliaryBean.profilCompleted = profilCompleted;
 		
 	}
 	
