@@ -948,6 +948,123 @@ db.offer.insert({
 	"hideToSad":false
 })
 
+/* ****************************************************************************************
+ * DB-HELPTOPIC
+ */
+
+
+db.geozone.insert({
+	"id":"auxa-1",
+	"type":"Area",
+	"auxiliaryId":"auxa",
+	"lattitude":48.903151,
+	"longitude":2.312931,
+	"address":"Place de la république",
+	"postalCode":"92110",
+	"city":"Clichy",
+	"radius":NumberInt(800)
+})
+
+db.geozone.insert({
+	"id":"auxa-2",
+	"type":"City",
+	"auxiliaryId":"auxa",
+	"lattitude":48.8945948,
+	"longitude":2.2786922,
+	"address":"",
+	"postalCode":"92100",
+	"city":"Levallois-Peret"
+})
+
+db.geozone.insert({
+	"id":"auxa-3",
+	"type":"City",
+	"auxiliaryId":"auxa",
+	"lattitude":48.887540,
+	"longitude":2.306440,
+	"address":"",
+	"postalCode":"75017",
+	"city":"Paris 17eme"
+})
+
+db.geozone.insert({
+	"id":"auxb-1",
+	"type":"Area",
+	"auxiliaryId":"auxb",
+	"lattitude":48.8929028,
+	"longitude":2.3248703,
+	"address":"7 rue Lacaille",
+	"postalCode":"75017",
+	"city":"Paris 17eme",
+	"radius":NumberInt(800)
+})
+
+db.geozone.insert({
+	"id":"auxc-1",
+	"type":"City",
+	"auxiliaryId":"auxc",
+	"lattitude":48.887540,
+	"longitude":2.306440,
+	"address":"",
+	"postalCode":"75017",
+	"city":"Paris 17eme"
+})
+
+db.geozone.insert({
+	"id":"auxd-1",
+	"type":"City",
+	"auxiliaryId":"auxd",
+	"lattitude":48.887540,
+	"longitude":2.306440,
+	"address":"",
+	"postalCode":"75017",
+	"city":"Paris 17eme"
+})
+
+db.geozone.insert({
+	"id":"auxe-1",
+	"type":"City",
+	"auxiliaryId":"auxe",
+	"lattitude":48.887540,
+	"longitude":2.306440,
+	"address":"",
+	"postalCode":"75017",
+	"city":"Paris 17eme"
+})
+
+db.geozone.insert({
+	"id":"auxf-1",
+	"type":"City",
+	"auxiliaryId":"auxf",
+	"lattitude":48.887540,
+	"longitude":2.306440,
+	"address":"",
+	"postalCode":"75017",
+	"city":"Paris 17eme"
+})
+
+db.geozone.insert({
+	"id":"auxg-1",
+	"type":"City",
+	"auxiliaryId":"auxg",
+	"lattitude":48.887540,
+	"longitude":2.306440,
+	"address":"",
+	"postalCode":"75017",
+	"city":"Paris 17eme"
+})
+
+db.geozone.insert({
+	"id":"auxh-1",
+	"type":"City",
+	"auxiliaryId":"auxh",
+	"lattitude":48.887540,
+	"longitude":2.306440,
+	"address":"",
+	"postalCode":"75017",
+	"city":"Paris 17eme"
+})
+
 
 
 /* ****************************************************************************************
