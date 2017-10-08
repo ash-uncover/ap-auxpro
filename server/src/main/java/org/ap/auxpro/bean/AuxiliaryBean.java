@@ -11,7 +11,7 @@ public class AuxiliaryBean {
 	public Boolean diplomaValidated;
 	public String civility;
 	public String city;
-	public Integer postalCode;
+	public String postalCode;
 	public Boolean isTutoSkipped;
 	public String description;
 	public String socialNumber;
@@ -46,7 +46,7 @@ public class AuxiliaryBean {
 	public Integer skillAdministrative;
 	public Boolean phoneChecked;
 	public Integer skillHousework;
-	public Long idCardNumber;
+	public String idCardNumber;
 	public Boolean notifyOffersMail;
 
 }

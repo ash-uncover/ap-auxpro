@@ -1,40 +1,93 @@
 package org.ap.auxpro.helpers;
 
+import java.time.LocalDate;
+
 import javax.ws.rs.core.SecurityContext;
 
 import org.ap.auxpro.bean.AuxiliaryBean;
 import org.ap.auxpro.bean.AuxiliaryQuestionaryBean;
 import org.ap.auxpro.storage.AuxiliaryCollection;
 import org.ap.auxpro.storage.AuxiliaryData;
+import org.ap.auxpro.storage.AuxiliaryFields;
+import org.ap.common.TimeHelper;
+import org.ap.common.validators.IValidator;
 import org.ap.web.internal.APWebException;
 
 public class AuxiliaryHelper {
-	
+
+	@SuppressWarnings("unchecked")
 	public static void beforePutAuxiliary(SecurityContext sc, String id, AuxiliaryBean auxiliaryBean) throws APWebException {
-		// Get actual auxiliary
-		AuxiliaryData auxiliary = AuxiliaryCollection.getById(id);
 		// Check profil progress & completion
 		boolean profilCompleted = true;
 		int profilProgress = 0;
-		// Check skills
-		if (auxiliaryBean.areSkillSet) {
+		// Check skills (total: 30)
+		if (auxiliaryBean.areSkillSet != null && auxiliaryBean.areSkillSet) {
 			profilProgress += 30;
 		}
-		// Check avatar
+		// Check avatar (total: 40)
 		if (auxiliaryBean.avatar != null) {
 			profilProgress += 10;
 		}
-		// Check civil info
-		// 
-		if (auxiliaryBean.civility != null) {
+		// Check civil info (total: 50)
+		if (
+			((IValidator<String>)AuxiliaryFields.CIVILITY.getValidator()).getState(auxiliaryBean.civility) &&
+			((IValidator<String>)AuxiliaryFields.LAST_NAME.getValidator()).getState(auxiliaryBean.lastName) &&
+			((IValidator<String>)AuxiliaryFields.FIRST_NAME.getValidator()).getState(auxiliaryBean.firstName)
+		) {
+			profilProgress += 10;
+		} else {
+			profilCompleted = false;
+		}
+		// Check birth info (total: 60)
+		if (
+			((IValidator<String>)AuxiliaryFields.NATIONALITY.getValidator()).getState(auxiliaryBean.nationality) &&
+			((IValidator<LocalDate>)AuxiliaryFields.BIRTH_DATE.getValidator()).getState(TimeHelper.toLocalDate(auxiliaryBean.birthDate)) &&
+			((IValidator<String>)AuxiliaryFields.BIRTH_CITY.getValidator()).getState(auxiliaryBean.birthCity) &&
+			((IValidator<String>)AuxiliaryFields.BIRTH_COUNTRY.getValidator()).getState(auxiliaryBean.birthCountry)
+		) {
+			profilProgress += 10;
+		} else {
+			profilCompleted = false;
+		}
+		// Check address info (total: 70)
+		if (
+			((IValidator<String>)AuxiliaryFields.ADDRESS.getValidator()).getState(auxiliaryBean.address) &&
+			((IValidator<String>)AuxiliaryFields.POSTAL_CODE.getValidator()).getState(auxiliaryBean.postalCode) &&
+			((IValidator<String>)AuxiliaryFields.CITY.getValidator()).getState(auxiliaryBean.city) &&
+			((IValidator<String>)AuxiliaryFields.COUNTRY.getValidator()).getState(auxiliaryBean.country)
+		) {
+			profilProgress += 10;
+		} else {
+			profilCompleted = false;
+		}
+		// Check contact info (total: 80)
+		if (
+			((IValidator<String>)AuxiliaryFields.PHONE.getValidator()).getState(auxiliaryBean.phone)
+		) {
+			profilProgress += 10;
+		} else {
+			profilCompleted = false;
+		}
+		// Check profesionnal info (total: 90)
+		if (
+			((IValidator<String>)AuxiliaryFields.DESCRIPTION.getValidator()).getState(auxiliaryBean.description) &&
+			((IValidator<Boolean>)AuxiliaryFields.IS_ENTREPRENEUR.getValidator()).getState(auxiliaryBean.isEntrepreneur) &&
+			((IValidator<String>)AuxiliaryFields.DIPLOMA.getValidator()).getState(auxiliaryBean.diploma)
+		) {
 			profilProgress += 10;
 		}
-		
+		// Check secret info (total: 100)
+		if (
+			((IValidator<String>)AuxiliaryFields.ID_CARD_NUMBER.getValidator()).getState(auxiliaryBean.idCardNumber) &&
+			((IValidator<String>)AuxiliaryFields.SOCIAL_NUMBER.getValidator()).getState(auxiliaryBean.socialNumber)
+		) {
+			profilProgress += 10;
+		}
+
 		auxiliaryBean.profilProgression = profilProgress;
 		auxiliaryBean.profilCompleted = profilCompleted;
-		
 	}
-	
+
 	public static Object postAuxiliaryQuestionary(SecurityContext sc, String id, AuxiliaryQuestionaryBean bean) throws APWebException {
 		int ch = 0;
 		int ho = 0;

@@ -12,7 +12,7 @@ public class AuxiliaryData {
 	public Boolean diplomaValidated;
 	public String civility;
 	public String city;
-	public Integer postalCode;
+	public String postalCode;
 	public Boolean isTutoSkipped;
 	public String description;
 	public String socialNumber;
@@ -48,7 +48,7 @@ public class AuxiliaryData {
 	public Integer skillAdministrative;
 	public Boolean phoneChecked;
 	public Integer skillHousework;
-	public Long idCardNumber;
+	public String idCardNumber;
 	public Boolean emailChecked;
 	public Boolean notifyOffersMail;
 
@@ -108,11 +108,11 @@ public class AuxiliaryData {
 		this.city = city;
 	}
 
-	public Integer getPostalCode() {
+	public String getPostalCode() {
 		return this.postalCode;
 	}
 
-	public void setPostalCode(Integer postalCode) {
+	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
 
@@ -396,11 +396,11 @@ public class AuxiliaryData {
 		this.skillHousework = skillHousework;
 	}
 
-	public Long getIdCardNumber() {
+	public String getIdCardNumber() {
 		return this.idCardNumber;
 	}
 
-	public void setIdCardNumber(Long idCardNumber) {
+	public void setIdCardNumber(String idCardNumber) {
 		this.idCardNumber = idCardNumber;
 	}
 

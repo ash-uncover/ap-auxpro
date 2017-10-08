@@ -102,7 +102,7 @@ public class AuxiliaryCollection {
 		data.diplomaValidated = document.getBoolean("diplomaValidated");
 		data.civility = document.getString("civility");
 		data.city = document.getString("city");
-		data.postalCode = document.getInteger("postalCode");
+		data.postalCode = document.getString("postalCode");
 		data.isTutoSkipped = document.getBoolean("isTutoSkipped");
 		data.description = document.getString("description");
 		data.socialNumber = document.getString("socialNumber");
@@ -138,7 +138,7 @@ public class AuxiliaryCollection {
 		data.skillAdministrative = document.getInteger("skillAdministrative");
 		data.phoneChecked = document.getBoolean("phoneChecked");
 		data.skillHousework = document.getInteger("skillHousework");
-		data.idCardNumber = document.getLong("idCardNumber");
+		data.idCardNumber = document.getString("idCardNumber");
 		data.emailChecked = document.getBoolean("emailChecked");
 		data.notifyOffersMail = document.getBoolean("notifyOffersMail");
 		return data;

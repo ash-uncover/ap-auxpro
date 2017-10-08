@@ -276,7 +276,7 @@ let _CITY = {
 }
 let _POSTAL_CODE = {
 	key: 'postalCode',
-	type: 'number',
+	type: 'string',
 	validator: Validators.PostalCode,
 }
 let _IS_TUTO_SKIPPED = {
@@ -433,8 +433,8 @@ let _SKILL_HOUSEWORK = {
 }
 let _ID_CARD_NUMBER = {
 	key: 'idCardNumber',
-	type: 'number',
-	validator: Validators.IDCardNumber,
+	type: 'string',
+	validator: Validators.IdCardNumber,
 }
 let _EMAIL_CHECKED = {
 	key: 'emailChecked',

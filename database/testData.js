@@ -159,7 +159,7 @@ db.auxiliary.insert({
 	"phone":"0101020301",
 	"phoneChecked":true,
 	"address":"35 rue d'Alsace",
-	"postalCode":NumberInt(92300),
+	"postalCode":"92300",
 	"city":"Levallois-Peret",
 	"country":"France",
 	"lattitude":48.892556,
@@ -183,7 +183,7 @@ db.auxiliary.insert({
 	"skillShopping":NumberInt(1),
 	"diploma":"Diplome d'etat d'auxiliarie de vie",
 	"diplomaImage":"000000000DA",
-	"idCardNumber":NumberLong(123456789012)
+	"idCardNumber":"123456789012"
 })
 db.auxiliary.insert({
 	"id":"auxb",
@@ -204,7 +204,7 @@ db.auxiliary.insert({
 	"phone":"0102030405",
 	"phoneChecked":true,
 	"address":"15B rue Victor Meric",
-	"postalCode":NumberInt(92110),
+	"postalCode":"92110",
 	"city":"Clichy",
 	"country":"France",
 	"lattitude":48.901569,
@@ -228,7 +228,7 @@ db.auxiliary.insert({
 	"skillShopping":NumberInt(0),
 	"diploma":"Diplôme de Trucmuche",
 	"diplomaImage":"000000000DB",
-	"idCardNumber":NumberLong(123456789012)
+	"idCardNumber":"123456789012"
 })
 db.auxiliary.insert({
 	"id":"auxc",
@@ -249,7 +249,7 @@ db.auxiliary.insert({
 	"phone":"0101010101",
 	"phoneChecked":true,
 	"address":"20 rue Mederic",
-	"postalCode":NumberInt(75017),
+	"postalCode":"75017",
 	"city":"Paris",
 	"country":"France",
 	"lattitude":48.880903,
@@ -273,7 +273,7 @@ db.auxiliary.insert({
 	"skillShopping":NumberInt(1),
 	"diploma":"BTS Auxiliaire",
 	"diplomaImage":"000000000DC",
-	"idCardNumber":NumberLong(123456789012)
+	"idCardNumber":"123456789012"
 })
 db.auxiliary.insert({
 	"id":"auxd",
@@ -294,7 +294,7 @@ db.auxiliary.insert({
 	"phone":"0101010101",
 	"phoneChecked":true,
 	"address":"2 place Vendome",
-	"postalCode":NumberInt(75001),
+	"postalCode":"75001",
 	"city":"Paris",
 	"country":"France",
 	"lattitude":48.866601,
@@ -318,7 +318,7 @@ db.auxiliary.insert({
 	"skillShopping":NumberInt(1),
 	"diploma":"Diplome d'infirmière",
 	"diplomaImage":"000000000DD",
-	"idCardNumber":NumberLong(123456789012)
+	"idCardNumber":"123456789012"
 })
 db.auxiliary.insert({
 	"id":"auxe",
@@ -339,7 +339,7 @@ db.auxiliary.insert({
 	"phone":"0101010101",
 	"phoneChecked":true,
 	"address":"47 boulevard de Clichy",
-	"postalCode":NumberInt(75014),
+	"postalCode":"75014",
 	"city":"Paris",
 	"country":"France",
 	"lattitude":48.883266,
@@ -363,7 +363,7 @@ db.auxiliary.insert({
 	"skillShopping":NumberInt(1),
 	"diploma":"Diplome de Trucmuche",
 	"diplomaImage":"000000000DE",
-	"idCardNumber":NumberLong(123456789012)
+	"idCardNumber":"123456789012"
 })
 db.auxiliary.insert({
 	"id":"auxf",
@@ -382,7 +382,7 @@ db.auxiliary.insert({
 	"phone":"0101010101",
 	"phoneChecked":true,
 	"address":"154 rue Ordener",
-	"postalCode":NumberInt(75018),
+	"postalCode":"75018",
 	"city":"Paris",
 	"country":"France",
 	"lattitude":48.893647,
@@ -406,7 +406,7 @@ db.auxiliary.insert({
 	"skillShopping":NumberInt(1),
 	"diploma":"Diplome de Trucmuche",
 	"diplomaImage":"000000000DF",
-	"idCardNumber":NumberLong(123456789012)
+	"idCardNumber":"123456789012"
 })
 db.auxiliary.insert({
 	"id":"auxg",
@@ -425,7 +425,7 @@ db.auxiliary.insert({
 	"phone":"0101010101",
 	"phoneChecked":true,
 	"address":"21 rue Pierre Curie",
-	"postalCode":NumberInt(92110),
+	"postalCode":"92110",
 	"city":"Clichy",
 	"country":"France",
 	"lattitude":48.902706,
@@ -449,7 +449,7 @@ db.auxiliary.insert({
 	"skillShopping":NumberInt(1),
 	"diploma":"Diplome de Trucmuche",
 	"diplomaImage":"000000000DG",
-	"idCardNumber":NumberLong(123456789012)
+	"idCardNumber":"123456789012"
 })
 db.auxiliary.insert({
 	"id":"auxh",
@@ -470,7 +470,7 @@ db.auxiliary.insert({
 	"phone":"0101010101",
 	"phoneChecked":true,
 	"address":"9 rue Roquepine",
-	"postalCode":NumberInt(75008),
+	"postalCode":"75008",
 	"city":"Paris",
 	"country":"France",
 	"lattitude":48.873169,
@@ -494,7 +494,7 @@ db.auxiliary.insert({
 	"skillShopping":NumberInt(5),
 	"diploma":"Diplome de Trucmuche",
 	"diplomaImage":"000000000DH",
-	"idCardNumber":NumberLong(123456789012)
+	"idCardNumber":"123456789012"
 })
 
 db.auxiliary.insert({
