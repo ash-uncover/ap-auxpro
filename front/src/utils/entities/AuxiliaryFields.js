@@ -50,6 +50,10 @@ class AuxiliaryFields {
 		return _ACCOUNT_EXPIRY_DATE
 	}
 
+	static get PROFIL_PROGRESSION() {
+		return _PROFIL_PROGRESSION
+	}
+
 	static get SKILL_SHOPPING() {
 		return _SKILL_SHOPPING
 	}
@@ -64,6 +68,10 @@ class AuxiliaryFields {
 
 	static get BIRTH_COUNTRY() {
 		return _BIRTH_COUNTRY
+	}
+
+	static get PROFIL_COMPLETED() {
+		return _PROFIL_COMPLETED
 	}
 
 	static get ADDRESS_CHECKED() {
@@ -191,10 +199,12 @@ class AuxiliaryFields {
 			_DESCRIPTION,
 			_SOCIAL_NUMBER,
 			_ACCOUNT_EXPIRY_DATE,
+			_PROFIL_PROGRESSION,
 			_SKILL_SHOPPING,
 			_NOTIFY_OFFERS_SMS,
 			_NOTIFY_AUXPROS,
 			_BIRTH_COUNTRY,
+			_PROFIL_COMPLETED,
 			_ADDRESS_CHECKED,
 			_DIPLOMA,
 			_SKILL_DOITYOURSELF,
@@ -287,6 +297,10 @@ let _ACCOUNT_EXPIRY_DATE = {
 	key: 'accountExpiryDate',
 	type: 'number',
 }
+let _PROFIL_PROGRESSION = {
+	key: 'profilProgression',
+	type: 'number',
+}
 let _SKILL_SHOPPING = {
 	key: 'skillShopping',
 	type: 'number',
@@ -303,6 +317,10 @@ let _BIRTH_COUNTRY = {
 	key: 'birthCountry',
 	type: 'string',
 	validator: Validators.NonEmptyString,
+}
+let _PROFIL_COMPLETED = {
+	key: 'profilCompleted',
+	type: 'boolean',
 }
 let _ADDRESS_CHECKED = {
 	key: 'addressChecked',

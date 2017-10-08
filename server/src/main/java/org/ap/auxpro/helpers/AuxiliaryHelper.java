@@ -2,12 +2,19 @@ package org.ap.auxpro.helpers;
 
 import javax.ws.rs.core.SecurityContext;
 
+import org.ap.auxpro.bean.AuxiliaryBean;
 import org.ap.auxpro.bean.AuxiliaryQuestionaryBean;
 import org.ap.auxpro.storage.AuxiliaryCollection;
 import org.ap.auxpro.storage.AuxiliaryData;
 import org.ap.web.internal.APWebException;
 
 public class AuxiliaryHelper {
+	
+	public static void beforePutAuxiliary(SecurityContext sc, String id, AuxiliaryBean auxiliaryBean) throws APWebException {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public static Object postAuxiliaryQuestionary(SecurityContext sc, String id, AuxiliaryQuestionaryBean bean) throws APWebException {
 		int ch = 0;
 		int ho = 0;
@@ -50,5 +57,4 @@ public class AuxiliaryHelper {
 	public static int computeScore(int baseScore) {
 		return Math.min(5, Math.round(baseScore * 5 / 25));
 	}
-
 }

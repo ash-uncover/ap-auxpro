@@ -18,8 +18,8 @@ import com.mongodb.MongoWriteException;
 import org.ap.auxpro.internal.MailSender;
 import org.ap.auxpro.internal.ETokenType;
 import org.ap.common.TimeHelper;
-import org.ap.auxpro.bean.AuxiliaryQuestionaryBean;
 import org.ap.auxpro.helpers.AuxiliaryHelper;
+import org.ap.auxpro.bean.AuxiliaryQuestionaryBean;
 import org.ap.auxpro.bean.ServiceBean;
 import org.ap.auxpro.storage.ServiceData;
 import org.ap.auxpro.storage.ServiceCollection;
@@ -69,10 +69,12 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.description = data.getDescription();
 				bean.socialNumber = data.getSocialNumber();
 				bean.accountExpiryDate = data.getAccountExpiryDate();
+				bean.profilProgression = data.getProfilProgression();
 				bean.skillShopping = data.getSkillShopping();
 				bean.notifyOffersSms = data.getNotifyOffersSms();
 				bean.notifyAuxpros = data.getNotifyAuxpros();
 				bean.birthCountry = data.getBirthCountry();
+				bean.profilCompleted = data.getProfilCompleted();
 				bean.addressChecked = data.getAddressChecked();
 				bean.diploma = data.getDiploma();
 				bean.skillDoityourself = data.getSkillDoityourself();
@@ -197,10 +199,12 @@ public class AuxiliaryServlet extends APServletBase {
 			bean.description = data.getDescription();
 			bean.socialNumber = data.getSocialNumber();
 			bean.accountExpiryDate = data.getAccountExpiryDate();
+			bean.profilProgression = data.getProfilProgression();
 			bean.skillShopping = data.getSkillShopping();
 			bean.notifyOffersSms = data.getNotifyOffersSms();
 			bean.notifyAuxpros = data.getNotifyAuxpros();
 			bean.birthCountry = data.getBirthCountry();
+			bean.profilCompleted = data.getProfilCompleted();
 			bean.addressChecked = data.getAddressChecked();
 			bean.diploma = data.getDiploma();
 			bean.skillDoityourself = data.getSkillDoityourself();
@@ -244,6 +248,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response putAuxiliary(@Context SecurityContext sc, @PathParam("id") final String id, AuxiliaryBean auxiliaryBean) {
 		try {
+			AuxiliaryHelper.beforePutAuxiliary(sc, id, auxiliaryBean);
 			// Get actual data object
 			AuxiliaryData data = AuxiliaryCollection.getById(id);
 			// Check data exists
@@ -262,10 +267,12 @@ public class AuxiliaryServlet extends APServletBase {
 			data.setDescription(auxiliaryBean.description);
 			data.setSocialNumber(auxiliaryBean.socialNumber);
 			data.setAccountExpiryDate(auxiliaryBean.accountExpiryDate);
+			data.setProfilProgression(auxiliaryBean.profilProgression);
 			data.setSkillShopping(auxiliaryBean.skillShopping);
 			data.setNotifyOffersSms(auxiliaryBean.notifyOffersSms);
 			data.setNotifyAuxpros(auxiliaryBean.notifyAuxpros);
 			data.setBirthCountry(auxiliaryBean.birthCountry);
+			data.setProfilCompleted(auxiliaryBean.profilCompleted);
 			data.setAddressChecked(auxiliaryBean.addressChecked);
 			data.setDiploma(auxiliaryBean.diploma);
 			data.setSkillDoityourself(auxiliaryBean.skillDoityourself);

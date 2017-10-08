@@ -269,10 +269,12 @@ public class ServiceServlet extends APServletBase {
 				bean.description = data.getDescription();
 				bean.socialNumber = data.getSocialNumber();
 				bean.accountExpiryDate = data.getAccountExpiryDate();
+				bean.profilProgression = data.getProfilProgression();
 				bean.skillShopping = data.getSkillShopping();
 				bean.notifyOffersSms = data.getNotifyOffersSms();
 				bean.notifyAuxpros = data.getNotifyAuxpros();
 				bean.birthCountry = data.getBirthCountry();
+				bean.profilCompleted = data.getProfilCompleted();
 				bean.addressChecked = data.getAddressChecked();
 				bean.diploma = data.getDiploma();
 				bean.skillDoityourself = data.getSkillDoityourself();

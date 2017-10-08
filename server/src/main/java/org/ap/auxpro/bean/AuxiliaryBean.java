@@ -16,10 +16,12 @@ public class AuxiliaryBean {
 	public String description;
 	public String socialNumber;
 	public List<Integer> accountExpiryDate;
+	public Integer profilProgression;
 	public Integer skillShopping;
 	public Boolean notifyOffersSms;
 	public Boolean notifyAuxpros;
 	public String birthCountry;
+	public Boolean profilCompleted;
 	public Boolean addressChecked;
 	public String diploma;
 	public Integer skillDoityourself;

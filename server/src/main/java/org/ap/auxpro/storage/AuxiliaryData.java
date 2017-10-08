@@ -17,10 +17,12 @@ public class AuxiliaryData {
 	public String description;
 	public String socialNumber;
 	public List<Integer> accountExpiryDate;
+	public Integer profilProgression;
 	public Integer skillShopping;
 	public Boolean notifyOffersSms;
 	public Boolean notifyAuxpros;
 	public String birthCountry;
+	public Boolean profilCompleted;
 	public Boolean addressChecked;
 	public String diploma;
 	public Integer skillDoityourself;
@@ -146,6 +148,14 @@ public class AuxiliaryData {
 		this.accountExpiryDate = accountExpiryDate;
 	}
 
+	public Integer getProfilProgression() {
+		return this.profilProgression;
+	}
+
+	public void setProfilProgression(Integer profilProgression) {
+		this.profilProgression = profilProgression;
+	}
+
 	public Integer getSkillShopping() {
 		return this.skillShopping;
 	}
@@ -176,6 +186,14 @@ public class AuxiliaryData {
 
 	public void setBirthCountry(String birthCountry) {
 		this.birthCountry = birthCountry;
+	}
+
+	public Boolean getProfilCompleted() {
+		return this.profilCompleted;
+	}
+
+	public void setProfilCompleted(Boolean profilCompleted) {
+		this.profilCompleted = profilCompleted;
 	}
 
 	public Boolean getAddressChecked() {

@@ -107,10 +107,12 @@ public class AuxiliaryCollection {
 		data.description = document.getString("description");
 		data.socialNumber = document.getString("socialNumber");
 		data.accountExpiryDate = (List<Integer>)document.get("accountExpiryDate");
+		data.profilProgression = document.getInteger("profilProgression");
 		data.skillShopping = document.getInteger("skillShopping");
 		data.notifyOffersSms = document.getBoolean("notifyOffersSms");
 		data.notifyAuxpros = document.getBoolean("notifyAuxpros");
 		data.birthCountry = document.getString("birthCountry");
+		data.profilCompleted = document.getBoolean("profilCompleted");
 		data.addressChecked = document.getBoolean("addressChecked");
 		data.diploma = document.getString("diploma");
 		data.skillDoityourself = document.getInteger("skillDoityourself");
@@ -168,6 +170,8 @@ public class AuxiliaryCollection {
 			document.append("socialNumber", auxiliary.socialNumber);
 		if (auxiliary.accountExpiryDate != null)
 			document.append("accountExpiryDate", auxiliary.accountExpiryDate);
+		if (auxiliary.profilProgression != null)
+			document.append("profilProgression", auxiliary.profilProgression);
 		if (auxiliary.skillShopping != null)
 			document.append("skillShopping", auxiliary.skillShopping);
 		if (auxiliary.notifyOffersSms != null)
@@ -176,6 +180,8 @@ public class AuxiliaryCollection {
 			document.append("notifyAuxpros", auxiliary.notifyAuxpros);
 		if (auxiliary.birthCountry != null)
 			document.append("birthCountry", auxiliary.birthCountry);
+		if (auxiliary.profilCompleted != null)
+			document.append("profilCompleted", auxiliary.profilCompleted);
 		if (auxiliary.addressChecked != null)
 			document.append("addressChecked", auxiliary.addressChecked);
 		if (auxiliary.diploma != null)
@@ -249,10 +255,12 @@ public class AuxiliaryCollection {
 		document.append("description", auxiliary.description);
 		document.append("socialNumber", auxiliary.socialNumber);
 		document.append("accountExpiryDate", auxiliary.accountExpiryDate);
+		document.append("profilProgression", auxiliary.profilProgression);
 		document.append("skillShopping", auxiliary.skillShopping);
 		document.append("notifyOffersSms", auxiliary.notifyOffersSms);
 		document.append("notifyAuxpros", auxiliary.notifyAuxpros);
 		document.append("birthCountry", auxiliary.birthCountry);
+		document.append("profilCompleted", auxiliary.profilCompleted);
 		document.append("addressChecked", auxiliary.addressChecked);
 		document.append("diploma", auxiliary.diploma);
 		document.append("skillDoityourself", auxiliary.skillDoityourself);
