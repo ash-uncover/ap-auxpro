@@ -83,5 +83,25 @@ class AuxiliaryUtils {
 		return auxiliary.postalCode + ' ' + auxiliary.city
 	}
 
+	static checkProfileCompleted(auxiliary) {
+		if (auxiliary) {
+			for (let field in AuxiliaryFields.FIELDS) {
+				if (AuxiliaryFields.FIELDS.hasOwnProperty(field) && AuxiliaryFields.FIELDS[field].validator) {
+					if (auxiliary.hasOwnProperty(field)) {
+						let value = auxiliary[field]
+						let state = AuxiliaryFields.FIELDS[field].validator.getState(value)
+						if (state !== 'success') {
+							return false
+						}
+					} else {
+						return false
+					}
+				}
+			}
+			return true
+		}
+		return false
+	}
+
 }
 export default AuxiliaryUtils
