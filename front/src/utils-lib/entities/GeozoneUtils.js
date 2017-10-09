@@ -1,3 +1,4 @@
+import GeozoneType from 'utils/constants/GeozoneType'
 import GeozoneFields from 'utils/entities/GeozoneFields'
 
 class GeozoneUtils {
@@ -16,8 +17,16 @@ class GeozoneUtils {
 		return '! UNKNOWN FIELD !'
 	}
 
-	static isValid() {
-
-	}			
+	static isValid(geozone) {
+		for (let i = 0; i < GeozoneFields.VALUES.length; i++) {
+			let field = GeozoneFields.VALUES[i]
+			if (!(geozone.type === GeozoneType.CITY.key && field === GeozoneFields.RADIUS)) {
+				if (field.validator && field.validator.getState(geozone[field.key]) === 'error') {
+					return false
+				}
+			}
+		}
+		return true
+	}	
 }
 export default GeozoneUtils

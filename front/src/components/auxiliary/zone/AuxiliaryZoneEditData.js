@@ -3,10 +3,12 @@ import AuthHelper from 'helpers/AuthHelper'
 import GeozoneHelper from 'helpers/GeozoneHelper'
 
 import { BaseData } from 'ap-react-bootstrap'
+import { Dispatcher } from 'ap-flux'
 
 import GeozoneType from 'utils/constants/GeozoneType'
 import GeozoneFields from 'utils/entities/GeozoneFields'
 
+import GeozoneUtils from 'utils-lib/entities/GeozoneUtils'
 import GeozoneTypeUtils from 'utils-lib/entities/GeozoneTypeUtils'
 
 class AuxiliaryZoneEditData extends BaseData {
@@ -81,7 +83,7 @@ class AuxiliaryZoneEditData extends BaseData {
 		this.declareFunction('onSubmit')
 
 		this.obj.state = {
-			mode: geozoneId === 'new' ? this.MODES.EDIT : this.MODES.CREATE
+			mode: geozoneId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
 		}
 
 		// Initial data
@@ -108,7 +110,11 @@ class AuxiliaryZoneEditData extends BaseData {
 		this.obj.state.dirty = true
 		this.obj.state[id] = value
 		this.obj.state[id + 'Default'] = null
-		this.obj.state.geozoneValid = this.isGeozoneValid()
+		let geozone = this.buildGeozone()
+		this.obj.state.geozoneValid = GeozoneUtils.isValid(geozone)
+		if (this.obj.props.onGeozoneUpdate) {
+			this.obj.props.onGeozoneUpdate(geozone)
+		}
 		this.forceUpdate()
 	}
 
@@ -119,7 +125,11 @@ class AuxiliaryZoneEditData extends BaseData {
 		this.obj.state.postalCode = address.postalCode
 		this.obj.state.city = address.city
 		this.obj.state.dirty = true
-		this.obj.state.geozoneValid = this.isGeozoneValid()
+		let geozone = this.buildGeozone()
+		this.obj.state.geozoneValid = GeozoneUtils.isValid(geozone)
+		if (this.obj.props.onGeozoneUpdate) {
+			this.obj.props.onGeozoneUpdate(geozone)
+		}
 		this.forceUpdate()
 	}
 
@@ -130,9 +140,52 @@ class AuxiliaryZoneEditData extends BaseData {
 	}
 
 	onSubmit() {
-		this.onCancel()	
+		let geozone = this.buildGeozone()
+		AppHelper.setBusy(true).
+		then(function() {
+			if (this.getState('mode') === this.MODES.CREATE) {
+				return GeozoneHelper.postGeozone(geozone)
+			} else {
+				return GeozoneHelper.putGeozone(geozone)
+			}
+		}.bind(this)).
+		then(function (result) {
+			if (this.getState('mode') === this.MODES.CREATE) {
+				return GeozoneHelper.getGeozone(result.id)
+			} else {
+				return GeozoneHelper.getGeozone(geozone.id)
+			}
+		}.bind(this)).
+		then(function () {
+			this.onCancel()
+			setTimeout(AppHelper.setBusy, 200)
+		}.bind(this)).
+		catch(function (error) {
+			setTimeout(AppHelper.setBusy, 200)
+			console.error('Geozone submit error')
+			console.error(error)
+		})
 	}
 
+	handleGetReversegeozone(result, param) {
+		this.obj.state.lattitude = param.lattitude
+		this.obj.state.longitude = param.longitude
+		if (result[0].address_components.length === 7) {
+			this.obj.state.address = result[0].address_components[0].short_name + ' ' + result[0].address_components[1].short_name
+			this.obj.state.city = result[0].address_components[2].short_name
+			this.obj.state.postalCode = result[0].address_components[6].short_name
+		} else {
+			this.obj.state.address = result[0].address_components[0].short_name
+			this.obj.state.city = result[0].address_components[2].short_name
+			this.obj.state.postalCode = result[0].address_components[5].short_name
+		}
+		let geozone = this.buildGeozone()
+		this.obj.state.geozoneValid = GeozoneUtils.isValid(geozone)
+		if (this.obj.props.onGeozoneUpdate) {
+			this.obj.props.onGeozoneUpdate(geozone)
+		}
+		this.forceUpdate()
+	}
 
 	// Internal methods //
 	// --------------------------------------------------------------------------------
@@ -162,13 +215,8 @@ class AuxiliaryZoneEditData extends BaseData {
 
 		return geozone
 	}
-
-	isGeozoneValid() {
-		let geozone = this.buildGeozone()
-		console.log(geozone)
-		return true
-	}
 }
 let AuxiliaryZoneEditObj = new AuxiliaryZoneEditData()
+Dispatcher.register('GET_REVERSE_GEOCODE', AuxiliaryZoneEditObj.handleGetReversegeozone.bind(AuxiliaryZoneEditObj));
 export default AuxiliaryZoneEditObj
 

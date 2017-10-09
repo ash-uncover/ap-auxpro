@@ -8,14 +8,13 @@ import OfferHelper from 'helpers/OfferHelper'
 import ServiceHelper from 'helpers/ServiceHelper'
 
 import { BaseData, Utils } from 'ap-react-bootstrap'
+import { Dispatcher } from 'ap-flux'
 
 import GeozoneType from 'utils/constants/GeozoneType'
 import GeozoneFields from 'utils/entities/GeozoneFields'
 
 import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
-
-import { Dispatcher } from 'ap-flux'
 
 let ICONS = {
 	HOME: '/assets/images/markers/gmap-marker-home.png',
@@ -41,27 +40,32 @@ class AuxiliaryZoneData extends BaseData {
 
 		this.MODE = {
 			INFO: 'INFO',
-			EDIT: 'EDIT',
-			DELETE: 'DELETE'
+			EDIT: 'EDIT'
 		}
 	}
 
 	register(obj) {
 		super.register(obj)
 
+		this.declareFunction('onMapClicked')
 		this.declareFunction('onChangeFilter')
 
+		this.declareFunction('onGeozoneUpdate')
 		this.declareFunction('onCancelEditGeozone')
 
 		this.declareFunction('onAddGeozone')
 		this.declareFunction('onEditGeozone')
 		this.declareFunction('onDeleteGeozone')
+		this.declareFunction('onCancelDeleteGeozone')
+		this.declareFunction('onConfirmDeleteGeozone')
 
 		this.buildGeozoneMarker = this._buildGeozoneMarker.bind(this)
+		this.buildGeozoneCircle = this._buildGeozoneCircle.bind(this)
 		this.buildOfferMarker = this._buildOfferMarker.bind(this)
 		this.buildInterventionMarker = this._buildInterventionMarker.bind(this)
 		this.buildServiceMarker = this._buildServiceMarker.bind(this)
 		this.buildAllServiceMarker = this._buildAllServiceMarker.bind(this)
+
 
 		this.onMarkerClicked = this._onMarkerClicked.bind(this)
 
@@ -71,6 +75,7 @@ class AuxiliaryZoneData extends BaseData {
 			showInterventions: true,
 			showServices: true,
 			showAllServices: true,
+			showDelete: false,
 			auxiliaryId: null,
 			customerId: null,
 			geozoneId: null,
@@ -120,7 +125,7 @@ class AuxiliaryZoneData extends BaseData {
 	}
 
 	updateCircles() {
-		this.obj.state.circles = []
+		this.obj.state.circles = this.geozoneCircles
 	}
 
 
@@ -147,14 +152,29 @@ class AuxiliaryZoneData extends BaseData {
 	}
 
 	buildGeozoneData() {
-		this.geozoneMarkers = Utils.map(GeozoneHelper.getData(), this.buildGeozoneMarker)
-
+		let geozone = this.getState('geozone')
+		this.geozoneMarkers = Utils.reduce(GeozoneHelper.getData(), this.buildGeozoneMarker, [])
+		if (geozone) {
+			this.geozoneMarkers.push(this._getGeozoneMarker(geozone))
+		}
+		this.geozoneCircles = Utils.reduce(GeozoneHelper.getData(), this.buildGeozoneCircle, [])
+		if (geozone) {
+			this.geozoneCircles.push(this._getGeozoneCircle(geozone))
+		}
 		this.obj.state.geozonesCount = this.geozoneMarkers.length
 	}
-	_buildGeozoneMarker(geozone) {
+	_buildGeozoneMarker(markers, geozone) {
+		if (geozone.id !== this.getState('geozoneId')) {
+			markers.push(this._getGeozoneMarker(geozone))
+		}
+		return markers
+	}
+	_getGeozoneMarker(geozone) {
+		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId())
 		return {
-			lattitude: Number(geozone.lattitude),
-			longitude: Number(geozone.longitude),
+			id: geozone.id,
+			lattitude: Number(geozone.lattitude || auxiliary.lattitude),
+			longitude: Number(geozone.longitude || auxiliary.longitude),
 			title: "Zone d'intervention",
 			icon: ICONS.GEOZONE,
 			auxiliaryId: null,
@@ -162,6 +182,22 @@ class AuxiliaryZoneData extends BaseData {
 			geozoneId: geozone.id,
 			serviceId: null,
 			onClick: this.onMarkerClicked
+		}
+	}
+	_buildGeozoneCircle(circles, geozone) {
+		if (geozone.id !== this.getState('geozoneId') && geozone.type === GeozoneType.AREA.key) {
+			let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId())
+			circles.push(this._getGeozoneCircle(geozone))
+		}
+		return circles
+	}
+	_getGeozoneCircle(geozone) {
+		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId())
+		return {
+			id: geozone.id,
+			lattitude: Number(geozone.lattitude || auxiliary.lattitude),
+			longitude: Number(geozone.longitude || auxiliary.longitude),
+			radius: parseFloat(geozone.radius || 0)
 		}
 	}
 
@@ -185,6 +221,7 @@ class AuxiliaryZoneData extends BaseData {
 	_buildInterventionMarker(customerId) {
 		let customer = CustomerHelper.getData(customerId)
 		return {
+			id: customerId,
 			lattitude: Number(customer.lattitude),
 			longitude: Number(customer.longitude),
 			title: 'Intervention',
@@ -199,6 +236,7 @@ class AuxiliaryZoneData extends BaseData {
 	_buildOfferMarker(customerId) {
 		let customer = CustomerHelper.getData(customerId)
 		return {
+			id: customerId,
 			lattitude: Number(customer.lattitude),
 			longitude: Number(customer.longitude),
 			title: 'Offre',
@@ -231,6 +269,7 @@ class AuxiliaryZoneData extends BaseData {
 	_buildServiceMarker(serviceId) {
 		let service = ServiceHelper.getData(serviceId)
 		return {
+			id: serviceId,
 			lattitude: Number(service.lattitude),
 			longitude: Number(service.longitude),
 			title: 'Service',
@@ -245,6 +284,7 @@ class AuxiliaryZoneData extends BaseData {
 	_buildAllServiceMarker(serviceId) {
 		let service = ServiceHelper.getData(serviceId)
 		return {
+			id: serviceId,
 			lattitude: Number(service.lattitude),
 			longitude: Number(service.longitude),
 			title: 'Service',
@@ -261,10 +301,17 @@ class AuxiliaryZoneData extends BaseData {
 	// View Callbacks //
 	// --------------------------------------------------------------------------------
 
-	onChangeFilter(id, event, value) {
-		this.obj.state[id] = value
-		this.updateMarkers()
-		this.forceUpdate()
+	onMapClicked(event) {
+		if (this.getState('mode') !== this.MODE.INFO) {
+			Dispatcher.issue('GET_REVERSE_GEOCODE', event)
+		} else {
+			this.setState({
+				auxiliaryId: null,
+				customerId: null,
+				geozoneId: null,
+				serviceId: null
+			})
+		}		
 	}
 
 	_onMarkerClicked(marker) {
@@ -276,11 +323,29 @@ class AuxiliaryZoneData extends BaseData {
 		})
 	}
 
+	onChangeFilter(id, event, value) {
+		this.obj.state[id] = value
+		this.updateMarkers()
+		this.updateCircles()
+		this.forceUpdate()
+	}
+
+	onGeozoneUpdate(geozone) {
+		this.obj.state.geozone = geozone
+		this.buildGeozoneData()
+		this.updateMarkers()
+		this.updateCircles()
+		this.forceUpdate()
+	}
+
 	onCancelEditGeozone() {
-		this.setState({
-			mode: this.MODE.INFO,
-			geozoneId: null
-		})
+		this.obj.state.geozoneId = null
+		this.obj.state.geozone = null
+		this.buildGeozoneData()
+		this.updateMarkers()
+		this.updateCircles()
+		this.obj.state.mode = this.MODE.INFO
+		this.forceUpdate()
 	}
 
 	onAddGeozone() {
@@ -292,407 +357,49 @@ class AuxiliaryZoneData extends BaseData {
 
 	onEditGeozone() {
 		this.setState({
-			mode: this.MODE.EDIT
+			mode: this.MODE.EDIT,
+			geozone: GeozoneHelper.getData(this.getState('geozoneId'))
 		})
 	}
 
 	onDeleteGeozone() {
 		this.setState({
-			mode: this.MODE.DELETE
+			showDelete: true
 		})	
 	}
 
-
-/*
-		this.homeMarkers = [ this.buildHomeMarker() ]
-		this.serviceMarkers = this.resolveServices().map(this.buildServiceMarker.bind(this))
-		this.serviceWithInter = this.resolveServiceWithIntervention().map(this.buildServiceWithInterventionMarker.bind(this))
-
-		this.customersState = this.__buildCustomersState()
-		this.interventionCustomers = this.resolveInterventions().map(this.buildInterventionCustomers.bind(this))
-		this.offerCustomers = this.resolveOffers().map(this.buildOfferCustomers.bind(this))
-		this.geozoneCircles = this.resolvegeozoneCircles().map(this.buildGeozoneCircle.bind(this))
-
-		this.panelgeozoneData = this.buildPanelgeozoneData()
-		this.buttonAddData = this.buildButtonAddData()
-		this.buttonCancelData = this.buildButtonCancelData()
-
-		this.obj.state.markers = this.homeMarkers.concat(this.serviceMarkers).concat(this.serviceWithInter)
-		.concat(this.interventionCustomers).concat(this.offerCustomers).concat(this.geozones)
-
-		this.obj.state.circles = this.geozoneCircles
-
-		this.obj.state.panelgeozoneData = this.panelgeozoneData
-		this.obj.state.buttonAddData = this.buttonAddData
-		this.obj.state.buttonCancelData = this.buttonCancelData
-
-		this.obj.state.showOffers = true
-		this.obj.state.showInterventions = true
-		this.obj.state.showServices = true
-		this.obj.state.showAllServices = true
-		GeozoneHelper.register('', this, this.onUpdategeozones.bind(this))
-*/
-
-/*
-
-	onUpdategeozones() {
-		this.geozones = Utils.map(GeozoneHelper.getData(), this.buildGeozones.bind(this))
-		this.geozoneCircles = this.resolvegeozoneCircles().map(this.buildGeozoneCircle.bind(this))
-		this.buttonAddData = this.buildButtonAddData()
-
-		let markers = this.homeMarkers.concat(this.serviceMarkers).concat(this.serviceWithInter)
-		.concat(this.interventionCustomers).concat(this.offerCustomers).concat(this.geozones)
-
+	onCancelDeleteGeozone() {
 		this.setState({
-			markers: markers,
-			circles: this.geozoneCircles,
-			buttonAddData: this.buttonAddData,
-			infoType: null,
-			geozone: null
-		})
+			showDelete: false
+		})	
 	}
 
-	
-
-	onChangeFilter(value) {
-		let test = this.obj.state
-		let newState = {}
-		newState.showOffers = this.obj.state.showOffers
-		newState.showInterventions = this.obj.state.showInterventions
-		newState.showServices = this.obj.state.showServices
-		newState.showAllServices = this.obj.state.showAllServices
-		newState[value] = !newState[value]
-
-		let markers = this.homeMarkers.concat(this.geozones)
-
-		if (newState.showOffers)
-			markers = markers.concat(this.offerCustomers)
-		if (newState.showInterventions)
-			markers = markers.concat(this.interventionCustomers)
-		if (newState.showServices)
-			markers = markers.concat(this.serviceWithInter)
-		if (newState.showAllServices)
-			markers = markers.concat(this.serviceMarkers)
-
-		newState.markers = markers;
-
-		this.setState(newState)
-	}
-
-	onAddressChange(address) {
-		Dispatcher.issue('GET_REVERSE_GEOCODE', address)
-	}
-
-	buildPanelgeozoneData() {
-		switch (this.mode) {
-		case MODE.EDIT:
-			return {
-				header: "Modifier une zone d'intervention",
-				footer: ' '
-			}
-		case MODE.CREATE:
-			return {
-				header: "Saisir une zone d'intervention",
-				footer: ' '
-			}
-		}
-	}
-
-	buildButtonAddData() {
-		switch (this.mode) {
-		case MODE.VIEW:
-			let geozones = GeozoneHelper.getData()
-			let disabled = Utils.map(geozones).length > 2
-			let text = disabled ? 'Maximum 3 zones' : 'Ajouter une zone'
-			return {
-				block: true,
-				bsStyle: disabled ? 'warning' : 'primary',
-				disabled: disabled,
-				children: (<strong>{text}</strong>),
-				onClick: this.onAddgeozone.bind(this)
-			}
-		case MODE.EDIT:
-			return {
-				block: true,
-				bsStyle: this.isFormCompleted ? 'success' : 'default',
-				disabled: !this.isFormCompleted,
-				children: (<strong>Enregistrer modifications</strong>),
-				onClick: this.onUpdategeozone.bind(this)
-			}
-		case MODE.CREATE:
-			return {
-				block: true,
-				bsStyle: this.isFormCompleted ? 'success' : 'default',
-				disabled: !this.isFormCompleted,
-				children: (<strong>Créer nouvelle zone</strong>),
-				onClick: this.onCreategeozone.bind(this)
-			}
-		}
-	}
-
-	buildButtonCancelData() {
-		if (this.mode !== MODE.VIEW) {
-			return {
-				block: true,
-				bsStyle: 'primary',
-				children: (<strong>Annuler</strong>),
-				onClick: this.onCancel.bind(this)
-			}
-		}
-	}
-
-	onAddgeozone() {
-		this.mode = MODE.CREATE
-		this.geozone = { 
-			id: null,
-			auxiliaryId: AuthHelper.getEntityId(),
-			lattitude: null,
-			longitude: null,
-			type: GeozoneType.AREA.key,
-			address: '',
-			city: '',
-			postalCode: '',
-			radius: 2000
-		}
-	}
-
-	onEditgeozone(id) {
-		this.mode = MODE.EDIT
-		this.geozone = Object.assign({}, GeozoneHelper.getData(id))
-		this.panelgeozoneData = this.buildPanelgeozoneData()
-		this.buttonAddData = this.buildButtonAddData()
-
-		this.setState({
-			panelgeozoneData: this.panelgeozoneData,
-			buttonAddData: this.buttonAddData
-		})
-
-	}
-
-	onCreategeozone() {
-		GeozoneHelper.postgeozone(this.geozone).
+	onConfirmDeleteGeozone() {
+		AppHelper.setBusy(true).
 		then(function() {
-			this.mode = MODE.VIEW
-			GeozoneHelper.getAuxiliarygeozones(AuthHelper.getEntityId())
-			delete this.geozone
+			return GeozoneHelper.deleteGeozone(this.getState('geozoneId'))
 		}.bind(this)).
-		catch(function (error) {
-			console.error('ERROR WHILE CREATING geozone')
-			console.error(error)
-		})		
-	}
-
-	onUpdategeozone() {
-		GeozoneHelper.putgeozone(this.geozone).
-		then(function() {
-			this.mode = MODE.VIEW
-			GeozoneHelper.getAuxiliarygeozones(AuthHelper.getEntityId())
-			delete this.geozone
+		then(function (result) {
+			return GeozoneHelper.getAuxiliaryGeozones(AuthHelper.getEntityId())
 		}.bind(this)).
-		catch(function (error) {
-			console.error('ERROR WHILE UPDATING geozone')
-			console.error(error)
-		})
-		
-	}
-
-	onDeletegeozone(id) {
-		GeozoneHelper.deletegeozone(id).
 		then(function () {
-			GeozoneHelper.getAuxiliarygeozones(AuthHelper.getEntityId())
+			this.buildGeozoneData()
+			this.updateMarkers()
+			this.updateCircles()
+			this.obj.state.showDelete = false
+			this.obj.state.geozoneId = null
+			this.forceUpdate()
+			setTimeout(AppHelper.setBusy, 200)
 		}.bind(this)).
 		catch(function (error) {
-			console.error('ERROR WHILE DELETING geozone')
+			setTimeout(AppHelper.setBusy, 200)
+			console.error('Geozone delete error')
 			console.error(error)
 		})
 	}
-
-	buildHomeMarker() { 
-		return {
-			lattitude: Number(this.auxiliary.lattitude),
-			longitude: Number(this.auxiliary.longitude),
-			title: 'Mon domicile',
-			type: INFO_TYPE.HOME,
-			icon: ICONS.HOME,
-			onClick: this.onMarkerClicked.bind(this)
-		}
-	}
-
-	buildServiceMarker(service) {
-		return {
-			id: service.id,
-			type: INFO_TYPE.SERVICE,
-			lattitude: service.lattitude,
-			longitude: service.longitude,
-			title: service.socialReason,
-			icon: ICONS.SERVICE_ANY,
-			onClick: this.onMarkerClicked.bind(this)
-		}
-	}
-
-	buildServiceWithInterventionMarker(service) {
-		return {
-			id: service.id,
-			type: INFO_TYPE.SERVICE,
-			lattitude: service.lattitude,
-			longitude: service.longitude,
-			title: service.socialReason,
-			icon: ICONS.SERVICE,
-			onClick: this.onMarkerClicked.bind(this)
-		}
-	}
-
-	buildInterventionCustomers(customer) {
-		return {
-			id: customer.id,
-			type: INFO_TYPE.CUSTOMER,
-			lattitude: customer.lattitude,
-			longitude: customer.longitude,
-			title: CustomerUtils.getFullName(customer),
-			icon: ICONS.INTERVENTION,
-			onClick: this.onMarkerClicked.bind(this)
-		}
-	}
-
-	buildOfferCustomers(customer) {
-		return {
-			id: customer.id,
-			type: INFO_TYPE.OFFER,
-			lattitude: customer.lattitude,
-			longitude: customer.longitude,
-			title: CustomerUtils.getFullName(customer),
-			icon: ICONS.OFFER,
-			onClick: this.onMarkerClicked.bind(this)
-		}
-	}
-
-	buildGeozones(zone) {
-		return {
-			id: zone.id,
-			type: INFO_TYPE.geozone,
-			lattitude: zone.lattitude,
-			longitude: zone.longitude,
-			title: zone.city,
-			icon: ICONS.geozone,
-			onClick: this.onMarkerClicked.bind(this)
-		}
-	}
-
-	buildGeozoneCircle(geozone) { 
-		return {
-			id: geozone.id,
-			lattitude: Number(geozone.lattitude),
-			longitude: Number(geozone.longitude),
-			radius: parseFloat(geozone.radius)
-		}
-	}
-
-	resolveServices() {
-		let exclude = this.resolveServiceIdWithIntervention()
-		return Utils.reduce(ServiceHelper.getData(), function (services, service) {
-			if (exclude.indexOf(service.id) === -1) {
-				services.push(service)
-			}
-			return services
-		}, [])
-	}
-
-	resolveServiceWithIntervention() {
-		return Utils.reduce(InterventionHelper.getData(), function (services, intervention) {
-			if (InterventionUtils.isActive(intervention) && services.indexOf(intervention.serviceId) === -1) {
-				services.push(ServiceHelper.getData(intervention.serviceId))
-			}
-			return services
-		}, [])
-	}
-
-	resolveServiceIdWithIntervention() {
-		return Utils.reduce(InterventionHelper.getData(), function (services, intervention) {
-			if (InterventionUtils.isActive(intervention) && services.indexOf(intervention.serviceId) === -1) {
-				services.push(intervention.serviceId)
-			}
-			return services
-		}, [])
-	}
-
-	resolveInterventions() {
-		return Utils.reduce(CustomerHelper.getData(), function (customers, customer) {
-			let state = this.customersState[customer.id] || {}
-			if (state.hasIntervention)
-				customers.push(customer)
-			return customers
-		}.bind(this), [])
-	}
-
-	resolveOffers() {
-		return Utils.reduce(CustomerHelper.getData(), function (customers, customer) {
-			let state = this.customersState[customer.id] || {}
-			let hasOffer = state.hasOffer
-			let hasIntervention = state.hasIntervention
-			if (hasOffer && !hasIntervention)
-				customers.push(customer)
-			return customers
-		}.bind(this), [])
-	}
-
-	resolvegeozoneCircles() {
-		return Utils.reduce(GeozoneHelper.getData(), function (geozones, geozone) {
-			if (geozone.type === GeozoneType.AREA.key)
-				geozones.push(geozone)
-			return geozones
-		}, [])
-	}
-
-	__buildCustomersState() {
-		let result = {}
-		let interventions = Utils.map(InterventionHelper.getData())
-		for (let i = 0; i < interventions.length; i++) {
-			let intervention = interventions[i]
-			if (intervention.auxiliaryId === this.auxiliary.id && InterventionUtils.isActive(intervention)) {
-				result[intervention.customerId] = result[intervention.customerId] || {}
-				result[intervention.customerId].hasIntervention = true
-			}
-		}
-		let offers = Utils.map(OfferHelper.getData())
-		for (let i = 0; i < offers.length; i++) {
-			let offer = offers[i]
-			result[offer.customerId] = result[offer.customerId] || {}
-			if (!offer.hideToAux && offer.auxStatus !== 'DECLINED' && offer.sadStatus === 'PENDING') {
-				result[offer.customerId] = result[offer.customerId] || {}
-				let intervention = InterventionHelper.getData(offer.interventionId)
-				let test1 = InterventionUtils.isCurrent(intervention)
-				let test2 = !intervention.auxiliaryId
-				if (InterventionUtils.isCurrent(intervention) && !intervention.auxiliaryId) {
-					result[offer.customerId].hasOffer = true	
-				}
-				
-			}
-			
-		}
-		return result
-	}
-
-	handleGetReversegeozone(result, param) {
-		switch (this.mode) {
-		case MODE.CREATE:
-		case MODE.EDIT:
-			this.geozone.lattitude = param.lattitude
-			this.geozone.longitude = param.longitude
-			if (result[0].address_components.length === 7) {
-				this.geozone.address = result[0].address_components[0].short_name + ' ' + result[0].address_components[1].short_name
-				this.geozone.city = result[0].address_components[2].short_name
-				this.geozone.postalCode = result[0].address_components[6].short_name
-			} else {
-				this.geozone.address = result[0].address_components[0].short_name
-				this.geozone.city = result[0].address_components[2].short_name
-				this.geozone.postalCode = result[0].address_components[5].short_name
-			}
-		}
-	}
-*/
 }
 let AuxiliaryZoneObj = new AuxiliaryZoneData()
-//Dispatcher.register('GET_REVERSE_GEOCODE', AuxiliaryZoneObj.handleGetReversegeozone.bind(AuxiliaryZoneObj));
+
 AuxiliaryZoneObj.ICONS = ICONS
 AuxiliaryZoneObj.INFO_TYPE = INFO_TYPE
 export default AuxiliaryZoneObj

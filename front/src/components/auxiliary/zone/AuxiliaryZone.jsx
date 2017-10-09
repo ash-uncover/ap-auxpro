@@ -10,6 +10,8 @@ import AuxiliaryZoneInfoService from './AuxiliaryZoneInfoService'
 
 import { Grid, Panel, Form, GoogleMap, FormBuilder, Button, Glyphicon } from 'ap-react-bootstrap'
 
+import ModalDialog from 'components-lib/Modal/ModalDialog'
+
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 
 class AuxiliaryZone extends React.Component {
@@ -58,7 +60,8 @@ class AuxiliaryZone extends React.Component {
 								centerLattitude={this.state.centerLattitude} 
 								centerLongitude={this.state.centerLongitude}
 								markers={this.state.markers}
-								circles={this.state.circles} />
+								circles={this.state.circles}
+								onMapClicked={this.onMapClicked} />
 							<br/>
 							{this._buildLegend(AuxiliaryZoneData.ICONS.HOME, 'Mon domicile')}
 							{this._buildLegend(AuxiliaryZoneData.ICONS.GEOZONE, 'Mes zones')}
@@ -98,6 +101,13 @@ class AuxiliaryZone extends React.Component {
 						<br/>
 					: null }
 					{ this.renderInfo() }
+					<ModalDialog 
+						title="Supprimer la zone d'intervention ?"
+						show={this.state.showDelete}
+						onCancel={this.onCancelDeleteGeozone}
+						onConfirm={this.onConfirmDeleteGeozone}>
+						Êtes-vous sûr ?
+					</ModalDialog>
 				</Grid.Col>
 			</Grid.Row>
 		)
@@ -122,7 +132,8 @@ class AuxiliaryZone extends React.Component {
 		return (
 			<AuxiliaryZoneEdit 
 				geozoneId={this.state.geozoneId}
-				onCancel={this.onCancelEditGeozone} />
+				onCancel={this.onCancelEditGeozone}
+				onGeozoneUpdate={this.onGeozoneUpdate} />
 		)
 	}
 
