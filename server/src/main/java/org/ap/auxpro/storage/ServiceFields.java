@@ -21,6 +21,7 @@ public enum ServiceFields {
 	PHONE (EValidators.PHONE.getValidator()),
 	PHONE_CHECKED (EValidators.DEFAULT.getValidator()),
 	FUNCTION (EValidators.NON_NULL.getValidator()),
+	PROFIL_COMPLETED (EValidators.DEFAULT.getValidator()),
 	ADDRESS_CHECKED (EValidators.DEFAULT.getValidator()),
 	EMAIL_CHECKED (EValidators.DEFAULT.getValidator()),
 	ID (EValidators.DEFAULT.getValidator()),

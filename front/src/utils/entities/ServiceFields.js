@@ -66,6 +66,10 @@ class ServiceFields {
 		return _FUNCTION
 	}
 
+	static get PROFIL_COMPLETED() {
+		return _PROFIL_COMPLETED
+	}
+
 	static get ADDRESS_CHECKED() {
 		return _ADDRESS_CHECKED
 	}
@@ -107,6 +111,7 @@ class ServiceFields {
 			_PHONE,
 			_PHONE_CHECKED,
 			_FUNCTION,
+			_PROFIL_COMPLETED,
 			_ADDRESS_CHECKED,
 			_EMAIL_CHECKED,
 			_ID,
@@ -193,6 +198,10 @@ let _FUNCTION = {
 	type: 'string',
 	values: SocFunction.VALUES,
 	validator: Validators.NonNull,
+}
+let _PROFIL_COMPLETED = {
+	key: 'profilCompleted',
+	type: 'boolean',
 }
 let _ADDRESS_CHECKED = {
 	key: 'addressChecked',

@@ -364,6 +364,7 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.phone = data.getPhone();
 				bean.phoneChecked = data.getPhoneChecked();
 				bean.function = data.getFunction();
+				bean.profilCompleted = data.getProfilCompleted();
 				bean.addressChecked = data.getAddressChecked();
 				bean.emailChecked = data.getEmailChecked();
 				bean.id = data.getId();

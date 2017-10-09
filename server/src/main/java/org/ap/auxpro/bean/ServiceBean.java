@@ -20,6 +20,7 @@ public class ServiceBean {
 	public String phone;
 	public Boolean phoneChecked;
 	public String function;
+	public Boolean profilCompleted;
 	public Boolean addressChecked;
 	public Boolean emailChecked;
 	public String id;

@@ -111,6 +111,7 @@ public class ServiceCollection {
 		data.phone = document.getString("phone");
 		data.phoneChecked = document.getBoolean("phoneChecked");
 		data.function = document.getString("function");
+		data.profilCompleted = document.getBoolean("profilCompleted");
 		data.addressChecked = document.getBoolean("addressChecked");
 		data.emailChecked = document.getBoolean("emailChecked");
 		data.id = document.getString("id");
@@ -154,6 +155,8 @@ public class ServiceCollection {
 			document.append("phoneChecked", service.phoneChecked);
 		if (service.function != null)
 			document.append("function", service.function);
+		if (service.profilCompleted != null)
+			document.append("profilCompleted", service.profilCompleted);
 		if (service.addressChecked != null)
 			document.append("addressChecked", service.addressChecked);
 		if (service.emailChecked != null)
@@ -187,6 +190,7 @@ public class ServiceCollection {
 		document.append("phone", service.phone);
 		document.append("phoneChecked", service.phoneChecked);
 		document.append("function", service.function);
+		document.append("profilCompleted", service.profilCompleted);
 		document.append("addressChecked", service.addressChecked);
 		document.append("emailChecked", service.emailChecked);
 		document.append("id", service.id);

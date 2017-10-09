@@ -21,6 +21,7 @@ public class ServiceData {
 	public String phone;
 	public Boolean phoneChecked;
 	public String function;
+	public Boolean profilCompleted;
 	public Boolean addressChecked;
 	public Boolean emailChecked;
 	public String id;
@@ -154,6 +155,14 @@ public class ServiceData {
 
 	public void setFunction(String function) {
 		this.function = function;
+	}
+
+	public Boolean getProfilCompleted() {
+		return this.profilCompleted;
+	}
+
+	public void setProfilCompleted(Boolean profilCompleted) {
+		this.profilCompleted = profilCompleted;
 	}
 
 	public Boolean getAddressChecked() {

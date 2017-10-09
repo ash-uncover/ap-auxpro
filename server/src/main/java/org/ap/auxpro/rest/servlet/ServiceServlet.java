@@ -18,6 +18,7 @@ import com.mongodb.MongoWriteException;
 import org.ap.auxpro.internal.MailSender;
 import org.ap.auxpro.internal.ETokenType;
 import org.ap.common.TimeHelper;
+import org.ap.auxpro.helpers.ServiceHelper;
 import org.ap.auxpro.bean.AuxiliaryBean;
 import org.ap.auxpro.storage.AuxiliaryData;
 import org.ap.auxpro.storage.AuxiliaryCollection;
@@ -65,6 +66,7 @@ public class ServiceServlet extends APServletBase {
 				bean.phone = data.getPhone();
 				bean.phoneChecked = data.getPhoneChecked();
 				bean.function = data.getFunction();
+				bean.profilCompleted = data.getProfilCompleted();
 				bean.addressChecked = data.getAddressChecked();
 				bean.emailChecked = data.getEmailChecked();
 				bean.id = data.getId();
@@ -170,6 +172,7 @@ public class ServiceServlet extends APServletBase {
 			bean.phone = data.getPhone();
 			bean.phoneChecked = data.getPhoneChecked();
 			bean.function = data.getFunction();
+			bean.profilCompleted = data.getProfilCompleted();
 			bean.addressChecked = data.getAddressChecked();
 			bean.emailChecked = data.getEmailChecked();
 			bean.id = data.getId();
@@ -191,6 +194,7 @@ public class ServiceServlet extends APServletBase {
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response putService(@Context SecurityContext sc, @PathParam("id") final String id, ServiceBean serviceBean) {
 		try {
+			ServiceHelper.beforePutService(sc, id, serviceBean);
 			// Get actual data object
 			ServiceData data = ServiceCollection.getById(id);
 			// Check data exists
@@ -213,6 +217,7 @@ public class ServiceServlet extends APServletBase {
 			data.setPhone(serviceBean.phone);
 			data.setPhoneChecked(serviceBean.phoneChecked);
 			data.setFunction(serviceBean.function);
+			data.setProfilCompleted(serviceBean.profilCompleted);
 			data.setAddressChecked(serviceBean.addressChecked);
 			data.setEmailChecked(serviceBean.emailChecked);
 			data.setSocialReason(serviceBean.socialReason);
