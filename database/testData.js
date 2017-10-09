@@ -977,17 +977,6 @@ db.geozone.insert({
 })
 
 db.geozone.insert({
-	"id":"auxa-3",
-	"type":"City",
-	"auxiliaryId":"auxa",
-	"lattitude":48.887540,
-	"longitude":2.306440,
-	"address":"",
-	"postalCode":"75017",
-	"city":"Paris 17eme"
-})
-
-db.geozone.insert({
 	"id":"auxb-1",
 	"type":"Area",
 	"auxiliaryId":"auxb",

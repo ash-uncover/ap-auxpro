@@ -1,5 +1,6 @@
 // bootstrap
 import 'bootstrap'
+import GoogleMapActions from 'actions/GoogleMapActions'
 
 class Boot {
 	static onUpdate() {

@@ -7,14 +7,14 @@ import org.ap.common.validators.IValidator;
 public enum GeozoneFields {
 
 	AUXILIARY_ID (EValidators.DEFAULT.getValidator()),
-	ADDRESS (EValidators.DEFAULT.getValidator()),
-	LATTITUDE (EValidators.DEFAULT.getValidator()),
-	CITY (EValidators.DEFAULT.getValidator()),
-	POSTAL_CODE (EValidators.DEFAULT.getValidator()),
+	ADDRESS (EValidators.NON_EMPTY_STRING.getValidator()),
+	LATTITUDE (EValidators.NON_NULL.getValidator()),
+	CITY (EValidators.NON_EMPTY_STRING.getValidator()),
+	POSTAL_CODE (EValidators.POSTAL_CODE.getValidator()),
 	ID (EValidators.DEFAULT.getValidator()),
-	TYPE (EValidators.DEFAULT.getValidator()),
-	RADIUS (EValidators.DEFAULT.getValidator()),
-	LONGITUDE (EValidators.DEFAULT.getValidator()),
+	TYPE (EValidators.NON_NULL.getValidator()),
+	RADIUS (EValidators.POSITIVE_INTEGER.getValidator()),
+	LONGITUDE (EValidators.NON_NULL.getValidator()),
 	;
 
 	private IValidator<?> _validator;

@@ -71,18 +71,22 @@ let _AUXILIARY_ID = {
 let _ADDRESS = {
 	key: 'address',
 	type: 'string',
+	validator: Validators.NonEmptyString,
 }
 let _LATTITUDE = {
 	key: 'lattitude',
 	type: 'number',
+	validator: Validators.NonNull,
 }
 let _CITY = {
 	key: 'city',
 	type: 'string',
+	validator: Validators.NonEmptyString,
 }
 let _POSTAL_CODE = {
 	key: 'postalCode',
 	type: 'string',
+	validator: Validators.PostalCode,
 }
 let _ID = {
 	key: 'id',
@@ -92,13 +96,16 @@ let _TYPE = {
 	key: 'type',
 	type: 'string',
 	values: GeozoneType.VALUES,
+	validator: Validators.NonNull,
 }
 let _RADIUS = {
 	key: 'radius',
 	type: 'number',
+	validator: Validators.PositiveInteger,
 }
 let _LONGITUDE = {
 	key: 'longitude',
 	type: 'number',
+	validator: Validators.NonNull,
 }
 export default GeozoneFields

@@ -1,3 +1,50 @@
-.ap-auxiliaryzone {
+// Variables
+@import 'assets/styles/variables';
+
+.ap-auxiliary-zone {
+
+	.ap-auxiliary-zone-legend {
+		text-align: center;
+	}
+
+	.ap-auxiliary-zone-info {
+		&.ap-auxiliary-zone-info-auxiliary {
+		}
+		&.ap-auxiliary-zone-info-customer {
+		}
+		&.ap-auxiliary-zone-info-geozone {
+			.ap-panel-heading {
+				display: flex;
+				align-items: center;
+
+				p {
+					flex-grow: 1;
+					margin: 0;
+				}
+
+				.ap-button {
+					flex-grow: 0;
+					margin: 0 0.25rem;
+					color: $ap-secondary-color;
+					background: transparent;
+
+					&:hover {
+						color: $ap-primary-color;
+						background: rgba(0, 0, 0, 0.05);
+					}
+
+					&:first-child {
+						margin-left: 0;
+					}
+
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+		&.ap-auxiliary-zone-info-service {
+		}
+	}
 
 }
