@@ -12,7 +12,7 @@ public class CustomerData {
 	public Integer skillNursing;
 	public String city;
 	public Double lattitude;
-	public Integer postalCode;
+	public String postalCode;
 	public List<Integer> birthDate;
 	public Integer skillChildhood;
 	public Integer skillCompagny;
@@ -84,11 +84,11 @@ public class CustomerData {
 		this.lattitude = lattitude;
 	}
 
-	public Integer getPostalCode() {
+	public String getPostalCode() {
 		return this.postalCode;
 	}
 
-	public void setPostalCode(Integer postalCode) {
+	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
 

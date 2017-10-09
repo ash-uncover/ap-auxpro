@@ -55,7 +55,7 @@ public class InterventionHelper {
 			List<GeozoneData> geozones = GeozoneCollection.get(eq("auxiliaryId", aux.getId()));
 			for (GeozoneData geozone : geozones) {
 				// Postal check
-				if (geozone.getPostalCode() != null && new Integer(geozone.getPostalCode()).intValue() == customer.getPostalCode().intValue()) {
+				if (geozone.getPostalCode() != null && new Integer(geozone.getPostalCode()).intValue() == new Integer(customer.getPostalCode()).intValue()) {
 					score.geoScore = 100;
 					continue;
 				}

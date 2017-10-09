@@ -11,7 +11,7 @@ public class ServiceData {
 	public String city;
 	public Double lattitude;
 	public String accountType;
-	public Integer postalCode;
+	public String postalCode;
 	public Boolean isTutoSkipped;
 	public Boolean notifyPartners;
 	public String avatar;
@@ -23,7 +23,6 @@ public class ServiceData {
 	public String function;
 	public Boolean profilCompleted;
 	public Boolean addressChecked;
-	public Boolean emailChecked;
 	public String id;
 	public String socialReason;
 	public String email;
@@ -77,11 +76,11 @@ public class ServiceData {
 		this.accountType = accountType;
 	}
 
-	public Integer getPostalCode() {
+	public String getPostalCode() {
 		return this.postalCode;
 	}
 
-	public void setPostalCode(Integer postalCode) {
+	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
 
@@ -171,14 +170,6 @@ public class ServiceData {
 
 	public void setAddressChecked(Boolean addressChecked) {
 		this.addressChecked = addressChecked;
-	}
-
-	public Boolean getEmailChecked() {
-		return this.emailChecked;
-	}
-
-	public void setEmailChecked(Boolean emailChecked) {
-		this.emailChecked = emailChecked;
 	}
 
 	public String getId() {

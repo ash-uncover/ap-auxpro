@@ -23,7 +23,6 @@ public enum ServiceFields {
 	FUNCTION (EValidators.NON_NULL.getValidator()),
 	PROFIL_COMPLETED (EValidators.DEFAULT.getValidator()),
 	ADDRESS_CHECKED (EValidators.DEFAULT.getValidator()),
-	EMAIL_CHECKED (EValidators.DEFAULT.getValidator()),
 	ID (EValidators.DEFAULT.getValidator()),
 	SOCIAL_REASON (EValidators.NON_EMPTY_STRING.getValidator()),
 	EMAIL (EValidators.DEFAULT.getValidator()),

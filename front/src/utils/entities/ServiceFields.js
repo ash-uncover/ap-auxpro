@@ -74,10 +74,6 @@ class ServiceFields {
 		return _ADDRESS_CHECKED
 	}
 
-	static get EMAIL_CHECKED() {
-		return _EMAIL_CHECKED
-	}
-
 	static get ID() {
 		return _ID
 	}
@@ -113,7 +109,6 @@ class ServiceFields {
 			_FUNCTION,
 			_PROFIL_COMPLETED,
 			_ADDRESS_CHECKED,
-			_EMAIL_CHECKED,
 			_ID,
 			_SOCIAL_REASON,
 			_EMAIL,
@@ -156,7 +151,7 @@ let _ACCOUNT_TYPE = {
 }
 let _POSTAL_CODE = {
 	key: 'postalCode',
-	type: 'number',
+	type: 'string',
 	validator: Validators.PostalCode,
 }
 let _IS_TUTO_SKIPPED = {
@@ -205,10 +200,6 @@ let _PROFIL_COMPLETED = {
 }
 let _ADDRESS_CHECKED = {
 	key: 'addressChecked',
-	type: 'boolean',
-}
-let _EMAIL_CHECKED = {
-	key: 'emailChecked',
 	type: 'boolean',
 }
 let _ID = {

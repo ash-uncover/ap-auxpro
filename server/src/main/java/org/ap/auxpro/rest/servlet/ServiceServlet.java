@@ -68,10 +68,8 @@ public class ServiceServlet extends APServletBase {
 				bean.function = data.getFunction();
 				bean.profilCompleted = data.getProfilCompleted();
 				bean.addressChecked = data.getAddressChecked();
-				bean.emailChecked = data.getEmailChecked();
 				bean.id = data.getId();
 				bean.socialReason = data.getSocialReason();
-				bean.email = data.getEmail();
 				bean.longitude = data.getLongitude();
 				
 				beanList.add(bean);
@@ -174,10 +172,8 @@ public class ServiceServlet extends APServletBase {
 			bean.function = data.getFunction();
 			bean.profilCompleted = data.getProfilCompleted();
 			bean.addressChecked = data.getAddressChecked();
-			bean.emailChecked = data.getEmailChecked();
 			bean.id = data.getId();
 			bean.socialReason = data.getSocialReason();
-			bean.email = data.getEmail();
 			bean.longitude = data.getLongitude();
 			
 			return Response.status(Status.OK).entity(bean).build();
@@ -219,9 +215,7 @@ public class ServiceServlet extends APServletBase {
 			data.setFunction(serviceBean.function);
 			data.setProfilCompleted(serviceBean.profilCompleted);
 			data.setAddressChecked(serviceBean.addressChecked);
-			data.setEmailChecked(serviceBean.emailChecked);
 			data.setSocialReason(serviceBean.socialReason);
-			data.setEmail(serviceBean.email);
 			data.setLongitude(serviceBean.longitude);
 			// Store the updated data object
 			ServiceCollection.updateNull(data);

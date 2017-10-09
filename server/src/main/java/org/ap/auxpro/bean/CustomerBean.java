@@ -12,7 +12,7 @@ public class CustomerBean {
 	public Integer skillNursing;
 	public String city;
 	public Double lattitude;
-	public Integer postalCode;
+	public String postalCode;
 	public List<Integer> birthDate;
 	public Integer skillChildhood;
 	public Integer skillCompagny;

@@ -165,7 +165,7 @@ let _LATTITUDE = {
 }
 let _POSTAL_CODE = {
 	key: 'postalCode',
-	type: 'number',
+	type: 'string',
 	validator: Validators.PostalCode,
 }
 let _BIRTH_DATE = {

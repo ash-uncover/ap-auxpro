@@ -10,7 +10,7 @@ public class ServiceBean {
 	public String city;
 	public Double lattitude;
 	public String accountType;
-	public Integer postalCode;
+	public String postalCode;
 	public Boolean isTutoSkipped;
 	public Boolean notifyPartners;
 	public String avatar;
@@ -22,10 +22,8 @@ public class ServiceBean {
 	public String function;
 	public Boolean profilCompleted;
 	public Boolean addressChecked;
-	public Boolean emailChecked;
 	public String id;
 	public String socialReason;
-	public String email;
 	public Double longitude;
 
 }

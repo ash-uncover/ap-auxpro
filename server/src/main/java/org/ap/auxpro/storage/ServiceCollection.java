@@ -101,7 +101,7 @@ public class ServiceCollection {
 		data.city = document.getString("city");
 		data.lattitude = document.getDouble("lattitude");
 		data.accountType = document.getString("accountType");
-		data.postalCode = document.getInteger("postalCode");
+		data.postalCode = document.getString("postalCode");
 		data.isTutoSkipped = document.getBoolean("isTutoSkipped");
 		data.notifyPartners = document.getBoolean("notifyPartners");
 		data.avatar = document.getString("avatar");
@@ -113,7 +113,6 @@ public class ServiceCollection {
 		data.function = document.getString("function");
 		data.profilCompleted = document.getBoolean("profilCompleted");
 		data.addressChecked = document.getBoolean("addressChecked");
-		data.emailChecked = document.getBoolean("emailChecked");
 		data.id = document.getString("id");
 		data.socialReason = document.getString("socialReason");
 		data.email = document.getString("email");
@@ -159,8 +158,6 @@ public class ServiceCollection {
 			document.append("profilCompleted", service.profilCompleted);
 		if (service.addressChecked != null)
 			document.append("addressChecked", service.addressChecked);
-		if (service.emailChecked != null)
-			document.append("emailChecked", service.emailChecked);
 		if (service.id != null)
 			document.append("id", service.id);
 		if (service.socialReason != null)
@@ -192,7 +189,6 @@ public class ServiceCollection {
 		document.append("function", service.function);
 		document.append("profilCompleted", service.profilCompleted);
 		document.append("addressChecked", service.addressChecked);
-		document.append("emailChecked", service.emailChecked);
 		document.append("id", service.id);
 		document.append("socialReason", service.socialReason);
 		document.append("email", service.email);
