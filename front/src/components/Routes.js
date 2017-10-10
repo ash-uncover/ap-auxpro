@@ -40,8 +40,10 @@ import ServiceInterventionFollow from 'components/service/interventions/follow/S
 import ServiceAuxiliaries from 'components/service/auxiliaries/ServiceAuxiliaries'
 import ServiceAuxiliary from 'components/service/auxiliaries/ServiceAuxiliary'
 import Auxiliary from 'components/auxiliary/Auxiliary'
+import AuxiliaryRedirect from 'components/auxiliary/redirect/AuxiliaryRedirect'
 import AuxiliaryHome from 'components/auxiliary/home/AuxiliaryHome'
 import AuxiliaryTuto from 'components/auxiliary/tuto/AuxiliaryTuto'
+import AuxiliaryInitial from 'components/auxiliary/initial/AuxiliaryInitial'
 import AuxiliaryInfos from 'components/auxiliary/infos/AuxiliaryInfos'
 import AuxiliaryInfosEditInfos from 'components/auxiliary/infos/edit/infos/AuxiliaryInfosEditInfos'
 import AuxiliaryInfosEditAccount from 'components/auxiliary/infos/edit/account/AuxiliaryInfosEditAccount'
@@ -90,8 +92,10 @@ let serviceRoutes = [
 	{ path: '/auxiliaries/:auxiliaryId', component: ServiceAuxiliary },
 ]
 let auxiliaryRoutes = [
+	{ path: '/redirect', component: AuxiliaryRedirect },
 	{ path: '/home', component: AuxiliaryHome },
 	{ path: '/tuto', component: AuxiliaryTuto },
+	{ path: '/initial', component: AuxiliaryInitial },
 	{ path: '/infos', component: AuxiliaryInfos },
 	{ path: '/infos/edit/infos', component: AuxiliaryInfosEditInfos },
 	{ path: '/infos/edit/account', component: AuxiliaryInfosEditAccount },

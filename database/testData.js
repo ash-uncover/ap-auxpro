@@ -125,7 +125,7 @@ db.apauth.insert({
 })
 
 db.apauth.insert({ 
-	"id":"antoine",
+	"id":"userauxantoine",
 	"entityId":"auxantoine",
 	"username":"maillard.antoine@gmail.com",
 	"email":"maillard.antoine@gmail.com",
@@ -136,6 +136,21 @@ db.apauth.insert({
 	"registrationDate":[2017, 10, 1, 12, 4, 9, 345000000],
 	"registered":true
 })
+
+
+db.apauth.insert({ 
+	"id":"usersadantoine",
+	"entityId":"sadantoine",
+	"username":"angantyr_teardrop@hotmail.com",
+	"email":"angantyr_teardrop@hotmail.com",
+	"password":"a",
+	"roles":["service","apauth"],
+	"type":"service",
+	"active":true,
+	"registrationDate":[2017, 10, 1, 12, 4, 9, 345000000],
+	"registered":true
+})
+
 
 /* ****************************************************************************************
  * DB-AUXILIARY
@@ -498,52 +513,9 @@ db.auxiliary.insert({
 })
 
 db.auxiliary.insert({
-	"authId":"antoine",
+	"authId":"userauxantoine",
 	"id":"auxantoine",
-	"profilCompleted":false,
-	"profilProgression":NumberInt(30),
-	"diplomaImage":null,
-	"country":null,
-	"lastName":null,
-	"diplomaValidated":null,
-	"civility":null,
-	"city":null,
-	"postalCode":null,
-	"isTutoSkipped":true,
-	"description":null,
-	"socialNumber":null,
-	"accountExpiryDate":null,
-	"skillShopping":null,
-	"notifyOffersSms":null,
-	"notifyAuxpros":null,
-	"birthCountry":null,
-	"addressChecked":null,
-	"diploma":null,
-	"skillDoityourself":null,
-	"email":null,
-	"longitude":null,
-	"skillNursing":null,
-	"address":null,
-	"lattitude":null,
-	"accountType":null,
-	"notifyPartners":null,
-	"birthCity":null,
-	"avatar":null,
-	"areSkillSet":null,
-	"birthDate":null,
-	"skillChildhood":null,
-	"skillCompagny":null,
-	"firstName":null,
-	"skillAnswers":null,
-	"nationality":null,
-	"isEntrepreneur":null,
-	"phone":null,
-	"skillAdministrative":null,
-	"phoneChecked":null,
-	"skillHousework":null,
-	"idCardNumber":null,
-	"emailChecked":null,
-	"notifyOffersMail" : null 
+	"isTutoSkipped":true
 })
 
 /* ****************************************************************************************
@@ -570,6 +542,12 @@ db.service.insert({
 	"lattitude":48.887099,
 	"longitude":2.319155,
 	"addressChecked":true
+})
+
+db.service.insert({
+	"id":"sadantoine",
+	"userId":"usersadantoine",
+	"isTutoSkipped":true
 })
 
 

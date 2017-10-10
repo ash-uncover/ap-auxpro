@@ -61,14 +61,21 @@ class AppHeaderData extends BaseData {
 	_onAuxiliaryChanged() {
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId())
 		if (auxiliary) {
-			this.setState({ tutoMode: !auxiliary.isTutoSkipped })
+			this.setState({ 
+				tutoMode: !auxiliary.isTutoSkipped, 
+				profilMode: !auxiliary.profilCompleted
+			})
 		}
 	}
 
 	_onServiceChanged() {
 		let service = ServiceHelper.getData(AuthHelper.getEntityId())
-		if (service)
-			this.setState({ tutoMode: !service.isTutoSkipped })
+		if (service) {
+			this.setState({ 
+				tutoMode: !service.isTutoSkipped,
+				profilMode: !service.profilCompleted
+			})
+		}
 	}
 }
 var AppHeaderObj = new AppHeaderData()

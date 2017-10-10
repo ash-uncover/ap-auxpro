@@ -2,7 +2,7 @@ import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import ImageHelper from 'helpers/ImageHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
-import { BaseData, Formatters, Nationality } from 'ap-react-bootstrap'
+import { BaseData, Nationality } from 'ap-react-bootstrap'
 
 import AuxiliaryFields from 'utils/entities/AuxiliaryFields'
 
@@ -11,6 +11,7 @@ import NationalityUtils from 'utils-lib/geo/NationalityUtils'
 
 let FIELDS_FORM0 = [
 	AuxiliaryFields.AVATAR,
+	AuxiliaryFields.PROFIL_COMPLETED,
 	AuxiliaryFields.DIPLOMA_IMAGE,
 	AuxiliaryFields.LATTITUDE,
 	AuxiliaryFields.LONGITUDE
@@ -20,8 +21,10 @@ let FIELDS_FORM1 = [
 	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.FIRST_NAME),
 	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.LAST_NAME),
 	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.PHONE),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.SOCIAL_NUMBER),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.ID_CARD_NUMBER)
+	Object.assign({ defaultValue: 'FR', form: 'select', values: NationalityUtils.getNationalities() }, AuxiliaryFields.NATIONALITY),
+	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.BIRTH_CITY),
+	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.BIRTH_COUNTRY),
+	Object.assign({ defaultValue: [1980,1,1], form: 'date' }, AuxiliaryFields.BIRTH_DATE)
 ]
 let FIELDS_FORM2 = [
 	{ form: 'address', key: 'addressSearch', name: 'Adresse' },
@@ -29,14 +32,12 @@ let FIELDS_FORM2 = [
 	Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.POSTAL_CODE),
 	Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.CITY),
 	Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.COUNTRY),
-	Object.assign({ defaultValue: 'FR', form: 'select', values: NationalityUtils.getNationalities() }, AuxiliaryFields.NATIONALITY),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.BIRTH_CITY),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.BIRTH_COUNTRY),
-	Object.assign({ defaultValue: [1950,1,1], form: 'date' }, AuxiliaryFields.BIRTH_DATE)	
+	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.SOCIAL_NUMBER),
+	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.ID_CARD_NUMBER)
 ]
 let FIELDS_FORM3 = [
 	Object.assign({ defaultValue: '', form: 'textarea' }, AuxiliaryFields.DESCRIPTION),
-	Object.assign({ form: 'select', values: BooleanUtils.getBooleans() }, AuxiliaryFields.IS_ENTREPRENEUR),
+	Object.assign({ defaultValue: 'true', form: 'select', values: BooleanUtils.getBooleans() }, AuxiliaryFields.IS_ENTREPRENEUR),
 	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.DIPLOMA)
 ]
 
@@ -76,11 +77,11 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
 		for (let i = 0; i < FIELDS.length; i++) {
 			let field = FIELDS[i]
-			let value = auxiliary[field.key]
+			let value = auxiliary[field.key] || field.defaultValue
 			if (field.formatter) {
-				this.obj.state[field.key] = field.formatter(auxiliary[field.key])
+				this.obj.state[field.key] = field.formatter(value)
 			} else {
-				this.obj.state[field.key] = auxiliary[field.key]
+				this.obj.state[field.key] = value
 			}
 		}
 		if (auxiliary.avatar) {
@@ -113,7 +114,7 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 			city: address.city,
 			country: address.country,
 			dirty: true,
-			auxiliaryValid: true
+			auxiliaryValid: this.checkValid()
 		}
 		this.setState(data)
 	}
@@ -121,6 +122,7 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 	onChangeAvatar(file) {
 		let data = {
 			dirty: true,
+			auxiliaryValid: this.checkValid(),
 			avatarFile: file
 		}
 		this.setState(data)
@@ -129,6 +131,7 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 	onChangeDiploma(file) {
 		let data = {
 			dirty: true,
+			auxiliaryValid: this.checkValid(),
 			diplomaFile: file
 		}
 		this.setState(data)
@@ -180,6 +183,10 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 		})
 	}
 
+
+	// Internal methods //
+	// --------------------------------------------------------------------------------
+
 	buildAuxiliary() {
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId())
 		for (let i = 0 ; i < FIELDS.length ; i++) {
@@ -189,6 +196,10 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 			}
 		}
 		return auxiliary
+	}
+
+	checkValid() {
+		return true
 	}
 
 }

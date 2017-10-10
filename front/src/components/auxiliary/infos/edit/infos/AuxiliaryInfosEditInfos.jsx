@@ -60,13 +60,20 @@ class AuxiliaryInfosEditInfos extends React.Component {
 				)
 			case 'address': return (
 				<Google.Autocomplete 
-					placeholder='Saisir adresse.'
+					placeholder='Saisir adresse'
 					onChange={this.onChangeAddress} />
 				)
 			case 'textarea': return (
 				<Form.TextArea
 					value={this.state[field.key]} 
 					rows={5}
+					onChange={this.onChangeDirty.bind(this, field.key)} />
+				)
+			case 'date': return (				
+				<Form.Date 
+					date={this.state[field.key][2]}
+					month={this.state[field.key][1]}
+					year={this.state[field.key][0]}
 					onChange={this.onChangeDirty.bind(this, field.key)} />
 				)
 			default: return (
@@ -90,11 +97,24 @@ class AuxiliaryInfosEditInfos extends React.Component {
 	render() {
 		return (
 			<div className='ap-auxiliary-infos-edit-infos'>
-				<Button block bsStyle='primary' onClick={this.onCancel}>Retour</Button>
-				<br/>
+				{ this.state.profilCompleted ? 
+					<Button block bsStyle='primary' onClick={this.onCancel}>Retour</Button>
+				:
+					<Panel>
+						<Panel.Header>
+							Statut profil	
+						</Panel.Header>
+						<Panel.Body className='ap-error'>
+							Votre profil est incomplet, veuillez saisir les champs obligatoires ci-dessous
+						</Panel.Body>
+						<Panel.Footer>	
+						</Panel.Footer>
+					</Panel>
+				}
+				{ this.state.profilCompleted ? <br/> : null }
 				<Panel>
 					<Panel.Header>
-						Modifier mes informations
+						{ this.state.profilCompleted ? 'Modifier mes informations' : 'Saisir mes informations' }
 					</Panel.Header>
 					<Panel.Body>
 						<Form horizontal className='row'>

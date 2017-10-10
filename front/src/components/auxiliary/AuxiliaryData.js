@@ -13,7 +13,8 @@ import { BaseData, ArraySet, Utils } from 'ap-react-bootstrap'
 
 // Header not be displayed for the following path
 let PATHS_NO_HEADER = [
-	'/auxiliary/tuto'
+	'/auxiliary/tuto',
+	'/auxiliary/initial'
 ]
 
 class AuxiliaryData extends BaseData {
@@ -86,13 +87,8 @@ class AuxiliaryData extends BaseData {
 			return Promise.all(promises)
 		}).
 		then(function () {
-			let auxiliary = AuxiliaryHelper.getData(id)
-			if (auxiliary.isTutoSkipped) {
-				AppHelper.navigate('/auxiliary/home')
-			} else {
-				AppHelper.navigate('/auxiliary/tuto')
-			}
 			this.setState({ loaded: true })
+			return AppHelper.navigate('/auxiliary/redirect')			
 		}.bind(this)).
 		catch(function (error) {
 			console.error('Error while loading auxiliary')

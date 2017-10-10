@@ -1,9 +1,11 @@
 import OfferStatusSad from 'utils/constants/OfferStatusSad'
 
+import { TextUtils } from 'ap-react-bootstrap'
+
 class OfferStatusSadUtils {
 
-	static getName(func) {
-		switch (func) {
+	static getName(status) {
+		switch (status) {
 			case OfferStatusSad.PENDING.key: return 'En attente'
 			case OfferStatusSad.CANCELED.key: return 'Annulée'
 			case OfferStatusSad.CONFIRMED.key: return 'Confirmée'
@@ -12,8 +14,8 @@ class OfferStatusSadUtils {
 		return ''
 	}
 
-	static getNamePlural(func) {
-		switch (func) {
+	static getNamePlural(status) {
+		switch (status) {
 			case OfferStatusSad.PENDING.key: return 'En attente'
 			case OfferStatusSad.CANCELED.key: return 'Annulées'
 			case OfferStatusSad.CONFIRMED.key: return 'Confirmées'
@@ -22,5 +24,18 @@ class OfferStatusSadUtils {
 		return ''
 	}
 
+	static getNameOfferPlural(status, nb) {
+		switch (status) {
+			case OfferStatusSad.PENDING.key: 
+				return TextUtils.pluralize('nouvelle', nb) + ' ' + TextUtils.pluralize('offre', nb)
+			case OfferStatusSad.CANCELED.key: 
+				return TextUtils.pluralize('offre', nb) + ' ' + TextUtils.pluralize('annulée', nb)
+			case OfferStatusSad.CONFIRMED.key: 
+				return TextUtils.pluralize('offre', nb) + ' ' + TextUtils.pluralize('confirmée', nb)
+			case OfferStatusSad.REJECTED.key: 
+				return TextUtils.pluralize('offre', nb) + ' ' + TextUtils.pluralize('rejetée', nb)
+		}
+		return ''
+	}
 }
 export default OfferStatusSadUtils 

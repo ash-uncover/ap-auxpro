@@ -105,7 +105,7 @@ class AuxiliaryInfos extends React.Component {
 									</Grid.Col>
 								</Grid.Row>
 							</Form>
-							<h4>Mes informations profesionelles</h4>
+							<h4>Mes informations professionnelles</h4>
 							<Form horizontal>
 								<Grid.Row>
 									<Grid.Col sm={10} smOffset={1} md={8} mdOffset={2}>
