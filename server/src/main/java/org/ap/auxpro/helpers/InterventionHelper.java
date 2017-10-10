@@ -2,7 +2,6 @@ package org.ap.auxpro.helpers;
 
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
-import static com.mongodb.client.model.Filters.ne;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -44,7 +43,7 @@ public class InterventionHelper {
 	public static Object getInterventionMatch(SecurityContext sc, String id) throws APWebException {
 		InterventionData intervention = InterventionCollection.getById(id);
 		CustomerData customer = CustomerCollection.getById(intervention.customerId);
-		List<AuxiliaryData> auxiliaries = AuxiliaryCollection.get(and(ne("skillAnswers", null),eq("accountType", "Premium")));
+		List<AuxiliaryData> auxiliaries = AuxiliaryCollection.get(and(eq("profilCompleted", true),eq("accountType", "Premium")));
 		Map<AuxiliaryData, AuxiliaryMatchScore> scores = new HashMap<AuxiliaryData, AuxiliaryMatchScore>();
 
 		// Compute geo score
@@ -93,7 +92,7 @@ public class InterventionHelper {
 				boolean overlaped = false;
 				for (MissionData mission : missions) {
 					InterventionData mIntervention = InterventionCollection.getById(mission.getInterventionId());
-					if (EMissionStatus.getByName(mIntervention.getSadStatus()).equals(EMissionStatus._CANCELED)) {
+					if (EMissionStatus._CANCELED.equals(EMissionStatus.getByName(mIntervention.getSadStatus()))) {
 						break;
 					}
 					Event[] missionEvents = Event.buildEvents(mission, mIntervention);
@@ -119,15 +118,19 @@ public class InterventionHelper {
 
 		// Compute skill score
 		for (AuxiliaryData aux : auxiliaries) {
-			int score = 0;
-			score += getSkillScore(aux.getSkillAdministrative(), customer.getSkillAdministrative());
-			score += getSkillScore(aux.getSkillChildhood(), customer.getSkillChildhood());
-			score += getSkillScore(aux.getSkillCompagny(), customer.getSkillCompagny());
-			score += getSkillScore(aux.getSkillDoityourself(), customer.getSkillDoityourself());
-			score += getSkillScore(aux.getSkillHousework(), customer.getSkillHousework());
-			score += getSkillScore(aux.getSkillNursing(), customer.getSkillNursing());
-			score += getSkillScore(aux.getSkillShopping(), customer.getSkillShopping());
-			scores.get(aux).skillScore = Math.max(0, score * 100 / 7);
+			if (Boolean.TRUE.equals(aux.getAreSkillSet())) {
+				int score = 0;
+				score += getSkillScore(aux.getSkillAdministrative(), customer.getSkillAdministrative());
+				score += getSkillScore(aux.getSkillChildhood(), customer.getSkillChildhood());
+				score += getSkillScore(aux.getSkillCompagny(), customer.getSkillCompagny());
+				score += getSkillScore(aux.getSkillDoityourself(), customer.getSkillDoityourself());
+				score += getSkillScore(aux.getSkillHousework(), customer.getSkillHousework());
+				score += getSkillScore(aux.getSkillNursing(), customer.getSkillNursing());
+				score += getSkillScore(aux.getSkillShopping(), customer.getSkillShopping());
+				scores.get(aux).skillScore = Math.max(0, score * 100 / 7);
+			} else {
+				scores.get(aux).skillScore = 40;
+			}
 		}
 		// Sort auxiliaries
 		Collections.sort(auxiliaries, new Comparator<AuxiliaryData>() {

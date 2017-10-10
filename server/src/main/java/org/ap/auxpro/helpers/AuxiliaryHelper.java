@@ -21,6 +21,7 @@ public class AuxiliaryHelper {
 		if (!sc.isUserInRole(id)) {
 			throw new APWebException("forbidden", Status.FORBIDDEN);
 		}
+		AuxiliaryData data = AuxiliaryCollection.getById(id);
 		// Check profil progress & completion
 		boolean profilCompleted = true;
 		int profilProgress = 0;
@@ -91,7 +92,7 @@ public class AuxiliaryHelper {
 		auxiliaryBean.profilProgression = profilProgress;
 		auxiliaryBean.profilCompleted = profilCompleted;
 		
-		if (!profilCompleted) {
+		if (Boolean.TRUE.equals(data.getProfilCompleted()) && !profilCompleted) {
 			throw new APWebException("Invalid data", Status.BAD_REQUEST);
 		}
 	}
