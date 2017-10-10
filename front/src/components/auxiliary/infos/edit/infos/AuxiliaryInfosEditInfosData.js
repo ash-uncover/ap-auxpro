@@ -9,80 +9,64 @@ import AuxiliaryFields from 'utils/entities/AuxiliaryFields'
 import BooleanUtils from 'utils-lib/BooleanUtils'
 import NationalityUtils from 'utils-lib/geo/NationalityUtils'
 
-let FIELDS_FORM0 = [
-	AuxiliaryFields.AVATAR,
-	AuxiliaryFields.PROFIL_COMPLETED,
-	AuxiliaryFields.DIPLOMA_IMAGE,
-	AuxiliaryFields.LATTITUDE,
-	AuxiliaryFields.LONGITUDE
-]
-let FIELDS_FORM1 = [
-	Object.assign({ defaultValue: 'Mme', form: 'select' }, AuxiliaryFields.CIVILITY),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.FIRST_NAME),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.LAST_NAME),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.PHONE),
-	Object.assign({ defaultValue: 'FR', form: 'select', values: NationalityUtils.getNationalities() }, AuxiliaryFields.NATIONALITY),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.BIRTH_CITY),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.BIRTH_COUNTRY),
-	Object.assign({ defaultValue: [1980,1,1], form: 'date' }, AuxiliaryFields.BIRTH_DATE)
-]
-let FIELDS_FORM2 = [
-	{ form: 'address', key: 'addressSearch', name: 'Adresse' },
-	Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.ADDRESS),
-	Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.POSTAL_CODE),
-	Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.CITY),
-	Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.COUNTRY),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.SOCIAL_NUMBER),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.ID_CARD_NUMBER)
-]
-let FIELDS_FORM3 = [
-	Object.assign({ defaultValue: '', form: 'textarea' }, AuxiliaryFields.DESCRIPTION),
-	Object.assign({ defaultValue: 'true', form: 'select', values: BooleanUtils.getBooleans() }, AuxiliaryFields.IS_ENTREPRENEUR),
-	Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.DIPLOMA)
-]
-
-let FIELDS = FIELDS_FORM0.concat(FIELDS_FORM1).concat(FIELDS_FORM2).concat(FIELDS_FORM3)
-
 class AuxiliaryInfosEditInfosData extends BaseData {
+
+	constructor() {
+		super(...arguments)
+
+		this.FIELDS_FORM0 = [
+			AuxiliaryFields.AVATAR,
+			AuxiliaryFields.PROFIL_COMPLETED,
+			AuxiliaryFields.DIPLOMA_IMAGE,
+			AuxiliaryFields.LATTITUDE,
+			AuxiliaryFields.LONGITUDE
+		]
+		this.FIELDS_FORM1 = [
+			Object.assign({ defaultValue: 'Mme', form: 'select' }, AuxiliaryFields.CIVILITY),
+			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.FIRST_NAME),
+			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.LAST_NAME),
+			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.PHONE),
+			Object.assign({ defaultValue: 'FR', form: 'select', values: NationalityUtils.getNationalities() }, AuxiliaryFields.NATIONALITY),
+			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.BIRTH_CITY),
+			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.BIRTH_COUNTRY),
+			Object.assign({ defaultValue: [1980,1,1], form: 'date' }, AuxiliaryFields.BIRTH_DATE)
+		]
+		this.FIELDS_FORM2 = [
+			{ form: 'address', key: 'addressSearch', name: 'Adresse' },
+			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.ADDRESS),
+			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.POSTAL_CODE),
+			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.CITY),
+			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.COUNTRY),
+			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.SOCIAL_NUMBER),
+			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.ID_CARD_NUMBER)
+		]
+		this.FIELDS_FORM3 = [
+			Object.assign({ defaultValue: '', form: 'textarea' }, AuxiliaryFields.DESCRIPTION),
+			Object.assign({ defaultValue: 'true', form: 'select', values: BooleanUtils.getBooleans() }, AuxiliaryFields.IS_ENTREPRENEUR),
+			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.DIPLOMA)
+		]
+
+		this.FIELDS = this.FIELDS_FORM0.concat(this.FIELDS_FORM1).concat(this.FIELDS_FORM2).concat(this.FIELDS_FORM3)
+	}
 
 	register(obj) {
 		super.register(obj)
 		
-		this.declareFunction('onChangeDirty')
-		this.declareFunction('onChangeAddress')
+		this.declareFunction('onCancel')
+
 		this.declareFunction('onChangeAvatar')
 		this.declareFunction('onChangeDiploma')
 
-		this.declareFunction('onCancel')
 		this.declareFunction('onSubmit')
 
+		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
+		
 		this.obj.state = {}
 
-		this._onAuxiliaryUpdate()
-	}
-
-	unregister() {
-	}
-
-
-	// Store notifications //
-	// --------------------------------------------------------------------------------
-
-	onAuxiliaryUpdate() {
-		this._onAuxiliaryUpdate()
-		this.setState({})
-	}
-
-	_onAuxiliaryUpdate() {
-		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
-		for (let i = 0; i < FIELDS.length; i++) {
-			let field = FIELDS[i]
+		for (let i = 0; i < this.FIELDS.length; i++) {
+			let field = this.FIELDS[i]
 			let value = auxiliary[field.key] || field.defaultValue
-			if (field.formatter) {
-				this.obj.state[field.key] = field.formatter(value)
-			} else {
-				this.obj.state[field.key] = value
-			}
+			this.obj.state[field.key] = field.formatter ? field.formatter(value) : value
 		}
 		if (auxiliary.avatar) {
 			this.obj.state.avatarSrc = ImageHelper.getData(this.obj.state.avatar)
@@ -96,45 +80,41 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 	// View callbacks //
 	// --------------------------------------------------------------------------------
 
-	onChangeDirty(id, event, value) {
-		let data = {
-			dirty: true,
-			auxiliaryValid: true
+	onChange(id) {
+		if (id === 'addressSearch') {
+			this.onChangeAddress(...arguments)
+		} else {
+			this.onChangeDirty(...arguments)
 		}
-		data[id] = value
-		this.setState(data)
+	}
+
+	onChangeDirty(id, event, value) {
+		this.obj.state[id] = value
+		this.obj.state.dirty = true
+		this.forceUpdate()
 	}
 
 	onChangeAddress(address) {
-		let data = {
-			address: address.address,
-			lattitude: address.lattitude,
-			longitude: address.longitude,
-			postalCode: address.postalCode,
-			city: address.city,
-			country: address.country,
-			dirty: true,
-			auxiliaryValid: this.checkValid()
-		}
-		this.setState(data)
+		this.obj.state.address = address.address
+		this.obj.state.lattitude = address.lattitude
+		this.obj.state.longitude = address.longitude
+		this.obj.state.postalCode = address.postalCode
+		this.obj.state.city = address.city
+		this.obj.state.country = address.country
+		this.obj.state.dirty = true
+		this.forceUpdate()
 	}
 
 	onChangeAvatar(file) {
-		let data = {
-			dirty: true,
-			auxiliaryValid: this.checkValid(),
-			avatarFile: file
-		}
-		this.setState(data)
+		this.obj.state.avatarFile = file
+		this.obj.state.dirty = true
+		this.forceUpdate()
 	}
 
 	onChangeDiploma(file) {
-		let data = {
-			dirty: true,
-			auxiliaryValid: this.checkValid(),
-			diplomaFile: file
-		}
-		this.setState(data)
+		this.obj.state.diplomaFile = file
+		this.obj.state.dirty = true
+		this.forceUpdate()
 	}
 
 	onCancel() {
@@ -189,24 +169,14 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 
 	buildAuxiliary() {
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId())
-		for (let i = 0 ; i < FIELDS.length ; i++) {
-			let field = FIELDS[i]
+		for (let i = 0 ; i < this.FIELDS.length ; i++) {
+			let field = this.FIELDS[i]
 			if (AuxiliaryFields.get(field.key)) {
 				auxiliary[field.key] = this.getState(field.key)
 			}
 		}
 		return auxiliary
 	}
-
-	checkValid() {
-		return true
-	}
-
 }
 let AuxiliaryInfosEditInfosObj = new AuxiliaryInfosEditInfosData()
-AuxiliaryInfosEditInfosObj.FIELDS = FIELDS
-AuxiliaryInfosEditInfosObj.FIELDS_FORM0 = FIELDS_FORM0
-AuxiliaryInfosEditInfosObj.FIELDS_FORM1 = FIELDS_FORM1
-AuxiliaryInfosEditInfosObj.FIELDS_FORM2 = FIELDS_FORM2
-AuxiliaryInfosEditInfosObj.FIELDS_FORM3 = FIELDS_FORM3
 export default AuxiliaryInfosEditInfosObj

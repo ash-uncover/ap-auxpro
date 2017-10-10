@@ -2,7 +2,7 @@ import React from 'react'
 import AuxiliaryInitialData from './AuxiliaryInitialData'
 import './AuxiliaryInitial.scss'
 
-import { Button, Panel, Form, Grid, Google } from 'ap-react-bootstrap'
+import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 
 import FormHelper from 'components-lib/FormHelper'
 
@@ -30,6 +30,7 @@ class AuxiliaryInitial extends React.Component {
 	// --------------------------------------------------------------------------------
 
 	render() {
+		let submitEnable = this.state.dirty && this.state.auxiliaryValid
 		return (
 			<div className='ap-auxiliary-initial'>
 				<Panel>
@@ -61,10 +62,11 @@ class AuxiliaryInitial extends React.Component {
 				</Panel>
 				<Button 
 					block 
-					bsStyle={this.state.dirty && this.state.auxiliaryValid ? 'success' : 'default'}
-					disabled={!this.state.dirty || !this.state.auxiliaryValid}
+					bsStyle={submitEnable ? 'success' : 'default'}
+					disabled={!submitEnable}
+					tooltip={submitEnable ? 'Enregistrer vos informations' : 'Vous devez remplir les informations'}
 					onClick={this.onSubmit}>
-					Enregistrer modifications
+					Continuer vers AuXpros
 				</Button>
 				<br/>
 			</div>
