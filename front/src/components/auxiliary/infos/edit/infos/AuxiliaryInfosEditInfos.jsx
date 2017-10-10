@@ -2,7 +2,8 @@ import React from 'react'
 import AuxiliaryInfosEditInfosData from './AuxiliaryInfosEditInfosData'
 import './AuxiliaryInfosEditInfos.scss'
 
-import { Button, Panel, Form, Grid, Google } from 'ap-react-bootstrap'
+import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
+import FormHelper from 'components-lib/FormHelper'
 
 import AuxiliaryUtils from 'utils-lib/entities/AuxiliaryUtils'
 
@@ -12,8 +13,9 @@ class AuxiliaryInfosEditInfos extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.buildFormGroup = this._buildFormGroup.bind(this)
-		this.buildFormControl = this._buildFormControl.bind(this)
+		
+		this.buildFormGroup = FormHelper.buildFormGroup.bind(this, AuxiliaryUtils.getFieldName)
+		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 	}
 
 	componentWillMount() {
@@ -28,93 +30,14 @@ class AuxiliaryInfosEditInfos extends React.Component {
 	// Rendering functions //
 	// --------------------------------------------------------------------------------
 
-	_buildFormGroup(field) { 
-		let state = ''
-		if (field.validator) {
-			state = field.validator.getState(this.state[field.key])
-		}
-		return (
-			<Form.Group key={field.key} state={state}>
-				<Form.Label className='col-sm-5 col-md-4'>
-					{field.name || AuxiliaryUtils.getFieldName(field.key)}
-				</Form.Label>
-				<Grid.Col sm={7} md={8}>
-					{this.buildFormControl(field)}
-				</Grid.Col>
-			</Form.Group>
-		)
-	}
-
-	_buildFormControl(field) {
-		switch (field.form) {
-			case 'input': return (
-				<Form.Input 
-					value={this.state[field.key]} 
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			case 'select': return (
-				<Form.Select 
-					values={field.values}
-					value={this.state[field.key]}
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			case 'address': return (
-				<Google.Autocomplete 
-					placeholder='Saisir adresse'
-					onChange={this.onChangeAddress} />
-				)
-			case 'textarea': return (
-				<Form.TextArea
-					value={this.state[field.key]} 
-					rows={5}
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			case 'date': return (				
-				<Form.Date 
-					date={this.state[field.key][2]}
-					month={this.state[field.key][1]}
-					year={this.state[field.key][0]}
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			default: return (
-				<Form.Static>
-					{this.state[field.key]}
-				</Form.Static>
-			)
-		}
-	}
-
-	checkValidity() {
-		for (let i = 0 ; i < AuxiliaryInfosEditInfosData.FIELDS.length ; i++) {
-			let field = AuxiliaryInfosEditInfosData.FIELDS[i]
-			if (field.validator && field.validator.getState(this.state[field.key]) === 'error') {
-				return false
-			}
-		}
-		return true
-	}
-
 	render() {
 		return (
 			<div className='ap-auxiliary-infos-edit-infos'>
-				{ this.state.profilCompleted ? 
-					<Button block bsStyle='primary' onClick={this.onCancel}>Retour</Button>
-				:
-					<Panel>
-						<Panel.Header>
-							Statut profil	
-						</Panel.Header>
-						<Panel.Body className='ap-error'>
-							Votre profil est incomplet, veuillez saisir les champs obligatoires ci-dessous
-						</Panel.Body>
-						<Panel.Footer>	
-						</Panel.Footer>
-					</Panel>
-				}
-				{ this.state.profilCompleted ? <br/> : null }
+				<Button block bsStyle='primary' onClick={this.onCancel}>Retour</Button>
+				<br/>
 				<Panel>
 					<Panel.Header>
-						{ this.state.profilCompleted ? 'Modifier mes informations' : 'Saisir mes informations' }
+						Modifier mes informations
 					</Panel.Header>
 					<Panel.Body>
 						<Form horizontal className='row'>
@@ -154,8 +77,8 @@ class AuxiliaryInfosEditInfos extends React.Component {
 				</Panel>
 				<Button 
 					block 
-					bsStyle={this.state.dirty && this.state.auxiliaryValid ? 'success' : 'default'}
-					disabled={!this.state.dirty || !this.state.auxiliaryValid}
+					bsStyle={this.state.dirty ? 'success' : 'default'}
+					disabled={!this.state.dirty}
 					onClick={this.onSubmit}>
 					Enregistrer modifications
 				</Button>
