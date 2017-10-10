@@ -75,12 +75,20 @@ class AuxiliaryInfosEditInfos extends React.Component {
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
+				{ this.state.errorJustHappened ? 
+					<Panel>
+						<Panel.Body className='ap-error'>
+							<div>Une erreur est survenue</div>
+							<div>Veuillez vérifier les valeurs saisies</div>
+						</Panel.Body>
+					</Panel>
+				: null }
 				<Button 
 					block 
-					bsStyle={this.state.dirty ? 'success' : 'default'}
-					disabled={!this.state.dirty}
+					bsStyle={this.state.errorJustHappened ? 'danger' : this.state.dirty ? 'success' : 'default'}
+					disabled={this.state.errorJustHappened || !this.state.dirty}
 					onClick={this.onSubmit}>
-					Enregistrer modifications
+					{this.state.errorJustHappened ? 'Erreur' : 'Enregistrer modifications' }
 				</Button>
 				<br/>
 			</div>

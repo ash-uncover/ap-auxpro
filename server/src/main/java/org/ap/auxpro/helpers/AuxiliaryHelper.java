@@ -2,6 +2,7 @@ package org.ap.auxpro.helpers;
 
 import java.time.LocalDate;
 
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
 
 import org.ap.auxpro.bean.AuxiliaryBean;
@@ -17,6 +18,9 @@ public class AuxiliaryHelper {
 
 	@SuppressWarnings("unchecked")
 	public static void beforePutAuxiliary(SecurityContext sc, String id, AuxiliaryBean auxiliaryBean) throws APWebException {
+		if (!sc.isUserInRole(id)) {
+			throw new APWebException("forbidden", Status.FORBIDDEN);
+		}
 		// Check profil progress & completion
 		boolean profilCompleted = true;
 		int profilProgress = 0;
@@ -86,6 +90,10 @@ public class AuxiliaryHelper {
 
 		auxiliaryBean.profilProgression = profilProgress;
 		auxiliaryBean.profilCompleted = profilCompleted;
+		
+		if (!profilCompleted) {
+			throw new APWebException("Invalid data", Status.BAD_REQUEST);
+		}
 	}
 
 	public static Object postAuxiliaryQuestionary(SecurityContext sc, String id, AuxiliaryQuestionaryBean bean) throws APWebException {

@@ -2,6 +2,7 @@ import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import ImageHelper from 'helpers/ImageHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
+import ErrorHelper from 'helpers/ErrorHelper'
 import { BaseData, Nationality } from 'ap-react-bootstrap'
 
 import AuxiliaryFields from 'utils/entities/AuxiliaryFields'
@@ -61,7 +62,10 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
 		
-		this.obj.state = {}
+		this.obj.state = {
+			errorMsg: null,
+			errorJustHappened: false
+		}
 
 		for (let i = 0; i < this.FIELDS.length; i++) {
 			let field = this.FIELDS[i]
@@ -74,6 +78,19 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 		if (auxiliary.diplomaImage) {
 			this.obj.state.diplomaImageSrc = ImageHelper.getData(this.obj.state.diplomaImage)
 		}
+
+		ErrorHelper.register('PUT_AUXILIARY', this, this.handlePutAuxiliaryError.bind(this))
+	}
+
+	unregister() {
+		ErrorHelper.unregister(this)
+	}
+
+	// Store notification //
+	// --------------------------------------------------------------------------------
+
+	handlePutAuxiliaryError() {
+		console.log(ErrorHelper.getData('PUT_AUXILIARY'))
 	}
 
 
@@ -81,6 +98,8 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 	// --------------------------------------------------------------------------------
 
 	onChange(id) {
+		this.obj.state.dirty = true
+		this.obj.state.errorJustHappened = false
 		if (id === 'addressSearch') {
 			this.onChangeAddress(...arguments)
 		} else {
@@ -90,18 +109,16 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 
 	onChangeDirty(id, event, value) {
 		this.obj.state[id] = value
-		this.obj.state.dirty = true
 		this.forceUpdate()
 	}
 
-	onChangeAddress(address) {
+	onChangeAddress(id, address) {
 		this.obj.state.address = address.address
 		this.obj.state.lattitude = address.lattitude
 		this.obj.state.longitude = address.longitude
 		this.obj.state.postalCode = address.postalCode
 		this.obj.state.city = address.city
 		this.obj.state.country = address.country
-		this.obj.state.dirty = true
 		this.forceUpdate()
 	}
 
@@ -153,14 +170,17 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 			return AuxiliaryHelper.getAuxiliary(AuthHelper.getEntityId())
 		}).
 		then(function () {
-			AppHelper.navigateBack()
 			setTimeout(AppHelper.setBusy, 200)
+			return AppHelper.navigateBack()
 		}).
 		catch(function (error) {
+			this.setState({
+				errorJustHappened: true
+			})
 			setTimeout(AppHelper.setBusy, 200)
 			console.error('Auxiliary update error')
 			console.error(error)
-		})
+		}.bind(this))
 	}
 
 

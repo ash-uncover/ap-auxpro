@@ -41,6 +41,7 @@ public class AuthorizationRequestFilter implements ContainerRequestFilter {
 				}
 				
 				List<String> dataRoles = dataAuth.getRoles();
+				dataRoles.add(dataAuth.getEntityId());
 				String[] roles = dataRoles.toArray(new String[dataRoles.size()]);
 				requestContext.setSecurityContext(new APSecurityContext(dataAuth.getUsername(), roles));
 			} catch (APWebException e) {
