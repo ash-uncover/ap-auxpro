@@ -9,12 +9,13 @@ public class OfferData {
 	public List<Integer> auxStatusChanged;
 	public String auxiliaryId;
 	public Boolean hideToAux;
+	public List<Integer> lastUpdateDate;
+	public List<Integer> sadStatusChanged;
+	public List<Integer> creationDate;
 	public String customerId;
 	public String sadStatus;
-	public List<Integer> sadStatusChanged;
 	public String id;
 	public String serviceId;
-	public List<Integer> creationDate;
 	public String interventionId;
 	public Boolean hideToSad;
 
@@ -50,6 +51,30 @@ public class OfferData {
 		this.hideToAux = hideToAux;
 	}
 
+	public List<Integer> getLastUpdateDate() {
+		return this.lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(List<Integer> lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public List<Integer> getSadStatusChanged() {
+		return this.sadStatusChanged;
+	}
+
+	public void setSadStatusChanged(List<Integer> sadStatusChanged) {
+		this.sadStatusChanged = sadStatusChanged;
+	}
+
+	public List<Integer> getCreationDate() {
+		return this.creationDate;
+	}
+
+	public void setCreationDate(List<Integer> creationDate) {
+		this.creationDate = creationDate;
+	}
+
 	public String getCustomerId() {
 		return this.customerId;
 	}
@@ -66,14 +91,6 @@ public class OfferData {
 		this.sadStatus = sadStatus;
 	}
 
-	public List<Integer> getSadStatusChanged() {
-		return this.sadStatusChanged;
-	}
-
-	public void setSadStatusChanged(List<Integer> sadStatusChanged) {
-		this.sadStatusChanged = sadStatusChanged;
-	}
-
 	public String getId() {
 		return this.id;
 	}
@@ -88,14 +105,6 @@ public class OfferData {
 
 	public void setServiceId(String serviceId) {
 		this.serviceId = serviceId;
-	}
-
-	public List<Integer> getCreationDate() {
-		return this.creationDate;
-	}
-
-	public void setCreationDate(List<Integer> creationDate) {
-		this.creationDate = creationDate;
 	}
 
 	public String getInterventionId() {

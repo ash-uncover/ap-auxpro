@@ -79,23 +79,30 @@ public class HelpfaqCollection {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	public static HelpfaqData fromDocument(Document document) {
 		if(document == null) {
 			return null;
 		}
 		HelpfaqData data = new HelpfaqData();
+		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
 		data.id = document.getString("id");
 		data.title = document.getString("title");
+		data.creationDate = (List<Integer>)document.get("creationDate");
 		data.content = document.getString("content");
 		return data;
 	}
 
 	public static Document toDocument(HelpfaqData helpfaq) {
 		Document document = new Document();
+		if (helpfaq.lastUpdateDate != null)
+			document.append("lastUpdateDate", helpfaq.lastUpdateDate);
 		if (helpfaq.id != null)
 			document.append("id", helpfaq.id);
 		if (helpfaq.title != null)
 			document.append("title", helpfaq.title);
+		if (helpfaq.creationDate != null)
+			document.append("creationDate", helpfaq.creationDate);
 		if (helpfaq.content != null)
 			document.append("content", helpfaq.content);
 		return document;
@@ -103,8 +110,10 @@ public class HelpfaqCollection {
 
 	public static Document toNullDocument(HelpfaqData helpfaq) {
 		Document document = new Document();
+		document.append("lastUpdateDate", helpfaq.lastUpdateDate);
 		document.append("id", helpfaq.id);
 		document.append("title", helpfaq.title);
+		document.append("creationDate", helpfaq.creationDate);
 		document.append("content", helpfaq.content);
 		return document;
 	}

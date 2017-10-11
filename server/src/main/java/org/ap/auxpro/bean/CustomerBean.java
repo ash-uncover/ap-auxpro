@@ -12,7 +12,9 @@ public class CustomerBean {
 	public Integer skillNursing;
 	public String city;
 	public Double lattitude;
+	public List<Integer> lastUpdateDate;
 	public String postalCode;
+	public List<Integer> creationDate;
 	public List<Integer> birthDate;
 	public Integer skillChildhood;
 	public Integer skillCompagny;

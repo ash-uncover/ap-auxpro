@@ -55,12 +55,14 @@ public class ServiceServlet extends APServletBase {
 				bean.address = data.getAddress();
 				bean.city = data.getCity();
 				bean.lattitude = data.getLattitude();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.accountType = data.getAccountType();
 				bean.postalCode = data.getPostalCode();
 				bean.isTutoSkipped = data.getIsTutoSkipped();
 				bean.notifyPartners = data.getNotifyPartners();
 				bean.avatar = data.getAvatar();
 				bean.accountExpiryDate = data.getAccountExpiryDate();
+				bean.creationDate = data.getCreationDate();
 				bean.siret = data.getSiret();
 				bean.notifyAuxpros = data.getNotifyAuxpros();
 				bean.phone = data.getPhone();
@@ -130,6 +132,8 @@ public class ServiceServlet extends APServletBase {
 			dataEntity = new ServiceData();
 			dataEntity.setId(dataAuth.getEntityId());
 			dataEntity.setAuthId(dataAuth.getId());
+			dataEntity.setCreationDate(TimeHelper.nowDateTimeIntegers());
+			dataEntity.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
 			ServiceCollection.create(dataEntity);
 			
 			MailSender.sendRegistrationMail(dataAuth);
@@ -159,12 +163,14 @@ public class ServiceServlet extends APServletBase {
 			bean.address = data.getAddress();
 			bean.city = data.getCity();
 			bean.lattitude = data.getLattitude();
+			bean.lastUpdateDate = data.getLastUpdateDate();
 			bean.accountType = data.getAccountType();
 			bean.postalCode = data.getPostalCode();
 			bean.isTutoSkipped = data.getIsTutoSkipped();
 			bean.notifyPartners = data.getNotifyPartners();
 			bean.avatar = data.getAvatar();
 			bean.accountExpiryDate = data.getAccountExpiryDate();
+			bean.creationDate = data.getCreationDate();
 			bean.siret = data.getSiret();
 			bean.notifyAuxpros = data.getNotifyAuxpros();
 			bean.phone = data.getPhone();
@@ -198,6 +204,7 @@ public class ServiceServlet extends APServletBase {
 				throw new APWebException("service not found", "AP_SERVICE_NOTFOUND", Status.BAD_REQUEST);
 			}
 			// Update the data object
+			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
 			data.setCountry(serviceBean.country);
 			data.setAddress(serviceBean.address);
 			data.setCity(serviceBean.city);
@@ -263,6 +270,7 @@ public class ServiceServlet extends APServletBase {
 				bean.diplomaValidated = data.getDiplomaValidated();
 				bean.civility = data.getCivility();
 				bean.city = data.getCity();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.postalCode = data.getPostalCode();
 				bean.isTutoSkipped = data.getIsTutoSkipped();
 				bean.description = data.getDescription();
@@ -287,6 +295,7 @@ public class ServiceServlet extends APServletBase {
 				bean.birthCity = data.getBirthCity();
 				bean.avatar = data.getAvatar();
 				bean.areSkillSet = data.getAreSkillSet();
+				bean.creationDate = data.getCreationDate();
 				bean.birthDate = data.getBirthDate();
 				bean.skillChildhood = data.getSkillChildhood();
 				bean.skillCompagny = data.getSkillCompagny();
@@ -330,7 +339,9 @@ public class ServiceServlet extends APServletBase {
 				bean.skillNursing = data.getSkillNursing();
 				bean.city = data.getCity();
 				bean.lattitude = data.getLattitude();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.postalCode = data.getPostalCode();
+				bean.creationDate = data.getCreationDate();
 				bean.birthDate = data.getBirthDate();
 				bean.skillChildhood = data.getSkillChildhood();
 				bean.skillCompagny = data.getSkillCompagny();
@@ -371,7 +382,9 @@ public class ServiceServlet extends APServletBase {
 				bean.period = data.getPeriod();
 				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.endDate = data.getEndDate();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.sadStatusChanged = data.getSadStatusChanged();
+				bean.creationDate = data.getCreationDate();
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
 				bean.days = data.getDays();
@@ -408,12 +421,13 @@ public class ServiceServlet extends APServletBase {
 				bean.auxStatusChanged = data.getAuxStatusChanged();
 				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.hideToAux = data.getHideToAux();
+				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.sadStatusChanged = data.getSadStatusChanged();
+				bean.creationDate = data.getCreationDate();
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
-				bean.sadStatusChanged = data.getSadStatusChanged();
 				bean.id = data.getId();
 				bean.serviceId = data.getServiceId();
-				bean.creationDate = data.getCreationDate();
 				bean.interventionId = data.getInterventionId();
 				bean.hideToSad = data.getHideToSad();
 				
@@ -444,9 +458,11 @@ public class ServiceServlet extends APServletBase {
 				bean.auxStatusChanged = data.getAuxStatusChanged();
 				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.hideToAux = data.getHideToAux();
+				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.sadStatusChanged = data.getSadStatusChanged();
+				bean.creationDate = data.getCreationDate();
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
-				bean.sadStatusChanged = data.getSadStatusChanged();
 				bean.id = data.getId();
 				bean.serviceId = data.getServiceId();
 				bean.interventionId = data.getInterventionId();

@@ -16,6 +16,10 @@ class IndisponibilityFields {
 		return _END_DATE
 	}
 
+	static get LAST_UPDATE_DATE() {
+		return _LAST_UPDATE_DATE
+	}
+
 	static get DAYS() {
 		return _DAYS
 	}
@@ -32,6 +36,10 @@ class IndisponibilityFields {
 		return _ID
 	}
 
+	static get CREATION_DATE() {
+		return _CREATION_DATE
+	}
+
 	static get START_DATE() {
 		return _START_DATE
 	}
@@ -41,10 +49,12 @@ class IndisponibilityFields {
 			_PERIOD,
 			_AUXILIARY_ID,
 			_END_DATE,
+			_LAST_UPDATE_DATE,
 			_DAYS,
 			_START_TIME,
 			_END_TIME,
 			_ID,
+			_CREATION_DATE,
 			_START_DATE,
 		]
 	}
@@ -71,6 +81,10 @@ let _END_DATE = {
 	key: 'endDate',
 	type: 'number',
 }
+let _LAST_UPDATE_DATE = {
+	key: 'lastUpdateDate',
+	type: 'number',
+}
 let _DAYS = {
 	key: 'days',
 	type: 'string',
@@ -86,6 +100,10 @@ let _END_TIME = {
 let _ID = {
 	key: 'id',
 	type: 'string',
+}
+let _CREATION_DATE = {
+	key: 'creationDate',
+	type: 'number',
 }
 let _START_DATE = {
 	key: 'startDate',

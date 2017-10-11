@@ -10,10 +10,12 @@ public enum GeozoneFields {
 	ADDRESS (EValidators.NON_EMPTY_STRING.getValidator()),
 	LATTITUDE (EValidators.NON_NULL.getValidator()),
 	CITY (EValidators.NON_EMPTY_STRING.getValidator()),
+	LAST_UPDATE_DATE (EValidators.DEFAULT.getValidator()),
 	POSTAL_CODE (EValidators.POSTAL_CODE.getValidator()),
 	ID (EValidators.DEFAULT.getValidator()),
 	TYPE (EValidators.NON_NULL.getValidator()),
 	RADIUS (EValidators.POSITIVE_INTEGER.getValidator()),
+	CREATION_DATE (EValidators.DEFAULT.getValidator()),
 	LONGITUDE (EValidators.NON_NULL.getValidator()),
 	;
 

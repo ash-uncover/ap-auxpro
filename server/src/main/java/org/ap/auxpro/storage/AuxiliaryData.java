@@ -12,6 +12,7 @@ public class AuxiliaryData {
 	public Boolean diplomaValidated;
 	public String civility;
 	public String city;
+	public List<Integer> lastUpdateDate;
 	public String postalCode;
 	public Boolean isTutoSkipped;
 	public String description;
@@ -37,6 +38,7 @@ public class AuxiliaryData {
 	public String birthCity;
 	public String avatar;
 	public Boolean areSkillSet;
+	public List<Integer> creationDate;
 	public List<Integer> birthDate;
 	public Integer skillChildhood;
 	public Integer skillCompagny;
@@ -106,6 +108,14 @@ public class AuxiliaryData {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public List<Integer> getLastUpdateDate() {
+		return this.lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(List<Integer> lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
 	}
 
 	public String getPostalCode() {
@@ -306,6 +316,14 @@ public class AuxiliaryData {
 
 	public void setAreSkillSet(Boolean areSkillSet) {
 		this.areSkillSet = areSkillSet;
+	}
+
+	public List<Integer> getCreationDate() {
+		return this.creationDate;
+	}
+
+	public void setCreationDate(List<Integer> creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	public List<Integer> getBirthDate() {

@@ -8,10 +8,12 @@ public class IndisponibilityData {
 	public String period;
 	public String auxiliaryId;
 	public List<Integer> endDate;
+	public List<Integer> lastUpdateDate;
 	public List<String> days;
 	public List<Integer> startTime;
 	public List<Integer> endTime;
 	public String id;
+	public List<Integer> creationDate;
 	public List<Integer> startDate;
 
 	public String getPeriod() {
@@ -36,6 +38,14 @@ public class IndisponibilityData {
 
 	public void setEndDate(List<Integer> endDate) {
 		this.endDate = endDate;
+	}
+
+	public List<Integer> getLastUpdateDate() {
+		return this.lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(List<Integer> lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
 	}
 
 	public List<String> getDays() {
@@ -68,6 +78,14 @@ public class IndisponibilityData {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public List<Integer> getCreationDate() {
+		return this.creationDate;
+	}
+
+	public void setCreationDate(List<Integer> creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	public List<Integer> getStartDate() {

@@ -79,23 +79,30 @@ public class HelptopicCollection {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	public static HelptopicData fromDocument(Document document) {
 		if(document == null) {
 			return null;
 		}
 		HelptopicData data = new HelptopicData();
+		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
 		data.id = document.getString("id");
 		data.title = document.getString("title");
+		data.creationDate = (List<Integer>)document.get("creationDate");
 		data.content = document.getString("content");
 		return data;
 	}
 
 	public static Document toDocument(HelptopicData helptopic) {
 		Document document = new Document();
+		if (helptopic.lastUpdateDate != null)
+			document.append("lastUpdateDate", helptopic.lastUpdateDate);
 		if (helptopic.id != null)
 			document.append("id", helptopic.id);
 		if (helptopic.title != null)
 			document.append("title", helptopic.title);
+		if (helptopic.creationDate != null)
+			document.append("creationDate", helptopic.creationDate);
 		if (helptopic.content != null)
 			document.append("content", helptopic.content);
 		return document;
@@ -103,8 +110,10 @@ public class HelptopicCollection {
 
 	public static Document toNullDocument(HelptopicData helptopic) {
 		Document document = new Document();
+		document.append("lastUpdateDate", helptopic.lastUpdateDate);
 		document.append("id", helptopic.id);
 		document.append("title", helptopic.title);
+		document.append("creationDate", helptopic.creationDate);
 		document.append("content", helptopic.content);
 		return document;
 	}

@@ -9,10 +9,12 @@ public enum IndisponibilityFields {
 	PERIOD (EValidators.NON_NULL.getValidator()),
 	AUXILIARY_ID (EValidators.DEFAULT.getValidator()),
 	END_DATE (EValidators.DEFAULT.getValidator()),
+	LAST_UPDATE_DATE (EValidators.DEFAULT.getValidator()),
 	DAYS (EValidators.DEFAULT.getValidator()),
 	START_TIME (EValidators.DEFAULT.getValidator()),
 	END_TIME (EValidators.DEFAULT.getValidator()),
 	ID (EValidators.DEFAULT.getValidator()),
+	CREATION_DATE (EValidators.DEFAULT.getValidator()),
 	START_DATE (EValidators.DEFAULT.getValidator()),
 	;
 

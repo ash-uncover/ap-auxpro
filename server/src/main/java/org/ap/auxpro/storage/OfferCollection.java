@@ -89,12 +89,13 @@ public class OfferCollection {
 		data.auxStatusChanged = (List<Integer>)document.get("auxStatusChanged");
 		data.auxiliaryId = document.getString("auxiliaryId");
 		data.hideToAux = document.getBoolean("hideToAux");
+		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
+		data.sadStatusChanged = (List<Integer>)document.get("sadStatusChanged");
+		data.creationDate = (List<Integer>)document.get("creationDate");
 		data.customerId = document.getString("customerId");
 		data.sadStatus = document.getString("sadStatus");
-		data.sadStatusChanged = (List<Integer>)document.get("sadStatusChanged");
 		data.id = document.getString("id");
 		data.serviceId = document.getString("serviceId");
-		data.creationDate = (List<Integer>)document.get("creationDate");
 		data.interventionId = document.getString("interventionId");
 		data.hideToSad = document.getBoolean("hideToSad");
 		return data;
@@ -110,18 +111,20 @@ public class OfferCollection {
 			document.append("auxiliaryId", offer.auxiliaryId);
 		if (offer.hideToAux != null)
 			document.append("hideToAux", offer.hideToAux);
+		if (offer.lastUpdateDate != null)
+			document.append("lastUpdateDate", offer.lastUpdateDate);
+		if (offer.sadStatusChanged != null)
+			document.append("sadStatusChanged", offer.sadStatusChanged);
+		if (offer.creationDate != null)
+			document.append("creationDate", offer.creationDate);
 		if (offer.customerId != null)
 			document.append("customerId", offer.customerId);
 		if (offer.sadStatus != null)
 			document.append("sadStatus", offer.sadStatus);
-		if (offer.sadStatusChanged != null)
-			document.append("sadStatusChanged", offer.sadStatusChanged);
 		if (offer.id != null)
 			document.append("id", offer.id);
 		if (offer.serviceId != null)
 			document.append("serviceId", offer.serviceId);
-		if (offer.creationDate != null)
-			document.append("creationDate", offer.creationDate);
 		if (offer.interventionId != null)
 			document.append("interventionId", offer.interventionId);
 		if (offer.hideToSad != null)
@@ -135,12 +138,13 @@ public class OfferCollection {
 		document.append("auxStatusChanged", offer.auxStatusChanged);
 		document.append("auxiliaryId", offer.auxiliaryId);
 		document.append("hideToAux", offer.hideToAux);
+		document.append("lastUpdateDate", offer.lastUpdateDate);
+		document.append("sadStatusChanged", offer.sadStatusChanged);
+		document.append("creationDate", offer.creationDate);
 		document.append("customerId", offer.customerId);
 		document.append("sadStatus", offer.sadStatus);
-		document.append("sadStatusChanged", offer.sadStatusChanged);
 		document.append("id", offer.id);
 		document.append("serviceId", offer.serviceId);
-		document.append("creationDate", offer.creationDate);
 		document.append("interventionId", offer.interventionId);
 		document.append("hideToSad", offer.hideToSad);
 		return document;

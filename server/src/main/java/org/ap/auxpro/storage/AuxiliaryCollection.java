@@ -102,6 +102,7 @@ public class AuxiliaryCollection {
 		data.diplomaValidated = document.getBoolean("diplomaValidated");
 		data.civility = document.getString("civility");
 		data.city = document.getString("city");
+		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
 		data.postalCode = document.getString("postalCode");
 		data.isTutoSkipped = document.getBoolean("isTutoSkipped");
 		data.description = document.getString("description");
@@ -127,6 +128,7 @@ public class AuxiliaryCollection {
 		data.birthCity = document.getString("birthCity");
 		data.avatar = document.getString("avatar");
 		data.areSkillSet = document.getBoolean("areSkillSet");
+		data.creationDate = (List<Integer>)document.get("creationDate");
 		data.birthDate = (List<Integer>)document.get("birthDate");
 		data.skillChildhood = document.getInteger("skillChildhood");
 		data.skillCompagny = document.getInteger("skillCompagny");
@@ -160,6 +162,8 @@ public class AuxiliaryCollection {
 			document.append("civility", auxiliary.civility);
 		if (auxiliary.city != null)
 			document.append("city", auxiliary.city);
+		if (auxiliary.lastUpdateDate != null)
+			document.append("lastUpdateDate", auxiliary.lastUpdateDate);
 		if (auxiliary.postalCode != null)
 			document.append("postalCode", auxiliary.postalCode);
 		if (auxiliary.isTutoSkipped != null)
@@ -210,6 +214,8 @@ public class AuxiliaryCollection {
 			document.append("avatar", auxiliary.avatar);
 		if (auxiliary.areSkillSet != null)
 			document.append("areSkillSet", auxiliary.areSkillSet);
+		if (auxiliary.creationDate != null)
+			document.append("creationDate", auxiliary.creationDate);
 		if (auxiliary.birthDate != null)
 			document.append("birthDate", auxiliary.birthDate);
 		if (auxiliary.skillChildhood != null)
@@ -250,6 +256,7 @@ public class AuxiliaryCollection {
 		document.append("diplomaValidated", auxiliary.diplomaValidated);
 		document.append("civility", auxiliary.civility);
 		document.append("city", auxiliary.city);
+		document.append("lastUpdateDate", auxiliary.lastUpdateDate);
 		document.append("postalCode", auxiliary.postalCode);
 		document.append("isTutoSkipped", auxiliary.isTutoSkipped);
 		document.append("description", auxiliary.description);
@@ -275,6 +282,7 @@ public class AuxiliaryCollection {
 		document.append("birthCity", auxiliary.birthCity);
 		document.append("avatar", auxiliary.avatar);
 		document.append("areSkillSet", auxiliary.areSkillSet);
+		document.append("creationDate", auxiliary.creationDate);
 		document.append("birthDate", auxiliary.birthDate);
 		document.append("skillChildhood", auxiliary.skillChildhood);
 		document.append("skillCompagny", auxiliary.skillCompagny);

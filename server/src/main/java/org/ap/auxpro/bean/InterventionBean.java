@@ -8,7 +8,9 @@ public class InterventionBean {
 	public String period;
 	public String auxiliaryId;
 	public List<Integer> endDate;
+	public List<Integer> lastUpdateDate;
 	public List<Integer> sadStatusChanged;
+	public List<Integer> creationDate;
 	public String customerId;
 	public String sadStatus;
 	public List<String> days;

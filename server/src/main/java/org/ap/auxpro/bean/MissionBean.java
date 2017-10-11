@@ -10,9 +10,11 @@ public class MissionBean {
 	public List<Integer> auxStatusChanged;
 	public String auxiliaryId;
 	public Boolean hideToAux;
+	public List<Integer> lastUpdateDate;
+	public List<Integer> sadStatusChanged;
+	public List<Integer> creationDate;
 	public String customerId;
 	public String sadStatus;
-	public List<Integer> sadStatusChanged;
 	public String id;
 	public String serviceId;
 	public String interventionId;

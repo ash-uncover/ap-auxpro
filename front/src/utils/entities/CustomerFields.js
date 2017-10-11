@@ -33,8 +33,16 @@ class CustomerFields {
 		return _LATTITUDE
 	}
 
+	static get LAST_UPDATE_DATE() {
+		return _LAST_UPDATE_DATE
+	}
+
 	static get POSTAL_CODE() {
 		return _POSTAL_CODE
+	}
+
+	static get CREATION_DATE() {
+		return _CREATION_DATE
 	}
 
 	static get BIRTH_DATE() {
@@ -102,7 +110,9 @@ class CustomerFields {
 			_SKILL_NURSING,
 			_CITY,
 			_LATTITUDE,
+			_LAST_UPDATE_DATE,
 			_POSTAL_CODE,
+			_CREATION_DATE,
 			_BIRTH_DATE,
 			_SKILL_CHILDHOOD,
 			_SKILL_COMPAGNY,
@@ -163,10 +173,18 @@ let _LATTITUDE = {
 	key: 'lattitude',
 	type: 'number',
 }
+let _LAST_UPDATE_DATE = {
+	key: 'lastUpdateDate',
+	type: 'number',
+}
 let _POSTAL_CODE = {
 	key: 'postalCode',
 	type: 'string',
 	validator: Validators.PostalCode,
+}
+let _CREATION_DATE = {
+	key: 'creationDate',
+	type: 'number',
 }
 let _BIRTH_DATE = {
 	key: 'birthDate',

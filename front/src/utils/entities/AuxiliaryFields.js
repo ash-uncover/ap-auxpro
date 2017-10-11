@@ -30,6 +30,10 @@ class AuxiliaryFields {
 		return _CITY
 	}
 
+	static get LAST_UPDATE_DATE() {
+		return _LAST_UPDATE_DATE
+	}
+
 	static get POSTAL_CODE() {
 		return _POSTAL_CODE
 	}
@@ -130,6 +134,10 @@ class AuxiliaryFields {
 		return _ARE_SKILL_SET
 	}
 
+	static get CREATION_DATE() {
+		return _CREATION_DATE
+	}
+
 	static get BIRTH_DATE() {
 		return _BIRTH_DATE
 	}
@@ -194,6 +202,7 @@ class AuxiliaryFields {
 			_DIPLOMA_VALIDATED,
 			_CIVILITY,
 			_CITY,
+			_LAST_UPDATE_DATE,
 			_POSTAL_CODE,
 			_IS_TUTO_SKIPPED,
 			_DESCRIPTION,
@@ -219,6 +228,7 @@ class AuxiliaryFields {
 			_BIRTH_CITY,
 			_AVATAR,
 			_ARE_SKILL_SET,
+			_CREATION_DATE,
 			_BIRTH_DATE,
 			_SKILL_CHILDHOOD,
 			_SKILL_COMPAGNY,
@@ -273,6 +283,10 @@ let _CITY = {
 	key: 'city',
 	type: 'string',
 	validator: Validators.NonEmptyString,
+}
+let _LAST_UPDATE_DATE = {
+	key: 'lastUpdateDate',
+	type: 'number',
 }
 let _POSTAL_CODE = {
 	key: 'postalCode',
@@ -381,6 +395,10 @@ let _AVATAR = {
 let _ARE_SKILL_SET = {
 	key: 'areSkillSet',
 	type: 'boolean',
+}
+let _CREATION_DATE = {
+	key: 'creationDate',
+	type: 'number',
 }
 let _BIRTH_DATE = {
 	key: 'birthDate',

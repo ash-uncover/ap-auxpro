@@ -22,6 +22,18 @@ class OfferFields {
 		return _HIDE_TO_AUX
 	}
 
+	static get LAST_UPDATE_DATE() {
+		return _LAST_UPDATE_DATE
+	}
+
+	static get SAD_STATUS_CHANGED() {
+		return _SAD_STATUS_CHANGED
+	}
+
+	static get CREATION_DATE() {
+		return _CREATION_DATE
+	}
+
 	static get CUSTOMER_ID() {
 		return _CUSTOMER_ID
 	}
@@ -30,20 +42,12 @@ class OfferFields {
 		return _SAD_STATUS
 	}
 
-	static get SAD_STATUS_CHANGED() {
-		return _SAD_STATUS_CHANGED
-	}
-
 	static get ID() {
 		return _ID
 	}
 
 	static get SERVICE_ID() {
 		return _SERVICE_ID
-	}
-
-	static get CREATION_DATE() {
-		return _CREATION_DATE
 	}
 
 	static get INTERVENTION_ID() {
@@ -60,12 +64,13 @@ class OfferFields {
 			_AUX_STATUS_CHANGED,
 			_AUXILIARY_ID,
 			_HIDE_TO_AUX,
+			_LAST_UPDATE_DATE,
+			_SAD_STATUS_CHANGED,
+			_CREATION_DATE,
 			_CUSTOMER_ID,
 			_SAD_STATUS,
-			_SAD_STATUS_CHANGED,
 			_ID,
 			_SERVICE_ID,
-			_CREATION_DATE,
 			_INTERVENTION_ID,
 			_HIDE_TO_SAD,
 		]
@@ -97,6 +102,18 @@ let _HIDE_TO_AUX = {
 	key: 'hideToAux',
 	type: 'boolean',
 }
+let _LAST_UPDATE_DATE = {
+	key: 'lastUpdateDate',
+	type: 'number',
+}
+let _SAD_STATUS_CHANGED = {
+	key: 'sadStatusChanged',
+	type: 'number',
+}
+let _CREATION_DATE = {
+	key: 'creationDate',
+	type: 'number',
+}
 let _CUSTOMER_ID = {
 	key: 'customerId',
 	type: 'string',
@@ -106,10 +123,6 @@ let _SAD_STATUS = {
 	type: 'string',
 	values: OfferStatusSad.VALUES,
 }
-let _SAD_STATUS_CHANGED = {
-	key: 'sadStatusChanged',
-	type: 'number',
-}
 let _ID = {
 	key: 'id',
 	type: 'string',
@@ -117,10 +130,6 @@ let _ID = {
 let _SERVICE_ID = {
 	key: 'serviceId',
 	type: 'string',
-}
-let _CREATION_DATE = {
-	key: 'creationDate',
-	type: 'number',
 }
 let _INTERVENTION_ID = {
 	key: 'interventionId',

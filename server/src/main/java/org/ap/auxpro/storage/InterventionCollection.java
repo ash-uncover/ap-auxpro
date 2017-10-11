@@ -88,7 +88,9 @@ public class InterventionCollection {
 		data.period = document.getString("period");
 		data.auxiliaryId = document.getString("auxiliaryId");
 		data.endDate = (List<Integer>)document.get("endDate");
+		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
 		data.sadStatusChanged = (List<Integer>)document.get("sadStatusChanged");
+		data.creationDate = (List<Integer>)document.get("creationDate");
 		data.customerId = document.getString("customerId");
 		data.sadStatus = document.getString("sadStatus");
 		data.days = (List<String>)document.get("days");
@@ -109,8 +111,12 @@ public class InterventionCollection {
 			document.append("auxiliaryId", intervention.auxiliaryId);
 		if (intervention.endDate != null)
 			document.append("endDate", intervention.endDate);
+		if (intervention.lastUpdateDate != null)
+			document.append("lastUpdateDate", intervention.lastUpdateDate);
 		if (intervention.sadStatusChanged != null)
 			document.append("sadStatusChanged", intervention.sadStatusChanged);
+		if (intervention.creationDate != null)
+			document.append("creationDate", intervention.creationDate);
 		if (intervention.customerId != null)
 			document.append("customerId", intervention.customerId);
 		if (intervention.sadStatus != null)
@@ -137,7 +143,9 @@ public class InterventionCollection {
 		document.append("period", intervention.period);
 		document.append("auxiliaryId", intervention.auxiliaryId);
 		document.append("endDate", intervention.endDate);
+		document.append("lastUpdateDate", intervention.lastUpdateDate);
 		document.append("sadStatusChanged", intervention.sadStatusChanged);
+		document.append("creationDate", intervention.creationDate);
 		document.append("customerId", intervention.customerId);
 		document.append("sadStatus", intervention.sadStatus);
 		document.append("days", intervention.days);

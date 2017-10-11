@@ -11,6 +11,7 @@ public class AuxiliaryBean {
 	public Boolean diplomaValidated;
 	public String civility;
 	public String city;
+	public List<Integer> lastUpdateDate;
 	public String postalCode;
 	public Boolean isTutoSkipped;
 	public String description;
@@ -35,6 +36,7 @@ public class AuxiliaryBean {
 	public String birthCity;
 	public String avatar;
 	public Boolean areSkillSet;
+	public List<Integer> creationDate;
 	public List<Integer> birthDate;
 	public Integer skillChildhood;
 	public Integer skillCompagny;

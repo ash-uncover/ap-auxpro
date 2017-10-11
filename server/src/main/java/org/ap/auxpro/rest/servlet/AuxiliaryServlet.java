@@ -64,6 +64,7 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.diplomaValidated = data.getDiplomaValidated();
 				bean.civility = data.getCivility();
 				bean.city = data.getCity();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.postalCode = data.getPostalCode();
 				bean.isTutoSkipped = data.getIsTutoSkipped();
 				bean.description = data.getDescription();
@@ -88,6 +89,7 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.birthCity = data.getBirthCity();
 				bean.avatar = data.getAvatar();
 				bean.areSkillSet = data.getAreSkillSet();
+				bean.creationDate = data.getCreationDate();
 				bean.birthDate = data.getBirthDate();
 				bean.skillChildhood = data.getSkillChildhood();
 				bean.skillCompagny = data.getSkillCompagny();
@@ -160,6 +162,8 @@ public class AuxiliaryServlet extends APServletBase {
 			dataEntity = new AuxiliaryData();
 			dataEntity.setId(dataAuth.getEntityId());
 			dataEntity.setAuthId(dataAuth.getId());
+			dataEntity.setCreationDate(TimeHelper.nowDateTimeIntegers());
+			dataEntity.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
 			dataEntity.setEmailChecked(auxiliaryCredentialsBean.emailChecked);
 			AuxiliaryCollection.create(dataEntity);
 			
@@ -192,6 +196,7 @@ public class AuxiliaryServlet extends APServletBase {
 			bean.diplomaValidated = data.getDiplomaValidated();
 			bean.civility = data.getCivility();
 			bean.city = data.getCity();
+			bean.lastUpdateDate = data.getLastUpdateDate();
 			bean.postalCode = data.getPostalCode();
 			bean.isTutoSkipped = data.getIsTutoSkipped();
 			bean.description = data.getDescription();
@@ -216,6 +221,7 @@ public class AuxiliaryServlet extends APServletBase {
 			bean.birthCity = data.getBirthCity();
 			bean.avatar = data.getAvatar();
 			bean.areSkillSet = data.getAreSkillSet();
+			bean.creationDate = data.getCreationDate();
 			bean.birthDate = data.getBirthDate();
 			bean.skillChildhood = data.getSkillChildhood();
 			bean.skillCompagny = data.getSkillCompagny();
@@ -252,6 +258,7 @@ public class AuxiliaryServlet extends APServletBase {
 				throw new APWebException("auxiliary not found", "AP_AUXILIARY_NOTFOUND", Status.BAD_REQUEST);
 			}
 			// Update the data object
+			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
 			data.setDiplomaImage(auxiliaryBean.diplomaImage);
 			data.setCountry(auxiliaryBean.country);
 			data.setLastName(auxiliaryBean.lastName);
@@ -353,12 +360,14 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.address = data.getAddress();
 				bean.city = data.getCity();
 				bean.lattitude = data.getLattitude();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.accountType = data.getAccountType();
 				bean.postalCode = data.getPostalCode();
 				bean.isTutoSkipped = data.getIsTutoSkipped();
 				bean.notifyPartners = data.getNotifyPartners();
 				bean.avatar = data.getAvatar();
 				bean.accountExpiryDate = data.getAccountExpiryDate();
+				bean.creationDate = data.getCreationDate();
 				bean.siret = data.getSiret();
 				bean.notifyAuxpros = data.getNotifyAuxpros();
 				bean.phone = data.getPhone();
@@ -399,7 +408,9 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.skillNursing = data.getSkillNursing();
 				bean.city = data.getCity();
 				bean.lattitude = data.getLattitude();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.postalCode = data.getPostalCode();
+				bean.creationDate = data.getCreationDate();
 				bean.birthDate = data.getBirthDate();
 				bean.skillChildhood = data.getSkillChildhood();
 				bean.skillCompagny = data.getSkillCompagny();
@@ -440,7 +451,9 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.period = data.getPeriod();
 				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.endDate = data.getEndDate();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.sadStatusChanged = data.getSadStatusChanged();
+				bean.creationDate = data.getCreationDate();
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
 				bean.days = data.getDays();
@@ -477,12 +490,13 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.auxStatusChanged = data.getAuxStatusChanged();
 				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.hideToAux = data.getHideToAux();
+				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.sadStatusChanged = data.getSadStatusChanged();
+				bean.creationDate = data.getCreationDate();
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
-				bean.sadStatusChanged = data.getSadStatusChanged();
 				bean.id = data.getId();
 				bean.serviceId = data.getServiceId();
-				bean.creationDate = data.getCreationDate();
 				bean.interventionId = data.getInterventionId();
 				bean.hideToSad = data.getHideToSad();
 				
@@ -513,9 +527,11 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.auxStatusChanged = data.getAuxStatusChanged();
 				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.hideToAux = data.getHideToAux();
+				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.sadStatusChanged = data.getSadStatusChanged();
+				bean.creationDate = data.getCreationDate();
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
-				bean.sadStatusChanged = data.getSadStatusChanged();
 				bean.id = data.getId();
 				bean.serviceId = data.getServiceId();
 				bean.interventionId = data.getInterventionId();
@@ -546,10 +562,12 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.period = data.getPeriod();
 				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.endDate = data.getEndDate();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.days = data.getDays();
 				bean.startTime = data.getStartTime();
 				bean.endTime = data.getEndTime();
 				bean.id = data.getId();
+				bean.creationDate = data.getCreationDate();
 				bean.startDate = data.getStartDate();
 				
 				beanList.add(bean);
@@ -578,10 +596,12 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.address = data.getAddress();
 				bean.lattitude = data.getLattitude();
 				bean.city = data.getCity();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.postalCode = data.getPostalCode();
 				bean.id = data.getId();
 				bean.type = data.getType();
 				bean.radius = data.getRadius();
+				bean.creationDate = data.getCreationDate();
 				bean.longitude = data.getLongitude();
 				
 				beanList.add(bean);

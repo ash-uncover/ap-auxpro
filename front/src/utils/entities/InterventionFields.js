@@ -18,8 +18,16 @@ class InterventionFields {
 		return _END_DATE
 	}
 
+	static get LAST_UPDATE_DATE() {
+		return _LAST_UPDATE_DATE
+	}
+
 	static get SAD_STATUS_CHANGED() {
 		return _SAD_STATUS_CHANGED
+	}
+
+	static get CREATION_DATE() {
+		return _CREATION_DATE
 	}
 
 	static get CUSTOMER_ID() {
@@ -63,7 +71,9 @@ class InterventionFields {
 			_PERIOD,
 			_AUXILIARY_ID,
 			_END_DATE,
+			_LAST_UPDATE_DATE,
 			_SAD_STATUS_CHANGED,
+			_CREATION_DATE,
 			_CUSTOMER_ID,
 			_SAD_STATUS,
 			_DAYS,
@@ -98,8 +108,16 @@ let _END_DATE = {
 	key: 'endDate',
 	type: 'number',
 }
+let _LAST_UPDATE_DATE = {
+	key: 'lastUpdateDate',
+	type: 'number',
+}
 let _SAD_STATUS_CHANGED = {
 	key: 'sadStatusChanged',
+	type: 'number',
+}
+let _CREATION_DATE = {
+	key: 'creationDate',
 	type: 'number',
 }
 let _CUSTOMER_ID = {

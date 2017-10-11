@@ -8,10 +8,12 @@ public class IndisponibilityBean {
 	public String period;
 	public String auxiliaryId;
 	public List<Integer> endDate;
+	public List<Integer> lastUpdateDate;
 	public List<String> days;
 	public List<Integer> startTime;
 	public List<Integer> endTime;
 	public String id;
+	public List<Integer> creationDate;
 	public List<Integer> startDate;
 
 }

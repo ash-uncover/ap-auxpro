@@ -9,12 +9,14 @@ public class ServiceBean {
 	public String address;
 	public String city;
 	public Double lattitude;
+	public List<Integer> lastUpdateDate;
 	public String accountType;
 	public String postalCode;
 	public Boolean isTutoSkipped;
 	public Boolean notifyPartners;
 	public String avatar;
 	public List<Integer> accountExpiryDate;
+	public List<Integer> creationDate;
 	public String siret;
 	public Boolean notifyAuxpros;
 	public String phone;

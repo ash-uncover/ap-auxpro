@@ -100,12 +100,14 @@ public class ServiceCollection {
 		data.address = document.getString("address");
 		data.city = document.getString("city");
 		data.lattitude = document.getDouble("lattitude");
+		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
 		data.accountType = document.getString("accountType");
 		data.postalCode = document.getString("postalCode");
 		data.isTutoSkipped = document.getBoolean("isTutoSkipped");
 		data.notifyPartners = document.getBoolean("notifyPartners");
 		data.avatar = document.getString("avatar");
 		data.accountExpiryDate = (List<Integer>)document.get("accountExpiryDate");
+		data.creationDate = (List<Integer>)document.get("creationDate");
 		data.siret = document.getString("siret");
 		data.notifyAuxpros = document.getBoolean("notifyAuxpros");
 		data.phone = document.getString("phone");
@@ -132,6 +134,8 @@ public class ServiceCollection {
 			document.append("city", service.city);
 		if (service.lattitude != null)
 			document.append("lattitude", service.lattitude);
+		if (service.lastUpdateDate != null)
+			document.append("lastUpdateDate", service.lastUpdateDate);
 		if (service.accountType != null)
 			document.append("accountType", service.accountType);
 		if (service.postalCode != null)
@@ -144,6 +148,8 @@ public class ServiceCollection {
 			document.append("avatar", service.avatar);
 		if (service.accountExpiryDate != null)
 			document.append("accountExpiryDate", service.accountExpiryDate);
+		if (service.creationDate != null)
+			document.append("creationDate", service.creationDate);
 		if (service.siret != null)
 			document.append("siret", service.siret);
 		if (service.notifyAuxpros != null)
@@ -176,12 +182,14 @@ public class ServiceCollection {
 		document.append("address", service.address);
 		document.append("city", service.city);
 		document.append("lattitude", service.lattitude);
+		document.append("lastUpdateDate", service.lastUpdateDate);
 		document.append("accountType", service.accountType);
 		document.append("postalCode", service.postalCode);
 		document.append("isTutoSkipped", service.isTutoSkipped);
 		document.append("notifyPartners", service.notifyPartners);
 		document.append("avatar", service.avatar);
 		document.append("accountExpiryDate", service.accountExpiryDate);
+		document.append("creationDate", service.creationDate);
 		document.append("siret", service.siret);
 		document.append("notifyAuxpros", service.notifyAuxpros);
 		document.append("phone", service.phone);

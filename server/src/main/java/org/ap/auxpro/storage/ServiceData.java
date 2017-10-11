@@ -10,12 +10,14 @@ public class ServiceData {
 	public String address;
 	public String city;
 	public Double lattitude;
+	public List<Integer> lastUpdateDate;
 	public String accountType;
 	public String postalCode;
 	public Boolean isTutoSkipped;
 	public Boolean notifyPartners;
 	public String avatar;
 	public List<Integer> accountExpiryDate;
+	public List<Integer> creationDate;
 	public String siret;
 	public Boolean notifyAuxpros;
 	public String phone;
@@ -68,6 +70,14 @@ public class ServiceData {
 		this.lattitude = lattitude;
 	}
 
+	public List<Integer> getLastUpdateDate() {
+		return this.lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(List<Integer> lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
 	public String getAccountType() {
 		return this.accountType;
 	}
@@ -114,6 +124,14 @@ public class ServiceData {
 
 	public void setAccountExpiryDate(List<Integer> accountExpiryDate) {
 		this.accountExpiryDate = accountExpiryDate;
+	}
+
+	public List<Integer> getCreationDate() {
+		return this.creationDate;
+	}
+
+	public void setCreationDate(List<Integer> creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	public String getSiret() {

@@ -88,10 +88,12 @@ public class IndisponibilityCollection {
 		data.period = document.getString("period");
 		data.auxiliaryId = document.getString("auxiliaryId");
 		data.endDate = (List<Integer>)document.get("endDate");
+		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
 		data.days = (List<String>)document.get("days");
 		data.startTime = (List<Integer>)document.get("startTime");
 		data.endTime = (List<Integer>)document.get("endTime");
 		data.id = document.getString("id");
+		data.creationDate = (List<Integer>)document.get("creationDate");
 		data.startDate = (List<Integer>)document.get("startDate");
 		return data;
 	}
@@ -104,6 +106,8 @@ public class IndisponibilityCollection {
 			document.append("auxiliaryId", indisponibility.auxiliaryId);
 		if (indisponibility.endDate != null)
 			document.append("endDate", indisponibility.endDate);
+		if (indisponibility.lastUpdateDate != null)
+			document.append("lastUpdateDate", indisponibility.lastUpdateDate);
 		if (indisponibility.days != null)
 			document.append("days", indisponibility.days);
 		if (indisponibility.startTime != null)
@@ -112,6 +116,8 @@ public class IndisponibilityCollection {
 			document.append("endTime", indisponibility.endTime);
 		if (indisponibility.id != null)
 			document.append("id", indisponibility.id);
+		if (indisponibility.creationDate != null)
+			document.append("creationDate", indisponibility.creationDate);
 		if (indisponibility.startDate != null)
 			document.append("startDate", indisponibility.startDate);
 		return document;
@@ -122,10 +128,12 @@ public class IndisponibilityCollection {
 		document.append("period", indisponibility.period);
 		document.append("auxiliaryId", indisponibility.auxiliaryId);
 		document.append("endDate", indisponibility.endDate);
+		document.append("lastUpdateDate", indisponibility.lastUpdateDate);
 		document.append("days", indisponibility.days);
 		document.append("startTime", indisponibility.startTime);
 		document.append("endTime", indisponibility.endTime);
 		document.append("id", indisponibility.id);
+		document.append("creationDate", indisponibility.creationDate);
 		document.append("startDate", indisponibility.startDate);
 		return document;
 	}

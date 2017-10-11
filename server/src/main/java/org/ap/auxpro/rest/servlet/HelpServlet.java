@@ -30,8 +30,10 @@ public class HelpServlet extends APServletBase {
 			List<HelpTopicBean> beanList = new ArrayList<HelpTopicBean>();
 			for (HelptopicData data : datas) {
 				HelpTopicBean bean = new HelpTopicBean();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.id = data.getId();
 				bean.title = data.getTitle();
+				bean.creationDate = data.getCreationDate();
 				bean.content = data.getContent();
 				
 				beanList.add(bean);
@@ -56,8 +58,10 @@ public class HelpServlet extends APServletBase {
 			List<HelpFaqBean> beanList = new ArrayList<HelpFaqBean>();
 			for (HelpfaqData data : datas) {
 				HelpFaqBean bean = new HelpFaqBean();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.id = data.getId();
 				bean.title = data.getTitle();
+				bean.creationDate = data.getCreationDate();
 				bean.content = data.getContent();
 				
 				beanList.add(bean);

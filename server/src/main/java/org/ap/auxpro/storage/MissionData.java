@@ -10,9 +10,11 @@ public class MissionData {
 	public List<Integer> auxStatusChanged;
 	public String auxiliaryId;
 	public Boolean hideToAux;
+	public List<Integer> lastUpdateDate;
+	public List<Integer> sadStatusChanged;
+	public List<Integer> creationDate;
 	public String customerId;
 	public String sadStatus;
-	public List<Integer> sadStatusChanged;
 	public String id;
 	public String serviceId;
 	public String interventionId;
@@ -58,6 +60,30 @@ public class MissionData {
 		this.hideToAux = hideToAux;
 	}
 
+	public List<Integer> getLastUpdateDate() {
+		return this.lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(List<Integer> lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public List<Integer> getSadStatusChanged() {
+		return this.sadStatusChanged;
+	}
+
+	public void setSadStatusChanged(List<Integer> sadStatusChanged) {
+		this.sadStatusChanged = sadStatusChanged;
+	}
+
+	public List<Integer> getCreationDate() {
+		return this.creationDate;
+	}
+
+	public void setCreationDate(List<Integer> creationDate) {
+		this.creationDate = creationDate;
+	}
+
 	public String getCustomerId() {
 		return this.customerId;
 	}
@@ -72,14 +98,6 @@ public class MissionData {
 
 	public void setSadStatus(String sadStatus) {
 		this.sadStatus = sadStatus;
-	}
-
-	public List<Integer> getSadStatusChanged() {
-		return this.sadStatusChanged;
-	}
-
-	public void setSadStatusChanged(List<Integer> sadStatusChanged) {
-		this.sadStatusChanged = sadStatusChanged;
 	}
 
 	public String getId() {

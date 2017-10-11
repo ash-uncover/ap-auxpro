@@ -79,6 +79,7 @@ public class GeozoneCollection {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	public static GeozoneData fromDocument(Document document) {
 		if(document == null) {
 			return null;
@@ -88,10 +89,12 @@ public class GeozoneCollection {
 		data.address = document.getString("address");
 		data.lattitude = document.getDouble("lattitude");
 		data.city = document.getString("city");
+		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
 		data.postalCode = document.getString("postalCode");
 		data.id = document.getString("id");
 		data.type = document.getString("type");
 		data.radius = document.getInteger("radius");
+		data.creationDate = (List<Integer>)document.get("creationDate");
 		data.longitude = document.getDouble("longitude");
 		return data;
 	}
@@ -106,6 +109,8 @@ public class GeozoneCollection {
 			document.append("lattitude", geozone.lattitude);
 		if (geozone.city != null)
 			document.append("city", geozone.city);
+		if (geozone.lastUpdateDate != null)
+			document.append("lastUpdateDate", geozone.lastUpdateDate);
 		if (geozone.postalCode != null)
 			document.append("postalCode", geozone.postalCode);
 		if (geozone.id != null)
@@ -114,6 +119,8 @@ public class GeozoneCollection {
 			document.append("type", geozone.type);
 		if (geozone.radius != null)
 			document.append("radius", geozone.radius);
+		if (geozone.creationDate != null)
+			document.append("creationDate", geozone.creationDate);
 		if (geozone.longitude != null)
 			document.append("longitude", geozone.longitude);
 		return document;
@@ -125,10 +132,12 @@ public class GeozoneCollection {
 		document.append("address", geozone.address);
 		document.append("lattitude", geozone.lattitude);
 		document.append("city", geozone.city);
+		document.append("lastUpdateDate", geozone.lastUpdateDate);
 		document.append("postalCode", geozone.postalCode);
 		document.append("id", geozone.id);
 		document.append("type", geozone.type);
 		document.append("radius", geozone.radius);
+		document.append("creationDate", geozone.creationDate);
 		document.append("longitude", geozone.longitude);
 		return document;
 	}

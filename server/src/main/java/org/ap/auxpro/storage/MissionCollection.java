@@ -90,9 +90,11 @@ public class MissionCollection {
 		data.auxStatusChanged = (List<Integer>)document.get("auxStatusChanged");
 		data.auxiliaryId = document.getString("auxiliaryId");
 		data.hideToAux = document.getBoolean("hideToAux");
+		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
+		data.sadStatusChanged = (List<Integer>)document.get("sadStatusChanged");
+		data.creationDate = (List<Integer>)document.get("creationDate");
 		data.customerId = document.getString("customerId");
 		data.sadStatus = document.getString("sadStatus");
-		data.sadStatusChanged = (List<Integer>)document.get("sadStatusChanged");
 		data.id = document.getString("id");
 		data.serviceId = document.getString("serviceId");
 		data.interventionId = document.getString("interventionId");
@@ -112,12 +114,16 @@ public class MissionCollection {
 			document.append("auxiliaryId", mission.auxiliaryId);
 		if (mission.hideToAux != null)
 			document.append("hideToAux", mission.hideToAux);
+		if (mission.lastUpdateDate != null)
+			document.append("lastUpdateDate", mission.lastUpdateDate);
+		if (mission.sadStatusChanged != null)
+			document.append("sadStatusChanged", mission.sadStatusChanged);
+		if (mission.creationDate != null)
+			document.append("creationDate", mission.creationDate);
 		if (mission.customerId != null)
 			document.append("customerId", mission.customerId);
 		if (mission.sadStatus != null)
 			document.append("sadStatus", mission.sadStatus);
-		if (mission.sadStatusChanged != null)
-			document.append("sadStatusChanged", mission.sadStatusChanged);
 		if (mission.id != null)
 			document.append("id", mission.id);
 		if (mission.serviceId != null)
@@ -136,9 +142,11 @@ public class MissionCollection {
 		document.append("auxStatusChanged", mission.auxStatusChanged);
 		document.append("auxiliaryId", mission.auxiliaryId);
 		document.append("hideToAux", mission.hideToAux);
+		document.append("lastUpdateDate", mission.lastUpdateDate);
+		document.append("sadStatusChanged", mission.sadStatusChanged);
+		document.append("creationDate", mission.creationDate);
 		document.append("customerId", mission.customerId);
 		document.append("sadStatus", mission.sadStatus);
-		document.append("sadStatusChanged", mission.sadStatusChanged);
 		document.append("id", mission.id);
 		document.append("serviceId", mission.serviceId);
 		document.append("interventionId", mission.interventionId);

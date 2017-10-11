@@ -21,6 +21,10 @@ class GeozoneFields {
 		return _CITY
 	}
 
+	static get LAST_UPDATE_DATE() {
+		return _LAST_UPDATE_DATE
+	}
+
 	static get POSTAL_CODE() {
 		return _POSTAL_CODE
 	}
@@ -37,6 +41,10 @@ class GeozoneFields {
 		return _RADIUS
 	}
 
+	static get CREATION_DATE() {
+		return _CREATION_DATE
+	}
+
 	static get LONGITUDE() {
 		return _LONGITUDE
 	}
@@ -47,10 +55,12 @@ class GeozoneFields {
 			_ADDRESS,
 			_LATTITUDE,
 			_CITY,
+			_LAST_UPDATE_DATE,
 			_POSTAL_CODE,
 			_ID,
 			_TYPE,
 			_RADIUS,
+			_CREATION_DATE,
 			_LONGITUDE,
 		]
 	}
@@ -83,6 +93,10 @@ let _CITY = {
 	type: 'string',
 	validator: Validators.NonEmptyString,
 }
+let _LAST_UPDATE_DATE = {
+	key: 'lastUpdateDate',
+	type: 'number',
+}
 let _POSTAL_CODE = {
 	key: 'postalCode',
 	type: 'string',
@@ -102,6 +116,10 @@ let _RADIUS = {
 	key: 'radius',
 	type: 'number',
 	validator: Validators.PositiveInteger,
+}
+let _CREATION_DATE = {
+	key: 'creationDate',
+	type: 'number',
 }
 let _LONGITUDE = {
 	key: 'longitude',

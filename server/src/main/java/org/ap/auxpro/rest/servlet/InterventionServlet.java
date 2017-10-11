@@ -10,6 +10,7 @@ import org.ap.auxpro.storage.InterventionCollection;
 import org.ap.web.internal.APWebException;
 import org.ap.web.internal.UUIDGenerator;
 import com.mongodb.MongoWriteException;
+import org.ap.common.TimeHelper;
 import java.util.List;
 import java.util.ArrayList;
 import org.ap.auxpro.helpers.InterventionHelper;
@@ -33,6 +34,8 @@ public class InterventionServlet extends APServletBase {
 		try {
 			InterventionData data = new InterventionData();
 			data.setId(UUIDGenerator.nextId());
+			data.setCreationDate(TimeHelper.nowDateTimeIntegers());
+			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
 			data.setPeriod(interventionBean.period);
 			data.setAuxiliaryId(interventionBean.auxiliaryId);
 			data.setEndDate(interventionBean.endDate);
@@ -68,7 +71,9 @@ public class InterventionServlet extends APServletBase {
 			bean.period = data.getPeriod();
 			bean.auxiliaryId = data.getAuxiliaryId();
 			bean.endDate = data.getEndDate();
+			bean.lastUpdateDate = data.getLastUpdateDate();
 			bean.sadStatusChanged = data.getSadStatusChanged();
+			bean.creationDate = data.getCreationDate();
 			bean.customerId = data.getCustomerId();
 			bean.sadStatus = data.getSadStatus();
 			bean.days = data.getDays();
@@ -150,12 +155,13 @@ public class InterventionServlet extends APServletBase {
 				bean.auxStatusChanged = data.getAuxStatusChanged();
 				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.hideToAux = data.getHideToAux();
+				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.sadStatusChanged = data.getSadStatusChanged();
+				bean.creationDate = data.getCreationDate();
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
-				bean.sadStatusChanged = data.getSadStatusChanged();
 				bean.id = data.getId();
 				bean.serviceId = data.getServiceId();
-				bean.creationDate = data.getCreationDate();
 				bean.interventionId = data.getInterventionId();
 				bean.hideToSad = data.getHideToSad();
 				
@@ -186,9 +192,11 @@ public class InterventionServlet extends APServletBase {
 				bean.auxStatusChanged = data.getAuxStatusChanged();
 				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.hideToAux = data.getHideToAux();
+				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.sadStatusChanged = data.getSadStatusChanged();
+				bean.creationDate = data.getCreationDate();
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
-				bean.sadStatusChanged = data.getSadStatusChanged();
 				bean.id = data.getId();
 				bean.serviceId = data.getServiceId();
 				bean.interventionId = data.getInterventionId();

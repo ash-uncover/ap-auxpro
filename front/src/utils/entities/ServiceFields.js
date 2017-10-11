@@ -22,6 +22,10 @@ class ServiceFields {
 		return _LATTITUDE
 	}
 
+	static get LAST_UPDATE_DATE() {
+		return _LAST_UPDATE_DATE
+	}
+
 	static get ACCOUNT_TYPE() {
 		return _ACCOUNT_TYPE
 	}
@@ -44,6 +48,10 @@ class ServiceFields {
 
 	static get ACCOUNT_EXPIRY_DATE() {
 		return _ACCOUNT_EXPIRY_DATE
+	}
+
+	static get CREATION_DATE() {
+		return _CREATION_DATE
 	}
 
 	static get SIRET() {
@@ -96,12 +104,14 @@ class ServiceFields {
 			_ADDRESS,
 			_CITY,
 			_LATTITUDE,
+			_LAST_UPDATE_DATE,
 			_ACCOUNT_TYPE,
 			_POSTAL_CODE,
 			_IS_TUTO_SKIPPED,
 			_NOTIFY_PARTNERS,
 			_AVATAR,
 			_ACCOUNT_EXPIRY_DATE,
+			_CREATION_DATE,
 			_SIRET,
 			_NOTIFY_AUXPROS,
 			_PHONE,
@@ -144,6 +154,10 @@ let _LATTITUDE = {
 	key: 'lattitude',
 	type: 'number',
 }
+let _LAST_UPDATE_DATE = {
+	key: 'lastUpdateDate',
+	type: 'number',
+}
 let _ACCOUNT_TYPE = {
 	key: 'accountType',
 	type: 'string',
@@ -168,6 +182,10 @@ let _AVATAR = {
 }
 let _ACCOUNT_EXPIRY_DATE = {
 	key: 'accountExpiryDate',
+	type: 'number',
+}
+let _CREATION_DATE = {
+	key: 'creationDate',
 	type: 'number',
 }
 let _SIRET = {

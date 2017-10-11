@@ -6,6 +6,8 @@ import java.util.List;
 public class AuxiliaryQuestionaryBean {
 
 	public List<Integer> skillAnswers;
+	public List<Integer> lastUpdateDate;
 	public String id;
+	public List<Integer> creationDate;
 
 }

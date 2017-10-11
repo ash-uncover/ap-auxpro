@@ -10,6 +10,7 @@ import org.ap.auxpro.storage.CustomerCollection;
 import org.ap.web.internal.APWebException;
 import org.ap.web.internal.UUIDGenerator;
 import com.mongodb.MongoWriteException;
+import org.ap.common.TimeHelper;
 import org.ap.auxpro.bean.InterventionBean;
 import org.ap.auxpro.storage.InterventionData;
 import org.ap.auxpro.storage.InterventionCollection;
@@ -29,6 +30,8 @@ public class CustomerServlet extends APServletBase {
 		try {
 			CustomerData data = new CustomerData();
 			data.setId(UUIDGenerator.nextId());
+			data.setCreationDate(TimeHelper.nowDateTimeIntegers());
+			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
 			data.setLastName(customerBean.lastName);
 			data.setCountry(customerBean.country);
 			data.setCivility(customerBean.civility);
@@ -77,7 +80,9 @@ public class CustomerServlet extends APServletBase {
 			bean.skillNursing = data.getSkillNursing();
 			bean.city = data.getCity();
 			bean.lattitude = data.getLattitude();
+			bean.lastUpdateDate = data.getLastUpdateDate();
 			bean.postalCode = data.getPostalCode();
+			bean.creationDate = data.getCreationDate();
 			bean.birthDate = data.getBirthDate();
 			bean.skillChildhood = data.getSkillChildhood();
 			bean.skillCompagny = data.getSkillCompagny();
@@ -114,6 +119,7 @@ public class CustomerServlet extends APServletBase {
 				throw new APWebException("customer not found", "AP_CUSTOMER_NOTFOUND", Status.BAD_REQUEST);
 			}
 			// Update the data object
+			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
 			data.setLastName(customerBean.lastName);
 			data.setCountry(customerBean.country);
 			data.setCivility(customerBean.civility);
@@ -178,7 +184,9 @@ public class CustomerServlet extends APServletBase {
 				bean.period = data.getPeriod();
 				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.endDate = data.getEndDate();
+				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.sadStatusChanged = data.getSadStatusChanged();
+				bean.creationDate = data.getCreationDate();
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
 				bean.days = data.getDays();

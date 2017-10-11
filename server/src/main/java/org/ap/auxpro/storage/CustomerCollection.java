@@ -92,7 +92,9 @@ public class CustomerCollection {
 		data.skillNursing = document.getInteger("skillNursing");
 		data.city = document.getString("city");
 		data.lattitude = document.getDouble("lattitude");
+		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
 		data.postalCode = document.getString("postalCode");
+		data.creationDate = (List<Integer>)document.get("creationDate");
 		data.birthDate = (List<Integer>)document.get("birthDate");
 		data.skillChildhood = document.getInteger("skillChildhood");
 		data.skillCompagny = document.getInteger("skillCompagny");
@@ -126,8 +128,12 @@ public class CustomerCollection {
 			document.append("city", customer.city);
 		if (customer.lattitude != null)
 			document.append("lattitude", customer.lattitude);
+		if (customer.lastUpdateDate != null)
+			document.append("lastUpdateDate", customer.lastUpdateDate);
 		if (customer.postalCode != null)
 			document.append("postalCode", customer.postalCode);
+		if (customer.creationDate != null)
+			document.append("creationDate", customer.creationDate);
 		if (customer.birthDate != null)
 			document.append("birthDate", customer.birthDate);
 		if (customer.skillChildhood != null)
@@ -168,7 +174,9 @@ public class CustomerCollection {
 		document.append("skillNursing", customer.skillNursing);
 		document.append("city", customer.city);
 		document.append("lattitude", customer.lattitude);
+		document.append("lastUpdateDate", customer.lastUpdateDate);
 		document.append("postalCode", customer.postalCode);
+		document.append("creationDate", customer.creationDate);
 		document.append("birthDate", customer.birthDate);
 		document.append("skillChildhood", customer.skillChildhood);
 		document.append("skillCompagny", customer.skillCompagny);

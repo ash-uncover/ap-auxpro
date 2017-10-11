@@ -8,7 +8,9 @@ public class InterventionData {
 	public String period;
 	public String auxiliaryId;
 	public List<Integer> endDate;
+	public List<Integer> lastUpdateDate;
 	public List<Integer> sadStatusChanged;
+	public List<Integer> creationDate;
 	public String customerId;
 	public String sadStatus;
 	public List<String> days;
@@ -43,12 +45,28 @@ public class InterventionData {
 		this.endDate = endDate;
 	}
 
+	public List<Integer> getLastUpdateDate() {
+		return this.lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(List<Integer> lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
 	public List<Integer> getSadStatusChanged() {
 		return this.sadStatusChanged;
 	}
 
 	public void setSadStatusChanged(List<Integer> sadStatusChanged) {
 		this.sadStatusChanged = sadStatusChanged;
+	}
+
+	public List<Integer> getCreationDate() {
+		return this.creationDate;
+	}
+
+	public void setCreationDate(List<Integer> creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	public String getCustomerId() {

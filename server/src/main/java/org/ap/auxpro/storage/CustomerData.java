@@ -12,7 +12,9 @@ public class CustomerData {
 	public Integer skillNursing;
 	public String city;
 	public Double lattitude;
+	public List<Integer> lastUpdateDate;
 	public String postalCode;
+	public List<Integer> creationDate;
 	public List<Integer> birthDate;
 	public Integer skillChildhood;
 	public Integer skillCompagny;
@@ -84,12 +86,28 @@ public class CustomerData {
 		this.lattitude = lattitude;
 	}
 
+	public List<Integer> getLastUpdateDate() {
+		return this.lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(List<Integer> lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
 	public String getPostalCode() {
 		return this.postalCode;
 	}
 
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
+	}
+
+	public List<Integer> getCreationDate() {
+		return this.creationDate;
+	}
+
+	public void setCreationDate(List<Integer> creationDate) {
+		this.creationDate = creationDate;
 	}
 
 	public List<Integer> getBirthDate() {
