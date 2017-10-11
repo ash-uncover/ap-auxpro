@@ -1,6 +1,6 @@
 import React from 'react'
-import ServiceInfosEditSocietyData from './ServiceInfosEditSocietyData'
-import './ServiceInfosEditSociety.scss'
+import ServiceInitialData from './ServiceInitialData'
+import './ServiceInitial.scss'
 
 import ServiceUtils from 'utils-lib/entities/ServiceUtils'
 
@@ -9,7 +9,8 @@ import FormHelper from 'components-lib/FormHelper'
 
 import ImageUploader from 'components-lib/Image/ImageUploader'
 
-class ServiceInfosEditSociety extends React.Component {
+
+class ServiceInitial extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -18,11 +19,11 @@ class ServiceInfosEditSociety extends React.Component {
 	}
 
 	componentWillMount() {
-		ServiceInfosEditSocietyData.register(this)
+		ServiceInitialData.register(this)
 	}
 
 	componentWillUnmount() {
-		ServiceInfosEditSocietyData.unregister()
+		ServiceInitialData.unregister()
 	}
 
 
@@ -32,9 +33,17 @@ class ServiceInfosEditSociety extends React.Component {
 	render() {
 		let submitEnabled = this.state.dirty && this.state.valid
 		return (
-			<div className='ap-service-infos-edit-society'>
-				<Button block bsStyle='primary' onClick={this.onCancel}>Retour au profil</Button>
-				<br/>
+			<div className='ap-service-initial'>
+				<Panel>
+					<Panel.Header>
+						Statut profil	
+					</Panel.Header>
+					<Panel.Body className='ap-error'>
+						Votre profil est incomplet, veuillez saisir les champs obligatoires ci-dessous
+					</Panel.Body>
+					<Panel.Footer>	
+					</Panel.Footer>
+				</Panel>
 				<Panel>
 					<Panel.Header>
 						Modifier mes informations de société
@@ -42,17 +51,11 @@ class ServiceInfosEditSociety extends React.Component {
 					<Panel.Body>
 						<Form horizontal>
 							<Grid.Row>
-								<Grid.Col xs={12} className='ap-service-infos-image-container'>
-									<ImageUploader 
-										className={this.state.avatar ? '' : 'ap-no-image'}
-										src={this.state.avatarSrc}
-										onChange={this.onChangeImage} />
-								</Grid.Col>
 								<Grid.Col sm={6} lg={5} lgOffset={1}>
-									{ServiceInfosEditSocietyData.FIELDS_FORM1.map(this.buildFormGroup)}
+									{ServiceInitialData.FIELDS_FORM1.map(this.buildFormGroup)}
 								</Grid.Col>
 								<Grid.Col sm={6} lg={5}>
-									{ServiceInfosEditSocietyData.FIELDS_FORM2.map(this.buildFormGroup)}
+									{ServiceInitialData.FIELDS_FORM2.map(this.buildFormGroup)}
 								</Grid.Col>
 							</Grid.Row>
 						</Form>
@@ -81,4 +84,4 @@ class ServiceInfosEditSociety extends React.Component {
 	}
 
 }
-export default ServiceInfosEditSociety
+export default ServiceInitial

@@ -32,26 +32,5 @@ class ServiceUtils {
 		}
 		return service.address + ' ' + service.postalCode + ' ' + service.city
 	}
-
-	static checkProfileCompleted(service) {
-		if (service) {
-			for (let field in ServiceFields.FIELDS) {
-				if (ServiceFields.FIELDS.hasOwnProperty(field) && ServiceFields.FIELDS[field].validator) {
-					if (service.hasOwnProperty(field)) {
-						let value = service[field]
-						let state = ServiceFields.FIELDS[field].validator.getState(value)
-						if (state !== 'success') {
-							console.error('field in error: ' + field + ' > ' + value)
-							return false
-						}
-					} else {
-						return false
-					}
-				}
-			}
-			return true
-		}
-		return false
-	}
 }
 export default ServiceUtils

@@ -33,7 +33,7 @@ class AuxiliaryInfosEditInfos extends React.Component {
 	render() {
 		return (
 			<div className='ap-auxiliary-infos-edit-infos'>
-				<Button block bsStyle='primary' onClick={this.onCancel}>Retour</Button>
+				<Button block bsStyle='primary' onClick={this.onCancel}>Retour au profil</Button>
 				<br/>
 				<Panel>
 					<Panel.Header>

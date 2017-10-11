@@ -1,7 +1,6 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import ErrorHelper from 'helpers/ErrorHelper'
-import ImageHelper from 'helpers/ImageHelper'
 import ServiceHelper from 'helpers/ServiceHelper'
 import { BaseData } from 'ap-react-bootstrap'
 
@@ -9,13 +8,12 @@ import ServiceFields from 'utils/entities/ServiceFields'
 
 import SocFunctionUtils from 'utils-lib/entities/SocFunctionUtils'
 
-class ServiceInfosEditSocietyData extends BaseData {
+class ServiceInitialData extends BaseData {
 
 	constructor() {
 		super(...arguments)
 
 		this.FIELDS_FORM0 = [
-			ServiceFields.AVATAR,
 			ServiceFields.PROFIL_COMPLETED,
 			ServiceFields.LATTITUDE,
 			ServiceFields.LONGITUDE
@@ -41,10 +39,6 @@ class ServiceInfosEditSocietyData extends BaseData {
 	register(obj) {
 		super.register(obj)
 		
-		this.declareFunction('onCancel')
-
-		this.declareFunction('onChangeImage')
-
 		this.declareFunction('onSubmit')
 
 		let service = ServiceHelper.getData(AuthHelper.getEntityId()) || {}
@@ -55,9 +49,6 @@ class ServiceInfosEditSocietyData extends BaseData {
 			let field = this.FIELDS[i]
 			let value = service[field.key]
 			this.obj.state[field.key] = value || field.defaultValue
-		}
-		if (service.avatar) {
-			this.obj.state.avatarSrc = ImageHelper.getData(this.obj.state.avatar)
 		}
 
 		ErrorHelper.register('PUT_SERVICE', this, this.handlePutServiceError.bind(this))
@@ -70,9 +61,6 @@ class ServiceInfosEditSocietyData extends BaseData {
 
 	handlePutServiceError() {
 		console.error(ErrorHelper.getData('PUT_SERVICE'))
-		this.setState({
-			errorJustHappened: true
-		})
 	}
 
 
@@ -106,44 +94,22 @@ class ServiceInfosEditSocietyData extends BaseData {
 		this.forceUpdate()
 	}
 
-	onChangeImage(file) {
-		this.obj.state.avatarFile = file
-		this.obj.state.dirty = true
-		this.obj.state.valid = this.checkServiceValid()
-		this.forceUpdate()
-	}
-
-	onCancel() {
-		AppHelper.navigateBack()
-	}
-
 	onSubmit() {
 		AppHelper.setBusy(true).
-		then(function() {
-			let promises = []
-			if (this.getState('avatarFile')) {
-				promises.push(ImageHelper.postImage({
-					name: 'img',
-					file: this.getState('avatarFile')
-				}))
-			}
-			return Promise.all(promises)
-		}.bind(this)).
 		then(function (oResult) {
-			let service = this.buildService()
-			if (this.getState('avatarFile')) {
-				service.avatar = oResult[0].id
-			}
-			return ServiceHelper.putService(service)
+			return ServiceHelper.putService(this.buildService())
 		}.bind(this)).
 		then(function () {
 			return ServiceHelper.getService(AuthHelper.getEntityId())
 		}).
 		then(function () {
 			setTimeout(AppHelper.setBusy, 200)
-			return AppHelper.navigateBack()
+			return AppHelper.navigate('/service/redirect')
 		}).
 		catch(function (error) {
+			this.setState({
+				errorJustHappened: true
+			})
 			setTimeout(AppHelper.setBusy, 200)
 			console.error('Service update error')
 			console.error(error)
@@ -175,5 +141,5 @@ class ServiceInfosEditSocietyData extends BaseData {
 	}
 }
 
-let ServiceInfosEditSocietyObj = new ServiceInfosEditSocietyData()
-export default ServiceInfosEditSocietyObj
+let ServiceInitialObj = new ServiceInitialData()
+export default ServiceInitialObj

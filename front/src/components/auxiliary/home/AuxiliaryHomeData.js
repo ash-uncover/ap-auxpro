@@ -6,7 +6,7 @@ import CustomerHelper from 'helpers/CustomerHelper'
 import InterventionHelper from 'helpers/InterventionHelper'
 import MissionHelper from 'helpers/MissionHelper'
 
-import { BaseData, Utils, TextUtils } from 'ap-react-bootstrap'
+import { BaseData, Utils } from 'ap-react-bootstrap'
 
 import AccountType from 'utils/constants/AccountType'
 import OfferStatusSad from 'utils/constants/OfferStatusSad'

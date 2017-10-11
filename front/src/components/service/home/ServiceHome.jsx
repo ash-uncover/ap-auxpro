@@ -2,7 +2,7 @@ import React from 'react'
 import ServiceHomeData from './ServiceHomeData'
 import './ServiceHome.scss'
 
-import { Panel, Grid } from 'ap-react-bootstrap'
+import { Panel, Grid, TextUtils } from 'ap-react-bootstrap'
 
 class ServiceHome extends React.Component {
 
@@ -27,7 +27,7 @@ class ServiceHome extends React.Component {
         					Statut Compte
         				</Panel.Header>
         				<Panel.Body>
-        					{ ServiceHomeData.premium 
+        					{ this.state.premium 
         						? <strong>Compte Premium</strong> 
         						: <div className='ap-error'>Accès limité ! Passez votre compte en Premium pour profiter pleinement de nos fonctionnalités</div>
         					}
@@ -42,7 +42,7 @@ class ServiceHome extends React.Component {
         					Statut profil
         				</Panel.Header>
         				<Panel.Body>
-        					<strong>{'Votre profil est ' + (ServiceHomeData.complete ? 'actif' : 'incomplet') + '.'}</strong>
+        					<strong>{'Votre profil est ' + (this.state.profilCompleted ? 'actif' : 'incomplet') + '.'}</strong>
         				</Panel.Body>
         				<Panel.Footer>
         				</Panel.Footer>
@@ -55,7 +55,10 @@ class ServiceHome extends React.Component {
         					Usagers
         				</Panel.Header>
         				<Panel.Body>
-        					<div><strong><b>{ServiceHomeData.customersCount}</b></strong>{ServiceHomeData.textCustomer}</div>
+        					<div>
+                                <strong><b>{this.state.customersCount}</b></strong>
+                                {' ' + TextUtils.pluralize('Usager', this.state.customersCount ) + '.'}
+                            </div>
         				</Panel.Body>
         				<Panel.Footer>
         				</Panel.Footer>
@@ -67,7 +70,10 @@ class ServiceHome extends React.Component {
         					Interventions
         				</Panel.Header>
         				<Panel.Body>
-        					<div><strong><b>{ServiceHomeData.interventionsCount}</b></strong>{ServiceHomeData.textIntervention}</div>
+        					<div>
+                                <strong><b>{this.state.interventionsCount}</b></strong>
+                                {' ' + TextUtils.pluralize('Intervention', this.state.interventionsCount) + ' en cours.'}
+                            </div>
         				</Panel.Body>
         				<Panel.Footer>
         				</Panel.Footer>
@@ -79,7 +85,10 @@ class ServiceHome extends React.Component {
         					Auxiliaires
         				</Panel.Header>
         				<Panel.Body>
-        					<div><strong><b>{ServiceHomeData.auxiliariesCount}</b></strong>{ServiceHomeData.textauxiliaries}</div>
+        					<div>
+                                <strong><b>{this.state.auxiliariesCount}</b></strong>
+                                {' ' + TextUtils.pluralize('Auxiliaire', this.state.auxiliariesCount ) + '.'}
+                            </div>
         				</Panel.Body>
         				<Panel.Footer>
         				</Panel.Footer>
