@@ -21,8 +21,10 @@ import Help from 'components/infos/help/Help'
 import Presentation from 'components/infos/presentation/Presentation'
 import Services from 'components/infos/services/Services'
 import Service from 'components/service/Service'
+import ServiceRedirect from 'components/service/redirect/ServiceRedirect'
 import ServiceHome from 'components/service/home/ServiceHome'
 import ServiceTuto from 'components/service/tuto/ServiceTuto'
+import ServiceInitial from 'components/service/initial/ServiceInitial'
 import ServiceInfos from 'components/service/infos/ServiceInfos'
 import ServiceInfosEditSociety from 'components/service/infos/edit/society/ServiceInfosEditSociety'
 import ServiceInfosEditAccount from 'components/service/infos/edit/account/ServiceInfosEditAccount'
@@ -72,8 +74,10 @@ let authRoutes = [
 	{ path: '/recover', component: Recover },
 ]
 let serviceRoutes = [
+	{ path: '/redirect', component: ServiceRedirect },
 	{ path: '/home', component: ServiceHome },
 	{ path: '/tuto', component: ServiceTuto },
+	{ path: '/initial', component: ServiceInitial },
 	{ path: '/infos', component: ServiceInfos },
 	{ path: '/infos/edit/society', component: ServiceInfosEditSociety },
 	{ path: '/infos/edit/account', component: ServiceInfosEditAccount },
