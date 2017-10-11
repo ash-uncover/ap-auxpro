@@ -123,6 +123,7 @@ public class AuxiliaryHelper {
 		AuxiliaryData auxiliary = AuxiliaryCollection.getById(id);
 		if (isComplete) {
 			auxiliary.setAreSkillSet(true);
+			auxiliary.setProfilProgression(auxiliary.getProfilProgression() + 30);
 			auxiliary.setSkillChildhood(computeScore(ch));
 			auxiliary.setSkillHousework(computeScore(ho));
 			auxiliary.setSkillCompagny(computeScore(co));
