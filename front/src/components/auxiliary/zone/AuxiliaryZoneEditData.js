@@ -168,23 +168,20 @@ class AuxiliaryZoneEditData extends BaseData {
 	}
 
 	handleGetReversegeozone(result, param) {
-		this.obj.state.lattitude = param.lattitude
-		this.obj.state.longitude = param.longitude
+		let address = {
+			lattitude: param.lattitude,
+			longitude: param.longitude
+		}
 		if (result[0].address_components.length === 7) {
-			this.obj.state.address = result[0].address_components[0].short_name + ' ' + result[0].address_components[1].short_name
-			this.obj.state.city = result[0].address_components[2].short_name
-			this.obj.state.postalCode = result[0].address_components[6].short_name
+			address.address = result[0].address_components[0].short_name + ' ' + result[0].address_components[1].short_name
+			address.city = result[0].address_components[2].short_name
+			address.postalCode = result[0].address_components[6].short_name
 		} else {
-			this.obj.state.address = result[0].address_components[0].short_name
-			this.obj.state.city = result[0].address_components[2].short_name
-			this.obj.state.postalCode = result[0].address_components[5].short_name
+			address.address = result[0].address_components[0].short_name
+			address.city = result[0].address_components[2].short_name
+			address.postalCode = result[0].address_components[5].short_name
 		}
-		let geozone = this.buildGeozone()
-		this.obj.state.geozoneValid = GeozoneUtils.isValid(geozone)
-		if (this.obj.props.onGeozoneUpdate) {
-			this.obj.props.onGeozoneUpdate(geozone)
-		}
-		this.forceUpdate()
+		this.onChangeAddress(address)
 	}
 
 	// Internal methods //
