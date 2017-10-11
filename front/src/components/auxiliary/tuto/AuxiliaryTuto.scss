@@ -3,4 +3,13 @@
 		text-align: right;
 		padding: 15px 0;
 	}
+	.carousel-inner {
+		.item {
+			background: white;
+			text-align: center;
+			img {
+				display: inline-block;
+			}
+		}
+	}
 }
