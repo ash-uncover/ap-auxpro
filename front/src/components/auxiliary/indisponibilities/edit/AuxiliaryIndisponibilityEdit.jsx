@@ -108,20 +108,28 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
+				{ this.state.errorJustHappened ?
+					<Panel>
+						<Panel.Body className='ap-error'>
+							<div>Une erreur est survenue</div>
+							<div>Veuillez vérifier les valeurs saisies</div>
+						</Panel.Body>
+					</Panel>
+				: null }
 				{ this.state.mode === AuxiliaryIndisponibilityEditData.MODES.CREATE ?
 					<Button 
 						block 
-						bsStyle={submitDisabled ? 'default' : 'success'}
-						disabled={submitDisabled}
+						bsStyle={this.state.errorJustHappened ? 'danger' : submitDisabled ? 'default' : 'success'}
+								disabled={this.state.errorJustHappened || submitDisabled}
 						onClick={this.onSubmit}>
-						Créer indisponibilité
+						{ this.state.errorJustHappened ? 'Erreur' : 'Créer indisponibilité' }
 					</Button>
 				:
 					<Grid.Row>
 						<Grid.Col sm={6}>
 							<Button 
 								block 
-								bsStyle='danger'
+								bsStyle='warning'
 								onClick={this.onDelete}>
 								Supprimer indisponibilité
 							</Button>
@@ -130,10 +138,10 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 						<Grid.Col sm={6}>
 							<Button 
 								block 
-								bsStyle={submitDisabled ? 'default' : 'success'}
-								disabled={submitDisabled}
+								bsStyle={this.state.errorJustHappened ? 'danger' : submitDisabled ? 'default' : 'success'}
+								disabled={this.state.errorJustHappened || submitDisabled}
 								onClick={this.onSubmit}>
-								Enregistrer modifications
+								{ this.state.errorJustHappened ? 'Erreur' : 'Enregistrer modifications' }
 							</Button>
 						</Grid.Col>
 					</Grid.Row>

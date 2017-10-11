@@ -1,5 +1,6 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
+import ErrorHelper from 'helpers/ErrorHelper'
 import IndisponibilityHelper from 'helpers/IndisponibilityHelper'
 import { BaseData, MomentHelper } from 'ap-react-bootstrap'
 
@@ -75,6 +76,8 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 		this.declareFunction('onSubmit')
 		
 		this.obj.state = {
+			errorMsg: null,
+			errorJustHappened: false,
 			mode: indisponibilityId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
 		}
 
@@ -88,9 +91,20 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 				this.obj.state[field.key] = value || field.defaultValue
 			}
 		}
+
+		ErrorHelper.register('PUT_INDISPONIBILITY', this, this.handlePutIndisponibilityError.bind(this))
 	}
 
 	unregister() {
+		ErrorHelper.unregister(this)
+	}
+
+
+	// Store notification //
+	// --------------------------------------------------------------------------------
+
+	handlePutIndisponibilityError() {
+		let errorData = ErrorHelper.getData('PUT_INDISPONIBILITY')
 	}
 
 
@@ -103,6 +117,7 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 
 	onChangeDirty(id, event, value) {
 		this.obj.state.dirty = true
+		this.obj.state.errorJustHappened = false
 		this.obj.state[id] = value
 		this.obj.state[id + 'Default'] = null
 		this.obj.state.indisponibilityValid = this.checkIndisponibility()
@@ -158,10 +173,13 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 			setTimeout(AppHelper.setBusy, 200)
 		}).
 		catch(function (error) {
+			this.setState({
+				errorJustHappened: true
+			})
 			setTimeout(AppHelper.setBusy, 200)
 			console.error('Indisponibility submit error')
 			console.error(error)
-		})
+		}.bind(this))
 	}
 
 
@@ -179,8 +197,6 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 		for (let i = 0 ; i < this.FIELDS.length ; i++) {
 			let field = this.FIELDS[i]
 			if (field.validator && field.validator.getState(this.getState(field.key)) === 'error') {
-				console.log('field invalide')
-				console.log(field)
 				return false
 			}
 		}
@@ -191,7 +207,7 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 	buildIndisponibility() {
 		let indiponibility = (this.getState('mode') === this.MODES.CREATE) ?
 			{ auxiliaryId: AuthHelper.getEntityId() } :
-			IndisponibilityHelper.getData(this.indiponibilityId)
+			IndisponibilityHelper.getData(this.indisponibilityId)
 			
 		for (let i = 0 ; i < this.FIELDS.length ; i++) {
 			let field = this.FIELDS[i]
