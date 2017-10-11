@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.ws.rs.core.SecurityContext;
+import javax.ws.rs.core.Response.Status;
 
 import org.ap.auxpro.bean.InterventionBean;
 import org.ap.auxpro.constants.EInterventionStatus;
@@ -33,6 +34,8 @@ import org.ap.auxpro.storage.MissionCollection;
 import org.ap.auxpro.storage.MissionData;
 import org.ap.auxpro.storage.OfferCollection;
 import org.ap.auxpro.storage.OfferData;
+import org.ap.auxpro.storage.ServiceCollection;
+import org.ap.auxpro.storage.ServiceData;
 import org.ap.common.GeoHelper;
 import org.ap.common.TimeHelper;
 import org.ap.web.internal.APWebException;
@@ -42,6 +45,14 @@ public class InterventionHelper {
 
 	public static Object getInterventionMatch(SecurityContext sc, String id) throws APWebException {
 		InterventionData intervention = InterventionCollection.getById(id);
+		
+		// Check the call can be made
+		ServiceData service = ServiceCollection.getById(intervention.serviceId);
+		if (service == null || !sc.isUserInRole(service.id) || !Boolean.TRUE.equals(service.profilCompleted)) {
+			throw new APWebException("forbidden", Status.FORBIDDEN);
+		}
+		
+		//
 		CustomerData customer = CustomerCollection.getById(intervention.customerId);
 		List<AuxiliaryData> auxiliaries = AuxiliaryCollection.get(and(eq("profilCompleted", true),eq("accountType", "Premium")));
 		Map<AuxiliaryData, AuxiliaryMatchScore> scores = new HashMap<AuxiliaryData, AuxiliaryMatchScore>();

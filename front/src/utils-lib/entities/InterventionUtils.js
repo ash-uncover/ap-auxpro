@@ -20,23 +20,8 @@ class InterventionUtils {
 
 	static storeInterventionMatch(result, params) {
 		let intervention = InterventionHelper.getData(params.id)
-		let promises = []
-		if (result && result.length) {
-			for (let i = 0; i < result.length; i++) {
-				if (!AuxiliaryHelper.getData(result[i].auxiliaryId)) {
-					promises.push(AuxiliaryHelper.getAuxiliary(result[i].auxiliaryId))
-				}
-			}
-		}
-		Promise.all(promises).
-		then(function () {
-			intervention.match = result
-			StoreRegistry.getStore('REST_STORE').notifyPath('intervention')	
-		}).
-		catch(function (error) {
-			console.error('ERROR: failed to store intervention match')
-			console.error(error)
-		})
+		intervention.match = result
+		StoreRegistry.getStore('REST_STORE').notifyPath('intervention/' + params.id)	
 	}
 
 	static getFieldName(field) {

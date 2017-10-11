@@ -83,10 +83,6 @@ class AppHeader extends React.Component {
 						brandImage='/assets/images/auxpro-logo.png'
 						brandLink='/home'
 						onNavigate={AppHelper.navigate} />
-					<Navbar.Group>
-						{this._buildText('AUX','auxiliary')}
-						{this._buildText('SAD','service')}
-					</Navbar.Group>
 					{this._buildLinks()}
 				</Navbar>
 			</header>

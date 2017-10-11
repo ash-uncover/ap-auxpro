@@ -1,5 +1,6 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
+import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
 import CustomerHelper from 'helpers/CustomerHelper'
 import InterventionHelper from 'helpers/InterventionHelper'
 import OfferHelper from 'helpers/OfferHelper'
@@ -106,9 +107,21 @@ class ServiceInterventionsData extends BaseData {
 		then(function () {
 			return InterventionHelper.getInterventionMatch(interventionId)	
 		}).
+		then(function () {
+			let intervention = InterventionHelper.getData(interventionId)
+			console.log('HEREEEEEEEE')
+			console.log(intervention)
+			let promises = []
+			for (let i = 0; i < intervention.match.length; i++) {
+				if (!AuxiliaryHelper.getData(intervention.match[i].auxiliaryId)) {
+					promises.push(AuxiliaryHelper.getAuxiliary(intervention.match[i].auxiliaryId))
+				}
+			}
+			return Promise.all(promises)
+		}). 
 		then(function() {
 			setTimeout(function () { AppHelper.setBusy() }, 200)
-			AppHelper.navigate('/service/interventions/' + interventionId + '/match')
+			return AppHelper.navigate('/service/interventions/' + interventionId + '/match')
 		}).
 		catch(function (error) {
 			setTimeout(function () { AppHelper.setBusy() }, 200)
