@@ -38,7 +38,8 @@ class FormControlBuilder {
 			case 'address': return (
 				<Google.Autocomplete 
 					placeholder='Saisir adresse'
-					onChange={this.onChange.bind(this, field.key)} />
+					onChange={this.onChange.bind(this, field.key)} 
+					options={{ componentRestrictions: { country: 'fr' } }} />
 				)
 			case 'textarea': return (
 				<Form.TextArea

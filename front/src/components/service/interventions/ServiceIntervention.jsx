@@ -64,7 +64,8 @@ class ServiceIntervention extends React.Component {
 			case 'address': return (
 				<Google.Autocomplete 
 					placeholder='Saisir adresse.'
-					onChange={this.onChangeAddress.bind(this)} />
+					onChange={this.onChangeAddress.bind(this)} 
+					options={{ componentRestrictions: { country: 'fr' } }} />
 				)
 			case 'date': return (
 				<Form.Date 
