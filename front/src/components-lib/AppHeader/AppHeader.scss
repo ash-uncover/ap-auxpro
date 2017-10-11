@@ -1,4 +1,7 @@
 .ap-app-header {
+	.ap-navbar-header {
+        cursor: pointer;
+    }
 	.ap-navbar-text {
 		&.active {
 			font-weight: bold;
