@@ -43,7 +43,7 @@ module.exports = {
             },
             { 
                 test: /node_modules\/jquery\/.+\.(jsx|js)$/,
-                loader: 'imports?jQuery=jquery,$=jquery,this=>window'
+                loader: 'imports-loader?jQuery=jquery,$=jquery,this=>window'
             },
             { 
                 test: /\.css$/, 
