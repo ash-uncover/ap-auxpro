@@ -18,7 +18,7 @@ class AuxiliaryHeaderData extends BaseData {
 			name: '',
 			address: '',
 			email: '',
-			diploma: ''
+			phone: ''
 		}
 
 		this._onAuxiliaryUpdate()
@@ -38,7 +38,7 @@ class AuxiliaryHeaderData extends BaseData {
 				name: StringUtils.valueOrMissing(AuxiliaryUtils.getFullName(auxiliary)),
 				address: StringUtils.valueOrMissing(AuxiliaryUtils.getAddress(auxiliary)),
 				email: AuthHelper.getEmail(),
-				diploma: StringUtils.valueOrMissing(auxiliary.diploma)
+				phone: StringUtils.valueOrMissing(auxiliary.phone)
 			})
 		}
 	}

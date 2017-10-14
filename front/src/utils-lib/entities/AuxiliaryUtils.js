@@ -26,9 +26,7 @@ class AuxiliaryUtils {
 			case AuxiliaryFields.LATTITUDE.key: return 'Lattitude'
 			case AuxiliaryFields.LONGITUDE.key: return 'Longitude'
 			case AuxiliaryFields.SOCIAL_NUMBER.key: return 'Numéro de sécurité sociale'
-			case AuxiliaryFields.DIPLOMA.key: return 'Intitulé du diplôme'
-			case AuxiliaryFields.DIPLOMA_IMAGE.key: return 'Image de diplôme'
-			case AuxiliaryFields.DIPLOMA_VALIDATED.key: return 'Diplôme validé par AuXpros'
+			case AuxiliaryFields.DIPLOMA.key: return 'Mes diplômes'
 			case AuxiliaryFields.IS_TUTO_SKIPPED.key: return 'Tutorial effectué'
 			case AuxiliaryFields.ACCOUNT_TYPE.key: return 'Type de compte'
 			case AuxiliaryFields.ACCOUNT_EXPIRY_DATE.key: return "Date d'expiration"

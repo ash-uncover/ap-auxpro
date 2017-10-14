@@ -96,10 +96,8 @@ public class AuxiliaryCollection {
 		}
 		AuxiliaryData data = new AuxiliaryData();
 		data.authId = document.getString("authId");
-		data.diplomaImage = document.getString("diplomaImage");
 		data.country = document.getString("country");
 		data.lastName = document.getString("lastName");
-		data.diplomaValidated = document.getBoolean("diplomaValidated");
 		data.civility = document.getString("civility");
 		data.city = document.getString("city");
 		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
@@ -115,7 +113,7 @@ public class AuxiliaryCollection {
 		data.birthCountry = document.getString("birthCountry");
 		data.profilCompleted = document.getBoolean("profilCompleted");
 		data.addressChecked = document.getBoolean("addressChecked");
-		data.diploma = document.getString("diploma");
+		data.diploma = (List<String>)document.get("diploma");
 		data.skillDoityourself = document.getInteger("skillDoityourself");
 		data.id = document.getString("id");
 		data.email = document.getString("email");
@@ -150,14 +148,10 @@ public class AuxiliaryCollection {
 		Document document = new Document();
 		if (auxiliary.authId != null)
 			document.append("authId", auxiliary.authId);
-		if (auxiliary.diplomaImage != null)
-			document.append("diplomaImage", auxiliary.diplomaImage);
 		if (auxiliary.country != null)
 			document.append("country", auxiliary.country);
 		if (auxiliary.lastName != null)
 			document.append("lastName", auxiliary.lastName);
-		if (auxiliary.diplomaValidated != null)
-			document.append("diplomaValidated", auxiliary.diplomaValidated);
 		if (auxiliary.civility != null)
 			document.append("civility", auxiliary.civility);
 		if (auxiliary.city != null)
@@ -250,10 +244,8 @@ public class AuxiliaryCollection {
 	public static Document toNullDocument(AuxiliaryData auxiliary) {
 		Document document = new Document();
 		document.append("authId", auxiliary.authId);
-		document.append("diplomaImage", auxiliary.diplomaImage);
 		document.append("country", auxiliary.country);
 		document.append("lastName", auxiliary.lastName);
-		document.append("diplomaValidated", auxiliary.diplomaValidated);
 		document.append("civility", auxiliary.civility);
 		document.append("city", auxiliary.city);
 		document.append("lastUpdateDate", auxiliary.lastUpdateDate);

@@ -8,6 +8,7 @@ import { BaseData, Nationality } from 'ap-react-bootstrap'
 import AuxiliaryFields from 'utils/entities/AuxiliaryFields'
 
 import BooleanUtils from 'utils-lib/BooleanUtils'
+import DiplomaUtils from 'utils-lib/entities/DiplomaUtils'
 import NationalityUtils from 'utils-lib/geo/NationalityUtils'
 
 class AuxiliaryInfosEditInfosData extends BaseData {
@@ -18,7 +19,6 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 		this.FIELDS_FORM0 = [
 			AuxiliaryFields.AVATAR,
 			AuxiliaryFields.PROFIL_COMPLETED,
-			AuxiliaryFields.DIPLOMA_IMAGE,
 			AuxiliaryFields.LATTITUDE,
 			AuxiliaryFields.LONGITUDE
 		]
@@ -44,7 +44,7 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 		this.FIELDS_FORM3 = [
 			Object.assign({ defaultValue: '', form: 'textarea' }, AuxiliaryFields.DESCRIPTION),
 			Object.assign({ defaultValue: 'true', form: 'select', values: BooleanUtils.getBooleans() }, AuxiliaryFields.IS_ENTREPRENEUR),
-			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.DIPLOMA)
+			Object.assign({ defaultValue: [], form: 'selectmulti' }, AuxiliaryFields.DIPLOMA, { values: DiplomaUtils.getDiplomas() })
 		]
 
 		this.FIELDS = this.FIELDS_FORM0.concat(this.FIELDS_FORM1).concat(this.FIELDS_FORM2).concat(this.FIELDS_FORM3)

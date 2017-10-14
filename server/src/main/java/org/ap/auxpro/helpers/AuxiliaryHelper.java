@@ -77,7 +77,7 @@ public class AuxiliaryHelper {
 		if (
 			((IValidator<String>)AuxiliaryFields.DESCRIPTION.getValidator()).getState(auxiliaryBean.description) &&
 			((IValidator<Boolean>)AuxiliaryFields.IS_ENTREPRENEUR.getValidator()).getState(auxiliaryBean.isEntrepreneur) &&
-			((IValidator<String>)AuxiliaryFields.DIPLOMA.getValidator()).getState(auxiliaryBean.diploma)
+			((IValidator<Object[]>)AuxiliaryFields.DIPLOMA.getValidator()).getState(auxiliaryBean.diploma.toArray())
 		) {
 			profilProgress += 10;
 		}

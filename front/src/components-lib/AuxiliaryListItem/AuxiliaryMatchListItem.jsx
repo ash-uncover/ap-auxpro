@@ -1,15 +1,20 @@
 import React from 'react'
-import AuxiliaryMatchListItemData from './AuxiliaryMatchListItemData'
 import './AuxiliaryListItem.scss'
+
+import AppHelper from 'helpers/AppHelper'
+import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
 
 import { BaseComponent, Grid, Glyphicon, List, RaterStar, Button } from 'ap-react-bootstrap'
 
 import Image from 'components-lib/Image/Image'
 
+import AuxiliaryUtils from 'utils-lib/entities/AuxiliaryUtils'
+
 class AuxiliaryMatchListItem extends BaseComponent {
 
 	constructor(props) {
 		super(props)
+		this.onShowAuxliaryDetails = this._onShowAuxliaryDetails.bind(this)
 		// Base classes
 		this.baseClasses = [ 'ap-auxiliary-list-item', 'ap-auxiliary-list-item-match' ]
 		// Sub components properties
@@ -30,7 +35,12 @@ class AuxiliaryMatchListItem extends BaseComponent {
 	}
 
 	componentWillMount() {
-		AuxiliaryMatchListItemData.register(this, this.props.auxiliaryId)
+		let auxiliary = AuxiliaryHelper.getData(this.props.auxiliaryId)
+		this.state = {
+			avatar: auxiliary.avatar,
+			name: AuxiliaryUtils.getFullName(auxiliary),
+			address: AuxiliaryUtils.getAddress(auxiliary)
+		}
 	}
 
 	componentDidMount() {
@@ -40,14 +50,12 @@ class AuxiliaryMatchListItem extends BaseComponent {
 	}
 
 
-	componentWillUnmount() {
-		AuxiliaryMatchListItemData.unregister()
-	}
-
-
-
 	// View Callbacks //
 	// --------------------------------------------------------------------------------
+
+	_onShowAuxliaryDetails() {
+		AppHelper.navigate('/service/auxiliaries/' + this.props.auxiliaryId)
+	}
 
 	_onClick(event) {
 		event.preventDefault()

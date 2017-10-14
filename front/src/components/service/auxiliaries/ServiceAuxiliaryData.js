@@ -20,7 +20,8 @@ class ServiceAuxiliaryData extends BaseData {
 			avatar: '',
 			name: '',
 			address: '',
-			email: ''
+			email: '',
+			diploma: []
 		}
 
 		this._onAuxiliaryUpdate()
@@ -44,7 +45,7 @@ class ServiceAuxiliaryData extends BaseData {
 			this.obj.state.address = auxiliary.postalCode + ' ' + auxiliary.city
 			this.obj.state.email = auxiliary.email,
 			this.obj.state.description = auxiliary.description
-			this.obj.state.diplomaImage = auxiliary.diplomaImage
+			this.obj.state.diploma = auxiliary.diploma || []
 			for (let i = 0; i < Skills.VALUES.length; i++) {
 				let skill = Skills.VALUES[i]
 				this.obj.state[skill.key] = auxiliary[skill.key]

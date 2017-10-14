@@ -53,7 +53,6 @@ class AuxiliaryInfos extends React.Component {
 		return (<SkillTile key={index} {...skill} />)
 	}
 
-
 	_buildFormGroup(field) { 
 		return (
 			<Form.Group key={field.key}>
@@ -110,12 +109,6 @@ class AuxiliaryInfos extends React.Component {
 								<Grid.Row>
 									<Grid.Col sm={10} smOffset={1} md={8} mdOffset={2}>
 										{AuxiliaryInfosData.FIELDS_FORM3.map(this.buildFormGroup)}
-									</Grid.Col>
-									<Grid.Col xs={12} className='ap-auxiliary-infos-image-container'>
-										<Image 
-											className={this.state.diplomaImage ? '' : 'ap-no-image'}
-											alt='<Ma photo>' 
-											id={this.state.diplomaImage} />
 									</Grid.Col>
 								</Grid.Row>
 							</Form>

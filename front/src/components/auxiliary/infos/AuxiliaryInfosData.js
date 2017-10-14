@@ -6,6 +6,7 @@ import { BaseData, Formatters, MomentHelper } from 'ap-react-bootstrap'
 import AuxiliaryFields from 'utils/entities/AuxiliaryFields'
 
 import BooleanUtils from 'utils-lib/BooleanUtils'
+import DiplomaUtils from 'utils-lib/entities/DiplomaUtils'
 import NationalityUtils from 'utils-lib/geo/NationalityUtils'
 import StringUtils from 'utils-lib/StringUtils'
 
@@ -16,7 +17,6 @@ class AuxiliaryInfosData extends BaseData {
 
 		this.FIELDS_FORM0 = [
 			AuxiliaryFields.AVATAR,
-			AuxiliaryFields.DIPLOMA_IMAGE,
 			AuxiliaryFields.ARE_SKILL_SET,
 			AuxiliaryFields.PROFIL_COMPLETED,
 			AuxiliaryFields.PROFIL_PROGRESSION
@@ -40,9 +40,9 @@ class AuxiliaryInfosData extends BaseData {
 			Object.assign({ formatter: MomentHelper.localDateToHumanDate }, AuxiliaryFields.BIRTH_DATE)
 		]
 		this.FIELDS_FORM3 = [
-			AuxiliaryFields.DIPLOMA,
 			AuxiliaryFields.DESCRIPTION,
-			Object.assign({ formatter: BooleanUtils.formatBoolean }, AuxiliaryFields.IS_ENTREPRENEUR)
+			Object.assign({ formatter: BooleanUtils.formatBoolean }, AuxiliaryFields.IS_ENTREPRENEUR),
+			Object.assign({ formatter: DiplomaUtils.getList }, AuxiliaryFields.DIPLOMA)
 		]
 		this.FIELDS_FORM4 = [
 			Object.assign({ defaultValue: 0 }, AuxiliaryFields.SKILL_ADMINISTRATIVE),

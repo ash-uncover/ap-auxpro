@@ -62,14 +62,6 @@ class AuxiliaryInfosEditInfos extends React.Component {
 							<Grid.Col xs={12} sm={10} smOffset={1} md={8} mdOffset={2}>
 								{AuxiliaryInfosEditInfosData.FIELDS_FORM3.map(this.buildFormGroup)}
 							</Grid.Col>
-							<br/>
-							<Grid.Col xs={12} className='ap-auxiliary-infos-diploma-container'>
-								<ImageUploader
-									id='diplomaFile'
-									className={this.state.diplomaImage ? '' : 'ap-no-image'}
-									src={this.state.diplomaImageSrc}
-									onChange={this.onChangeDiploma} />
-							</Grid.Col>
 						</Form>
 					</Panel.Body>
 					<Panel.Footer>

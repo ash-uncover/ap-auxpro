@@ -264,10 +264,8 @@ public class ServiceServlet extends APServletBase {
 			List<AuxiliaryBean> beanList = new ArrayList<AuxiliaryBean>();
 			for (AuxiliaryData data : datas) {
 				AuxiliaryBean bean = new AuxiliaryBean();
-				bean.diplomaImage = data.getDiplomaImage();
 				bean.country = data.getCountry();
 				bean.lastName = data.getLastName();
-				bean.diplomaValidated = data.getDiplomaValidated();
 				bean.civility = data.getCivility();
 				bean.city = data.getCity();
 				bean.lastUpdateDate = data.getLastUpdateDate();

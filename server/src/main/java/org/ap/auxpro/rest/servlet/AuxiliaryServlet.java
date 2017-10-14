@@ -58,10 +58,8 @@ public class AuxiliaryServlet extends APServletBase {
 			List<AuxiliaryBean> beanList = new ArrayList<AuxiliaryBean>();
 			for (AuxiliaryData data : datas) {
 				AuxiliaryBean bean = new AuxiliaryBean();
-				bean.diplomaImage = data.getDiplomaImage();
 				bean.country = data.getCountry();
 				bean.lastName = data.getLastName();
-				bean.diplomaValidated = data.getDiplomaValidated();
 				bean.civility = data.getCivility();
 				bean.city = data.getCity();
 				bean.lastUpdateDate = data.getLastUpdateDate();
@@ -190,10 +188,8 @@ public class AuxiliaryServlet extends APServletBase {
 				return Response.status(Status.NOT_FOUND).build();
 			}
 			AuxiliaryBean bean = new AuxiliaryBean();
-			bean.diplomaImage = data.getDiplomaImage();
 			bean.country = data.getCountry();
 			bean.lastName = data.getLastName();
-			bean.diplomaValidated = data.getDiplomaValidated();
 			bean.civility = data.getCivility();
 			bean.city = data.getCity();
 			bean.lastUpdateDate = data.getLastUpdateDate();
@@ -259,10 +255,8 @@ public class AuxiliaryServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
-			data.setDiplomaImage(auxiliaryBean.diplomaImage);
 			data.setCountry(auxiliaryBean.country);
 			data.setLastName(auxiliaryBean.lastName);
-			data.setDiplomaValidated(auxiliaryBean.diplomaValidated);
 			data.setCivility(auxiliaryBean.civility);
 			data.setCity(auxiliaryBean.city);
 			data.setPostalCode(auxiliaryBean.postalCode);

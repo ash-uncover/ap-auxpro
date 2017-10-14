@@ -35,6 +35,12 @@ class FormControlBuilder {
 					value={this.state[field.key]}
 					onChange={this.onChange.bind(this, field.key)} />
 				)
+			case 'selectmulti': return (
+				<Form.SelectMulti
+					values={field.values}
+					value={this.state[field.key]}
+					onChange={this.onChange.bind(this, field.key)} />
+				)
 			case 'address': return (
 				<Google.Autocomplete 
 					placeholder='Saisir adresse'

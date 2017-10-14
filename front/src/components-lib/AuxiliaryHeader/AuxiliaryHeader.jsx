@@ -38,7 +38,7 @@ class AuxiliaryHeader extends React.Component {
 							{this._buildFromGroup('Nom', this.state.name)}
 							{this._buildFromGroup('Adresse', this.state.address)}
 							{this._buildFromGroup('Email', this.state.email)}
-							{this._buildFromGroup('Diplome', this.state.diploma)}
+							{this._buildFromGroup('Téléphone', this.state.phone)}
 						</Form>
 					</Col>
 				</Panel.Body>

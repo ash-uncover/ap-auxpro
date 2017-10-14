@@ -8,6 +8,7 @@ import SkillTile from 'components-lib/SkillTile/SkillTile'
 
 import Skills from 'utils/constants/Skills'
 
+import DiplomaUtils from 'utils-lib/entities/DiplomaUtils'
 import SkillUtils from 'utils-lib/entities/SkillUtils'
 
 class ServiceAuxiliary extends React.Component {
@@ -50,6 +51,14 @@ class ServiceAuxiliary extends React.Component {
 		return (<SkillTile xs={6} key={index} {...skill} />)
 	}
 
+	_buildDiploma(diploma) {
+		return (
+			<li key={diploma}>
+				{DiplomaUtils.getName(diploma)}
+			</li>
+		)
+	}
+
 	render() {
 		return (
 			<div className='ap-service-auxiliary'>
@@ -89,12 +98,11 @@ class ServiceAuxiliary extends React.Component {
 							<Panel.Footer />
 						</Panel>
 						<Panel>
-							<Panel.Header>Son Diplôme</Panel.Header>
+							<Panel.Header>Ses Diplômes</Panel.Header>
 							<Panel.Body className='ap-diploma-column'>
-								<Image 
-									alt='<Son diplôme>' 
-									id={this.state.diplomaImage} 
-									className={'ap-diploma-image' + (this.state.diplomaImage ? '' : ' ap-no-image')} />
+								<ul>
+									{this.state.diploma.map(this._buildDiploma)}
+								</ul>
 							</Panel.Body>
 							<Panel.Footer />
 						</Panel>						

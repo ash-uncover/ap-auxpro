@@ -6,10 +6,8 @@ import java.util.List;
 public class AuxiliaryData {
 
 	public String authId;
-	public String diplomaImage;
 	public String country;
 	public String lastName;
-	public Boolean diplomaValidated;
 	public String civility;
 	public String city;
 	public List<Integer> lastUpdateDate;
@@ -25,7 +23,7 @@ public class AuxiliaryData {
 	public String birthCountry;
 	public Boolean profilCompleted;
 	public Boolean addressChecked;
-	public String diploma;
+	public List<String> diploma;
 	public Integer skillDoityourself;
 	public String id;
 	public String email;
@@ -62,14 +60,6 @@ public class AuxiliaryData {
 		this.authId = authId;
 	}
 
-	public String getDiplomaImage() {
-		return this.diplomaImage;
-	}
-
-	public void setDiplomaImage(String diplomaImage) {
-		this.diplomaImage = diplomaImage;
-	}
-
 	public String getCountry() {
 		return this.country;
 	}
@@ -84,14 +74,6 @@ public class AuxiliaryData {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public Boolean getDiplomaValidated() {
-		return this.diplomaValidated;
-	}
-
-	public void setDiplomaValidated(Boolean diplomaValidated) {
-		this.diplomaValidated = diplomaValidated;
 	}
 
 	public String getCivility() {
@@ -214,11 +196,11 @@ public class AuxiliaryData {
 		this.addressChecked = addressChecked;
 	}
 
-	public String getDiploma() {
+	public List<String> getDiploma() {
 		return this.diploma;
 	}
 
-	public void setDiploma(String diploma) {
+	public void setDiploma(List<String> diploma) {
 		this.diploma = diploma;
 	}
 
