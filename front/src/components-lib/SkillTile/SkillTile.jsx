@@ -20,7 +20,10 @@ class SkillTile extends React.Component {
 				<Panel>
 					<Panel.Body>
 						<p>{this.props.title}</p>
-						<RaterStar value={this.props.value} starMax={this.props.onChange ? 5 : undefined} onChange={this.props.onChange} />
+						<RaterStar 
+							value={this.props.value} 
+							starMax={this.props.onChange ? 5 : undefined} 
+							onChange={this.props.onChange} />
 					</Panel.Body>
 				</Panel>
 			</Grid.Col>

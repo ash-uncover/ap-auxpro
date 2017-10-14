@@ -85,7 +85,7 @@ class ServiceCustomerEditData extends BaseData {
 
 	onCustomerUpdate() {
 		this._onCustomerUpdate()
-		this.setState({})
+		this.forceUpdate()
 	}
 
 	_onCustomerUpdate() {
@@ -113,7 +113,7 @@ class ServiceCustomerEditData extends BaseData {
 		if (this.getState(s1.key) === 0) {
 			return 1
 		}
-		return 0
+		return this.getState(s2.key) - this.getState(s1.key)
 	}
 
 
