@@ -50,7 +50,7 @@ class ServiceTutoData extends BaseData {
 		}).
 		then(function () {
 			setTimeout(AppHelper.setBusy, 200)
-			return AppHelper.navigate.bind(AppHelper, '/service/redirect')
+			return AppHelper.navigate('/service/redirect')
 		}).
 		catch(function (error) {
 			setTimeout(AppHelper.setBusy, 200)
