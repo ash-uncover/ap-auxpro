@@ -1,12 +1,9 @@
 package org.ap.auxpro.helpers;
 
-import java.time.LocalDate;
-
 import javax.ws.rs.core.SecurityContext;
 
 import org.ap.auxpro.bean.ServiceBean;
 import org.ap.auxpro.storage.ServiceFields;
-import org.ap.common.TimeHelper;
 import org.ap.common.validators.IValidator;
 
 public class ServiceHelper {

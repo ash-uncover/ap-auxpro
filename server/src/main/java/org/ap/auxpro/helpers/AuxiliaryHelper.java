@@ -76,7 +76,7 @@ public class AuxiliaryHelper {
 		// Check profesionnal info (total: 90)
 		if (
 			((IValidator<String>)AuxiliaryFields.DESCRIPTION.getValidator()).getState(auxiliaryBean.description) &&
-			((IValidator<Boolean>)AuxiliaryFields.IS_ENTREPRENEUR.getValidator()).getState(auxiliaryBean.isEntrepreneur) &&
+			((IValidator<String>)AuxiliaryFields.IS_ENTREPRENEUR.getValidator()).getState(auxiliaryBean.isEntrepreneur) &&
 			((IValidator<Object[]>)AuxiliaryFields.DIPLOMA.getValidator()).getState(auxiliaryBean.diploma.toArray())
 		) {
 			profilProgress += 10;

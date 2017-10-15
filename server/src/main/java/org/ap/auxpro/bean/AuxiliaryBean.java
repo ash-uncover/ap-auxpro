@@ -41,7 +41,7 @@ public class AuxiliaryBean {
 	public String firstName;
 	public List<Integer> skillAnswers;
 	public String nationality;
-	public Boolean isEntrepreneur;
+	public String isEntrepreneur;
 	public String phone;
 	public Integer skillAdministrative;
 	public Boolean phoneChecked;

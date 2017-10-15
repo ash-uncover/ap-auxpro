@@ -133,7 +133,7 @@ public class AuxiliaryCollection {
 		data.firstName = document.getString("firstName");
 		data.skillAnswers = (List<Integer>)document.get("skillAnswers");
 		data.nationality = document.getString("nationality");
-		data.isEntrepreneur = document.getBoolean("isEntrepreneur");
+		data.isEntrepreneur = document.getString("isEntrepreneur");
 		data.phone = document.getString("phone");
 		data.skillAdministrative = document.getInteger("skillAdministrative");
 		data.phoneChecked = document.getBoolean("phoneChecked");

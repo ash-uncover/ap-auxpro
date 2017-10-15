@@ -43,7 +43,7 @@ public class AuxiliaryData {
 	public String firstName;
 	public List<Integer> skillAnswers;
 	public String nationality;
-	public Boolean isEntrepreneur;
+	public String isEntrepreneur;
 	public String phone;
 	public Integer skillAdministrative;
 	public Boolean phoneChecked;
@@ -356,11 +356,11 @@ public class AuxiliaryData {
 		this.nationality = nationality;
 	}
 
-	public Boolean getIsEntrepreneur() {
+	public String getIsEntrepreneur() {
 		return this.isEntrepreneur;
 	}
 
-	public void setIsEntrepreneur(Boolean isEntrepreneur) {
+	public void setIsEntrepreneur(String isEntrepreneur) {
 		this.isEntrepreneur = isEntrepreneur;
 	}
 
