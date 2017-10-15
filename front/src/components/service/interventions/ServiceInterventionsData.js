@@ -39,13 +39,6 @@ class ServiceInterventionsData extends BaseData {
 		this.declareFunction('onViewCustomer')
 		this.declareFunction('onViewAuxiliary')
 
-
-		this.obj.state = {
-			pending: [],
-			offered: [],
-			planned: []
-		}
-
 		InterventionHelper.register('', this, this.onInterventionsUpdate.bind(this))
 		OfferHelper.register('', this, this.onInterventionsUpdate.bind(this))
 
@@ -65,10 +58,13 @@ class ServiceInterventionsData extends BaseData {
 		this.forceUpdate()
 	}
 	_onInterventionsUpdate() {
+		let canCreateInter = Object.keys(CustomerHelper.getData()).length > 0
+
 		this.obj.state = {
 			pending: [],
 			offered: [],
-			planned: []
+			planned: [],
+			canCreateInter: canCreateInter
 		}
 		let interventions = Utils.map(InterventionHelper.getData('')).filter(this._filterInterventions)
 		for (let i = 0 ; i < interventions.length ; i++) {

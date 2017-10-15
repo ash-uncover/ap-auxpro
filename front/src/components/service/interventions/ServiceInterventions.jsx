@@ -1,4 +1,4 @@
-import React from 'react'
+ 	import React from 'react'
 import ServiceInterventionsData from './ServiceInterventionsData'
 import './ServiceInterventions.scss'
 
@@ -115,12 +115,17 @@ class ServiceInterventions extends React.Component {
 	render() {
 		return (
 			<div className='ap-service-interventions'>
-				<Button 
-					block 
-					bsStyle='primary'
-					onClick={this.onCreateIntervention}>
-					Saisir nouvelle prestation
-				</Button>
+				
+				{this.state.canCreateInter ? 
+					<Button 
+						block 
+						bsStyle='primary'
+						onClick={this.onCreateIntervention}>
+						Saisir nouvelle prestation
+					</Button>
+					:
+					<div>Il faut un usager pour ajouter une prestation</div>
+				}
 				<br/>
 				{ this.state.pending.length ?
 				<Panel>
