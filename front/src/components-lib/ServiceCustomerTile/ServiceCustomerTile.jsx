@@ -15,13 +15,22 @@ class ServiceCustomerTile extends React.Component {
 				<Panel>
 					<Panel.Header>
 						<p>Usager</p>
-						<Button bsSize='xs' onClick={this.props.onView}>
+						<Button 
+							bsSize='xs' 
+							onClick={this.props.onView}
+							tooltip='Voir détail usager'>
 							<Glyphicon glyph='user'/>
 						</Button>
-						<Button bsSize='xs' onClick={this.props.onEdit}>
+						<Button 
+							bsSize='xs' 
+							onClick={this.props.onEdit}
+							tooltip='Editer détail usager'>
 							<Glyphicon glyph='pencil'/>
 						</Button>
-						<Button bsSize='xs' onClick={this.props.onDelete}>
+						<Button 
+							bsSize='xs' 
+							onClick={this.props.onDelete}
+							tooltip='Supprimer usager'>
 							<Glyphicon glyph='remove'/>
 						</Button>
 					</Panel.Header>
