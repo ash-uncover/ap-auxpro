@@ -8,6 +8,7 @@ import { BaseData } from 'ap-react-bootstrap'
 import ServiceFields from 'utils/entities/ServiceFields'
 
 import SocFunctionUtils from 'utils-lib/entities/SocFunctionUtils'
+import SocFunction from 'utils/constants/SocFunction'
 
 class ServiceInfosEditSocietyData extends BaseData {
 
@@ -22,7 +23,7 @@ class ServiceInfosEditSocietyData extends BaseData {
 		]
 		this.FIELDS_FORM1 = [
 			Object.assign({ defaultValue: '', form: 'input' }, ServiceFields.SOCIAL_REASON),
-			Object.assign({ defaultValue: 'MAND', form: 'select' }, ServiceFields.FUNCTION, { values: SocFunctionUtils.getValues() }),
+			Object.assign({ defaultValue: SocFunction.MAND.key, form: 'select' }, ServiceFields.FUNCTION, { values: SocFunctionUtils.getValues() }),
 			Object.assign({ defaultValue: '', form: 'input' }, ServiceFields.SIRET),
 			Object.assign({ defaultValue: '', form: 'input' }, ServiceFields.PHONE)
 			
