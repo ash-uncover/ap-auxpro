@@ -51,7 +51,7 @@ class ServiceInterventionEditData extends BaseData {
 		let customers = this.getCustomers()
 
 		this.FIELDS_FORM1 = [
-			Object.assign({ defaultValue: customers[0].id, form: 'select', values: customers }, InterventionFields.CUSTOMER_ID),
+			Object.assign({ defaultValue: customers['0'].key, form: 'select', values: customers }, InterventionFields.CUSTOMER_ID),
 			Object.assign({ defaultValue: 'ONE', form: 'select' }, InterventionFields.PERIOD, { values: RecurencePeriod.VALUES.map(this.getRecurence) }),
 			Object.assign({ defaultValue: defaultDate, form: 'date' }, InterventionFields.START_DATE),
 			Object.assign({ defaultValue: defaultDate, form: 'date' }, InterventionFields.END_DATE),
