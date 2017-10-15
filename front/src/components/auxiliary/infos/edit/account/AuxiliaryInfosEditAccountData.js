@@ -9,7 +9,7 @@ class AuxiliaryInfosEditAccountData extends BaseData {
 		super.register(obj)
 		
 		this.declareFunction('onCancel')
-		this.declareFunction('onSendCode')
+		this.declareFunction('onSubmit')
 
 		this.declareFunction('isSubmitDisabled')
 
@@ -61,7 +61,7 @@ class AuxiliaryInfosEditAccountData extends BaseData {
 		AppHelper.navigateBack()
 	}
 
-	onSendCode() {
+	onSubmit() {
 		if (this.getState('accountCode') === 'AUXPROS-2017') {
 			if (this.getState('accountType') === 'Premium') {
 				this.setState({ 

@@ -30,7 +30,7 @@ class ServiceInfosEditSociety extends React.Component {
 	// --------------------------------------------------------------------------------
 
 	render() {
-		let submitEnabled = this.state.dirty && this.state.valid
+		let submitEnabled = this.isSubmitEnabled()
 		return (
 			<div className='ap-service-infos-edit-society'>
 				<Button block bsStyle='primary' onClick={this.onCancel}>Retour au profil</Button>
@@ -55,6 +55,11 @@ class ServiceInfosEditSociety extends React.Component {
 									{ServiceInfosEditSocietyData.FIELDS_FORM2.map(this.buildFormGroup)}
 								</Grid.Col>
 							</Grid.Row>
+							<Button 
+								className='ap-hidden' 
+								type='submit' 
+								disabled={this.state.errorJustHappened || !submitEnabled}
+								onClick={this.onSubmit} />
 						</Form>
 					</Panel.Body>
 					<Panel.Footer>

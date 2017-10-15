@@ -9,7 +9,7 @@ class ServiceInfosEditAccountData extends BaseData {
 		super.register(obj)
 		
 		this.declareFunction('onCancel')
-		this.declareFunction('onSendCode')
+		this.declareFunction('onSubmit')
 
 		this.declareFunction('isSubmitDisabled')
 
@@ -56,12 +56,11 @@ class ServiceInfosEditAccountData extends BaseData {
 		this.setState(data)
 	}
 
-
 	onCancel() {
 		AppHelper.navigateBack()
 	}
 
-	onSendCode() {
+	onSubmit() {
 		if (this.getState('accountCode') === 'AUXPROS-2017') {
 			if (this.getState('accountType') === 'Premium') {
 				this.setState({ 
@@ -118,5 +117,5 @@ class ServiceInfosEditAccountData extends BaseData {
 	}
 
 }
-var ServiceInfosEditAccountObj = new ServiceInfosEditAccountData()
+let ServiceInfosEditAccountObj = new ServiceInfosEditAccountData()
 export default ServiceInfosEditAccountObj

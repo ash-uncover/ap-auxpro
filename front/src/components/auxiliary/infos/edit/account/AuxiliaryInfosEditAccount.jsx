@@ -55,20 +55,25 @@ class AuxiliaryInfosEditAccount extends React.Component {
 										value={this.state.accountCode}
 										onChange={this.onChange.bind(this, 'accountCode')} />
 								</Grid.Col>
+								<Button 
+									className='ap-hidden' 
+									type='submit' 
+									disabled={submitDisabled}
+									onClick={this.onSubmit} />
 							</Form.Group>
-							<Grid.Row>
-								<Grid.Col sm={8} smOffset={4} md={9} mdOffset={3}>
-									<p className='ap-error'>{this.state.errorMessage}</p>
-									<Button 
-										block 
-										bsStyle={submitDisabled ? 'default' : 'success'}
-										disabled={submitDisabled}
-										onClick={this.onSendCode}>
-										Ajouter code AuXpros
-									</Button>
-								</Grid.Col>
-							</Grid.Row>
 						</Form>
+						<Grid.Row>
+							<Grid.Col sm={8} smOffset={4} md={9} mdOffset={3}>
+								<p className='ap-error'>{this.state.errorMessage}</p>
+								<Button 
+									block 
+									bsStyle={submitDisabled ? 'default' : 'success'}
+									disabled={submitDisabled}
+									onClick={this.onSubmit}>
+									Ajouter code AuXpros
+								</Button>
+							</Grid.Col>
+						</Grid.Row>
 					</Panel.Body>
 					<Panel.Footer>
 					</Panel.Footer>

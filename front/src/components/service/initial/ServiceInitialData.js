@@ -39,6 +39,7 @@ class ServiceInitialData extends BaseData {
 	register(obj) {
 		super.register(obj)
 		
+		this.declareFunction('isSubmitEnabled')
 		this.declareFunction('onSubmit')
 
 		let service = ServiceHelper.getData(AuthHelper.getEntityId()) || {}
@@ -118,6 +119,10 @@ class ServiceInitialData extends BaseData {
 
 	// Internal methods //
 	// --------------------------------------------------------------------------------
+
+	isSubmitEnabled() {
+		return this.getState('dirty') && this.getState('valid')
+	}
 
 	buildService() {
 		let service = ServiceHelper.getData(AuthHelper.getEntityId())

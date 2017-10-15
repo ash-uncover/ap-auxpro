@@ -44,7 +44,7 @@ class ServiceInfosEditSocietyData extends BaseData {
 		this.declareFunction('onCancel')
 
 		this.declareFunction('onChangeImage')
-
+		this.declareFunction('isSubmitEnabled')
 		this.declareFunction('onSubmit')
 
 		let service = ServiceHelper.getData(AuthHelper.getEntityId()) || {}
@@ -69,10 +69,12 @@ class ServiceInfosEditSocietyData extends BaseData {
 
 
 	handlePutServiceError() {
-		console.error(ErrorHelper.getData('PUT_SERVICE'))
-		this.setState({
-			errorJustHappened: true
-		})
+		let errorData = ErrorHelper.getData('PUT_SERVICE')
+		if (errorData) {
+			this.setState({
+				errorJustHappened: true
+			})
+		}
 	}
 
 
@@ -152,6 +154,10 @@ class ServiceInfosEditSocietyData extends BaseData {
 
 	// Internal methods //
 	// --------------------------------------------------------------------------------
+
+	isSubmitEnabled() {
+		return this.getState('dirty') && this.getState('valid')
+	}
 
 	buildService() {
 		let service = ServiceHelper.getData(AuthHelper.getEntityId())
