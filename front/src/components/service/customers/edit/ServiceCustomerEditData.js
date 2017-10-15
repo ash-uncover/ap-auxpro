@@ -11,52 +11,56 @@ import CustomerFields from 'utils/entities/CustomerFields'
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 import NationalityUtils from 'utils-lib/geo/NationalityUtils'
 
-let MODES = {
-	CREATE: 'CREATE',
-	EDIT: 'EDIT'
-}
-
-let FIELDS_FORM0 = [
-	CustomerFields.LATTITUDE,
-	CustomerFields.LONGITUDE
-]
-let FIELDS_FORM1 = [
-	Object.assign({ defaultValue: 'Mme', form: 'select' }, CustomerFields.CIVILITY),
-	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.LAST_NAME),
-	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.FIRST_NAME),
-	Object.assign({ defaultValue: [1950,1,1], form: 'date' }, CustomerFields.BIRTH_DATE),
-	Object.assign({ defaultValue: 'FR', form: 'select', values: NationalityUtils.getNationalities() }, CustomerFields.NATIONALITY),
-	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.PHONE),
-]
-let FIELDS_FORM2 = [
-	{ form: 'address', key: 'addressSearch', name: 'Adresse' },
-	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.ADDRESS),
-	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.POSTAL_CODE),
-	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.CITY),
-	Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.COUNTRY),
-	Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.EMAIL)
-]
-let FIELDS_FORM3 = [
-	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_ADMINISTRATIVE),
-	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_CHILDHOOD),
-	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_COMPAGNY),
-	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_DOITYOURSELF),
-	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_HOUSEWORK),
-	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_NURSING),
-	Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_SHOPPING)
-]
-let FIELDS = FIELDS_FORM0.concat(FIELDS_FORM1).concat(FIELDS_FORM2).concat(FIELDS_FORM3)
-
 class ServiceCustomerEditData extends BaseData {
 
-	register(obj, customerId) {
-		super.register(obj)
+	constructor() {
+		super(...arguments)
 
-		this.customerId = customerId
+		this.MODES = {
+			CREATE: 'CREATE',
+			EDIT: 'EDIT'
+		}
+
+		this.FIELDS_FORM0 = [
+			CustomerFields.LATTITUDE,
+			CustomerFields.LONGITUDE
+		]
+		this.FIELDS_FORM1 = [
+			Object.assign({ defaultValue: 'Mme', form: 'select' }, CustomerFields.CIVILITY),
+			Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.LAST_NAME),
+			Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.FIRST_NAME),
+			Object.assign({ defaultValue: [1950,1,1], form: 'date' }, CustomerFields.BIRTH_DATE),
+			Object.assign({ defaultValue: 'FR', form: 'select', values: NationalityUtils.getNationalities() }, CustomerFields.NATIONALITY),
+			Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.PHONE),
+		]
+		this.FIELDS_FORM2 = [
+			{ form: 'address', key: 'addressSearch', name: 'Adresse' },
+			Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.ADDRESS),
+			Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.POSTAL_CODE),
+			Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.CITY),
+			Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.COUNTRY),
+			Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.EMAIL)
+		]
+		this.FIELDS_FORM3 = [
+			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_ADMINISTRATIVE),
+			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_CHILDHOOD),
+			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_COMPAGNY),
+			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_DOITYOURSELF),
+			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_HOUSEWORK),
+			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_NURSING),
+			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_SHOPPING)
+		]
+		this.FIELDS = this.FIELDS_FORM0.concat(this.FIELDS_FORM1).concat(this.FIELDS_FORM2).concat(this.FIELDS_FORM3)
+
 
 		this.sortSkills = this._sortSkills.bind(this)
 		this.sortSkillsSecondary = this._sortSkillsSecondary.bind(this)
 
+	}
+	register(obj, customerId) {
+		super.register(obj)
+
+		this.customerId = customerId
 		this.obj.onBack = AppHelper.navigateBack.bind(AppHelper)
 
 		this.declareFunction('onChangeDirty')
@@ -67,41 +71,26 @@ class ServiceCustomerEditData extends BaseData {
 		this.declareFunction('onSubmit')
 		
 		this.obj.state = {
-			mode: customerId !== 'new' ? MODES.EDIT : MODES.CREATE
+			mode: customerId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
 		}
 
-		this._onCustomerUpdate()
-
-		CustomerHelper.register('', this, this.onCustomerUpdate.bind(this))
-	}
-
-	unregister() {
-		CustomerHelper.unregister(this)
-	}
-
-
-	// Store notifications //
-	// --------------------------------------------------------------------------------
-
-	onCustomerUpdate() {
-		this._onCustomerUpdate()
-		this.forceUpdate()
-	}
-
-	_onCustomerUpdate() {
 		let customer = CustomerHelper.getData(this.customerId) || {}
 		this.obj.state.customerName = this.customerId !== 'new' ? CustomerUtils.getFullName(customer) : 'Nouvel usager'
-		for (let i = 0; i < FIELDS.length; i++) {
-			let field = FIELDS[i]
-			let value = customer && customer[field.key]
+		for (let i = 0; i < this.FIELDS.length; i++) {
+			let field = this.FIELDS[i]
+			let value = customer[field.key]
 			this.obj.state[field.key] = value || field.defaultValue
-			if (field.defaultValue && this.obj.state[field.key] === field.defaultValue && this.obj.state.mode === MODES.CREATE) {
+			if (field.defaultValue && this.obj.state[field.key] === field.defaultValue && this.obj.state.mode === this.MODES.CREATE) {
 				this.obj.state[field.key + 'Default'] = 'warning'
 			}
 		}
 		this.obj.state.skills = Skills.VALUES.sort(this.sortSkills)
 		this.obj.state.showAllSkills = false		
 	}
+
+
+	// Store notifications //
+	// --------------------------------------------------------------------------------
 
 	_sortSkills(s1, s2) {
 		return this.getState(s2.key) - this.getState(s1.key)
@@ -156,12 +145,12 @@ class ServiceCustomerEditData extends BaseData {
 	}
 
 	buildCustomer() {
-		let customer = (this.getState('mode') === MODES.CREATE) ?
+		let customer = (this.getState('mode') === this.MODES.CREATE) ?
 			{ serviceId: AuthHelper.getEntityId() } :
 			CustomerHelper.getData(this.customerId)
 			
-		for (let i = 0 ; i < FIELDS.length ; i++) {
-			let field = FIELDS[i]
+		for (let i = 0 ; i < this.FIELDS.length ; i++) {
+			let field = this.FIELDS[i]
 			if (CustomerFields.get(field.key)) {
 				customer[field.key] = this.getState(field.key)
 			}
@@ -173,7 +162,7 @@ class ServiceCustomerEditData extends BaseData {
 		AppHelper.setBusy(true).
 		then(function() {
 			let customer = this.buildCustomer()
-			if (this.getState('mode') === MODES.CREATE) {
+			if (this.getState('mode') === this.MODES.CREATE) {
 				return CustomerHelper.postCustomer(customer)
 			} else {
 				return CustomerHelper.putCustomer(customer)
@@ -195,9 +184,4 @@ class ServiceCustomerEditData extends BaseData {
 }
 
 let ServiceCustomerEditObj = new ServiceCustomerEditData()
-ServiceCustomerEditObj.FIELDS = FIELDS
-ServiceCustomerEditObj.FIELDS_FORM1 = FIELDS_FORM1
-ServiceCustomerEditObj.FIELDS_FORM2 = FIELDS_FORM2
-ServiceCustomerEditObj.FIELDS_FORM3 = FIELDS_FORM3
-ServiceCustomerEditObj.MODES = MODES
 export default ServiceCustomerEditObj
