@@ -42,6 +42,9 @@ class AccountEditEmailChangeEmail extends React.Component {
 										value={this.state.email}
 										onChange={this.onChange.bind(this, 'email')} />
 								</Grid.Col>
+								<Form.Submit 
+									disabled={this.state.errorJustHappened || submitDisabled}
+									onSubmit={this.onSubmit} />
 							</Form.Group>
 							<Grid.Row>
 								<Grid.Col sm={7} smOffset={5} md={8} mdOffset={4}>

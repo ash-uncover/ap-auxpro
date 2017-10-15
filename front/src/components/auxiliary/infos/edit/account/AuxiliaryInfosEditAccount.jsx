@@ -32,9 +32,9 @@ class AuxiliaryInfosEditAccount extends React.Component {
 					<Panel.Body>
 						<h4>Mon abonnement AuXpros</h4>
 						<p>
-							Le type d'abonnement AuXpros auquel vous souscrivez détermine le degrès d'accès que vous avez à nos Auxiliarys.
+							Le type d'abonnement AuXpros auquel vous souscrivez détermine le degrès d'accès que vous avez à nos services.
 							<br/>
-							Si votre compte n'est pas PREMIUM vous ne pourrez pas utiliser les fonctionalités de MATCHING pour émettre vos offres vers des auxiliaires de vie.
+							Si votre compte n'est pas PREMIUM vous ne pourrez pas recevoir d'offres des partenaires AuXpros.
 						</p>
 						<Form horizontal>
 							<Form.Group>

@@ -64,11 +64,9 @@ class RegisterService extends React.Component {
 						</Form.Group>
 						<Link link='/auth/register/confirm'>J'ai déjà un code.</Link>
 						<p className='ap-error'>{this.state.errorJustHappened && this.state.errorMessage}</p>
-						<Button 
-							className='ap-hidden' 
-							type='submit' 
+						<Form.Submit 
 							disabled={this.state.errorJustHappened || submitDisable}
-							onClick={this.onSubmit} />
+							onSubmit={this.onSubmit} />
 					</Form>
 				</Panel.Body>
 				<Panel.Footer>

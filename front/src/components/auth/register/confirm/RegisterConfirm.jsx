@@ -79,11 +79,11 @@ class RegisterConfirm extends React.Component {
 								value={this.state.token}
 								onChange={this.onChange.bind(this, 'token')} />
 						</Form.Group>
-						<Button 
+						<Form.Submit 
 							className='ap-hidden' 
 							type='submit' 
 							disabled={this.state.errorJustHappened || submitDisable}
-							onClick={this.onSubmit} />
+							onSubmit={this.onSubmit} />
 					</Form>
 					{this.state.errorJustHappened && this.state.errorMessage}
 				</Panel.Body>
