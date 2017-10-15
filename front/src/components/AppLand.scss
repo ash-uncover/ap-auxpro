@@ -1,0 +1,67 @@
+.ap-app-land {
+	background: white;
+	
+	.ap-row {
+		background: white;
+		padding: 80px 45px;	
+	}
+
+	.ap-app-platform {
+		text-align: center;
+	}
+
+	.ap-app-discover {
+
+	}
+
+	.ap-app-video {
+
+	}
+
+	.ap-app-roles {
+		.ap-col {
+			text-align: center;
+		}
+		background: #E3E4E5;
+	}
+
+	.ap-app-tool {
+		color: white;
+		background: #3379B7;
+		.ap-col + .ap-col {
+			text-align: center;
+		}
+		img {
+			max-height: 400px;
+		}
+	}
+
+	.ap-app-news {
+		h1 {
+			margin-bottom: 45px;
+		}
+		.ap-col {
+			text-align: center;
+		}
+		.ap-facebook-page,
+		.ap-twitter-timeline {
+			border: 1px solid grey !important;
+		}
+
+	}
+
+	.ap-app-experience {
+		background: url('/assets/images/auxpro-land-image3.jpg');
+		background-size: cover;
+		overflow: hidden;
+
+		.ap-app-experience-content {
+			margin-top: 100px;
+			margin-bottom: 200px;
+			margin-left: -45px;
+			padding: 15px 30px;
+			width: calc(100% + 90px);
+			background: rgba(255,255,255,0.8);
+		}
+	}
+}

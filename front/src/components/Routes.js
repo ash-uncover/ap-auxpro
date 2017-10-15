@@ -1,5 +1,5 @@
 import App from 'components/App'
-import AppLogo from 'components/AppLogo'
+import AppLand from 'components/AppLand'
 import AppHome from 'components/home/AppHome'
 import Auth from 'components/auth/Auth'
 import Login from 'components/auth/login/Login'
@@ -116,7 +116,7 @@ let auxiliaryRoutes = [
 	{ path: '/services/:serviceId', component: AuxiliaryService },
 ]
 let appRoutes = [
-	{ component: AppLogo },
+	{ component: AppLand },
 	{ path: '/home', component: AppHome },
 	{ path: '/auth', component: Auth, routes: authRoutes },
 	{ path: '/logout', component: Logout },

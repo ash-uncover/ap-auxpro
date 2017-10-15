@@ -28,7 +28,7 @@ class App extends React.Component {
 		return (
 			<div className='ap-app'>
 				<AppHeader />
-				<Grid.Container className='ap-app-main-content'>
+				<Grid.Container fluid className='ap-app-main-content'>
 					{this.props.children}
 				</Grid.Container>
 				<AppFooter />
