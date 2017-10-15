@@ -58,11 +58,6 @@ class ServiceInitial extends React.Component {
 									{ServiceInitialData.FIELDS_FORM2.map(this.buildFormGroup)}
 								</Grid.Col>
 							</Grid.Row>
-							<Button 
-								className='ap-hidden' 
-								type='submit' 
-								disabled={this.state.errorJustHappened || !submitEnabled}
-								onClick={this.onSubmit} />
 						</Form>
 					</Panel.Body>
 					<Panel.Footer>

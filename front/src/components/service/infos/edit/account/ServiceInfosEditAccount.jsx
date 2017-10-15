@@ -57,11 +57,9 @@ class ServiceInfosEditAccount extends React.Component {
 										value={this.state.accountCode}
 										onChange={this.onChange.bind(this, 'accountCode')} />
 								</Grid.Col>
-								<Button 
-									className='ap-hidden' 
-									type='submit' 
+								<Form.Submit
 									disabled={submitDisabled}
-									onClick={this.onSubmit} />
+									onSubmit={this.onSubmit} />
 							</Form.Group>
 						</Form>
 						<Grid.Row>

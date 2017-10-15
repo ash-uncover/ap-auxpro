@@ -102,7 +102,7 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 							{AuxiliaryIndisponibilityEditData.FIELDS_FORM1.map(this.buildFormGroup)}
 						</Form>
 						<Form className='col-sm-3 col-lg-2'>
-						{AuxiliaryIndisponibilityEditData.FIELDS_FORM2.map(this.buildFormGroup)}
+							{AuxiliaryIndisponibilityEditData.FIELDS_FORM2.map(this.buildFormGroup)}
 						</Form>
 					</Panel.Body>
 					<Panel.Footer>
@@ -120,7 +120,7 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 					<Button 
 						block 
 						bsStyle={this.state.errorJustHappened ? 'danger' : submitDisabled ? 'default' : 'success'}
-								disabled={this.state.errorJustHappened || submitDisabled}
+						disabled={this.state.errorJustHappened || submitDisabled}
 						onClick={this.onSubmit}>
 						{ this.state.errorJustHappened ? 'Erreur' : 'Créer indisponibilité' }
 					</Button>
