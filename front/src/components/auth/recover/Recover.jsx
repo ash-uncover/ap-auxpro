@@ -41,6 +41,11 @@ class Recover extends React.Component {
 								onChange={this.onChange.bind(this, 'email')} />
 						</Form.Group>
 						<Link link='/auth/recover/confirm'>J'ai déjà un code.</Link>
+						<Button 
+							className='ap-hidden' 
+							type='submit' 
+							disabled={submitDisabled}
+							onClick={this.onSubmit} />
 					</Form>
 				</Panel.Body>
 				<Panel.Footer>

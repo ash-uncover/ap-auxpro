@@ -90,6 +90,11 @@ class RecoverConfirm extends React.Component {
 								value={this.state.confirm}
 								onChange={this.onChangeNoError.bind(this, 'confirm')} />
 						</Form.Group>
+						<Button 
+							className='ap-hidden' 
+							type='submit' 
+							disabled={this.state.errorJustHappened || submitDisable}
+							onClick={this.onSubmitPassword} />
 					</Form>
 					{this.state.errorJustHappened && this.state.errorMessage}
 				</Panel.Body>
@@ -159,6 +164,11 @@ class RecoverConfirm extends React.Component {
 								value={this.state.token}
 								onChange={this.onChangeNoError.bind(this, 'token')} />
 						</Form.Group>
+						<Button 
+							className='ap-hidden' 
+							type='submit' 
+							disabled={this.state.errorJustHappened || submitDisable}
+							onClick={this.onSubmitCode} />
 					</Form>
 					{this.state.errorJustHappened && this.state.errorMessage}
 				</Panel.Body>

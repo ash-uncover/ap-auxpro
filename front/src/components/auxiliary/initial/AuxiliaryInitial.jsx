@@ -30,7 +30,7 @@ class AuxiliaryInitial extends React.Component {
 	// --------------------------------------------------------------------------------
 
 	render() {
-		let submitEnable = this.state.dirty && this.state.auxiliaryValid
+		let submitEnabled = this.state.dirty && this.state.auxiliaryValid
 		return (
 			<div className='ap-auxiliary-initial'>
 				<Panel>
@@ -55,16 +55,29 @@ class AuxiliaryInitial extends React.Component {
 							<Grid.Col sm={6} lg={5}>
 								{AuxiliaryInitialData.FIELDS_FORM2.map(this.buildFormGroup)}
 							</Grid.Col>
+							<Button 
+								className='ap-hidden' 
+								type='submit' 
+								disabled={this.state.errorJustHappened || !submitEnabled}
+								onClick={this.onSubmit} />
 						</Form>
 					</Panel.Body>
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
-				<Button 
+				{ this.state.errorJustHappened ? 
+					<Panel>
+						<Panel.Body className='ap-error'>
+							<div>Une erreur est survenue</div>
+							<div>Veuillez vérifier les valeurs saisies</div>
+						</Panel.Body>
+					</Panel>
+				: null }
+				<Button
 					block 
-					bsStyle={submitEnable ? 'success' : 'default'}
-					disabled={!submitEnable}
-					tooltip={submitEnable ? 'Enregistrer vos informations' : 'Vous devez remplir les informations'}
+					bsStyle={submitEnabled ? 'success' : 'default'}
+					disabled={!submitEnabled}
+					tooltip={submitEnabled ? 'Enregistrer vos informations' : 'Vous devez remplir les informations'}
 					onClick={this.onSubmit}>
 					Continuer vers AuXpros
 				</Button>

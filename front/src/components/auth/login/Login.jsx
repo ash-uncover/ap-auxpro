@@ -55,6 +55,11 @@ class Login extends React.Component {
 						{ this.state.errorJustHappened ?
 							<p>{this.state.errorMessage}</p>
 						: null }
+						<Button 
+							className='ap-hidden' 
+							type='submit' 
+							disabled={this.state.errorJustHappened || submitDisable}
+							onClick={this.onSubmit} />
 					</Form>
 				</Panel.Body>
 				<Panel.Footer>
