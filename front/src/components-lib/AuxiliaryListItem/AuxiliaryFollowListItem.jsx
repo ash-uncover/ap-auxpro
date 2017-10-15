@@ -1,18 +1,24 @@
 import React from 'react'
-import AuxiliaryFollowListItemData from './AuxiliaryFollowListItemData'
 import './AuxiliaryListItem.scss'
+
+import AppHelper from 'helpers/AppHelper'
+import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
+import OfferHelper from 'helpers/OfferHelper'
 
 import { BaseComponent, Grid, Glyphicon, List, RaterStar, Button } from 'ap-react-bootstrap'
 
 import Image from 'components-lib/Image/Image'
 
 import OfferStatusAux from 'utils/constants/OfferStatusAux'
+
+import AuxiliaryUtils from 'utils-lib/entities/AuxiliaryUtils'
 import OfferStatusAuxUtils from 'utils-lib/entities/OfferStatusAuxUtils'
 
 class AuxiliaryFollowListItem extends BaseComponent {
 
 	constructor(props) {
 		super(props)
+		this.onShowAuxliaryDetails = this._onShowAuxliaryDetails.bind(this)
 		// Base classes
 		this.baseClasses = [ 'ap-auxiliary-list-item', 'ap-auxiliary-list-item-follow' ]
 		// Component properties
@@ -27,11 +33,23 @@ class AuxiliaryFollowListItem extends BaseComponent {
 	}
 
 	componentWillMount() {
-		AuxiliaryFollowListItemData.register(this, this.props.offerId)
+		let offer = OfferHelper.getData(this.props.offerId)
+		this.auxiliaryId = offer.auxiliaryId
+		let auxiliary = AuxiliaryHelper.getData(offer.auxiliaryId)
+		this.state = {
+			avatar: auxiliary.avatar,
+			name: AuxiliaryUtils.getFullName(auxiliary),
+			address: AuxiliaryUtils.getAddress(auxiliary),
+			status: OfferStatusAux.get(offer.auxStatus)
+		}
 	}
 
-	componentWillUnmount() {
-		AuxiliaryFollowListItemData.unregister()
+
+	// View callbacks //
+	// --------------------------------------------------------------------------------
+
+	_onShowAuxliaryDetails() {
+		AppHelper.navigate('/service/auxiliaries/' + this.auxiliaryId)
 	}
 
 
