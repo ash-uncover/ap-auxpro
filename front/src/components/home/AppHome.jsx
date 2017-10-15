@@ -5,6 +5,8 @@ import './AppHome.scss'
 import { Row, Col, Panel, Button } from 'ap-react-bootstrap'
 
 import ImageUploader from 'components-lib/Image/ImageUploader'
+import FacebookPage from 'components-lib/Facebook/FacebookPage'
+import TweeterTimeline from 'components-lib/Tweeter/TweeterTimeline'
 
 class AppHome extends React.Component {
 
@@ -66,7 +68,38 @@ class AppHome extends React.Component {
 						</div>
 					</Col>
 				</Row>
-				<iframe width="420" height="315" src="https://www.youtube.com/embed/79hXWPst6HE"></iframe>
+
+				<Row>
+					<Col xs={12}>
+						<iframe 
+							width="420" 
+							height="315" 
+							src="https://www.youtube.com/embed/79hXWPst6HE">
+						</iframe>
+					</Col>
+				</Row>
+
+				<Row>
+					<Col sm={6}>
+						<TweeterTimeline
+							lang='fr'
+							width={300}
+							height={500}
+							theme='light'
+							href='https://twitter.com/AuXpros?ref_src=twsrc%5Etfw'
+							name='Tweets by AuXpros' />
+					</Col>
+					<Col sm={6}>
+						<FacebookPage 
+							name='AuXpros' 
+							link='https://www.facebook.com/Auxpros/'
+							tabs='timeline'
+							smallHeader={true}
+							adaptContainerWidth={true}
+							hideCover={true}
+							showFacepile={false} />
+					</Col>
+				</Row>
 			</div>
 		)
 	}
