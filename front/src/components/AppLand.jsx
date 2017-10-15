@@ -28,8 +28,8 @@ class AppLand extends React.Component {
 				<Row className='ap-app-platform'>
 					<Col xs={12}>
 						<h1>La plateforme des professionnels du SAP</h1>
-						<Button>ESSSAYER MAINTENANT</Button>
-						<Button>EN SAVOIR PLUS</Button>
+						<Button bsStyle='primary'>ESSSAYER MAINTENANT</Button>
+						<Button bsStyle='default'>EN SAVOIR PLUS</Button>
 					</Col>
 				</Row>
 
@@ -41,7 +41,7 @@ class AppLand extends React.Component {
 							AuXpros est le premier outil d'aide au recrutement sur le secteur de l'aide à la personne. 
 							Il offre la possibilité pour les organismes de recruter des intervenantes répondant à des critères précis d'organisation et de compétences.
 						</p>
-						<Button>Découvrir</Button>
+						<Button bsStyle='primary'>Découvrir</Button>
 					</Col>
 					<Col sm={6}>
 						<img src='/assets/images/auxpro-land-image1.jpg' width="100%"></img>
@@ -51,9 +51,9 @@ class AppLand extends React.Component {
 				<Row className='ap-app-video'>
 					<Col sm={8}>
 						<iframe 
-							width="420" 
-							height="315" 
-							src="https://www.youtube.com/embed/79hXWPst6HE">
+							width='550'
+							height='315'
+							src='https://www.youtube.com/embed/79hXWPst6HE'>
 						</iframe>
 					</Col>
 					<Col sm={4}>
@@ -99,8 +99,8 @@ class AppLand extends React.Component {
 						<FacebookPage 
 							name='AuXpros' 
 							link='https://www.facebook.com/Auxpros/'
-							width={300}
-							height={400}
+							width={350}
+							height={500}
 							tabs='timeline'
 							smallHeader={true}
 							adaptContainerWidth={true}
@@ -110,8 +110,8 @@ class AppLand extends React.Component {
 					<Col sm={6}>
 						<TwitterTimeline
 							lang='fr'
-							width={300}
-							height={394}
+							width={350}
+							height={494}
 							theme='light'
 							href='https://twitter.com/AuXpros?ref_src=twsrc%5Etfw'
 							name='Tweets by AuXpros' />
@@ -121,11 +121,33 @@ class AppLand extends React.Component {
 				<Row className='ap-app-experience'>
 					<Col xs={12} className='ap-app-experience-content'>
 						<div>
-							<h1>VENEZ TENTER L'EXPERIENCE AUXPROS !</h1>
+							<h1>VENEZ TENTER<br/>L'EXPERIENCE AUXPROS !</h1>
 							<p><b>Inscrivez-vous gratuitement</b></p>
-							<p>Créez votre profil en quelques minutes et laissez-vous guider jusqu'à votre première mission chez AuXpros.</p>
+							<p className='ap-app-experience-grayed'>Créez votre profil en quelques minutes et laissez-vous<br/>guider jusqu'à votre première mission chez AuXpros.</p>
 							<p><b>Et n'hésitez pas à nous rejoinre sur les réseaux sociaux !</b></p>
-							<Button>S'inscrire</Button>
+							<div className='ap-app-experience-links'>
+								<Button 
+									bsStyle='primary'>
+									S'inscrire
+								</Button>
+								<a 
+									className='ap-app-experience-link ap-twitter'
+									target='_blank'
+									title='Twitter'
+									href='https://twitter.com/AuXpros' />
+								<a 
+									className='ap-app-experience-link ap-facebook'
+									target='_blank'
+									title='Facebook'
+									href='https://www.facebook.com/Auxpros' />
+								<a 
+									className='ap-app-experience-link ap-youtube'
+									target='_blank'
+									title='Youtube'
+									href='https://www.youtube.com/channel/UC0E73ybLlgPiLQohO1UGEqA/featured' />
+								
+							</div>
+
 						</div>
 					</Col>
 				</Row>
