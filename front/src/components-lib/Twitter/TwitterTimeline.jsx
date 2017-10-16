@@ -1,5 +1,5 @@
 import React from 'react'
-import './ap-Twitter.scss'
+import './ap-twitter.scss'
 
 import { BaseComponent } from 'ap-react-bootstrap'
 
