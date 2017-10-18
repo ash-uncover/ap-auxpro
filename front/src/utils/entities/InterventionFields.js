@@ -110,7 +110,7 @@ let _END_DATE = {
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
-	type: 'number',
+	type: 'Date',
 }
 let _SAD_STATUS_CHANGED = {
 	key: 'sadStatusChanged',
@@ -118,7 +118,7 @@ let _SAD_STATUS_CHANGED = {
 }
 let _CREATION_DATE = {
 	key: 'creationDate',
-	type: 'number',
+	type: 'Date',
 }
 let _CUSTOMER_ID = {
 	key: 'customerId',

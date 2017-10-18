@@ -83,7 +83,7 @@ let _END_DATE = {
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
-	type: 'number',
+	type: 'Date',
 }
 let _DAYS = {
 	key: 'days',
@@ -103,7 +103,7 @@ let _ID = {
 }
 let _CREATION_DATE = {
 	key: 'creationDate',
-	type: 'number',
+	type: 'Date',
 }
 let _START_DATE = {
 	key: 'startDate',

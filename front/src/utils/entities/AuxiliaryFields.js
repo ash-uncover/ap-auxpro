@@ -270,7 +270,7 @@ let _CITY = {
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
-	type: 'number',
+	type: 'Date',
 }
 let _POSTAL_CODE = {
 	key: 'postalCode',
@@ -383,7 +383,7 @@ let _ARE_SKILL_SET = {
 }
 let _CREATION_DATE = {
 	key: 'creationDate',
-	type: 'number',
+	type: 'Date',
 }
 let _BIRTH_DATE = {
 	key: 'birthDate',

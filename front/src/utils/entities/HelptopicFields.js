@@ -45,7 +45,7 @@ class HelptopicFields {
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
-	type: 'number',
+	type: 'Date',
 }
 let _ID = {
 	key: 'id',
@@ -57,7 +57,7 @@ let _TITLE = {
 }
 let _CREATION_DATE = {
 	key: 'creationDate',
-	type: 'number',
+	type: 'Date',
 }
 let _CONTENT = {
 	key: 'content',

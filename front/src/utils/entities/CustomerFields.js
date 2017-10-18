@@ -175,7 +175,7 @@ let _LATTITUDE = {
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
-	type: 'number',
+	type: 'Date',
 }
 let _POSTAL_CODE = {
 	key: 'postalCode',
@@ -184,7 +184,7 @@ let _POSTAL_CODE = {
 }
 let _CREATION_DATE = {
 	key: 'creationDate',
-	type: 'number',
+	type: 'Date',
 }
 let _BIRTH_DATE = {
 	key: 'birthDate',

@@ -156,7 +156,7 @@ let _LATTITUDE = {
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
-	type: 'number',
+	type: 'Date',
 }
 let _ACCOUNT_TYPE = {
 	key: 'accountType',
@@ -186,7 +186,7 @@ let _ACCOUNT_EXPIRY_DATE = {
 }
 let _CREATION_DATE = {
 	key: 'creationDate',
-	type: 'number',
+	type: 'Date',
 }
 let _SIRET = {
 	key: 'siret',

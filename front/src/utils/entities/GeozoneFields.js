@@ -95,7 +95,7 @@ let _CITY = {
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
-	type: 'number',
+	type: 'Date',
 }
 let _POSTAL_CODE = {
 	key: 'postalCode',
@@ -119,7 +119,7 @@ let _RADIUS = {
 }
 let _CREATION_DATE = {
 	key: 'creationDate',
-	type: 'number',
+	type: 'Date',
 }
 let _LONGITUDE = {
 	key: 'longitude',
