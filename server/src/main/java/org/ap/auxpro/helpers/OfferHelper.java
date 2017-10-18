@@ -39,7 +39,8 @@ public class OfferHelper {
 			document.append("creationDate", TimeHelper.toIntegers(LocalDate.now()));
 			document.append("interventionId", offerBean.interventionId);
 			document.append("hideToSad", offerBean.hideToSad);
-			document.append("sadStatus", "PENDING");
+			document.append("sadStatus", EOfferStatusSad._PENDING.getName());
+			document.append("auxStatus", EOfferStatusAux._PENDING.getName());
 			document.append("sadStatusChanged", TimeHelper.toIntegers(LocalDate.now()));
 			Mongo.get().collection("offer").insertOne(document);			
 			result = "{\"id\": \"" + id + "\"}";

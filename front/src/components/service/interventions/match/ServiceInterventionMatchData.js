@@ -60,7 +60,6 @@ class ServiceInterventionMatchData extends BaseData {
 					interventionId: intervention.id,
 					auxiliaryId: selected[i],
 					creationDate: date,
-					sadStatus: 'PENDING',
 					sadStatusChanged: date
 				}
 				promises.push(OfferHelper.postOffer(offer))
