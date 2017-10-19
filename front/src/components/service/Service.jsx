@@ -2,6 +2,8 @@ import React from 'react'
 import ServiceData from './ServiceData'
 import './Service.scss'
 
+import { Grid } from 'ap-react-bootstrap'
+
 import ServiceHeader from 'components-lib/ServiceHeader/ServiceHeader'
 
 class Service extends React.Component {
@@ -21,12 +23,12 @@ class Service extends React.Component {
 	render() {
 		if (this.state.loaded) {
 			return (
-				<div className='ap-service'>
+				<Grid.Container className='ap-service'>
 					{this.state.showHeader ?
 						<ServiceHeader />
 					: null }
 					{this.props.children}
-				</div>
+				</Grid.Container>
 			)
 		} else {
 			return (

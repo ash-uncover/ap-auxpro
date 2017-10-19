@@ -2,6 +2,8 @@ import React from 'react'
 import AuxiliaryData from './AuxiliaryData'
 import './Auxiliary.scss'
 
+import { Grid } from 'ap-react-bootstrap'
+
 import AuxiliaryHeader from 'components-lib/AuxiliaryHeader/AuxiliaryHeader'
 
 class Auxiliary extends React.Component {
@@ -21,12 +23,12 @@ class Auxiliary extends React.Component {
 	render() {
 		if (this.state.loaded) {
 			return (
-				<div className='ap-auxiliary'>
+				<Grid.Container className='ap-auxiliary'>
 					{this.state.showHeader ?
 						<AuxiliaryHeader />
 					: null }
 					{this.props.children}
-				</div>
+				</Grid.Container>
 			)
 		} else {
 			return (
