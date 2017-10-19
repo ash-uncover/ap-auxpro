@@ -32,7 +32,7 @@ class AppData extends BaseData {
 					AppHelper.navigate(browserHistory.getCurrentLocation().pathname)
 				}, 0)
 			} else {
-				//$('.collapse').collapse('hide')
+				$('.collapse').collapse('hide')
 				this.obj.context.router.push(path)
 			}
 		}

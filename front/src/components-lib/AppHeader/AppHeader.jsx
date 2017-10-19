@@ -45,7 +45,7 @@ class AppHeader extends React.Component {
 		switch (this.state.authType) {
 			case 'auxiliary': 
 				return (
-					<Navbar.Group right>
+					<Navbar.Group right className='collapse navbar-collapse' id='myNavbar'>
 						{this._buildLink('Accueil','/auxiliary/home', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Profil','/auxiliary/infos', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Planing','/auxiliary/planing', this.state.tutoMode || this.state.profilMode)}
@@ -56,7 +56,7 @@ class AppHeader extends React.Component {
 				)
 			case 'service': 
 				return (
-					<Navbar.Group right>
+					<Navbar.Group right className='collapse navbar-collapse' id='myNavbar'>
 						{this._buildLink('Accueil','/service/home', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Profil','/service/infos', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Zone','/service/zone', this.state.tutoMode || this.state.profilMode)}
@@ -67,7 +67,7 @@ class AppHeader extends React.Component {
 				)
 			default: 
 				return (
-					<Navbar.Group right>
+					<Navbar.Group right className='collapse navbar-collapse' id='myNavbar'>
 						{this._buildLink('Accueil','/home')}
 						{this._buildLink('Qui sommes-nous','/infos/presentation')}
 						{this._buildLink('Nos services','/infos/services')}
@@ -83,6 +83,7 @@ class AppHeader extends React.Component {
 			<header className='hidden-print ap-app-header'>
 				<Navbar staticTop>
 					<Navbar.Header 
+						target='#myNavbar'
 						brandText='AuXpros'
 						brandImage='/assets/images/auxpro-logo.png'
 						brandLink='/'
