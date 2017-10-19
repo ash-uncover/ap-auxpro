@@ -260,7 +260,7 @@ class AuxiliaryZoneData extends BaseData {
 
 		let allServices = Utils.reduce(ServiceHelper.getData(), function (services, service) {
 			if (selfServices.indexOf(service.id) === -1 && services.indexOf(service.id) === -1) {
-				services.push(offer.serviceId)
+				services.push(service.id)
 			}
 			return services
 		}, [])

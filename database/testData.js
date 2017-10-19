@@ -123,6 +123,19 @@ db.apauth.insert({
 	"registrationDate":[2016, 2, 23, 0, 0],
 	"registered":true
 })
+db.apauth.insert({
+	"id":"usersady",
+	"entityId":"sady",
+	"username":"y",
+	"email":"lessap@kiko.mail",
+	"password":"z",
+	"roles":["sad"],
+	"type":"service",
+	"active":true,
+	"registrationDate":[2016, 2, 23, 0, 0],
+	"registered":true
+})
+
 
 db.apauth.insert({ 
 	"id":"userauxantoine",
@@ -534,8 +547,6 @@ db.service.insert({
 	"siret":"65657897896548",
 	"phone":"0123456789",
 	"phoneChecked":true,
-	"email":"auxiliare.pro@kiko.mail",
-	"emailChecked":true,
 	"address":"73 rue Legendre",
 	"postalCode":"75017",
 	"city":"Paris",
@@ -546,6 +557,30 @@ db.service.insert({
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"addressChecked":true
 })
+db.service.insert({
+	"id":"sady",
+	"userId":"usersady",
+	"profilCompleted":true,
+	"accountType": "Premium",
+	"accountExpiryDate":[NumberInt(2017),NumberInt(12),NumberInt(31)],
+	"avatar":"0000000000Y",
+	"isTutoSkipped":true,
+	"function":"Mand",
+	"socialReason":"Les SAP",
+	"siret":"65657897896548",
+	"phone":"0123456789",
+	"phoneChecked":true,
+	"address":"127 rue du Faubourg Saint-Martin",
+	"postalCode":"75017",
+	"city":"Paris",
+	"country":"France",
+	"lattitude":48.87532864080316,
+	"longitude":2.3589706420898438,
+	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
+	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
+	"addressChecked":true
+})
+
 
 db.service.insert({
 	"id":"sadantoine",
