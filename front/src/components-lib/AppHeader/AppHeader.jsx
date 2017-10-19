@@ -29,9 +29,10 @@ class AppHeader extends React.Component {
 		)
 	}
 
-	_buildLink(text, link, disabled) { 
+	_buildLink(text, link, disabled, className) { 
 		return (
 			<Navbar.Link 
+				className={className}
 				text={text} 
 				link={link} 
 				onNavigate={AppHelper.navigate} 
@@ -67,8 +68,11 @@ class AppHeader extends React.Component {
 			default: 
 				return (
 					<Navbar.Group right>
-						{this._buildLink('Connexion','/auth/login')}
-						{this._buildLink("S'inscrire",'/auth/register')}
+						{this._buildLink('Nos services','/infos/services')}
+						{this._buildLink('Qui sommes-nous','/infos/presentation')}
+						{this._buildLink('Accueil','/home')}
+						{this._buildLink('Connexion','/auth/login', false, 'navbar-btn-default')}
+						{this._buildLink("S'inscrire",'/auth/register', false, 'navbar-btn-primary')}
 					</Navbar.Group>
 				)
 		}
@@ -77,11 +81,11 @@ class AppHeader extends React.Component {
 	render() {
 		return (
 			<header className='hidden-print ap-app-header'>
-				<Navbar fixedTop>
+				<Navbar staticTop>
 					<Navbar.Header 
 						brandText='AuXpros'
 						brandImage='/assets/images/auxpro-logo.png'
-						brandLink='/home'
+						brandLink='/'
 						onNavigate={AppHelper.navigate} />
 					{this._buildLinks()}
 				</Navbar>

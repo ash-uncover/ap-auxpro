@@ -2,7 +2,7 @@ import React from 'react'
 import FAQData from './FAQData'
 import './FAQ.scss'
 
-import { Panel, SearchBar } from 'ap-react-bootstrap'
+import { Panel, SearchBar, Grid } from 'ap-react-bootstrap'
 
 class FAQ extends React.Component {
 
@@ -29,7 +29,7 @@ class FAQ extends React.Component {
 
 	render() { 
 		return (
-			<div className='ap-faq ap-infos'>
+			<Grid.Container className='ap-faq ap-infos'>
 				<Panel>
 					<Panel.Header>
 						Recherche
@@ -58,7 +58,7 @@ class FAQ extends React.Component {
 					</Panel.Footer>
 
 				</Panel>
-			</div>
+			</Grid.Container>
 		)
 	}
 }

@@ -1,7 +1,74 @@
+// Variables
+@import 'assets/styles/variables';
+
 .ap-app-header {
+	background: white;
+	margin-bottom: 30px;
+
+	.ap-navbar {
+		background: none;
+		border: 0;
+		height: 60px;
+		.container {
+			height: 100%;
+		}
+	}
+
 	.ap-navbar-header {
         cursor: pointer;
+        .ap-navbar-brand {
+        	>img {
+        		height: 60px !important;
+        		margin: 0 !important;
+        	}
+        }
     }
+
+    .ap-navbar-group {
+    	height: 100%;
+    	.ap-navbar-link {
+			height: 100%;
+			a {
+				height: 100%;
+				line-height: 30px;
+			}
+			&.navbar-btn-default:hover,
+			&.navbar-btn-primary:hover {
+	    		background: none;
+	    	}
+			&.navbar-btn-default>a,
+			&.navbar-btn-primary>a {
+				padding: 0 20px;
+				margin-top: 10px;
+		    	border-radius: 20px;
+		    	height: 40px;
+		    	line-height: 40px;
+		    	margin-left: 15px;
+
+		    }
+		    &.navbar-btn-default>a {
+		    	border: 1px solid #E3E4E5;
+		    	&:hover {
+		    		background: #e6e6e6;
+		    	}
+		    	&:focus {
+					box-shadow: 0 0 2pt 1pt $ap-primary-color;
+				}
+		    }
+		    &.navbar-btn-primary>a {
+		    	background: #337ab7;
+		    	color: white;
+		    	&:hover {
+		    		background: #286090;
+		    	}
+		    	&:focus {
+		    		box-shadow: 0 0 2pt 1pt $ap-primary-color;
+		    	}
+		    }
+    	}
+    }
+
+    
 	.ap-navbar-text {
 		&.active {
 			font-weight: bold;

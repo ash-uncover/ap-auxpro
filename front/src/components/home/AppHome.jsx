@@ -2,7 +2,7 @@ import React from 'react'
 import AppHomeData from './AppHomeData'
 import './AppHome.scss'
 
-import { Row, Col, Panel, Button } from 'ap-react-bootstrap'
+import { Grid, Panel, Button } from 'ap-react-bootstrap'
 
 class AppHome extends React.Component {
 
@@ -20,8 +20,8 @@ class AppHome extends React.Component {
 
 	render() {
 		return (
-			<div className='ap-app-home'>
-				<Col sm={4}>
+			<Grid.Container className='ap-app-home'>
+				<Grid.Col sm={4}>
 					<Button
 						block
 						bsSize='lg'
@@ -30,9 +30,9 @@ class AppHome extends React.Component {
 						onClick={this.onLogon.bind(this)}>
 						<b>Se Connecter</b>
 					</Button>
-				</Col>
+				</Grid.Col>
 				<br className='visible-xs-block'/>
-				<Col sm={4}>
+				<Grid.Col sm={4}>
 					<Button
 						block
 						bsStyle='primary'
@@ -41,9 +41,9 @@ class AppHome extends React.Component {
 						onClick={this.onRegisterAux.bind(this)}>
 						<b>Créer un compte<br/>Auxiliaire de vie</b>
 					</Button>
-				</Col>
+				</Grid.Col>
 				<br className='visible-xs-block'/>
-				<Col sm={4}>
+				<Grid.Col sm={4}>
 					<Button
 						block
 						bsSize='lg'
@@ -52,9 +52,9 @@ class AppHome extends React.Component {
 						onClick={this.onRegisterSad.bind(this)}>
 						<b>Créer un compte<br/>SAD</b>
 					</Button>
-				</Col>
-				<Row>
-					<Col smOffset={1} sm={10}>
+				</Grid.Col>
+				<Grid.Row>
+					<Grid.Col smOffset={1} sm={10}>
 						<div className='ap-auxpro-home-ext-panel'>
 							<div>
 								<h2>Je recherche un soutien à domicile</h2>
@@ -62,11 +62,9 @@ class AppHome extends React.Component {
 							</div>
 							<Button bsSize='lg' bsStyle='primary' onClick={this.onNavDGE.bind(this)}>CLIQUEZ ICI</Button>
 						</div>
-					</Col>
-				</Row>
-
-
-			</div>
+					</Grid.Col>
+				</Grid.Row>
+			</Grid.Container>
 		)
 	}
 }

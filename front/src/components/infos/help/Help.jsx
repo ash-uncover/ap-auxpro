@@ -2,7 +2,7 @@ import React from 'react'
 import HelpData from './HelpData'
 import './Help.scss'
 
-import { Panel, SearchBar } from 'ap-react-bootstrap'
+import { Panel, SearchBar, Grid } from 'ap-react-bootstrap'
 
 class Help extends React.Component {
 
@@ -33,7 +33,7 @@ class Help extends React.Component {
 
 	render() { 
 		return (
-			<div className='ap-help ap-infos'>
+			<Grid.Container className='ap-help ap-infos'>
 				<Panel>
 					<Panel.Header>
 						Recherche
@@ -62,7 +62,7 @@ class Help extends React.Component {
 					</Panel.Footer>
 
 				</Panel>
-			</div>
+			</Grid.Container>
 		)
 	}
 }
