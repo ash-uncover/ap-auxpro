@@ -27,6 +27,9 @@ body {
 		height: 100%;
 		user-select: none;
 
+		display: flex;
+		flex-direction: column;
+
 		.ap-error {
 			color: $ap-danger-color;
 		}
@@ -36,9 +39,10 @@ body {
 		}
 
 		.ap-app-main-content {
-			position: relative;
-			min-height: 70%;
-
+			display: flex;
+			justify-content: center;
+			flex-grow: 1;
+			flex-shrink: 0;
 			
 			.panel-off {
 				padding: 20px;

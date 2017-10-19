@@ -23,8 +23,8 @@ class Login extends React.Component {
 	render() { 
 		let submitDisable = !this.state.username || !this.state.password || this.state.errorJustHappened
 		return (
-			<Grid.Container>
-				<Panel className='ap-login'>
+			<Grid.Container className='ap-login'>
+				<Panel>
 					<Panel.Header>
 						{this.state.errorLastTry ? 'Echec de connexion' : 'Connexion' }
 					</Panel.Header>

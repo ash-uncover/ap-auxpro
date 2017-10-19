@@ -23,8 +23,8 @@ class RegisterService extends React.Component {
 	render() {
 		let submitDisable = !this.state.email || !this.state.password || !this.state.confirm || (this.state.password !== this.state.confirm)
 		return (
-			<Grid.Container>
-				<Panel className='ap-register-service'>
+			<Grid.Container className='ap-register-service'>
+				<Panel>
 					<Panel.Header>
 						{this.state.errorLastTry ? 'Echec de création de compte' : "Création compte Société d'aide à Domicile" }
 					</Panel.Header>

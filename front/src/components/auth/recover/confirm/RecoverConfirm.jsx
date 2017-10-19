@@ -45,8 +45,8 @@ class RecoverConfirm extends React.Component {
 
 	renderCompleted() {
 		return (
-			<Grid.Container>
-				<Panel className='ap-register-confirm'>
+			<Grid.Container className='ap-recover-confirm'>
+				<Panel>
 					<Panel.Header>
 						Mot de passe modifiié
 					</Panel.Header>
@@ -64,8 +64,8 @@ class RecoverConfirm extends React.Component {
 	renderConfirmed() {
 		let submitDisable = !this.state.token || !this.state.email || !this.state.password || !this.state.confirm || (this.state.password !== this.state.confirm)
 		return (
-			<Grid.Container>
-				<Panel className='ap-recover-confirm'>
+			<Grid.Container  className='ap-recover-confirm'>
+				<Panel>
 					<Panel.Header>
 						{this.state.errorLastTry ? 'Echec de modification du mot de passe' : 'Sassissez votre nouveau mot de passe' }
 					</Panel.Header>
@@ -131,8 +131,8 @@ class RecoverConfirm extends React.Component {
 	renderCode() {
 		let submitDisable = !this.state.token || !this.state.email
 		return (
-			<Grid.Container>
-				<Panel className='ap-recover-confirm'>
+			<Grid.Container className='ap-recover-confirm'>
+				<Panel>
 					<Panel.Header>
 						{this.state.errorLastTry ? 'Echec de confirmation de réinitialisation' : 'Réinitialisation du mot de passe' }
 					</Panel.Header>

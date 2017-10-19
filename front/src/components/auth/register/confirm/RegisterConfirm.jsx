@@ -27,8 +27,8 @@ class RegisterConfirm extends React.Component {
 
 	renderConfirmed() {
 		return (
-			<Grid.Container>
-				<Panel className='ap-register-confirm'>
+			<Grid.Container className='ap-register-confirm'>
+				<Panel>
 					<Panel.Header>
 						Compte confirmé
 					</Panel.Header>
@@ -46,8 +46,8 @@ class RegisterConfirm extends React.Component {
 	renderCode() {
 		let submitDisable = !this.state.token || !this.state.email
 		return (
-			<Grid.Container>
-				<Panel className='ap-register-confirm'>
+			<Grid.Container className='ap-register-confirm'>
+				<Panel>
 					<Panel.Header>
 						{this.state.errorLastTry ? 'Echec de confirmation de compte' : 'Confirmation de compte' }
 					</Panel.Header>

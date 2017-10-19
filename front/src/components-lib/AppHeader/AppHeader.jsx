@@ -68,9 +68,9 @@ class AppHeader extends React.Component {
 			default: 
 				return (
 					<Navbar.Group right>
-						{this._buildLink('Nos services','/infos/services')}
-						{this._buildLink('Qui sommes-nous','/infos/presentation')}
 						{this._buildLink('Accueil','/home')}
+						{this._buildLink('Qui sommes-nous','/infos/presentation')}
+						{this._buildLink('Nos services','/infos/services')}
 						{this._buildLink('Connexion','/auth/login', false, 'navbar-btn-default')}
 						{this._buildLink("S'inscrire",'/auth/register', false, 'navbar-btn-primary')}
 					</Navbar.Group>

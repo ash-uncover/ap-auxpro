@@ -23,8 +23,8 @@ class Recover extends React.Component {
 	render() {
 		let submitDisabled = !this.state.email
 		return (
-			<Grid.Container>
-				<Panel className='ap-recover'>
+			<Grid.Container className='ap-recover'>
+				<Panel>
 					<Panel.Header>
 						Mot de passe oublié
 					</Panel.Header>

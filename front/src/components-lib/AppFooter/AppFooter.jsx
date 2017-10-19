@@ -31,7 +31,7 @@ class AppFooter extends React.Component {
 	render() {
 		return (
 			<footer className='hidden-print ap-app-footer'>
-				<Grid.Row>
+				<Grid.Container>
 					<Grid.Col md={3} className='ap-footer-area-logos'>
 						<div className='ap-footer-title'>Rejoignez notre comunauté</div>
 						<div className='ap-footer-logos'>
@@ -69,7 +69,7 @@ class AppFooter extends React.Component {
 							<a className='ap-footer-link' onClick={this.onNavigateContact}>Contact</a>
 						</Grid.Col>
 					</Grid.Col>
-				</Grid.Row>
+				</Grid.Container>
 			</footer>
 		)
 	}
