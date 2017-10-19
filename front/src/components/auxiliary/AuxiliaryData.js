@@ -40,7 +40,8 @@ class AuxiliaryData extends BaseData {
 			IndisponibilityHelper.getAuxiliaryIndisponibilitys(id),
 			InterventionHelper.getAuxiliaryInterventions(id),
 			OfferHelper.getAuxiliaryOffers(id),
-			MissionHelper.getAuxiliaryMissions(id)
+			MissionHelper.getAuxiliaryMissions(id),
+			ServiceHelper.getServices()
 		]).
 		then(function () {
 			// Load missing interventions
@@ -58,28 +59,20 @@ class AuxiliaryData extends BaseData {
 		}).
 		then(function () {
 			// Load customers and services
-			let services = new ArraySet()
 			let customers = new ArraySet()
 			let missions = Utils.map(MissionHelper.getData())
 			for (let i = 0; i < missions.length; i++) {
-				services.add(missions[i].serviceId)
 				customers.add(missions[i].customerId)
 			}
 			let interventions = Utils.map(InterventionHelper.getData())
 			for (let i = 0; i < interventions.length; i++) {
-				services.add(interventions[i].serviceId)
 				customers.add(interventions[i].customerId)
 			}
 			let offers = Utils.map(OfferHelper.getData())
 			for (let i = 0; i < offers.length; i++) {
-				services.add(offers[i].serviceId)
 				customers.add(offers[i].customerId)
 			}
 			let promises = []
-			services = services.array
-			for (let i = 0; i < services.length; i++) {
-				promises.push(ServiceHelper.getService(services[i]))
-			}
 			customers = customers.array
 			for (let i = 0; i < customers.length; i++) {
 				promises.push(CustomerHelper.getCustomer(customers[i]))

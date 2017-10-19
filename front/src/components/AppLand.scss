@@ -4,9 +4,33 @@
 .ap-app-land {
 	background: white;
 	
-	.ap-row {
+	.ap-app-land-section {
 		background: white;
-		padding: 80px 45px;	
+		padding: 60px 45px;	
+
+		.container {
+			/*background: #ddd;*/
+		}
+
+
+		.bigtitle {
+			margin-bottom: 65px;
+			font-weight: 400;
+			font-size: 35pt;
+		}
+		.title {
+			color: #333;
+			font-weight: 100;	
+			margin-bottom: 25px;
+		}
+		.subtitle {
+			font-weight: bold;
+			font-size: 12pt;
+		}
+		.content {
+			color: #aaa;
+			font-size: 11pt;
+		}
 	}
 
 	.ap-button {
@@ -15,6 +39,7 @@
 		border: 0;
 		border-radius: 20px;
 		outline: 0;
+		height: 40px;
 
 		&:focus {
 			outline: 0;
@@ -36,21 +61,77 @@
 
 	.ap-app-platform {
 		text-align: center;
+
+		.ap-button {
+			width: 200px;			
+			margin-bottom: 15px;
+		}
 	}
 
 	.ap-app-discover {
-
-	}
-
-	.ap-app-video {
-
-	}
-
-	.ap-app-roles {
 		.ap-col {
 			text-align: center;
 		}
+
+		.ap-app-discover-content {
+			display: inline-block;
+			text-align: left;
+			padding-top: 25px;
+
+			button {
+				margin-left: -5px;
+				margin-top: 15px;
+			}
+		}
+
+		img {
+			max-height: 360px;
+			max-width: 100%;
+		}
+	}
+
+	.ap-app-video {
+		padding-bottom: 90px;
+	}
+
+	.ap-app-roles {
 		background: #E3E4E5;
+		padding-bottom: 0px;
+		
+		.ap-col {
+			text-align: center;
+		}
+
+		.ap-app-roles-tile {
+			display: inline-block;
+			box-shadow: 8px 8px 10px #ccc;
+			max-width: 80%;
+			margin-bottom: 60px;
+			.ap-app-roles-image {
+				max-width: 100%;
+			}
+			.ap-app-roles-content {
+				padding: 10px 35px;
+				padding-bottom: 25px;
+				text-align: left;
+				color: white;
+				background: #7F7F7F;
+				.ap-app-roles-title {
+					font-size: 16pt;
+					font-weight: 400;
+					margin-bottom: 5px;
+				}
+				.ap-app-roles-separator {
+					border: 2px solid white;
+					width: 45px;
+				}
+				.ap-app-roles-text {
+					margin-top: 15px;
+					font-size: 13pt;
+					color: #ccc;
+				}
+			}
+		}
 	}
 
 	.ap-app-tool {

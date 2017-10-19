@@ -28,9 +28,9 @@ class App extends React.Component {
 		return (
 			<div className='ap-app'>
 				<AppHeader />
-				<Grid.Container fluid className='ap-app-main-content'>
+				<div className='ap-app-main-content'>
 					{this.props.children}
-				</Grid.Container>
+				</div>
 				<AppFooter />
 				{this.state.busy ?
 					<AppBusy />
