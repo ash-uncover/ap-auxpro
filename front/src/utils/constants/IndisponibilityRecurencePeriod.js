@@ -11,18 +11,30 @@ class IndisponibilityRecurencePeriod {
 		return _DAYS
 	}
 
+	static get WEEK1() {
+		return _WEEK1
 	}
 
+	static get WEEK2() {
+		return _WEEK2
 	}
 
+	static get WEEK3() {
+		return _WEEK3
 	}
 
+	static get WEEK4() {
+		return _WEEK4
 	}
 
 	static get VALUES() {
 		return [
 			_HOURS,
 			_DAYS,
+			_WEEK1,
+			_WEEK2,
+			_WEEK3,
+			_WEEK4,
 		]
 	}
 
@@ -33,4 +45,8 @@ class IndisponibilityRecurencePeriod {
 }
 let _HOURS = { key: 'Hours' }
 let _DAYS = { key: 'Days' }
+let _WEEK1 = { key: 'Week1' }
+let _WEEK2 = { key: 'Week2' }
+let _WEEK3 = { key: 'Week3' }
+let _WEEK4 = { key: 'Week4' }
 export default IndisponibilityRecurencePeriod

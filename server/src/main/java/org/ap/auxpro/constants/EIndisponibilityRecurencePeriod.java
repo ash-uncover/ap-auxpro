@@ -5,6 +5,10 @@ public enum EIndisponibilityRecurencePeriod {
 
 	_HOURS ("Hours"),
 	_DAYS ("Days"),
+	_WEEK1 ("Week1"),
+	_WEEK2 ("Week2"),
+	_WEEK3 ("Week3"),
+	_WEEK4 ("Week4"),
 	;
 
 	private String _name;

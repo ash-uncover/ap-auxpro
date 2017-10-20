@@ -4,6 +4,10 @@ package org.ap.auxpro.constants;
 public enum EInterventionRecurencePeriod {
 
 	_HOURS ("Hours"),
+	_WEEK1 ("Week1"),
+	_WEEK2 ("Week2"),
+	_WEEK3 ("Week3"),
+	_WEEK4 ("Week4"),
 	;
 
 	private String _name;
