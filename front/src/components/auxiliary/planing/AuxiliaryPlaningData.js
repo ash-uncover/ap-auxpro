@@ -9,12 +9,11 @@ import ServiceHelper from 'helpers/ServiceHelper'
 import { BaseData, Utils, MomentHelper, Day } from 'ap-react-bootstrap'
 
 import MissionStatus from 'utils/constants/MissionStatus'
-import RecurencePeriod from 'utils/constants/RecurencePeriod'
+import IndisponibilityRecurencePeriod from 'utils/constants/IndisponibilityRecurencePeriod'
 
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
-import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 import IndisponibilityUtils from 'utils-lib/entities/IndisponibilityUtils'
-import RecurencePeriodUtils from 'utils-lib/entities/RecurencePeriodUtils'
+import IndisponibilityRecurencePeriodUtils from 'utils-lib/entities/IndisponibilityRecurencePeriodUtils'
 
 import moment from 'moment'
 
@@ -131,9 +130,12 @@ class AuxiliaryPlaningData extends BaseData {
 
 	buildIndisponibilities() {
 		return Utils.reduce(IndisponibilityHelper.getData(), function (absences, indisponibility) {
-			let period = RecurencePeriod.get(indisponibility.period)
+			let startDate = MomentHelper.fromLocalDate(indisponibility.startDate)
+			let endDate = MomentHelper.fromLocalDate(indisponibility.endDate || [1, 1, 1])
+			let current = startDate.clone()
+			let period = IndisponibilityRecurencePeriod.get(indisponibility.period)
 			switch (period) {
-			case RecurencePeriod.ONE:
+			case IndisponibilityRecurencePeriod.HOURS:
 				absences.push({
 					indisponibilityId: indisponibility.id,
 					date: indisponibility.startDate,
@@ -141,13 +143,23 @@ class AuxiliaryPlaningData extends BaseData {
 					endTime: indisponibility.endTime
 				});
 				break;
-			case RecurencePeriod.P1W:
-			case RecurencePeriod.P2W:
-			case RecurencePeriod.P3W:
-			case RecurencePeriod.P4W:
-				let startDate = MomentHelper.fromLocalDate(indisponibility.startDate)
-				let endDate = MomentHelper.fromLocalDate(indisponibility.endDate)
-				let current = startDate.clone().startOf('week')
+			case IndisponibilityRecurencePeriod.DAYS:
+				current = current.startOf('day')
+				while (current.isSameOrBefore(endDate)) {
+					absences.push({
+						indisponibilityId: indisponibility.id,
+						date: MomentHelper.toLocalDate(current),
+						startTime: current.clone().startOf('day'),
+						endTime: current.clone().endOf('day')
+					})
+					current.add(1, 'day')
+				}
+				break;
+			case IndisponibilityRecurencePeriod.WEEK1:
+			case IndisponibilityRecurencePeriod.WEEK2:
+			case IndisponibilityRecurencePeriod.WEEK3:
+			case IndisponibilityRecurencePeriod.WEEK4:				
+				current = current.startOf('week')
 				while (current.isSameOrBefore(endDate)) {
 					for (let d = 0; d < indisponibility.days.length; d++) {
 						let day = Day[indisponibility.days[d]]
@@ -161,7 +173,7 @@ class AuxiliaryPlaningData extends BaseData {
 							})
 						}
 					}
-					current.add(RecurencePeriodUtils.getDaysBetween(period.key), 'day')
+					current.add(IndisponibilityRecurencePeriodUtils.getDaysBetween(period.key), 'day')
 				}
 				break
 			}

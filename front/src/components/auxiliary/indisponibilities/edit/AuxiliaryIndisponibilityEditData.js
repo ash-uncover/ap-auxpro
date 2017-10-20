@@ -4,12 +4,12 @@ import ErrorHelper from 'helpers/ErrorHelper'
 import IndisponibilityHelper from 'helpers/IndisponibilityHelper'
 import { BaseData, MomentHelper } from 'ap-react-bootstrap'
 
-import RecurencePeriod from 'utils/constants/RecurencePeriod'
+import IndisponibilityRecurencePeriod from 'utils/constants/IndisponibilityRecurencePeriod'
 
 import IndisponibilityFields from 'utils/entities/IndisponibilityFields'
 
 import IndisponibilityUtils from 'utils-lib/entities/IndisponibilityUtils'
-import RecurencePeriodUtils from 'utils-lib/entities/RecurencePeriodUtils'
+import IndisponibilityRecurencePeriodUtils from 'utils-lib/entities/IndisponibilityRecurencePeriodUtils'
 
 import moment from 'moment'
 
@@ -25,9 +25,9 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 
 		this.FIELDS_FORM1 = [
 			Object.assign(
-				{ defaultValue: 'ONE', form: 'select' }, 
+				{ defaultValue: IndisponibilityRecurencePeriod.HOURS.key, form: 'select' }, 
 				IndisponibilityFields.PERIOD, 
-				{ values: RecurencePeriod.VALUES.map(this.getRecurence) }
+				{ values: IndisponibilityRecurencePeriod.VALUES.map(this.getRecurence) }
 			),
 			Object.assign(
 				{ defaultValue: MomentHelper.toLocalDate(moment()), form: 'date' }, 
@@ -189,7 +189,7 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 	getRecurence(value) {
 		return {
 			key: value.key,
-			value: RecurencePeriodUtils.getShortName(value.key)
+			value: IndisponibilityRecurencePeriodUtils.getShortName(value.key)
 		}
 	}
 
@@ -197,6 +197,8 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 		for (let i = 0 ; i < this.FIELDS.length ; i++) {
 			let field = this.FIELDS[i]
 			if (field.validator && field.validator.getState(this.getState(field.key)) === 'error') {
+				console.log('field in error')
+				console.log(field)
 				return false
 			}
 		}
@@ -215,9 +217,14 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 				indiponibility[field.key] = this.getState(field.key)
 			}
 		}
-		if (indiponibility.period === 'ONE') {
+		if (indiponibility.period === IndisponibilityRecurencePeriod.HOURS.key) {
 			delete indiponibility.days
 			delete indiponibility.endDate
+		}
+		if (indiponibility.period === IndisponibilityRecurencePeriod.DAYS.key) {
+			delete indiponibility.days
+			delete indiponibility.startTime
+			delete indiponibility.endTime
 		}
 		return indiponibility
 	}
@@ -230,7 +237,7 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 				if (currentDate.isAfter(startDate)) {
 					return 'error'
 				}
-				if (this.getState('period') !== 'ONE') {
+				if (this.getState('period') !== IndisponibilityRecurencePeriod.HOURS.key) {
 					let endDate = MomentHelper.fromLocalDate(this.getState('endDate'))
 					if (startDate.isAfter(endDate)) {
 						return 'error'
@@ -243,7 +250,7 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 	getEndDateValidator() {
 		return {
 			getState: function (value) {
-				if (this.getState('period') !== 'ONE') {
+				if (this.getState('period') !== IndisponibilityRecurencePeriod.HOURS.key) {
 					let currentDate = moment().startOf('day')
 					let endDate = MomentHelper.fromLocalDate(value)
 					if (currentDate.isAfter(endDate)) {
@@ -261,10 +268,12 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 	getStartTimeValidator() {
 		return {
 			getState: function (value) {
-				let startTime = MomentHelper.fromLocalTime(value)
-				let endTime = MomentHelper.fromLocalTime(this.getState('endTime'))
-				if (endTime.isSameOrBefore(startTime)) {
-					return 'error'
+				if (this.getState('period') !== IndisponibilityRecurencePeriod.DAYS.key) {
+					let startTime = MomentHelper.fromLocalTime(value)
+					let endTime = MomentHelper.fromLocalTime(this.getState('endTime'))
+					if (endTime.isSameOrBefore(startTime)) {
+						return 'error'
+					}
 				}
 				return 'success'
 			}.bind(this)
@@ -273,10 +282,12 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 	getEndTimeValidator() {
 		return {
 			getState: function (value) {
-				let startTime = MomentHelper.fromLocalTime(this.getState('startTime'))
-				let endTime = MomentHelper.fromLocalTime(value)
-				if (endTime.isSameOrBefore(startTime)) {
-					return 'error'
+				if (this.getState('period') !== IndisponibilityRecurencePeriod.DAYS.key) {
+					let startTime = MomentHelper.fromLocalTime(this.getState('startTime'))
+					let endTime = MomentHelper.fromLocalTime(value)
+					if (endTime.isSameOrBefore(startTime)) {
+						return 'error'
+					}
 				}
 				return 'success'
 			}.bind(this)
@@ -285,7 +296,9 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 	getDaysValidator() {
 		return {
 			getState: function (value) {
-				if (this.getState('period') !== 'ONE' && !value.length) {
+				if (this.getState('period') !== IndisponibilityRecurencePeriod.HOURS.key &&
+					this.getState('period') !== IndisponibilityRecurencePeriod.DAYS.key &&
+					!value.length) {
 					return 'error'
 				}
 				return 'success'

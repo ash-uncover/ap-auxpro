@@ -5,12 +5,12 @@ import InterventionHelper from 'helpers/InterventionHelper'
 import moment from 'moment'
 import { BaseData, Day, Formatters, Utils, MomentHelper } from 'ap-react-bootstrap'
 
-import RecurencePeriod from 'utils/constants/RecurencePeriod'
+import InterventionRecurencePeriod from 'utils/constants/InterventionRecurencePeriod'
 
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 import InterventionFields from 'utils/entities/InterventionFields'
 import InterventionUtils from 'utils-lib/entities/InterventionUtils'
-import RecurencePeriodUtils from 'utils-lib/entities/RecurencePeriodUtils'
+import InterventionRecurencePeriodUtils from 'utils-lib/entities/InterventionRecurencePeriodUtils'
 
 let MODES = {
 	CREATE: 'CREATE',
@@ -43,15 +43,37 @@ class ServiceInterventionData extends BaseData {
 		let customers = this.getCustomers()
 
 		this.FIELDS_FORM1 = [
-			Object.assign({ defaultValue: customers[0].id, form: 'select', values: customers }, InterventionFields.CUSTOMER_ID),
-			Object.assign({ defaultValue: 'ONE', form: 'select' }, InterventionFields.PERIOD, { values: RecurencePeriod.VALUES.map(this.getRecurence) }),
-			Object.assign({ defaultValue: defaultDate, form: 'date' }, InterventionFields.START_DATE),
-			Object.assign({ defaultValue: defaultDate, form: 'date' }, InterventionFields.END_DATE),
-			Object.assign({ defaultValue: [0, 0], form: 'time' }, InterventionFields.START_TIME),
-			Object.assign({ defaultValue: [0, 0], form: 'time' }, InterventionFields.END_TIME)
+			Object.assign(
+				{ defaultValue: customers[0].id, form: 'select', values: customers }, 
+				InterventionFields.CUSTOMER_ID
+			),
+			Object.assign(
+				{ defaultValue: InterventionRecurencePeriod.HOURS.key, form: 'select' }, 
+				InterventionFields.PERIOD, 
+				{ values: InterventionRecurencePeriod.VALUES.map(this.getRecurence) }
+			),
+			Object.assign(
+				{ defaultValue: defaultDate, form: 'date' }, 
+				InterventionFields.START_DATE
+			),
+			Object.assign(
+				{ defaultValue: defaultDate, form: 'date' }, 
+				InterventionFields.END_DATE
+			),
+			Object.assign(
+				{ defaultValue: [0, 0], form: 'time' }, 
+				InterventionFields.START_TIME
+			),
+			Object.assign(
+				{ defaultValue: [0, 0], form: 'time' }, 
+				InterventionFields.END_TIME
+			)
 		]
 		this.FIELDS_FORM2 = [
-			Object.assign({ defaultValue: [], values: Day.VALUES }, InterventionFields.DAYS)
+			Object.assign(
+				{ defaultValue: [], values: Day.VALUES }, 
+				InterventionFields.DAYS
+			)
 		]
 		this.FIELDS = this.FIELDS_FORM1.concat(this.FIELDS_FORM2)
 
@@ -130,7 +152,7 @@ class ServiceInterventionData extends BaseData {
 	getRecurence(value) {
 		return {
 			key: value.key,
-			value: RecurencePeriodUtils.getShortName(value.key)
+			value: InterventionRecurencePeriodUtils.getShortName(value.key)
 		}
 	}
 	getCustomer(customer) {
@@ -154,7 +176,7 @@ class ServiceInterventionData extends BaseData {
 				intervention[field.key] = this.getState(field.key)
 			}
 		}
-		if (intervention.period === 'ONE') {
+		if (intervention.period === InterventionRecurencePeriod.HOURS.key) {
 			delete intervention.days
 			delete intervention.endDate
 		}

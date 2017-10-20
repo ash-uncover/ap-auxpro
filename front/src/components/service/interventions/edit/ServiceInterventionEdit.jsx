@@ -6,6 +6,8 @@ import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 
 import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeekDays'
 
+import InterventionRecurencePeriod from 'utils/constants/InterventionRecurencePeriod'
+
 import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 
 class ServiceInterventionEdit extends React.Component {
@@ -29,7 +31,7 @@ class ServiceInterventionEdit extends React.Component {
 	// --------------------------------------------------------------------------------
 
 	_buildFormGroup(field) {
-		if (this.state.period === 'ONE' && field.key === 'endDate') {
+		if (this.state.period === InterventionRecurencePeriod.HOURS.key && field.key === 'endDate') {
 			return null
 		}
 		let state = null
@@ -122,7 +124,7 @@ class ServiceInterventionEdit extends React.Component {
 									{ServiceInterventionEditData.FIELDS_FORM1.map(this.buildFormGroup)}
 								</Form>
 							</Grid.Col>
-							{ this.state.period !== 'ONE' ?
+							{ this.state.period !== InterventionRecurencePeriod.HOURS.key ?
 							<Grid.Col sm={3} smOffset={1}>
 								<Form>
 									<Form.Group>

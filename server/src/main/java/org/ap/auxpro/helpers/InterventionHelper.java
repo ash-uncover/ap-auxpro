@@ -12,14 +12,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.SecurityContext;
 
 import org.ap.auxpro.bean.InterventionBean;
+import org.ap.auxpro.constants.EInterventionRecurencePeriod;
 import org.ap.auxpro.constants.EInterventionStatus;
 import org.ap.auxpro.constants.EMissionStatus;
 import org.ap.auxpro.constants.EOfferStatusSad;
-import org.ap.auxpro.constants.ERecurencePeriod;
 import org.ap.auxpro.storage.AuxiliaryCollection;
 import org.ap.auxpro.storage.AuxiliaryData;
 import org.ap.auxpro.storage.CustomerCollection;
@@ -189,14 +189,14 @@ public class InterventionHelper {
 			EInterventionStatus status = EInterventionStatus.getByName(intervention.sadStatus);
 			if (EInterventionStatus._PENDING.equals(status)) {
 				// Create Missions
-				switch (ERecurencePeriod.getByName(intervention.getPeriod())) {
-				case _O_N_E:
+				switch (EInterventionRecurencePeriod.getByName(intervention.getPeriod())) {
+				case _HOURS:
 					MissionCollection.create(newMission(intervention, intervention.getStartDate()));
 					break;
-				case _P1_W:
-				case _P2_W:
-				case _P3_W:
-				case _P4_W:
+				case _WEEK1:
+				case _WEEK2:
+				case _WEEK3:
+				case _WEEK4:
 					List<DayOfWeek> days = TimeHelper.toDayOfWeeks(intervention.getDays());
 					LocalDate startDate = TimeHelper.toLocalDate(intervention.getStartDate());
 					LocalDate endDate = TimeHelper.toLocalDate(intervention.getEndDate());

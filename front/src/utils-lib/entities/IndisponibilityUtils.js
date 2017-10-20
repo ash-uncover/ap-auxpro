@@ -1,31 +1,36 @@
 import { StoreRegistry } from 'ap-flux'
 import { Utils, MomentHelper, Day } from 'ap-react-bootstrap'
 
-import RecurencePeriod from 'utils/constants/RecurencePeriod'
+import IndisponibilityRecurencePeriod from 'utils/constants/IndisponibilityRecurencePeriod'
 import IndisponibilityFields from 'utils/entities/IndisponibilityFields'
 
 import DayUtils from 'utils-lib/entities/DayUtils'
-import RecurencePeriodUtils from 'utils-lib/entities/RecurencePeriodUtils'
+import IndisponibilityRecurencePeriodUtils from 'utils-lib/entities/IndisponibilityRecurencePeriodUtils'
 
 class IndisponibilityUtils {
 
 	static getInitialText(indisponibility) {
 		let text = [];
-		let period = RecurencePeriod.getPeriod(indisponibility.period);
-		let startDate = MomentHelper.localDateToHumanDate(indisponibility.startDate);
-		let startTime = MomentHelper.localTimeToHumanTime(indisponibility.startTime);
-		let endTime   = MomentHelper.localTimeToHumanTime(indisponibility.endTime);
+		let period = IndisponibilityRecurencePeriod.getPeriod(indisponibility.period);
+		let startDate = MomentHelper.localDateToHumanDate(indisponibility.startDate || [1, 1, 1]);
+		let endDate   = MomentHelper.localDateToHumanDate(indisponibility.endDate || [1, 1, 1]);
+		let startTime = MomentHelper.localTimeToHumanTime(indisponibility.startTime || [0, 0]);
+		let endTime   = MomentHelper.localTimeToHumanTime(indisponibility.endTime || [0, 0]);
 		switch (period) {
-		case RecurencePeriod.ONE:
+		case IndisponibilityRecurencePeriod.HOURS:
 			text.push('Indisponibilité ponctuelle');
 			text.push('Le ' + startDate);
 			text.push('De ' + startTime + ' à ' + endTime);
 			break;
-		case RecurencePeriod.P1W:
-		case RecurencePeriod.P2W:
-		case RecurencePeriod.P3W:
-		case RecurencePeriod.P4W:
-			let endDate    = MomentHelper.localDateToHumanDate(indisponibility.endDate);
+		case IndisponibilityRecurencePeriod.HOURS:
+			text.push('Indisponibilité prolongée');
+			text.push('Du ' + startDate);
+			text.push('Au ' + endDate);
+			break;
+		case IndisponibilityRecurencePeriod.WEEK1:
+		case IndisponibilityRecurencePeriod.WEEK2:
+		case IndisponibilityRecurencePeriod.WEEK3:
+		case IndisponibilityRecurencePeriod.WEEK4:			
 			let days = Day.daysToHumanFormat(indisponibility.days);
 			text.push('Indisponibilité ' + period.value.toLowerCase());
 			text.push('Du ' + startDate + ' au ' + endDate);

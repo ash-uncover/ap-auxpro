@@ -7,7 +7,8 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ap.auxpro.constants.ERecurencePeriod;
+import org.ap.auxpro.constants.EIndisponibilityRecurencePeriod;
+import org.ap.auxpro.constants.EInterventionRecurencePeriod;
 import org.ap.auxpro.storage.IndisponibilityData;
 import org.ap.auxpro.storage.InterventionData;
 import org.ap.auxpro.storage.MissionData;
@@ -34,19 +35,29 @@ public class Event {
 	}
 
 	public static Event[] buildEvents(IndisponibilityData indisponibility) {
-		ERecurencePeriod period = ERecurencePeriod.getByName(indisponibility.getPeriod());
+		List<Event> result = new ArrayList<Event>();
+		LocalDate startDate, endDate, currentDate;
+		EIndisponibilityRecurencePeriod period = EIndisponibilityRecurencePeriod.getByName(indisponibility.getPeriod());
 		switch (period) {
-		case _O_N_E:
+		case _HOURS:
 			return new Event[] { new Event(indisponibility.getStartDate(), indisponibility.getStartTime(), indisponibility.getEndTime()) };
-		case _P1_W:
-		case _P2_W:
-		case _P3_W:
-		case _P4_W:
-			List<Event> result = new ArrayList<Event>();
+		case _DAYS:
+			startDate = TimeHelper.toLocalDate(indisponibility.getStartDate());
+			endDate = TimeHelper.toLocalDate(indisponibility.getEndDate());
+			currentDate = startDate.plusDays(0);
+			while (!currentDate.isAfter(endDate)) {
+				result.add(new Event(currentDate, LocalTime.MIN, LocalTime.MAX));
+				currentDate = currentDate.plusDays(1);
+			}
+			return result.toArray(new Event[result.size()]);
+		case _WEEK1:
+		case _WEEK2:
+		case _WEEK3:
+		case _WEEK4:
 			List<DayOfWeek> days = TimeHelper.toDayOfWeeks(indisponibility.getDays());
-			LocalDate startDate = TimeHelper.toLocalDate(indisponibility.getStartDate());
-			LocalDate endDate = TimeHelper.toLocalDate(indisponibility.getEndDate());
-			LocalDate currentDate = startDate.plusDays(0);
+			startDate = TimeHelper.toLocalDate(indisponibility.getStartDate());
+			endDate = TimeHelper.toLocalDate(indisponibility.getEndDate());
+			currentDate = startDate.plusDays(0);
 			while (!currentDate.isAfter(endDate)) {
 				if (days.contains(currentDate.getDayOfWeek())) {
 					result.add(new Event(currentDate, TimeHelper.toLocalTime(indisponibility.getStartTime()), TimeHelper.toLocalTime(indisponibility.getEndTime())));
@@ -58,16 +69,28 @@ public class Event {
 			return new Event[0];
 		}
 	}
+	
+	public static Period getJumpPeriod(EIndisponibilityRecurencePeriod period) {
+		switch(period) {
+		case _HOURS: return Period.ofWeeks(0);
+		case _DAYS: return Period.ofWeeks(0);
+		case _WEEK1: return Period.ofWeeks(1);
+		case _WEEK2: return Period.ofWeeks(2);
+		case _WEEK3: return Period.ofWeeks(3);
+		case _WEEK4: return Period.ofWeeks(4);
+		default: return Period.ofWeeks(0);
+		}
+	}
 
 	public static Event[] buildEvents(InterventionData intervention) {
-		ERecurencePeriod period = ERecurencePeriod.getByName(intervention.getPeriod());
+		EInterventionRecurencePeriod period = EInterventionRecurencePeriod.getByName(intervention.getPeriod());
 		switch (period) {
-		case _O_N_E:
+		case _HOURS:
 			return new Event[] { new Event(intervention.getStartDate(), intervention.getStartTime(), intervention.getEndTime()) };
-		case _P1_W:
-		case _P2_W:
-		case _P3_W:
-		case _P4_W:
+		case _WEEK1:
+		case _WEEK2:
+		case _WEEK3:
+		case _WEEK4:
 			List<Event> result = new ArrayList<Event>();
 			List<DayOfWeek> days = TimeHelper.toDayOfWeeks(intervention.getDays());
 			LocalDate startDate = TimeHelper.toLocalDate(intervention.getStartDate());
@@ -88,13 +111,13 @@ public class Event {
 		}
 	}
 
-	public static Period getJumpPeriod(ERecurencePeriod period) {
+	public static Period getJumpPeriod(EInterventionRecurencePeriod period) {
 		switch(period) {
-		case _O_N_E: return Period.ofWeeks(0);
-		case _P1_W: return Period.ofWeeks(1);
-		case _P2_W: return Period.ofWeeks(2);
-		case _P3_W: return Period.ofWeeks(3);
-		case _P4_W: return Period.ofWeeks(4);
+		case _HOURS: return Period.ofWeeks(0);
+		case _WEEK1: return Period.ofWeeks(1);
+		case _WEEK2: return Period.ofWeeks(2);
+		case _WEEK3: return Period.ofWeeks(3);
+		case _WEEK4: return Period.ofWeeks(4);
 		default: return Period.ofWeeks(0);
 		}
 	}

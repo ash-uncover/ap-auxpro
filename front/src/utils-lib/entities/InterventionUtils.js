@@ -7,14 +7,14 @@ import InterventionHelper from 'helpers/InterventionHelper'
 import OfferHelper from 'helpers/OfferHelper'
 
 import InterventionStatus from 'utils/constants/InterventionStatus'
-import RecurencePeriod from 'utils/constants/RecurencePeriod'
+import InterventionRecurencePeriod from 'utils/constants/InterventionRecurencePeriod'
 
 import InterventionFields from 'utils/entities/InterventionFields'
 
 import InterventionType from 'utils-lib/constants/InterventionType'
 
 import DayUtils from 'utils-lib/entities/DayUtils'
-import RecurencePeriodUtils from 'utils-lib/entities/RecurencePeriodUtils'
+import InterventionRecurencePeriodUtils from 'utils-lib/entities/InterventionRecurencePeriodUtils'
 
 class InterventionUtils {
 
@@ -64,19 +64,19 @@ class InterventionUtils {
 	}
 
 	static isCurrent(intervention) {
-		let period = RecurencePeriod.get(intervention.period)
+		let period = InterventionRecurencePeriod.get(intervention.period)
 		let startDate = MomentHelper.fromLocalDate(intervention.startDate);
 		let currentDate = moment().startOf('day');
 		switch (period) {
-		case RecurencePeriod.ONE:
+		case InterventionRecurencePeriod.HOURS:
 			if (currentDate.isAfter(startDate)) {
 				return false
 			}
 			break
-		case RecurencePeriod.P1W:
-		case RecurencePeriod.P2W:
-		case RecurencePeriod.P3W:
-		case RecurencePeriod.P4W:
+		case InterventionRecurencePeriod.WEEK1:
+		case InterventionRecurencePeriod.WEEK2:
+		case InterventionRecurencePeriod.WEEK3:
+		case InterventionRecurencePeriod.WEEK4:
 			let endDate = MomentHelper.fromLocalDate(intervention.endDate)
 			if (currentDate.isAfter(endDate)) {
 				return false
@@ -94,18 +94,18 @@ class InterventionUtils {
 		let startTime = MomentHelper.localTimeToHumanTime(intervention.startTime);
 		let endTime   = MomentHelper.localTimeToHumanTime(intervention.endTime);
 		switch (period) {
-			case RecurencePeriod.ONE.key:
+			case InterventionRecurencePeriod.HOURS.key:
 				text.push('Prestation unique');
 				text.push('Le ' + startDate)
 				text.push('De ' + startTime + ' à ' + endTime)
 				text.push('')
 				break;
-			case RecurencePeriod.P1W.key:
-			case RecurencePeriod.P2W.key:
-			case RecurencePeriod.P3W.key:
-			case RecurencePeriod.P4W.key:
+			case InterventionRecurencePeriod.WEEK1.key:
+			case InterventionRecurencePeriod.WEEK2.key:
+			case InterventionRecurencePeriod.WEEK3.key:
+			case InterventionRecurencePeriod.WEEK4.key:
 				let endDate = MomentHelper.localDateToHumanDate(intervention.endDate);
-				text.push(RecurencePeriodUtils.getName(period))
+				text.push(InterventionRecurencePeriodUtils.getName(period))
 				text.push('Du ' + startDate + ' au ' + endDate)
 				text.push('Le ' + DayUtils.getNames(intervention.days))
 				text.push('De ' + startTime + ' à ' + endTime)
@@ -140,7 +140,7 @@ class InterventionUtils {
 			errors.endTime = "L'horaire de fin doit être après l'horaire de début"
 			hasError = true
 		}
-		if (intervention.period !== 'ONE') {
+		if (intervention.period !== InterventionRecurencePeriod.HOURS.key) {
 			// Check end date is after start date
 			let endDate = MomentHelper.fromLocalDate(intervention.endDate)
 			if (startDate.isAfter(endDate)) {

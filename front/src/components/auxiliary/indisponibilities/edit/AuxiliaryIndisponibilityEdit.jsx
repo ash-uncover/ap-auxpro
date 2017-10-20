@@ -6,6 +6,8 @@ import { Button, Panel, Grid, Form } from 'ap-react-bootstrap'
 import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeekDays'
 import ModalDialog from 'components-lib/Modal/ModalDialog'
 
+import IndisponibilityRecurencePeriod from 'utils/constants/IndisponibilityRecurencePeriod'
+
 import IndisponibilityUtils from 'utils-lib/entities/IndisponibilityUtils'
 
 class AuxiliaryIndisponibilityEdit extends React.Component {
@@ -29,7 +31,12 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 	// --------------------------------------------------------------------------------
 
 	_buildFormGroup(field) {
-		if (this.state.period === 'ONE' && (field.key === 'endDate' || field.key === 'days')) {
+		if (this.state.period === IndisponibilityRecurencePeriod.HOURS.key && 
+			(field.key === 'endDate' || field.key === 'days') ) {
+			return null
+		}
+		if (this.state.period === IndisponibilityRecurencePeriod.DAYS.key && 
+			(field.key === 'startTime' || field.key === 'endTime' || field.key === 'days') ) {
 			return null
 		}
 		let state = null
