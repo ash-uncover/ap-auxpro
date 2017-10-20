@@ -3,6 +3,7 @@ import AuthHelper from 'helpers/AuthHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
 import CustomerHelper from 'helpers/CustomerHelper'
 import InterventionHelper from 'helpers/InterventionHelper'
+import MissionHelper from 'helpers/MissionHelper'
 import OfferHelper from 'helpers/OfferHelper'
 
 import { BaseData, Utils, MomentHelper } from 'ap-react-bootstrap'
@@ -162,22 +163,24 @@ class ServiceInterventionsData extends BaseData {
 	}
 	onConfirmCancelMatching() {
 		this.setState({ showCancelMatching: false })
-
-		let offers = Utils.filter(OfferHelper.getData(), function (offer) {
-			return this.intervention.id === offer.interventionId
-		}.bind(this))
-		Promise.all(offers.map(function (offer) {
-			offer.sadStatus = OfferStatusSad.CANCELED.key,
-			offer.sadStatusChanged = MomentHelper.toLocalDate(moment())
-			return OfferHelper.putOffer(offer)
-		})).
+		AppHelper.setBusy(true).
+		then(function() {
+			return InterventionHelper.putInterventionCancel(this.intervention)
+		}.bind(this)).
 		then(function () {
-			OfferHelper.getServiceOffers(AuthHelper.getEntityId())
-			this.intervention = null		
+			return Promise.all([
+				InterventionHelper.getIntervention(this.intervention.id),
+				OfferHelper.getServiceOffers(AuthHelper.getEntityId())
+			])
+		}.bind(this)).
+		then(function () {
+			this.intervention = null
+			setTimeout(AppHelper.setBusy, 200)
 		}.bind(this)).
 		catch(function (error) {
+			setTimeout(AppHelper.setBusy, 200)
 			console.error('Error while canceling matching')
-			console.error(error);
+			console.error(error)
 		})
 	}
 
@@ -190,19 +193,26 @@ class ServiceInterventionsData extends BaseData {
 		this.setState({ showCancelIntervention: false })
 	}
 	onConfirmCancelIntervention() {
-		this.intervention.sadStatus = 'CANCELED'
-		this.intervention.sadStatusChanged = MomentHelper.toLocalDate(moment()),
-		this.intervention.hideToSad = true
-		InterventionHelper.putIntervention(this.intervention).
+		this.setState({ showCancelIntervention: false })
+		AppHelper.setBusy(true).
+		then(function() {
+			return InterventionHelper.putInterventionCancel(this.intervention)
+		}.bind(this)).
 		then(function () {
-			InterventionHelper.getIntervention(this.intervention.id)
+			return Promise.all([
+				InterventionHelper.getIntervention(this.intervention.id),
+				MissionHelper.getServiceMissions(AuthHelper.getEntityId())
+			])
+		}.bind(this)).
+		then(function () {
 			this.intervention = null
-			this.setState({ showCancelIntervention: false })
+			setTimeout(AppHelper.setBusy, 200)
 		}.bind(this)).
 		catch(function (error) {
+			setTimeout(AppHelper.setBusy, 200)
 			console.error('Error while stopping intervention')
 			console.error(error)
-		})	
+		})
 	}
 
 	onViewCustomer(customerId) {

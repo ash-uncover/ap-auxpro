@@ -48,6 +48,7 @@ let put_intervention = new ActionBase({ name: 'PUT_INTERVENTION' })
 let delete_intervention = new ActionBase({ name: 'DELETE_INTERVENTION' })
 let get_intervention_offers = new ActionBase({ name: 'GET_INTERVENTION_OFFERS' })
 let get_intervention_missions = new ActionBase({ name: 'GET_INTERVENTION_MISSIONS' })
+let put_intervention_cancel = new ActionBase({ name: 'PUT_INTERVENTION_CANCEL' })
 let get_mission = new ActionBase({ name: 'GET_MISSION' })
 let put_mission = new ActionBase({ name: 'PUT_MISSION' })
 let delete_mission = new ActionBase({ name: 'DELETE_MISSION' })
@@ -55,6 +56,9 @@ let post_offer = new ActionBase({ name: 'POST_OFFER' })
 let get_offer = new ActionBase({ name: 'GET_OFFER' })
 let put_offer = new ActionBase({ name: 'PUT_OFFER' })
 let delete_offer = new ActionBase({ name: 'DELETE_OFFER' })
+let put_offer_accept = new ActionBase({ name: 'PUT_OFFER_ACCEPT' })
+let put_offer_decline = new ActionBase({ name: 'PUT_OFFER_DECLINE' })
+let put_offer_confirm = new ActionBase({ name: 'PUT_OFFER_CONFIRM' })
 let get_services = new ActionBase({ name: 'GET_SERVICES' })
 let post_service = new ActionBase({ name: 'POST_SERVICE' })
 let get_service = new ActionBase({ name: 'GET_SERVICE' })
@@ -557,6 +561,17 @@ get_intervention_missions.do = function(args) {
 	return RestService._request(reqParam);
 }
 
+put_intervention_cancel.do = function(args) {
+	Utils.checkMembers(args, ['token', 'id', 'data']);
+	var reqParam = {
+		method: 'PUT',
+		url: '/interventions/' + args.id + '/cancel',
+		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
 get_mission.do = function(args) {
 	Utils.checkMembers(args, ['token', 'id']);
 	var reqParam = {
@@ -625,6 +640,39 @@ delete_offer.do = function(args) {
 	var reqParam = {
 		method: 'DELETE',
 		url: '/offers/' + args.id + '',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+put_offer_accept.do = function(args) {
+	Utils.checkMembers(args, ['token', 'id', 'data']);
+	var reqParam = {
+		method: 'PUT',
+		url: '/offers/' + args.id + '/accept',
+		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+put_offer_decline.do = function(args) {
+	Utils.checkMembers(args, ['token', 'id', 'data']);
+	var reqParam = {
+		method: 'PUT',
+		url: '/offers/' + args.id + '/decline',
+		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+put_offer_confirm.do = function(args) {
+	Utils.checkMembers(args, ['token', 'id', 'data']);
+	var reqParam = {
+		method: 'PUT',
+		url: '/offers/' + args.id + '/confirm',
+		data : args.data,
 		token : args.token,
 	};
 	return RestService._request(reqParam);

@@ -214,4 +214,19 @@ public class InterventionServlet extends APServletBase {
 		}
 	}
 
+	@PUT
+	@Path("/{id}/cancel")
+	@Consumes({MediaType.APPLICATION_JSON})
+	public Response putInterventionCancels(@Context SecurityContext sc, @PathParam("id") final String id, InterventionBean interventionBean) {
+		try {
+			Object bean = InterventionHelper.putInterventionCancel(sc, id, interventionBean);
+			return Response.status(Status.OK).entity(bean).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
 }

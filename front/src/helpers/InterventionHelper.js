@@ -41,6 +41,10 @@ class InterventionHelper {
 		return Dispatcher.issue('DELETE_INTERVENTION', {token: AuthHelper.getToken(), id: id});
 	}
 
+	putInterventionCancel(data) {
+		return Dispatcher.issue('PUT_INTERVENTION_CANCEL', {token: AuthHelper.getToken(), id: data.id, data: data});
+	}
+
 	getServiceInterventions(serviceId) {
 		return Dispatcher.issue('GET_SERVICE_INTERVENTIONS', {token: AuthHelper.getToken(), serviceId: serviceId});
 	}

@@ -257,4 +257,46 @@ public class InterventionHelper {
 		return newMission(intervention, TimeHelper.toIntegers(date));
 	}
 
+	public static Object putInterventionCancel(SecurityContext sc, String id, InterventionBean interventionBean) throws APWebException {
+		List<Integer> now = TimeHelper.nowDateTimeIntegers();
+
+		InterventionData intervention = InterventionCollection.getById(id);
+		
+		EInterventionStatus currentStatus = EInterventionStatus.getByName(intervention.sadStatus);
+		
+		switch(currentStatus) {		
+		case _MATCHING:
+			intervention.sadStatus = EInterventionStatus._PENDING.getName();
+			List<OfferData> offers = OfferCollection.get(and(eq("interventionId", intervention.id)));
+			for (OfferData offer : offers) {
+				offer.sadStatus = EOfferStatusSad._CANCELED.getName();
+				offer.sadStatusChanged = now;
+				offer.lastUpdateDate = now;
+				OfferCollection.update(offer);
+			}
+			break;
+		case _ON_GOING:
+			intervention.sadStatus = EInterventionStatus._CANCELED.getName();
+			intervention.hideToSad = true;
+			List<MissionData> missions = MissionCollection.get(and(eq("interventionId", intervention.id)));
+			for (MissionData mission : missions) {
+				mission.sadStatus = EMissionStatus._CANCELED.getName();
+				mission.sadStatusChanged = now;
+				mission.hideToSad = true;
+				mission.lastUpdateDate = now;
+				MissionCollection.update(mission);
+			}
+			break;
+		default:
+			throw new APWebException("", "", Status.FORBIDDEN);
+		}
+		
+		intervention.lastUpdateDate = now;
+		intervention.sadStatusChanged = now;
+		
+		InterventionCollection.update(intervention);
+		
+		return "";
+	}
+
 }

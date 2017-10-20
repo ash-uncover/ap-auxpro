@@ -356,6 +356,16 @@ ErrorStore.handleGetInterventionMissionsError = function(error, params) {
 	ErrorStore.notifyPath('/GET_INTERVENTION_MISSIONS');
 }
 
+ErrorStore.handlePutInterventionCancelSuccess = function(results, params) {
+	delete ErrorStore._content.PUT_INTERVENTION_CANCEL;
+	ErrorStore.notifyPath('/PUT_INTERVENTION_CANCEL');
+}
+
+ErrorStore.handlePutInterventionCancelError = function(error, params) {
+	ErrorStore._content.PUT_INTERVENTION_CANCEL = error;
+	ErrorStore.notifyPath('/PUT_INTERVENTION_CANCEL');
+}
+
 ErrorStore.handleGetMissionSuccess = function(results, params) {
 	delete ErrorStore._content.GET_MISSION;
 	ErrorStore.notifyPath('/GET_MISSION');
@@ -424,6 +434,36 @@ ErrorStore.handleDeleteOfferSuccess = function(results, params) {
 ErrorStore.handleDeleteOfferError = function(error, params) {
 	ErrorStore._content.DELETE_OFFER = error;
 	ErrorStore.notifyPath('/DELETE_OFFER');
+}
+
+ErrorStore.handlePutOfferAcceptSuccess = function(results, params) {
+	delete ErrorStore._content.PUT_OFFER_ACCEPT;
+	ErrorStore.notifyPath('/PUT_OFFER_ACCEPT');
+}
+
+ErrorStore.handlePutOfferAcceptError = function(error, params) {
+	ErrorStore._content.PUT_OFFER_ACCEPT = error;
+	ErrorStore.notifyPath('/PUT_OFFER_ACCEPT');
+}
+
+ErrorStore.handlePutOfferDeclineSuccess = function(results, params) {
+	delete ErrorStore._content.PUT_OFFER_DECLINE;
+	ErrorStore.notifyPath('/PUT_OFFER_DECLINE');
+}
+
+ErrorStore.handlePutOfferDeclineError = function(error, params) {
+	ErrorStore._content.PUT_OFFER_DECLINE = error;
+	ErrorStore.notifyPath('/PUT_OFFER_DECLINE');
+}
+
+ErrorStore.handlePutOfferConfirmSuccess = function(results, params) {
+	delete ErrorStore._content.PUT_OFFER_CONFIRM;
+	ErrorStore.notifyPath('/PUT_OFFER_CONFIRM');
+}
+
+ErrorStore.handlePutOfferConfirmError = function(error, params) {
+	ErrorStore._content.PUT_OFFER_CONFIRM = error;
+	ErrorStore.notifyPath('/PUT_OFFER_CONFIRM');
 }
 
 ErrorStore.handleGetServicesSuccess = function(results, params) {
@@ -682,6 +722,7 @@ Dispatcher.register('PUT_INTERVENTION', ErrorStore.handlePutInterventionSuccess,
 Dispatcher.register('DELETE_INTERVENTION', ErrorStore.handleDeleteInterventionSuccess, ErrorStore.handleDeleteInterventionError)
 Dispatcher.register('GET_INTERVENTION_OFFERS', ErrorStore.handleGetInterventionOffersSuccess, ErrorStore.handleGetInterventionOffersError)
 Dispatcher.register('GET_INTERVENTION_MISSIONS', ErrorStore.handleGetInterventionMissionsSuccess, ErrorStore.handleGetInterventionMissionsError)
+Dispatcher.register('PUT_INTERVENTION_CANCEL', ErrorStore.handlePutInterventionCancelSuccess, ErrorStore.handlePutInterventionCancelError)
 Dispatcher.register('GET_MISSION', ErrorStore.handleGetMissionSuccess, ErrorStore.handleGetMissionError)
 Dispatcher.register('PUT_MISSION', ErrorStore.handlePutMissionSuccess, ErrorStore.handlePutMissionError)
 Dispatcher.register('DELETE_MISSION', ErrorStore.handleDeleteMissionSuccess, ErrorStore.handleDeleteMissionError)
@@ -689,6 +730,9 @@ Dispatcher.register('POST_OFFER', ErrorStore.handlePostOfferSuccess, ErrorStore.
 Dispatcher.register('GET_OFFER', ErrorStore.handleGetOfferSuccess, ErrorStore.handleGetOfferError)
 Dispatcher.register('PUT_OFFER', ErrorStore.handlePutOfferSuccess, ErrorStore.handlePutOfferError)
 Dispatcher.register('DELETE_OFFER', ErrorStore.handleDeleteOfferSuccess, ErrorStore.handleDeleteOfferError)
+Dispatcher.register('PUT_OFFER_ACCEPT', ErrorStore.handlePutOfferAcceptSuccess, ErrorStore.handlePutOfferAcceptError)
+Dispatcher.register('PUT_OFFER_DECLINE', ErrorStore.handlePutOfferDeclineSuccess, ErrorStore.handlePutOfferDeclineError)
+Dispatcher.register('PUT_OFFER_CONFIRM', ErrorStore.handlePutOfferConfirmSuccess, ErrorStore.handlePutOfferConfirmError)
 Dispatcher.register('GET_SERVICES', ErrorStore.handleGetServicesSuccess, ErrorStore.handleGetServicesError)
 Dispatcher.register('POST_SERVICE', ErrorStore.handlePostServiceSuccess, ErrorStore.handlePostServiceError)
 Dispatcher.register('GET_SERVICE', ErrorStore.handleGetServiceSuccess, ErrorStore.handleGetServiceError)

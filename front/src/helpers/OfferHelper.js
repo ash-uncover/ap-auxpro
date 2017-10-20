@@ -37,6 +37,18 @@ class OfferHelper {
 		return Dispatcher.issue('DELETE_OFFER', {token: AuthHelper.getToken(), id: id});
 	}
 
+	putOfferAccept(data) {
+		return Dispatcher.issue('PUT_OFFER_ACCEPT', {token: AuthHelper.getToken(), id: data.id, data: data});
+	}
+
+	putOfferDecline(data) {
+		return Dispatcher.issue('PUT_OFFER_DECLINE', {token: AuthHelper.getToken(), id: data.id, data: data});
+	}
+
+	putOfferConfirm(data) {
+		return Dispatcher.issue('PUT_OFFER_CONFIRM', {token: AuthHelper.getToken(), id: data.id, data: data});
+	}
+
 	getServiceOffers(serviceId) {
 		return Dispatcher.issue('GET_SERVICE_OFFERS', {token: AuthHelper.getToken(), serviceId: serviceId});
 	}

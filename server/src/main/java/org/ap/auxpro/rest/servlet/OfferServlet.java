@@ -99,4 +99,49 @@ public class OfferServlet extends APServletBase {
 		}
 	}
 
+	@PUT
+	@Path("/{id}/accept")
+	@Consumes({MediaType.APPLICATION_JSON})
+	public Response putOfferAccepts(@Context SecurityContext sc, @PathParam("id") final String id, OfferBean offerBean) {
+		try {
+			Object bean = OfferHelper.putOfferAccept(sc, id, offerBean);
+			return Response.status(Status.OK).entity(bean).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	@PUT
+	@Path("/{id}/decline")
+	@Consumes({MediaType.APPLICATION_JSON})
+	public Response putOfferDeclines(@Context SecurityContext sc, @PathParam("id") final String id, OfferBean offerBean) {
+		try {
+			Object bean = OfferHelper.putOfferDecline(sc, id, offerBean);
+			return Response.status(Status.OK).entity(bean).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	@PUT
+	@Path("/{id}/confirm")
+	@Consumes({MediaType.APPLICATION_JSON})
+	public Response putOfferConfirms(@Context SecurityContext sc, @PathParam("id") final String id, OfferBean offerBean) {
+		try {
+			Object bean = OfferHelper.putOfferConfirm(sc, id, offerBean);
+			return Response.status(Status.OK).entity(bean).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
 }

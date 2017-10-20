@@ -47,25 +47,13 @@ class ServiceInterventionFollowData extends BaseData {
 		AppHelper.navigateBack()
 	}
 	onConfirm(offer) {
-		let intervention = InterventionHelper.getData(this.interventionId)
-		
-		intervention.auxiliaryId = offer.auxiliaryId
-		intervention.sadStatus = InterventionStatus.ONGOING.key
-		intervention.sadStatusChanged = MomentHelper.toLocalDate(moment())
-
-		offer.sadStatus = OfferStatusSad.CONFIRMED.key
-		offer.sadStatusChanged = MomentHelper.toLocalDate(moment())
-
 		AppHelper.setBusy(true).
 		then(function () {
-			return Promise.all([
-				InterventionHelper.putIntervention(intervention),
-				OfferHelper.putOffer(offer)
-			])
+			return OfferHelper.putOfferConfirm(offer)
 		}).
 		then(function () {
 			return Promise.all([
-				InterventionHelper.getServiceInterventions(AuthHelper.getEntityId()),
+				InterventionHelper.getIntervention(this.interventionId),
 				OfferHelper.getServiceOffers(AuthHelper.getEntityId()),
 				MissionHelper.getServiceMissions(AuthHelper.getEntityId())
 			])

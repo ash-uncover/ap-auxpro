@@ -71,32 +71,43 @@ class AuxiliaryOffersData extends BaseData {
 	}
 	
 	onOfferAccept(offer) {
-		offer.auxStatus = OfferStatusAux.ACCEPTED.key
-		offer.auxStatusChanged = MomentHelper.toLocalDate(moment())
-		this._updateOffer(offer)
+		AppHelper.setBusy(true).
+		then(function() {
+			return OfferHelper.putOfferAccept(offer)
+		}).
+		then(function () {
+			return OfferHelper.getOffer(offer.id)
+		}).
+		then(function () {
+			setTimeout(AppHelper.setBusy, 200)
+		}).
+		catch(function (error) {
+			setTimeout(AppHelper.setBusy, 200)
+			console.error('Error while accepting offer')
+			console.error(error)
+		})
 	}
 	
 	onOfferDecline(offer) {
-		offer.hideToAux = true
-		offer.auxStatus = OfferStatusAux.DECLINED.key
-		offer.auxStatusChanged = MomentHelper.toLocalDate(moment())
-		this._updateOffer(offer)
+		AppHelper.setBusy(true).
+		then(function() {
+			return OfferHelper.putOfferDecline(offer)
+		}).
+		then(function () {
+			return OfferHelper.getOffer(offer.id)
+		}).
+		then(function () {
+			setTimeout(AppHelper.setBusy, 200)
+		}).
+		catch(function (error) {
+			setTimeout(AppHelper.setBusy, 200)
+			console.error('Error while accepting offer')
+			console.error(error)
+		})
 	}
 
 	onOfferHide(offer) {
 		offer.hideToAux = true
-		this._updateOffer(offer)
-	}
-
-	onFilterState(state) {
-		this.setState({ filterState: state })
-	}
-
-
-	// Internal methods //
-	// --------------------------------------------------------------------------------
-
-	_updateOffer(offer) {
 		AppHelper.setBusy(true).
 		then(function() {
 			return OfferHelper.putOffer(offer)
@@ -109,10 +120,13 @@ class AuxiliaryOffersData extends BaseData {
 		}).
 		catch(function (error) {
 			setTimeout(AppHelper.setBusy, 200)
-			offer.auxStatus = OfferAuxStatus.PENDING.key
-			console.error('Error while updating offer')
+			console.error('Error while deleting offer')
 			console.error(error)
 		})
+	}
+
+	onFilterState(state) {
+		this.setState({ filterState: state })
 	}
 }
 let AuxiliaryOffersObj = new AuxiliaryOffersData()
