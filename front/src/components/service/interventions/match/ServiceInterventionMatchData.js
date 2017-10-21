@@ -1,5 +1,6 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
+import CustomerHelper from 'helpers/CustomerHelper'
 import InterventionHelper from 'helpers/InterventionHelper'
 import OfferHelper from 'helpers/OfferHelper'
 
@@ -26,9 +27,12 @@ class ServiceInterventionMatchData extends BaseData {
 			AppHelper.navigate('/service/interventions/' + interventionId)
 			return
 		}
+		let customer = CustomerHelper.getData(intervention.customerId)
 
 		this.obj.state = {
 			matches: intervention.match,
+			intervention: intervention,
+			customer: customer,
 			selected: []
 		}
 	}

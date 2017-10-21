@@ -5,6 +5,10 @@ import './ServiceInterventionMatch.scss'
 import { Button, Panel, Form, Grid, List, TextUtils } from 'ap-react-bootstrap'
 
 import AuxiliaryMatchListItem from 'components-lib/AuxiliaryListItem/AuxiliaryMatchListItem'
+import Text from 'components-lib/Text/Text'
+
+import CustomerUtils from 'utils-lib/entities/CustomerUtils'
+import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 
 class ServiceInterventionMatch extends React.Component {
 
@@ -53,9 +57,11 @@ class ServiceInterventionMatch extends React.Component {
 					<Grid.Col sm={6}>
 						<Panel>
 							<Panel.Header>
+								Infos usager
 							</Panel.Header>
 							<Panel.Body>
-								Infos usager
+								<p><b>{CustomerUtils.getFullName(this.state.customer)}</b></p>
+								<p>{this.state.customer.address}<br/>{CustomerUtils.getShortAddress(this.state.customer)}</p>
 							</Panel.Body>
 							<Panel.Footer>
 							</Panel.Footer>
@@ -64,9 +70,10 @@ class ServiceInterventionMatch extends React.Component {
 					<Grid.Col sm={6}>
 						<Panel>
 							<Panel.Header>
+								Infos interventions
 							</Panel.Header>
 							<Panel.Body>
-								Infos interventions
+								<Text text={InterventionUtils.getText(this.state.intervention)} />
 							</Panel.Body>
 							<Panel.Footer>
 							</Panel.Footer>

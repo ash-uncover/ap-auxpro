@@ -1,5 +1,6 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
+import CustomerHelper from 'helpers/CustomerHelper'
 import InterventionHelper from 'helpers/InterventionHelper'
 import MissionHelper from 'helpers/MissionHelper'
 import OfferHelper from 'helpers/OfferHelper'
@@ -25,14 +26,16 @@ class ServiceInterventionFollowData extends BaseData {
 		this.declareFunction('onConfirm')
 
 		let intervention = InterventionHelper.getData(interventionId)
-
 		if (InterventionUtils.getType(intervention) !== InterventionType.OFFERED) {
 			AppHelper.navigate('/service/interventions/' + interventionId)
 			return
 		}
-
+		let customer = CustomerHelper.getData(intervention.customerId)
+		
 		this.obj.state = {
-			offers: InterventionUtils.getOffers(intervention)
+			offers: InterventionUtils.getOffers(intervention),
+			intervention: intervention,
+			customer: customer
 		}
 	}
 
