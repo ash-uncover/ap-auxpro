@@ -20,6 +20,7 @@ public class GeozoneServlet extends APServletBase {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
 	public Response postGeozone(@Context SecurityContext sc, GeozoneBean geozoneBean) {
 		try {
 			GeozoneData data = new GeozoneData();

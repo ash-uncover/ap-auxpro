@@ -26,6 +26,7 @@ public class CustomerServlet extends APServletBase {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
 	public Response postCustomer(@Context SecurityContext sc, CustomerBean customerBean) {
 		try {
 			CustomerData data = new CustomerData();

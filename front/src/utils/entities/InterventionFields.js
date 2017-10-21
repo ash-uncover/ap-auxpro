@@ -46,12 +46,12 @@ class InterventionFields {
 		return _START_TIME
 	}
 
-	static get END_TIME() {
-		return _END_TIME
-	}
-
 	static get ID() {
 		return _ID
+	}
+
+	static get END_TIME() {
+		return _END_TIME
 	}
 
 	static get SERVICE_ID() {
@@ -78,8 +78,8 @@ class InterventionFields {
 			_SAD_STATUS,
 			_DAYS,
 			_START_TIME,
-			_END_TIME,
 			_ID,
+			_END_TIME,
 			_SERVICE_ID,
 			_HIDE_TO_SAD,
 			_START_DATE,
@@ -137,13 +137,13 @@ let _START_TIME = {
 	key: 'startTime',
 	type: 'number',
 }
-let _END_TIME = {
-	key: 'endTime',
-	type: 'number',
-}
 let _ID = {
 	key: 'id',
 	type: 'string',
+}
+let _END_TIME = {
+	key: 'endTime',
+	type: 'number',
 }
 let _SERVICE_ID = {
 	key: 'serviceId',

@@ -29,14 +29,6 @@ class OfferHelper {
 		return Dispatcher.issue('GET_OFFER', {token: AuthHelper.getToken(), id: id});
 	}
 
-	putOffer(data) {
-		return Dispatcher.issue('PUT_OFFER', {token: AuthHelper.getToken(), id: data.id, data: data});
-	}
-
-	deleteOffer(id) {
-		return Dispatcher.issue('DELETE_OFFER', {token: AuthHelper.getToken(), id: id});
-	}
-
 	putOfferAccept(data) {
 		return Dispatcher.issue('PUT_OFFER_ACCEPT', {token: AuthHelper.getToken(), id: data.id, data: data});
 	}

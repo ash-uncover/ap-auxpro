@@ -9,14 +9,19 @@ import java.util.List;
 
 import javax.ws.rs.core.SecurityContext;
 
-import org.ap.auxpro.bean.OfferBean;
+import org.ap.auxpro.bean.BasicBean;
 import org.ap.auxpro.bean.OfferEmptyBean;
+import org.ap.auxpro.bean.OfferPostBean;
 import org.ap.auxpro.constants.EInterventionRecurencePeriod;
 import org.ap.auxpro.constants.EInterventionStatus;
 import org.ap.auxpro.constants.EMissionStatus;
 import org.ap.auxpro.constants.EOfferStatusAux;
 import org.ap.auxpro.constants.EOfferStatusSad;
 import org.ap.auxpro.internal.MailSender;
+import org.ap.auxpro.storage.ApauthCollection;
+import org.ap.auxpro.storage.ApauthData;
+import org.ap.auxpro.storage.AuxiliaryCollection;
+import org.ap.auxpro.storage.AuxiliaryData;
 import org.ap.auxpro.storage.InterventionCollection;
 import org.ap.auxpro.storage.InterventionData;
 import org.ap.auxpro.storage.MissionCollection;
@@ -28,82 +33,48 @@ import org.ap.auxpro.storage.ServiceData;
 import org.ap.common.TimeHelper;
 import org.ap.web.internal.APWebException;
 import org.ap.web.internal.UUIDGenerator;
-import org.ap.web.storage.Mongo;
-import org.bson.Document;
 
 import com.mongodb.MongoWriteException;
 
 public class OfferHelper {
 
-	public static Object createOffer(SecurityContext sc, OfferBean offerBean) throws APWebException {
-		String result = "";
+	public static Object createOffer(SecurityContext sc, OfferPostBean offerBean) throws APWebException {
+		BasicBean result = new BasicBean();
 		try {
-			// Insert the new offer in database
-			Document document = new Document();
 			String id = UUIDGenerator.nextId();
-			document.append("id", id);
-			document.append("auxiliaryId", offerBean.auxiliaryId);
-			document.append("hideToAux", offerBean.hideToAux);
-			document.append("customerId", offerBean.customerId);
-			document.append("serviceId", offerBean.serviceId);
-			document.append("creationDate", TimeHelper.toIntegers(LocalDate.now()));
-			document.append("interventionId", offerBean.interventionId);
-			document.append("hideToSad", offerBean.hideToSad);
-			document.append("sadStatus", EOfferStatusSad._PENDING.getName());
-			document.append("auxStatus", EOfferStatusAux._PENDING.getName());
-			document.append("sadStatusChanged", TimeHelper.toIntegers(LocalDate.now()));
-			Mongo.get().collection("offer").insertOne(document);			
-			result = "{\"id\": \"" + id + "\"}";
+			List<Integer> now = TimeHelper.toIntegers(LocalDate.now());
+
+			OfferData offer = new OfferData();
+			offer.setId(id);
+			offer.setCreationDate(now);
+			offer.setAuxiliaryId(offerBean.auxiliaryId);
+			offer.setCustomerId(offerBean.customerId);
+			offer.setServiceId(offerBean.serviceId);
+			offer.setInterventionId(offerBean.interventionId);
+			offer.setAuxStatus(EOfferStatusAux._PENDING.getName());
+			offer.setAuxStatusChanged(now);
+			offer.setHideToAux(false);
+			offer.setSadStatus(EOfferStatusSad._PENDING.getName());
+			offer.setSadStatusChanged(now);
+			offer.setHideToSad(false);
+			OfferCollection.create(offer);
+			
+			result.id = id;
 		} catch (MongoWriteException e) {
 			throw APWebException.MONGO_WRITE_EXCEPTION;
 		}
 		try {
 			// Send notification mail if needed
-			Document documentAuxiliary = Mongo.get().collection("auxiliary").find(and(eq("id", offerBean.auxiliaryId))).first();
-			boolean notify = documentAuxiliary.getBoolean("notifyOffersMail");
-			if (notify) {
-				MailSender.sendAuxiliaryOffer(documentAuxiliary.getString("email"), documentAuxiliary.getString("firstName"));
+			AuxiliaryData auxiliary = AuxiliaryCollection.getById(offerBean.auxiliaryId);
+			ApauthData apauth = ApauthCollection.get(and(eq("entityId", auxiliary.getId()))).get(0);
+			if (auxiliary.getNotifyOffersMail()) {
+				MailSender.sendAuxiliaryOffer(apauth.getEmail(), auxiliary.getFirstName());
 			}
 		} catch (Exception e) {
 			// Still the offer was created so we dont want to crash here
 			e.printStackTrace();
 		}		
 		return result;
-	}
-
-	public static Object putOffer(SecurityContext sc, String id, OfferBean offerBean) throws APWebException {
-		OfferData offer = new OfferData();
-		offer.id = id;
-		offer.auxStatus = offerBean.auxStatus;
-		offer.auxStatusChanged = offerBean.auxStatusChanged;
-		offer.auxiliaryId = offerBean.auxiliaryId;
-		offer.hideToAux = offerBean.hideToAux;
-		offer.customerId = offerBean.customerId;
-		offer.sadStatus = offerBean.sadStatus;
-		offer.sadStatusChanged = offerBean.sadStatusChanged;
-		offer.serviceId = offerBean.serviceId;
-		offer.creationDate = offerBean.creationDate;
-		offer.interventionId = offerBean.interventionId;
-		offer.hideToSad = offerBean.hideToSad;
-
-		OfferCollection.update(offer);
-
-		boolean isAuxAcc = offer.auxStatus != null && EOfferStatusAux._ACCEPTED.equals(EOfferStatusAux.getByName(offer.auxStatus));
-		boolean isSadConf = offer.sadStatus != null && EOfferStatusSad._CONFIRMED.equals(EOfferStatusSad.getByName(offer.sadStatus));
-		boolean isSadCan = offer.sadStatus != null && EOfferStatusSad._CANCELED.equals(EOfferStatusSad.getByName(offer.sadStatus));
-
-		if (isAuxAcc && !isSadConf && !isSadCan) {
-			try {
-				// Send notification mail
-				ServiceData service = ServiceCollection.getById(offerBean.serviceId);
-				MailSender.sendServiceOffer(service.email);
-			} catch (Exception e) {
-				// Still the offer was updated so we dont want to crash here
-				e.printStackTrace();
-			}
-		}
-
-		return "";
 	}
 
 	public static Object putOfferAccept(SecurityContext sc, String id, OfferEmptyBean offerBean) throws APWebException {
@@ -114,6 +85,16 @@ public class OfferHelper {
 		offer.auxStatus = EOfferStatusAux._ACCEPTED.getName();
 		offer.auxStatusChanged = now;
 		OfferCollection.update(offer);
+		
+		try {
+			// Send notification mail
+			ServiceData service = ServiceCollection.getById(offer.getServiceId());
+			ApauthData apauth = ApauthCollection.get(and(eq("entityId", service.getId()))).get(0);
+			MailSender.sendServiceOffer(apauth.getEmail());
+		} catch (Exception e) {
+			// Still the offer was updated so we dont want to crash here
+			e.printStackTrace();
+		}
 		
 		return "";
 	}

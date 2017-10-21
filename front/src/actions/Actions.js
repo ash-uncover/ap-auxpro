@@ -54,8 +54,6 @@ let put_mission = new ActionBase({ name: 'PUT_MISSION' })
 let delete_mission = new ActionBase({ name: 'DELETE_MISSION' })
 let post_offer = new ActionBase({ name: 'POST_OFFER' })
 let get_offer = new ActionBase({ name: 'GET_OFFER' })
-let put_offer = new ActionBase({ name: 'PUT_OFFER' })
-let delete_offer = new ActionBase({ name: 'DELETE_OFFER' })
 let put_offer_accept = new ActionBase({ name: 'PUT_OFFER_ACCEPT' })
 let put_offer_decline = new ActionBase({ name: 'PUT_OFFER_DECLINE' })
 let put_offer_confirm = new ActionBase({ name: 'PUT_OFFER_CONFIRM' })
@@ -618,27 +616,6 @@ get_offer.do = function(args) {
 	Utils.checkMembers(args, ['token', 'id']);
 	var reqParam = {
 		method: 'GET',
-		url: '/offers/' + args.id + '',
-		token : args.token,
-	};
-	return RestService._request(reqParam);
-}
-
-put_offer.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/offers/' + args.id + '',
-		data : args.data,
-		token : args.token,
-	};
-	return RestService._request(reqParam);
-}
-
-delete_offer.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'DELETE',
 		url: '/offers/' + args.id + '',
 		token : args.token,
 	};

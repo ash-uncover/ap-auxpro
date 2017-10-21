@@ -416,26 +416,6 @@ ErrorStore.handleGetOfferError = function(error, params) {
 	ErrorStore.notifyPath('/GET_OFFER');
 }
 
-ErrorStore.handlePutOfferSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_OFFER;
-	ErrorStore.notifyPath('/PUT_OFFER');
-}
-
-ErrorStore.handlePutOfferError = function(error, params) {
-	ErrorStore._content.PUT_OFFER = error;
-	ErrorStore.notifyPath('/PUT_OFFER');
-}
-
-ErrorStore.handleDeleteOfferSuccess = function(results, params) {
-	delete ErrorStore._content.DELETE_OFFER;
-	ErrorStore.notifyPath('/DELETE_OFFER');
-}
-
-ErrorStore.handleDeleteOfferError = function(error, params) {
-	ErrorStore._content.DELETE_OFFER = error;
-	ErrorStore.notifyPath('/DELETE_OFFER');
-}
-
 ErrorStore.handlePutOfferAcceptSuccess = function(results, params) {
 	delete ErrorStore._content.PUT_OFFER_ACCEPT;
 	ErrorStore.notifyPath('/PUT_OFFER_ACCEPT');
@@ -728,8 +708,6 @@ Dispatcher.register('PUT_MISSION', ErrorStore.handlePutMissionSuccess, ErrorStor
 Dispatcher.register('DELETE_MISSION', ErrorStore.handleDeleteMissionSuccess, ErrorStore.handleDeleteMissionError)
 Dispatcher.register('POST_OFFER', ErrorStore.handlePostOfferSuccess, ErrorStore.handlePostOfferError)
 Dispatcher.register('GET_OFFER', ErrorStore.handleGetOfferSuccess, ErrorStore.handleGetOfferError)
-Dispatcher.register('PUT_OFFER', ErrorStore.handlePutOfferSuccess, ErrorStore.handlePutOfferError)
-Dispatcher.register('DELETE_OFFER', ErrorStore.handleDeleteOfferSuccess, ErrorStore.handleDeleteOfferError)
 Dispatcher.register('PUT_OFFER_ACCEPT', ErrorStore.handlePutOfferAcceptSuccess, ErrorStore.handlePutOfferAcceptError)
 Dispatcher.register('PUT_OFFER_DECLINE', ErrorStore.handlePutOfferDeclineSuccess, ErrorStore.handlePutOfferDeclineError)
 Dispatcher.register('PUT_OFFER_CONFIRM', ErrorStore.handlePutOfferConfirmSuccess, ErrorStore.handlePutOfferConfirmError)

@@ -417,8 +417,8 @@ public class ServiceServlet extends APServletBase {
 				OfferBean bean = new OfferBean();
 				bean.auxStatus = data.getAuxStatus();
 				bean.auxStatusChanged = data.getAuxStatusChanged();
-				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.hideToAux = data.getHideToAux();
+				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.sadStatusChanged = data.getSadStatusChanged();
 				bean.creationDate = data.getCreationDate();
@@ -426,8 +426,8 @@ public class ServiceServlet extends APServletBase {
 				bean.sadStatus = data.getSadStatus();
 				bean.id = data.getId();
 				bean.serviceId = data.getServiceId();
-				bean.interventionId = data.getInterventionId();
 				bean.hideToSad = data.getHideToSad();
+				bean.interventionId = data.getInterventionId();
 				
 				beanList.add(bean);
 			}

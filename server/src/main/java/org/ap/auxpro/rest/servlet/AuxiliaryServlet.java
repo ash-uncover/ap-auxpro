@@ -328,6 +328,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@POST
 	@Path("/{id}/questionary")
 	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
 	public Response postAuxiliaryQuestionary(@Context SecurityContext sc, @PathParam("id") final String id, AuxiliaryQuestionaryBean auxiliaryQuestionaryBean) {
 		try {
 			Object bean = AuxiliaryHelper.postAuxiliaryQuestionary(sc, id, auxiliaryQuestionaryBean);
@@ -482,8 +483,8 @@ public class AuxiliaryServlet extends APServletBase {
 				OfferBean bean = new OfferBean();
 				bean.auxStatus = data.getAuxStatus();
 				bean.auxStatusChanged = data.getAuxStatusChanged();
-				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.hideToAux = data.getHideToAux();
+				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.lastUpdateDate = data.getLastUpdateDate();
 				bean.sadStatusChanged = data.getSadStatusChanged();
 				bean.creationDate = data.getCreationDate();
@@ -491,8 +492,8 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.sadStatus = data.getSadStatus();
 				bean.id = data.getId();
 				bean.serviceId = data.getServiceId();
-				bean.interventionId = data.getInterventionId();
 				bean.hideToSad = data.getHideToSad();
+				bean.interventionId = data.getInterventionId();
 				
 				beanList.add(bean);
 			}

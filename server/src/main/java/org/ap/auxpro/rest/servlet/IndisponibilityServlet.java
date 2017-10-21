@@ -20,6 +20,7 @@ public class IndisponibilityServlet extends APServletBase {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
 	public Response postIndisponibility(@Context SecurityContext sc, IndisponibilityBean indisponibilityBean) {
 		try {
 			IndisponibilityData data = new IndisponibilityData();

@@ -15,8 +15,8 @@ public class InterventionData {
 	public String sadStatus;
 	public List<String> days;
 	public List<Integer> startTime;
-	public List<Integer> endTime;
 	public String id;
+	public List<Integer> endTime;
 	public String serviceId;
 	public Boolean hideToSad;
 	public List<Integer> startDate;
@@ -101,20 +101,20 @@ public class InterventionData {
 		this.startTime = startTime;
 	}
 
-	public List<Integer> getEndTime() {
-		return this.endTime;
-	}
-
-	public void setEndTime(List<Integer> endTime) {
-		this.endTime = endTime;
-	}
-
 	public String getId() {
 		return this.id;
 	}
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public List<Integer> getEndTime() {
+		return this.endTime;
+	}
+
+	public void setEndTime(List<Integer> endTime) {
+		this.endTime = endTime;
 	}
 
 	public String getServiceId() {

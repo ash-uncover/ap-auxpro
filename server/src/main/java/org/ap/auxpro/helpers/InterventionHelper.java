@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
 
 import org.ap.auxpro.bean.InterventionBean;
+import org.ap.auxpro.bean.InterventionEmptyBean;
 import org.ap.auxpro.constants.EInterventionRecurencePeriod;
 import org.ap.auxpro.constants.EInterventionStatus;
 import org.ap.auxpro.constants.EMissionStatus;
@@ -257,7 +258,7 @@ public class InterventionHelper {
 		return newMission(intervention, TimeHelper.toIntegers(date));
 	}
 
-	public static Object putInterventionCancel(SecurityContext sc, String id, InterventionBean interventionBean) throws APWebException {
+	public static Object putInterventionCancel(SecurityContext sc, String id, InterventionEmptyBean interventionBean) throws APWebException {
 		List<Integer> now = TimeHelper.nowDateTimeIntegers();
 
 		InterventionData intervention = InterventionCollection.getById(id);
