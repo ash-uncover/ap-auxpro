@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ws.rs.core.SecurityContext;
 
 import org.ap.auxpro.bean.OfferBean;
+import org.ap.auxpro.bean.OfferEmptyBean;
 import org.ap.auxpro.constants.EInterventionRecurencePeriod;
 import org.ap.auxpro.constants.EInterventionStatus;
 import org.ap.auxpro.constants.EMissionStatus;
@@ -105,7 +106,7 @@ public class OfferHelper {
 		return "";
 	}
 
-	public static Object putOfferAccept(SecurityContext sc, String id, OfferBean offerBean) throws APWebException {
+	public static Object putOfferAccept(SecurityContext sc, String id, OfferEmptyBean offerBean) throws APWebException {
 		List<Integer> now = TimeHelper.nowDateTimeIntegers();
 
 		OfferData offer = OfferCollection.getById(id);
@@ -117,7 +118,7 @@ public class OfferHelper {
 		return "";
 	}
 
-	public static Object putOfferDecline(SecurityContext sc, String id, OfferBean offerBean) throws APWebException {
+	public static Object putOfferDecline(SecurityContext sc, String id, OfferEmptyBean offerBean) throws APWebException {
 		List<Integer> now = TimeHelper.nowDateTimeIntegers();
 
 		OfferData offer = OfferCollection.getById(id);
@@ -130,7 +131,7 @@ public class OfferHelper {
 		return "";
 	}
 
-	public static Object putOfferConfirm(SecurityContext sc, String id, OfferBean offerBean) throws APWebException {
+	public static Object putOfferConfirm(SecurityContext sc, String id, OfferEmptyBean offerBean) throws APWebException {
 		List<Integer> now = TimeHelper.nowDateTimeIntegers();
 
 		// Update confirmed offer
