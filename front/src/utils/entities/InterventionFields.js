@@ -34,12 +34,12 @@ class InterventionFields {
 		return _CUSTOMER_ID
 	}
 
-	static get SAD_STATUS() {
-		return _SAD_STATUS
-	}
-
 	static get DAYS() {
 		return _DAYS
+	}
+
+	static get SAD_STATUS() {
+		return _SAD_STATUS
 	}
 
 	static get START_TIME() {
@@ -75,8 +75,8 @@ class InterventionFields {
 			_SAD_STATUS_CHANGED,
 			_CREATION_DATE,
 			_CUSTOMER_ID,
-			_SAD_STATUS,
 			_DAYS,
+			_SAD_STATUS,
 			_START_TIME,
 			_ID,
 			_END_TIME,
@@ -124,14 +124,14 @@ let _CUSTOMER_ID = {
 	key: 'customerId',
 	type: 'string',
 }
+let _DAYS = {
+	key: 'days',
+	type: 'string',
+}
 let _SAD_STATUS = {
 	key: 'sadStatus',
 	type: 'string',
 	values: InterventionStatus.VALUES,
-}
-let _DAYS = {
-	key: 'days',
-	type: 'string',
 }
 let _START_TIME = {
 	key: 'startTime',

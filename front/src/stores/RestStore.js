@@ -191,24 +191,6 @@ RestStore.handleGetInterventionMatch = function(result, params) {
 	InterventionUtils.storeInterventionMatch(result, params)
 }
 
-RestStore.handleGetInterventionOffers = function(result, params) {
-	let content = RestStore.getContent()
-	content.offer = {};
-	if (result && result.length)
-		for (var i = 0; i < result.length; i++)
-			content.offer[result[i].id] = result[i];
-	RestStore.notifyPath('/offer')
-}
-
-RestStore.handleGetInterventionMissions = function(result, params) {
-	let content = RestStore.getContent()
-	content.mission = {};
-	if (result && result.length)
-		for (var i = 0; i < result.length; i++)
-			content.mission[result[i].id] = result[i];
-	RestStore.notifyPath('/mission')
-}
-
 RestStore.handleGetMission = function(result, params) {
 	let content = RestStore.getContent()
 	if (!content.mission)
@@ -309,8 +291,6 @@ Dispatcher.register('GET_HELP_FAQS', RestStore.handleGetHelpFaqs)
 Dispatcher.register('GET_INDISPONIBILITY', RestStore.handleGetIndisponibility)
 Dispatcher.register('GET_INTERVENTION', RestStore.handleGetIntervention)
 Dispatcher.register('GET_INTERVENTION_MATCH', RestStore.handleGetInterventionMatch)
-Dispatcher.register('GET_INTERVENTION_OFFERS', RestStore.handleGetInterventionOffers)
-Dispatcher.register('GET_INTERVENTION_MISSIONS', RestStore.handleGetInterventionMissions)
 Dispatcher.register('GET_MISSION', RestStore.handleGetMission)
 Dispatcher.register('GET_OFFER', RestStore.handleGetOffer)
 Dispatcher.register('GET_SERVICES', RestStore.handleGetServices)

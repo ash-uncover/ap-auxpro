@@ -12,8 +12,8 @@ public class InterventionData {
 	public List<Integer> sadStatusChanged;
 	public List<Integer> creationDate;
 	public String customerId;
-	public String sadStatus;
 	public List<String> days;
+	public String sadStatus;
 	public List<Integer> startTime;
 	public String id;
 	public List<Integer> endTime;
@@ -77,20 +77,20 @@ public class InterventionData {
 		this.customerId = customerId;
 	}
 
-	public String getSadStatus() {
-		return this.sadStatus;
-	}
-
-	public void setSadStatus(String sadStatus) {
-		this.sadStatus = sadStatus;
-	}
-
 	public List<String> getDays() {
 		return this.days;
 	}
 
 	public void setDays(List<String> days) {
 		this.days = days;
+	}
+
+	public String getSadStatus() {
+		return this.sadStatus;
+	}
+
+	public void setSadStatus(String sadStatus) {
+		this.sadStatus = sadStatus;
 	}
 
 	public List<Integer> getStartTime() {

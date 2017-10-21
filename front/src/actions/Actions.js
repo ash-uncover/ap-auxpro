@@ -43,11 +43,8 @@ let put_indisponibility = new ActionBase({ name: 'PUT_INDISPONIBILITY' })
 let delete_indisponibility = new ActionBase({ name: 'DELETE_INDISPONIBILITY' })
 let post_intervention = new ActionBase({ name: 'POST_INTERVENTION' })
 let get_intervention = new ActionBase({ name: 'GET_INTERVENTION' })
-let get_intervention_match = new ActionBase({ name: 'GET_INTERVENTION_MATCH' })
 let put_intervention = new ActionBase({ name: 'PUT_INTERVENTION' })
-let delete_intervention = new ActionBase({ name: 'DELETE_INTERVENTION' })
-let get_intervention_offers = new ActionBase({ name: 'GET_INTERVENTION_OFFERS' })
-let get_intervention_missions = new ActionBase({ name: 'GET_INTERVENTION_MISSIONS' })
+let get_intervention_match = new ActionBase({ name: 'GET_INTERVENTION_MATCH' })
 let put_intervention_cancel = new ActionBase({ name: 'PUT_INTERVENTION_CANCEL' })
 let get_mission = new ActionBase({ name: 'GET_MISSION' })
 let put_mission = new ActionBase({ name: 'PUT_MISSION' })
@@ -508,16 +505,6 @@ get_intervention.do = function(args) {
 	return RestService._request(reqParam);
 }
 
-get_intervention_match.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'GET',
-		url: '/interventions/' + args.id + '/match',
-		token : args.token,
-	};
-	return RestService._request(reqParam);
-}
-
 put_intervention.do = function(args) {
 	Utils.checkMembers(args, ['token', 'id', 'data']);
 	var reqParam = {
@@ -529,31 +516,11 @@ put_intervention.do = function(args) {
 	return RestService._request(reqParam);
 }
 
-delete_intervention.do = function(args) {
+get_intervention_match.do = function(args) {
 	Utils.checkMembers(args, ['token', 'id']);
 	var reqParam = {
-		method: 'DELETE',
-		url: '/interventions/' + args.id + '',
-		token : args.token,
-	};
-	return RestService._request(reqParam);
-}
-
-get_intervention_offers.do = function(args) {
-	Utils.checkMembers(args, ['token', 'interventionId']);
-	var reqParam = {
 		method: 'GET',
-		url: '/interventions/' + args.interventionId + '/offers',
-		token : args.token,
-	};
-	return RestService._request(reqParam);
-}
-
-get_intervention_missions.do = function(args) {
-	Utils.checkMembers(args, ['token', 'interventionId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/interventions/' + args.interventionId + '/missions',
+		url: '/interventions/' + args.id + '/match',
 		token : args.token,
 	};
 	return RestService._request(reqParam);

@@ -17,10 +17,6 @@ class MissionHelper {
 		return Dispatcher.issue('GET_AUXILIARY_MISSIONS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId});
 	}
 
-	getInterventionMissions(interventionId) {
-		return Dispatcher.issue('GET_INTERVENTION_MISSIONS', {token: AuthHelper.getToken(), interventionId: interventionId});
-	}
-
 	getMission(id) {
 		return Dispatcher.issue('GET_MISSION', {token: AuthHelper.getToken(), id: id});
 	}

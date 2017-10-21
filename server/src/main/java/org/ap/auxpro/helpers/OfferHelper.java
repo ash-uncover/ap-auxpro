@@ -59,6 +59,11 @@ public class OfferHelper {
 			offer.setHideToSad(false);
 			OfferCollection.create(offer);
 			
+			InterventionData intervention = InterventionCollection.getById(offerBean.interventionId);
+			intervention.setSadStatus(EInterventionStatus._MATCHING.getName());
+			intervention.setSadStatusChanged(now);
+			InterventionCollection.update(intervention);
+			
 			result.id = id;
 		} catch (MongoWriteException e) {
 			throw APWebException.MONGO_WRITE_EXCEPTION;

@@ -17,10 +17,6 @@ class OfferHelper {
 		return Dispatcher.issue('GET_AUXILIARY_OFFERS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId});
 	}
 
-	getInterventionOffers(interventionId) {
-		return Dispatcher.issue('GET_INTERVENTION_OFFERS', {token: AuthHelper.getToken(), interventionId: interventionId});
-	}
-
 	postOffer(data) {
 		return Dispatcher.issue('POST_OFFER', {token: AuthHelper.getToken(), data: data});
 	}

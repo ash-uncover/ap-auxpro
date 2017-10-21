@@ -29,16 +29,12 @@ class InterventionHelper {
 		return Dispatcher.issue('GET_INTERVENTION', {token: AuthHelper.getToken(), id: id});
 	}
 
-	getInterventionMatch(id) {
-		return Dispatcher.issue('GET_INTERVENTION_MATCH', {token: AuthHelper.getToken(), id: id});
-	}
-
 	putIntervention(data) {
 		return Dispatcher.issue('PUT_INTERVENTION', {token: AuthHelper.getToken(), id: data.id, data: data});
 	}
 
-	deleteIntervention(id) {
-		return Dispatcher.issue('DELETE_INTERVENTION', {token: AuthHelper.getToken(), id: id});
+	getInterventionMatch(id) {
+		return Dispatcher.issue('GET_INTERVENTION_MATCH', {token: AuthHelper.getToken(), id: id});
 	}
 
 	putInterventionCancel(data) {

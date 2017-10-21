@@ -306,16 +306,6 @@ ErrorStore.handleGetInterventionError = function(error, params) {
 	ErrorStore.notifyPath('/GET_INTERVENTION');
 }
 
-ErrorStore.handleGetInterventionMatchSuccess = function(results, params) {
-	delete ErrorStore._content.GET_INTERVENTION_MATCH;
-	ErrorStore.notifyPath('/GET_INTERVENTION_MATCH');
-}
-
-ErrorStore.handleGetInterventionMatchError = function(error, params) {
-	ErrorStore._content.GET_INTERVENTION_MATCH = error;
-	ErrorStore.notifyPath('/GET_INTERVENTION_MATCH');
-}
-
 ErrorStore.handlePutInterventionSuccess = function(results, params) {
 	delete ErrorStore._content.PUT_INTERVENTION;
 	ErrorStore.notifyPath('/PUT_INTERVENTION');
@@ -326,34 +316,14 @@ ErrorStore.handlePutInterventionError = function(error, params) {
 	ErrorStore.notifyPath('/PUT_INTERVENTION');
 }
 
-ErrorStore.handleDeleteInterventionSuccess = function(results, params) {
-	delete ErrorStore._content.DELETE_INTERVENTION;
-	ErrorStore.notifyPath('/DELETE_INTERVENTION');
+ErrorStore.handleGetInterventionMatchSuccess = function(results, params) {
+	delete ErrorStore._content.GET_INTERVENTION_MATCH;
+	ErrorStore.notifyPath('/GET_INTERVENTION_MATCH');
 }
 
-ErrorStore.handleDeleteInterventionError = function(error, params) {
-	ErrorStore._content.DELETE_INTERVENTION = error;
-	ErrorStore.notifyPath('/DELETE_INTERVENTION');
-}
-
-ErrorStore.handleGetInterventionOffersSuccess = function(results, params) {
-	delete ErrorStore._content.GET_INTERVENTION_OFFERS;
-	ErrorStore.notifyPath('/GET_INTERVENTION_OFFERS');
-}
-
-ErrorStore.handleGetInterventionOffersError = function(error, params) {
-	ErrorStore._content.GET_INTERVENTION_OFFERS = error;
-	ErrorStore.notifyPath('/GET_INTERVENTION_OFFERS');
-}
-
-ErrorStore.handleGetInterventionMissionsSuccess = function(results, params) {
-	delete ErrorStore._content.GET_INTERVENTION_MISSIONS;
-	ErrorStore.notifyPath('/GET_INTERVENTION_MISSIONS');
-}
-
-ErrorStore.handleGetInterventionMissionsError = function(error, params) {
-	ErrorStore._content.GET_INTERVENTION_MISSIONS = error;
-	ErrorStore.notifyPath('/GET_INTERVENTION_MISSIONS');
+ErrorStore.handleGetInterventionMatchError = function(error, params) {
+	ErrorStore._content.GET_INTERVENTION_MATCH = error;
+	ErrorStore.notifyPath('/GET_INTERVENTION_MATCH');
 }
 
 ErrorStore.handlePutInterventionCancelSuccess = function(results, params) {
@@ -697,11 +667,8 @@ Dispatcher.register('PUT_INDISPONIBILITY', ErrorStore.handlePutIndisponibilitySu
 Dispatcher.register('DELETE_INDISPONIBILITY', ErrorStore.handleDeleteIndisponibilitySuccess, ErrorStore.handleDeleteIndisponibilityError)
 Dispatcher.register('POST_INTERVENTION', ErrorStore.handlePostInterventionSuccess, ErrorStore.handlePostInterventionError)
 Dispatcher.register('GET_INTERVENTION', ErrorStore.handleGetInterventionSuccess, ErrorStore.handleGetInterventionError)
-Dispatcher.register('GET_INTERVENTION_MATCH', ErrorStore.handleGetInterventionMatchSuccess, ErrorStore.handleGetInterventionMatchError)
 Dispatcher.register('PUT_INTERVENTION', ErrorStore.handlePutInterventionSuccess, ErrorStore.handlePutInterventionError)
-Dispatcher.register('DELETE_INTERVENTION', ErrorStore.handleDeleteInterventionSuccess, ErrorStore.handleDeleteInterventionError)
-Dispatcher.register('GET_INTERVENTION_OFFERS', ErrorStore.handleGetInterventionOffersSuccess, ErrorStore.handleGetInterventionOffersError)
-Dispatcher.register('GET_INTERVENTION_MISSIONS', ErrorStore.handleGetInterventionMissionsSuccess, ErrorStore.handleGetInterventionMissionsError)
+Dispatcher.register('GET_INTERVENTION_MATCH', ErrorStore.handleGetInterventionMatchSuccess, ErrorStore.handleGetInterventionMatchError)
 Dispatcher.register('PUT_INTERVENTION_CANCEL', ErrorStore.handlePutInterventionCancelSuccess, ErrorStore.handlePutInterventionCancelError)
 Dispatcher.register('GET_MISSION', ErrorStore.handleGetMissionSuccess, ErrorStore.handleGetMissionError)
 Dispatcher.register('PUT_MISSION', ErrorStore.handlePutMissionSuccess, ErrorStore.handlePutMissionError)

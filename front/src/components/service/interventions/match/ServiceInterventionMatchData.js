@@ -50,24 +50,20 @@ class ServiceInterventionMatchData extends BaseData {
 		
 		AppHelper.setBusy(true).
 		then(function () {
-			let promises = []
-			let m = moment()
-			for (let i = 0; i < selected.length; i++) {
-				let date = MomentHelper.toLocalDate(m)
-				let offer = {
+			return Promise.all(selected.map(function (auxiliaryId) {
+				return OfferHelper.postOffer({
 					serviceId: intervention.serviceId,
 					customerId: intervention.customerId,
 					interventionId: intervention.id,
-					auxiliaryId: selected[i],
-					creationDate: date,
-					sadStatusChanged: date
-				}
-				promises.push(OfferHelper.postOffer(offer))
-			}
-			return Promise.all(promises)
+					auxiliaryId: auxiliaryId
+				})
+			}))
 		}).
 		then(function () {
-			return OfferHelper.getServiceOffers(AuthHelper.getEntityId())
+			return Promise.all([
+				OfferHelper.getServiceOffers(AuthHelper.getEntityId()),
+				InterventionHelper.getIntervention(intervention.id)
+			])
 		}.bind(this)).
 		then(function () {
 			setTimeout(function () { AppHelper.setBusy() }, 200)

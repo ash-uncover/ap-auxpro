@@ -3,7 +3,6 @@ package org.ap.auxpro.helpers;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,9 +14,9 @@ import java.util.Map;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
 
-import org.ap.auxpro.bean.InterventionBean;
+import org.ap.auxpro.bean.BasicBean;
 import org.ap.auxpro.bean.InterventionEmptyBean;
-import org.ap.auxpro.constants.EInterventionRecurencePeriod;
+import org.ap.auxpro.bean.InterventionPostBean;
 import org.ap.auxpro.constants.EInterventionStatus;
 import org.ap.auxpro.constants.EMissionStatus;
 import org.ap.auxpro.constants.EOfferStatusSad;
@@ -42,7 +41,42 @@ import org.ap.common.TimeHelper;
 import org.ap.web.internal.APWebException;
 import org.ap.web.internal.UUIDGenerator;
 
+import com.mongodb.MongoWriteException;
+
 public class InterventionHelper {
+	
+	public static Object createIntervention(SecurityContext sc, InterventionPostBean interventionBean) throws APWebException {
+		BasicBean result = new BasicBean();
+		try {
+			String id = UUIDGenerator.nextId();
+			List<Integer> now = TimeHelper.toIntegers(LocalDate.now());
+
+			InterventionData intervention = new InterventionData();
+			intervention.setId(id);
+			intervention.setCreationDate(now);
+			intervention.setLastUpdateDate(now);
+			
+			intervention.setCustomerId(interventionBean.customerId);
+			intervention.setServiceId(interventionBean.serviceId);
+			intervention.setPeriod(interventionBean.period);
+			intervention.setStartDate(interventionBean.startDate);
+			intervention.setEndDate(interventionBean.endDate);
+			intervention.setStartTime(interventionBean.startTime);
+			intervention.setEndTime(interventionBean.endTime);
+			intervention.setDays(interventionBean.days);
+			
+			intervention.setSadStatus(EInterventionStatus._PENDING.getName());
+			intervention.setSadStatusChanged(now);
+			intervention.setHideToSad(false);
+			InterventionCollection.create(intervention);
+			
+			result.id = id;
+		} catch (MongoWriteException e) {
+			throw APWebException.MONGO_WRITE_EXCEPTION;
+		}
+		
+		return result;
+	}
 
 	public static Object getInterventionMatch(SecurityContext sc, String id) throws APWebException {
 		InterventionData intervention = InterventionCollection.getById(id);
@@ -168,94 +202,6 @@ public class InterventionHelper {
 		int aScore = auxScore == null ? 0 : auxScore;
 		int cScore = custScore == null ? 0 : custScore;
 		return (aScore >= cScore) ? 1 : (aScore - cScore);
-	}
-
-	public static Object putIntervention(SecurityContext sc, String id, InterventionBean bean) throws APWebException {
-		InterventionData intervention = new InterventionData();
-		intervention.period = bean.period;
-		intervention.auxiliaryId = bean.auxiliaryId;
-		intervention.endDate = bean.endDate;
-		intervention.customerId = bean.customerId;
-		intervention.sadStatus = bean.sadStatus;
-		intervention.sadStatusChanged = bean.sadStatusChanged;
-		intervention.hideToSad = bean.hideToSad;
-		intervention.days = bean.days;
-		intervention.startTime = bean.startTime;
-		intervention.endTime = bean.endTime;
-		intervention.id = bean.id;
-		intervention.serviceId = bean.serviceId;
-		intervention.startDate = bean.startDate;
-
-		if (intervention.getAuxiliaryId() != null) {
-			EInterventionStatus status = EInterventionStatus.getByName(intervention.sadStatus);
-			if (EInterventionStatus._PENDING.equals(status)) {
-				// Create Missions
-				switch (EInterventionRecurencePeriod.getByName(intervention.getPeriod())) {
-				case _HOURS:
-					MissionCollection.create(newMission(intervention, intervention.getStartDate()));
-					break;
-				case _WEEK1:
-				case _WEEK2:
-				case _WEEK3:
-				case _WEEK4:
-					List<DayOfWeek> days = TimeHelper.toDayOfWeeks(intervention.getDays());
-					LocalDate startDate = TimeHelper.toLocalDate(intervention.getStartDate());
-					LocalDate endDate = TimeHelper.toLocalDate(intervention.getEndDate());
-					LocalDate currentDate = startDate.plusDays(0);
-					while (!currentDate.isAfter(endDate)) {
-						if (days.contains(currentDate.getDayOfWeek())) {
-							MissionCollection.create(newMission(intervention, currentDate));
-						}
-						currentDate = currentDate.plusDays(1);
-					}
-					break;
-				}
-
-				// Update other offers
-				List<OfferData> offers = OfferCollection.get(eq("interventionId", intervention.getId()));
-				for (OfferData offer : offers) {
-					offer.setSadStatusChanged(TimeHelper.toIntegers(LocalDate.now()));
-					if (offer.getAuxiliaryId().equals(intervention.getAuxiliaryId())) {
-						offer.setSadStatus(EOfferStatusSad._CONFIRMED.getName());
-					} else {
-						offer.setSadStatus(EOfferStatusSad._REJECTED.getName());
-					}
-					offer.setHideToSad(true);
-					OfferCollection.update(offer);
-				}
-			} else if (EOfferStatusSad._CANCELED.equals(status)) {
-				// Cancel missions
-				List<MissionData> missions = MissionCollection.get(eq("interventionId", intervention.getId()));
-				for (MissionData mission : missions) {
-					if (TimeHelper.toLocalDate(mission.getDate()).isAfter(LocalDate.now())) {
-						mission.setSadStatus(EOfferStatusSad._CANCELED.getName());
-						mission.setSadStatusChanged(TimeHelper.toIntegers(LocalDate.now()));
-						MissionCollection.update(mission);
-					}
-				}
-			}
-		}
-
-		// Finally update the intervention
-		InterventionCollection.updateNull(intervention);
-
-		return null;
-	}
-	
-	public static MissionData newMission(InterventionData intervention, List<Integer> date) {
-		MissionData m = new MissionData();
-		m.setAuxiliaryId(intervention.getAuxiliaryId());
-		m.setCustomerId(intervention.getCustomerId());
-		m.setInterventionId(intervention.getId());
-		m.setServiceId(intervention.getServiceId());
-		m.setDate(date);
-		m.setSadStatus(EMissionStatus._PENDING.getName());
-		m.setAuxStatus(EMissionStatus._PENDING.getName());
-		m.setId(UUIDGenerator.nextId());
-		return m;
-	}
-	public static MissionData newMission(InterventionData intervention, LocalDate date) {
-		return newMission(intervention, TimeHelper.toIntegers(date));
 	}
 
 	public static Object putInterventionCancel(SecurityContext sc, String id, InterventionEmptyBean interventionBean) throws APWebException {
