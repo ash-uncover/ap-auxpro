@@ -41,7 +41,7 @@ class AuxiliaryData extends BaseData {
 			InterventionHelper.getAuxiliaryInterventions(id),
 			OfferHelper.getAuxiliaryOffers(id),
 			MissionHelper.getAuxiliaryMissions(id),
-			ServiceHelper.getServices()
+			ServiceHelper.getServiceValid()
 		]).
 		then(function () {
 			// Load missing interventions

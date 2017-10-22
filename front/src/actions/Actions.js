@@ -55,6 +55,7 @@ let put_offer_accept = new ActionBase({ name: 'PUT_OFFER_ACCEPT' })
 let put_offer_decline = new ActionBase({ name: 'PUT_OFFER_DECLINE' })
 let put_offer_confirm = new ActionBase({ name: 'PUT_OFFER_CONFIRM' })
 let get_services = new ActionBase({ name: 'GET_SERVICES' })
+let get_service_valid = new ActionBase({ name: 'GET_SERVICE_VALID' })
 let post_service = new ActionBase({ name: 'POST_SERVICE' })
 let get_service = new ActionBase({ name: 'GET_SERVICE' })
 let put_service = new ActionBase({ name: 'PUT_SERVICE' })
@@ -627,6 +628,16 @@ get_services.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/services',
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+get_service_valid.do = function(args) {
+	Utils.checkMembers(args, ['token']);
+	var reqParam = {
+		method: 'GET',
+		url: '/services/valid',
 		token : args.token,
 	};
 	return RestService._request(reqParam);

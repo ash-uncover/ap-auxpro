@@ -21,6 +21,10 @@ class ServiceHelper {
 		return Dispatcher.issue('GET_SERVICES', {token: AuthHelper.getToken()});
 	}
 
+	getServiceValid() {
+		return Dispatcher.issue('GET_SERVICE_VALID', {token: AuthHelper.getToken()});
+	}
+
 	postService(data) {
 		return Dispatcher.issue('POST_SERVICE', {token: AuthHelper.getToken(), data: data});
 	}

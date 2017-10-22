@@ -216,6 +216,15 @@ RestStore.handleGetServices = function(result, params) {
 	RestStore.notifyPath('/service')
 }
 
+RestStore.handleGetServiceValid = function(result, params) {
+	let content = RestStore.getContent()
+	content.service = {};
+	if (result && result.length)
+		for (var i = 0; i < result.length; i++)
+			content.service[result[i].id] = result[i];
+	RestStore.notifyPath('/service')
+}
+
 RestStore.handleGetService = function(result, params) {
 	let content = RestStore.getContent()
 	if (!content.service)
@@ -294,6 +303,7 @@ Dispatcher.register('GET_INTERVENTION_MATCH', RestStore.handleGetInterventionMat
 Dispatcher.register('GET_MISSION', RestStore.handleGetMission)
 Dispatcher.register('GET_OFFER', RestStore.handleGetOffer)
 Dispatcher.register('GET_SERVICES', RestStore.handleGetServices)
+Dispatcher.register('GET_SERVICE_VALID', RestStore.handleGetServiceValid)
 Dispatcher.register('GET_SERVICE', RestStore.handleGetService)
 Dispatcher.register('GET_SERVICE_AUXILIARYS', RestStore.handleGetServiceAuxiliarys)
 Dispatcher.register('GET_SERVICE_CUSTOMERS', RestStore.handleGetServiceCustomers)
