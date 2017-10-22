@@ -3,19 +3,19 @@
 
 .ap-app-header {
 	background: white;
-	margin-bottom: 30px;
+	margin-bottom: 25px;
 
 	.ap-navbar {
 		background: none;
 		border: 0;
-		height: auto;
 		.container {
-			height: 100%;
+			height: 90px;
 		}
 	}
 
 	.ap-navbar-header {
         cursor: pointer;
+        height: 90px;
         .ap-navbar-brand {
         	>img {
         		height: 60px !important;
@@ -25,54 +25,51 @@
     }
 
     .ap-navbar-group {
-    	height: 100%;
     	.ap-navbar-link {
-			height: 100%;
 			a {
-				height: 100%;
-				line-height: 30px;
+				margin: 15px 15px;
+				padding: 0;
+				height: 50px;
+				line-height: 50px;
 				text-align: center;
 			}
-			&.navbar-btn-default:hover,
-			&.navbar-btn-primary:hover {
-	    		background: none;
+			&.active {
+				background: #E7E7E7;
+			}
+			&.navbar-btn-default,
+			&.navbar-btn-primary {
+				&.active,
+				&:hover {
+	    			background: none;
+	    		}
+	    		>a {
+					width: 120px;
+					margin: 15px 10px;
+			    	border-radius: 25px;
+			    	line-height: 46px;
+			    	font-weight: bold;
+			    	&:focus {
+		    			box-shadow: 0 0 2pt 1pt $ap-primary-color;
+		    		}
+			    }
+	    		
 	    	}
-			&.navbar-btn-default>a,
-			&.navbar-btn-primary>a {
-				padding: 0 20px;
-				margin-top: 10px;
-		    	border-radius: 20px;
-		    	height: 40px;
-		    	line-height: 40px;
-		    	margin-left: 15px;
-
-		    }
 		    &.navbar-btn-default>a {
-		    	border: 1px solid #E3E4E5;
-		    	&:hover {
-		    		background: #e6e6e6;
-		    	}
-		    	&:focus {
-					box-shadow: 0 0 2pt 1pt $ap-primary-color;
+		    	background: $ap-btn-default-background;
+				border: 2px solid $ap-btn-default-border;
+				&:hover {
+					background: $ap-btn-default-background-hover;
 				}
 		    }
 		    &.navbar-btn-primary>a {
-		    	background: #337ab7;
-		    	color: white;
-		    	&:hover {
-		    		background: #286090;
-		    	}
-		    	&:focus {
-		    		box-shadow: 0 0 2pt 1pt $ap-primary-color;
-		    	}
+		    	color: #FFFFFF;
+				background: $ap-btn-primary-background;
+				border: 2px solid $ap-btn-primary-background;
+				&:hover {
+					background: $ap-btn-primary-background-hover;
+					border: 2px solid $ap-btn-primary-background-hover;
+				}	
 		    }
     	}
     }
-
-    
-	.ap-navbar-text {
-		&.active {
-			font-weight: bold;
-		}
-	}
 }
