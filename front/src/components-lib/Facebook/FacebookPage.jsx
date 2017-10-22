@@ -55,6 +55,10 @@ class FacebookPage extends BaseComponent {
 		}
 	}
 
+	componentDidMount() {
+     	FB.XFBML.parse();
+	}
+
 	render() {
 		this.buildProps('FacebookPage')
 		return (
