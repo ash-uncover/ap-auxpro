@@ -2,221 +2,312 @@
 @import 'assets/styles/variables';
 
 .ap-app-land {
-	background: white;
-	
-	.ap-app-land-section {
-		background: white;
-		padding: 60px 45px;	
+	width: 100%;
 
-		.container {
-			/*background: #ddd;*/
-		}
-
-
-		.bigtitle {
-			margin-bottom: 65px;
-			font-weight: 400;
-			font-size: 35pt;
-		}
-		.title {
-			color: #333;
-			font-weight: 100;	
-			margin-bottom: 25px;
-		}
-		.subtitle {
-			font-weight: bold;
-			font-size: 12pt;
-		}
-		.content {
-			color: #aaa;
-			font-size: 11pt;
-		}
+	.ap-container {
+		padding: 0;
 	}
-
-	.ap-button {
-		margin: 0 5px;
-		padding: 6px 25px;
-		border: 0;
-		border-radius: 20px;
-		outline: 0;
-		height: 40px;
-
-		&:focus {
-			outline: 0;
-		}
-
-		&.btn-primary {
-			&:focus {
-				box-shadow: 0 0 2pt 1pt $ap-primary-color;
-			}
-		}
-
-		&.btn-default {
-			border: 1px solid #E3E4E5;
-			&:focus {
-				box-shadow: 0 0 2pt 1pt $ap-primary-color;
-			}
-		}
+	.ap-col {
+		height: 100%;
+		padding: 0;
 	}
-
-	.ap-app-platform {
+	.ap-title-h1 {
+		font-size: 50px;
+	}
+	.ap-title-h2 {
+		font-weight: lighter;
+		font-size: 34px;
+		line-height: 45px;
+		margin-bottom: 35px;
+	}
+	.ap-subtitle {
+		font-weight: bold;
+		font-size: 16px;
+	}
+	.ap-content {
+		font-weight: lighter;
+		font-size: 16px;
+		margin-bottom: 35px;
+	}
+	.ap-link {
+		display: inline-block;
+		line-height: 48px;
+		height: 50px;
+		min-width: 150px;
+		border-radius: 25px;
+		text-transform: uppercase;
+		font-size: 12px;
 		text-align: center;
 
-		.ap-button {
-			width: 200px;			
-			margin: 15px;
+		&:hover {
+			text-decoration: none;
 		}
-	}
-
-	.ap-app-discover {
-		.ap-col {
-			text-align: center;
+		&:focus {
+			outline: 0;
+			text-decoration: none;
+			box-shadow: 0 0 2pt 1pt $ap-primary-color;
 		}
 
-		.ap-app-discover-content {
-			display: inline-block;
-			text-align: left;
-			padding-top: 25px;
-
-			button {
-				margin-left: -5px;
-				margin-top: 15px;
+		&.ap-default {
+			color: #000000;
+			font-weight: bold;
+			background: $ap-btn-default-background;
+			border: 2px solid $ap-btn-default-border;
+			&:hover {
+				background: $ap-btn-default-background-hover;
 			}
 		}
 
-		img {
-			max-height: 360px;
-			max-width: 100%;
+		&.ap-primary {
+			color: #FFFFFF;
+			background: $ap-btn-primary-background;
+			border: 2px solid $ap-btn-primary-background;
+			&:hover {
+				background: $ap-btn-primary-background-hover;
+				border: 2px solid $ap-btn-primary-background-hover;
+			}			
 		}
 	}
 
-	.ap-app-video {
-		padding-bottom: 90px;
-	}
 
-	.ap-app-roles {
-		background: #E3E4E5;
-		padding-bottom: 0px;
-		
-		.ap-col {
-			text-align: center;
-		}
+	.ap-app-land-section {
+		background: $ap-global-background;
 
-		.ap-app-roles-tile {
-			display: inline-block;
-			box-shadow: 8px 8px 10px #ccc;
-			max-width: 80%;
-			margin-bottom: 60px;
-			.ap-app-roles-image {
-				max-width: 100%;
-			}
-			.ap-app-roles-content {
-				padding: 10px 35px;
-				padding-bottom: 25px;
-				text-align: left;
-				color: white;
-				background: #7F7F7F;
-				.ap-app-roles-title {
-					font-size: 16pt;
-					font-weight: 400;
-					margin-bottom: 5px;
-				}
-				.ap-app-roles-separator {
-					border: 2px solid white;
-					width: 45px;
-				}
-				.ap-app-roles-text {
-					margin-top: 15px;
-					font-size: 13pt;
-					color: #ccc;
-				}
-			}
-		}
-	}
 
-	.ap-app-tool {
-		color: white;
-		background: #3379B7;
-		.ap-col + .ap-col {
-			text-align: center;
-		}
-		img {
-			max-height: 400px;
-		}
-	}
-
-	.ap-app-news {
-		h1 {
-			margin-top: 0;
-			margin-bottom: 45px;
-		}
-		.ap-col {
-			text-align: center;
-		}
-		.ap-facebook-page,
-		.ap-twitter-timeline {
-			border: 1px solid grey !important;
-		}
-
-	}
-
-	.ap-app-experience {
-		background: url('/assets/images/auxpro-land-image3.jpg');
-		background-size: cover;
-		overflow: hidden;
-
-		h1, p {
-			padding-left: 8px;
-			margin-bottom: 15px;
-		}
-
-		.ap-app-experience-grayed {
-			color: grey;
-		}
-
-		.ap-app-experience-content {
-			margin-top: 100px;
-			margin-bottom: 200px;
-			margin-left: -45px;
-			padding: 45px 80px;
-			width: calc(100% + 90px);
-			background: rgba(255,255,255,0.8);
-
-			.ap-app-experience-links {
+		/* SECTION 1: PLATFORM
+		 * ******************************************************************************/
+		&.ap-app-platform {
+			.ap-container {
+				text-align: center;
 				display: flex;
-				.ap-app-experience-link {
-					height: 32px;
-					width: 32px;
-					margin-left: 15px;
-					display:inline-block;
-					border-radius: 5px;
-					background-repeat: no-repeat;
-					background-size: 100% auto;
-					background-position: center center;
-					
-					&.ap-facebook {
-						background-image: url('/assets/images/facebook_2017_logo_36x36.png');
-						&:hover {
-							background-image: url('/assets/images/facebook_2017_logo_36x36_dark.png');
-						}
-					}
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-around;
+				height: 345px;
+			}
 
-					&.ap-youtube {
-						background-image: url('/assets/images/youtube_logo_24x24.png');
-						&:hover {
-							background-image: url('/assets/images/youtube_logo_24x24_dark.png');
-						}
-					}
+			.ap-title-h1 {
+				margin: 15px;
+			}
 
-					&.ap-twitter {
-						background-image: url('/assets/images/tweeter_2017_logo_36x36.png');
-						&:hover {
-							background-image: url('/assets/images/tweeter_2017_logo_36x36_dark.png');
-						}
-					}
-					
-				}				
+			.ap-link {
+				margin: 10px;
 			}
 		}
-	}
+
+		/* SECTION 2: DISCOVER
+		 * ******************************************************************************/
+		&.ap-app-discover {
+			.ap-container {
+				height: 510px;
+			}
+
+			.ap-content {
+				max-width: 430px;
+			}
+
+			.ap-app-discover-content {
+				display: inline-block;
+				text-align: left;
+				padding-top: 65px;
+
+				button {
+					margin-left: -5px;
+					margin-top: 15px;
+				}
+			}
+
+			.ap-app-discover-image {
+				height: calc(100% - 100px);
+				width: 100%;
+				margin: 50px 0;
+				background: url('/assets/images/auxpro-land-image1.jpg');
+				background-size: cover;
+				background-position: center center;
+			}
+		}
+
+
+		/* SECTION 3: VIDEO
+		 * ******************************************************************************/
+		&.ap-app-video {
+			.ap-container {
+				height: 510px;
+			}
+			.ap-col {
+				display: flex;
+				align-items: center;
+			}
+			.ap-youtube-video {
+				border: 3px solid black;
+			}
+			.ap-app-video-content {
+				padding-left: 45px;
+			}
+		}
+
+
+		/* SECTION 4: ROLES
+		 * ******************************************************************************/
+		&.ap-app-roles {
+			background: #E3E4E5;
+			
+			.ap-container {
+				height: 550px;
+			}
+			
+			.ap-col {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.ap-app-roles-tile {
+				text-decoration: none;
+				cursor: pointer;
+				display: inline-block;
+				box-shadow: 4px 8px 10px #ccc;
+				width: 365px;
+				height: 438px;
+				transition: transform 0.1s;
+
+				&:hover {
+					transform: scale(1.01);
+				}
+
+				.ap-app-roles-image {
+					max-width: 100%;
+				}
+				.ap-app-roles-content {
+					color: white;
+					background: #7F7F7F;
+					height: 120px;
+					padding: 0 35px;
+					.ap-app-roles-title {
+						font-size: 21px;
+						line-height: 50px;
+					}
+					.ap-app-roles-separator {
+						border: 2px solid white;
+						width: 45px;
+					}
+					.ap-app-roles-text {
+						line-height: 66px;
+						font-size: 16px;
+						color: #ccc;
+					}
+				}
+			}
+		}
+
+
+		/* SECTION 5: TOOL
+		 * ******************************************************************************/
+		&.ap-app-tool {
+			color: white;
+			background: #3379B7;
+
+			.ap-container {
+				height: 600px;
+			}
+			.ap-col {
+				display: flex;
+				align-items: center;
+			}
+			.ap-app-tool-content {
+				.ap-content {
+					max-width: 420px;
+				}
+
+			}
+			.ap-app-tool-image {
+				height: 100%;
+				width: calc(100% - 100px);
+				margin: 0 50px;
+
+				background: url('/assets/images/auxpro-land-image2.png');
+				background-size: contain;
+				background-position: center center;
+				background-repeat: no-repeat;
+			}
+		}
+
+
+		/* SECTION 6: NEWS
+		 * ******************************************************************************/
+		&.ap-app-news {
+			
+			.ap-container {
+				height: 1100px;
+			}
+			.ap-title-h1 {
+				padding: 50px 0;
+				font-weight: bold;
+			}
+			.ap-col {
+				text-align: center;
+			}
+			.ap-facebook-page,
+			.ap-twitter-timeline {
+				border: 1px solid grey !important;
+			}
+		}
+
+
+		/* SECTION 6: EXPERIENCE
+		 * ******************************************************************************/
+		&.ap-app-experience {
+			background: url('/assets/images/auxpro-land-image3.jpg');
+			background-size: cover; 
+			border: 2px solid red !important;
+			height: 870px;
+
+			.ap-app-experience-content {
+				margin-top: 100px;
+				padding: 80px 0;
+				background: rgba(255,255,255,0.8);
+
+				.ap-title-h2 {
+					margin-top: 0;
+					font-weight: bold;
+				}
+
+				.ap-app-experience-links {
+					display: flex;
+					margin-top: 40px;
+					.ap-app-experience-link {
+						height: 50px;
+						width: 50px;
+						margin-left: 25px;
+						display:inline-block;
+						border-radius: 5px;
+						background-repeat: no-repeat;
+						background-size: 100% auto;
+						background-position: center center;
+						
+						&.ap-facebook {
+							background-image: url('/assets/images/facebook_2017_logo_36x36.png');
+							&:hover {
+								background-image: url('/assets/images/facebook_2017_logo_36x36_dark.png');
+							}
+						}
+
+						&.ap-youtube {
+							background-image: url('/assets/images/youtube_logo_24x24.png');
+							&:hover {
+								background-image: url('/assets/images/youtube_logo_24x24_dark.png');
+							}
+						}
+
+						&.ap-twitter {
+							background-image: url('/assets/images/tweeter_2017_logo_36x36.png');
+							&:hover {
+								background-image: url('/assets/images/tweeter_2017_logo_36x36_dark.png');
+							}
+						}
+					}				
+				}
+			}
+		}
+	}	
 }
