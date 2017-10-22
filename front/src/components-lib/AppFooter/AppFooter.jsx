@@ -5,23 +5,12 @@ import AppHelper from 'helpers/AppHelper'
 
 import { Grid } from 'ap-react-bootstrap'
 
+import Link from 'components-lib/Link/Link'
+
 class AppFooter extends React.Component {
 
 	constructor(props) {
 		super(props)
-
-		this.onNavigateFacebook = this.onNavigateExternal.bind(this, 'https://www.facebook.com/Auxpros')
-		this.onNavigateYoutube = this.onNavigateExternal.bind(this, 'https://www.youtube.com/channel/UC0E73ybLlgPiLQohO1UGEqA/featured')
-		this.onNavigateTwitter = this.onNavigateExternal.bind(this, 'https://twitter.com/AuXpros')
-
-		this.onNavigatePresentation = AppHelper.navigate.bind(AppHelper, '/infos/presentation')
-		this.onNavigateServices = AppHelper.navigate.bind(AppHelper, '/infos/services')
-		this.onNavigateCGU = AppHelper.navigate.bind(AppHelper, '/infos/cgu')
-		this.onNavigateCGV = AppHelper.navigate.bind(AppHelper, '/infos/cgv')
-		this.onNavigateConfidential = AppHelper.navigate.bind(AppHelper, '/infos/confidential')
-		this.onNavigateFAQ = AppHelper.navigate.bind(AppHelper, '/infos/faq')
-		this.onNavigateHelp = AppHelper.navigate.bind(AppHelper, '/infos/help')
-		this.onNavigateContact = AppHelper.navigate.bind(AppHelper, '/infos/contact')
 	}
 
 	onNavigateExternal(url) {
@@ -39,12 +28,12 @@ class AppFooter extends React.Component {
 						<p className='ap-footer-text'>
 							Nous sommes AuXpros, créateurs de la plateforme dédiée aux professionnels des services à la personne.
 						</p>
-						<a className='ap-footer-link'>Accueil</a>
-						<a className='ap-footer-link'>Qui sommes-nous</a>
-						<a className='ap-footer-link'>Nous contacter</a>
-						<a className='ap-footer-logo ap-tweeter'/>
-						<a className='ap-footer-logo ap-facebook'/>
-						<a className='ap-footer-logo ap-youtube'/>
+						<Link href='/'>Accueil</Link>
+						<Link href='/infos/presentation'>Qui sommes-nous</Link>
+						<Link href='/infos/contact'>Nous contacter</Link>
+						<a className='ap-footer-logo ap-tweeter' href='https://twitter.com/AuXpros' target="_blank"/>
+						<a className='ap-footer-logo ap-facebook' href='https://www.facebook.com/Auxpros' target="_blank"/>
+						<a className='ap-footer-logo ap-youtube' href='https://www.youtube.com/channel/UC0E73ybLlgPiLQohO1UGEqA/featured' target="_blank"/>
 					</Grid.Col>
 					<Grid.Col md={5} className='ap-footer-area-services'>
 						<h3 className='ap-footer-title'>
@@ -53,17 +42,17 @@ class AppFooter extends React.Component {
 						<p className='ap-footer-text'>
 							L'outil d'AuXpros s'adresse aux Services d'Aide à la Personne, mais également aux intervenantes.
 						</p>
-						<a className='ap-footer-link'>Vous êtes un SAP</a>
-						<a className='ap-footer-link'>Vous êtes une intervenante</a>
+						<Link href=''>Vous êtes un SAP</Link>
+						<Link href=''>Vous êtes une intervenante</Link>
 					</Grid.Col>
 					<Grid.Col md={2} className='ap-footer-area-navigation'>
 						<h3 className='ap-footer-title'>
 							Navigation
-						</h3>				
-						<a className='ap-footer-link'>CGV / CGU</a>
-						<a className='ap-footer-link'>Mentions légales</a>
-						<a className='ap-footer-link'>S'informer (FAQ)</a>
-						<a className='ap-footer-link'>Connexion</a>
+						</h3>
+						<Link href='/infos/cgv'>CGV / CGU</Link>
+						<Link href=''>Mentions légales</Link>
+						<Link href='/infos/faq'>S'informer (FAQ)</Link>
+						<Link href='/auth/login'>Connexion</Link>
 					</Grid.Col>
 				</Grid.Container>
 			</footer>

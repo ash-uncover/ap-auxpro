@@ -4,6 +4,8 @@ import './AppLand.scss'
 
 import { Grid, Panel, Button } from 'ap-react-bootstrap'
 
+import Link from 'components-lib/Link/Link'
+
 import FacebookPage from 'components-lib/Facebook/FacebookPage'
 import TwitterTimeline from 'components-lib/Twitter/TwitterTimeline'
 import YoutubeVideo from 'components-lib/Youtube/YoutubeVideo'
@@ -32,12 +34,12 @@ class AppLand extends React.Component {
 							La plateforme des professionnels du SAP
 						</h1>
 						<div>
-							<a className='ap-link ap-primary' href="">
+							<Link className='ap-land-link ap-primary' href='/auth/register'>
 								Essayer maintenant
-							</a>
-							<a className='ap-link ap-default' href="">
+							</Link>
+							<Link className='ap-land-link ap-default' href='/infos/presentation'>
 								En savoir plus
-							</a>
+							</Link>
 						</div>
 					</Grid.Container>
 				</section>
@@ -59,9 +61,9 @@ class AppLand extends React.Component {
 									les organismes de recruter des intervenantes répondant
 									à des critères précis d'organisation et de compétences.
 								</p>
-								<a className='ap-link ap-primary' href="">
+								<Link className='ap-land-link ap-primary' href='/infos/presentation'>
 									Découvrir
-								</a>
+								</Link>
 							</div>
 						</Grid.Col>
 						<Grid.Col sm={6}>
@@ -98,7 +100,7 @@ class AppLand extends React.Component {
 				<section className='ap-app-land-section ap-app-roles'>
 					<Grid.Container>
 						<Grid.Col sm={6}>
-							<a className='ap-app-roles-tile' href="/infos/services">
+							<Link className='ap-app-roles-tile' href='/infos/services'>
 								<img 
 									className='ap-app-roles-image'
 									src='/assets/images/auxpro-land-image-sad.jpg'></img>
@@ -111,10 +113,10 @@ class AppLand extends React.Component {
 										Découvrez les avantages d'AuXpros
 									</div>
 								</div>
-							</a>
+							</Link>
 						</Grid.Col>
 						<Grid.Col sm={6}>
-							<a className='ap-app-roles-tile' href="/infos/services">
+							<Link className='ap-app-roles-tile' href='/infos/services'>
 								<img 
 									className='ap-app-roles-image'
 									src='/assets/images/auxpro-land-image-aux.jpg'></img>
@@ -127,7 +129,7 @@ class AppLand extends React.Component {
 										Trouvez des offres d'emploi
 									</div>
 								</div>
-							</a>
+							</Link>
 						</Grid.Col>
 					</Grid.Container>
 				</section>
@@ -203,9 +205,9 @@ class AppLand extends React.Component {
 										Et n'hésitez pas à nous rejoinre sur les réseaux sociaux !
 									</p>
 									<div className='ap-app-experience-links'>
-										<a className='ap-link ap-primary' href="">
+										<Link className='ap-land-link ap-primary' href='/auth/login'>
 											S'inscrire
-										</a>
+										</Link>
 										<a 
 											className='ap-app-experience-link ap-twitter'
 											target='_blank'

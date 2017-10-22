@@ -1,24 +1,44 @@
 import React from 'react'
-import './Link.scss'
+import './ap-links.scss'
 
 import AppHelper from 'helpers/AppHelper'
 
-class Link extends React.Component {
+import { BaseComponent } from 'ap-react-bootstrap'
+
+class Link extends BaseComponent {
 
 	constructor(props) {
 		super(props)
-
 		this.onClick = this._onClick.bind(this)
+		// Base classes
+		this.baseClasses = [ 'ap-link' ]
+		//
+		this.linkProps = {
+			action: 'push',
+			onClick: this.onClick
+		}
+		// Component properties
+		this.propsInfos = {
+			required : {
+				href: { store: this.linkProps },
+				children: {}
+			},
+			optionnal : {
+			}
+		}
 	}
 
 	_onClick(event) {
 		event.preventDefault()
-		AppHelper.navigate(this.props.link)
+		AppHelper.navigate(this.props.href)
 	}
 
 	render() {
+		this.buildProps('Link')
 		return (
-			<a className='ap-link' action='push' href={this.props.link} onClick={this.onClick}>{this.props.children}</a>
+			<a className={this.className} {...this.linkProps}>
+				{this.props.children}
+			</a>
 		)
 	}
 

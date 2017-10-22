@@ -63,7 +63,7 @@ class RegisterAuxiliary extends React.Component {
 									value={this.state.confirm}
 									onChange={this.onChangeNoError.bind(this, 'confirm')} />
 							</Form.Group>
-							<Link link='/auth/register/confirm'>J'ai déjà un code.</Link>
+							<Link href='/auth/register/confirm'>J'ai déjà un code.</Link>
 							<p className='ap-error'>{this.state.errorJustHappened && this.state.errorMessage}</p>
 							<Form.Submit 
 								disabled={this.state.errorJustHappened || submitDisable}
