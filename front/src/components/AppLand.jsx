@@ -177,7 +177,7 @@ class AppLand extends React.Component {
 							<TwitterTimeline
 								lang='fr'
 								width={450}
-								height={850}
+								height={845}
 								theme='light'
 								href='https://twitter.com/AuXpros?ref_src=twsrc%5Etfw'
 								name='Tweets by AuXpros' />

@@ -32,42 +32,38 @@ class AppFooter extends React.Component {
 		return (
 			<footer className='hidden-print ap-app-footer'>
 				<Grid.Container>
-					<Grid.Col md={3} className='ap-footer-area-logos'>
-						<div className='ap-footer-title'>Rejoignez notre comunauté</div>
-						<div className='ap-footer-logos'>
-							<span className='ap-footer-logo ap-facebook' onClick={this.onNavigateFacebook}/>
-							<span className='ap-footer-logo ap-youtube' onClick={this.onNavigateYoutube}/>
-							<span className='ap-footer-logo ap-tweeter' onClick={this.onNavigateTwitter}/>
-						</div>
+					<Grid.Col md={5} className='ap-footer-area-logos'>
+						<h3 className='ap-footer-title'>
+							AuXpros
+						</h3>
+						<p className='ap-footer-text'>
+							Nous sommes AuXpros, créateurs de la plateforme dédiée aux professionnels des services à la personne.
+						</p>
+						<a className='ap-footer-link'>Accueil</a>
+						<a className='ap-footer-link'>Qui sommes-nous</a>
+						<a className='ap-footer-link'>Nous contacter</a>
+						<a className='ap-footer-logo ap-tweeter'/>
+						<a className='ap-footer-logo ap-facebook'/>
+						<a className='ap-footer-logo ap-youtube'/>
 					</Grid.Col>
-					<Grid.Col sm={4} md={3} className='ap-footer-area-links'>
-						<Grid.Col lg={6} className='ap-footer-title'>
-							AuxPros
-						</Grid.Col>
-						<Grid.Col lg={6} className='ap-footer-links'>
-							<a className='ap-footer-link' onClick={this.onNavigatePresentation}>Qui sommes-nous ?</a>
-							<a className='ap-footer-link' onClick={this.onNavigateServices}>Nos Services</a>
-						</Grid.Col>
+					<Grid.Col md={5} className='ap-footer-area-services'>
+						<h3 className='ap-footer-title'>
+							Nos services
+						</h3>
+						<p className='ap-footer-text'>
+							L'outil d'AuXpros s'adresse aux Services d'Aide à la Personne, mais également aux intervenantes.
+						</p>
+						<a className='ap-footer-link'>Vous êtes un SAP</a>
+						<a className='ap-footer-link'>Vous êtes une intervenante</a>
 					</Grid.Col>
-					<Grid.Col sm={4} md={3}  className='ap-footer-area-links'>
-						<Grid.Col lg={6} className='ap-footer-title'>
-							Informations Légales
-						</Grid.Col>
-						<Grid.Col lg={6} className='ap-footer-links'>
-							<a className='ap-footer-link' onClick={this.onNavigateCGU}>CGU</a>
-							<a className='ap-footer-link' onClick={this.onNavigateCGV}>CGV</a>
-							<a className='ap-footer-link' onClick={this.onNavigateConfidential}>Confidentialité</a>
-						</Grid.Col>
-					</Grid.Col>
-					<Grid.Col sm={4} md={3}  className='ap-footer-area-links'>
-						<Grid.Col lg={6} className='ap-footer-title'>
-							Questions
-						</Grid.Col>
-						<Grid.Col lg={6} className='ap-footer-links'>
-							<a className='ap-footer-link' onClick={this.onNavigateFAQ}>FAQ</a>
-							<a className='ap-footer-link' onClick={this.onNavigateHelp}>Aide</a>
-							<a className='ap-footer-link' onClick={this.onNavigateContact}>Contact</a>
-						</Grid.Col>
+					<Grid.Col md={2} className='ap-footer-area-navigation'>
+						<h3 className='ap-footer-title'>
+							Navigation
+						</h3>				
+						<a className='ap-footer-link'>CGV / CGU</a>
+						<a className='ap-footer-link'>Mentions légales</a>
+						<a className='ap-footer-link'>S'informer (FAQ)</a>
+						<a className='ap-footer-link'>Connexion</a>
 					</Grid.Col>
 				</Grid.Container>
 			</footer>

@@ -259,11 +259,10 @@
 		&.ap-app-experience {
 			background: url('/assets/images/auxpro-land-image3.jpg');
 			background-size: cover; 
-			border: 2px solid red !important;
 			height: 870px;
+			padding-top: 120px;
 
-			.ap-app-experience-content {
-				margin-top: 100px;
+			.ap-app-experience-content {				
 				padding: 80px 0;
 				background: rgba(255,255,255,0.8);
 
