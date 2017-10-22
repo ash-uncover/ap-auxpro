@@ -1787,14 +1787,14 @@ db.helptopic.insert({
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"title":"Acceptée (offres)",
-	"content":"<p>L’offre du SAD a été envoyé et accepté par l’auxiliaire.</p>"
+	"content":"<p>L’offre du SAP a été envoyé et accepté par l’auxiliaire.</p>"
 })
 db.helptopic.insert({
 	"id":"help002",
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"title":"Attente (offres en)",
-	"content":"<p>offre envoyée par un SAD qui peut être soit 'nouvelle', 'accepté' ou 'décliné'.</p>"
+	"content":"<p>offre envoyée par un SAP qui peut être soit 'nouvelle', 'accepté' ou 'décliné'.</p>"
 })
 db.helptopic.insert({
 	"id":"help003",
@@ -1808,7 +1808,7 @@ db.helptopic.insert({
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"title":"Annulée (offre)",
-	"content":"<p>Offre reçue par l'auxiliaire qui a été annulée par le SAD. Ceci inclut l'annulation d'intervention (mission) en cours.</p>"
+	"content":"<p>Offre reçue par l'auxiliaire qui a été annulée par le SAP. Ceci inclut l'annulation d'intervention (mission) en cours.</p>"
 })
 db.helptopic.insert({
 	"id":"help005",
@@ -1843,14 +1843,14 @@ db.helptopic.insert({
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"title":"Compte",
-	"content":"<p>la création d’un compte vous donne accès à la plate-forme AuXpros. Pour pouvoir obtenir un <b>matching</b> entre vos <b>prestations</b> et les auxiliaires (pour les SAD) ou vous voir proposer des <b>offres</b> pour les auxiliaires, il faut obtenir un compte <b>premium</b>. Pour cela vous devez remplir intégralement tous les champs obligatoires.</p><p>Il est important de se rappeler ou de noter si l’on a peur de l’oublier l’adresse mail qui vous sert d’<b>identifiant</b> de compte.</p>"
+	"content":"<p>la création d’un compte vous donne accès à la plate-forme AuXpros. Pour pouvoir obtenir un <b>matching</b> entre vos <b>prestations</b> et les auxiliaires (pour les SAP) ou vous voir proposer des <b>offres</b> pour les auxiliaires, il faut obtenir un compte <b>premium</b>. Pour cela vous devez remplir intégralement tous les champs obligatoires.</p><p>Il est important de se rappeler ou de noter si l’on a peur de l’oublier l’adresse mail qui vous sert d’<b>identifiant</b> de compte.</p>"
 })
 db.helptopic.insert({
 	"id":"help010",
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"title":"Confirmées (offres)",
-	"content":"<p>offre acceptée par l'auxiliaire et confirmée par le SAD. Offre confirmée = intervention</p>"
+	"content":"<p>offre acceptée par l'auxiliaire et confirmée par le SAP. Offre confirmée = intervention</p>"
 })
 db.helptopic.insert({
 	"id":"help011",
@@ -1877,8 +1877,8 @@ db.helptopic.insert({
 	"id":"help014",
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
-	"title":"Créer un compte SAD",
-	"content":"<p>La création d’un compte SAD contient les mêmes étapes que la création d’un compte Auxiliaire (voir <b>Créer un compte auxiliaire</b>).</p>"
+	"title":"Créer un compte SAP",
+	"content":"<p>La création d’un compte SAP contient les mêmes étapes que la création d’un compte Auxiliaire (voir <b>Créer un compte auxiliaire</b>).</p>"
 })
 db.helptopic.insert({
 	"id":"help015",
@@ -1948,7 +1948,7 @@ db.helptopic.insert({
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"title":"Intervention",
-	"content":"<p>Une intervention est une offre de prestation attribuée et validée par le SAD à une auxiliaire de vie pour prendre en charge un Usager, elle devient formelle après la signature du contrat de travail.</p>"
+	"content":"<p>Une intervention est une offre de prestation attribuée et validée par le SAP à une auxiliaire de vie pour prendre en charge un Usager, elle devient formelle après la signature du contrat de travail.</p>"
 })
 db.helptopic.insert({
 	"id":"help025",
@@ -1961,7 +1961,7 @@ db.helptopic.insert({
 	"id":"help026",
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
-	"title":"Profil (SAD)",
+	"title":"Profil (SAP)",
 	"content":"<p>Pour avoir accès aux données de votre Service d’aide à domicile, cliquez sur “Informations”. Cette rubrique se décompose en 3 sous-parties :</p><ul><li>“Mon profil” : cette sous-partie concerne le profil de votre entreprise (raison sociale/ fonctionnement / numéro de SIRET / Adresse)</li><li>“Ma photo” : cette sous-partie vous permet d’ajouter une photo ou votre logo sur votre compte Auxpros.</li><li>“Mon compte Auxpros” : Vous pouvez effectuer plusieurs modifications dans cette sous-partie (Modifier votre adresse électronique / modifier votre mot de passe / souscrire un abonnement AUXPROS => Ceci vous permettra d’accéder au système de matching).</li></ul></p>"
 })
 db.helptopic.insert({
@@ -1969,7 +1969,7 @@ db.helptopic.insert({
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"title":"Matching",
-	"content":"<p>Action qui permet de trouver les auxiliaires qui correspondent le mieux à la demande de l’Usager (entre un SAD et un(e) AUX).</p><p>Pour matcher, cliquez sur l’éclair, une liste d’auxiliaires candidat est proposée. vous cliquez sur un ou plusieurs de ces candidats. une fois vos candidats sélectionnés appuyez sur “envoyer” de manière à ce qu’ils reçoivent votre offre.</p><p>ATTENTION !! votre compte (SAD ou AUX) doit être enregistré en tant que “compte premium” pour permettre cette action de “matching”.</p>"
+	"content":"<p>Action qui permet de trouver les auxiliaires qui correspondent le mieux à la demande de l’Usager (entre un SAP et un(e) AUX).</p><p>Pour matcher, cliquez sur l’éclair, une liste d’auxiliaires candidat est proposée. vous cliquez sur un ou plusieurs de ces candidats. une fois vos candidats sélectionnés appuyez sur “envoyer” de manière à ce qu’ils reçoivent votre offre.</p><p>ATTENTION !! votre compte (SAP ou AUX) doit être enregistré en tant que “compte premium” pour permettre cette action de “matching”.</p>"
 })
 db.helptopic.insert({
 	"id":"help028",
@@ -2011,7 +2011,7 @@ db.helptopic.insert({
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"title":"Offres",
-	"content":"<p>Lorsqu’un SAD souhaite collaborer avec un(e) auxiliaire de vie, une offre de <b>prestation</b> (sur la <b>map</b>) est envoyée sur le profil de l’auxiliaire, lorsque l’offre est attribuée et validée par le <b>SAD</b>, elle devient <b>intervention</b>.</p><p>L’Auxiliaire pour consulter ses offres clique  sur l’onglet “Offres”.</p><p>Il existe 5 statuts d’offres : Toutes; <b>Attente (offre en)</b>; <b>Confirmées (offres)</b>; <b>Rejetées (offres)</b>.</p>"
+	"content":"<p>Lorsqu’un SAP souhaite collaborer avec un(e) auxiliaire de vie, une offre de <b>prestation</b> (sur la <b>map</b>) est envoyée sur le profil de l’auxiliaire, lorsque l’offre est attribuée et validée par le <b>SAP</b>, elle devient <b>intervention</b>.</p><p>L’Auxiliaire pour consulter ses offres clique  sur l’onglet “Offres”.</p><p>Il existe 5 statuts d’offres : Toutes; <b>Attente (offre en)</b>; <b>Confirmées (offres)</b>; <b>Rejetées (offres)</b>.</p>"
 })
 db.helptopic.insert({
 	"id":"help034",
@@ -2024,7 +2024,7 @@ db.helptopic.insert({
 	"id":"help035",
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
-	"title":"Photo SAD",
+	"title":"Photo SAP",
 	"content":"<p>“Ma photo” : cette sous-partie vous permet d’ajouter une photo, une image ou un logo principal sur votre compte AuXpros. Pour mettre le fichier en ligne.</p><p>parmi vos fichiers image d’ordinateur, une fois sélectionné, cliquez sur envoyer le fichier, puis sur ok. Ne pas oublier d’enregistrer avant de quitter la page.</p>"
 })
 db.helptopic.insert({
@@ -2067,13 +2067,13 @@ db.helptopic.insert({
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"title":"Rejetées (offres)",
-	"content":"<p>Offre acceptée par l'auxiliaire mais rejetée par le SAD car une autre auxiliaire a été retenue.</p>"
+	"content":"<p>Offre acceptée par l'auxiliaire mais rejetée par le SAP car une autre auxiliaire a été retenue.</p>"
 })
 db.helptopic.insert({
 	"id":"help042",
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
-	"title":"SAD",
+	"title":"SAP",
 	"content":"<p>Service d’Aide à Domicile</p>"
 })
 db.helptopic.insert({
@@ -2109,7 +2109,7 @@ db.helptopic.insert({
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"title":"Usagers",
-	"content":"<p>La rubrique Usagers vous permet de rechercher ou de saisir un nouvel usager (l’usager correspond à des clients de SAD).</p><p>Pour créer un usager, cliquez sur “saisir un nouvel usager”,Vous devez ensuite saisir l’ensemble des champs de la page pour vous permettre de créer ensuite une <b>prestation</b> qui puisse <b>matcher</b>.</p>"
+	"content":"<p>La rubrique Usagers vous permet de rechercher ou de saisir un nouvel usager (l’usager correspond à des clients de SAP).</p><p>Pour créer un usager, cliquez sur “saisir un nouvel usager”,Vous devez ensuite saisir l’ensemble des champs de la page pour vous permettre de créer ensuite une <b>prestation</b> qui puisse <b>matcher</b>.</p>"
 })
 db.helptopic.insert({
 	"id":"help048",
@@ -2123,14 +2123,14 @@ db.helptopic.insert({
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"title":"Expirée (offres)",
-	"content":"<p>L’offre du SAD a expirée et n'est plus valide.</p>"
+	"content":"<p>L’offre du SAP a expirée et n'est plus valide.</p>"
 })
 db.helptopic.insert({
 	"id":"help50",
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
 	"title":"Déclinée (offres)",
-	"content":"<p>L’offre du SAD a été envoyée et déclinée par l'auxiliaire.</p>"
+	"content":"<p>L’offre du SAP a été envoyée et déclinée par l'auxiliaire.</p>"
 })
 
 
