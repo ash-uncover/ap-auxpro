@@ -74,6 +74,7 @@ class ServiceInterventionEdit extends React.Component {
 							: null }
 							<Grid.Col sm={8} md={7} lg={6} lgOffset={1}>
 								<h4>Compétences requises</h4>
+								<p>Si vous ajoutez des critères ci dessous, seules les auxiliaires possédant au moins l'un des diplômes sélectionnés seront retenues lors du MATCHING.</p>
 								<Form horizontal>
 									{ServiceInterventionEditData.FIELDS_FORM3.map(this.buildFormGroup)}
 								</Form>

@@ -85,7 +85,11 @@ class ServiceInterventionMatch extends React.Component {
 						Résultats matching
 					</Panel.Header>
 					<Panel.Body>
-						Sélectionnez des auxiliaires de vie pour leur proposer une offre d'intervention.
+						{this.state.matches.length === 0 ?
+							"Aucune auxiliaire ne correspond à vos critères de recherche."
+						:
+							"Sélectionnez des auxiliaires de vie pour leur proposer une offre d'intervention."
+						}
 					</Panel.Body>
 					<List.GroupLink>
 						{this.state.matches.map(this.buildMatches)}

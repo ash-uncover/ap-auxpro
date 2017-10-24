@@ -1,7 +1,6 @@
 package org.ap.auxpro.helpers;
 
-import static com.mongodb.client.model.Filters.and;
-import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -40,6 +39,7 @@ import org.ap.common.GeoHelper;
 import org.ap.common.TimeHelper;
 import org.ap.web.internal.APWebException;
 import org.ap.web.internal.UUIDGenerator;
+import org.bson.conversions.Bson;
 
 import com.mongodb.MongoWriteException;
 
@@ -64,6 +64,7 @@ public class InterventionHelper {
 			intervention.setStartTime(interventionBean.startTime);
 			intervention.setEndTime(interventionBean.endTime);
 			intervention.setDays(interventionBean.days);
+			intervention.setDiplomas(interventionBean.diplomas);
 			
 			intervention.setSadStatus(EInterventionStatus._PENDING.getName());
 			intervention.setSadStatusChanged(now);
@@ -87,9 +88,20 @@ public class InterventionHelper {
 			throw new APWebException("forbidden", Status.FORBIDDEN);
 		}
 		
+		
+		List<AuxiliaryData> auxiliaries = null;
 		//
+		List<String> diplomas = intervention.getDiplomas();
+		if (diplomas != null && diplomas.size() > 0) {
+			List<Bson> conditions = new ArrayList<Bson>();
+			for (String diploma : diplomas) {
+				conditions.add(in("diploma", diploma));
+			}			
+			auxiliaries = AuxiliaryCollection.get(and(eq("profilCompleted", true), eq("accountType", "Premium"), or(conditions)));
+		} else {
+			auxiliaries = AuxiliaryCollection.get(and(eq("profilCompleted", true), eq("accountType", "Premium")));
+		}
 		CustomerData customer = CustomerCollection.getById(intervention.customerId);
-		List<AuxiliaryData> auxiliaries = AuxiliaryCollection.get(and(eq("profilCompleted", true),eq("accountType", "Premium")));
 		Map<AuxiliaryData, AuxiliaryMatchScore> scores = new HashMap<AuxiliaryData, AuxiliaryMatchScore>();
 
 		// Compute geo score
