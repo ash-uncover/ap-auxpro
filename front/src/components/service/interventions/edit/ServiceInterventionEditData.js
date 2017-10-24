@@ -10,6 +10,7 @@ import InterventionRecurencePeriod from 'utils/constants/InterventionRecurencePe
 import InterventionType from 'utils-lib/constants/InterventionType'
 
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
+import DiplomaUtils from 'utils-lib/entities/DiplomaUtils'
 import InterventionFields from 'utils/entities/InterventionFields'
 import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 import InterventionRecurencePeriodUtils from 'utils-lib/entities/InterventionRecurencePeriodUtils'
@@ -18,8 +19,10 @@ class ServiceInterventionEditData extends BaseData {
 
 	constructor() {
 		super()
+		this.FIELDS_FORM0 = []
 		this.FIELDS_FORM1 = []
 		this.FIELDS_FORM2 = []
+		this.FIELDS_FORM3 = []
 		this.FIELDS = []
 		this.MODES = {
 			CREATE: 'CREATE',
@@ -32,7 +35,6 @@ class ServiceInterventionEditData extends BaseData {
 
 		this.interventionId = interventionId
 
-		this.declareFunction('onChangeDirty')
 		this.declareFunction('onCancel')
 		this.declareFunction('onSubmit')
 
@@ -50,11 +52,14 @@ class ServiceInterventionEditData extends BaseData {
 		let defaultDate = MomentHelper.toLocalDate(moment())
 		let customers = this.getCustomers()
 
-		this.FIELDS_FORM1 = [
+		this.FIELDS_FORM0 = [
 			Object.assign(
 				{ defaultValue: customers['0'].key, form: 'select', values: customers }, 
 				InterventionFields.CUSTOMER_ID
-			),
+			)
+		]
+
+		this.FIELDS_FORM1 = [
 			Object.assign(
 				{ defaultValue: InterventionRecurencePeriod.HOURS.key, form: 'select' }, 
 				InterventionFields.PERIOD, 
@@ -83,7 +88,14 @@ class ServiceInterventionEditData extends BaseData {
 				InterventionFields.DAYS
 			)
 		]
-		this.FIELDS = this.FIELDS_FORM1.concat(this.FIELDS_FORM2)
+		this.FIELDS_FORM3 = [
+			Object.assign(
+				{ defaultValue: [], form: 'selectmulti' }, 
+				InterventionFields.DIPLOMAS,
+				{ values: DiplomaUtils.getDiplomas() }
+			)
+		]
+		this.FIELDS = this.FIELDS_FORM0.concat(this.FIELDS_FORM1).concat(this.FIELDS_FORM2).concat(this.FIELDS_FORM3)
 
 		this.onInterventionUpdate()
 	}
@@ -112,22 +124,17 @@ class ServiceInterventionEditData extends BaseData {
 	// View callbacks //
 	// --------------------------------------------------------------------------------
 
-	onChangeDirty(id, event, value) {
-		let data = {
-			dirty: true,
-			customerValid: true
-		}
-		data[id] = value
-		data[id + 'Default'] = null
-		this.setState(data)
+	onChange(id, event, value) {
+		this.obj.state.dirty = true,
+		this.obj.state.customerValid = true
+		this.obj.state[id] = value
+		this.obj.state[id + 'Default'] = null
+		this.forceUpdate()
 	}
 
 	onCancel() {
 		AppHelper.navigateBack()
 	}
-	onSubmit() {
-	}
-
 
 	onSubmit() {
 		AppHelper.setBusy(true).

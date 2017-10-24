@@ -36,6 +36,7 @@ class InterventionUtils {
 		case InterventionFields.SERVICE_ID.key: return 'Service'
 		case InterventionFields.START_DATE.key: return 'Début'
 		case InterventionFields.SAD_STATUS.key: return 'Statut'
+		case InterventionFields.DIPLOMAS.key: return 'Diplômes'
 		}
 	}
 

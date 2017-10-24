@@ -12,6 +12,7 @@ public class InterventionPostBean {
 	public List<Integer> lastUpdateDate;
 	public String customerId;
 	public List<String> days;
+	public List<String> diplomas;
 	public List<Integer> startTime;
 	public List<Integer> endTime;
 	public String id;

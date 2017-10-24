@@ -57,6 +57,7 @@ public class InterventionServlet extends APServletBase {
 			bean.customerId = data.getCustomerId();
 			bean.sadStatus = data.getSadStatus();
 			bean.days = data.getDays();
+			bean.diplomas = data.getDiplomas();
 			bean.startTime = data.getStartTime();
 			bean.endTime = data.getEndTime();
 			bean.id = data.getId();
@@ -91,6 +92,7 @@ public class InterventionServlet extends APServletBase {
 			data.setEndDate(interventionPutBean.endDate);
 			data.setCustomerId(interventionPutBean.customerId);
 			data.setDays(interventionPutBean.days);
+			data.setDiplomas(interventionPutBean.diplomas);
 			data.setStartTime(interventionPutBean.startTime);
 			data.setEndTime(interventionPutBean.endTime);
 			data.setServiceId(interventionPutBean.serviceId);

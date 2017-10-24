@@ -191,6 +191,7 @@ public class CustomerServlet extends APServletBase {
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
 				bean.days = data.getDays();
+				bean.diplomas = data.getDiplomas();
 				bean.startTime = data.getStartTime();
 				bean.endTime = data.getEndTime();
 				bean.id = data.getId();

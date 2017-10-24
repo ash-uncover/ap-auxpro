@@ -13,6 +13,7 @@ public class InterventionData {
 	public List<Integer> creationDate;
 	public String customerId;
 	public List<String> days;
+	public List<String> diplomas;
 	public String sadStatus;
 	public List<Integer> startTime;
 	public String id;
@@ -83,6 +84,14 @@ public class InterventionData {
 
 	public void setDays(List<String> days) {
 		this.days = days;
+	}
+
+	public List<String> getDiplomas() {
+		return this.diplomas;
+	}
+
+	public void setDiplomas(List<String> diplomas) {
+		this.diplomas = diplomas;
 	}
 
 	public String getSadStatus() {

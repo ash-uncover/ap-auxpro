@@ -10,13 +10,14 @@ public class InterventionPutBean {
 	public String period;
 	public List<Integer> endDate;
 	public List<Integer> lastUpdateDate;
+	public List<Integer> creationDate;
 	public String customerId;
 	public List<String> days;
+	public List<String> diplomas;
 	public List<Integer> startTime;
 	public List<Integer> endTime;
 	public String id;
 	public String serviceId;
-	public List<Integer> creationDate;
 	public Boolean hideToSad;
 	public List<Integer> startDate;
 

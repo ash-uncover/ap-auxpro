@@ -4,6 +4,7 @@ import './ServiceInterventionEdit.scss'
 
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 
+import FormHelper from 'components-lib/FormHelper'
 import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeekDays'
 
 import InterventionRecurencePeriod from 'utils/constants/InterventionRecurencePeriod'
@@ -14,8 +15,9 @@ class ServiceInterventionEdit extends React.Component {
 
 	constructor(props) {
 		super(props)
-		this.buildFormGroup = this._buildFormGroup.bind(this)
-		this.buildFormControl = this._buildFormControl.bind(this)
+
+		this.buildFormGroup = FormHelper.buildFormGroup.bind(this, InterventionUtils.getFieldName)
+		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 	}
 
 	componentWillMount() {
@@ -29,77 +31,6 @@ class ServiceInterventionEdit extends React.Component {
 
 	// Rendering functions //
 	// --------------------------------------------------------------------------------
-
-	_buildFormGroup(field) {
-		if (this.state.period === InterventionRecurencePeriod.HOURS.key && field.key === 'endDate') {
-			return null
-		}
-		let state = null
-		if (field.validator) {
-			state = field.validator.getState(this.state[field.key])	
-		}
-		return (
-			<Form.Group key={field.key}>
-				<Form.Label className='col-sm-4'>
-					{field.name || InterventionUtils.getFieldName(field.key)}
-				</Form.Label>
-				<Grid.Col sm={8}>
-					{this.buildFormControl(field)}
-				</Grid.Col>
-			</Form.Group>
-		)
-	}
-
-	_buildFormControl(field) {
-		switch (field.form) {
-			case 'input': return (
-				<Form.Input 
-					value={this.state[field.key]} 
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			case 'select': return (
-				<Form.Select 
-					values={field.values}
-					value={this.state[field.key]}
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			case 'address': return (
-				<Google.Autocomplete 
-					placeholder='Saisir adresse.'
-					onChange={this.onChangeAddress.bind(this)} 
-					options={{ componentRestrictions: { country: 'fr' } }} />
-				)
-			case 'date': return (
-				<Form.Date 
-					date={this.state[field.key][2]}
-					month={this.state[field.key][1]}
-					year={this.state[field.key][0]}
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			case 'time': return (
-				<Form.Time 
-					hour={this.state[field.key][0]}
-					minute={this.state[field.key][1]}
-					minuteValues={[{key: 0, value: '00'}, {key: 15, value: '15'}, {key: 30, value: '30'}, {key: 45, value: '45'}]}
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			default: return (
-				<Form.Static>
-					{this.state[field.key]}
-				</Form.Static>
-			)
-		}
-	}
-
-	checkValidity() {
-		for (let i = 0 ; i < ServiceInterventionEditData.FIELDS.length ; i++) {
-			let field = ServiceInterventionEditData.FIELDS[i]
-			if (field.validator && field.validator.getState(this.state[field.key]) === 'error') {
-				return false
-			}
-		}
-		return true
-	}
 
 	render() {
 		let errors = InterventionUtils.checkValidity(this.state)
@@ -120,6 +51,13 @@ class ServiceInterventionEdit extends React.Component {
 					<Panel.Body>
 						<Grid.Row>
 							<Grid.Col sm={8} md={7} lg={6} lgOffset={1}>
+								<h4>Usager</h4>
+								<Form horizontal>
+									{ServiceInterventionEditData.FIELDS_FORM0.map(this.buildFormGroup)}
+								</Form>
+							</Grid.Col>
+							<Grid.Col sm={8} md={7} lg={6} lgOffset={1}>
+								<h4>Planification</h4>
 								<Form horizontal>
 									{ServiceInterventionEditData.FIELDS_FORM1.map(this.buildFormGroup)}
 								</Form>
@@ -129,11 +67,17 @@ class ServiceInterventionEdit extends React.Component {
 								<Form>
 									<Form.Group>
 										<Form.Label>Jours</Form.Label>
-										<FormSelectWeekDays values={this.state.days} onChange={this.onChangeDirty.bind(this, 'days')}/>
+										<FormSelectWeekDays values={this.state.days} onChange={this.onChange.bind(this, 'days')}/>
 									</Form.Group>
 								</Form>
 							</Grid.Col>
 							: null }
+							<Grid.Col sm={8} md={7} lg={6} lgOffset={1}>
+								<h4>Compétences requises</h4>
+								<Form horizontal>
+									{ServiceInterventionEditData.FIELDS_FORM3.map(this.buildFormGroup)}
+								</Form>
+							</Grid.Col>
 						</Grid.Row>
 					</Panel.Body>
 					<Panel.Footer>

@@ -16,6 +16,7 @@ public class InterventionBean {
 	public String customerId;
 	public String sadStatus;
 	public List<String> days;
+	public List<String> diplomas;
 	public List<Integer> startTime;
 	public List<Integer> endTime;
 	public String id;

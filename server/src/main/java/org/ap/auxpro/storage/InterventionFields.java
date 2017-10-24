@@ -14,6 +14,7 @@ public enum InterventionFields {
 	CREATION_DATE (EValidators.DEFAULT.getValidator()),
 	CUSTOMER_ID (EValidators.DEFAULT.getValidator()),
 	DAYS (EValidators.DEFAULT.getValidator()),
+	DIPLOMAS (EValidators.DEFAULT.getValidator()),
 	SAD_STATUS (EValidators.DEFAULT.getValidator()),
 	START_TIME (EValidators.DEFAULT.getValidator()),
 	ID (EValidators.DEFAULT.getValidator()),
