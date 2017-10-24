@@ -14,7 +14,9 @@ import com.mongodb.MongoWriteException;
 import org.ap.auxpro.bean.InterventionBean;
 import org.ap.auxpro.storage.InterventionData;
 import org.ap.auxpro.storage.InterventionCollection;
+import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
+import org.ap.auxpro.storage.InterventionFields;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -175,9 +177,32 @@ public class CustomerServlet extends APServletBase {
 	@GET
 	@Path("/{customerId}/interventions")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response getCustomerInterventions(@Context SecurityContext sc, @PathParam("customerId") final String customerId) {
+	public Response getCustomerInterventions(@Context SecurityContext sc, @PathParam("customerId") final String customerId, @Context UriInfo info) {
 		try {
-			List<InterventionData> datas = InterventionCollection.get(and(eq("customerId", customerId)));
+			List<Bson> conditions = new ArrayList<Bson>();
+			
+			for (String key : info.getQueryParameters().keySet()) {
+				InterventionFields field = InterventionFields.byId(key);
+				if (field != null) {
+					List<Bson> subConditions = new ArrayList<Bson>();
+					for (String value : info.getQueryParameters().get(key)) {
+						if (field.getType().equals("Boolean")) {
+							subConditions.add(eq(key, new Boolean(value)));
+						} else {
+							subConditions.add(eq(key, value));
+						}
+					}
+					conditions.add(or(subConditions));
+				}
+			}
+			
+			conditions.add(eq("customerId", customerId));
+			List<InterventionData> datas = null;
+			if (conditions.size() > 0) {
+				datas = InterventionCollection.get(and(conditions));
+			} else {
+				datas = InterventionCollection.getAll();
+			}
 			
 			List<InterventionBean> beanList = new ArrayList<InterventionBean>();
 			for (InterventionData data : datas) {

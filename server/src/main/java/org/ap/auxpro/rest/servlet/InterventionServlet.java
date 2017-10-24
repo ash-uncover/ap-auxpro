@@ -114,7 +114,7 @@ public class InterventionServlet extends APServletBase {
 	@Path("/{id}/match")
 	@Produces({MediaType.APPLICATION_JSON})
 	@RolesAllowed("service")
-	public Response getInterventionMatchs(@Context SecurityContext sc, @PathParam("id") final String id) {
+	public Response getInterventionMatchs(@Context SecurityContext sc, @PathParam("id") final String id, @Context UriInfo info) {
 		try {
 			Object bean = InterventionHelper.getInterventionMatch(sc, id);
 			return Response.status(Status.OK).entity(bean).build();
