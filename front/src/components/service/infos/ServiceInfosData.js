@@ -7,31 +7,29 @@ import ServiceFields from 'utils/entities/ServiceFields'
 
 import SocFunctionUtils from 'utils-lib/entities/SocFunctionUtils'
 
-let FIELDS_FORM0 = [
-	ServiceFields.AVATAR
-]
-let FIELDS_FORM1 = [
-	ServiceFields.SOCIAL_REASON,
-	Object.assign({ formatter: SocFunctionUtils.getName }, ServiceFields.FUNCTION),
-	ServiceFields.SIRET,
-	Object.assign({ formatter: Formatters.Phone.getFormattedValue }, ServiceFields.PHONE)
-	
-]
-let FIELDS_FORM2 = [
-	ServiceFields.ADDRESS,
-	ServiceFields.POSTAL_CODE,
-	ServiceFields.CITY,
-	ServiceFields.COUNTRY
-]
-let FIELDS_FORM3 = [
-	ServiceFields.EMAIL,
-	ServiceFields.ACCOUNT_TYPE,
-	Object.assign({ formatter: Formatters.Date.getFormattedValue }, ServiceFields.ACCOUNT_EXPIRY_DATE)
-]
-
-let FIELDS = FIELDS_FORM0.concat(FIELDS_FORM1).concat(FIELDS_FORM2).concat(FIELDS_FORM3)
-
 class ServiceInfosData extends BaseData {
+
+	constructor() {
+		super(...arguments)
+				
+		this.FIELDS_FORM0 = [
+			ServiceFields.AVATAR
+		]
+		this.FIELDS_FORM1 = [
+			ServiceFields.SOCIAL_REASON,
+			Object.assign({ formatter: SocFunctionUtils.getName }, ServiceFields.FUNCTION),
+			ServiceFields.SIRET,
+			Object.assign({ formatter: Formatters.Phone.getFormattedValue }, ServiceFields.PHONE)
+		]
+		this.FIELDS_FORM2 = [
+			ServiceFields.ADDRESS,
+			ServiceFields.POSTAL_CODE,
+			ServiceFields.CITY,
+			ServiceFields.COUNTRY
+		]
+
+		this.FIELDS = this.FIELDS_FORM0.concat(this.FIELDS_FORM1).concat(this.FIELDS_FORM2)
+	}
 
 	register(obj) {
 		super.register(obj)
@@ -61,8 +59,8 @@ class ServiceInfosData extends BaseData {
 
 	_onServiceUpdate() {
 		let service = ServiceHelper.getData(AuthHelper.getEntityId()) || {}
-		for (let i = 0; i < FIELDS.length; i++) {
-			let field = FIELDS[i]
+		for (let i = 0; i < this.FIELDS.length; i++) {
+			let field = this.FIELDS[i]
 			if (field.formatter) {
 				this.obj.state[field.key] = field.formatter(service[field.key])
 			} else {
@@ -89,8 +87,4 @@ class ServiceInfosData extends BaseData {
 	}
 }
 let ServiceInfosObj = new ServiceInfosData()
-ServiceInfosObj.FIELDS = FIELDS
-ServiceInfosObj.FIELDS_FORM1 = FIELDS_FORM1
-ServiceInfosObj.FIELDS_FORM2 = FIELDS_FORM2
-ServiceInfosObj.FIELDS_FORM3 = FIELDS_FORM3
 export default ServiceInfosObj

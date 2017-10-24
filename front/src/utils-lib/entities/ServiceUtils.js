@@ -17,9 +17,7 @@ class ServiceUtils {
 			case ServiceFields.SIRET.key: return 'Numéro de Siret'
 			case ServiceFields.NOTIFY_AUXPROS.key: return 'Notifier AuXpros'
 			case ServiceFields.PHONE.key: return 'Téléphone'
-			case ServiceFields.PHONE_CHECKED.key: return 'Téléphone vérifié'
 			case ServiceFields.FUNCTION.key: return 'Fonctionnement'
-			case ServiceFields.ADDRESS_CHECKED.key: return 'Adresse vérifiée'
 			case ServiceFields.SOCIAL_REASON.key: return 'Société'
 			case ServiceFields.LONGITUDE.key: return 'Longitude'
 		}

@@ -4,14 +4,14 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.ws.rs.core.Response.*;
 import org.ap.web.rest.servlet.APServletBase;
-import org.ap.auxpro.bean.ServiceBean;
+import org.ap.auxpro.bean.ServiceGetBean;
 import org.ap.auxpro.storage.ServiceData;
 import org.ap.auxpro.storage.ServiceCollection;
 import org.ap.web.internal.APWebException;
 import java.util.List;
 import java.util.ArrayList;
 import org.ap.auxpro.helpers.ServiceHelper;
-import org.ap.auxpro.bean.ServiceCredentialsBean;
+import org.ap.auxpro.bean.ServicePostBean;
 import org.ap.auxpro.storage.ApauthCollection;
 import org.ap.auxpro.storage.ApauthData;
 import org.ap.web.internal.UUIDGenerator;
@@ -19,6 +19,8 @@ import com.mongodb.MongoWriteException;
 import org.ap.auxpro.internal.MailSender;
 import org.ap.auxpro.internal.ETokenType;
 import org.ap.common.TimeHelper;
+import org.ap.auxpro.bean.ServicePutBean;
+import org.ap.auxpro.bean.PromotionCodePostBean;
 import org.ap.auxpro.bean.AuxiliaryGetBean;
 import org.ap.auxpro.storage.AuxiliaryData;
 import org.ap.auxpro.storage.AuxiliaryCollection;
@@ -48,9 +50,9 @@ public class ServiceServlet extends APServletBase {
 		try {
 			List<ServiceData> datas = ServiceCollection.getAll();
 			
-			List<ServiceBean> beanList = new ArrayList<ServiceBean>();
+			List<ServiceGetBean> beanList = new ArrayList<ServiceGetBean>();
 			for (ServiceData data : datas) {
-				ServiceBean bean = new ServiceBean();
+				ServiceGetBean bean = new ServiceGetBean();
 				bean.country = data.getCountry();
 				bean.address = data.getAddress();
 				bean.city = data.getCity();
@@ -60,16 +62,14 @@ public class ServiceServlet extends APServletBase {
 				bean.postalCode = data.getPostalCode();
 				bean.isTutoSkipped = data.getIsTutoSkipped();
 				bean.notifyPartners = data.getNotifyPartners();
-				bean.avatar = data.getAvatar();
 				bean.accountExpiryDate = data.getAccountExpiryDate();
+				bean.avatar = data.getAvatar();
 				bean.creationDate = data.getCreationDate();
 				bean.siret = data.getSiret();
 				bean.notifyAuxpros = data.getNotifyAuxpros();
 				bean.phone = data.getPhone();
-				bean.phoneChecked = data.getPhoneChecked();
 				bean.function = data.getFunction();
 				bean.profilCompleted = data.getProfilCompleted();
-				bean.addressChecked = data.getAddressChecked();
 				bean.id = data.getId();
 				bean.socialReason = data.getSocialReason();
 				bean.longitude = data.getLongitude();
@@ -77,7 +77,7 @@ public class ServiceServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new ServiceBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList.toArray(new ServiceGetBean[beanList.size()])).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);
@@ -103,9 +103,9 @@ public class ServiceServlet extends APServletBase {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Response postService(@Context SecurityContext sc, ServiceCredentialsBean serviceCredentialsBean) {
+	public Response postService(@Context SecurityContext sc, ServicePostBean servicePostBean) {
 		try {
-			ApauthData dataAuth = ApauthCollection.getByUsername(serviceCredentialsBean.username);
+			ApauthData dataAuth = ApauthCollection.getByUsername(servicePostBean.username);
 			ServiceData dataEntity;
 			if(dataAuth != null) {
 				if(dataAuth.getRegistered()) {
@@ -115,7 +115,7 @@ public class ServiceServlet extends APServletBase {
 					ApauthCollection.delete(dataAuth);
 				}
 			}
-			dataAuth = ApauthCollection.getByEmail(serviceCredentialsBean.email);
+			dataAuth = ApauthCollection.getByEmail(servicePostBean.email);
 			if(dataAuth != null) {
 				if(dataAuth.getRegistered()) {
 					throw APWebException.AP_AUTH_REG_002;
@@ -132,9 +132,9 @@ public class ServiceServlet extends APServletBase {
 			dataAuth = new ApauthData();
 			dataAuth.setId(UUIDGenerator.nextId());
 			dataAuth.setEntityId(UUIDGenerator.nextId());
-			dataAuth.setUsername(serviceCredentialsBean.username);
-			dataAuth.setPassword(serviceCredentialsBean.password);
-			dataAuth.setEmail(serviceCredentialsBean.email);
+			dataAuth.setUsername(servicePostBean.username);
+			dataAuth.setPassword(servicePostBean.password);
+			dataAuth.setEmail(servicePostBean.email);
 			dataAuth.setType("service");
 			dataAuth.setRoles(roles);
 			dataAuth.setRegistered(Boolean.FALSE);
@@ -173,7 +173,7 @@ public class ServiceServlet extends APServletBase {
 			if(data == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
-			ServiceBean bean = new ServiceBean();
+			ServiceGetBean bean = new ServiceGetBean();
 			bean.country = data.getCountry();
 			bean.address = data.getAddress();
 			bean.city = data.getCity();
@@ -183,16 +183,14 @@ public class ServiceServlet extends APServletBase {
 			bean.postalCode = data.getPostalCode();
 			bean.isTutoSkipped = data.getIsTutoSkipped();
 			bean.notifyPartners = data.getNotifyPartners();
-			bean.avatar = data.getAvatar();
 			bean.accountExpiryDate = data.getAccountExpiryDate();
+			bean.avatar = data.getAvatar();
 			bean.creationDate = data.getCreationDate();
 			bean.siret = data.getSiret();
 			bean.notifyAuxpros = data.getNotifyAuxpros();
 			bean.phone = data.getPhone();
-			bean.phoneChecked = data.getPhoneChecked();
 			bean.function = data.getFunction();
 			bean.profilCompleted = data.getProfilCompleted();
-			bean.addressChecked = data.getAddressChecked();
 			bean.id = data.getId();
 			bean.socialReason = data.getSocialReason();
 			bean.longitude = data.getLongitude();
@@ -209,9 +207,9 @@ public class ServiceServlet extends APServletBase {
 	@PUT
 	@Path("/{id}")
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Response putService(@Context SecurityContext sc, @PathParam("id") final String id, ServiceBean serviceBean) {
+	public Response putService(@Context SecurityContext sc, @PathParam("id") final String id, ServicePutBean servicePutBean) {
 		try {
-			ServiceHelper.beforePutService(sc, id, serviceBean);
+			ServiceHelper.beforePutService(sc, id, servicePutBean);
 			// Get actual data object
 			ServiceData data = ServiceCollection.getById(id);
 			// Check data exists
@@ -220,25 +218,20 @@ public class ServiceServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
-			data.setCountry(serviceBean.country);
-			data.setAddress(serviceBean.address);
-			data.setCity(serviceBean.city);
-			data.setLattitude(serviceBean.lattitude);
-			data.setAccountType(serviceBean.accountType);
-			data.setPostalCode(serviceBean.postalCode);
-			data.setIsTutoSkipped(serviceBean.isTutoSkipped);
-			data.setNotifyPartners(serviceBean.notifyPartners);
-			data.setAvatar(serviceBean.avatar);
-			data.setAccountExpiryDate(serviceBean.accountExpiryDate);
-			data.setSiret(serviceBean.siret);
-			data.setNotifyAuxpros(serviceBean.notifyAuxpros);
-			data.setPhone(serviceBean.phone);
-			data.setPhoneChecked(serviceBean.phoneChecked);
-			data.setFunction(serviceBean.function);
-			data.setProfilCompleted(serviceBean.profilCompleted);
-			data.setAddressChecked(serviceBean.addressChecked);
-			data.setSocialReason(serviceBean.socialReason);
-			data.setLongitude(serviceBean.longitude);
+			data.setCountry(servicePutBean.country);
+			data.setAddress(servicePutBean.address);
+			data.setCity(servicePutBean.city);
+			data.setLattitude(servicePutBean.lattitude);
+			data.setPostalCode(servicePutBean.postalCode);
+			data.setIsTutoSkipped(servicePutBean.isTutoSkipped);
+			data.setNotifyPartners(servicePutBean.notifyPartners);
+			data.setAvatar(servicePutBean.avatar);
+			data.setSiret(servicePutBean.siret);
+			data.setNotifyAuxpros(servicePutBean.notifyAuxpros);
+			data.setPhone(servicePutBean.phone);
+			data.setFunction(servicePutBean.function);
+			data.setSocialReason(servicePutBean.socialReason);
+			data.setLongitude(servicePutBean.longitude);
 			// Store the updated data object
 			ServiceCollection.updateNull(data);
 			// Send the response
@@ -251,16 +244,14 @@ public class ServiceServlet extends APServletBase {
 		}
 	}
 
-	@DELETE
-	@Path("/{id}")
-	public Response deleteService(@Context SecurityContext sc, @PathParam("id") final String id) {
+	@POST
+	@Path("/{id}/code")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Response postServiceCode(@Context SecurityContext sc, @PathParam("id") final String id, PromotionCodePostBean promotionCodePostBean) {
 		try {
-			// Try to delete the entity
-			if (!ServiceCollection.deleteById(id)) {
-				throw new APWebException("service not found", "AP_SERVICE_NOTFOUND", Status.BAD_REQUEST);
-			}
-			// Send the response
-			return Response.status(Status.OK).build();
+			Object bean = ServiceHelper.postPromotionCode(sc, id, promotionCodePostBean);
+			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);

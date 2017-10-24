@@ -101,8 +101,8 @@ public class ServiceCollection {
 		data.city = document.getString("city");
 		data.lattitude = document.getDouble("lattitude");
 		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
-		data.accountType = document.getString("accountType");
 		data.postalCode = document.getString("postalCode");
+		data.accountType = document.getString("accountType");
 		data.isTutoSkipped = document.getBoolean("isTutoSkipped");
 		data.notifyPartners = document.getBoolean("notifyPartners");
 		data.avatar = document.getString("avatar");
@@ -111,13 +111,10 @@ public class ServiceCollection {
 		data.siret = document.getString("siret");
 		data.notifyAuxpros = document.getBoolean("notifyAuxpros");
 		data.phone = document.getString("phone");
-		data.phoneChecked = document.getBoolean("phoneChecked");
 		data.function = document.getString("function");
 		data.profilCompleted = document.getBoolean("profilCompleted");
-		data.addressChecked = document.getBoolean("addressChecked");
 		data.id = document.getString("id");
 		data.socialReason = document.getString("socialReason");
-		data.email = document.getString("email");
 		data.longitude = document.getDouble("longitude");
 		return data;
 	}
@@ -136,10 +133,10 @@ public class ServiceCollection {
 			document.append("lattitude", service.lattitude);
 		if (service.lastUpdateDate != null)
 			document.append("lastUpdateDate", service.lastUpdateDate);
-		if (service.accountType != null)
-			document.append("accountType", service.accountType);
 		if (service.postalCode != null)
 			document.append("postalCode", service.postalCode);
+		if (service.accountType != null)
+			document.append("accountType", service.accountType);
 		if (service.isTutoSkipped != null)
 			document.append("isTutoSkipped", service.isTutoSkipped);
 		if (service.notifyPartners != null)
@@ -156,20 +153,14 @@ public class ServiceCollection {
 			document.append("notifyAuxpros", service.notifyAuxpros);
 		if (service.phone != null)
 			document.append("phone", service.phone);
-		if (service.phoneChecked != null)
-			document.append("phoneChecked", service.phoneChecked);
 		if (service.function != null)
 			document.append("function", service.function);
 		if (service.profilCompleted != null)
 			document.append("profilCompleted", service.profilCompleted);
-		if (service.addressChecked != null)
-			document.append("addressChecked", service.addressChecked);
 		if (service.id != null)
 			document.append("id", service.id);
 		if (service.socialReason != null)
 			document.append("socialReason", service.socialReason);
-		if (service.email != null)
-			document.append("email", service.email);
 		if (service.longitude != null)
 			document.append("longitude", service.longitude);
 		return document;
@@ -183,8 +174,8 @@ public class ServiceCollection {
 		document.append("city", service.city);
 		document.append("lattitude", service.lattitude);
 		document.append("lastUpdateDate", service.lastUpdateDate);
-		document.append("accountType", service.accountType);
 		document.append("postalCode", service.postalCode);
+		document.append("accountType", service.accountType);
 		document.append("isTutoSkipped", service.isTutoSkipped);
 		document.append("notifyPartners", service.notifyPartners);
 		document.append("avatar", service.avatar);
@@ -193,13 +184,10 @@ public class ServiceCollection {
 		document.append("siret", service.siret);
 		document.append("notifyAuxpros", service.notifyAuxpros);
 		document.append("phone", service.phone);
-		document.append("phoneChecked", service.phoneChecked);
 		document.append("function", service.function);
 		document.append("profilCompleted", service.profilCompleted);
-		document.append("addressChecked", service.addressChecked);
 		document.append("id", service.id);
 		document.append("socialReason", service.socialReason);
-		document.append("email", service.email);
 		document.append("longitude", service.longitude);
 		return document;
 	}

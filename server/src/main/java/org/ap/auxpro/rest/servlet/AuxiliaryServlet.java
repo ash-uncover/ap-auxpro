@@ -22,7 +22,7 @@ import org.ap.auxpro.bean.AuxiliaryPutBean;
 import org.ap.auxpro.helpers.AuxiliaryHelper;
 import org.ap.auxpro.bean.AuxiliaryQuestionaryBean;
 import org.ap.auxpro.bean.PromotionCodePostBean;
-import org.ap.auxpro.bean.ServiceBean;
+import org.ap.auxpro.bean.ServiceGetBean;
 import org.ap.auxpro.storage.ServiceData;
 import org.ap.auxpro.storage.ServiceCollection;
 import static com.mongodb.client.model.Filters.*;
@@ -328,9 +328,9 @@ public class AuxiliaryServlet extends APServletBase {
 		try {
 			List<ServiceData> datas = ServiceCollection.get(and(eq("auxiliaryId", auxiliaryId)));
 			
-			List<ServiceBean> beanList = new ArrayList<ServiceBean>();
+			List<ServiceGetBean> beanList = new ArrayList<ServiceGetBean>();
 			for (ServiceData data : datas) {
-				ServiceBean bean = new ServiceBean();
+				ServiceGetBean bean = new ServiceGetBean();
 				bean.country = data.getCountry();
 				bean.address = data.getAddress();
 				bean.city = data.getCity();
@@ -340,16 +340,14 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.postalCode = data.getPostalCode();
 				bean.isTutoSkipped = data.getIsTutoSkipped();
 				bean.notifyPartners = data.getNotifyPartners();
-				bean.avatar = data.getAvatar();
 				bean.accountExpiryDate = data.getAccountExpiryDate();
+				bean.avatar = data.getAvatar();
 				bean.creationDate = data.getCreationDate();
 				bean.siret = data.getSiret();
 				bean.notifyAuxpros = data.getNotifyAuxpros();
 				bean.phone = data.getPhone();
-				bean.phoneChecked = data.getPhoneChecked();
 				bean.function = data.getFunction();
 				bean.profilCompleted = data.getProfilCompleted();
-				bean.addressChecked = data.getAddressChecked();
 				bean.id = data.getId();
 				bean.socialReason = data.getSocialReason();
 				bean.longitude = data.getLongitude();
@@ -357,7 +355,7 @@ public class AuxiliaryServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new ServiceBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList.toArray(new ServiceGetBean[beanList.size()])).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);

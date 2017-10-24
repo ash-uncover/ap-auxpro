@@ -26,12 +26,12 @@ class ServiceFields {
 		return _LAST_UPDATE_DATE
 	}
 
-	static get ACCOUNT_TYPE() {
-		return _ACCOUNT_TYPE
-	}
-
 	static get POSTAL_CODE() {
 		return _POSTAL_CODE
+	}
+
+	static get ACCOUNT_TYPE() {
+		return _ACCOUNT_TYPE
 	}
 
 	static get IS_TUTO_SKIPPED() {
@@ -66,10 +66,6 @@ class ServiceFields {
 		return _PHONE
 	}
 
-	static get PHONE_CHECKED() {
-		return _PHONE_CHECKED
-	}
-
 	static get FUNCTION() {
 		return _FUNCTION
 	}
@@ -78,20 +74,12 @@ class ServiceFields {
 		return _PROFIL_COMPLETED
 	}
 
-	static get ADDRESS_CHECKED() {
-		return _ADDRESS_CHECKED
-	}
-
 	static get ID() {
 		return _ID
 	}
 
 	static get SOCIAL_REASON() {
 		return _SOCIAL_REASON
-	}
-
-	static get EMAIL() {
-		return _EMAIL
 	}
 
 	static get LONGITUDE() {
@@ -105,8 +93,8 @@ class ServiceFields {
 			_CITY,
 			_LATTITUDE,
 			_LAST_UPDATE_DATE,
-			_ACCOUNT_TYPE,
 			_POSTAL_CODE,
+			_ACCOUNT_TYPE,
 			_IS_TUTO_SKIPPED,
 			_NOTIFY_PARTNERS,
 			_AVATAR,
@@ -115,13 +103,10 @@ class ServiceFields {
 			_SIRET,
 			_NOTIFY_AUXPROS,
 			_PHONE,
-			_PHONE_CHECKED,
 			_FUNCTION,
 			_PROFIL_COMPLETED,
-			_ADDRESS_CHECKED,
 			_ID,
 			_SOCIAL_REASON,
-			_EMAIL,
 			_LONGITUDE,
 		]
 	}
@@ -158,15 +143,15 @@ let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
 	type: 'Date',
 }
-let _ACCOUNT_TYPE = {
-	key: 'accountType',
-	type: 'string',
-	values: AccountType.VALUES,
-}
 let _POSTAL_CODE = {
 	key: 'postalCode',
 	type: 'string',
 	validator: Validators.PostalCode,
+}
+let _ACCOUNT_TYPE = {
+	key: 'accountType',
+	type: 'string',
+	values: AccountType.VALUES,
 }
 let _IS_TUTO_SKIPPED = {
 	key: 'isTutoSkipped',
@@ -202,10 +187,6 @@ let _PHONE = {
 	type: 'string',
 	validator: Validators.Phone,
 }
-let _PHONE_CHECKED = {
-	key: 'phoneChecked',
-	type: 'boolean',
-}
 let _FUNCTION = {
 	key: 'function',
 	type: 'string',
@@ -216,10 +197,6 @@ let _PROFIL_COMPLETED = {
 	key: 'profilCompleted',
 	type: 'boolean',
 }
-let _ADDRESS_CHECKED = {
-	key: 'addressChecked',
-	type: 'boolean',
-}
 let _ID = {
 	key: 'id',
 	type: 'string',
@@ -228,10 +205,6 @@ let _SOCIAL_REASON = {
 	key: 'socialReason',
 	type: 'string',
 	validator: Validators.NonEmptyString,
-}
-let _EMAIL = {
-	key: 'email',
-	type: 'string',
 }
 let _LONGITUDE = {
 	key: 'longitude',

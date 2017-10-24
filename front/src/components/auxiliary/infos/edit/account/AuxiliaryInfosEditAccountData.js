@@ -92,55 +92,7 @@ class AuxiliaryInfosEditAccountData extends BaseData {
 			})
 		}.bind(this))
 	}
-
-	onSubmit2() {
-		if (this.getState('accountCode') === 'AUXPROS-2017') {
-			if (this.getState('accountType') === 'Premium') {
-				this.setState({ 
-					errorLastTry: true,
-					errorJustHappened: true,
-					errorMessage: 'Ce code a déjà été saisie sur votre compte',
-					accountCode: ''
-				})
-			} else {
-				let Auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId())
-				Auxiliary.accountType = 'Premium'
-				Auxiliary.accountExpiryDate = [2017, 12, 31]
-
-				AppHelper.setBusy(true).
-				then(function () {
-					return AuxiliaryHelper.putAuxiliary(Auxiliary)
-				}).
-				then(function() {
-					setTimeout(AppHelper.setBusy, 200)
-					this.setState({ 
-						errorLastTry: false,
-						errorMessage: '',
-						accountCode: ''
-					})
-					return AuxiliaryHelper.getAuxiliary(AuthHelper.getEntityId())
-				}.bind(this)).
-				catch(function (error) {
-					setTimeout(AppHelper.setBusy, 200)
-					console.error('Auxiliary account error')
-					console.error(error)
-					this.setState({
-						errorLastTry: true,
-						errorJustHappened: true,
-						errorMessage: 'Une erreur est survenue' ,
-						accountCode: ''
-					})
-				}.bind(this))
-			}
-		} else {
-			this.setState({
-				errorLastTry: true,
-				errorJustHappened: true,
-				errorMessage: 'Le code saisi est invalide',
-				accountCode: ''
-			})
-		}
-	}
+	
 
 	// Helper methods //
 	// --------------------------------------------------------------------------------

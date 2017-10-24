@@ -21,6 +21,11 @@ db.promotioncode.insert({
 	"name":"AUXPROS-2017",
 	"validityDate":[NumberInt(2017), NumberInt(12), NumberInt(31)],
 })
+db.promotioncode.insert({
+	"id":"AUXPROS-2018",
+	"name":"AUXPROS-2018",
+	"validityDate":[NumberInt(2018), NumberInt(1), NumberInt(1)],
+})
 
 
 /* ****************************************************************************************
@@ -525,7 +530,6 @@ db.service.insert({
 	"socialReason":"L'Escargot",
 	"siret":"65657897896548",
 	"phone":"0123456789",
-	"phoneChecked":true,
 	"address":"73 rue Legendre",
 	"postalCode":"75017",
 	"city":"Paris",
@@ -533,8 +537,7 @@ db.service.insert({
 	"lattitude":48.887099,
 	"longitude":2.319155,
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
-	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
-	"addressChecked":true
+	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)]
 })
 db.service.insert({
 	"id":"sady",
@@ -548,7 +551,6 @@ db.service.insert({
 	"socialReason":"Les SAP",
 	"siret":"65657897896548",
 	"phone":"0123456789",
-	"phoneChecked":true,
 	"address":"127 rue du Faubourg Saint-Martin",
 	"postalCode":"75017",
 	"city":"Paris",
@@ -556,8 +558,7 @@ db.service.insert({
 	"lattitude":48.87532864080316,
 	"longitude":2.3589706420898438,
 	"creationDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
-	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)],
-	"addressChecked":true
+	"lastUpdateDate":[NumberInt(2017),NumberInt(2),NumberInt(2)]
 })
 
 

@@ -37,10 +37,6 @@ class ServiceHelper {
 		return Dispatcher.issue('PUT_SERVICE', {token: AuthHelper.getToken(), id: data.id, data: data});
 	}
 
-	deleteService(id) {
-		return Dispatcher.issue('DELETE_SERVICE', {token: AuthHelper.getToken(), id: id});
-	}
-
 	getData(id) {
 		return StoreRegistry.getStore('REST_STORE').getData('/service' + (id ? '/' + id : ''));
 	}

@@ -11,8 +11,8 @@ public class ServiceData {
 	public String city;
 	public Double lattitude;
 	public List<Integer> lastUpdateDate;
-	public String accountType;
 	public String postalCode;
+	public String accountType;
 	public Boolean isTutoSkipped;
 	public Boolean notifyPartners;
 	public String avatar;
@@ -21,13 +21,10 @@ public class ServiceData {
 	public String siret;
 	public Boolean notifyAuxpros;
 	public String phone;
-	public Boolean phoneChecked;
 	public String function;
 	public Boolean profilCompleted;
-	public Boolean addressChecked;
 	public String id;
 	public String socialReason;
-	public String email;
 	public Double longitude;
 
 	public String getAuthId() {
@@ -78,20 +75,20 @@ public class ServiceData {
 		this.lastUpdateDate = lastUpdateDate;
 	}
 
-	public String getAccountType() {
-		return this.accountType;
-	}
-
-	public void setAccountType(String accountType) {
-		this.accountType = accountType;
-	}
-
 	public String getPostalCode() {
 		return this.postalCode;
 	}
 
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
+	}
+
+	public String getAccountType() {
+		return this.accountType;
+	}
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
 	}
 
 	public Boolean getIsTutoSkipped() {
@@ -158,14 +155,6 @@ public class ServiceData {
 		this.phone = phone;
 	}
 
-	public Boolean getPhoneChecked() {
-		return this.phoneChecked;
-	}
-
-	public void setPhoneChecked(Boolean phoneChecked) {
-		this.phoneChecked = phoneChecked;
-	}
-
 	public String getFunction() {
 		return this.function;
 	}
@@ -182,14 +171,6 @@ public class ServiceData {
 		this.profilCompleted = profilCompleted;
 	}
 
-	public Boolean getAddressChecked() {
-		return this.addressChecked;
-	}
-
-	public void setAddressChecked(Boolean addressChecked) {
-		this.addressChecked = addressChecked;
-	}
-
 	public String getId() {
 		return this.id;
 	}
@@ -204,14 +185,6 @@ public class ServiceData {
 
 	public void setSocialReason(String socialReason) {
 		this.socialReason = socialReason;
-	}
-
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public Double getLongitude() {

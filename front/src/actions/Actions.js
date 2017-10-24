@@ -59,7 +59,7 @@ let get_service_valid = new ActionBase({ name: 'GET_SERVICE_VALID' })
 let post_service = new ActionBase({ name: 'POST_SERVICE' })
 let get_service = new ActionBase({ name: 'GET_SERVICE' })
 let put_service = new ActionBase({ name: 'PUT_SERVICE' })
-let delete_service = new ActionBase({ name: 'DELETE_SERVICE' })
+let post_service_code = new ActionBase({ name: 'POST_SERVICE_CODE' })
 let get_service_auxiliarys = new ActionBase({ name: 'GET_SERVICE_AUXILIARYS' })
 let get_service_customers = new ActionBase({ name: 'GET_SERVICE_CUSTOMERS' })
 let get_service_interventions = new ActionBase({ name: 'GET_SERVICE_INTERVENTIONS' })
@@ -676,11 +676,12 @@ put_service.do = function(args) {
 	return RestService._request(reqParam);
 }
 
-delete_service.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
+post_service_code.do = function(args) {
+	Utils.checkMembers(args, ['token', 'id', 'data']);
 	var reqParam = {
-		method: 'DELETE',
-		url: '/services/' + args.id + '',
+		method: 'POST',
+		url: '/services/' + args.id + '/code',
+		data : args.data,
 		token : args.token,
 	};
 	return RestService._request(reqParam);

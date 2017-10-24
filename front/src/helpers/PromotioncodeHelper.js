@@ -17,6 +17,10 @@ class PromotioncodeHelper {
 		return Dispatcher.issue('POST_AUXILIARY_CODE', {token: AuthHelper.getToken(), id: data.id, data: data});
 	}
 
+	postServiceCode(data) {
+		return Dispatcher.issue('POST_SERVICE_CODE', {token: AuthHelper.getToken(), id: data.id, data: data});
+	}
+
 	getData(id) {
 		return StoreRegistry.getStore('REST_STORE').getData('/promotioncode' + (id ? '/' + id : ''));
 	}

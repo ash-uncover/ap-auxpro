@@ -466,14 +466,14 @@ ErrorStore.handlePutServiceError = function(error, params) {
 	ErrorStore.notifyPath('/PUT_SERVICE');
 }
 
-ErrorStore.handleDeleteServiceSuccess = function(results, params) {
-	delete ErrorStore._content.DELETE_SERVICE;
-	ErrorStore.notifyPath('/DELETE_SERVICE');
+ErrorStore.handlePostServiceCodeSuccess = function(results, params) {
+	delete ErrorStore._content.POST_SERVICE_CODE;
+	ErrorStore.notifyPath('/POST_SERVICE_CODE');
 }
 
-ErrorStore.handleDeleteServiceError = function(error, params) {
-	ErrorStore._content.DELETE_SERVICE = error;
-	ErrorStore.notifyPath('/DELETE_SERVICE');
+ErrorStore.handlePostServiceCodeError = function(error, params) {
+	ErrorStore._content.POST_SERVICE_CODE = error;
+	ErrorStore.notifyPath('/POST_SERVICE_CODE');
 }
 
 ErrorStore.handleGetServiceAuxiliarysSuccess = function(results, params) {
@@ -693,7 +693,7 @@ Dispatcher.register('GET_SERVICE_VALID', ErrorStore.handleGetServiceValidSuccess
 Dispatcher.register('POST_SERVICE', ErrorStore.handlePostServiceSuccess, ErrorStore.handlePostServiceError)
 Dispatcher.register('GET_SERVICE', ErrorStore.handleGetServiceSuccess, ErrorStore.handleGetServiceError)
 Dispatcher.register('PUT_SERVICE', ErrorStore.handlePutServiceSuccess, ErrorStore.handlePutServiceError)
-Dispatcher.register('DELETE_SERVICE', ErrorStore.handleDeleteServiceSuccess, ErrorStore.handleDeleteServiceError)
+Dispatcher.register('POST_SERVICE_CODE', ErrorStore.handlePostServiceCodeSuccess, ErrorStore.handlePostServiceCodeError)
 Dispatcher.register('GET_SERVICE_AUXILIARYS', ErrorStore.handleGetServiceAuxiliarysSuccess, ErrorStore.handleGetServiceAuxiliarysError)
 Dispatcher.register('GET_SERVICE_CUSTOMERS', ErrorStore.handleGetServiceCustomersSuccess, ErrorStore.handleGetServiceCustomersError)
 Dispatcher.register('GET_SERVICE_INTERVENTIONS', ErrorStore.handleGetServiceInterventionsSuccess, ErrorStore.handleGetServiceInterventionsError)
