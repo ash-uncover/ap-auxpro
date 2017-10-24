@@ -4,13 +4,13 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import javax.ws.rs.core.Response.*;
 import org.ap.web.rest.servlet.APServletBase;
-import org.ap.auxpro.bean.AuxiliaryBean;
+import org.ap.auxpro.bean.AuxiliaryGetBean;
 import org.ap.auxpro.storage.AuxiliaryData;
 import org.ap.auxpro.storage.AuxiliaryCollection;
 import org.ap.web.internal.APWebException;
 import java.util.List;
 import java.util.ArrayList;
-import org.ap.auxpro.bean.AuxiliaryCredentialsBean;
+import org.ap.auxpro.bean.AuxiliaryPostBean;
 import org.ap.auxpro.storage.ApauthCollection;
 import org.ap.auxpro.storage.ApauthData;
 import org.ap.web.internal.UUIDGenerator;
@@ -18,8 +18,10 @@ import com.mongodb.MongoWriteException;
 import org.ap.auxpro.internal.MailSender;
 import org.ap.auxpro.internal.ETokenType;
 import org.ap.common.TimeHelper;
+import org.ap.auxpro.bean.AuxiliaryPutBean;
 import org.ap.auxpro.helpers.AuxiliaryHelper;
 import org.ap.auxpro.bean.AuxiliaryQuestionaryBean;
+import org.ap.auxpro.bean.PromotionCodePostBean;
 import org.ap.auxpro.bean.ServiceBean;
 import org.ap.auxpro.storage.ServiceData;
 import org.ap.auxpro.storage.ServiceCollection;
@@ -55,9 +57,9 @@ public class AuxiliaryServlet extends APServletBase {
 		try {
 			List<AuxiliaryData> datas = AuxiliaryCollection.getAll();
 			
-			List<AuxiliaryBean> beanList = new ArrayList<AuxiliaryBean>();
+			List<AuxiliaryGetBean> beanList = new ArrayList<AuxiliaryGetBean>();
 			for (AuxiliaryData data : datas) {
-				AuxiliaryBean bean = new AuxiliaryBean();
+				AuxiliaryGetBean bean = new AuxiliaryGetBean();
 				bean.country = data.getCountry();
 				bean.lastName = data.getLastName();
 				bean.civility = data.getCivility();
@@ -74,9 +76,8 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.notifyAuxpros = data.getNotifyAuxpros();
 				bean.birthCountry = data.getBirthCountry();
 				bean.profilCompleted = data.getProfilCompleted();
-				bean.addressChecked = data.getAddressChecked();
-				bean.diploma = data.getDiploma();
 				bean.skillDoityourself = data.getSkillDoityourself();
+				bean.diploma = data.getDiploma();
 				bean.id = data.getId();
 				bean.longitude = data.getLongitude();
 				bean.skillNursing = data.getSkillNursing();
@@ -97,7 +98,6 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.isEntrepreneur = data.getIsEntrepreneur();
 				bean.phone = data.getPhone();
 				bean.skillAdministrative = data.getSkillAdministrative();
-				bean.phoneChecked = data.getPhoneChecked();
 				bean.skillHousework = data.getSkillHousework();
 				bean.idCardNumber = data.getIdCardNumber();
 				bean.notifyOffersMail = data.getNotifyOffersMail();
@@ -105,7 +105,7 @@ public class AuxiliaryServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new AuxiliaryBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList.toArray(new AuxiliaryGetBean[beanList.size()])).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);
@@ -116,9 +116,9 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Response postAuxiliary(@Context SecurityContext sc, AuxiliaryCredentialsBean auxiliaryCredentialsBean) {
+	public Response postAuxiliary(@Context SecurityContext sc, AuxiliaryPostBean auxiliaryPostBean) {
 		try {
-			ApauthData dataAuth = ApauthCollection.getByUsername(auxiliaryCredentialsBean.username);
+			ApauthData dataAuth = ApauthCollection.getByUsername(auxiliaryPostBean.username);
 			AuxiliaryData dataEntity;
 			if(dataAuth != null) {
 				if(dataAuth.getRegistered()) {
@@ -128,7 +128,7 @@ public class AuxiliaryServlet extends APServletBase {
 					ApauthCollection.delete(dataAuth);
 				}
 			}
-			dataAuth = ApauthCollection.getByEmail(auxiliaryCredentialsBean.email);
+			dataAuth = ApauthCollection.getByEmail(auxiliaryPostBean.email);
 			if(dataAuth != null) {
 				if(dataAuth.getRegistered()) {
 					throw APWebException.AP_AUTH_REG_002;
@@ -145,9 +145,9 @@ public class AuxiliaryServlet extends APServletBase {
 			dataAuth = new ApauthData();
 			dataAuth.setId(UUIDGenerator.nextId());
 			dataAuth.setEntityId(UUIDGenerator.nextId());
-			dataAuth.setUsername(auxiliaryCredentialsBean.username);
-			dataAuth.setPassword(auxiliaryCredentialsBean.password);
-			dataAuth.setEmail(auxiliaryCredentialsBean.email);
+			dataAuth.setUsername(auxiliaryPostBean.username);
+			dataAuth.setPassword(auxiliaryPostBean.password);
+			dataAuth.setEmail(auxiliaryPostBean.email);
 			dataAuth.setType("auxiliary");
 			dataAuth.setRoles(roles);
 			dataAuth.setRegistered(Boolean.FALSE);
@@ -162,7 +162,6 @@ public class AuxiliaryServlet extends APServletBase {
 			dataEntity.setAuthId(dataAuth.getId());
 			dataEntity.setCreationDate(TimeHelper.nowDateTimeIntegers());
 			dataEntity.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
-			dataEntity.setEmailChecked(auxiliaryCredentialsBean.emailChecked);
 			AuxiliaryCollection.create(dataEntity);
 			
 			MailSender.sendRegistrationMail(dataAuth);
@@ -187,7 +186,7 @@ public class AuxiliaryServlet extends APServletBase {
 			if(data == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
-			AuxiliaryBean bean = new AuxiliaryBean();
+			AuxiliaryGetBean bean = new AuxiliaryGetBean();
 			bean.country = data.getCountry();
 			bean.lastName = data.getLastName();
 			bean.civility = data.getCivility();
@@ -204,9 +203,8 @@ public class AuxiliaryServlet extends APServletBase {
 			bean.notifyAuxpros = data.getNotifyAuxpros();
 			bean.birthCountry = data.getBirthCountry();
 			bean.profilCompleted = data.getProfilCompleted();
-			bean.addressChecked = data.getAddressChecked();
-			bean.diploma = data.getDiploma();
 			bean.skillDoityourself = data.getSkillDoityourself();
+			bean.diploma = data.getDiploma();
 			bean.id = data.getId();
 			bean.longitude = data.getLongitude();
 			bean.skillNursing = data.getSkillNursing();
@@ -227,7 +225,6 @@ public class AuxiliaryServlet extends APServletBase {
 			bean.isEntrepreneur = data.getIsEntrepreneur();
 			bean.phone = data.getPhone();
 			bean.skillAdministrative = data.getSkillAdministrative();
-			bean.phoneChecked = data.getPhoneChecked();
 			bean.skillHousework = data.getSkillHousework();
 			bean.idCardNumber = data.getIdCardNumber();
 			bean.notifyOffersMail = data.getNotifyOffersMail();
@@ -244,9 +241,9 @@ public class AuxiliaryServlet extends APServletBase {
 	@PUT
 	@Path("/{id}")
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Response putAuxiliary(@Context SecurityContext sc, @PathParam("id") final String id, AuxiliaryBean auxiliaryBean) {
+	public Response putAuxiliary(@Context SecurityContext sc, @PathParam("id") final String id, AuxiliaryPutBean auxiliaryPutBean) {
 		try {
-			AuxiliaryHelper.beforePutAuxiliary(sc, id, auxiliaryBean);
+			AuxiliaryHelper.beforePutAuxiliary(sc, id, auxiliaryPutBean);
 			// Get actual data object
 			AuxiliaryData data = AuxiliaryCollection.getById(id);
 			// Check data exists
@@ -255,66 +252,33 @@ public class AuxiliaryServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
-			data.setCountry(auxiliaryBean.country);
-			data.setLastName(auxiliaryBean.lastName);
-			data.setCivility(auxiliaryBean.civility);
-			data.setCity(auxiliaryBean.city);
-			data.setPostalCode(auxiliaryBean.postalCode);
-			data.setIsTutoSkipped(auxiliaryBean.isTutoSkipped);
-			data.setDescription(auxiliaryBean.description);
-			data.setSocialNumber(auxiliaryBean.socialNumber);
-			data.setAccountExpiryDate(auxiliaryBean.accountExpiryDate);
-			data.setProfilProgression(auxiliaryBean.profilProgression);
-			data.setSkillShopping(auxiliaryBean.skillShopping);
-			data.setNotifyOffersSms(auxiliaryBean.notifyOffersSms);
-			data.setNotifyAuxpros(auxiliaryBean.notifyAuxpros);
-			data.setBirthCountry(auxiliaryBean.birthCountry);
-			data.setProfilCompleted(auxiliaryBean.profilCompleted);
-			data.setAddressChecked(auxiliaryBean.addressChecked);
-			data.setDiploma(auxiliaryBean.diploma);
-			data.setSkillDoityourself(auxiliaryBean.skillDoityourself);
-			data.setLongitude(auxiliaryBean.longitude);
-			data.setSkillNursing(auxiliaryBean.skillNursing);
-			data.setAddress(auxiliaryBean.address);
-			data.setLattitude(auxiliaryBean.lattitude);
-			data.setAccountType(auxiliaryBean.accountType);
-			data.setNotifyPartners(auxiliaryBean.notifyPartners);
-			data.setBirthCity(auxiliaryBean.birthCity);
-			data.setAvatar(auxiliaryBean.avatar);
-			data.setAreSkillSet(auxiliaryBean.areSkillSet);
-			data.setBirthDate(auxiliaryBean.birthDate);
-			data.setSkillChildhood(auxiliaryBean.skillChildhood);
-			data.setSkillCompagny(auxiliaryBean.skillCompagny);
-			data.setFirstName(auxiliaryBean.firstName);
-			data.setSkillAnswers(auxiliaryBean.skillAnswers);
-			data.setNationality(auxiliaryBean.nationality);
-			data.setIsEntrepreneur(auxiliaryBean.isEntrepreneur);
-			data.setPhone(auxiliaryBean.phone);
-			data.setSkillAdministrative(auxiliaryBean.skillAdministrative);
-			data.setPhoneChecked(auxiliaryBean.phoneChecked);
-			data.setSkillHousework(auxiliaryBean.skillHousework);
-			data.setIdCardNumber(auxiliaryBean.idCardNumber);
-			data.setNotifyOffersMail(auxiliaryBean.notifyOffersMail);
+			data.setCountry(auxiliaryPutBean.country);
+			data.setLastName(auxiliaryPutBean.lastName);
+			data.setCivility(auxiliaryPutBean.civility);
+			data.setCity(auxiliaryPutBean.city);
+			data.setPostalCode(auxiliaryPutBean.postalCode);
+			data.setIsTutoSkipped(auxiliaryPutBean.isTutoSkipped);
+			data.setDescription(auxiliaryPutBean.description);
+			data.setSocialNumber(auxiliaryPutBean.socialNumber);
+			data.setNotifyOffersSms(auxiliaryPutBean.notifyOffersSms);
+			data.setNotifyAuxpros(auxiliaryPutBean.notifyAuxpros);
+			data.setBirthCountry(auxiliaryPutBean.birthCountry);
+			data.setDiploma(auxiliaryPutBean.diploma);
+			data.setLongitude(auxiliaryPutBean.longitude);
+			data.setAddress(auxiliaryPutBean.address);
+			data.setLattitude(auxiliaryPutBean.lattitude);
+			data.setNotifyPartners(auxiliaryPutBean.notifyPartners);
+			data.setBirthCity(auxiliaryPutBean.birthCity);
+			data.setAvatar(auxiliaryPutBean.avatar);
+			data.setBirthDate(auxiliaryPutBean.birthDate);
+			data.setFirstName(auxiliaryPutBean.firstName);
+			data.setNationality(auxiliaryPutBean.nationality);
+			data.setIsEntrepreneur(auxiliaryPutBean.isEntrepreneur);
+			data.setPhone(auxiliaryPutBean.phone);
+			data.setIdCardNumber(auxiliaryPutBean.idCardNumber);
+			data.setNotifyOffersMail(auxiliaryPutBean.notifyOffersMail);
 			// Store the updated data object
 			AuxiliaryCollection.updateNull(data);
-			// Send the response
-			return Response.status(Status.OK).build();
-			
-		} catch (APWebException e) {
-			return sendException(e);
-		} catch (Exception e) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
-		}
-	}
-
-	@DELETE
-	@Path("/{id}")
-	public Response deleteAuxiliary(@Context SecurityContext sc, @PathParam("id") final String id) {
-		try {
-			// Try to delete the entity
-			if (!AuxiliaryCollection.deleteById(id)) {
-				throw new APWebException("auxiliary not found", "AP_AUXILIARY_NOTFOUND", Status.BAD_REQUEST);
-			}
 			// Send the response
 			return Response.status(Status.OK).build();
 			
@@ -332,6 +296,22 @@ public class AuxiliaryServlet extends APServletBase {
 	public Response postAuxiliaryQuestionary(@Context SecurityContext sc, @PathParam("id") final String id, AuxiliaryQuestionaryBean auxiliaryQuestionaryBean) {
 		try {
 			Object bean = AuxiliaryHelper.postAuxiliaryQuestionary(sc, id, auxiliaryQuestionaryBean);
+			return Response.status(Status.OK).entity(bean).build();
+			
+		} catch (APWebException e) {
+			return sendException(e);
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	@POST
+	@Path("/{id}/code")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Response postAuxiliaryCode(@Context SecurityContext sc, @PathParam("id") final String id, PromotionCodePostBean promotionCodePostBean) {
+		try {
+			Object bean = AuxiliaryHelper.postPromotionCode(sc, id, promotionCodePostBean);
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (APWebException e) {

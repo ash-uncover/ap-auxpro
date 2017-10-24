@@ -29,10 +29,6 @@ class AuxiliaryHelper {
 		return Dispatcher.issue('PUT_AUXILIARY', {token: AuthHelper.getToken(), id: data.id, data: data});
 	}
 
-	deleteAuxiliary(id) {
-		return Dispatcher.issue('DELETE_AUXILIARY', {token: AuthHelper.getToken(), id: id});
-	}
-
 	postAuxiliaryQuestionary(data) {
 		return Dispatcher.issue('POST_AUXILIARY_QUESTIONARY', {token: AuthHelper.getToken(), id: data.id, data: data});
 	}

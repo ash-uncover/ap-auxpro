@@ -72,8 +72,8 @@ class AuxiliaryFields {
 		return _PROFIL_COMPLETED
 	}
 
-	static get ADDRESS_CHECKED() {
-		return _ADDRESS_CHECKED
+	static get ID() {
+		return _ID
 	}
 
 	static get DIPLOMA() {
@@ -84,24 +84,16 @@ class AuxiliaryFields {
 		return _SKILL_DOITYOURSELF
 	}
 
-	static get ID() {
-		return _ID
-	}
-
-	static get EMAIL() {
-		return _EMAIL
-	}
-
 	static get LONGITUDE() {
 		return _LONGITUDE
 	}
 
-	static get SKILL_NURSING() {
-		return _SKILL_NURSING
-	}
-
 	static get ADDRESS() {
 		return _ADDRESS
+	}
+
+	static get SKILL_NURSING() {
+		return _SKILL_NURSING
 	}
 
 	static get LATTITUDE() {
@@ -124,12 +116,12 @@ class AuxiliaryFields {
 		return _AVATAR
 	}
 
-	static get ARE_SKILL_SET() {
-		return _ARE_SKILL_SET
-	}
-
 	static get CREATION_DATE() {
 		return _CREATION_DATE
+	}
+
+	static get ARE_SKILL_SET() {
+		return _ARE_SKILL_SET
 	}
 
 	static get BIRTH_DATE() {
@@ -168,20 +160,12 @@ class AuxiliaryFields {
 		return _SKILL_ADMINISTRATIVE
 	}
 
-	static get PHONE_CHECKED() {
-		return _PHONE_CHECKED
-	}
-
-	static get SKILL_HOUSEWORK() {
-		return _SKILL_HOUSEWORK
-	}
-
 	static get ID_CARD_NUMBER() {
 		return _ID_CARD_NUMBER
 	}
 
-	static get EMAIL_CHECKED() {
-		return _EMAIL_CHECKED
+	static get SKILL_HOUSEWORK() {
+		return _SKILL_HOUSEWORK
 	}
 
 	static get NOTIFY_OFFERS_MAIL() {
@@ -206,21 +190,19 @@ class AuxiliaryFields {
 			_NOTIFY_AUXPROS,
 			_BIRTH_COUNTRY,
 			_PROFIL_COMPLETED,
-			_ADDRESS_CHECKED,
+			_ID,
 			_DIPLOMA,
 			_SKILL_DOITYOURSELF,
-			_ID,
-			_EMAIL,
 			_LONGITUDE,
-			_SKILL_NURSING,
 			_ADDRESS,
+			_SKILL_NURSING,
 			_LATTITUDE,
 			_ACCOUNT_TYPE,
 			_NOTIFY_PARTNERS,
 			_BIRTH_CITY,
 			_AVATAR,
-			_ARE_SKILL_SET,
 			_CREATION_DATE,
+			_ARE_SKILL_SET,
 			_BIRTH_DATE,
 			_SKILL_CHILDHOOD,
 			_SKILL_COMPAGNY,
@@ -230,10 +212,8 @@ class AuxiliaryFields {
 			_IS_ENTREPRENEUR,
 			_PHONE,
 			_SKILL_ADMINISTRATIVE,
-			_PHONE_CHECKED,
-			_SKILL_HOUSEWORK,
 			_ID_CARD_NUMBER,
-			_EMAIL_CHECKED,
+			_SKILL_HOUSEWORK,
 			_NOTIFY_OFFERS_MAIL,
 		]
 	}
@@ -320,9 +300,9 @@ let _PROFIL_COMPLETED = {
 	key: 'profilCompleted',
 	type: 'boolean',
 }
-let _ADDRESS_CHECKED = {
-	key: 'addressChecked',
-	type: 'boolean',
+let _ID = {
+	key: 'id',
+	type: 'string',
 }
 let _DIPLOMA = {
 	key: 'diploma',
@@ -334,26 +314,18 @@ let _SKILL_DOITYOURSELF = {
 	key: 'skillDoityourself',
 	type: 'number',
 }
-let _ID = {
-	key: 'id',
-	type: 'string',
-}
-let _EMAIL = {
-	key: 'email',
-	type: 'string',
-}
 let _LONGITUDE = {
 	key: 'longitude',
-	type: 'number',
-}
-let _SKILL_NURSING = {
-	key: 'skillNursing',
 	type: 'number',
 }
 let _ADDRESS = {
 	key: 'address',
 	type: 'string',
 	validator: Validators.NonEmptyString,
+}
+let _SKILL_NURSING = {
+	key: 'skillNursing',
+	type: 'number',
 }
 let _LATTITUDE = {
 	key: 'lattitude',
@@ -377,13 +349,13 @@ let _AVATAR = {
 	key: 'avatar',
 	type: 'string',
 }
-let _ARE_SKILL_SET = {
-	key: 'areSkillSet',
-	type: 'boolean',
-}
 let _CREATION_DATE = {
 	key: 'creationDate',
 	type: 'Date',
+}
+let _ARE_SKILL_SET = {
+	key: 'areSkillSet',
+	type: 'boolean',
 }
 let _BIRTH_DATE = {
 	key: 'birthDate',
@@ -427,22 +399,14 @@ let _SKILL_ADMINISTRATIVE = {
 	key: 'skillAdministrative',
 	type: 'number',
 }
-let _PHONE_CHECKED = {
-	key: 'phoneChecked',
-	type: 'boolean',
-}
-let _SKILL_HOUSEWORK = {
-	key: 'skillHousework',
-	type: 'number',
-}
 let _ID_CARD_NUMBER = {
 	key: 'idCardNumber',
 	type: 'string',
 	validator: Validators.IdCardNumber,
 }
-let _EMAIL_CHECKED = {
-	key: 'emailChecked',
-	type: 'boolean',
+let _SKILL_HOUSEWORK = {
+	key: 'skillHousework',
+	type: 'number',
 }
 let _NOTIFY_OFFERS_MAIL = {
 	key: 'notifyOffersMail',

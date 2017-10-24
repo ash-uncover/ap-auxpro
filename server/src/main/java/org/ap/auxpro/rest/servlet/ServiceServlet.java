@@ -19,7 +19,7 @@ import com.mongodb.MongoWriteException;
 import org.ap.auxpro.internal.MailSender;
 import org.ap.auxpro.internal.ETokenType;
 import org.ap.common.TimeHelper;
-import org.ap.auxpro.bean.AuxiliaryBean;
+import org.ap.auxpro.bean.AuxiliaryGetBean;
 import org.ap.auxpro.storage.AuxiliaryData;
 import org.ap.auxpro.storage.AuxiliaryCollection;
 import static com.mongodb.client.model.Filters.*;
@@ -276,9 +276,9 @@ public class ServiceServlet extends APServletBase {
 		try {
 			List<AuxiliaryData> datas = AuxiliaryCollection.get(and(eq("serviceId", serviceId)));
 			
-			List<AuxiliaryBean> beanList = new ArrayList<AuxiliaryBean>();
+			List<AuxiliaryGetBean> beanList = new ArrayList<AuxiliaryGetBean>();
 			for (AuxiliaryData data : datas) {
-				AuxiliaryBean bean = new AuxiliaryBean();
+				AuxiliaryGetBean bean = new AuxiliaryGetBean();
 				bean.country = data.getCountry();
 				bean.lastName = data.getLastName();
 				bean.civility = data.getCivility();
@@ -295,9 +295,8 @@ public class ServiceServlet extends APServletBase {
 				bean.notifyAuxpros = data.getNotifyAuxpros();
 				bean.birthCountry = data.getBirthCountry();
 				bean.profilCompleted = data.getProfilCompleted();
-				bean.addressChecked = data.getAddressChecked();
-				bean.diploma = data.getDiploma();
 				bean.skillDoityourself = data.getSkillDoityourself();
+				bean.diploma = data.getDiploma();
 				bean.id = data.getId();
 				bean.longitude = data.getLongitude();
 				bean.skillNursing = data.getSkillNursing();
@@ -318,7 +317,6 @@ public class ServiceServlet extends APServletBase {
 				bean.isEntrepreneur = data.getIsEntrepreneur();
 				bean.phone = data.getPhone();
 				bean.skillAdministrative = data.getSkillAdministrative();
-				bean.phoneChecked = data.getPhoneChecked();
 				bean.skillHousework = data.getSkillHousework();
 				bean.idCardNumber = data.getIdCardNumber();
 				bean.notifyOffersMail = data.getNotifyOffersMail();
@@ -326,7 +324,7 @@ public class ServiceServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new AuxiliaryBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList.toArray(new AuxiliaryGetBean[beanList.size()])).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);

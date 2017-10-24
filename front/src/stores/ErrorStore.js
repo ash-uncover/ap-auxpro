@@ -46,16 +46,6 @@ ErrorStore.handlePutAuxiliaryError = function(error, params) {
 	ErrorStore.notifyPath('/PUT_AUXILIARY');
 }
 
-ErrorStore.handleDeleteAuxiliarySuccess = function(results, params) {
-	delete ErrorStore._content.DELETE_AUXILIARY;
-	ErrorStore.notifyPath('/DELETE_AUXILIARY');
-}
-
-ErrorStore.handleDeleteAuxiliaryError = function(error, params) {
-	ErrorStore._content.DELETE_AUXILIARY = error;
-	ErrorStore.notifyPath('/DELETE_AUXILIARY');
-}
-
 ErrorStore.handlePostAuxiliaryQuestionarySuccess = function(results, params) {
 	delete ErrorStore._content.POST_AUXILIARY_QUESTIONARY;
 	ErrorStore.notifyPath('/POST_AUXILIARY_QUESTIONARY');
@@ -64,6 +54,16 @@ ErrorStore.handlePostAuxiliaryQuestionarySuccess = function(results, params) {
 ErrorStore.handlePostAuxiliaryQuestionaryError = function(error, params) {
 	ErrorStore._content.POST_AUXILIARY_QUESTIONARY = error;
 	ErrorStore.notifyPath('/POST_AUXILIARY_QUESTIONARY');
+}
+
+ErrorStore.handlePostAuxiliaryCodeSuccess = function(results, params) {
+	delete ErrorStore._content.POST_AUXILIARY_CODE;
+	ErrorStore.notifyPath('/POST_AUXILIARY_CODE');
+}
+
+ErrorStore.handlePostAuxiliaryCodeError = function(error, params) {
+	ErrorStore._content.POST_AUXILIARY_CODE = error;
+	ErrorStore.notifyPath('/POST_AUXILIARY_CODE');
 }
 
 ErrorStore.handleGetAuxiliaryServicesSuccess = function(results, params) {
@@ -651,8 +651,8 @@ Dispatcher.register('GET_AUXILIARYS', ErrorStore.handleGetAuxiliarysSuccess, Err
 Dispatcher.register('POST_AUXILIARY', ErrorStore.handlePostAuxiliarySuccess, ErrorStore.handlePostAuxiliaryError)
 Dispatcher.register('GET_AUXILIARY', ErrorStore.handleGetAuxiliarySuccess, ErrorStore.handleGetAuxiliaryError)
 Dispatcher.register('PUT_AUXILIARY', ErrorStore.handlePutAuxiliarySuccess, ErrorStore.handlePutAuxiliaryError)
-Dispatcher.register('DELETE_AUXILIARY', ErrorStore.handleDeleteAuxiliarySuccess, ErrorStore.handleDeleteAuxiliaryError)
 Dispatcher.register('POST_AUXILIARY_QUESTIONARY', ErrorStore.handlePostAuxiliaryQuestionarySuccess, ErrorStore.handlePostAuxiliaryQuestionaryError)
+Dispatcher.register('POST_AUXILIARY_CODE', ErrorStore.handlePostAuxiliaryCodeSuccess, ErrorStore.handlePostAuxiliaryCodeError)
 Dispatcher.register('GET_AUXILIARY_SERVICES', ErrorStore.handleGetAuxiliaryServicesSuccess, ErrorStore.handleGetAuxiliaryServicesError)
 Dispatcher.register('GET_AUXILIARY_CUSTOMERS', ErrorStore.handleGetAuxiliaryCustomersSuccess, ErrorStore.handleGetAuxiliaryCustomersError)
 Dispatcher.register('GET_AUXILIARY_INTERVENTIONS', ErrorStore.handleGetAuxiliaryInterventionsSuccess, ErrorStore.handleGetAuxiliaryInterventionsError)

@@ -36,6 +36,10 @@ db.mission.createIndex({"id": 1}, {"unique": true})
 db.offer.drop()
 db.offer.createIndex({"id": 1}, {"unique": true})
 
+db.promotioncode.drop()
+db.promotioncode.createIndex({"name": 1}, {"unique": true})
+db.promotioncode.createIndex({"id": 1}, {"unique": true})
+
 db.service.drop()
 db.service.createIndex({"id": 1}, {"unique": true})
 

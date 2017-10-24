@@ -5,11 +5,14 @@ import java.time.LocalDate;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
 
-import org.ap.auxpro.bean.AuxiliaryBean;
+import org.ap.auxpro.bean.AuxiliaryPutBean;
 import org.ap.auxpro.bean.AuxiliaryQuestionaryBean;
+import org.ap.auxpro.bean.PromotionCodePostBean;
 import org.ap.auxpro.storage.AuxiliaryCollection;
 import org.ap.auxpro.storage.AuxiliaryData;
 import org.ap.auxpro.storage.AuxiliaryFields;
+import org.ap.auxpro.storage.PromotioncodeCollection;
+import org.ap.auxpro.storage.PromotioncodeData;
 import org.ap.common.TimeHelper;
 import org.ap.common.validators.IValidator;
 import org.ap.web.internal.APWebException;
@@ -17,7 +20,7 @@ import org.ap.web.internal.APWebException;
 public class AuxiliaryHelper {
 
 	@SuppressWarnings("unchecked")
-	public static void beforePutAuxiliary(SecurityContext sc, String id, AuxiliaryBean auxiliaryBean) throws APWebException {
+	public static void beforePutAuxiliary(SecurityContext sc, String id, AuxiliaryPutBean auxiliaryBean) throws APWebException {
 		if (!sc.isUserInRole(id)) {
 			throw new APWebException("forbidden", Status.FORBIDDEN);
 		}
@@ -26,7 +29,7 @@ public class AuxiliaryHelper {
 		boolean profilCompleted = true;
 		int profilProgress = 0;
 		// Check skills (total: 30)
-		if (auxiliaryBean.areSkillSet != null && auxiliaryBean.areSkillSet) {
+		if (data.getAreSkillSet() != null && data.getAreSkillSet()) {
 			profilProgress += 30;
 		}
 		// Check avatar (total: 40)
@@ -88,16 +91,21 @@ public class AuxiliaryHelper {
 		) {
 			profilProgress += 10;
 		}
-
-		auxiliaryBean.profilProgression = profilProgress;
-		auxiliaryBean.profilCompleted = profilCompleted;
 		
 		if (Boolean.TRUE.equals(data.getProfilCompleted()) && !profilCompleted) {
 			throw new APWebException("Invalid data", Status.BAD_REQUEST);
 		}
+
+		data.setProfilProgression(profilProgress);
+		data.setProfilCompleted(profilCompleted);
+		AuxiliaryCollection.update(data);
 	}
 
 	public static Object postAuxiliaryQuestionary(SecurityContext sc, String id, AuxiliaryQuestionaryBean bean) throws APWebException {
+		AuxiliaryData data = AuxiliaryCollection.getById(id);
+		if (Boolean.TRUE.equals(data.getAreSkillSet())) {
+			throw new APWebException("Questionary already filled", Status.BAD_REQUEST);
+		}
 		int ch = 0;
 		int ho = 0;
 		int co = 0;
@@ -120,24 +128,45 @@ public class AuxiliaryHelper {
 				di += q.getAnswers()[answer].getDoityourself();
 			}
 		}
-		AuxiliaryData auxiliary = AuxiliaryCollection.getById(id);
 		if (isComplete) {
-			auxiliary.setAreSkillSet(true);
-			auxiliary.setProfilProgression(auxiliary.getProfilProgression() + 30);
-			auxiliary.setSkillChildhood(computeScore(ch));
-			auxiliary.setSkillHousework(computeScore(ho));
-			auxiliary.setSkillCompagny(computeScore(co));
-			auxiliary.setSkillShopping(computeScore(sh));
-			auxiliary.setSkillNursing(computeScore(nu));
-			auxiliary.setSkillAdministrative(computeScore(ad));
-			auxiliary.setSkillDoityourself(computeScore(di));
+			data.setAreSkillSet(true);
+			data.setProfilProgression(data.getProfilProgression() + 30);
+			data.setSkillChildhood(computeScore(ch));
+			data.setSkillHousework(computeScore(ho));
+			data.setSkillCompagny(computeScore(co));
+			data.setSkillShopping(computeScore(sh));
+			data.setSkillNursing(computeScore(nu));
+			data.setSkillAdministrative(computeScore(ad));
+			data.setSkillDoityourself(computeScore(di));
 		}
-		auxiliary.setSkillAnswers(bean.skillAnswers);
-		AuxiliaryCollection.update(auxiliary);
+		data.setSkillAnswers(bean.skillAnswers);
+		AuxiliaryCollection.update(data);
 		return null;
 	}
 
 	public static int computeScore(int baseScore) {
-		return Math.min(5, Math.round(baseScore * 5 / 25));
+		return Math.min(5, Math.round(baseScore / 5));
+	}
+
+	public static Object postPromotionCode(SecurityContext sc, String id, PromotionCodePostBean promotionCodePostBean) throws APWebException {
+		PromotioncodeData codeData = PromotioncodeCollection.getByName(promotionCodePostBean.name);
+		if (codeData == null) {
+			throw new APWebException("bad code", Status.BAD_REQUEST);
+		}
+		AuxiliaryData auxiliaryData = AuxiliaryCollection.getById(id);
+		LocalDate codeDate = TimeHelper.toLocalDate(codeData.getValidityDate());
+		LocalDate currentDate = null;
+		if (auxiliaryData.getAccountExpiryDate() != null) {
+			currentDate = TimeHelper.toLocalDate(auxiliaryData.getAccountExpiryDate());
+		}
+		
+		if (currentDate == null || codeDate.isAfter(currentDate)) {
+			auxiliaryData.setAccountExpiryDate(TimeHelper.toIntegers(codeDate));
+			auxiliaryData.setAccountType("Premium");
+			AuxiliaryCollection.update(auxiliaryData);
+		} else {
+			throw new APWebException("code already given", Status.BAD_REQUEST);
+		}
+		return null;
 	}
 }

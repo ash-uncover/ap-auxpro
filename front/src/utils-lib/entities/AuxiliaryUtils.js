@@ -8,10 +8,7 @@ class AuxiliaryUtils {
 			case AuxiliaryFields.LAST_NAME.key: return 'Nom'
 			case AuxiliaryFields.FIRST_NAME.key: return 'Prénom'
 			case AuxiliaryFields.AVATAR.key: return 'Photo'
-			case AuxiliaryFields.EMAIL.key: return 'Adresse électronique'
-			case AuxiliaryFields.EMAIL_CHECKED.key: return 'Adresse électronique vérifiée'
 			case AuxiliaryFields.PHONE.key: return 'Téléphone'
-			case AuxiliaryFields.PHONE_CHECKED.key: return 'Téléphone vérifié par AuXpros'
 			case AuxiliaryFields.ID_CARD_NUMBER.key: return "Numéro de carte d'identité"
 			case AuxiliaryFields.NATIONALITY.key: return 'Nationalité'
 			case AuxiliaryFields.BIRTH_DATE.key: return 'Date de naissance'
@@ -20,7 +17,6 @@ class AuxiliaryUtils {
 			case AuxiliaryFields.POSTAL_CODE.key: return 'Code postal'
 			case AuxiliaryFields.DESCRIPTION.key: return 'Mes plus'
 			case AuxiliaryFields.ADDRESS.key: return 'Adresse'
-			case AuxiliaryFields.ADDRESS_CHECKED.key: return 'Adresse validée par AuXpros'
 			case AuxiliaryFields.CITY.key: return 'Ville'
 			case AuxiliaryFields.COUNTRY.key: return 'Pays'
 			case AuxiliaryFields.LATTITUDE.key: return 'Lattitude'

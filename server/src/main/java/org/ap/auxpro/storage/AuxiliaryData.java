@@ -22,21 +22,19 @@ public class AuxiliaryData {
 	public Boolean notifyAuxpros;
 	public String birthCountry;
 	public Boolean profilCompleted;
-	public Boolean addressChecked;
+	public String id;
 	public List<String> diploma;
 	public Integer skillDoityourself;
-	public String id;
-	public String email;
 	public Double longitude;
-	public Integer skillNursing;
 	public String address;
+	public Integer skillNursing;
 	public Double lattitude;
 	public String accountType;
 	public Boolean notifyPartners;
 	public String birthCity;
 	public String avatar;
-	public Boolean areSkillSet;
 	public List<Integer> creationDate;
+	public Boolean areSkillSet;
 	public List<Integer> birthDate;
 	public Integer skillChildhood;
 	public Integer skillCompagny;
@@ -46,10 +44,8 @@ public class AuxiliaryData {
 	public String isEntrepreneur;
 	public String phone;
 	public Integer skillAdministrative;
-	public Boolean phoneChecked;
-	public Integer skillHousework;
 	public String idCardNumber;
-	public Boolean emailChecked;
+	public Integer skillHousework;
 	public Boolean notifyOffersMail;
 
 	public String getAuthId() {
@@ -188,12 +184,12 @@ public class AuxiliaryData {
 		this.profilCompleted = profilCompleted;
 	}
 
-	public Boolean getAddressChecked() {
-		return this.addressChecked;
+	public String getId() {
+		return this.id;
 	}
 
-	public void setAddressChecked(Boolean addressChecked) {
-		this.addressChecked = addressChecked;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public List<String> getDiploma() {
@@ -212,22 +208,6 @@ public class AuxiliaryData {
 		this.skillDoityourself = skillDoityourself;
 	}
 
-	public String getId() {
-		return this.id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public Double getLongitude() {
 		return this.longitude;
 	}
@@ -236,20 +216,20 @@ public class AuxiliaryData {
 		this.longitude = longitude;
 	}
 
-	public Integer getSkillNursing() {
-		return this.skillNursing;
-	}
-
-	public void setSkillNursing(Integer skillNursing) {
-		this.skillNursing = skillNursing;
-	}
-
 	public String getAddress() {
 		return this.address;
 	}
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public Integer getSkillNursing() {
+		return this.skillNursing;
+	}
+
+	public void setSkillNursing(Integer skillNursing) {
+		this.skillNursing = skillNursing;
 	}
 
 	public Double getLattitude() {
@@ -292,20 +272,20 @@ public class AuxiliaryData {
 		this.avatar = avatar;
 	}
 
-	public Boolean getAreSkillSet() {
-		return this.areSkillSet;
-	}
-
-	public void setAreSkillSet(Boolean areSkillSet) {
-		this.areSkillSet = areSkillSet;
-	}
-
 	public List<Integer> getCreationDate() {
 		return this.creationDate;
 	}
 
 	public void setCreationDate(List<Integer> creationDate) {
 		this.creationDate = creationDate;
+	}
+
+	public Boolean getAreSkillSet() {
+		return this.areSkillSet;
+	}
+
+	public void setAreSkillSet(Boolean areSkillSet) {
+		this.areSkillSet = areSkillSet;
 	}
 
 	public List<Integer> getBirthDate() {
@@ -380,22 +360,6 @@ public class AuxiliaryData {
 		this.skillAdministrative = skillAdministrative;
 	}
 
-	public Boolean getPhoneChecked() {
-		return this.phoneChecked;
-	}
-
-	public void setPhoneChecked(Boolean phoneChecked) {
-		this.phoneChecked = phoneChecked;
-	}
-
-	public Integer getSkillHousework() {
-		return this.skillHousework;
-	}
-
-	public void setSkillHousework(Integer skillHousework) {
-		this.skillHousework = skillHousework;
-	}
-
 	public String getIdCardNumber() {
 		return this.idCardNumber;
 	}
@@ -404,12 +368,12 @@ public class AuxiliaryData {
 		this.idCardNumber = idCardNumber;
 	}
 
-	public Boolean getEmailChecked() {
-		return this.emailChecked;
+	public Integer getSkillHousework() {
+		return this.skillHousework;
 	}
 
-	public void setEmailChecked(Boolean emailChecked) {
-		this.emailChecked = emailChecked;
+	public void setSkillHousework(Integer skillHousework) {
+		this.skillHousework = skillHousework;
 	}
 
 	public Boolean getNotifyOffersMail() {

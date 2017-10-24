@@ -1,6 +1,8 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
+import PromotioncodeHelper from 'helpers/PromotioncodeHelper'
+
 import { BaseData, Formatters } from 'ap-react-bootstrap'
 
 class AuxiliaryInfosEditAccountData extends BaseData {
@@ -62,6 +64,36 @@ class AuxiliaryInfosEditAccountData extends BaseData {
 	}
 
 	onSubmit() {
+		AppHelper.setBusy(true).
+		then(function () {
+			return PromotioncodeHelper.postAuxiliaryCode({
+				id: AuthHelper.getEntityId(),
+				name: this.getState('accountCode')
+			})
+		}.bind(this)).
+		then(function() {
+			setTimeout(AppHelper.setBusy, 200)
+			this.setState({ 
+				errorLastTry: false,
+				errorMessage: '',
+				accountCode: ''
+			})
+			return AuxiliaryHelper.getAuxiliary(AuthHelper.getEntityId())
+		}.bind(this)).
+		catch(function (error) {
+			setTimeout(AppHelper.setBusy, 200)
+			console.error('Auxiliary account error')
+			console.error(error)
+			this.setState({
+				errorLastTry: true,
+				errorJustHappened: true,
+				errorMessage: 'Une erreur est survenue' ,
+				accountCode: ''
+			})
+		}.bind(this))
+	}
+
+	onSubmit2() {
 		if (this.getState('accountCode') === 'AUXPROS-2017') {
 			if (this.getState('accountType') === 'Premium') {
 				this.setState({ 

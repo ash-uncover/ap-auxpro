@@ -17,8 +17,8 @@ let get_auxiliarys = new ActionBase({ name: 'GET_AUXILIARYS' })
 let post_auxiliary = new ActionBase({ name: 'POST_AUXILIARY' })
 let get_auxiliary = new ActionBase({ name: 'GET_AUXILIARY' })
 let put_auxiliary = new ActionBase({ name: 'PUT_AUXILIARY' })
-let delete_auxiliary = new ActionBase({ name: 'DELETE_AUXILIARY' })
 let post_auxiliary_questionary = new ActionBase({ name: 'POST_AUXILIARY_QUESTIONARY' })
+let post_auxiliary_code = new ActionBase({ name: 'POST_AUXILIARY_CODE' })
 let get_auxiliary_services = new ActionBase({ name: 'GET_AUXILIARY_SERVICES' })
 let get_auxiliary_customers = new ActionBase({ name: 'GET_AUXILIARY_CUSTOMERS' })
 let get_auxiliary_interventions = new ActionBase({ name: 'GET_AUXILIARY_INTERVENTIONS' })
@@ -238,21 +238,22 @@ put_auxiliary.do = function(args) {
 	return RestService._request(reqParam);
 }
 
-delete_auxiliary.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'DELETE',
-		url: '/auxiliarys/' + args.id + '',
-		token : args.token,
-	};
-	return RestService._request(reqParam);
-}
-
 post_auxiliary_questionary.do = function(args) {
 	Utils.checkMembers(args, ['token', 'id', 'data']);
 	var reqParam = {
 		method: 'POST',
 		url: '/auxiliarys/' + args.id + '/questionary',
+		data : args.data,
+		token : args.token,
+	};
+	return RestService._request(reqParam);
+}
+
+post_auxiliary_code.do = function(args) {
+	Utils.checkMembers(args, ['token', 'id', 'data']);
+	var reqParam = {
+		method: 'POST',
+		url: '/auxiliarys/' + args.id + '/code',
 		data : args.data,
 		token : args.token,
 	};
