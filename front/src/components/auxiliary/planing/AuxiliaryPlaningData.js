@@ -200,7 +200,6 @@ class AuxiliaryPlaningData extends BaseData {
 		if (this.getState('filterStatus') !== '__ALL__') {
 			let missionDate = MomentHelper.fromLocalDate(mission.date)
 			let currentDate = moment().startOf('day')
-			console.log(this.getState('filterStatus'))
 			switch (this.getState('filterStatus')) {
 				case 'PENDING':
 					if (missionDate.isBefore(currentDate)){

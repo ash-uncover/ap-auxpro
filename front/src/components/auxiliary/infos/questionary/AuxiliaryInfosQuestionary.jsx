@@ -23,7 +23,6 @@ class AuxiliaryInfosQuestionary extends React.Component {
 	}
 
 	_buildQuestions(skillAnswers) {
-		console.log(skillAnswers)
 		return Questions.QUESTIONS.map(function (question, index) {
 			return (
 				<div key={index}>

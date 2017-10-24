@@ -67,25 +67,30 @@ class ServiceInterventionEditData extends BaseData {
 			),
 			Object.assign(
 				{ defaultValue: defaultDate, form: 'date' }, 
-				InterventionFields.START_DATE
+				InterventionFields.START_DATE,
+				{ validator: this.getStartDateValidator() }
 			),
 			Object.assign(
 				{ defaultValue: defaultDate, form: 'date' }, 
-				InterventionFields.END_DATE
+				InterventionFields.END_DATE,
+				{ validator: this.getEndDateValidator() }
 			),
 			Object.assign(
 				{ defaultValue: [0, 0], form: 'time' }, 
-				InterventionFields.START_TIME
+				InterventionFields.START_TIME,
+				{ validator: this.getStartTimeValidator() }
 			),
 			Object.assign(
 				{ defaultValue: [0, 0], form: 'time' }, 
-				InterventionFields.END_TIME
+				InterventionFields.END_TIME,
+				{ validator: this.getEndTimeValidator() }
 			)
 		]
 		this.FIELDS_FORM2 = [
 			Object.assign(
 				{ defaultValue: [], values: Day.VALUES }, 
-				InterventionFields.DAYS
+				InterventionFields.DAYS,
+				{ validator: this.getDaysValidator() }
 			)
 		]
 		this.FIELDS_FORM3 = [
@@ -196,6 +201,78 @@ class ServiceInterventionEditData extends BaseData {
 			delete intervention.endDate
 		}
 		return intervention
+	}
+
+	getStartDateValidator() {
+		return {
+			getState: function (value) {
+				let currentDate = moment().startOf('day')
+				let startDate = MomentHelper.fromLocalDate(value)
+				if (currentDate.isAfter(startDate)) {
+					return 'error'
+				}
+				if (this.getState('period') !== InterventionRecurencePeriod.HOURS.key) {
+					let endDate = MomentHelper.fromLocalDate(this.getState('endDate'))
+					if (startDate.isAfter(endDate)) {
+						return 'error'
+					}
+				}
+				return 'success'
+			}.bind(this)
+		}
+	}
+	getEndDateValidator() {
+		return {
+			getState: function (value) {
+				if (this.getState('period') !== InterventionRecurencePeriod.HOURS.key) {
+					let currentDate = moment().startOf('day')
+					let endDate = MomentHelper.fromLocalDate(value)
+					if (currentDate.isAfter(endDate)) {
+						return 'error'
+					}
+					let startDate = MomentHelper.fromLocalDate(this.getState('startDate'))
+					if (startDate.isAfter(endDate)) {
+						return 'error'
+					}
+				}
+				return 'success'
+			}.bind(this)
+		}
+	}
+	getStartTimeValidator() {
+		return {
+			getState: function (value) {
+				let startTime = MomentHelper.fromLocalTime(value)
+				let endTime = MomentHelper.fromLocalTime(this.getState('endTime'))
+				if (endTime.isSameOrBefore(startTime)) {
+					return 'error'
+				}
+				return 'success'
+			}.bind(this)
+		}	
+	}
+	getEndTimeValidator() {
+		return {
+			getState: function (value) {
+				let startTime = MomentHelper.fromLocalTime(this.getState('startTime'))
+				let endTime = MomentHelper.fromLocalTime(value)
+				if (endTime.isSameOrBefore(startTime)) {
+					return 'error'
+				}
+				return 'success'
+			}.bind(this)
+		}
+	}
+	getDaysValidator() {
+		return {
+			getState: function (value) {
+				if (this.getState('period') !== InterventionRecurencePeriod.HOURS.key &&
+					!value.length) {
+					return 'error'
+				}
+				return 'success'
+			}.bind(this)
+		}
 	}
 }
 

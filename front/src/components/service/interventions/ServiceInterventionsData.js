@@ -106,8 +106,6 @@ class ServiceInterventionsData extends BaseData {
 		}).
 		then(function () {
 			let intervention = InterventionHelper.getData(interventionId)
-			console.log('HEREEEEEEEE')
-			console.log(intervention)
 			let promises = []
 			for (let i = 0; i < intervention.match.length; i++) {
 				if (!AuxiliaryHelper.getData(intervention.match[i].auxiliaryId)) {
