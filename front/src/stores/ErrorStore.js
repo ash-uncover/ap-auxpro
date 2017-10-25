@@ -426,16 +426,6 @@ ErrorStore.handleGetServicesError = function(error, params) {
 	ErrorStore.notifyPath('/GET_SERVICES');
 }
 
-ErrorStore.handleGetServiceValidSuccess = function(results, params) {
-	delete ErrorStore._content.GET_SERVICE_VALID;
-	ErrorStore.notifyPath('/GET_SERVICE_VALID');
-}
-
-ErrorStore.handleGetServiceValidError = function(error, params) {
-	ErrorStore._content.GET_SERVICE_VALID = error;
-	ErrorStore.notifyPath('/GET_SERVICE_VALID');
-}
-
 ErrorStore.handlePostServiceSuccess = function(results, params) {
 	delete ErrorStore._content.POST_SERVICE;
 	ErrorStore.notifyPath('/POST_SERVICE');
@@ -689,7 +679,6 @@ Dispatcher.register('PUT_OFFER_ACCEPT', ErrorStore.handlePutOfferAcceptSuccess, 
 Dispatcher.register('PUT_OFFER_DECLINE', ErrorStore.handlePutOfferDeclineSuccess, ErrorStore.handlePutOfferDeclineError)
 Dispatcher.register('PUT_OFFER_CONFIRM', ErrorStore.handlePutOfferConfirmSuccess, ErrorStore.handlePutOfferConfirmError)
 Dispatcher.register('GET_SERVICES', ErrorStore.handleGetServicesSuccess, ErrorStore.handleGetServicesError)
-Dispatcher.register('GET_SERVICE_VALID', ErrorStore.handleGetServiceValidSuccess, ErrorStore.handleGetServiceValidError)
 Dispatcher.register('POST_SERVICE', ErrorStore.handlePostServiceSuccess, ErrorStore.handlePostServiceError)
 Dispatcher.register('GET_SERVICE', ErrorStore.handleGetServiceSuccess, ErrorStore.handleGetServiceError)
 Dispatcher.register('PUT_SERVICE', ErrorStore.handlePutServiceSuccess, ErrorStore.handlePutServiceError)

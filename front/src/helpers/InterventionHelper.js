@@ -13,12 +13,12 @@ class InterventionHelper {
 		StoreRegistry.unregister('REST_STORE', obj);
 	}
 
-	getAuxiliaryInterventions(auxiliaryId) {
-		return Dispatcher.issue('GET_AUXILIARY_INTERVENTIONS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId});
+	getAuxiliaryInterventions(auxiliaryId, query) {
+		return Dispatcher.issue('GET_AUXILIARY_INTERVENTIONS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
 	}
 
-	getCustomerInterventions(customerId) {
-		return Dispatcher.issue('GET_CUSTOMER_INTERVENTIONS', {token: AuthHelper.getToken(), customerId: customerId});
+	getCustomerInterventions(customerId, query) {
+		return Dispatcher.issue('GET_CUSTOMER_INTERVENTIONS', {token: AuthHelper.getToken(), customerId: customerId, query: query});
 	}
 
 	postIntervention(data) {
@@ -33,16 +33,16 @@ class InterventionHelper {
 		return Dispatcher.issue('PUT_INTERVENTION', {token: AuthHelper.getToken(), id: data.id, data: data});
 	}
 
-	getInterventionMatch(id) {
-		return Dispatcher.issue('GET_INTERVENTION_MATCH', {token: AuthHelper.getToken(), id: id});
+	getInterventionMatch(id, query) {
+		return Dispatcher.issue('GET_INTERVENTION_MATCH', {token: AuthHelper.getToken(), id: id, query: query});
 	}
 
 	putInterventionCancel(data) {
 		return Dispatcher.issue('PUT_INTERVENTION_CANCEL', {token: AuthHelper.getToken(), id: data.id, data: data});
 	}
 
-	getServiceInterventions(serviceId) {
-		return Dispatcher.issue('GET_SERVICE_INTERVENTIONS', {token: AuthHelper.getToken(), serviceId: serviceId});
+	getServiceInterventions(serviceId, query) {
+		return Dispatcher.issue('GET_SERVICE_INTERVENTIONS', {token: AuthHelper.getToken(), serviceId: serviceId, query: query});
 	}
 
 	getData(id) {

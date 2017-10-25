@@ -13,8 +13,8 @@ class GeozoneHelper {
 		StoreRegistry.unregister('REST_STORE', obj);
 	}
 
-	getAuxiliaryGeozones(auxiliaryId) {
-		return Dispatcher.issue('GET_AUXILIARY_GEOZONES', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId});
+	getAuxiliaryGeozones(auxiliaryId, query) {
+		return Dispatcher.issue('GET_AUXILIARY_GEOZONES', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
 	}
 
 	postGeozone(data) {

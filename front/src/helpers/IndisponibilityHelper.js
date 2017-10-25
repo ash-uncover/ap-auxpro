@@ -13,8 +13,8 @@ class IndisponibilityHelper {
 		StoreRegistry.unregister('REST_STORE', obj);
 	}
 
-	getAuxiliaryIndisponibilitys(auxiliaryId) {
-		return Dispatcher.issue('GET_AUXILIARY_INDISPONIBILITYS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId});
+	getAuxiliaryIndisponibilitys(auxiliaryId, query) {
+		return Dispatcher.issue('GET_AUXILIARY_INDISPONIBILITYS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
 	}
 
 	postIndisponibility(data) {

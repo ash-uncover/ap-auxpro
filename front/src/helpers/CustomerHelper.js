@@ -13,8 +13,8 @@ class CustomerHelper {
 		StoreRegistry.unregister('REST_STORE', obj);
 	}
 
-	getAuxiliaryCustomers(auxiliaryId) {
-		return Dispatcher.issue('GET_AUXILIARY_CUSTOMERS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId});
+	getAuxiliaryCustomers(auxiliaryId, query) {
+		return Dispatcher.issue('GET_AUXILIARY_CUSTOMERS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
 	}
 
 	postCustomer(data) {
@@ -33,8 +33,8 @@ class CustomerHelper {
 		return Dispatcher.issue('DELETE_CUSTOMER', {token: AuthHelper.getToken(), id: id});
 	}
 
-	getServiceCustomers(serviceId) {
-		return Dispatcher.issue('GET_SERVICE_CUSTOMERS', {token: AuthHelper.getToken(), serviceId: serviceId});
+	getServiceCustomers(serviceId, query) {
+		return Dispatcher.issue('GET_SERVICE_CUSTOMERS', {token: AuthHelper.getToken(), serviceId: serviceId, query: query});
 	}
 
 	getData(id) {

@@ -13,8 +13,8 @@ class OfferHelper {
 		StoreRegistry.unregister('REST_STORE', obj);
 	}
 
-	getAuxiliaryOffers(auxiliaryId) {
-		return Dispatcher.issue('GET_AUXILIARY_OFFERS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId});
+	getAuxiliaryOffers(auxiliaryId, query) {
+		return Dispatcher.issue('GET_AUXILIARY_OFFERS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
 	}
 
 	postOffer(data) {
@@ -37,8 +37,8 @@ class OfferHelper {
 		return Dispatcher.issue('PUT_OFFER_CONFIRM', {token: AuthHelper.getToken(), id: data.id, data: data});
 	}
 
-	getServiceOffers(serviceId) {
-		return Dispatcher.issue('GET_SERVICE_OFFERS', {token: AuthHelper.getToken(), serviceId: serviceId});
+	getServiceOffers(serviceId, query) {
+		return Dispatcher.issue('GET_SERVICE_OFFERS', {token: AuthHelper.getToken(), serviceId: serviceId, query: query});
 	}
 
 	getData(id) {

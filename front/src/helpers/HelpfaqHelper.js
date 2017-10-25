@@ -14,8 +14,8 @@ class HelpfaqHelper {
 		StoreRegistry.unregister('REST_STORE', obj);
 	}
 
-	getHelpFaqs() {
-		return Dispatcher.issue('GET_HELP_FAQS', {token: Utils.encode('guest', 'guest')});
+	getHelpFaqs(query) {
+		return Dispatcher.issue('GET_HELP_FAQS', {token: Utils.encode('guest', 'guest'), query: query});
 	}
 
 	getData(id) {

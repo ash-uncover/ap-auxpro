@@ -55,7 +55,6 @@ let put_offer_accept = new ActionBase({ name: 'PUT_OFFER_ACCEPT' })
 let put_offer_decline = new ActionBase({ name: 'PUT_OFFER_DECLINE' })
 let put_offer_confirm = new ActionBase({ name: 'PUT_OFFER_CONFIRM' })
 let get_services = new ActionBase({ name: 'GET_SERVICES' })
-let get_service_valid = new ActionBase({ name: 'GET_SERVICE_VALID' })
 let post_service = new ActionBase({ name: 'POST_SERVICE' })
 let get_service = new ActionBase({ name: 'GET_SERVICE' })
 let put_service = new ActionBase({ name: 'PUT_SERVICE' })
@@ -73,7 +72,7 @@ get_auth.do = function(args) {
 		url: '/auth',
 		token : Utils.encode(args.username, args.password)
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_auth_password.do = function(args) {
@@ -84,7 +83,7 @@ put_auth_password.do = function(args) {
 		token : args.token,
 		data: args.data
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_auth_register.do = function(args) {
@@ -95,7 +94,7 @@ post_auth_register.do = function(args) {
 		token: Utils.encode('guest', 'guest'),
 		data: args.data
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_auth_recover.do = function(args) {
@@ -106,7 +105,7 @@ post_auth_recover.do = function(args) {
 		token: Utils.encode('guest', 'guest'),
 		data: args.data
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_auth_recover_check.do = function(args) {
@@ -128,7 +127,7 @@ put_auth_recover.do = function(args) {
 		token: Utils.encode('guest', 'guest'),
 		data: args.data
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_auth_changemail.do = function(args) {
@@ -138,7 +137,7 @@ post_auth_changemail.do = function(args) {
 		url: '/auth/changemail',
 		token : args.token
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_auth_changemail_check.do = function(args) {
@@ -149,7 +148,7 @@ post_auth_changemail_check.do = function(args) {
 		token : args.token,
 		data: args.data
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_auth_changemail.do = function(args) {
@@ -160,7 +159,7 @@ put_auth_changemail.do = function(args) {
 		token : args.token,
 		data: args.data
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_auth_changemail_confirm.do = function(args) {
@@ -171,7 +170,7 @@ post_auth_changemail_confirm.do = function(args) {
 		token : args.token,
 		data: args.data
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_image.do = function(args) {
@@ -182,7 +181,7 @@ get_image.do = function(args) {
 		url: '/image/' + args.id,
 		type  : 'arraybuffer'
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_image.do = function(args) {
@@ -193,7 +192,7 @@ post_image.do = function(args) {
 		url: '/image',
 		data  : args.data
 	};
-	return RestService._sendData(reqParam);
+	return RestService.sendData(reqParam);
 }
 
 get_auxiliarys.do = function(args) {
@@ -201,9 +200,10 @@ get_auxiliarys.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/auxiliarys',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_auxiliary.do = function(args) {
@@ -211,10 +211,10 @@ post_auxiliary.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/auxiliarys',
-		data : args.data,
-		token : Utils.encode('guest', 'guest'),
+		data: args.data,
+		token: Utils.encode('guest', 'guest'),
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_auxiliary.do = function(args) {
@@ -222,9 +222,9 @@ get_auxiliary.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/auxiliarys/' + args.id + '',
-		token : args.token,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_auxiliary.do = function(args) {
@@ -232,10 +232,10 @@ put_auxiliary.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/auxiliarys/' + args.id + '',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_auxiliary_questionary.do = function(args) {
@@ -243,10 +243,10 @@ post_auxiliary_questionary.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/auxiliarys/' + args.id + '/questionary',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_auxiliary_code.do = function(args) {
@@ -254,10 +254,10 @@ post_auxiliary_code.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/auxiliarys/' + args.id + '/code',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_auxiliary_services.do = function(args) {
@@ -265,9 +265,10 @@ get_auxiliary_services.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/auxiliarys/' + args.auxiliaryId + '/services',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_auxiliary_customers.do = function(args) {
@@ -275,9 +276,10 @@ get_auxiliary_customers.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/auxiliarys/' + args.auxiliaryId + '/customers',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_auxiliary_interventions.do = function(args) {
@@ -285,9 +287,10 @@ get_auxiliary_interventions.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/auxiliarys/' + args.auxiliaryId + '/interventions',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_auxiliary_offers.do = function(args) {
@@ -295,9 +298,10 @@ get_auxiliary_offers.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/auxiliarys/' + args.auxiliaryId + '/offers',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_auxiliary_missions.do = function(args) {
@@ -305,9 +309,10 @@ get_auxiliary_missions.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/auxiliarys/' + args.auxiliaryId + '/missions',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_auxiliary_indisponibilitys.do = function(args) {
@@ -315,9 +320,10 @@ get_auxiliary_indisponibilitys.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/auxiliarys/' + args.auxiliaryId + '/indisponibilitys',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_auxiliary_geozones.do = function(args) {
@@ -325,9 +331,10 @@ get_auxiliary_geozones.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/auxiliarys/' + args.auxiliaryId + '/geozones',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_customer.do = function(args) {
@@ -335,10 +342,10 @@ post_customer.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/customers',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_customer.do = function(args) {
@@ -346,9 +353,9 @@ get_customer.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/customers/' + args.id + '',
-		token : args.token,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_customer.do = function(args) {
@@ -356,10 +363,10 @@ put_customer.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/customers/' + args.id + '',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 delete_customer.do = function(args) {
@@ -367,9 +374,9 @@ delete_customer.do = function(args) {
 	var reqParam = {
 		method: 'DELETE',
 		url: '/customers/' + args.id + '',
-		token : args.token,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_customer_interventions.do = function(args) {
@@ -377,9 +384,10 @@ get_customer_interventions.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/customers/' + args.customerId + '/interventions',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_geozone.do = function(args) {
@@ -387,10 +395,10 @@ post_geozone.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/geozones',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_geozone.do = function(args) {
@@ -398,9 +406,9 @@ get_geozone.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/geozones/' + args.id + '',
-		token : args.token,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_geozone.do = function(args) {
@@ -408,10 +416,10 @@ put_geozone.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/geozones/' + args.id + '',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 delete_geozone.do = function(args) {
@@ -419,9 +427,9 @@ delete_geozone.do = function(args) {
 	var reqParam = {
 		method: 'DELETE',
 		url: '/geozones/' + args.id + '',
-		token : args.token,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_help_topics.do = function(args) {
@@ -429,9 +437,10 @@ get_help_topics.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/help/topics',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_help_faqs.do = function(args) {
@@ -439,9 +448,10 @@ get_help_faqs.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/help/faqs',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_indisponibility.do = function(args) {
@@ -449,10 +459,10 @@ post_indisponibility.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/indisponibilitys',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_indisponibility.do = function(args) {
@@ -460,9 +470,9 @@ get_indisponibility.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/indisponibilitys/' + args.id + '',
-		token : args.token,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_indisponibility.do = function(args) {
@@ -470,10 +480,10 @@ put_indisponibility.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/indisponibilitys/' + args.id + '',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 delete_indisponibility.do = function(args) {
@@ -481,9 +491,9 @@ delete_indisponibility.do = function(args) {
 	var reqParam = {
 		method: 'DELETE',
 		url: '/indisponibilitys/' + args.id + '',
-		token : args.token,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_intervention.do = function(args) {
@@ -491,10 +501,10 @@ post_intervention.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/interventions',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_intervention.do = function(args) {
@@ -502,9 +512,9 @@ get_intervention.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/interventions/' + args.id + '',
-		token : args.token,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_intervention.do = function(args) {
@@ -512,10 +522,10 @@ put_intervention.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/interventions/' + args.id + '',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_intervention_match.do = function(args) {
@@ -523,9 +533,10 @@ get_intervention_match.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/interventions/' + args.id + '/match',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_intervention_cancel.do = function(args) {
@@ -533,10 +544,10 @@ put_intervention_cancel.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/interventions/' + args.id + '/cancel',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_mission.do = function(args) {
@@ -544,9 +555,9 @@ get_mission.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/missions/' + args.id + '',
-		token : args.token,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_mission.do = function(args) {
@@ -554,10 +565,10 @@ put_mission.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/missions/' + args.id + '',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 delete_mission.do = function(args) {
@@ -565,9 +576,9 @@ delete_mission.do = function(args) {
 	var reqParam = {
 		method: 'DELETE',
 		url: '/missions/' + args.id + '',
-		token : args.token,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_offer.do = function(args) {
@@ -575,10 +586,10 @@ post_offer.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/offers',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_offer.do = function(args) {
@@ -586,9 +597,9 @@ get_offer.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/offers/' + args.id + '',
-		token : args.token,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_offer_accept.do = function(args) {
@@ -596,10 +607,10 @@ put_offer_accept.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/offers/' + args.id + '/accept',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_offer_decline.do = function(args) {
@@ -607,10 +618,10 @@ put_offer_decline.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/offers/' + args.id + '/decline',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_offer_confirm.do = function(args) {
@@ -618,10 +629,10 @@ put_offer_confirm.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/offers/' + args.id + '/confirm',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_services.do = function(args) {
@@ -629,19 +640,10 @@ get_services.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/services',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
-}
-
-get_service_valid.do = function(args) {
-	Utils.checkMembers(args, ['token']);
-	var reqParam = {
-		method: 'GET',
-		url: '/services/valid',
-		token : args.token,
-	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_service.do = function(args) {
@@ -649,10 +651,10 @@ post_service.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/services',
-		data : args.data,
-		token : Utils.encode('guest', 'guest'),
+		data: args.data,
+		token: Utils.encode('guest', 'guest'),
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_service.do = function(args) {
@@ -660,9 +662,9 @@ get_service.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/services/' + args.id + '',
-		token : args.token,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 put_service.do = function(args) {
@@ -670,10 +672,10 @@ put_service.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/services/' + args.id + '',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 post_service_code.do = function(args) {
@@ -681,10 +683,10 @@ post_service_code.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/services/' + args.id + '/code',
-		data : args.data,
-		token : args.token,
+		data: args.data,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_service_auxiliarys.do = function(args) {
@@ -692,9 +694,10 @@ get_service_auxiliarys.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/services/' + args.serviceId + '/auxiliarys',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_service_customers.do = function(args) {
@@ -702,9 +705,10 @@ get_service_customers.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/services/' + args.serviceId + '/customers',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_service_interventions.do = function(args) {
@@ -712,9 +716,10 @@ get_service_interventions.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/services/' + args.serviceId + '/interventions',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_service_offers.do = function(args) {
@@ -722,9 +727,10 @@ get_service_offers.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/services/' + args.serviceId + '/offers',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 
 get_service_missions.do = function(args) {
@@ -732,8 +738,9 @@ get_service_missions.do = function(args) {
 	var reqParam = {
 		method: 'GET',
 		url: '/services/' + args.serviceId + '/missions',
-		token : args.token,
+		query: args.query,
+		token: args.token,
 	};
-	return RestService._request(reqParam);
+	return RestService.request(reqParam);
 }
 

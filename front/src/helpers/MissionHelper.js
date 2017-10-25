@@ -13,8 +13,8 @@ class MissionHelper {
 		StoreRegistry.unregister('REST_STORE', obj);
 	}
 
-	getAuxiliaryMissions(auxiliaryId) {
-		return Dispatcher.issue('GET_AUXILIARY_MISSIONS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId});
+	getAuxiliaryMissions(auxiliaryId, query) {
+		return Dispatcher.issue('GET_AUXILIARY_MISSIONS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
 	}
 
 	getMission(id) {
@@ -29,8 +29,8 @@ class MissionHelper {
 		return Dispatcher.issue('DELETE_MISSION', {token: AuthHelper.getToken(), id: id});
 	}
 
-	getServiceMissions(serviceId) {
-		return Dispatcher.issue('GET_SERVICE_MISSIONS', {token: AuthHelper.getToken(), serviceId: serviceId});
+	getServiceMissions(serviceId, query) {
+		return Dispatcher.issue('GET_SERVICE_MISSIONS', {token: AuthHelper.getToken(), serviceId: serviceId, query: query});
 	}
 
 	getData(id) {

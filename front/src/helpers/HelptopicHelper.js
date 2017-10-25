@@ -14,8 +14,8 @@ class HelptopicHelper {
 		StoreRegistry.unregister('REST_STORE', obj);
 	}
 
-	getHelpTopics() {
-		return Dispatcher.issue('GET_HELP_TOPICS', {token: Utils.encode('guest', 'guest')});
+	getHelpTopics(query) {
+		return Dispatcher.issue('GET_HELP_TOPICS', {token: Utils.encode('guest', 'guest'), query: query});
 	}
 
 	getData(id) {

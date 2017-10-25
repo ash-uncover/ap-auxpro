@@ -13,8 +13,8 @@ class AuxiliaryHelper {
 		StoreRegistry.unregister('REST_STORE', obj);
 	}
 
-	getAuxiliarys() {
-		return Dispatcher.issue('GET_AUXILIARYS', {token: AuthHelper.getToken()});
+	getAuxiliarys(query) {
+		return Dispatcher.issue('GET_AUXILIARYS', {token: AuthHelper.getToken(), query: query});
 	}
 
 	postAuxiliary(data) {
@@ -33,8 +33,8 @@ class AuxiliaryHelper {
 		return Dispatcher.issue('POST_AUXILIARY_QUESTIONARY', {token: AuthHelper.getToken(), id: data.id, data: data});
 	}
 
-	getServiceAuxiliarys(serviceId) {
-		return Dispatcher.issue('GET_SERVICE_AUXILIARYS', {token: AuthHelper.getToken(), serviceId: serviceId});
+	getServiceAuxiliarys(serviceId, query) {
+		return Dispatcher.issue('GET_SERVICE_AUXILIARYS', {token: AuthHelper.getToken(), serviceId: serviceId, query: query});
 	}
 
 	getData(id) {

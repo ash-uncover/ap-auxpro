@@ -13,16 +13,12 @@ class ServiceHelper {
 		StoreRegistry.unregister('REST_STORE', obj);
 	}
 
-	getAuxiliaryServices(auxiliaryId) {
-		return Dispatcher.issue('GET_AUXILIARY_SERVICES', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId});
+	getAuxiliaryServices(auxiliaryId, query) {
+		return Dispatcher.issue('GET_AUXILIARY_SERVICES', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
 	}
 
-	getServices() {
-		return Dispatcher.issue('GET_SERVICES', {token: AuthHelper.getToken()});
-	}
-
-	getServiceValid() {
-		return Dispatcher.issue('GET_SERVICE_VALID', {token: AuthHelper.getToken()});
+	getServices(query) {
+		return Dispatcher.issue('GET_SERVICES', {token: AuthHelper.getToken(), query: query});
 	}
 
 	postService(data) {

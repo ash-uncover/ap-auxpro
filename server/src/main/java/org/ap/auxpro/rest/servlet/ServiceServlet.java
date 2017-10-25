@@ -13,7 +13,6 @@ import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.ServiceFields;
 import java.util.List;
 import java.util.ArrayList;
-import org.ap.auxpro.helpers.ServiceHelper;
 import org.ap.auxpro.bean.ServicePostBean;
 import org.ap.auxpro.storage.ApauthCollection;
 import org.ap.auxpro.storage.ApauthData;
@@ -23,6 +22,7 @@ import org.ap.auxpro.internal.MailSender;
 import org.ap.auxpro.internal.ETokenType;
 import org.ap.common.TimeHelper;
 import org.ap.auxpro.bean.ServicePutBean;
+import org.ap.auxpro.helpers.ServiceHelper;
 import org.ap.auxpro.bean.PromotionCodePostBean;
 import org.ap.auxpro.bean.AuxiliaryGetBean;
 import org.ap.auxpro.storage.AuxiliaryData;
@@ -107,21 +107,6 @@ public class ServiceServlet extends APServletBase {
 			}
 			
 			return Response.status(Status.OK).entity(beanList.toArray(new ServiceGetBean[beanList.size()])).build();
-			
-		} catch (APWebException e) {
-			return sendException(e);
-		} catch (Exception e) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
-		}
-	}
-
-	@GET
-	@Path("/valid")
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response getServiceValids(@Context SecurityContext sc, @Context UriInfo info) {
-		try {
-			Object bean = ServiceHelper.getValidServices(sc);
-			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);

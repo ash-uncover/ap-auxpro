@@ -60,38 +60,6 @@ public class ServiceHelper {
 		data.setProfilCompleted(profilCompleted);
 		ServiceCollection.update(data);
 	}
-
-	public static Object getValidServices(SecurityContext sc) throws APWebException {
-		Document doc = new Document().append("profilCompleted", true);
-		List<ServiceData> datas = ServiceCollection.get(doc);
-		List<ServiceGetBean> beanList = new ArrayList<ServiceGetBean>();
-		for (ServiceData data : datas) {
-			ServiceGetBean bean = new ServiceGetBean();
-			bean.country = data.getCountry();
-			bean.address = data.getAddress();
-			bean.city = data.getCity();
-			bean.lattitude = data.getLattitude();
-			bean.lastUpdateDate = data.getLastUpdateDate();
-			bean.accountType = data.getAccountType();
-			bean.postalCode = data.getPostalCode();
-			bean.isTutoSkipped = data.getIsTutoSkipped();
-			bean.notifyPartners = data.getNotifyPartners();
-			bean.avatar = data.getAvatar();
-			bean.accountExpiryDate = data.getAccountExpiryDate();
-			bean.creationDate = data.getCreationDate();
-			bean.siret = data.getSiret();
-			bean.notifyAuxpros = data.getNotifyAuxpros();
-			bean.phone = data.getPhone();
-			bean.function = data.getFunction();
-			bean.profilCompleted = data.getProfilCompleted();
-			bean.id = data.getId();
-			bean.socialReason = data.getSocialReason();
-			bean.longitude = data.getLongitude();
-			
-			beanList.add(bean);
-		}
-		return beanList.toArray(new ServiceGetBean[beanList.size()]);
-	}
 	
 	public static Object postPromotionCode(SecurityContext sc, String id, PromotionCodePostBean promotionCodePostBean) throws APWebException {
 		PromotioncodeData codeData = PromotioncodeCollection.getByName(promotionCodePostBean.name);
