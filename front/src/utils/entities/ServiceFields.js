@@ -167,7 +167,7 @@ let _AVATAR = {
 }
 let _ACCOUNT_EXPIRY_DATE = {
 	key: 'accountExpiryDate',
-	type: 'number',
+	type: 'Date',
 }
 let _CREATION_DATE = {
 	key: 'creationDate',

@@ -16,7 +16,7 @@ public enum CustomerFields {
 	LAST_UPDATE_DATE ("lastUpdateDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	POSTAL_CODE ("postalCode", "String", EValidators.POSTAL_CODE.getValidator()),
 	CREATION_DATE ("creationDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
-	BIRTH_DATE ("birthDate", "Integer", EValidators.BEFORE_TODAY.getValidator()),
+	BIRTH_DATE ("birthDate", "List<Integer>", EValidators.BEFORE_TODAY.getValidator()),
 	SKILL_CHILDHOOD ("skillChildhood", "Integer", EValidators.DEFAULT.getValidator()),
 	SKILL_COMPAGNY ("skillCompagny", "Integer", EValidators.DEFAULT.getValidator()),
 	SKILL_SHOPPING ("skillShopping", "Integer", EValidators.DEFAULT.getValidator()),

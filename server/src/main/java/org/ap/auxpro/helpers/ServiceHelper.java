@@ -1,7 +1,9 @@
 package org.ap.auxpro.helpers;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.core.Response.Status;
@@ -67,14 +69,17 @@ public class ServiceHelper {
 			throw new APWebException("bad code", Status.BAD_REQUEST);
 		}
 		ServiceData serviceData = ServiceCollection.getById(id);
-		LocalDate codeDate = TimeHelper.toLocalDate(codeData.getValidityDate());
-		LocalDate currentDate = null;
+		Date codeDate = codeData.getValidityDate();
+		LocalDate codeLocalDate = codeDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate currentLocalDate = null;
+		Date currentDate = null;
 		if (serviceData.getAccountExpiryDate() != null) {
-			currentDate = TimeHelper.toLocalDate(serviceData.getAccountExpiryDate());
+			currentDate = serviceData.getAccountExpiryDate();
+			currentLocalDate = currentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		}
 		
-		if (currentDate == null || codeDate.isAfter(currentDate)) {
-			serviceData.setAccountExpiryDate(TimeHelper.toIntegers(codeDate));
+		if (currentLocalDate == null || codeLocalDate.isAfter(currentLocalDate)) {
+			serviceData.setAccountExpiryDate(codeDate);
 			serviceData.setAccountType("Premium");
 			ServiceCollection.update(serviceData);
 		} else {

@@ -16,6 +16,7 @@ import org.ap.auxpro.bean.APAuthTokenUsernameBean;
 import org.ap.auxpro.internal.ETokenType;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Date;
 import org.ap.auxpro.bean.APAuthUsernameBean;
 import org.ap.auxpro.bean.APAuthRecoverBean;
 import org.ap.auxpro.bean.APAuthTokenBean;
@@ -104,7 +105,7 @@ public class AuthServlet extends APServletBase {
 			// updates DB
 			dataAuth.setActive(true);
 			dataAuth.setRegistered(true);
-			dataAuth.setRegistrationDate(TimeHelper.nowDateTimeIntegers());
+			dataAuth.setRegistrationDate(new Date());
 			dataAuth.setToken(null);
 			dataAuth.setTokenType(null);
 			dataAuth.setTokenDateTime(null);

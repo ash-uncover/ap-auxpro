@@ -1,6 +1,8 @@
 package org.ap.auxpro.helpers;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
@@ -154,14 +156,16 @@ public class AuxiliaryHelper {
 			throw new APWebException("bad code", Status.BAD_REQUEST);
 		}
 		AuxiliaryData auxiliaryData = AuxiliaryCollection.getById(id);
-		LocalDate codeDate = TimeHelper.toLocalDate(codeData.getValidityDate());
-		LocalDate currentDate = null;
+		Date codeDate = codeData.getValidityDate();
+		LocalDate codeLocalDate = codeDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate currentLocalDate = null;
 		if (auxiliaryData.getAccountExpiryDate() != null) {
-			currentDate = TimeHelper.toLocalDate(auxiliaryData.getAccountExpiryDate());
+			Date currentDate = auxiliaryData.getAccountExpiryDate();
+			currentLocalDate = currentDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		}
 		
-		if (currentDate == null || codeDate.isAfter(currentDate)) {
-			auxiliaryData.setAccountExpiryDate(TimeHelper.toIntegers(codeDate));
+		if (currentLocalDate == null || codeLocalDate.isAfter(currentLocalDate)) {
+			auxiliaryData.setAccountExpiryDate(codeDate);
 			auxiliaryData.setAccountType("Premium");
 			AuxiliaryCollection.update(auxiliaryData);
 		} else {

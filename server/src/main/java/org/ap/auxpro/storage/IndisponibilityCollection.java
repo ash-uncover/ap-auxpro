@@ -87,14 +87,14 @@ public class IndisponibilityCollection {
 		IndisponibilityData data = new IndisponibilityData();
 		data.period = document.getString("period");
 		data.auxiliaryId = document.getString("auxiliaryId");
-		data.endDate = (List<Integer>)document.get("endDate");
-		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
+		data.endDate = document.getDate("endDate");
+		data.lastUpdateDate = document.getDate("lastUpdateDate");
 		data.days = (List<String>)document.get("days");
 		data.startTime = (List<Integer>)document.get("startTime");
 		data.endTime = (List<Integer>)document.get("endTime");
 		data.id = document.getString("id");
-		data.creationDate = (List<Integer>)document.get("creationDate");
-		data.startDate = (List<Integer>)document.get("startDate");
+		data.creationDate = document.getDate("creationDate");
+		data.startDate = document.getDate("startDate");
 		return data;
 	}
 

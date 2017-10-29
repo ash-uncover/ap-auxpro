@@ -5,6 +5,8 @@ import static com.mongodb.client.model.Filters.eq;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.core.SecurityContext;
@@ -42,7 +44,7 @@ public class OfferHelper {
 		BasicBean result = new BasicBean();
 		try {
 			String id = UUIDGenerator.nextId();
-			List<Integer> now = TimeHelper.toIntegers(LocalDate.now());
+			Date now = new Date();
 
 			OfferData offer = new OfferData();
 			offer.setId(id);
@@ -83,7 +85,7 @@ public class OfferHelper {
 	}
 
 	public static Object putOfferAccept(SecurityContext sc, String id, OfferEmptyBean offerBean) throws APWebException {
-		List<Integer> now = TimeHelper.nowDateTimeIntegers();
+		Date now = new Date();
 
 		OfferData offer = OfferCollection.getById(id);
 		offer.lastUpdateDate = now;
@@ -105,7 +107,7 @@ public class OfferHelper {
 	}
 
 	public static Object putOfferDecline(SecurityContext sc, String id, OfferEmptyBean offerBean) throws APWebException {
-		List<Integer> now = TimeHelper.nowDateTimeIntegers();
+		Date now = new Date();
 
 		OfferData offer = OfferCollection.getById(id);
 		offer.lastUpdateDate = now;
@@ -118,7 +120,7 @@ public class OfferHelper {
 	}
 
 	public static Object putOfferConfirm(SecurityContext sc, String id, OfferEmptyBean offerBean) throws APWebException {
-		List<Integer> now = TimeHelper.nowDateTimeIntegers();
+		Date now = new Date();
 
 		// Update confirmed offer
 		OfferData offer = OfferCollection.getById(id);
@@ -152,17 +154,19 @@ public class OfferHelper {
 		// Create Missions
 		switch (EInterventionRecurencePeriod.getByName(intervention.getPeriod())) {
 		case _HOURS:
-			MissionCollection.create(newMission(intervention, intervention.getStartDate()));
+			MissionCollection.create(newMission(intervention, TimeHelper.toIntegers(intervention.getStartDate())));
 			break;
 		case _WEEK1:
 		case _WEEK2:
 		case _WEEK3:
 		case _WEEK4:
 			List<DayOfWeek> days = TimeHelper.toDayOfWeeks(intervention.getDays());
-			LocalDate startDate = TimeHelper.toLocalDate(intervention.getStartDate());
-			LocalDate endDate = TimeHelper.toLocalDate(intervention.getEndDate());
-			LocalDate currentDate = startDate.plusDays(0);
-			while (!currentDate.isAfter(endDate)) {
+			Date startDate = intervention.getStartDate();
+			LocalDate startLocalDate = startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			Date endDate = intervention.getEndDate();
+			LocalDate endLocalDate = endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			LocalDate currentDate = startLocalDate.plusDays(0);
+			while (!currentDate.isAfter(endLocalDate)) {
 				if (days.contains(currentDate.getDayOfWeek())) {
 					MissionCollection.create(newMission(intervention, currentDate));
 				}
@@ -175,7 +179,7 @@ public class OfferHelper {
 	}
 	
 	public static MissionData newMission(InterventionData intervention, List<Integer> date) {
-		List<Integer> now = TimeHelper.nowDateTimeIntegers();
+		Date now = new Date();
 		
 		MissionData mission = new MissionData();
 		mission.setCreationDate(now);
@@ -184,7 +188,7 @@ public class OfferHelper {
 		mission.setCustomerId(intervention.getCustomerId());
 		mission.setInterventionId(intervention.getId());
 		mission.setServiceId(intervention.getServiceId());
-		mission.setDate(date);
+		mission.setDate(TimeHelper.toDate(date));
 		mission.setSadStatus(EMissionStatus._PENDING.getName());
 		mission.setAuxStatus(EMissionStatus._PENDING.getName());
 		mission.setId(UUIDGenerator.nextId());

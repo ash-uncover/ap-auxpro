@@ -13,6 +13,7 @@ import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.AuxiliaryFields;
 import java.util.List;
 import java.util.ArrayList;
+import org.ap.common.TimeHelper;
 import org.ap.auxpro.bean.AuxiliaryPostBean;
 import org.ap.auxpro.storage.ApauthCollection;
 import org.ap.auxpro.storage.ApauthData;
@@ -20,9 +21,9 @@ import org.ap.web.internal.UUIDGenerator;
 import com.mongodb.MongoWriteException;
 import org.ap.auxpro.internal.MailSender;
 import org.ap.auxpro.internal.ETokenType;
-import org.ap.common.TimeHelper;
 import org.ap.auxpro.bean.AuxiliaryPutBean;
 import org.ap.auxpro.helpers.AuxiliaryHelper;
+import java.util.Date;
 import org.ap.auxpro.bean.AuxiliaryQuestionaryBean;
 import org.ap.auxpro.bean.PromotionCodePostBean;
 import org.ap.auxpro.bean.ServiceGetBean;
@@ -95,12 +96,12 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.lastName = data.getLastName();
 				bean.civility = data.getCivility();
 				bean.city = data.getCity();
-				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 				bean.postalCode = data.getPostalCode();
 				bean.isTutoSkipped = data.getIsTutoSkipped();
 				bean.description = data.getDescription();
 				bean.socialNumber = data.getSocialNumber();
-				bean.accountExpiryDate = data.getAccountExpiryDate();
+				bean.accountExpiryDate = TimeHelper.toIntegers(data.getAccountExpiryDate());
 				bean.profilProgression = data.getProfilProgression();
 				bean.skillShopping = data.getSkillShopping();
 				bean.notifyOffersSms = data.getNotifyOffersSms();
@@ -119,8 +120,8 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.birthCity = data.getBirthCity();
 				bean.avatar = data.getAvatar();
 				bean.areSkillSet = data.getAreSkillSet();
-				bean.creationDate = data.getCreationDate();
-				bean.birthDate = data.getBirthDate();
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
+				bean.birthDate = TimeHelper.toIntegers(data.getBirthDate());
 				bean.skillChildhood = data.getSkillChildhood();
 				bean.skillCompagny = data.getSkillCompagny();
 				bean.firstName = data.getFirstName();
@@ -191,8 +192,8 @@ public class AuxiliaryServlet extends APServletBase {
 			dataEntity = new AuxiliaryData();
 			dataEntity.setId(dataAuth.getEntityId());
 			dataEntity.setAuthId(dataAuth.getId());
-			dataEntity.setCreationDate(TimeHelper.nowDateTimeIntegers());
-			dataEntity.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
+			dataEntity.setCreationDate(new Date());
+			dataEntity.setLastUpdateDate(new Date());
 			AuxiliaryCollection.create(dataEntity);
 			
 			MailSender.sendRegistrationMail(dataAuth);
@@ -222,12 +223,12 @@ public class AuxiliaryServlet extends APServletBase {
 			bean.lastName = data.getLastName();
 			bean.civility = data.getCivility();
 			bean.city = data.getCity();
-			bean.lastUpdateDate = data.getLastUpdateDate();
+			bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 			bean.postalCode = data.getPostalCode();
 			bean.isTutoSkipped = data.getIsTutoSkipped();
 			bean.description = data.getDescription();
 			bean.socialNumber = data.getSocialNumber();
-			bean.accountExpiryDate = data.getAccountExpiryDate();
+			bean.accountExpiryDate = TimeHelper.toIntegers(data.getAccountExpiryDate());
 			bean.profilProgression = data.getProfilProgression();
 			bean.skillShopping = data.getSkillShopping();
 			bean.notifyOffersSms = data.getNotifyOffersSms();
@@ -246,8 +247,8 @@ public class AuxiliaryServlet extends APServletBase {
 			bean.birthCity = data.getBirthCity();
 			bean.avatar = data.getAvatar();
 			bean.areSkillSet = data.getAreSkillSet();
-			bean.creationDate = data.getCreationDate();
-			bean.birthDate = data.getBirthDate();
+			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
+			bean.birthDate = TimeHelper.toIntegers(data.getBirthDate());
 			bean.skillChildhood = data.getSkillChildhood();
 			bean.skillCompagny = data.getSkillCompagny();
 			bean.firstName = data.getFirstName();
@@ -282,7 +283,7 @@ public class AuxiliaryServlet extends APServletBase {
 				throw new APWebException("auxiliary not found", "AP_AUXILIARY_NOTFOUND", Status.BAD_REQUEST);
 			}
 			// Update the data object
-			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
+			data.setLastUpdateDate(new Date());
 			data.setCountry(auxiliaryPutBean.country);
 			data.setLastName(auxiliaryPutBean.lastName);
 			data.setCivility(auxiliaryPutBean.civility);
@@ -301,7 +302,7 @@ public class AuxiliaryServlet extends APServletBase {
 			data.setNotifyPartners(auxiliaryPutBean.notifyPartners);
 			data.setBirthCity(auxiliaryPutBean.birthCity);
 			data.setAvatar(auxiliaryPutBean.avatar);
-			data.setBirthDate(auxiliaryPutBean.birthDate);
+			data.setBirthDate(TimeHelper.toDate(auxiliaryPutBean.birthDate));
 			data.setFirstName(auxiliaryPutBean.firstName);
 			data.setNationality(auxiliaryPutBean.nationality);
 			data.setIsEntrepreneur(auxiliaryPutBean.isEntrepreneur);
@@ -389,14 +390,14 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.address = data.getAddress();
 				bean.city = data.getCity();
 				bean.lattitude = data.getLattitude();
-				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 				bean.accountType = data.getAccountType();
 				bean.postalCode = data.getPostalCode();
 				bean.isTutoSkipped = data.getIsTutoSkipped();
 				bean.notifyPartners = data.getNotifyPartners();
-				bean.accountExpiryDate = data.getAccountExpiryDate();
+				bean.accountExpiryDate = TimeHelper.toIntegers(data.getAccountExpiryDate());
 				bean.avatar = data.getAvatar();
-				bean.creationDate = data.getCreationDate();
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 				bean.siret = data.getSiret();
 				bean.notifyAuxpros = data.getNotifyAuxpros();
 				bean.phone = data.getPhone();
@@ -458,10 +459,10 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.skillNursing = data.getSkillNursing();
 				bean.city = data.getCity();
 				bean.lattitude = data.getLattitude();
-				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 				bean.postalCode = data.getPostalCode();
-				bean.creationDate = data.getCreationDate();
-				bean.birthDate = data.getBirthDate();
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
+				bean.birthDate = TimeHelper.toIntegers(data.getBirthDate());
 				bean.skillChildhood = data.getSkillChildhood();
 				bean.skillCompagny = data.getSkillCompagny();
 				bean.skillShopping = data.getSkillShopping();
@@ -523,10 +524,10 @@ public class AuxiliaryServlet extends APServletBase {
 				InterventionBean bean = new InterventionBean();
 				bean.period = data.getPeriod();
 				bean.auxiliaryId = data.getAuxiliaryId();
-				bean.endDate = data.getEndDate();
-				bean.lastUpdateDate = data.getLastUpdateDate();
-				bean.sadStatusChanged = data.getSadStatusChanged();
-				bean.creationDate = data.getCreationDate();
+				bean.endDate = TimeHelper.toIntegers(data.getEndDate());
+				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
+				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
 				bean.days = data.getDays();
@@ -536,7 +537,7 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.id = data.getId();
 				bean.serviceId = data.getServiceId();
 				bean.hideToSad = data.getHideToSad();
-				bean.startDate = data.getStartDate();
+				bean.startDate = TimeHelper.toIntegers(data.getStartDate());
 				
 				beanList.add(bean);
 			}
@@ -584,12 +585,12 @@ public class AuxiliaryServlet extends APServletBase {
 			for (OfferData data : datas) {
 				OfferBean bean = new OfferBean();
 				bean.auxStatus = data.getAuxStatus();
-				bean.auxStatusChanged = data.getAuxStatusChanged();
+				bean.auxStatusChanged = TimeHelper.toIntegers(data.getAuxStatusChanged());
 				bean.hideToAux = data.getHideToAux();
 				bean.auxiliaryId = data.getAuxiliaryId();
-				bean.lastUpdateDate = data.getLastUpdateDate();
-				bean.sadStatusChanged = data.getSadStatusChanged();
-				bean.creationDate = data.getCreationDate();
+				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
+				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
 				bean.id = data.getId();
@@ -642,14 +643,14 @@ public class AuxiliaryServlet extends APServletBase {
 			List<MissionBean> beanList = new ArrayList<MissionBean>();
 			for (MissionData data : datas) {
 				MissionBean bean = new MissionBean();
-				bean.date = data.getDate();
+				bean.date = TimeHelper.toIntegers(data.getDate());
 				bean.auxStatus = data.getAuxStatus();
-				bean.auxStatusChanged = data.getAuxStatusChanged();
+				bean.auxStatusChanged = TimeHelper.toIntegers(data.getAuxStatusChanged());
 				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.hideToAux = data.getHideToAux();
-				bean.lastUpdateDate = data.getLastUpdateDate();
-				bean.sadStatusChanged = data.getSadStatusChanged();
-				bean.creationDate = data.getCreationDate();
+				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
+				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
 				bean.id = data.getId();
@@ -704,14 +705,14 @@ public class AuxiliaryServlet extends APServletBase {
 				IndisponibilityBean bean = new IndisponibilityBean();
 				bean.period = data.getPeriod();
 				bean.auxiliaryId = data.getAuxiliaryId();
-				bean.endDate = data.getEndDate();
-				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.endDate = TimeHelper.toIntegers(data.getEndDate());
+				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 				bean.days = data.getDays();
 				bean.startTime = data.getStartTime();
 				bean.endTime = data.getEndTime();
 				bean.id = data.getId();
-				bean.creationDate = data.getCreationDate();
-				bean.startDate = data.getStartDate();
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
+				bean.startDate = TimeHelper.toIntegers(data.getStartDate());
 				
 				beanList.add(bean);
 			}
@@ -762,12 +763,12 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.address = data.getAddress();
 				bean.lattitude = data.getLattitude();
 				bean.city = data.getCity();
-				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 				bean.postalCode = data.getPostalCode();
 				bean.id = data.getId();
 				bean.type = data.getType();
 				bean.radius = data.getRadius();
-				bean.creationDate = data.getCreationDate();
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 				bean.longitude = data.getLongitude();
 				
 				beanList.add(bean);

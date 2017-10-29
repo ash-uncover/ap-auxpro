@@ -8,14 +8,14 @@ public enum IndisponibilityFields {
 
 	PERIOD ("period", "String", EValidators.NON_NULL.getValidator()),
 	AUXILIARY_ID ("auxiliaryId", "String", EValidators.DEFAULT.getValidator()),
-	END_DATE ("endDate", "Integer", EValidators.DEFAULT.getValidator()),
+	END_DATE ("endDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	LAST_UPDATE_DATE ("lastUpdateDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	DAYS ("days", "String", EValidators.DEFAULT.getValidator()),
 	START_TIME ("startTime", "Integer", EValidators.DEFAULT.getValidator()),
 	END_TIME ("endTime", "Integer", EValidators.DEFAULT.getValidator()),
 	ID ("id", "String", EValidators.DEFAULT.getValidator()),
 	CREATION_DATE ("creationDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
-	START_DATE ("startDate", "Integer", EValidators.DEFAULT.getValidator()),
+	START_DATE ("startDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	;
 
 	private String _id;

@@ -9,6 +9,7 @@ import org.ap.auxpro.storage.CustomerData;
 import org.ap.auxpro.storage.CustomerCollection;
 import org.ap.web.internal.APWebException;
 import org.ap.web.internal.UUIDGenerator;
+import java.util.Date;
 import org.ap.common.TimeHelper;
 import com.mongodb.MongoWriteException;
 import org.ap.auxpro.bean.InterventionBean;
@@ -33,8 +34,8 @@ public class CustomerServlet extends APServletBase {
 		try {
 			CustomerData data = new CustomerData();
 			data.setId(UUIDGenerator.nextId());
-			data.setCreationDate(TimeHelper.nowDateTimeIntegers());
-			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
+			data.setCreationDate(new Date());
+			data.setLastUpdateDate(new Date());
 			data.setLastName(customerBean.lastName);
 			data.setCountry(customerBean.country);
 			data.setCivility(customerBean.civility);
@@ -43,7 +44,7 @@ public class CustomerServlet extends APServletBase {
 			data.setCity(customerBean.city);
 			data.setLattitude(customerBean.lattitude);
 			data.setPostalCode(customerBean.postalCode);
-			data.setBirthDate(customerBean.birthDate);
+			data.setBirthDate(TimeHelper.toDate(customerBean.birthDate));
 			data.setSkillChildhood(customerBean.skillChildhood);
 			data.setSkillCompagny(customerBean.skillCompagny);
 			data.setSkillShopping(customerBean.skillShopping);
@@ -83,10 +84,10 @@ public class CustomerServlet extends APServletBase {
 			bean.skillNursing = data.getSkillNursing();
 			bean.city = data.getCity();
 			bean.lattitude = data.getLattitude();
-			bean.lastUpdateDate = data.getLastUpdateDate();
+			bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 			bean.postalCode = data.getPostalCode();
-			bean.creationDate = data.getCreationDate();
-			bean.birthDate = data.getBirthDate();
+			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
+			bean.birthDate = TimeHelper.toIntegers(data.getBirthDate());
 			bean.skillChildhood = data.getSkillChildhood();
 			bean.skillCompagny = data.getSkillCompagny();
 			bean.skillShopping = data.getSkillShopping();
@@ -122,7 +123,7 @@ public class CustomerServlet extends APServletBase {
 				throw new APWebException("customer not found", "AP_CUSTOMER_NOTFOUND", Status.BAD_REQUEST);
 			}
 			// Update the data object
-			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
+			data.setLastUpdateDate(new Date());
 			data.setLastName(customerBean.lastName);
 			data.setCountry(customerBean.country);
 			data.setCivility(customerBean.civility);
@@ -131,7 +132,7 @@ public class CustomerServlet extends APServletBase {
 			data.setCity(customerBean.city);
 			data.setLattitude(customerBean.lattitude);
 			data.setPostalCode(customerBean.postalCode);
-			data.setBirthDate(customerBean.birthDate);
+			data.setBirthDate(TimeHelper.toDate(customerBean.birthDate));
 			data.setSkillChildhood(customerBean.skillChildhood);
 			data.setSkillCompagny(customerBean.skillCompagny);
 			data.setSkillShopping(customerBean.skillShopping);
@@ -209,10 +210,10 @@ public class CustomerServlet extends APServletBase {
 				InterventionBean bean = new InterventionBean();
 				bean.period = data.getPeriod();
 				bean.auxiliaryId = data.getAuxiliaryId();
-				bean.endDate = data.getEndDate();
-				bean.lastUpdateDate = data.getLastUpdateDate();
-				bean.sadStatusChanged = data.getSadStatusChanged();
-				bean.creationDate = data.getCreationDate();
+				bean.endDate = TimeHelper.toIntegers(data.getEndDate());
+				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
+				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
 				bean.days = data.getDays();
@@ -222,7 +223,7 @@ public class CustomerServlet extends APServletBase {
 				bean.id = data.getId();
 				bean.serviceId = data.getServiceId();
 				bean.hideToSad = data.getHideToSad();
-				bean.startDate = data.getStartDate();
+				bean.startDate = TimeHelper.toIntegers(data.getStartDate());
 				
 				beanList.add(bean);
 			}

@@ -124,7 +124,7 @@ public class ApauthCollection {
 		data.type = document.getString("type");
 		data.token = document.getString("token");
 		data.password = document.getString("password");
-		data.registrationDate = (List<Integer>)document.get("registrationDate");
+		data.registrationDate = document.getDate("registrationDate");
 		data.id = document.getString("id");
 		data.tokenType = document.getString("tokenType");
 		data.email = document.getString("email");

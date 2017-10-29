@@ -8,9 +8,9 @@ public enum InterventionFields {
 
 	PERIOD ("period", "String", EValidators.DEFAULT.getValidator()),
 	AUXILIARY_ID ("auxiliaryId", "String", EValidators.DEFAULT.getValidator()),
-	END_DATE ("endDate", "Integer", EValidators.DEFAULT.getValidator()),
+	END_DATE ("endDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	LAST_UPDATE_DATE ("lastUpdateDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
-	SAD_STATUS_CHANGED ("sadStatusChanged", "Integer", EValidators.DEFAULT.getValidator()),
+	SAD_STATUS_CHANGED ("sadStatusChanged", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	CREATION_DATE ("creationDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	CUSTOMER_ID ("customerId", "String", EValidators.DEFAULT.getValidator()),
 	DAYS ("days", "String", EValidators.DEFAULT.getValidator()),
@@ -21,7 +21,7 @@ public enum InterventionFields {
 	END_TIME ("endTime", "Integer", EValidators.DEFAULT.getValidator()),
 	SERVICE_ID ("serviceId", "String", EValidators.DEFAULT.getValidator()),
 	HIDE_TO_SAD ("hideToSad", "Boolean", EValidators.DEFAULT.getValidator()),
-	START_DATE ("startDate", "Integer", EValidators.DEFAULT.getValidator()),
+	START_DATE ("startDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	;
 
 	private String _id;

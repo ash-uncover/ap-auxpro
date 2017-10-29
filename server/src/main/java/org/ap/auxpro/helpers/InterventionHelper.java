@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +50,7 @@ public class InterventionHelper {
 		BasicBean result = new BasicBean();
 		try {
 			String id = UUIDGenerator.nextId();
-			List<Integer> now = TimeHelper.toIntegers(LocalDate.now());
+			Date now = new Date();
 
 			InterventionData intervention = new InterventionData();
 			intervention.setId(id);
@@ -59,8 +60,8 @@ public class InterventionHelper {
 			intervention.setCustomerId(interventionBean.customerId);
 			intervention.setServiceId(interventionBean.serviceId);
 			intervention.setPeriod(interventionBean.period);
-			intervention.setStartDate(interventionBean.startDate);
-			intervention.setEndDate(interventionBean.endDate);
+			intervention.setStartDate(TimeHelper.toDate(interventionBean.startDate));
+			intervention.setEndDate(TimeHelper.toDate(interventionBean.endDate));
 			intervention.setStartTime(interventionBean.startTime);
 			intervention.setEndTime(interventionBean.endTime);
 			intervention.setDays(interventionBean.days);
@@ -217,7 +218,7 @@ public class InterventionHelper {
 	}
 
 	public static Object putInterventionCancel(SecurityContext sc, String id, InterventionEmptyBean interventionBean) throws APWebException {
-		List<Integer> now = TimeHelper.nowDateTimeIntegers();
+		Date now = new Date();
 
 		InterventionData intervention = InterventionCollection.getById(id);
 		

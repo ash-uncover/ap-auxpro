@@ -4,7 +4,9 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Period;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.ap.auxpro.constants.EIndisponibilityRecurencePeriod;
@@ -36,16 +38,19 @@ public class Event {
 
 	public static Event[] buildEvents(IndisponibilityData indisponibility) {
 		List<Event> result = new ArrayList<Event>();
-		LocalDate startDate, endDate, currentDate;
+		LocalDate startLocalDate, endLocalDate, currentDate;
+		Date startDate, endDate;
 		EIndisponibilityRecurencePeriod period = EIndisponibilityRecurencePeriod.getByName(indisponibility.getPeriod());
 		switch (period) {
 		case _HOURS:
-			return new Event[] { new Event(indisponibility.getStartDate(), indisponibility.getStartTime(), indisponibility.getEndTime()) };
+			return new Event[] { new Event(TimeHelper.toIntegers(indisponibility.getStartDate()), indisponibility.getStartTime(), indisponibility.getEndTime()) };
 		case _DAYS:
-			startDate = TimeHelper.toLocalDate(indisponibility.getStartDate());
-			endDate = TimeHelper.toLocalDate(indisponibility.getEndDate());
-			currentDate = startDate.plusDays(0);
-			while (!currentDate.isAfter(endDate)) {
+			startDate = indisponibility.getStartDate();
+			startLocalDate = startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			endDate = indisponibility.getEndDate();
+			endLocalDate = endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			currentDate = startLocalDate.plusDays(0);
+			while (!currentDate.isAfter(endLocalDate)) {
 				result.add(new Event(currentDate, LocalTime.MIN, LocalTime.MAX));
 				currentDate = currentDate.plusDays(1);
 			}
@@ -55,10 +60,12 @@ public class Event {
 		case _WEEK3:
 		case _WEEK4:
 			List<DayOfWeek> days = TimeHelper.toDayOfWeeks(indisponibility.getDays());
-			startDate = TimeHelper.toLocalDate(indisponibility.getStartDate());
-			endDate = TimeHelper.toLocalDate(indisponibility.getEndDate());
-			currentDate = startDate.plusDays(0);
-			while (!currentDate.isAfter(endDate)) {
+			startDate = indisponibility.getStartDate();
+			startLocalDate = startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			endDate = indisponibility.getEndDate();
+			endLocalDate = endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			currentDate = startLocalDate.plusDays(0);
+			while (!currentDate.isAfter(endLocalDate)) {
 				if (days.contains(currentDate.getDayOfWeek())) {
 					result.add(new Event(currentDate, TimeHelper.toLocalTime(indisponibility.getStartTime()), TimeHelper.toLocalTime(indisponibility.getEndTime())));
 				}
@@ -86,17 +93,19 @@ public class Event {
 		EInterventionRecurencePeriod period = EInterventionRecurencePeriod.getByName(intervention.getPeriod());
 		switch (period) {
 		case _HOURS:
-			return new Event[] { new Event(intervention.getStartDate(), intervention.getStartTime(), intervention.getEndTime()) };
+			return new Event[] { new Event(TimeHelper.toIntegers(intervention.getStartDate()), intervention.getStartTime(), intervention.getEndTime()) };
 		case _WEEK1:
 		case _WEEK2:
 		case _WEEK3:
 		case _WEEK4:
 			List<Event> result = new ArrayList<Event>();
 			List<DayOfWeek> days = TimeHelper.toDayOfWeeks(intervention.getDays());
-			LocalDate startDate = TimeHelper.toLocalDate(intervention.getStartDate());
-			LocalDate endDate = TimeHelper.toLocalDate(intervention.getEndDate());
-			LocalDate currentDate = startDate.plusDays(0);
-			while (!currentDate.isAfter(endDate)) {
+			Date startDate = intervention.getStartDate();
+			LocalDate startLocalDate = startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			Date endDate = intervention.getEndDate();
+			LocalDate endLocalDate = endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			LocalDate currentDate = startLocalDate.plusDays(0);
+			while (!currentDate.isAfter(endLocalDate)) {
 				if (days.contains(currentDate.getDayOfWeek())) {
 					result.add(new Event(currentDate, TimeHelper.toLocalTime(intervention.getStartTime()), TimeHelper.toLocalTime(intervention.getEndTime())));
 				}
@@ -123,7 +132,7 @@ public class Event {
 	}
 
 	public static Event[] buildEvents(MissionData mission, InterventionData intervention) {
-		return new Event[] { new Event(mission.getDate(), intervention.getStartTime(), intervention.getEndTime()) };
+		return new Event[] { new Event(TimeHelper.toIntegers(mission.getDate()), intervention.getStartTime(), intervention.getEndTime()) };
 	}
 
 	public static boolean hasOverlap(Event e1, Event e2) {

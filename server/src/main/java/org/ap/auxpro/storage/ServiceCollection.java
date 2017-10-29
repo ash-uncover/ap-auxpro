@@ -100,14 +100,14 @@ public class ServiceCollection {
 		data.address = document.getString("address");
 		data.city = document.getString("city");
 		data.lattitude = document.getDouble("lattitude");
-		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
+		data.lastUpdateDate = document.getDate("lastUpdateDate");
 		data.postalCode = document.getString("postalCode");
 		data.accountType = document.getString("accountType");
 		data.isTutoSkipped = document.getBoolean("isTutoSkipped");
 		data.notifyPartners = document.getBoolean("notifyPartners");
 		data.avatar = document.getString("avatar");
-		data.accountExpiryDate = (List<Integer>)document.get("accountExpiryDate");
-		data.creationDate = (List<Integer>)document.get("creationDate");
+		data.accountExpiryDate = document.getDate("accountExpiryDate");
+		data.creationDate = document.getDate("creationDate");
 		data.siret = document.getString("siret");
 		data.notifyAuxpros = document.getBoolean("notifyAuxpros");
 		data.phone = document.getString("phone");
