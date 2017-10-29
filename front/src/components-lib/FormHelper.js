@@ -6,6 +6,7 @@ import { Button, Panel, Form, Grid, Google } from 'ap-react-bootstrap'
 class FormControlBuilder {
 
 	static buildFormGroup(nameProvider, field) { 
+        if (field.hidden && field.hidden()) return
 		let state = ''
 		if (field.validator) {
 			state = field.validator.getState(this.state[field.key])
