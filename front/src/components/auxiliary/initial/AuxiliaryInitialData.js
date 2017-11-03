@@ -56,6 +56,8 @@ class AuxiliaryInitialData extends BaseData {
 			let value = auxiliary[field.key] || field.defaultValue
 			this.obj.state[field.key] = field.formatter ? field.formatter(value) : value
 		}
+		this.obj.state.dirty = true
+		this.obj.state.auxiliaryValid = this.checkValid()
 	}
 
 
