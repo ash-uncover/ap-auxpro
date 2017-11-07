@@ -122,7 +122,7 @@
 				height: calc(100% - 100px);
 				width: 100%;
 				margin: 50px 0;
-				background: url('/assets/images/auxpro-land-image1.jpg');
+				background: url('/assets/images/auxpro-land-image1.png');
 				background-size: cover;
 				background-position: center center;
 			}
@@ -165,12 +165,42 @@
 
 			.ap-app-roles-tile {
 				text-decoration: none;
+				background: white;
 				cursor: pointer;
 				display: inline-block;
 				box-shadow: 4px 8px 10px #ccc;
 				width: 365px;
 				height: 438px;
 				transition: transform 0.1s;
+				position: relative;
+
+				&.ap-app-roles-sad {
+					.ap-app-roles-img {
+						position: absolute; 
+						top: 0;
+						bottom: 10%;
+						left: 3%;
+						right: 3%;
+						background: url('/assets/images/auxpro-land-image-sad.png');
+						background-size: contain;
+						background-position: center center;
+						background-repeat: no-repeat;	
+					}
+				}
+
+				&.ap-app-roles-aux {
+					.ap-app-roles-img {
+						position: absolute; 
+						top: 0;
+						bottom: 10%;
+						left: 3%;
+						right: 3%;
+						background: url('/assets/images/auxpro-land-image-aux.png');
+						background-size: contain;
+						background-position: center center;
+						background-repeat: no-repeat;	
+					}
+				}
 
 				&:hover {
 					transform: scale(1.01);
@@ -180,6 +210,10 @@
 					max-width: 100%;
 				}
 				.ap-app-roles-content {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					right: 0;
 					color: white;
 					background: #7F7F7F;
 					height: 120px;
@@ -187,6 +221,7 @@
 					.ap-app-roles-title {
 						font-size: 21px;
 						line-height: 50px;
+						height: 50px;
 					}
 					.ap-app-roles-separator {
 						border: 2px solid white;
@@ -223,8 +258,9 @@
 			}
 			.ap-app-tool-image {
 				height: 100%;
-				width: calc(100% - 100px);
-				margin: 0 50px;
+				width: 100%;
+				margin: 0;
+				margin-left: 20px;
 
 				background: url('/assets/images/auxpro-land-image2.png');
 				background-size: contain;
@@ -258,7 +294,7 @@
 		/* SECTION 6: EXPERIENCE
 		 * ******************************************************************************/
 		&.ap-app-experience {
-			background: url('/assets/images/auxpro-land-image3.jpg');
+			background: url('/assets/images/auxpro-land-image3.png');
 			background-size: cover; 
 			height: 870px;
 			padding-top: 120px;

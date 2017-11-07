@@ -100,10 +100,10 @@ class AppLand extends React.Component {
 				<section className='ap-app-land-section ap-app-roles'>
 					<Grid.Container>
 						<Grid.Col sm={6}>
-							<Link className='ap-app-roles-tile' href='/infos/services'>
-								<img 
-									className='ap-app-roles-image'
-									src='/assets/images/auxpro-land-image-sad.jpg'></img>
+							<Link 
+								className='ap-app-roles-tile ap-app-roles-sad' 
+								href='/infos/services'>
+								<div className='ap-app-roles-img' />
 								<div className='ap-app-roles-content'>
 									<div className='ap-app-roles-title'>
 										Vous êtes un SAP
@@ -116,10 +116,10 @@ class AppLand extends React.Component {
 							</Link>
 						</Grid.Col>
 						<Grid.Col sm={6}>
-							<Link className='ap-app-roles-tile' href='/infos/services'>
-								<img 
-									className='ap-app-roles-image'
-									src='/assets/images/auxpro-land-image-aux.jpg'></img>
+							<Link 
+								className='ap-app-roles-tile ap-app-roles-aux' 
+								href='/infos/services'>
+								<div className='ap-app-roles-img' />
 								<div className='ap-app-roles-content'>
 									<div className='ap-app-roles-title'>
 										Vous êtes un(e) intervenant(e)
