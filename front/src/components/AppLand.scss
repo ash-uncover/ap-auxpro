@@ -320,26 +320,28 @@
 						background-repeat: no-repeat;
 						background-size: 100% auto;
 						background-position: center center;
+
+						position: relative;
+
+						&:hover {							
+							filter: brightness(70%);
+						}
 						
 						&.ap-facebook {
-							background-image: url('/assets/images/facebook_2017_logo_36x36.png');
-							&:hover {
-								background-image: url('/assets/images/facebook_2017_logo_36x36_dark.png');
-							}
+							background-image: url('/assets/images/social/social-facebook-square.svg');
 						}
 
 						&.ap-youtube {
-							background-image: url('/assets/images/youtube_logo_24x24.png');
-							&:hover {
-								background-image: url('/assets/images/youtube_logo_24x24_dark.png');
-							}
+							width: 65px;
+							background-image: url('/assets/images/social/social-youtube.svg');
 						}
 
 						&.ap-twitter {
-							background-image: url('/assets/images/tweeter_2017_logo_36x36.png');
-							&:hover {
-								background-image: url('/assets/images/tweeter_2017_logo_36x36_dark.png');
-							}
+							background-image: url('/assets/images/social/social-twitter-square.svg');
+						}
+
+						&.ap-linkedin {
+							background-image: url('/assets/images/social/social-linkedin-square.svg');
 						}
 					}				
 				}

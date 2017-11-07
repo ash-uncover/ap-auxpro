@@ -31,8 +31,9 @@ class AppFooter extends React.Component {
 						<Link href='/'>Accueil</Link>
 						<Link href='/infos/presentation'>Qui sommes-nous</Link>
 						<Link href='/infos/contact'>Nous contacter</Link>
-						<a className='ap-footer-logo ap-tweeter' href='https://twitter.com/AuXpros' target="_blank"/>
+						<a className='ap-footer-logo ap-twitter' href='https://twitter.com/AuXpros' target="_blank"/>
 						<a className='ap-footer-logo ap-facebook' href='https://www.facebook.com/Auxpros' target="_blank"/>
+						<a className='ap-footer-logo ap-linkedin' href='https://www.linkedin.com/company/11210733/' target="_blank"/>
 						<a className='ap-footer-logo ap-youtube' href='https://www.youtube.com/channel/UC0E73ybLlgPiLQohO1UGEqA/featured' target="_blank"/>
 					</Grid.Col>
 					<Grid.Col md={5} className='ap-footer-area-services'>

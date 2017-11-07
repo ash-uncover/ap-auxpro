@@ -219,6 +219,11 @@ class AppLand extends React.Component {
 											title='Facebook'
 											href='https://www.facebook.com/Auxpros' />
 										<a 
+											className='ap-app-experience-link ap-linkedin'
+											target='_blank'
+											title='Linkedin'
+											href='https://www.linkedin.com/company/11210733/' />
+										<a 
 											className='ap-app-experience-link ap-youtube'
 											target='_blank'
 											title='Youtube'
