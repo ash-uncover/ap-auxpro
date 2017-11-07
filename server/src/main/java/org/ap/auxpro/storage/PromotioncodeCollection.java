@@ -95,11 +95,11 @@ public class PromotioncodeCollection {
 			return null;
 		}
 		PromotioncodeData data = new PromotioncodeData();
-		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
-		data.validityDate = (List<Integer>)document.get("validityDate");
+		data.lastUpdateDate = document.getDate("lastUpdateDate");
+		data.validityDate = document.getDate("validityDate");
 		data.name = document.getString("name");
 		data.id = document.getString("id");
-		data.creationDate = (List<Integer>)document.get("creationDate");
+		data.creationDate = document.getDate("creationDate");
 		return data;
 	}
 

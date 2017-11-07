@@ -81,7 +81,7 @@ let _AUXILIARY_ID = {
 }
 let _END_DATE = {
 	key: 'endDate',
-	type: 'number',
+	type: 'Date',
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
@@ -109,6 +109,6 @@ let _CREATION_DATE = {
 }
 let _START_DATE = {
 	key: 'startDate',
-	type: 'number',
+	type: 'Date',
 }
 export default IndisponibilityFields

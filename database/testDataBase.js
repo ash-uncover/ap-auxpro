@@ -51,7 +51,7 @@ db.apauth.insert({
 	"roles":["admin"],
 	"type":"admin",
 	"active":true,
-	"registrationDate":[2016, 1, 1, 0, 0],
+	"registrationDate":new Date("2016-01-01"),
 	"registered":true
 })
 
@@ -63,7 +63,7 @@ db.apauth.insert({
 	"roles":[],
 	"type":"guest",
 	"active":true,
-	"registrationDate":[2016, 1, 1, 0, 0],
+	"registrationDate":new Date("2016-01-01"),
 	"registered":true
 })
 

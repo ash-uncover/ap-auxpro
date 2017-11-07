@@ -53,6 +53,8 @@ class ServiceInitialData extends BaseData {
 			this.obj.state[field.key] = value || field.defaultValue
 		}
 
+		this.obj.state.dirty = true
+		this.obj.state.valid = this.checkServiceValid()
 		ErrorHelper.register('PUT_SERVICE', this, this.handlePutServiceError.bind(this))
 	}
 

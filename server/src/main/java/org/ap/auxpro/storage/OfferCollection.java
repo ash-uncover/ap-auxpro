@@ -86,12 +86,12 @@ public class OfferCollection {
 		}
 		OfferData data = new OfferData();
 		data.auxStatus = document.getString("auxStatus");
-		data.auxStatusChanged = (List<Integer>)document.get("auxStatusChanged");
+		data.auxStatusChanged = document.getDate("auxStatusChanged");
 		data.auxiliaryId = document.getString("auxiliaryId");
 		data.hideToAux = document.getBoolean("hideToAux");
-		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
-		data.sadStatusChanged = (List<Integer>)document.get("sadStatusChanged");
-		data.creationDate = (List<Integer>)document.get("creationDate");
+		data.lastUpdateDate = document.getDate("lastUpdateDate");
+		data.sadStatusChanged = document.getDate("sadStatusChanged");
+		data.creationDate = document.getDate("creationDate");
 		data.customerId = document.getString("customerId");
 		data.sadStatus = document.getString("sadStatus");
 		data.id = document.getString("id");

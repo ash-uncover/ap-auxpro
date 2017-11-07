@@ -16,7 +16,7 @@ public enum ServiceFields {
 	IS_TUTO_SKIPPED ("isTutoSkipped", "Boolean", EValidators.DEFAULT.getValidator()),
 	NOTIFY_PARTNERS ("notifyPartners", "Boolean", EValidators.DEFAULT.getValidator()),
 	AVATAR ("avatar", "String", EValidators.DEFAULT.getValidator()),
-	ACCOUNT_EXPIRY_DATE ("accountExpiryDate", "Integer", EValidators.DEFAULT.getValidator()),
+	ACCOUNT_EXPIRY_DATE ("accountExpiryDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	CREATION_DATE ("creationDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	SIRET ("siret", "String", EValidators.SIRET_NUMBER.getValidator()),
 	NOTIFY_AUXPROS ("notifyAuxpros", "Boolean", EValidators.DEFAULT.getValidator()),

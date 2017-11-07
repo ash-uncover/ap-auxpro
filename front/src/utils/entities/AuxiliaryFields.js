@@ -273,7 +273,7 @@ let _SOCIAL_NUMBER = {
 }
 let _ACCOUNT_EXPIRY_DATE = {
 	key: 'accountExpiryDate',
-	type: 'number',
+	type: 'Date',
 }
 let _PROFIL_PROGRESSION = {
 	key: 'profilProgression',
@@ -359,7 +359,7 @@ let _ARE_SKILL_SET = {
 }
 let _BIRTH_DATE = {
 	key: 'birthDate',
-	type: 'number',
+	type: 'Date',
 	validator: Validators.BeforeToday,
 }
 let _SKILL_CHILDHOOD = {

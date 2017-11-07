@@ -92,10 +92,10 @@ public class CustomerCollection {
 		data.skillNursing = document.getInteger("skillNursing");
 		data.city = document.getString("city");
 		data.lattitude = document.getDouble("lattitude");
-		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
+		data.lastUpdateDate = document.getDate("lastUpdateDate");
 		data.postalCode = document.getString("postalCode");
-		data.creationDate = (List<Integer>)document.get("creationDate");
-		data.birthDate = (List<Integer>)document.get("birthDate");
+		data.creationDate = document.getDate("creationDate");
+		data.birthDate = document.getDate("birthDate");
 		data.skillChildhood = document.getInteger("skillChildhood");
 		data.skillCompagny = document.getInteger("skillCompagny");
 		data.skillShopping = document.getInteger("skillShopping");

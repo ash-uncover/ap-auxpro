@@ -89,12 +89,12 @@ public class GeozoneCollection {
 		data.address = document.getString("address");
 		data.lattitude = document.getDouble("lattitude");
 		data.city = document.getString("city");
-		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
+		data.lastUpdateDate = document.getDate("lastUpdateDate");
 		data.postalCode = document.getString("postalCode");
 		data.id = document.getString("id");
 		data.type = document.getString("type");
 		data.radius = document.getInteger("radius");
-		data.creationDate = (List<Integer>)document.get("creationDate");
+		data.creationDate = document.getDate("creationDate");
 		data.longitude = document.getDouble("longitude");
 		return data;
 	}

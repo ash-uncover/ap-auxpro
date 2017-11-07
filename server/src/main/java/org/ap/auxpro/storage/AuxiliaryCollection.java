@@ -100,12 +100,12 @@ public class AuxiliaryCollection {
 		data.lastName = document.getString("lastName");
 		data.civility = document.getString("civility");
 		data.city = document.getString("city");
-		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
+		data.lastUpdateDate = document.getDate("lastUpdateDate");
 		data.postalCode = document.getString("postalCode");
 		data.isTutoSkipped = document.getBoolean("isTutoSkipped");
 		data.description = document.getString("description");
 		data.socialNumber = document.getString("socialNumber");
-		data.accountExpiryDate = (List<Integer>)document.get("accountExpiryDate");
+		data.accountExpiryDate = document.getDate("accountExpiryDate");
 		data.profilProgression = document.getInteger("profilProgression");
 		data.skillShopping = document.getInteger("skillShopping");
 		data.notifyOffersSms = document.getBoolean("notifyOffersSms");
@@ -123,9 +123,9 @@ public class AuxiliaryCollection {
 		data.notifyPartners = document.getBoolean("notifyPartners");
 		data.birthCity = document.getString("birthCity");
 		data.avatar = document.getString("avatar");
-		data.creationDate = (List<Integer>)document.get("creationDate");
+		data.creationDate = document.getDate("creationDate");
 		data.areSkillSet = document.getBoolean("areSkillSet");
-		data.birthDate = (List<Integer>)document.get("birthDate");
+		data.birthDate = document.getDate("birthDate");
 		data.skillChildhood = document.getInteger("skillChildhood");
 		data.skillCompagny = document.getInteger("skillCompagny");
 		data.firstName = document.getString("firstName");

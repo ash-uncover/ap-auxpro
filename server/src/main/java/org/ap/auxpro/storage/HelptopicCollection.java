@@ -85,10 +85,10 @@ public class HelptopicCollection {
 			return null;
 		}
 		HelptopicData data = new HelptopicData();
-		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
+		data.lastUpdateDate = document.getDate("lastUpdateDate");
 		data.id = document.getString("id");
 		data.title = document.getString("title");
-		data.creationDate = (List<Integer>)document.get("creationDate");
+		data.creationDate = document.getDate("creationDate");
 		data.content = document.getString("content");
 		return data;
 	}

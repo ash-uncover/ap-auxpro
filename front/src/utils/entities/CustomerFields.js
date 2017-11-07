@@ -188,7 +188,7 @@ let _CREATION_DATE = {
 }
 let _BIRTH_DATE = {
 	key: 'birthDate',
-	type: 'number',
+	type: 'Date',
 	validator: Validators.BeforeToday,
 }
 let _SKILL_CHILDHOOD = {

@@ -13,6 +13,7 @@ import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.HelptopicFields;
 import java.util.List;
 import java.util.ArrayList;
+import org.ap.common.TimeHelper;
 import org.ap.auxpro.bean.HelpFaqBean;
 import org.ap.auxpro.storage.HelpfaqData;
 import org.ap.auxpro.storage.HelpfaqCollection;
@@ -56,10 +57,10 @@ public class HelpServlet extends APServletBase {
 			List<HelpTopicBean> beanList = new ArrayList<HelpTopicBean>();
 			for (HelptopicData data : datas) {
 				HelpTopicBean bean = new HelpTopicBean();
-				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 				bean.id = data.getId();
 				bean.title = data.getTitle();
-				bean.creationDate = data.getCreationDate();
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 				bean.content = data.getContent();
 				
 				beanList.add(bean);
@@ -106,10 +107,10 @@ public class HelpServlet extends APServletBase {
 			List<HelpFaqBean> beanList = new ArrayList<HelpFaqBean>();
 			for (HelpfaqData data : datas) {
 				HelpFaqBean bean = new HelpFaqBean();
-				bean.lastUpdateDate = data.getLastUpdateDate();
+				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 				bean.id = data.getId();
 				bean.title = data.getTitle();
-				bean.creationDate = data.getCreationDate();
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 				bean.content = data.getContent();
 				
 				beanList.add(bean);

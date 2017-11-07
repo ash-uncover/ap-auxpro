@@ -37,9 +37,15 @@ class AuxiliaryInitial extends React.Component {
 					<Panel.Header>
 						Statut profil	
 					</Panel.Header>
-					<Panel.Body className='ap-error'>
-						Votre profil est incomplet, veuillez saisir les champs obligatoires ci-dessous
-					</Panel.Body>
+					{submitEnabled ?
+						<Panel.Body className='ap-error'>
+							Suite à des changements sur le site veuillez revalider vos informations. Merci.
+						</Panel.Body>
+						:
+						<Panel.Body className='ap-error'>
+							Votre profil est incomplet, veuillez saisir les champs obligatoires ci-dessous
+						</Panel.Body>
+					}
 					<Panel.Footer>	
 					</Panel.Footer>
 				</Panel>

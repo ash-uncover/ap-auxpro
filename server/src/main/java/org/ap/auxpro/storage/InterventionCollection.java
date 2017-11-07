@@ -87,10 +87,10 @@ public class InterventionCollection {
 		InterventionData data = new InterventionData();
 		data.period = document.getString("period");
 		data.auxiliaryId = document.getString("auxiliaryId");
-		data.endDate = (List<Integer>)document.get("endDate");
-		data.lastUpdateDate = (List<Integer>)document.get("lastUpdateDate");
-		data.sadStatusChanged = (List<Integer>)document.get("sadStatusChanged");
-		data.creationDate = (List<Integer>)document.get("creationDate");
+		data.endDate = document.getDate("endDate");
+		data.lastUpdateDate = document.getDate("lastUpdateDate");
+		data.sadStatusChanged = document.getDate("sadStatusChanged");
+		data.creationDate = document.getDate("creationDate");
 		data.customerId = document.getString("customerId");
 		data.days = (List<String>)document.get("days");
 		data.diplomas = (List<String>)document.get("diplomas");
@@ -100,7 +100,7 @@ public class InterventionCollection {
 		data.endTime = (List<Integer>)document.get("endTime");
 		data.serviceId = document.getString("serviceId");
 		data.hideToSad = document.getBoolean("hideToSad");
-		data.startDate = (List<Integer>)document.get("startDate");
+		data.startDate = document.getDate("startDate");
 		return data;
 	}
 

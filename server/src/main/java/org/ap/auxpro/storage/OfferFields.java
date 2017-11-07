@@ -7,11 +7,11 @@ import org.ap.common.validators.IValidator;
 public enum OfferFields {
 
 	AUX_STATUS ("auxStatus", "String", EValidators.DEFAULT.getValidator()),
-	AUX_STATUS_CHANGED ("auxStatusChanged", "Integer", EValidators.DEFAULT.getValidator()),
+	AUX_STATUS_CHANGED ("auxStatusChanged", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	AUXILIARY_ID ("auxiliaryId", "String", EValidators.DEFAULT.getValidator()),
 	HIDE_TO_AUX ("hideToAux", "Boolean", EValidators.DEFAULT.getValidator()),
 	LAST_UPDATE_DATE ("lastUpdateDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
-	SAD_STATUS_CHANGED ("sadStatusChanged", "Integer", EValidators.DEFAULT.getValidator()),
+	SAD_STATUS_CHANGED ("sadStatusChanged", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	CREATION_DATE ("creationDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	CUSTOMER_ID ("customerId", "String", EValidators.DEFAULT.getValidator()),
 	SAD_STATUS ("sadStatus", "String", EValidators.DEFAULT.getValidator()),

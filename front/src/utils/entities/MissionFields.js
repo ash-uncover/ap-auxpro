@@ -91,7 +91,7 @@ class MissionFields {
 }
 let _DATE = {
 	key: 'date',
-	type: 'number',
+	type: 'Date',
 }
 let _AUX_STATUS = {
 	key: 'auxStatus',
@@ -100,7 +100,7 @@ let _AUX_STATUS = {
 }
 let _AUX_STATUS_CHANGED = {
 	key: 'auxStatusChanged',
-	type: 'number',
+	type: 'Date',
 }
 let _AUXILIARY_ID = {
 	key: 'auxiliaryId',
@@ -116,7 +116,7 @@ let _LAST_UPDATE_DATE = {
 }
 let _SAD_STATUS_CHANGED = {
 	key: 'sadStatusChanged',
-	type: 'number',
+	type: 'Date',
 }
 let _CREATION_DATE = {
 	key: 'creationDate',

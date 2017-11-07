@@ -7,7 +7,7 @@ import org.ap.common.validators.IValidator;
 public enum PromotioncodeFields {
 
 	LAST_UPDATE_DATE ("lastUpdateDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
-	VALIDITY_DATE ("validityDate", "Integer", EValidators.DEFAULT.getValidator()),
+	VALIDITY_DATE ("validityDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	NAME ("name", "String", EValidators.DEFAULT.getValidator()),
 	ID ("id", "String", EValidators.DEFAULT.getValidator()),
 	CREATION_DATE ("creationDate", "List<Integer>", EValidators.DEFAULT.getValidator()),

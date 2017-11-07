@@ -71,7 +71,9 @@ class ServiceInterventionEditData extends BaseData {
 				{ validator: this.getStartDateValidator() }
 			),
 			Object.assign(
-				{ defaultValue: defaultDate, form: 'date' }, 
+				{ defaultValue: defaultDate, form: 'date', hidden: function() {
+                    return this.getState(InterventionFields.PERIOD.key) === InterventionRecurencePeriod.HOURS.key
+                }.bind(this) }, 
 				InterventionFields.END_DATE,
 				{ validator: this.getEndDateValidator() }
 			),

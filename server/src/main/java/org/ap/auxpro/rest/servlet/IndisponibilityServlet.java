@@ -9,6 +9,7 @@ import org.ap.auxpro.storage.IndisponibilityData;
 import org.ap.auxpro.storage.IndisponibilityCollection;
 import org.ap.web.internal.APWebException;
 import org.ap.web.internal.UUIDGenerator;
+import java.util.Date;
 import org.ap.common.TimeHelper;
 import com.mongodb.MongoWriteException;
 
@@ -25,15 +26,15 @@ public class IndisponibilityServlet extends APServletBase {
 		try {
 			IndisponibilityData data = new IndisponibilityData();
 			data.setId(UUIDGenerator.nextId());
-			data.setCreationDate(TimeHelper.nowDateTimeIntegers());
-			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
+			data.setCreationDate(new Date());
+			data.setLastUpdateDate(new Date());
 			data.setPeriod(indisponibilityBean.period);
 			data.setAuxiliaryId(indisponibilityBean.auxiliaryId);
-			data.setEndDate(indisponibilityBean.endDate);
+			data.setEndDate(TimeHelper.toDate(indisponibilityBean.endDate));
 			data.setDays(indisponibilityBean.days);
 			data.setStartTime(indisponibilityBean.startTime);
 			data.setEndTime(indisponibilityBean.endTime);
-			data.setStartDate(indisponibilityBean.startDate);
+			data.setStartDate(TimeHelper.toDate(indisponibilityBean.startDate));
 			IndisponibilityCollection.create(data);
 			return Response.status(Status.CREATED).entity("{\"id\": \"" + data.id + "\"}").build();
 			
@@ -56,14 +57,14 @@ public class IndisponibilityServlet extends APServletBase {
 			IndisponibilityBean bean = new IndisponibilityBean();
 			bean.period = data.getPeriod();
 			bean.auxiliaryId = data.getAuxiliaryId();
-			bean.endDate = data.getEndDate();
-			bean.lastUpdateDate = data.getLastUpdateDate();
+			bean.endDate = TimeHelper.toIntegers(data.getEndDate());
+			bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 			bean.days = data.getDays();
 			bean.startTime = data.getStartTime();
 			bean.endTime = data.getEndTime();
 			bean.id = data.getId();
-			bean.creationDate = data.getCreationDate();
-			bean.startDate = data.getStartDate();
+			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
+			bean.startDate = TimeHelper.toIntegers(data.getStartDate());
 			
 			return Response.status(Status.OK).entity(bean).build();
 			
@@ -86,14 +87,14 @@ public class IndisponibilityServlet extends APServletBase {
 				throw new APWebException("indisponibility not found", "AP_INDISPONIBILITY_NOTFOUND", Status.BAD_REQUEST);
 			}
 			// Update the data object
-			data.setLastUpdateDate(TimeHelper.nowDateTimeIntegers());
+			data.setLastUpdateDate(new Date());
 			data.setPeriod(indisponibilityBean.period);
 			data.setAuxiliaryId(indisponibilityBean.auxiliaryId);
-			data.setEndDate(indisponibilityBean.endDate);
+			data.setEndDate(TimeHelper.toDate(indisponibilityBean.endDate));
 			data.setDays(indisponibilityBean.days);
 			data.setStartTime(indisponibilityBean.startTime);
 			data.setEndTime(indisponibilityBean.endTime);
-			data.setStartDate(indisponibilityBean.startDate);
+			data.setStartDate(TimeHelper.toDate(indisponibilityBean.startDate));
 			// Store the updated data object
 			IndisponibilityCollection.updateNull(data);
 			// Send the response

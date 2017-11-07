@@ -49,7 +49,7 @@ let _LAST_UPDATE_DATE = {
 }
 let _VALIDITY_DATE = {
 	key: 'validityDate',
-	type: 'number',
+	type: 'Date',
 }
 let _NAME = {
 	key: 'name',
