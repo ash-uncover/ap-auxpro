@@ -197,8 +197,6 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 		for (let i = 0 ; i < this.FIELDS.length ; i++) {
 			let field = this.FIELDS[i]
 			if (field.validator && field.validator.getState(this.getState(field.key)) === 'error') {
-				console.log('field in error')
-				console.log(field)
 				return false
 			}
 		}

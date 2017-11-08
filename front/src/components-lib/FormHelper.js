@@ -23,12 +23,19 @@ class FormControlBuilder {
 		)
 	}
 
+	static onValueChanged(field, event, value) {
+		if (field.validator && field.validator.getBlockedValue) {
+			value = field.validator.getBlockedValue(value)
+		}
+		return this.onChange(field.key, event, value)
+	}
+
 	static buildFormControl(field) {
 		switch (field.form) {
 			case 'input': return (
 				<Form.Input 
 					value={this.state[field.key]} 
-					onChange={this.onChange.bind(this, field.key)} />
+					onChange={FormControlBuilder.onValueChanged.bind(this, field)} />
 				)
 			case 'select': return (
 				<Form.Select 
@@ -52,7 +59,7 @@ class FormControlBuilder {
 				<Form.TextArea
 					value={this.state[field.key]} 
 					rows={field.rows || 5}
-					onChange={this.onChange.bind(this, field.key)} />
+					onChange={FormControlBuilder.onValueChanged.bind(this, field)} />
 				)
 			case 'date': return (				
 				<Form.Date 
