@@ -5,6 +5,7 @@ import './AppLand.scss'
 import { Grid, Panel, Button } from 'ap-react-bootstrap'
 
 import Link from 'components-lib/Link/Link'
+import UserRoleTile from 'components-lib/UserRoleTile/UserRoleTile'
 
 import FacebookPage from 'components-lib/Facebook/FacebookPage'
 import TwitterTimeline from 'components-lib/Twitter/TwitterTimeline'
@@ -30,106 +31,102 @@ class AppLand extends React.Component {
 
 				<section className='ap-app-land-section ap-app-platform'>
 					<Grid.Container>
-						<h1 className='ap-title-h1'>
-							La plateforme des professionnels du SAP
-						</h1>
-						<div>
-							<Link className='ap-land-link ap-primary' href='/auth/register'>
-								Essayer maintenant
-							</Link>
-							<Link className='ap-land-link ap-default' href='/infos/presentation'>
-								En savoir plus
-							</Link>
-						</div>
+						<Grid.Row className='row-title'>
+							<Grid.Col xs={12} className='column-title'>
+								<h1>
+									La plateforme des professionnels du SAP
+								</h1>
+							</Grid.Col>
+						</Grid.Row>
+						<Grid.Row className='row-buttons'>
+							<Grid.Col sm={6} className='column-button1'>
+								<Link className='ap-land-link ap-primary' href='/auth/register'>
+									Essayer maintenant
+								</Link>
+							</Grid.Col>
+							<Grid.Col sm={6} className='column-button2'>
+								<Link className='ap-land-link ap-default' href='/infos/presentation'>
+									En savoir plus
+								</Link>
+							</Grid.Col>
+						</Grid.Row>
 					</Grid.Container>
 				</section>
 
 
 				<section className='ap-app-land-section ap-app-discover'>
-					<Grid.Container>
-						<Grid.Col sm={6}>
-							<div className='ap-app-discover-content'>
-								<h2 className='ap-title-h2'>
-									Découvrez AuXpros, votre futur outil de recrutement
-								</h2>
-								<p className='ap-subtitle'>
-									Un choix sur mesure adapté à chaque usager
-								</p>
-								<p className='ap-content'>
-									AuXpros est le premier outil d'aide au recrutement sur le
-									secteur de l'aide à la personne. Il offre la possibilité pour
-									les organismes de recruter des intervenantes répondant
-									à des critères précis d'organisation et de compétences.
-								</p>
-								<Link className='ap-land-link ap-primary' href='/infos/presentation'>
-									Découvrir
-								</Link>
-							</div>
-						</Grid.Col>
-						<Grid.Col sm={6}>
-							<div className='ap-app-discover-image' />
-						</Grid.Col>
+					<Grid.Container> 
+						<Grid.Row>
+							<Grid.Col sm={6} className='col-content'>
+								<div>
+									<h2>
+										Découvrez AuXpros, votre futur outil de recrutement
+									</h2>
+									<h3>
+										Un choix sur mesure adapté à chaque usager
+									</h3>
+									<p>
+										AuXpros est le premier outil d'aide au recrutement sur le
+										secteur de l'aide à la personne. Il offre la possibilité pour
+										les organismes de recruter des intervenantes répondant
+										à des critères précis d'organisation et de compétences.
+									</p>
+									<Link className='ap-land-link ap-primary' href='/infos/presentation'>
+										Découvrir
+									</Link>
+								</div>
+							</Grid.Col>
+							<Grid.Col sm={6} className='col-image hidden-xs'>
+								<div className='ap-app-discover-image' />
+							</Grid.Col>
+						</Grid.Row>
 					</Grid.Container>
 				</section>
 
 
 				<section className='ap-app-land-section ap-app-video'>
 					<Grid.Container>
-						<Grid.Col sm={7}>
-							<YoutubeVideo src='https://www.youtube.com/embed/79hXWPst6HE' />
-						</Grid.Col>
-						<Grid.Col sm={5}>
-							<div className='ap-app-video-content'>
-								<h2 className='ap-title-h2'>
-									Des offres d'emploi pour les auxiliaires de vie
-								</h2>
-								<p className='ap-subtitle'>
-									Organisez votre activité sur mesure
-								</p>
-								<p className='ap-content'>
-									AuXpros vous permet de maîtriser l'organisation de votre travail au quotidien en fonction de vos contraintes.
-									<br/>
-									Ainsi les missions qui vous seront proposées seront en adéquation avec votre emploi du temps personnel.
-								</p>
-							</div>
-						</Grid.Col>
+						<Grid.Row>
+							<Grid.Col sm={5} smPush={7} className='col-content'>
+								<div className='ap-app-video-content'>
+									<h2>
+										Des offres d'emploi pour les auxiliaires de vie
+									</h2>
+									<h3>
+										Organisez votre activité sur mesure
+									</h3>
+									<p>
+										AuXpros vous permet de maîtriser l'organisation de votre travail au quotidien en fonction de vos contraintes.
+										<br/>
+										Ainsi les missions qui vous seront proposées seront en adéquation avec votre emploi du temps personnel.
+									</p>
+								</div>
+							</Grid.Col>
+							<Grid.Col sm={7} smPull={5} className='col-video'>
+								<YoutubeVideo src='https://www.youtube.com/embed/79hXWPst6HE' />
+							</Grid.Col>
+						</Grid.Row>
 					</Grid.Container>
 				</section>
 
 				<section className='ap-app-land-section ap-app-roles'>
 					<Grid.Container>
-						<Grid.Col sm={6}>
-							<Link 
-								className='ap-app-roles-tile ap-app-roles-sad' 
-								href='/infos/services/service'>
-								<div className='ap-app-roles-img' />
-								<div className='ap-app-roles-content'>
-									<div className='ap-app-roles-title'>
-										Vous êtes un SAP
-									</div>
-									<div className='ap-app-roles-separator'/>
-									<div className='ap-app-roles-text'>
-										Découvrez les avantages d'AuXpros
-									</div>
-								</div>
-							</Link>
-						</Grid.Col>
-						<Grid.Col sm={6}>
-							<Link 
-								className='ap-app-roles-tile ap-app-roles-aux' 
-								href='/infos/services/auxiliary'>
-								<div className='ap-app-roles-img' />
-								<div className='ap-app-roles-content'>
-									<div className='ap-app-roles-title'>
-										Vous êtes un(e) intervenant(e)
-									</div>
-									<div className='ap-app-roles-separator'/>
-									<div className='ap-app-roles-text'>
-										Trouvez des offres d'emploi
-									</div>
-								</div>
-							</Link>
-						</Grid.Col>
+						<Grid.Row>
+							<Grid.Col sm={6}>
+								<UserRoleTile 
+									href='/infos/services/service'
+									image='/assets/images/auxpro-land-image-sad.png'
+									title='Vous êtes un SAP'
+									text="Découvrez les avantages d'AuXpros" />
+							</Grid.Col>
+							<Grid.Col sm={6}>
+								<UserRoleTile 
+									href='/infos/services/auxiliary'
+									image='/assets/images/auxpro-land-image-aux.png'
+									title='Vous êtes un(e) intervenant(e)'
+									text="Trouvez des offres d'emploi" />
+							</Grid.Col>
+						</Grid.Row>
 					</Grid.Container>
 				</section>
 

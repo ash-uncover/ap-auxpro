@@ -1,0 +1,51 @@
+.user-role-tile {
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow: 4px 8px 10px #ccc;
+	transition: transform 0.1s;
+	transform: scale(0.98);
+	padding: 0;
+
+	&:hover {
+		transform: scale(1);
+	}
+
+	.user-role-tile-img {
+		display: block;
+		background: white;
+		text-align: center;
+		padding-top: 5%;
+		overflow: hidden;
+		img {
+			width: 90%;
+			margin-bottom: -10%;
+		}
+
+	}
+
+	.user-role-tile-text {
+		text-align: initial;
+		display: block;
+		padding: 0 25px;
+		background: #7F7F7F;
+		color: white;
+		h4 {
+			margin: 0;
+			padding: 15px 0;
+			font-size: 18px;
+		}
+		.user-role-tile-separator {
+			border: 2px solid white;
+			width: 45px;
+		}
+		p {
+			margin: 0;
+			padding: 20px 0;
+			font-size: 14px;
+			color: #ccc;
+		}
+	}
+
+	
+}
