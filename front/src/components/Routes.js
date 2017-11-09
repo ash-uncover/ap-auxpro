@@ -19,6 +19,8 @@ import Contact from 'components/infos/contact/Contact'
 import FAQ from 'components/infos/faq/FAQ'
 import Help from 'components/infos/help/Help'
 import Presentation from 'components/infos/presentation/Presentation'
+import ServicesAuxiliary from 'components/infos/services/auxiliary/ServicesAuxiliary'
+import ServicesService from 'components/infos/services/service/ServicesService'
 import Services from 'components/infos/services/Services'
 import Service from 'components/service/Service'
 import ServiceRedirect from 'components/service/redirect/ServiceRedirect'
@@ -127,6 +129,8 @@ let appRoutes = [
 	{ path: '/infos/faq', component: FAQ },
 	{ path: '/infos/help', component: Help },
 	{ path: '/infos/presentation', component: Presentation },
+	{ path: '/infos/services/auxiliary', component: ServicesAuxiliary },
+	{ path: '/infos/services/service', component: ServicesService },
 	{ path: '/infos/services', component: Services },
 	{ path: '/service', component: Service, routes: serviceRoutes },
 	{ path: '/auxiliary', component: Auxiliary, routes: auxiliaryRoutes },

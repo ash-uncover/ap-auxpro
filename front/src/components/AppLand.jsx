@@ -96,13 +96,12 @@ class AppLand extends React.Component {
 					</Grid.Container>
 				</section>
 
-
 				<section className='ap-app-land-section ap-app-roles'>
 					<Grid.Container>
 						<Grid.Col sm={6}>
 							<Link 
 								className='ap-app-roles-tile ap-app-roles-sad' 
-								href='/infos/services'>
+								href='/infos/services/service'>
 								<div className='ap-app-roles-img' />
 								<div className='ap-app-roles-content'>
 									<div className='ap-app-roles-title'>
@@ -118,7 +117,7 @@ class AppLand extends React.Component {
 						<Grid.Col sm={6}>
 							<Link 
 								className='ap-app-roles-tile ap-app-roles-aux' 
-								href='/infos/services'>
+								href='/infos/services/auxiliary'>
 								<div className='ap-app-roles-img' />
 								<div className='ap-app-roles-content'>
 									<div className='ap-app-roles-title'>
