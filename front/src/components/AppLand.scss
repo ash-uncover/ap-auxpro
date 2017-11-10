@@ -18,21 +18,6 @@
 	p {
 		font-size: 14px;	
 	}
-	.ap-title-h2 {
-		font-weight: lighter;
-		font-size: 34px;
-		line-height: 45px;
-		margin-bottom: 35px;
-	}
-	.ap-subtitle {
-		font-weight: bold;
-		font-size: 16px;
-	}
-	.ap-content {
-		font-weight: lighter;
-		font-size: 16px;
-		margin-bottom: 35px;
-	}
 	.ap-land-link {
 		display: inline-block;
 		line-height: 48px;
@@ -107,7 +92,7 @@
 				background-position: center center;
 
 				>div {
-					background: rgba(255,255,255,0.7);
+					background: rgba(255,255,255,0.8);
 					padding: 25px 25px;
 					text-align: center;
 
@@ -162,22 +147,12 @@
 		/* SECTION 5: TOOL
 		 * ******************************************************************************/
 		&.ap-app-tool {
+			border: 1px solid red;
 			color: white;
 			background: #3379B7;
+			text-align: center;
+			padding: 10px 0 25px 0;
 
-			.ap-container {
-				height: 600px;
-			}
-			.ap-col {
-				display: flex;
-				align-items: center;
-			}
-			.ap-app-tool-content {
-				.ap-content {
-					max-width: 420px;
-				}
-
-			}
 			.ap-app-tool-image {
 				height: 100%;
 				width: 100%;
@@ -218,54 +193,44 @@
 		&.ap-app-experience {
 			background: url('/assets/images/auxpro-land-image3.png');
 			background-size: cover; 
-			height: 870px;
-			padding-top: 120px;
+			padding: 30px 0 60px 0;
 
 			.ap-app-experience-content {				
-				padding: 80px 0;
 				background: rgba(255,255,255,0.8);
+				text-align: center;
+				padding: 10px 15px 15px 15px;
 
-				.ap-title-h2 {
-					margin-top: 0;
+				h2 {
+					text-transform: uppercase;
 					font-weight: bold;
 				}
 
-				.ap-app-experience-links {
+				.ap-land-link {
+					display: block;
+				}
+
+				.ap-social-links {
 					display: flex;
-					margin-top: 40px;
-					.ap-app-experience-link {
-						height: 50px;
-						width: 50px;
-						margin-left: 25px;
-						display:inline-block;
-						border-radius: 5px;
-						background-repeat: no-repeat;
-						background-size: 100% auto;
-						background-position: center center;
+					justify-content: space-around;
+					padding: 10px 25px;
+					a {
+						height: 40px;
 
-						position: relative;
-
+						img {
+							height: 100%;
+						}
 						&:hover {							
 							filter: brightness(70%);
 						}
-						
-						&.ap-facebook {
-							background-image: url('/assets/images/social/social-facebook-square.svg');
-						}
 
-						&.ap-youtube {
-							width: 65px;
-							background-image: url('/assets/images/social/social-youtube.svg');
+						&.ap-link-youtube {
+							overflow: hidden;
+							img {
+								height: 130%;
+								margin-top: -12%;
+							}
 						}
-
-						&.ap-twitter {
-							background-image: url('/assets/images/social/social-twitter-square.svg');
-						}
-
-						&.ap-linkedin {
-							background-image: url('/assets/images/social/social-linkedin-square.svg');
-						}
-					}				
+					}
 				}
 			}
 		}

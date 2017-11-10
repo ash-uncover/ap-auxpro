@@ -132,29 +132,21 @@ class AppLand extends React.Component {
 
 				<section className='ap-app-land-section ap-app-tool'>
 					<Grid.Container>
-						<Grid.Col sm={6}>
-							<div className='ap-app-tool-content'>
-								<h2 className='ap-title-h2'>
-									Un outil indispensable pour les professionnels de l'aide à domicile
-								</h2>
-								<p className='ap-subtitle'>
-									AuXpros au coeur des enjeux du secteur
-								</p>
-								<p className='ap-content'>
-									Fort de 30 années d'expérience, nous constatons que l'une des principales difficultés pour les Services d'Aide à la Personne est de trouver des salariés compétents pour l'ensemble de ses clients.
-								</p>
-								<p className='ap-content'>
-									La réelle problématique constatée dans la gestion quotidienne d'une structure de maintien à domicile est, pour le dirigeant, l'adéquation entre les contraintes des missions et les exigences de travail des intervenants.
-								</p>
+						<Grid.Col sm={6} className='col-content'>
+							<div>
+								<h2>Un outil indispensable pour les professionnels de l'aide à domicile</h2>
+								<h3>AuXpros au coeur des enjeux du secteur</h3>
+								<p>Fort de 30 années d'expérience, nous constatons que l'une des principales difficultés pour les Services d'Aide à la Personne est de trouver des salariés compétents pour l'ensemble de ses clients.</p>
+								<p>La réelle problématique constatée dans la gestion quotidienne d'une structure de maintien à domicile est, pour le dirigeant, l'adéquation entre les contraintes des missions et les exigences de travail des intervenants.</p>
 							</div>
 						</Grid.Col>
-						<Grid.Col sm={6}>
+						<Grid.Col sm={6} className='col-image hidden-xs'>
 							<div className='ap-app-tool-image' />
 						</Grid.Col>
 					</Grid.Container>
 				</section>
 
-				<section className='ap-app-land-section ap-app-news'>
+				<section className='ap-app-land-section ap-app-news hidden-xs'>
 					<Grid.Container>
 						<h1 className='ap-title-h1'>
 							A LA UNE
@@ -186,48 +178,34 @@ class AppLand extends React.Component {
 				<section className='ap-app-land-section ap-app-experience'>
 					<div className='ap-app-experience-content'>
 						<Grid.Container>
-							<Grid.Col sm={12}>
-								<div>
-									<h2 className='ap-title-h2'>
-										VENEZ TENTER<br/>L'EXPERIENCE AUXPROS !
-									</h2>
-									<p className='ap-subtitle'>
-										Inscrivez-vous gratuitement
-									</p>
-									<p className='ap-content'>
-										Créez votre profil en quelques minutes et laissez-vous<br/>guider jusqu'à votre première mission chez AuXpros.
-									</p>
-									<p className='ap-subtitle'>
-										Et n'hésitez pas à nous rejoinre sur les réseaux sociaux !
-									</p>
-									<div className='ap-app-experience-links'>
-										<Link className='ap-land-link ap-primary' href='/auth/login'>
-											S'inscrire
-										</Link>
-										<a 
-											className='ap-app-experience-link ap-twitter'
-											target='_blank'
-											title='Twitter'
-											href='https://twitter.com/AuXpros' />
-										<a 
-											className='ap-app-experience-link ap-facebook'
-											target='_blank'
-											title='Facebook'
-											href='https://www.facebook.com/Auxpros' />
-										<a 
-											className='ap-app-experience-link ap-linkedin'
-											target='_blank'
-											title='Linkedin'
-											href='https://www.linkedin.com/company/11210733/' />
-										<a 
-											className='ap-app-experience-link ap-youtube'
-											target='_blank'
-											title='Youtube'
-											href='https://www.youtube.com/channel/UC0E73ybLlgPiLQohO1UGEqA/featured' />
-										
+							<Grid.Row>
+								<Grid.Col sm={12}>
+									<h2>Venez tenter<br/>l'expérience AuXpros !</h2>
+									<h3>Inscrivez-vous gratuitement</h3>
+									<p>Créez votre profil en quelques minutes et laissez-vous guider jusqu'à votre première mission chez AuXpros.</p>
+									<Link className='ap-land-link ap-primary visible-xs' href='/auth/register'>
+										S'inscrire
+									</Link>
+									<h3>Et n'hésitez pas à nous rejoinre sur les réseaux sociaux !</h3>
+									<Link className='ap-land-link ap-primary hidden-xs' href='/auth/register'>
+										S'inscrire
+									</Link>
+									<div className='ap-social-links'>
+										<a title='Twitter' href='https://twitter.com/AuXpros' target='_blank'>
+											<img src='/assets/images/social/social-twitter-square.svg' />
+										</a>
+										<a title='Facebook' href='https://www.facebook.com/Auxpros' target='_blank'>
+											<img src='/assets/images/social/social-facebook-square.svg' />
+										</a>
+										<a title='Linkedin' href='https://www.linkedin.com/company/11210733/' target='_blank'>
+											<img src='/assets/images/social/social-linkedin-square.svg' />
+										</a>
+										<a title='Youtube' href='https://www.youtube.com/channel/UC0E73ybLlgPiLQohO1UGEqA/featured' target='_blank' className='ap-link-youtube'>
+											<img src='/assets/images/social/social-youtube.svg' />
+										</a>
 									</div>
-								</div>
-							</Grid.Col>
+								</Grid.Col>
+							</Grid.Row>
 						</Grid.Container>
 					</div>
 				</section>
