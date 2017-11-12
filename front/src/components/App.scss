@@ -14,6 +14,27 @@ body {
 	font-size: 14px;
 }
 
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: $screen-sm-min) {
+	body {
+		font-size: 15px;
+	}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media only screen and (min-width: $screen-md-min) {
+	body {
+		font-size: 16px;
+	}	
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: $screen-lg-min) {
+	body {
+		font-size: 16px;
+	}
+}
+
 .row {
 	border: none;
 }
@@ -65,23 +86,3 @@ body {
 	}
 }
 
-/* Small devices (tablets, 768px and up) */
-@media only screen and (min-width: $screen-sm-min) {
-	body {
-		font-size: 15px;
-	}
-}
-
-/* Medium devices (desktops, 992px and up) */
-@media only screen and (min-width: $screen-md-min) {
-	body {
-		font-size: 16px;
-	}	
-}
-
-/* Large devices (large desktops, 1200px and up) */
-@media only screen and (min-width: $screen-lg-min) {
-	body {
-		font-size: 16px;
-	}
-}

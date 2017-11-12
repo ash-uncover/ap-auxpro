@@ -18,6 +18,7 @@
 	p {
 		font-size: 14px;	
 	}
+
 	.ap-land-link {
 		display: inline-block;
 		line-height: 48px;
@@ -65,8 +66,6 @@
 		/* SECTION 1: PLATFORM
 		 * ******************************************************************************/
 		&.ap-app-platform {
-			border: 1px solid red;
-			
 			text-align: center;
 			padding: 10px 0;
 
@@ -83,16 +82,24 @@
 		/* SECTION 2: DISCOVER
 		 * ******************************************************************************/
 		&.ap-app-discover {
-			border: 1px solid blue;
-			
+			background: url('/assets/images/auxpro-land-image1.png');
+			background-size: cover;
+			background-position: center center;
+			position: relative;
+
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(255,255,255,0.8);
+			}
+
 			.col-content {
 				padding: 0;
-				background: url('/assets/images/auxpro-land-image1.png');
-				background-size: cover;
-				background-position: center center;
-
-				>div {
-					background: rgba(255,255,255,0.8);
+				>div {					
 					padding: 25px 25px;
 					text-align: center;
 
@@ -102,26 +109,28 @@
 					}
 				}
 			}
+
+			.col-image {
+				img {
+					max-height: 100%;
+					max-width: 100%;
+					object-fit: contains;
+				}
+			}
 		}
 
 		/* SECTION 3: VIDEO
 		 * ******************************************************************************/
 		&.ap-app-video {
-			border: 1px solid red;
-			padding: 10px 0 0 0;
-
 			.col-video {
 				padding: 0;
-				padding-top: 15px;
 				.ap-youtube-video {
-					border: 15px solid black;
-					border-left: 0;
-					border-right: 0;
+					border: 10px solid black;
 				}
 			}
 			.col-content {
 				text-align: center;
-				padding: 0 15px;
+				padding: 15px;
 			}
 		}
 
@@ -129,7 +138,6 @@
 		/* SECTION 4: ROLES
 		 * ******************************************************************************/
 		&.ap-app-roles {
-			border: 1px solid blue;
 			background: #E3E4E5;
 			
 			.ap-row {
@@ -147,22 +155,21 @@
 		/* SECTION 5: TOOL
 		 * ******************************************************************************/
 		&.ap-app-tool {
-			border: 1px solid red;
 			color: white;
 			background: #3379B7;
-			text-align: center;
-			padding: 10px 0 25px 0;
+			
+			padding: 25px 0 25px 0;
 
-			.ap-app-tool-image {
-				height: 100%;
-				width: 100%;
-				margin: 0;
-				margin-left: 20px;
+			.col-content {
+				text-align: center;
+			}
 
-				background: url('/assets/images/auxpro-land-image2.png');
-				background-size: contain;
-				background-position: center center;
-				background-repeat: no-repeat;
+			.col-image {
+				img {
+					height: 100%;
+					max-width: 100%;
+					object-fit: cover;
+				}
 			}
 		}
 
@@ -195,7 +202,7 @@
 			background-size: cover; 
 			padding: 30px 0 60px 0;
 
-			.ap-app-experience-content {				
+			.ap-app-experience-content {
 				background: rgba(255,255,255,0.8);
 				text-align: center;
 				padding: 10px 15px 15px 15px;
@@ -264,6 +271,11 @@
 					margin: 0;
 				}
 			}
+			&.ap-app-tool {
+				.col-content {
+					text-align: initial;
+				}
+			}
 		}
 	}
 
@@ -278,11 +290,79 @@
 		h2 {
 			font-size: 30px;
 		}
+		h3 {
+			font-weight: bold;
+			font-size: 16px;
+		}
+		p {
+			font-size: 15px;	
+		}
 		.ap-app-land-section {
 			&.ap-app-platform {
 				padding: 40px 0;
 				.row-buttons {
 					margin-top: 40px;
+				}
+			}
+			&.ap-app-discover {
+				background: none;
+				.ap-row {
+					display: flex;
+					align-items: center;
+					.col-content {
+						>div {	
+							text-align: left;
+							.ap-link {
+								width: 150px;
+							}
+						}
+					}
+				}
+			}
+			&.ap-app-video {
+				padding: 40px 0;
+				.ap-row {
+					display: flex;
+					align-items: center;
+				}
+				.col-content {
+					padding-top: 0;
+					padding-left: 35px;
+					text-align: initial;
+				}
+			}
+			&.ap-app-tool {
+				.ap-container {
+					display: flex;
+					align-items: center;
+					.col-content {
+						margin-top: -25px;
+						margin-right: 25px;
+					}
+				}
+			}
+			&.ap-app-experience {
+				padding: 40px 0 100px 0;
+				.ap-app-experience-content {
+					padding: 20px 0 60px 0;
+					text-align: left;
+					.ap-land-link {
+						display: inline-block;
+					}
+					.ap-social-links {
+						height: 50px;
+						padding: 5px 0;
+						display: inline-block;
+						padding: 0;
+						a {
+							margin-left: 25px;
+							&.ap-link-youtube {
+								img {
+									margin: 0;
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -299,12 +379,22 @@
 		h2 {
 			font-size: 34px;
 		}
+		h3 {
+			font-weight: bold;
+			font-size: 17px;
+		}
+		p {
+			font-size: 16px;	
+		}
 		.ap-app-land-section {
 			&.ap-app-platform {
 				padding: 60px 0;
 				.row-buttons {
 					margin-top: 50px;
 				}
+			}
+			&.ap-app-experience {
+				padding: 80px 0 200px 0;
 			}
 		}		
 	}

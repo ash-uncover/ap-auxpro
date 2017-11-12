@@ -2,74 +2,127 @@
 @import 'assets/styles/variables';
 
 .ap-app-header {
-	background: white;
+	background: $ap-global-background;
 	margin-bottom: 25px;
 
 	.ap-navbar {
 		background: none;
 		border: 0;
+
 		.container {
-			height: 90px;
+			height: 50px;
+
+			.ap-navbar-header {
+				cursor: pointer;
+				height: 50px;
+
+				.ap-navbar-brand {
+					>img {
+						height: 48px !important;
+					}
+				}
+			}
+
+			.ap-navbar-group {
+				background: $ap-global-background;
+				.ap-navbar-link {
+					a {
+						margin: 15px 15px;
+						padding: 0;
+						height: 50px;
+						line-height: 50px;
+						text-align: center;
+					}
+					&.active {
+						background: #E7E7E7;
+					}
+					&.navbar-btn-default,
+					&.navbar-btn-primary {
+						&.active,
+						&:hover {
+							background: none;
+						}
+						>a {
+							min-width: 120px;
+							width: calc(100% - 20px);
+							margin: 15px 10px;
+							border-radius: 25px;
+							line-height: 46px;
+							font-weight: bold;
+							&:focus {
+								box-shadow: 0 0 2pt 1pt $ap-primary-color;
+							}
+						}
+						
+					}
+					&.navbar-btn-default>a {
+						background: $ap-btn-default-background;
+						border: 2px solid $ap-btn-default-border;
+						&:hover {
+							background: $ap-btn-default-background-hover;
+						}
+					}
+					&.navbar-btn-primary>a {
+						color: #FFFFFF;
+						background: $ap-btn-primary-background;
+						border: 2px solid $ap-btn-primary-background;
+						&:hover {
+							background: $ap-btn-primary-background-hover;
+							border: 2px solid $ap-btn-primary-background-hover;
+						}	
+					}
+				}
+			}
 		}
 	}
 
-	.ap-navbar-header {
-        cursor: pointer;
-        height: 90px;
-        .ap-navbar-brand {
-        	>img {
-        		height: 60px !important;
-        		margin: 0 !important;
-        	}
-        }
-    }
+	
 
-    .ap-navbar-group {
-    	.ap-navbar-link {
-			a {
-				margin: 15px 15px;
-				padding: 0;
-				height: 50px;
-				line-height: 50px;
-				text-align: center;
-			}
-			&.active {
-				background: #E7E7E7;
-			}
-			&.navbar-btn-default,
-			&.navbar-btn-primary {
-				&.active,
-				&:hover {
-	    			background: none;
-	    		}
-	    		>a {
-					width: 120px;
-					margin: 15px 10px;
-			    	border-radius: 25px;
-			    	line-height: 46px;
-			    	font-weight: bold;
-			    	&:focus {
-		    			box-shadow: 0 0 2pt 1pt $ap-primary-color;
-		    		}
-			    }
-	    		
-	    	}
-		    &.navbar-btn-default>a {
-		    	background: $ap-btn-default-background;
-				border: 2px solid $ap-btn-default-border;
-				&:hover {
-					background: $ap-btn-default-background-hover;
+	
+}
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: $screen-sm-min) {
+	.ap-app-header {
+		.ap-navbar {
+			.container {
+				height: 70px;
+				.ap-navbar-header {
+					height: 70px;
+
+					.ap-navbar-brand {
+						>img {
+							height: 50px !important;
+						}
+					}
 				}
-		    }
-		    &.navbar-btn-primary>a {
-		    	color: #FFFFFF;
-				background: $ap-btn-primary-background;
-				border: 2px solid $ap-btn-primary-background;
-				&:hover {
-					background: $ap-btn-primary-background-hover;
-					border: 2px solid $ap-btn-primary-background-hover;
-				}	
-		    }
-    	}
-    }
+			}
+		}	
+	}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media only screen and (min-width: $screen-md-min) {
+	.ap-app-header {
+		.ap-navbar {
+			.container {
+				height: 90px;
+				.ap-navbar-header {
+					height: 90px;
+
+					.ap-navbar-brand {
+						margin-top: 5px;
+						>img {
+							height: 60px !important;
+						}
+					}
+				}
+
+			}
+		}
+	}
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: $screen-lg-min) {
 }

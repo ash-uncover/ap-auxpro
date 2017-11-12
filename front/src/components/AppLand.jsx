@@ -57,7 +57,7 @@ class AppLand extends React.Component {
 				<section className='ap-app-land-section ap-app-discover'>
 					<Grid.Container> 
 						<Grid.Row>
-							<Grid.Col sm={6} className='col-content'>
+							<Grid.Col sm={6} smOffset={3} mdOffset={0} className='col-content'>
 								<div>
 									<h2>
 										Découvrez AuXpros, votre futur outil de recrutement
@@ -76,8 +76,8 @@ class AppLand extends React.Component {
 									</Link>
 								</div>
 							</Grid.Col>
-							<Grid.Col sm={6} className='col-image hidden-xs'>
-								<div className='ap-app-discover-image' />
+							<Grid.Col md={6} className='col-image hidden-xs hidden-sm'>
+								<img src='/assets/images/auxpro-land-image1.png' />
 							</Grid.Col>
 						</Grid.Row>
 					</Grid.Container>
@@ -87,7 +87,7 @@ class AppLand extends React.Component {
 				<section className='ap-app-land-section ap-app-video'>
 					<Grid.Container>
 						<Grid.Row>
-							<Grid.Col sm={5} smPush={7} className='col-content'>
+							<Grid.Col sm={6} smOffset={3} md={5} mdPush={7} mdOffset={0} className='col-content'>
 								<div className='ap-app-video-content'>
 									<h2>
 										Des offres d'emploi pour les auxiliaires de vie
@@ -102,7 +102,7 @@ class AppLand extends React.Component {
 									</p>
 								</div>
 							</Grid.Col>
-							<Grid.Col sm={7} smPull={5} className='col-video'>
+							<Grid.Col md={7} mdPull={5} className='col-video'>
 								<YoutubeVideo src='https://www.youtube.com/embed/79hXWPst6HE' />
 							</Grid.Col>
 						</Grid.Row>
@@ -141,7 +141,7 @@ class AppLand extends React.Component {
 							</div>
 						</Grid.Col>
 						<Grid.Col sm={6} className='col-image hidden-xs'>
-							<div className='ap-app-tool-image' />
+							<img src='/assets/images/auxpro-land-image2.png' />
 						</Grid.Col>
 					</Grid.Container>
 				</section>
@@ -154,8 +154,8 @@ class AppLand extends React.Component {
 						<Grid.Col sm={6}>
 							<FacebookPage 
 								name='AuXpros' 
-								link='https://www.facebook.com/Auxpros/'
-								width={450}
+								href='https://www.facebook.com/Auxpros/'
+								width={500}
 								height={850}
 								tabs='timeline'
 								smallHeader={true}
@@ -166,7 +166,7 @@ class AppLand extends React.Component {
 						<Grid.Col sm={6}>
 							<TwitterTimeline
 								lang='fr'
-								width={450}
+								width={500}
 								height={845}
 								theme='light'
 								href='https://twitter.com/AuXpros?ref_src=twsrc%5Etfw'
@@ -179,15 +179,15 @@ class AppLand extends React.Component {
 					<div className='ap-app-experience-content'>
 						<Grid.Container>
 							<Grid.Row>
-								<Grid.Col sm={12}>
+								<Grid.Col sm={6} smOffset={3} md={7} mdOffset={1} lg={6}>
 									<h2>Venez tenter<br/>l'expérience AuXpros !</h2>
 									<h3>Inscrivez-vous gratuitement</h3>
 									<p>Créez votre profil en quelques minutes et laissez-vous guider jusqu'à votre première mission chez AuXpros.</p>
-									<Link className='ap-land-link ap-primary visible-xs' href='/auth/register'>
+									<Link className='ap-land-link ap-primary visible-xs visible-sm' href='/auth/register'>
 										S'inscrire
 									</Link>
 									<h3>Et n'hésitez pas à nous rejoinre sur les réseaux sociaux !</h3>
-									<Link className='ap-land-link ap-primary hidden-xs' href='/auth/register'>
+									<Link className='ap-land-link ap-primary hidden-xs hidden-sm' href='/auth/register'>
 										S'inscrire
 									</Link>
 									<div className='ap-social-links'>

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './ap-facebook.scss'
 
 import { BaseComponent } from 'ap-react-bootstrap'
@@ -9,12 +10,13 @@ class FacebookPage extends BaseComponent {
 		super(props)
 		// Base classes
 		this.baseClasses = [ 'fb-page', 'ap-facebook-page' ]
+		this.facebookLoaded = this._facebookLoaded.bind(this)
 		// Sub properties
 		this.facebookProps = {}
 		// Component properties
 		this.propsInfos = {
 			required : {
-				link: { rename: 'data-href', store: this.facebookProps },
+				href: { rename: 'data-href', store: this.facebookProps },
 				name: { store: this.facebookProps },
 			},
 			optionnal : {
@@ -44,6 +46,7 @@ class FacebookPage extends BaseComponent {
 					store: this.facebookProps 
 				},
 				width: { 
+					defaultValue: 500,
 					rename: 'data-width', 
 					store: this.facebookProps 
 				},
@@ -55,24 +58,38 @@ class FacebookPage extends BaseComponent {
 		}
 	}
 
+	_facebookLoaded() {
+		FB && FB.XFBML && FB.XFBML.parse()
+	}
+
 	componentDidMount() {
-     	FB.XFBML.parse();
+		if (ap.facebookalreadyseen) {
+			this.facebookLoaded()
+		}
+		ap.facebookalreadyseen = true;
+     	let parentWidth = this.refs.container.getBoundingClientRect().width
+     	if (parentWidth < this.facebookProps['data-width']) {
+     		this.facebookProps['data-width'] = parentWidth
+     	}
 	}
 
 	render() {
 		this.buildProps('FacebookPage')
 		return (
-			<div className={this.className} {...this.facebookProps}>
+			<div className={this.className} {...this.facebookProps} ref='container'>
 				<blockquote 
 					cite={this.facebookProps['data-href']}
 					className='fb-xfbml-parse-ignore'>
-					<a href={this.facebookProps['data-href']}>
+					<a href={this.facebookProps['data-href']} target='_top'>
 						{this.facebookProps.name}
 					</a>
 				</blockquote>
 			</div>
 		)
 	}
-
+}
+FacebookPage.propTypes = {
+	name: PropTypes.string.isRequired,
+	href: PropTypes.string.isRequired
 }
 export default FacebookPage
