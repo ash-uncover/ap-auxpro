@@ -23,7 +23,7 @@ class ServicesAuxiliary extends React.Component {
 			<Grid.Container className='ap-services-auxiliary'>
 				<Panel className='ap-services'>
 					<Panel.Header>
-						<h2>Nos services pour les auxiliaires de vie</h2>
+						<h2>Nos super services pour les auxiliaires de vie</h2>
 					</Panel.Header>
 					<Panel.Body>
 						<p>Nos services sont :</p>
