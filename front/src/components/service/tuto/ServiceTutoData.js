@@ -14,7 +14,8 @@ class ServiceTutoData extends BaseData {
 			{ src: '/assets/images/tutoservices2.JPG', alt: 'Image tutorial 2'  },
 			{ src: '/assets/images/tutoservices3.JPG', alt: 'Image tutorial 3'  },
 			{ src: '/assets/images/tutoservices4.JPG', alt: 'Image tutorial 4'  },
-			{ src: '/assets/images/tutoservices5.JPG', alt: 'Image tutorial 5'  }
+			{ src: '/assets/images/tutoservices5.JPG', alt: 'Image tutorial 5'  },
+			{ src: '/assets/images/tutoservices5.JPG', alt: 'Image tutorial 6'  }
 		]
 	}
 

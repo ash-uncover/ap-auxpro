@@ -23,16 +23,17 @@ class ServicesAuxiliary extends React.Component {
 			<Grid.Container className='ap-services-auxiliary'>
 				<Panel className='ap-services'>
 					<Panel.Header>
-						<h2>Nos super services pour les auxiliaires de vie</h2>
+						<h2>Nos services pour les auxiliaires de vie</h2>
 					</Panel.Header>
 					<Panel.Body>
-						<p>Nos services sont :</p>
-						<br/>
-						<p><b>AuXpros</b> permet aux <b>Auxiliaires de vie</b> qui recherchent du travail ou qui désirent un complément à leurs activités d’être sollicitées en fonction de leurs compétences, de leurs disponibilités, et de la zone d’intervention géographique souhaitée, de se voir proposer par des organismes de services d’aides à la personne des missions correspondantes.</p>
-						<br/>
-						<p><b>AuXpros</b> permet aux <b>Organismes de services d’aides à la personne</b> de connaitre sur une simple consultation les possibilités de réponse aux demandes d’aides faites par un Usager. Et de solliciter les intervenants de proximité potentiellement disponibles qui leurs paraissent réunir les meilleures aptitudes pour satisfaire les besoins.</p>
-						<br/>
-						<p><b>AuXpros</b> permet aux <b>Usagers</b> de connaître tous les organismes d’aides à la personnes existants et de sélectionner parmi toutes les offres de services celles qui lui conviendront le mieux</p>
+						<p>S’inscrire sur AuXpros, c’est recevoir et choisir des offres de travail.<br/>Auxpros vous permet :<br/></p>
+						<ul>
+							<li>De préciser votre planning de travail selon vos disponibilités et votre organisation familiale</li>
+							<li>De définir vos zones d’activités pour réduire vos trajets, d’optimiser votre temps d’interventions à domicile et d’améliorer sensiblement vos conditions de travail</li>
+							<li>D’indiquer clairement au SAAD et plus généralement aux services d’aide à la personne qui recrutent des auxiliaires de vie et des intervenants pour les particuliers, vos plus, vos qualités spécifiques et vos compétences</li>
+							<li>De profiter d’un statut salarial avec ses avantages conventionnels</li>
+							<li>d’accéder à la formation professionnelle, d’emprunter des passerelles entre les différents métiers des services à la personne, et d’envisager une évolution de votre carrière</li>
+						</ul>
 					</Panel.Body>
 				</Panel>
 			</Grid.Container>

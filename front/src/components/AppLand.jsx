@@ -60,7 +60,7 @@ class AppLand extends React.Component {
 							<Grid.Col sm={6} smOffset={3} mdOffset={0} className='col-content'>
 								<div>
 									<h2>
-										Découvrez AuXpros, votre futur outil de recrutement
+										Découvrez AuXpros, votre outil de recrutement
 									</h2>
 									<h3>
 										Un choix sur mesure adapté à chaque usager
@@ -68,7 +68,7 @@ class AppLand extends React.Component {
 									<p>
 										AuXpros est le premier outil d'aide au recrutement sur le
 										secteur de l'aide à la personne. Il offre la possibilité pour
-										les organismes de recruter des intervenantes répondant
+										les organismes de recruter des intervenant(e)s répondant
 										à des critères précis d'organisation et de compétences.
 									</p>
 									<Link className='ap-land-link ap-primary' href='/infos/presentation'>

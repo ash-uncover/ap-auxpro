@@ -26,13 +26,15 @@ class ServicesService extends React.Component {
 						<h2>Nos services pour les services d'aide à la personne</h2>
 					</Panel.Header>
 					<Panel.Body>
-						<p>Nos services sont :</p>
-						<br/>
-						<p><b>AuXpros</b> permet aux <b>Auxiliaires de vie</b> qui recherchent du travail ou qui désirent un complément à leurs activités d’être sollicitées en fonction de leurs compétences, de leurs disponibilités, et de la zone d’intervention géographique souhaitée, de se voir proposer par des organismes de services d’aides à la personne des missions correspondantes.</p>
-						<br/>
-						<p><b>AuXpros</b> permet aux <b>Organismes de services d’aides à la personne</b> de connaitre sur une simple consultation les possibilités de réponse aux demandes d’aides faites par un Usager. Et de solliciter les intervenants de proximité potentiellement disponibles qui leurs paraissent réunir les meilleures aptitudes pour satisfaire les besoins.</p>
-						<br/>
-						<p><b>AuXpros</b> permet aux <b>Usagers</b> de connaître tous les organismes d’aides à la personnes existants et de sélectionner parmi toutes les offres de services celles qui lui conviendront le mieux</p>
+						<p>S’inscrire sur AuXpros, c’est profiter d’un outil supplémentaire de recrutement<br/>Auxpros vous permet :<br/></p>
+						<ul>
+							<li>De synthétiser facilement les demandes de vos usagers pour créer la prestation à domicile dont ils ont besoin</li>
+							<li>D’interroger une base de données d’auxiliaires de vie disponibles, qualifiés et compétents pour cette mission</li>
+							<li>De diminuer les temps de trajet des intervenants sélectionnés, donc de diminuer vos coûts de déplacement</li>
+							<li>De faciliter l’accroissement des heures d’interventions des intervenants de mutualiser entre plusieurs organismes partenaires les ressources humaines. Le temps partiel dès lors n’est plus imposé mais choisi par les intervenants.</li>
+							<li>De valoriser l’activité de vos intervenants en les rendant pour partie acteurs de leur organisation de travail. Vous optimisez leur temps d’intervention, en diminuant leurs contraintes et leur fatigue</li>
+							<li>De diminuer vos coûts de recrutement, en augmentant votre disponibilité auprès des usagers</li>
+						</ul>
 					</Panel.Body>
 				</Panel>
 			</Grid.Container>
