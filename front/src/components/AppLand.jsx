@@ -90,7 +90,7 @@ class AppLand extends React.Component {
 							<Grid.Col sm={6} smOffset={3} md={5} mdPush={7} mdOffset={0} className='col-content'>
 								<div className='ap-app-video-content'>
 									<h2>
-										Des offres d'emploi pour les auxiliaires de vie
+										Des offres d'emploi pour les intervenant(e)s à domicile
 									</h2>
 									<h3>
 										Organisez votre activité sur mesure
@@ -136,8 +136,8 @@ class AppLand extends React.Component {
 							<div>
 								<h2>Un outil indispensable pour les professionnels de l'aide à domicile</h2>
 								<h3>AuXpros au coeur des enjeux du secteur</h3>
-								<p>Fort de 30 années d'expérience, nous constatons que l'une des principales difficultés pour les Services d'Aide à la Personne est de trouver des salariés compétents pour l'ensemble de ses clients.</p>
-								<p>La réelle problématique constatée dans la gestion quotidienne d'une structure de maintien à domicile est, pour le dirigeant, l'adéquation entre les contraintes des missions et les exigences de travail des intervenants.</p>
+								<p>Fort de 30 années d'expérience, nous constatons que la principale difficulté pour les services d'aide à la personne est de proposer à leurs usagers des intervenant(e)s correspondant à leurs besoins</p>
+								<p>L'essor du secteur économique des services à la personne est conditionné par la reconnaissance effective d'emplois durables et professionnalisés. Les savoir-faire spécifiques au secteur doivent être valorisés afin de renforcer la motivation des salariés et d'assurer la construction d'une identité professionnelle.</p>
 							</div>
 						</Grid.Col>
 						<Grid.Col sm={6} className='col-image hidden-xs'>

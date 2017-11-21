@@ -48,7 +48,7 @@ class AppHeader extends React.Component {
 					<Navbar.Group right className='collapse navbar-collapse' id='myNavbar'>
 						{this._buildLink('Accueil','/auxiliary/home', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Profil','/auxiliary/infos', this.state.tutoMode || this.state.profilMode)}
-						{this._buildLink('Planing','/auxiliary/planing', this.state.tutoMode || this.state.profilMode)}
+						{this._buildLink('Planning','/auxiliary/planing', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Zone','/auxiliary/zone', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Offres','/auxiliary/offers', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Déconnexion','/logout')}
