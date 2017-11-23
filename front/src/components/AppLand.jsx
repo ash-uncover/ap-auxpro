@@ -137,7 +137,7 @@ class AppLand extends React.Component {
 								<h2>Un outil indispensable pour les professionnels de l'aide à domicile</h2>
 								<h3>AuXpros au coeur des enjeux du secteur</h3>
 								<p>Fort de 30 années d'expérience, nous constatons que la principale difficulté pour les services d'aide à la personne est de proposer à leurs usagers des intervenant(e)s correspondant à leurs besoins</p>
-								<p>L'essor du secteur économique des services à la personne est conditionné par la reconnaissance effective d'emplois durables et professionnalisés. Les savoir-faire spécifiques au secteur doivent être valorisés afin de renforcer la motivation des salariés et d'assurer la construction d'une identité professionnelle.</p>
+								<p><i>"L'essor du secteur économique des services à la personne est conditionné par la reconnaissance effective d'emplois durables et professionnalisés. Les savoir-faire spécifiques au secteur doivent être valorisés afin de renforcer la motivation des salariés et d'assurer la construction d'une identité professionnelle."</i><br/>Convention collective nationale des services d'aide à la personne</p>
 							</div>
 						</Grid.Col>
 						<Grid.Col sm={6} className='col-image hidden-xs'>

@@ -59,11 +59,6 @@ class CGV extends React.Component {
 
 							<h3><li>Conditions de ventes</li></h3>
 								<p>L’inscription des « Utilisateurs » sur le « Site » donne accès à l’ensemble des « Services » tels que décrit dans les Conditions Générales d’Utilisation.</p>
-								<p>Le fait de valider une inscription implique pour vous l'obligation de payer le prix indiqué.</p>
-								<p>Dès validation du paiement, l’utilisateur reçoit alors un code confidentiel permettant la validation de son profil.</p>
-								<p>Le paiement s’effectue après la création du profil de l’Utilisateur.</p>
-								<p>Une fois le paiement effectif et validé par la banque, un code d’activation est envoyé selon le choix de l’Utilisateur sur son adresse email ou son numéro de téléphone renseignés lors de l’inscription. Il devra  alors saisir le code d’activation sur le Site afin de valider son profil.</p>
-
 							<h3><li>Prix des services</li></h3>
 								
 								<h4>Pour les « Auxiliaires »</h4>

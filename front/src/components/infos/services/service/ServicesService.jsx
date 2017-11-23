@@ -33,7 +33,7 @@ class ServicesService extends React.Component {
 							<li>De diminuer les temps de trajet des intervenant(e)s sélectionné(e)s, donc <b>d'abaisser vos coûts de déplacement</b></li>
 							<li>De mutualiser entre plusieurs organismes partenaires les ressources humaines. <b>Le temps partiel dès lors n’est plus imposé mais choisi par les intervenant(e)s.</b></li>
 							<li>De valoriser l’activité de vos intervenant(e)s en les rendant pour partie acteurs/actrices de leur organisation de travail. <b>Vous optimisez leur temps d’intervention</b>, en diminuant leurs contraintes et leur fatigue</li>
-							<li>De <b>diminuer vos charges et le temps consacré au recrutement</b>, et accroissez sensiblement votre disponibilité à la recherche de nouveaux prospects</li>
+							<li>De <b>diminuer vos charges et le temps consacré au recrutement</b>, et accroître sensiblement votre disponibilité à la recherche de nouveaux prospects</li>
 						</ul>
 					</Panel.Body>
 				</Panel>

@@ -46,7 +46,7 @@ class AppHeader extends React.Component {
 			case 'auxiliary': 
 				return (
 					<Navbar.Group right className='collapse navbar-collapse' id='myNavbar'>
-						{this._buildLink('Accueil','/auxiliary/home', this.state.tutoMode || this.state.profilMode)}
+						{this._buildLink('AuXpros','/auxiliary/home', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Profil','/auxiliary/infos', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Planning','/auxiliary/planing', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Zone','/auxiliary/zone', this.state.tutoMode || this.state.profilMode)}
@@ -57,7 +57,7 @@ class AppHeader extends React.Component {
 			case 'service': 
 				return (
 					<Navbar.Group right className='collapse navbar-collapse' id='myNavbar'>
-						{this._buildLink('Accueil','/service/home', this.state.tutoMode || this.state.profilMode)}
+						{this._buildLink('AuXpros','/service/home', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Profil','/service/infos', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Zone','/service/zone', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Usagers','/service/customers', this.state.tutoMode || this.state.profilMode)}
@@ -68,7 +68,7 @@ class AppHeader extends React.Component {
 			default: 
 				return (
 					<Navbar.Group right className='collapse navbar-collapse' id='myNavbar'>
-						{this._buildLink('Accueil','/home')}
+						{this._buildLink('AuXpros','/home')}
 						{this._buildLink('Qui sommes-nous','/infos/presentation')}
 						{this._buildLink('Nos services','/infos/services')}
 						{this._buildLink('Connexion','/auth/login', false, 'navbar-btn-default')}

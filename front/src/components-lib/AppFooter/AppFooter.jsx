@@ -50,8 +50,8 @@ class AppFooter extends React.Component {
 						<h3 className='ap-footer-title'>
 							Navigation
 						</h3>
-						<Link href='/infos/cgv'>CGV / CGU</Link>
-						<Link href=''>Mentions légales</Link>
+						<Link href='/infos/cgu'>CGV / CGU</Link>
+						<Link href='/infos/cgu'>Mentions légales</Link>
 						<Link href='/infos/faq'>S'informer (FAQ)</Link>
 						<Link href='/auth/login'>Connexion</Link>
 					</Grid.Col>
