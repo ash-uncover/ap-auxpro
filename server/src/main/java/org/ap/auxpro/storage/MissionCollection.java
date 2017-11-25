@@ -79,7 +79,6 @@ public class MissionCollection {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static MissionData fromDocument(Document document) {
 		if(document == null) {
 			return null;

@@ -79,7 +79,6 @@ public class OfferCollection {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static OfferData fromDocument(Document document) {
 		if(document == null) {
 			return null;

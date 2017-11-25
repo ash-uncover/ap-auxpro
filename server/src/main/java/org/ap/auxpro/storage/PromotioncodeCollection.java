@@ -89,7 +89,6 @@ public class PromotioncodeCollection {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static PromotioncodeData fromDocument(Document document) {
 		if(document == null) {
 			return null;
