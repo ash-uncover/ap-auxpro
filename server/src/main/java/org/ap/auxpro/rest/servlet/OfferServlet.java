@@ -9,8 +9,8 @@ import org.ap.web.internal.APWebException;
 import javax.annotation.security.RolesAllowed;
 import org.ap.auxpro.helpers.OfferHelper;
 import org.ap.auxpro.bean.OfferBean;
-import org.ap.auxpro.storage.OfferData;
-import org.ap.auxpro.storage.OfferCollection;
+import org.ap.auxpro.storage.offer.OfferData;
+import org.ap.auxpro.storage.offer.OfferCollection;
 import org.ap.common.TimeHelper;
 import org.ap.auxpro.bean.OfferEmptyBean;
 

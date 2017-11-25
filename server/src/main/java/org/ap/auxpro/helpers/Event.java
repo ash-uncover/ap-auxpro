@@ -11,9 +11,9 @@ import java.util.List;
 
 import org.ap.auxpro.constants.EIndisponibilityRecurencePeriod;
 import org.ap.auxpro.constants.EInterventionRecurencePeriod;
-import org.ap.auxpro.storage.IndisponibilityData;
-import org.ap.auxpro.storage.InterventionData;
-import org.ap.auxpro.storage.MissionData;
+import org.ap.auxpro.storage.indisponibility.IndisponibilityData;
+import org.ap.auxpro.storage.intervention.InterventionData;
+import org.ap.auxpro.storage.mission.MissionData;
 import org.ap.common.TimeHelper;
 
 public class Event {
