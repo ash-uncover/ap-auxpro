@@ -9,11 +9,11 @@ import javax.ws.rs.core.SecurityContext;
 
 import org.ap.auxpro.bean.PromotionCodePostBean;
 import org.ap.auxpro.bean.ServicePutBean;
-import org.ap.auxpro.storage.PromotioncodeCollection;
-import org.ap.auxpro.storage.PromotioncodeData;
-import org.ap.auxpro.storage.ServiceCollection;
-import org.ap.auxpro.storage.ServiceData;
-import org.ap.auxpro.storage.ServiceFields;
+import org.ap.auxpro.storage.promotioncode.PromotioncodeCollection;
+import org.ap.auxpro.storage.promotioncode.PromotioncodeData;
+import org.ap.auxpro.storage.service.ServiceCollection;
+import org.ap.auxpro.storage.service.ServiceData;
+import org.ap.auxpro.storage.service.ServiceFields;
 import org.ap.common.validators.IValidator;
 import org.ap.web.internal.APWebException;
 
