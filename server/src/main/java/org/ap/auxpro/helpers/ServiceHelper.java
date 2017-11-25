@@ -2,25 +2,20 @@ package org.ap.auxpro.helpers;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
 
 import org.ap.auxpro.bean.PromotionCodePostBean;
-import org.ap.auxpro.bean.ServiceGetBean;
 import org.ap.auxpro.bean.ServicePutBean;
 import org.ap.auxpro.storage.PromotioncodeCollection;
 import org.ap.auxpro.storage.PromotioncodeData;
 import org.ap.auxpro.storage.ServiceCollection;
 import org.ap.auxpro.storage.ServiceData;
 import org.ap.auxpro.storage.ServiceFields;
-import org.ap.common.TimeHelper;
 import org.ap.common.validators.IValidator;
 import org.ap.web.internal.APWebException;
-import org.bson.Document;
 
 public class ServiceHelper {
 

@@ -79,7 +79,6 @@ public class CustomerCollection {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static CustomerData fromDocument(Document document) {
 		if(document == null) {
 			return null;

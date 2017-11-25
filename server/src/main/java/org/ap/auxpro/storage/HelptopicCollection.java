@@ -79,7 +79,6 @@ public class HelptopicCollection {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static HelptopicData fromDocument(Document document) {
 		if(document == null) {
 			return null;

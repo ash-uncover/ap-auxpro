@@ -89,7 +89,6 @@ public class ServiceCollection {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static ServiceData fromDocument(Document document) {
 		if(document == null) {
 			return null;
