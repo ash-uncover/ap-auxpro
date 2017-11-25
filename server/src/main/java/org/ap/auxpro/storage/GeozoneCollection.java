@@ -79,7 +79,6 @@ public class GeozoneCollection {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static GeozoneData fromDocument(Document document) {
 		if(document == null) {
 			return null;
