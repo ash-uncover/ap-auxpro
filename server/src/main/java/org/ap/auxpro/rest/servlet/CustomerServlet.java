@@ -36,6 +36,7 @@ public class CustomerServlet extends APServletBase {
 			data.setId(UUIDGenerator.nextId());
 			data.setCreationDate(new Date());
 			data.setLastUpdateDate(new Date());
+			data.setServiceId(customerBean.serviceId);
 			data.setLastName(customerBean.lastName);
 			data.setCountry(customerBean.country);
 			data.setCivility(customerBean.civility);
@@ -54,7 +55,6 @@ public class CustomerServlet extends APServletBase {
 			data.setSkillAdministrative(customerBean.skillAdministrative);
 			data.setSkillHousework(customerBean.skillHousework);
 			data.setSkillDoityourself(customerBean.skillDoityourself);
-			data.setServiceId(customerBean.serviceId);
 			data.setEmail(customerBean.email);
 			data.setLongitude(customerBean.longitude);
 			CustomerCollection.create(data);
@@ -77,6 +77,7 @@ public class CustomerServlet extends APServletBase {
 				return Response.status(Status.NOT_FOUND).build();
 			}
 			CustomerBean bean = new CustomerBean();
+			bean.serviceId = data.getServiceId();
 			bean.lastName = data.getLastName();
 			bean.country = data.getCountry();
 			bean.civility = data.getCivility();
@@ -98,7 +99,6 @@ public class CustomerServlet extends APServletBase {
 			bean.skillHousework = data.getSkillHousework();
 			bean.skillDoityourself = data.getSkillDoityourself();
 			bean.id = data.getId();
-			bean.serviceId = data.getServiceId();
 			bean.email = data.getEmail();
 			bean.longitude = data.getLongitude();
 			
@@ -124,6 +124,7 @@ public class CustomerServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setLastUpdateDate(new Date());
+			data.setServiceId(customerBean.serviceId);
 			data.setLastName(customerBean.lastName);
 			data.setCountry(customerBean.country);
 			data.setCivility(customerBean.civility);
@@ -142,7 +143,6 @@ public class CustomerServlet extends APServletBase {
 			data.setSkillAdministrative(customerBean.skillAdministrative);
 			data.setSkillHousework(customerBean.skillHousework);
 			data.setSkillDoityourself(customerBean.skillDoityourself);
-			data.setServiceId(customerBean.serviceId);
 			data.setEmail(customerBean.email);
 			data.setLongitude(customerBean.longitude);
 			// Store the updated data object
@@ -208,22 +208,22 @@ public class CustomerServlet extends APServletBase {
 			List<InterventionBean> beanList = new ArrayList<InterventionBean>();
 			for (InterventionData data : datas) {
 				InterventionBean bean = new InterventionBean();
-				bean.period = data.getPeriod();
 				bean.auxiliaryId = data.getAuxiliaryId();
+				bean.period = data.getPeriod();
 				bean.endDate = TimeHelper.toIntegers(data.getEndDate());
 				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
 				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
 				bean.days = data.getDays();
 				bean.diplomas = data.getDiplomas();
 				bean.startTime = data.getStartTime();
 				bean.endTime = data.getEndTime();
 				bean.id = data.getId();
-				bean.serviceId = data.getServiceId();
 				bean.hideToSad = data.getHideToSad();
 				bean.startDate = TimeHelper.toIntegers(data.getStartDate());
+				bean.customerId = data.getCustomerId();
+				bean.serviceId = data.getServiceId();
 				
 				beanList.add(bean);
 			}

@@ -8,11 +8,11 @@ import java.util.List;
 public class OfferPostBean {
 
 	public String auxiliaryId;
-	public List<Integer> lastUpdateDate;
 	public String customerId;
-	public String id;
 	public String serviceId;
-	public List<Integer> creationDate;
 	public String interventionId;
+	public List<Integer> lastUpdateDate;
+	public String id;
+	public List<Integer> creationDate;
 
 }

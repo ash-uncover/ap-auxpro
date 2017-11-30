@@ -50,15 +50,15 @@ public class OfferServlet extends APServletBase {
 			bean.auxStatus = data.getAuxStatus();
 			bean.auxStatusChanged = TimeHelper.toIntegers(data.getAuxStatusChanged());
 			bean.hideToAux = data.getHideToAux();
-			bean.auxiliaryId = data.getAuxiliaryId();
 			bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-			bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
-			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-			bean.customerId = data.getCustomerId();
 			bean.sadStatus = data.getSadStatus();
+			bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
 			bean.id = data.getId();
-			bean.serviceId = data.getServiceId();
+			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 			bean.hideToSad = data.getHideToSad();
+			bean.auxiliaryId = data.getAuxiliaryId();
+			bean.customerId = data.getCustomerId();
+			bean.serviceId = data.getServiceId();
 			bean.interventionId = data.getInterventionId();
 			
 			return Response.status(Status.OK).entity(bean).build();
