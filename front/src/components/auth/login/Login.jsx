@@ -33,7 +33,7 @@ class Login extends React.Component {
 							<Form.Group>
 								<Form.Label 
 									htmlFor='loginUsername'>
-									Nom d'utilisateur ou addresse mail
+									Nom d'utilisateur ou adresse mail
 								</Form.Label>
 								<Form.Input 
 									id='loginUsername'

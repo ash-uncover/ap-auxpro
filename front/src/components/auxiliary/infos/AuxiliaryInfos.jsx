@@ -87,7 +87,7 @@ class AuxiliaryInfos extends React.Component {
 							Mes informations
 						</Panel.Header>
 						<Panel.Body>
-							<h4>Mes informations personelles</h4>
+							<h4>Mes informations personnelles</h4>
 							<Form horizontal>
 								<Grid.Row>
 									<Grid.Col xs={12} className='ap-auxiliary-infos-image-container'>

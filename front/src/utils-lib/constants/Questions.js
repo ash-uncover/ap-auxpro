@@ -1,6 +1,6 @@
 let Q01 = {
 	title:'Question 1',
-	text: 'Quel est selon vous le critère le plus important du nombre de demandes des usagers dans les différentes actions d’une auxiliaire de vie',
+	text: 'Quel est selon vous le critère le plus important du nombre de demandes des usagers dans les différentes actions d’une auxiliaire de vie ?',
 	answers: [
 		'Entretien de la maison',
 		'Nursing',
@@ -13,7 +13,7 @@ let Q01 = {
 };
 let Q02 = {
 	title:'Question 2',
-	text: 'Quel est selon vous le critère le plus important, l’intitulé qui définit le mieux votre profession',
+	text: 'Quel est selon vous le critère le plus important, l’intitulé qui définit le mieux votre profession ?',
 	answers: [
 		'Aide-ménagère',
 		'Auxiliaire de vie',
@@ -22,7 +22,7 @@ let Q02 = {
 };
 let Q03 = {
 	title:'Question 3',
-	text: 'Dans laquelle de ces spécificités vous sentez vous le plus d’aptitude',
+	text: 'Dans laquelle de ces spécificités vous sentez-vous le plus d’aptitudes ?',
 	answers: [
 		'Entretien de la maison',
 		'Nursing',
@@ -35,7 +35,7 @@ let Q03 = {
 };
 let Q04 = {
 	title:'Question 4',
-	text: 'Selon vous, la perte de mémoire chez une personne agée est plus synonyme',
+	text: 'Selon vous, la perte de mémoire chez une personne agée est plus synonyme :',
 	answers: [
 		'De stress, d’inquiétude, d’agressivité',
 		'Sans conséquence puisqu’elle ne s’en rappelle pas'
@@ -43,7 +43,7 @@ let Q04 = {
 };
 let Q05 = {
 	title:'Question 5',
-	text: 'Vous devez intervenir chez un usager pour lui tenir compagnie et faire l’entretien de son appartement par quoi commencez-vous',
+	text: 'Vous devez intervenir chez un usager pour lui tenir compagnie et faire l’entretien de son appartement par quoi commencez-vous ?',
 	answers: [
 		'Lui tenir compagnie',
 		'Faire son ménage'
@@ -51,7 +51,7 @@ let Q05 = {
 };
 let Q06 = {
 	title:'Question 6',
-	text: 'Quel est selon vous le critère le plus important, pour l’entretien d’une maison, les différentes pièces',
+	text: 'Quel est selon vous le critère le plus important, pour l’entretien d’une maison, les différentes pièces :',
 	answers: [
 		'Cuisine',
 		'Salle de bain',
@@ -60,7 +60,7 @@ let Q06 = {
 };
 let Q07 = {
 	title:'Question 7',
-	text: 'Quel est selon vous le critère le plus important, les critères suivants',
+	text: 'Quel est selon vous le critère le plus important parmi les critères suivants :',
 	answers: [
 		'La ponctualité',
 		'L’hygiène',
@@ -70,25 +70,25 @@ let Q07 = {
 };
 let Q08 = {
 	title:'Question 8',
-	text: 'Les plaques d’induction et vitrocéramique doivent être nettoyées avec des produits spécifiques',
+	text: 'Les plaques d’induction et vitrocéramique doivent être nettoyées avec des produits spécifiques :',
 	answers: [
 		'Il faut d’avantage demander au client les consignes du fabricant pour s’assurer du bon choix du produit',
 		'On doit utiliser du vinaigre blanc et une éponge non abrasive',
-		'En cas d’inexistence de notice du fabricant je nettoierais avec une lingette microfibre, l’eau chaude et un chiffon propre'
+		'En cas d’inexistence de notice du fabricant je nettoierai avec une lingette microfibre, de l’eau chaude et un chiffon propre'
 	]
 };
 let Q09 = {
 	title:'Question 9',
-	text: 'La mission chez un client implique votre passage journalier de 11h a 13h. On vous demande de faire l’entretien de la maison et préparation des repas. Pour ce qui concerne l’entretien quotidien, vous faites systématiquement',
+	text: 'La mission chez un client implique votre passage journalier de 11h a 13h. On vous demande de faire l’entretien de la maison et la préparation des repas. Pour ce qui concerne l’entretien quotidien, vous faites systématiquement :',
 	answers: [
-		'Salle de bain, toilette et cuisine',
+		'Salle de bain, toilettes et cuisine',
 		'Aspirateur et salle de bain',
 		'Les carreaux et poussière'
 	]
 };
 let Q10 = {
 	title:'Question 10',
-	text: 'Pour vous le ménage:',
+	text: 'Pour vous le ménage :',
 	answers: [
 		'Implique la connaissance des produits, des surfaces et techniques',
 		'S’apprend à la maison'
@@ -96,7 +96,7 @@ let Q10 = {
 };
 let Q11 = {
 	title:'Question 11',
-	text: 'Selon vous la prévention c’est',
+	text: 'Selon vous la prévention c’est :',
 	answers: [
 		'Anticiper en alertant quand une personne ne veut pas boire pour éviter qu’elle se déshydrate',
 		'Téléphoner au SAD ou à l’entourage familial que la personne est tombée'
@@ -104,7 +104,7 @@ let Q11 = {
 };
 let Q12 = {
 	title:'Question 12',
-	text: 'Pour réaliser une toilette il vaut mieux',
+	text: 'Pour réaliser une toilette il vaut mieux :',
 	answers: [
 		'Avoir du bon sens',
 		'Respecter toujours les mêmes règles'
@@ -112,15 +112,15 @@ let Q12 = {
 };
 let Q13 = {
 	title:'Question 13',
-	text: 'Le but d’une toilette c’est',
+	text: 'Le but d’une toilette c’est :',
 	answers: [
 		'L’hygiène',
-		'Apporter du bien être'
+		'Apporter du bien-être'
 	]
 };
 let Q14 = {
 	title:'Question 14',
-	text: 'Un nursing au quotidien c’est',
+	text: 'Un nursing au quotidien c’est :',
 	answers: [
 		'Passionnant',
 		'Impossible'
@@ -128,15 +128,15 @@ let Q14 = {
 };
 let Q15 = {
 	title:'Question 15',
-	text: 'Pour vous faire une toilette c’est',
+	text: 'Pour vous faire une toilette c’est :',
 	answers: [
 		'S’adapter a une situation',
-		'appliquer un mode d’emploi'
+		'Appliquer un mode d’emploi'
 	]
 };
 let Q16 = {
 	title:'Question 16',
-	text: 'Pendant la toilette de Mme X, vous vous rendez compte que son corps est chaud, que faites-vous',
+	text: 'Pendant la toilette de Mme X, vous vous rendez compte que son corps est chaud, que faites-vous ?',
 	answers: [
 		'Vous lui donnez plus à manger',
 		'Vous essayez de résoudre ce problème',
@@ -145,16 +145,16 @@ let Q16 = {
 };
 let Q17 = {
 	title:'Question 17',
-	text: 'Combien de temps utilisez-vous votre téléphone portable par jour',
+	text: 'Combien de temps utilisez-vous votre téléphone portable par jour ?',
 	answers: [
-		'-1h',
-		'+1h',
-		'+3h'
+		'-1h par jour',
+		'+1h par jour',
+		'+3h par jour'
 	]
 };
 let Q18 = {
 	title:'Question 18',
-	text: 'Selon vous quelle est la qualité principale d’une dame de compagnie',
+	text: 'Selon vous quelle est la qualité principale d’une dame de compagnie ?',
 	answers: [
 		'L’écoute',
 		'La discussion',
@@ -164,7 +164,7 @@ let Q18 = {
 };
 let Q19 = {
 	title:'Question 19',
-	text: 'Parmi ces trois grands médias lequel selon vous est le mieux adapté aux personnes âgées',
+	text: 'Parmi ces trois grands médias lequel selon vous est le mieux adapté aux personnes âgées ?',
 	answers: [
 		'La presse',
 		'Internet',
@@ -173,7 +173,7 @@ let Q19 = {
 };
 let Q20 = {
 	title:'Question 20',
-	text: 'Etre dame de compagnie c’est',
+	text: 'Etre dame de compagnie c’est :',
 	answers: [
 		'Analyser les besoins des personnes et mettre en place des actions',
 		'S’assoir à coté d’elle et de lui tenir la main'
@@ -181,7 +181,7 @@ let Q20 = {
 };
 let Q21 = {
 	title:'Question 21',
-	text: 'De ces 4 aliments lequel privilégiez-vous pour le dîner d’une personne âgée',
+	text: 'De ces 4 aliments lequel privilégiez-vous pour le dîner d’une personne âgée ?',
 	answers: [
 		'La viande',
 		'Le potage',
@@ -191,7 +191,7 @@ let Q21 = {
 };
 let Q22 = {
 	title:'Question 22',
-	text: 'La principale difficulté dans la préparation des repas c’est',
+	text: 'La principale difficulté dans la préparation des repas c’est :',
 	answers: [
 		'D’anticiper les achats',
 		'Faire les menus',
@@ -200,7 +200,7 @@ let Q22 = {
 };
 let Q23 = {
 	title:'Question 23',
-	text: 'Pour donner de l’appétit, quel est selon vous le critère le plus important',
+	text: 'Pour donner de l’appétit, quel est selon vous le critère le plus important ?',
 	answers: [
 		'L’odeur de la cuisine',
 		'La présentation des plats',
@@ -209,7 +209,7 @@ let Q23 = {
 };
 let Q24 = {
 	title:'Question 24',
-	text: 'Mme X ne veut pas manger, vous',
+	text: 'Mme X ne veut pas manger, vous :',
 	answers: [
 		'Lui préparez un repas équilibré',
 		'Interrogez son entourage pour savoir ce qu’elle aime',
@@ -218,7 +218,7 @@ let Q24 = {
 };
 let Q25 = {
 	title:'Question 25',
-	text: 'S’occuper d’un enfant c’est d’abord',
+	text: 'S’occuper d’un enfant c’est d’abord :',
 	answers: [
 		'Etre patient',
 		'Savoir le distraire',
@@ -227,7 +227,7 @@ let Q25 = {
 };
 let Q26 = {
 	title:'Question 26',
-	text: 'Vous allez chercher un enfant à l’école vous lui achetez son gouter',
+	text: 'Vous allez chercher un enfant à l’école vous lui achetez son goûter :',
 	answers: [
 		'Avant de l’avoir récupéré',
 		'Après l’avoir récupéré'
@@ -235,16 +235,16 @@ let Q26 = {
 };
 let Q27 = {
 	title:'Question 27',
-	text: 'Pour intéresser un enfant il faut',
+	text: 'Pour intéresser un enfant il faut :',
 	answers: [
-		'Connaître ses centres d’intérêts/gouts',
+		'Connaître ses centres d’intérêts/goûts',
 		'Jouer avec lui',
 		'L’encourager dans toutes ses activités'
 	]
 };
 let Q28 = {
 	title:'Question 28',
-	text: 'Si l’enfant ne nous obéie pas on doit céder à son désir afin d’obtenir quelque chose, vrai ou faux',
+	text: 'Si l’enfant ne nous obéit pas on doit céder à son désir afin d’obtenir quelque chose',
 	answers: [
 		'Vrai',
 		'Faux'
@@ -252,10 +252,10 @@ let Q28 = {
 };
 let Q29 = {
 	title:'Question 29',
-	text: 'Chaque année pour déclarer vos revenus',
+	text: 'Chaque année pour déclarer vos revenus :',
 	answers: [
 		'Vous le faites vous-mêmes',
-		'Vous demander à un tiers'
+		'Vous demandez à un tiers'
 	]
 };
 let Q30 = {
@@ -268,7 +268,7 @@ let Q30 = {
 };
 let Q31 = {
 	title:'Question 31',
-	text: 'Aider la personne à trier le courrier fait il partie des fonctions de l’auxiliaire de vie ?',
+	text: 'Aider la personne à trier le courrier fait-il partie des fonctions de l’auxiliaire de vie ?',
 	answers: [
 		'Oui',
 		'Non'
@@ -276,7 +276,7 @@ let Q31 = {
 };
 let Q32 = {
 	title:'Question 32',
-	text: 'Vous êtes sollicitée pour constituer le dossier APA de Mme X, vous',
+	text: 'Vous êtes sollicitée pour constituer le dossier APA de Mme X, vous :',
 	answers: [
 		'Vous demandez à la personne de préparer son avis d’imposition, et contactez son médecin',
 		'Vous ne vous sentez pas concernée'
@@ -284,7 +284,7 @@ let Q32 = {
 };
 let Q33 = {
 	title:'Question 33',
-	text: 'Selon vous le petit bricolage fait il parti des taches d’entretien d’une maison dans l’aide à la personne',
+	text: 'Selon vous le petit bricolage fait il parti des tâches d’entretien d’une maison dans l’aide à la personne ?',
 	answers: [
 		'Oui',
 		'Non'
@@ -318,7 +318,7 @@ let Q36 = {
 };
 let Q37 = {
 	title:'Question 37',
-	text: 'Pratiquez-vous un sport appartenant à un de ces groupes',
+	text: 'Pratiquez-vous un sport appartenant à un de ces groupes ?',
 	answers: [
 		'Sports de résistance (ex : Natation, course a pied)',
 		'Sports d’équipe (ex: volleyball, basquet)',
@@ -328,7 +328,7 @@ let Q37 = {
 };
 let Q38 = {
 	title:'Question 38',
-	text: 'Pour faire participer une personne âgée a un jeu ou une animation il faut',
+	text: 'Pour faire participer une personne âgée à un jeu ou une animation il faut :',
 	answers: [
 		"Créer de l'envie",
 		'Reproposer une participation tous les jours'
