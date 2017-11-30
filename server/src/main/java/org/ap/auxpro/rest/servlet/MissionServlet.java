@@ -29,19 +29,19 @@ public class MissionServlet extends APServletBase {
 				return Response.status(Status.NOT_FOUND).build();
 			}
 			MissionBean bean = new MissionBean();
+			bean.auxiliaryId = data.getAuxiliaryId();
+			bean.customerId = data.getCustomerId();
+			bean.serviceId = data.getServiceId();
+			bean.interventionId = data.getInterventionId();
 			bean.date = TimeHelper.toIntegers(data.getDate());
 			bean.auxStatus = data.getAuxStatus();
 			bean.auxStatusChanged = TimeHelper.toIntegers(data.getAuxStatusChanged());
-			bean.auxiliaryId = data.getAuxiliaryId();
 			bean.hideToAux = data.getHideToAux();
 			bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-			bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
-			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-			bean.customerId = data.getCustomerId();
 			bean.sadStatus = data.getSadStatus();
+			bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
 			bean.id = data.getId();
-			bean.serviceId = data.getServiceId();
-			bean.interventionId = data.getInterventionId();
+			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 			bean.hideToSad = data.getHideToSad();
 			
 			return Response.status(Status.OK).entity(bean).build();
@@ -67,16 +67,16 @@ public class MissionServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setLastUpdateDate(new Date());
+			data.setAuxiliaryId(missionBean.auxiliaryId);
+			data.setCustomerId(missionBean.customerId);
+			data.setServiceId(missionBean.serviceId);
+			data.setInterventionId(missionBean.interventionId);
 			data.setDate(TimeHelper.toDate(missionBean.date));
 			data.setAuxStatus(missionBean.auxStatus);
 			data.setAuxStatusChanged(TimeHelper.toDate(missionBean.auxStatusChanged));
-			data.setAuxiliaryId(missionBean.auxiliaryId);
 			data.setHideToAux(missionBean.hideToAux);
-			data.setSadStatusChanged(TimeHelper.toDate(missionBean.sadStatusChanged));
-			data.setCustomerId(missionBean.customerId);
 			data.setSadStatus(missionBean.sadStatus);
-			data.setServiceId(missionBean.serviceId);
-			data.setInterventionId(missionBean.interventionId);
+			data.setSadStatusChanged(TimeHelper.toDate(missionBean.sadStatusChanged));
 			data.setHideToSad(missionBean.hideToSad);
 			// Store the updated data object
 			MissionCollection.updateNull(data);

@@ -452,6 +452,7 @@ public class AuxiliaryServlet extends APServletBase {
 			List<CustomerBean> beanList = new ArrayList<CustomerBean>();
 			for (CustomerData data : datas) {
 				CustomerBean bean = new CustomerBean();
+				bean.serviceId = data.getServiceId();
 				bean.lastName = data.getLastName();
 				bean.country = data.getCountry();
 				bean.civility = data.getCivility();
@@ -473,7 +474,6 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.skillHousework = data.getSkillHousework();
 				bean.skillDoityourself = data.getSkillDoityourself();
 				bean.id = data.getId();
-				bean.serviceId = data.getServiceId();
 				bean.email = data.getEmail();
 				bean.longitude = data.getLongitude();
 				
@@ -522,22 +522,22 @@ public class AuxiliaryServlet extends APServletBase {
 			List<InterventionBean> beanList = new ArrayList<InterventionBean>();
 			for (InterventionData data : datas) {
 				InterventionBean bean = new InterventionBean();
-				bean.period = data.getPeriod();
 				bean.auxiliaryId = data.getAuxiliaryId();
+				bean.period = data.getPeriod();
 				bean.endDate = TimeHelper.toIntegers(data.getEndDate());
 				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
 				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
 				bean.days = data.getDays();
 				bean.diplomas = data.getDiplomas();
 				bean.startTime = data.getStartTime();
 				bean.endTime = data.getEndTime();
 				bean.id = data.getId();
-				bean.serviceId = data.getServiceId();
 				bean.hideToSad = data.getHideToSad();
 				bean.startDate = TimeHelper.toIntegers(data.getStartDate());
+				bean.customerId = data.getCustomerId();
+				bean.serviceId = data.getServiceId();
 				
 				beanList.add(bean);
 			}
@@ -587,15 +587,15 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.auxStatus = data.getAuxStatus();
 				bean.auxStatusChanged = TimeHelper.toIntegers(data.getAuxStatusChanged());
 				bean.hideToAux = data.getHideToAux();
-				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
-				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
+				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
 				bean.id = data.getId();
-				bean.serviceId = data.getServiceId();
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 				bean.hideToSad = data.getHideToSad();
+				bean.auxiliaryId = data.getAuxiliaryId();
+				bean.customerId = data.getCustomerId();
+				bean.serviceId = data.getServiceId();
 				bean.interventionId = data.getInterventionId();
 				
 				beanList.add(bean);
@@ -643,19 +643,19 @@ public class AuxiliaryServlet extends APServletBase {
 			List<MissionBean> beanList = new ArrayList<MissionBean>();
 			for (MissionData data : datas) {
 				MissionBean bean = new MissionBean();
+				bean.auxiliaryId = data.getAuxiliaryId();
+				bean.customerId = data.getCustomerId();
+				bean.serviceId = data.getServiceId();
+				bean.interventionId = data.getInterventionId();
 				bean.date = TimeHelper.toIntegers(data.getDate());
 				bean.auxStatus = data.getAuxStatus();
 				bean.auxStatusChanged = TimeHelper.toIntegers(data.getAuxStatusChanged());
-				bean.auxiliaryId = data.getAuxiliaryId();
 				bean.hideToAux = data.getHideToAux();
 				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
-				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.customerId = data.getCustomerId();
 				bean.sadStatus = data.getSadStatus();
+				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
 				bean.id = data.getId();
-				bean.serviceId = data.getServiceId();
-				bean.interventionId = data.getInterventionId();
+				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 				bean.hideToSad = data.getHideToSad();
 				
 				beanList.add(bean);
@@ -703,8 +703,8 @@ public class AuxiliaryServlet extends APServletBase {
 			List<IndisponibilityBean> beanList = new ArrayList<IndisponibilityBean>();
 			for (IndisponibilityData data : datas) {
 				IndisponibilityBean bean = new IndisponibilityBean();
-				bean.period = data.getPeriod();
 				bean.auxiliaryId = data.getAuxiliaryId();
+				bean.period = data.getPeriod();
 				bean.endDate = TimeHelper.toIntegers(data.getEndDate());
 				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 				bean.days = data.getDays();

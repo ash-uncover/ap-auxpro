@@ -7,19 +7,19 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class MissionBean {
 
+	public String auxiliaryId;
+	public String customerId;
+	public String serviceId;
+	public String interventionId;
 	public List<Integer> date;
 	public String auxStatus;
 	public List<Integer> auxStatusChanged;
-	public String auxiliaryId;
 	public Boolean hideToAux;
 	public List<Integer> lastUpdateDate;
-	public List<Integer> sadStatusChanged;
-	public List<Integer> creationDate;
-	public String customerId;
 	public String sadStatus;
+	public List<Integer> sadStatusChanged;
 	public String id;
-	public String serviceId;
-	public String interventionId;
+	public List<Integer> creationDate;
 	public Boolean hideToSad;
 
 }
