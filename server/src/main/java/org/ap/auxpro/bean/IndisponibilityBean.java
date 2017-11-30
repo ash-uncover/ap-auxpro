@@ -7,8 +7,8 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IndisponibilityBean {
 
-	public String period;
 	public String auxiliaryId;
+	public String period;
 	public List<Integer> endDate;
 	public List<Integer> lastUpdateDate;
 	public List<String> days;
