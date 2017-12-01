@@ -16,4 +16,6 @@ import boot from 'boot'
 // Our root component handling routing in the application
 import Routes from 'components/Routes'
 import { AppRouter } from 'ap-react-bootstrap'
+import { StoreRegistry } from 'ap-flux'
+StoreRegistry.getStore('AUTH_STORE').loadFromLocalStorage()
 render((<AppRouter routes={Routes} onUpdate={boot.onUpdate} />), document.getElementById('app'))
