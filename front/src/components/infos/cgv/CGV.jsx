@@ -24,62 +24,24 @@ class CGV extends React.Component {
 			<Grid.Container>
 				<Panel className='ap-cgv'>
 					<Panel.Header>
-						<h2>Conditions Générales de Vente de site internet AuXpros</h2>
+						<h2>Charte de confidentialité du site internet AuXpros</h2>
 					</Panel.Header>
 					<Panel.Body>
 						<ol type='1'>
-							<h3><li>Mentions légales</li></h3>
-								<p>Le site : www.auxpros.fr est édité et exploité par la société AUXPROS</p>
-								<p>N° Siret : 82821173000019</p>
-								<p>Auxpros est une SAS (Société par Actions Simplifiées).</p>
-								<p>Société immatriculée au RCS de PARIS</p>
-								<p>son siège social est situé au 46 rue Guersant 75017 PARIS (ci-après « Auxpros »)</p>
-								<p>Email : contact@auxpros.info</p>
-								<p>Tel 0682849494</p>
-								<p>Ce site a été déclaré auprès de la Commission Nationale de l’Informatique et des Libertés (CNIL) la société Auxpros s’engage à respecter strictement les dispositions de la loi n° 78-17 du 6 janvier 1978 modifiée dite  « Informatique et Libertés ».</p>
-
-								<h4>Hébergement</h4>
-									<p>Ce site est hébergé par la société OVH</p>
-
-								<h4>Domaine</h4>
-									<p>Le nom de domaine est géré par la société OVH :</p>
-									<p>SAS au capital de 10 069 020 € </p>
-									<p>RCS Lille Métropole 424 761 419 00045</p>
-									<p>Code NAF 6201Z</p>
-									<p>N° TVA : FR 22 424 761 419</p>
-									<p>Siège social : 2 rue Kellermann - 59100 Roubaix - France.</p>
-
-								<h4>Champ d’application</h4>
-									<p>Les présentes conditions générales de vente s’appliquent à toutes les transactions conclues par le biais du site de la société Auxpros.</p>
-									<p>Est considéré comme « client » toute personne physique ou morale réalisant auprès de la société Auxpros une inscription validée via notre plateforme de paiement sécurisée, ou par chèque ou en numéraire.</p>
-									<p>La société Auxpros se réserve la possibilité d’adapter ou de modifier à tout moment les présentes conditions générales de vente. En cas de modification, il sera appliqué à chaque inscription les conditions générales de vente en vigueur au jour de l’inscription.</p>
-
-							<h3><li>Objet</li></h3>
-								<p>Les présentes conditions générales d’utilisation (ci-après les « CGV ») ont pour objet de définir les modalités et conditions d’utilisation de ventes services proposés sur le site Auxpros (ci-après le « site »), ainsi que les droits et obligations dans ce cadre.</p>
-
-							<h3><li>Conditions de ventes</li></h3>
-								<p>L’inscription des « Utilisateurs » sur le « Site » donne accès à l’ensemble des « Services » tels que décrit dans les Conditions Générales d’Utilisation.</p>
-							<h3><li>Prix des services</li></h3>
+						<p>Cette charte de confidentialité concerne les personnes inscrites sur https://www.auxpros.fr, en tant qu’intervenant(e) à domicile ou en tant que Service d’Aide à la Personne (SAP).</p>
+							<h3><li>Responsable du traitement</li></h3>
+								<p>Tout traitement des données personnelles collectées est effectué sous la responsabilité de : AuXpros, situé au : 46 rue Guersant, 75017 Paris. Les données collectées sont exclusivement destinées à AuXpros et dans le cas des comptes intervenant(e)s aux SAP souhaitant être mis en relation avec ceux-ci dans le cadre d’une mission.</p>
+							<h3><li>Quelles sont les informations collectées par AuXpros ?</li></h3>
+									<p>Nous recevons et stockons toute données que vous saisissez sur notre site Internet lorsque vous vous inscrivez, complétez votre profil personnel et acceptez ou refusez des missions. Sont concernées, toutes les données permettant de vous identifier (« données personnelles »), comprenant votre prénom, votre nom, votre numéro de téléphone, vos adresses postale et email, le début de votre numéro de sécurité sociale, votre date, ville et pays de naissance pour les comptes intervenant(e) et le nom, la raison sociale et le numéro de société pour les comptes SAP.</p>
+							<h3><li>Comment utilisons-nous vos données ?</li></h3>
+								<p>Nous utilisons les données personnelles des comptes d’intervenant(e)s pour communiquer avec eux, leur permettre de nous contacter dans le cadre du service client, si nécessaire, pour évaluer l'intérêt pour nos services et site Internet ainsi que pour les améliorer, pour les informer par email ou par courrier postal de nos offres spéciales ou événement particulier, pour solliciter des informations les concernant, par exemple via des sondages et pour exécuter les Conditions Générales d’Utilisation. Nous transférons également leur nom(s), prénom(s), adresse mail et numéro de téléphone aux SAP inscrits qui souhaiteraient entrer en contact avec eux pour leur confier des missions. Nous utilisons les données personnelles des comptes de SAP pour communiquer avec eux, leur permettre de nous contacter dans le cadre du service client, si nécessaire, pour évaluer l'intérêt pour nos services et site Internet ainsi que pour les améliorer, pour les informer par email ou par courrier postal de nos offres spéciales ou événement particulier, pour solliciter des informations les concernant, par exemple via des sondages et pour exécuter les Conditions Générales d’Utilisation. </p>
+							<h3><li>Vos choix relatifs à la collecte et l’utilisation de vos données</li></h3>
+								<p>Il n’est pas possible d’utiliser un compte inscrit pour trouver ou proposer des missions en l’absence des données demandées sur le profil personnel de l’utilisateur. Il est possible d’avoir accès et de mettre ses coordonnées à jour sur la page « Profil » du site internet Auxpros.fr. Il est possible de clore son compte AuXpros par courrier postal à l’adresse suivante : Société AuXpros 46 rue Guersant 75017 Paris. Veuillez noter qu'après avoir fermé votre compte, vous ne pourrez plus vous connecter ou avoir accès à vos données personnelles. Toutefois, vous pouvez créer un nouveau compte à tout moment.</p>
+							<h3><li>Vos droits relatifs à la loi Informatique et Libertés</li></h3>
+									<p>Conformément à la loi Informatique et Libertés du 6 janvier 1978, vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression aux données personnelles vous concernant. Pour l'exercer, vous pouvez vous rendre directement sur www.auxpros.fr pour changer les informations de votre profil ou adresser votre demande en précisant vos nom, prénom et email par courrier postal à l’adresse suivante : Société AuXpros 46 rue Guersant 75017 Paris. Conformément à la réglementation en vigueur, votre demande doit être signée et accompagnée de la photocopie d'une pièce d'identité portant votre signature. Pour le désabonnement à nos communications par email, il suffit de cliquer sur le lien de désabonnement situé en bas de nos emails.</p>
 								
-								<h4>Pour les « Auxiliaires »</h4>
-									<p>Pour devenir membre d’AuXpros les auxiliaires doivent s’acquitter d’un droit d’entrée de dix euros (10€). Toutefois toute auxiliaire qui rejoindra notre plateforme avant le 31 décembre 2017 deviendra membre AuXpros gracieusement.</p>
-								
-								<h4>Pour les « SAAD »</h4>
-									<p>L’abonnement annuel est de 300€ HT, soit 25€ mensuel. Toutefois tous les SAAD pourront profiter gracieusement de nos services jusqu’au 31 décembre 2017</p>
-									<p>L’« Utilisateur » dispose d’un délai de 14 jours calendaires  pour profiter de son droit de rétractation et annuler son inscription. Les sommes versées sont alors restituées dans un délai de 30 jours fin de mois suivant la date de réception du courrier en recommandé avec accusé de réception.</p>
-
-							<h3><li>Condition de règlement</li></h3>
-								<p>Le client peut choisir de régler ses factures grâce aux modes de paiement ci-dessous. Il peut changer de mode de paiement en cours de contrat, et en informé la société Auxpros par tout moyen :</p>
-								<ul>
-									<li>Par chèque : envoyé à l'adresse d’Auxpros indiquée à l’article 1 des présentes Conditions Générales de ventes</li>
-									<li>Par virement bancaire : à l’ordre d’Auxpros dont les coordonnées bancaires figurent sur le Bon de Commande. Le virement devra être accompagné des références de commande. Lorsque que ce mode de règlement est choisi</li>
-									<li>Par carte bancaire : CB ou VISA, en saisissant les coordonnées et la date d’expiration de sa carte bancaire. Les données sont cryptées lors de leur transmission selon le protocole SSL (Secure Socket Layer) qui garantit la circulation en toute sécurité de ces informations. Les pages dans lesquelles l’Utilisateur est invité à donner le numéro de sa carte sont simplement hébergées par le Site qui ne saurait être responsable en cas de détournement des informations saisies en ligne par l’Utilisateur.</li>
-									<li>Par prélèvement SEPA : paiement par prélèvement SEPA au nom d’Auxpros sur la base d’une autorisation préalable donnée par l’Utilisateur, matérialisée par un mandat, accompagnée d’un RIB et adressée à Auxpros. Ce mandat est caractérisé par une « Référence Unique de Mandat » (RUM). Il vous appartient de communiquer, lors de toute conclusion d’un abonnement par prélèvement automatique et de signature d’un mandat, des informations exactes et complètes et d’informer dans les meilleurs délais Auxpros de toute modification desdites informations survenues au cours du contrat à l’adresse susmentionnée. Toute révocation du mandat de prélèvement SEPA entrainera la résiliation du contrat d’abonnement. quel que soit le type d’Abonnement souscrit, seul l’Utilisateur est responsable du paiement par carte bancaire du service proposé.</li>
-								</ul>
-								<p>Auxpros n’est pas responsable des problèmes de paiement liés au dysfonctionnement du service de commerce électronique.</p>
-
-							<h3><li>Pénalités de retard</li></h3>
-								<p>Conformément aux dispositions légales et réglementaires, à défaut de règlement à l’échéance prévue, des pénalités de retard d'un montant égal au dernier taux appliqué par la Banque Centrale Européenne majoré de 10 points seront appliquées sur le montant TTC de la somme restant due, sans qu’aucune mise en demeure ne soit nécessaire. Le taux applicable pendant le premier semestre de l’année concernée est le taux en vigueur au 1er janvier de l’année en question et celui applicable pour le second semestre de l’année concernée est le taux en vigueur au 1er juillet de l’année en question. En outre, une indemnité forfaitaire de 40 € pour frais de recouvrement pourra être réclamée.</p>
+							<h3><li>Notices et révisions</li></h3>
+									<p>Notre activité est en évolution constante et la présente politique de protection des informations personnelles et nos conditions générales de vente changent également. Nous pourrions être amenés à vous envoyer régulièrement des rappels sur la politique applicable en la matière (sauf si vous nous demandez de ne pas le faire) mais nous vous invitons à consulter notre site Internet régulièrement pour vous informer des changements les plus récents. Sauf mention contraire, notre politique de protection des informations personnelles s'applique à l'utilisation de toutes les informations que nous avons collectées vous concernant ou concernant votre compte. Nous tenons nos promesses et nous ne changerons jamais de manière substantielle nos politiques et nos pratiques dans un sens qui réduirait la protection des informations clients collectées par le passé, sans le consentement des clients concernés.</p>
 						</ol>
 					</Panel.Body>
 				</Panel>

@@ -41,7 +41,7 @@ class AppFooter extends React.Component {
 							Nos services
 						</h3>
 						<p className='ap-footer-text'>
-							L'outil d'AuXpros s'adresse aux Services d'Aide à la Personne, mais également aux intervenantes.
+							L'outil d'AuXpros s'adresse aux Services d'Aide à la Personne, mais également aux intervenant(e)s.
 						</p>
 						<Link href='/infos/services/service'>Vous êtes un SAP</Link>
 						<Link href='/infos/services/auxiliary'>Vous êtes un(e) intervenant(e)</Link>
@@ -51,7 +51,8 @@ class AppFooter extends React.Component {
 							Navigation
 						</h3>
 						<Link href='/infos/cgu'>CGV / CGU</Link>
-						<Link href='/infos/cgu'>Mentions légales</Link>
+						<Link href='/infos/cgv'>Charte de confidentialité</Link>
+						<Link href='/infos/help'>Mentions légales</Link>
 						<Link href='/infos/faq'>S'informer (FAQ)</Link>
 						<Link href='/auth/login'>Connexion</Link>
 					</Grid.Col>
