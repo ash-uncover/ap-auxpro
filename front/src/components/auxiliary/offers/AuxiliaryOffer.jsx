@@ -54,7 +54,7 @@ class AuxiliaryOffer extends React.Component {
 					<Grid.Col sm={6}>
 						<Panel>
 							<Panel.Header>
-								Détails de l'offre
+								Détails de la mission
 							</Panel.Header>
 							<Panel.Body>
 								<div><b>{this.state.customerName}</b></div>

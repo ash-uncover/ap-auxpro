@@ -11,10 +11,10 @@ import OfferStatusSad from 'utils/constants/OfferStatusSad'
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 
 let ACTIONS = {
-	onView: { key: 'search', tooltip: 'Voir offre', callback: 'onView' },
-	onAccept: { key: 'ok', tooltip: 'Accepter offre', callback: 'onAccept' },
-	onDecline: { key: 'remove', tooltip: 'Décliner offre', callback: 'onDecline' },
-	onHide: { key: 'remove', tooltip: 'Supprimer offre', callback: 'onHide' }
+	onView: { key: 'search', tooltip: 'Voir', callback: 'onView', style: 'primary' },
+	onAccept: { key: 'ok', tooltip: 'Accepter', callback: 'onAccept', style: 'success' },
+	onDecline: { key: 'remove', tooltip: 'Décliner', callback: 'onDecline', style: 'danger' },
+	onHide: { key: 'remove', tooltip: 'Supprimer', callback: 'onHide', style: 'danger' }
 }
 
 class AuxiliaryOfferTileData extends BaseData {
@@ -37,23 +37,23 @@ class AuxiliaryOfferTileData extends BaseData {
 		case OfferStatusSad.PENDING:
 			let auxStatus = OfferStatusAux.get(offer.auxStatus)
 			if (auxStatus === OfferStatusAux.ACCEPTED) {
-				offerData.title = 'Offre acceptée'
+				offerData.title = 'Mission acceptée'
 				offerData.actions =  [ ACTIONS.onView ]
 			} else {
-				offerData.title = 'Offre en attente'
+				offerData.title = 'Mission en attente'
 				offerData.actions =  [ ACTIONS.onView, ACTIONS.onAccept, ACTIONS.onDecline ]
 			}
 			break
 		case OfferStatusSad.CONFIRMED:
-			offerData.title = 'Offre confirmée'
+			offerData.title = 'Mission confirmée'
 			offerData.actions =  [ ACTIONS.onHide ]
 			break
 		case OfferStatusSad.REJECTED:
-			offerData.title = 'Offre rejetée'
+			offerData.title = 'Mission rejetée'
 			offerData.actions =  [ ACTIONS.onHide ]
 			break
 		case OfferStatusSad.CANCELED:
-			offerData.title = 'Offre annulée'
+			offerData.title = 'Mission annulée'
 			offerData.actions =  [ ACTIONS.onHide ]
 			break
 		}

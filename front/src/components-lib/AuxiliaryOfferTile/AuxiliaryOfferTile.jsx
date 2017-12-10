@@ -22,28 +22,33 @@ class AuxiliaryOfferTilePending extends React.Component {
 
 	_buildAction(action) {
 		return (
-			<Button key={action.key} bsSize='xs' onClick={this.props[action.callback]} tooltip={action.tooltip}>
+			<Button key={action.key} bsStyle={action.style} onClick={this.props[action.callback]} block>
 				<Glyphicon glyph={action.key}/>
+				<span className='text'>{action.tooltip}</span>
 			</Button>
 		)
 	}
 
 	render() {
 		return (
-			<Grid.Col sm={6} md={4} lg={3} className='ap-auxiliary-offer-tile ap-auxiliary-offer-tile-pending'>
+			<Grid.Col md={6} className='ap-auxiliary-offer-tile ap-auxiliary-offer-tile-pending'>
 				<Panel>
 					<Panel.Header>
 						<p>{this.state.title}</p>
-						{this.state.actions.map(this.buildAction)}
 					</Panel.Header>
 					<Panel.Body>
-						<div className='ap-intile-strong'>
-							<b>Proposé par {this.state.serviceName}</b>
+						<div className='ap-offer-tile-text'>
+							<div className='ap-intile-strong'>
+								<b>Proposé par {this.state.serviceName}</b>
+							</div>
+							<div className='ap-intile-strong'>
+								<b>Chez {this.state.customerName}</b>
+							</div>
+							<p>{this.state.customerAddress}</p>
 						</div>
-						<div className='ap-intile-strong'>
-							<b>Chez {this.state.customerName}</b>
+						<div className='ap-offer-tile-actions'>
+							{this.state.actions.map(this.buildAction)}
 						</div>
-						<p>{this.state.customerAddress}</p>
 					</Panel.Body>
 					<Panel.Footer>
 					</Panel.Footer>

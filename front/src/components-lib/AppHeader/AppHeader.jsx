@@ -56,7 +56,7 @@ class AppHeader extends React.Component {
 						{this._buildLink('Profil','/auxiliary/infos', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Planning','/auxiliary/planing', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Zone','/auxiliary/zone', this.state.tutoMode || this.state.profilMode)}
-						{this._buildLink('Offres','/auxiliary/offers', this.state.tutoMode || this.state.profilMode)}
+						{this._buildLink('Missions','/auxiliary/offers', this.state.tutoMode || this.state.profilMode)}
 						{this._buildLink('Déconnexion','/logout')}
 					</Navbar.Group>
 				)

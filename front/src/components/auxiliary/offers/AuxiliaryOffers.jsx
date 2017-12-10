@@ -88,7 +88,7 @@ class AuxiliaryOffers extends React.Component {
 			<div className='ap-auxiliary-offers'>
 				<Panel>
 					<Panel.Header>
-						Mes offres
+						Mes missions
 					</Panel.Header>
 					<Panel.Body>
 						<Grid.Row>
@@ -108,23 +108,23 @@ class AuxiliaryOffers extends React.Component {
 							</Grid.Col>
 						</Grid.Row>
 						<br/>
-						{ showPending ? <h4>Offres en attente</h4> : null }
+						{ showPending ? <h4>Missions en attente</h4> : null }
 						{ showPending ? this.buildOffers(OfferStatusSad.PENDING) : null }
 						{ showPending ? <Grid.Clearfix /> : null }
 
-						{ showAccepted ? <h4>Offres acceptées</h4> : null }
+						{ showAccepted ? <h4>Missions acceptées</h4> : null }
 						{ showAccepted ? this.buildOffers(OfferStatusAux.ACCEPTED) : null }
 						{ showAccepted ? <Grid.Clearfix /> : null }
 
-						{ showConfirmed ? <h4>Offres confirmées</h4> : null }
+						{ showConfirmed ? <h4>Missions confirmées</h4> : null }
 						{ showConfirmed ? this.buildOffers(OfferStatusSad.CONFIRMED) : null }
 						{ showConfirmed ? <Grid.Clearfix /> : null }
 
-						{ showRejected ? <h4>Offres rejetées</h4> : null }
+						{ showRejected ? <h4>Missions rejetées</h4> : null }
 						{ showRejected ? this.buildOffers(OfferStatusSad.REJECTED) : null }
 						{ showRejected ? <Grid.Clearfix /> : null }
 
-						{ showCanceled ? <h4>Offres annulées</h4> : null }
+						{ showCanceled ? <h4>Missions annulées</h4> : null }
 						{ showCanceled ? this.buildOffers(OfferStatusSad.CANCELED) : null }
 						{ showCanceled ? <Grid.Clearfix /> : null }
 					</Panel.Body>
