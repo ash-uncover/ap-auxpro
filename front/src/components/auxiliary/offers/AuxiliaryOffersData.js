@@ -87,7 +87,7 @@ class AuxiliaryOffersData extends BaseData {
 	onOfferDecline(offer) {
 		AppHelper.setBusy(true).
 		then(function() {
-			return OfferHelper.putOfferDecline(offer)
+			return OfferHelper.putOfferDecline({ id: offer.id })
 		}).
 		then(function () {
 			return OfferHelper.getOffer(offer.id)

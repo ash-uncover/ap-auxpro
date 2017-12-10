@@ -5,7 +5,19 @@ import 'bootstrap'
 import GoogleMapActions from 'actions/GoogleMapActions'
 
 import { StoreRegistry } from 'ap-flux'
-StoreRegistry.getStore('AUTH_STORE').loadFromLocalStorage()
+
+const version = '1.0'
+
+let currentVersion = localStorage.getItem('AP-LS_VERSION')
+
+if (currentVersion === version) {
+	console.log('Info retrieved from local storage')
+	StoreRegistry.getStore('AUTH_STORE').loadFromLocalStorage()
+} else {
+	console.warn('New version detected, reseting local storage')
+	StoreRegistry.getStore('AUTH_STORE').removeFromLocalStorage()
+	localStorage.setItem('AP-LS_VERSION', version)
+}
 
 class Boot {
 	static onUpdate() {
