@@ -9,6 +9,13 @@ class ServiceHeader extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {
+			avatar: '',
+			society: '',
+			address: '',
+			email: '',
+			socialReason: ''
+		}
 	}
 
 	componentWillMount() {

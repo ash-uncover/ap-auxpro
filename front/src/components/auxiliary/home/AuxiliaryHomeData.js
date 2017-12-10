@@ -31,7 +31,7 @@ class AuxiliaryHomeData extends BaseData {
 
 		let missionsCount = Utils.map(MissionHelper.getData()).length
 
-		this.obj.state = {
+		this.setState({
 			premium: (auxiliary.accountType || '') === AccountType.PREMIUM.key,
 			profilCompleted: auxiliary.profilCompleted,
 			offersPendingCount: offersPendingCount,
@@ -41,7 +41,7 @@ class AuxiliaryHomeData extends BaseData {
 			customersCount: customersCount,
 			interventionsCount: interventionsCount,
 			missionsCount: missionsCount
-		}
+		})
 	}
 
 	filterInterventions(intervention) {

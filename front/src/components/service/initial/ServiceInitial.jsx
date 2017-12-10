@@ -14,6 +14,7 @@ class ServiceInitial extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {}
 		this.buildFormGroup = FormHelper.buildFormGroup.bind(this, ServiceUtils.getFieldName)
 		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 	}

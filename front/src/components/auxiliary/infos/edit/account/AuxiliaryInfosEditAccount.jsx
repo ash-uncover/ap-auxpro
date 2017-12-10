@@ -8,6 +8,13 @@ class AuxiliaryInfosEditAccount extends React.Component {
 
 	constructor(props) {
 		super(props)
+
+		this.state = {
+			accountType: null,
+			accountExpiryDate: null,
+			accountCode: '',
+			errorMessage: ''
+		}
 	}
 
 	componentWillMount() {

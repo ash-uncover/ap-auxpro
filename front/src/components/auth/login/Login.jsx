@@ -10,6 +10,14 @@ class Login extends React.Component {
 
 	constructor(props) {
 		super(props)
+
+		this.state = {
+			username: '',
+			password: '',
+			errorLastTry: false,
+			errorJustHappened: false,
+			errorMessage: ''
+		}
 	}
 
 	componentWillMount() {

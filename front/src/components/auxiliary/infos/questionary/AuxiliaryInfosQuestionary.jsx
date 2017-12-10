@@ -10,7 +10,7 @@ class AuxiliaryInfosQuestionary extends React.Component {
 
 	constructor(props) {
 		super(props)
-
+		this.state = {}
 		this.buildQuestions = this._buildQuestions.bind(this)
 	}
 

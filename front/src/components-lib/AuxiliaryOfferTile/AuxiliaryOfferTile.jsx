@@ -8,6 +8,7 @@ class AuxiliaryOfferTilePending extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {}
 		this.buildAction = this._buildAction.bind(this)
 	}
 

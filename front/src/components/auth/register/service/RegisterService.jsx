@@ -10,6 +10,14 @@ class RegisterService extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {
+			email: '',
+			password: '',
+			confirm: '',
+			errorLastTry: false,
+			errorJustHappened: false,
+			errorMessage: ''
+		}
 	}
 
 	componentWillMount() {

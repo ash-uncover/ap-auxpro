@@ -10,10 +10,6 @@ class HelpData extends BaseData {
 
 		this.declareFunction('onLiveSearch')
 
-		this.obj.state = {
-			topics: []
-		}
-
 		this._onHelptopicUpdate()
 
 		HelptopicHelper.register('', this, this.onHelptopicUpdate.bind(this))

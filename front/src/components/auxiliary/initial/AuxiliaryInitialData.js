@@ -49,8 +49,6 @@ class AuxiliaryInitialData extends BaseData {
 
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId())
 		
-		this.obj.state = {}
-
 		for (let i = 0; i < this.FIELDS.length; i++) {
 			let field = this.FIELDS[i]
 			let value = auxiliary[field.key] || field.defaultValue

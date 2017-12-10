@@ -13,9 +13,9 @@ class AccountEditPasswordBaseData extends BaseData {
 		
 		this.declareFunction('onNext')
 
-		this.obj.state = {
+		this.setState({
 			state: STATES.CHANGE
-		}
+		})
 	}
 
 	

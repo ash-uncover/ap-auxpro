@@ -12,6 +12,18 @@ class AuxiliaryHome extends React.Component {
 
 	constructor(props) {
 		super(props)
+
+		this.state = {
+			premium: false,
+			profilCompleted: false,
+			offersPendingCount: 0,
+			offersConfirmedCount: 0,
+			offersRejectedCount: 0,
+			offersCanceledCount: 0,
+			customersCount: 0,
+			interventionsCount: 0,
+			missionsCount: 0
+		}
 	}
 
 	componentWillMount() {

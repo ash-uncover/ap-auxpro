@@ -1,17 +1,28 @@
-var path = require('path');
-var node_modules = path.resolve(__dirname, 'node_modules');
-var pathToReact = path.resolve(node_modules, 'react/dist/react.min.js');
+const path = require('path');
 
-var webpack = require('webpack');
+const paths = {
+    DIST: path.resolve(__dirname, 'dist'),
+    NODE_MODULES: path.resolve(__dirname, 'node_modules'),
+    SRC: path.resolve(__dirname, 'src')
+}
+
+const webpack = require('webpack');
 
 module.exports = {
 
-    entry: path.resolve(__dirname, './src/index.jsx'),
+    entry: path.join(paths.SRC, 'index.jsx'),
 
     output: {
-        path: path.resolve(__dirname, 'build'), 
-        filename: 'bundle.js'
+        path: paths.DIST,
+        filename: 'auxpro.bundle.js'
     },
+
+    plugins: [
+         new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery'
+        })
+    ],
 
     devServer: {
         host: '0.0.0.0',
@@ -20,25 +31,15 @@ module.exports = {
     },
 
     resolve: {
-    	modules: ['node_modules', './src'],
+        modules: ['node_modules', './src'],
         extensions: ['.js', '.jsx']
     },
-
-	plugins: [
-		 new webpack.ProvidePlugin({
-			jQuery: 'jquery',
-			$: 'jquery'
-		})
-	],
 
     module: {
         rules: [
             {
-                test: /.jsx?$/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'react']
-                }
+                test: /\.(js|jsx)$/,
+                use: [ 'babel-loader' ]
             },
             { 
                 test: /node_modules\/jquery\/.+\.(jsx|js)$/,
@@ -75,7 +76,6 @@ module.exports = {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
                 loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
             }
-        ],
-        noParse: [pathToReact]
+        ]
   },
 };

@@ -20,10 +20,6 @@ class AuxiliaryOffersData extends BaseData {
 		this.declareFunction('onOfferAccept')
 		this.declareFunction('onOfferDecline')
 		this.declareFunction('onOfferHide')
-		
-		this.obj.state = {
-			filterState: null
-		}
 
 		this._onOffersUpdate()
 

@@ -16,6 +16,9 @@ class AuxiliaryInfos extends React.Component {
 
 	constructor(props) {
 		super(props)
+
+		this.state = {}
+
 		this.buildFormGroup = this._buildFormGroup.bind(this)
 
 		this.buildSkill = this._buildSkill.bind(this)

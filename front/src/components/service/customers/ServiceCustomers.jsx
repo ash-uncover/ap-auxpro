@@ -13,7 +13,7 @@ class ServiceCustomers extends React.Component {
 
 	constructor(props) {
 		super(props)
-
+		this.state = {}
 		this.filterCustomers = this._filterCustomers.bind(this)
 		this.buildCustomer = this._buildCustomer.bind(this)
 	}

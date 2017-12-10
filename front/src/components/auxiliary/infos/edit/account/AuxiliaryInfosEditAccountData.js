@@ -15,13 +15,6 @@ class AuxiliaryInfosEditAccountData extends BaseData {
 
 		this.declareFunction('isSubmitDisabled')
 
-		this.obj.state = {
-			accountType: null,
-			accountExpiryDate: null,
-			accountCode: '',
-			errorMessage: ''
-		}
-
 		AuxiliaryHelper.register(AuthHelper.getEntityId(), this, this.onAuxiliaryUpdate.bind(this))
 
 		this._onAuxiliaryUpdate()

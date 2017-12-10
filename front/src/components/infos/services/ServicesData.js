@@ -6,8 +6,6 @@ class ServicesData extends BaseData {
 
 	register(obj) {
 		super.register(obj)
-		
-		this.obj.state = {}
 	}
 
 	unregister() {

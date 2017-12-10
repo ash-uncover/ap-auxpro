@@ -17,13 +17,7 @@ class LoginData extends BaseData {
 
 		this.obj.onChangeNoError = this.onChangeNoError.bind(this)
 
-		this.obj.state = {
-			username: '',
-			password: '',
-			errorLastTry: false,
-			errorJustHappened: false,
-			errorMessage: ''
-		}
+		
 	}
 
 	unregister() {

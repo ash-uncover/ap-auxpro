@@ -63,11 +63,6 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 		this.declareFunction('onSubmit')
 
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
-		
-		this.obj.state = {
-			errorMsg: null,
-			errorJustHappened: false
-		}
 
 		for (let i = 0; i < this.FIELDS.length; i++) {
 			let field = this.FIELDS[i]

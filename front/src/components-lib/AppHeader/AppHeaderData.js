@@ -9,12 +9,6 @@ class AppHeaderData extends BaseData {
 	register(obj) {
 		super.register(obj)
 
-		this.obj.state = {
-			authType: null,
-			tutoMode: true,
-			profilMode: true
-		}
-
 		this._onAuthChanged()
 
 		AuthHelper.register('', this, this._onAuthChanged.bind(this))

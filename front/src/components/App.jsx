@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import AppData from './AppData'
 import './App.scss'
 
@@ -14,6 +16,11 @@ class App extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {
+			preload: ap.preload,
+			busy: !!AppHelper.getData('/app/busy'),
+			authType: null
+		}
 	}
 
 	componentWillMount() {
@@ -40,6 +47,6 @@ class App extends React.Component {
 	}
 }
 App.contextTypes = {
-	router: React.PropTypes.object
+	router: PropTypes.object
 }
 export default App

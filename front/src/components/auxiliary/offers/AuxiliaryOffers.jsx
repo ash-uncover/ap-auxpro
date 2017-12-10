@@ -18,6 +18,9 @@ class AuxiliaryOffers extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {
+			filterState: null
+		}
 		this.buildOffer = this._buildOffer.bind(this)
 	}
 

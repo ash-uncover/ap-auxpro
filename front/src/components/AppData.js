@@ -9,12 +9,6 @@ class AppData extends BaseData {
 	register(obj) {
 		super.register(obj)
 
-		this.obj.state = {
-			preload: ap.preload,
-			busy: !!AppHelper.getData('/app/busy'),
-			authType: null
-		}
-
 		AppHelper.register('/path', this, this._onAppStorePathUpdate.bind(this));
 		AppHelper.register('/app/busy', this, this._onAppBusyUpdate.bind(this));
 	}

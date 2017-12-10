@@ -58,7 +58,7 @@ class AuxiliaryOfferTileData extends BaseData {
 			break
 		}
 
-		this.obj.state = {
+		this.setState({
 			customerName: CustomerUtils.getShortName(customer),
 			customerAddress: CustomerUtils.getShortAddress(customer),
 			customerId: customer.id,
@@ -66,7 +66,7 @@ class AuxiliaryOfferTileData extends BaseData {
 			serviceId: service.id,
 			title: offerData.title,
 			actions: offerData.actions
-		}
+		})
 	}
 
 	buildOfferData() {

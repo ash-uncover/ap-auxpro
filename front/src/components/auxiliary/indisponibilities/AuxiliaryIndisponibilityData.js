@@ -10,7 +10,6 @@ class AuxiliaryIndisponibilityData extends BaseData {
 		this.indisponibilityId = indisponibilityId
 
 		this.declareFunction('onCancel')
-
 	}
 
 	unregister() {

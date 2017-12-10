@@ -69,7 +69,7 @@ class AuxiliaryZoneData extends BaseData {
 
 		this.onMarkerClicked = this._onMarkerClicked.bind(this)
 
-		this.obj.state = {
+		this.setState({
 			mode: this.MODE.INFO,
 			showOffers: true,
 			showInterventions: true,
@@ -80,7 +80,7 @@ class AuxiliaryZoneData extends BaseData {
 			customerId: null,
 			geozoneId: null,
 			serviceId: null
-		}
+		})
 
 		this.buildAuxiliaryData()
 		this.buildGeozoneData()

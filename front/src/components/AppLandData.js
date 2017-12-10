@@ -8,8 +8,6 @@ class AppLogoData extends BaseData {
 		super.register(obj)
 
 		this.obj.onClick = AppHelper.navigate.bind(AppHelper, '/home')
-		
-		this.obj.state = {}
 	}
 
 	unregister() {

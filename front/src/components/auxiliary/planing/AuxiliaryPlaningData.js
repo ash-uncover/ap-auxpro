@@ -41,7 +41,7 @@ class AuxiliaryPlaningData extends BaseData {
 		this.declareFunction('onDaySelect')
 		this.declareFunction('onMonthChange')
 		
-		this.obj.state = {
+		this.setState({
 			selectedDay: MomentHelper.toLocalDate(moment()),
 			selectedMonth: MomentHelper.toLocalDate(moment()),
 			showIndisponibilities: true,
@@ -57,7 +57,7 @@ class AuxiliaryPlaningData extends BaseData {
 				{ key: 'PENDING', value: 'Planifiées' },
 				{ key: 'CANCELED', value: 'Annulées' }
 			]
-		}
+		})
 		this.obj.state.indisponibilities = this.buildIndisponibilities()
 		let missions = this.buildMissions()
 		this.obj.state.missionsPlanned = missions.planned

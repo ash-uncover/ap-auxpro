@@ -11,8 +11,6 @@ class LogoutData extends BaseData {
 		AuthHelper.logout().then(function() {
 			AppHelper.navigate('/home')
 		})
-		
-		this.obj.state = {}
 	}
 
 	unregister() {

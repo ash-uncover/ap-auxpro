@@ -14,12 +14,6 @@ class RegisterConfirmData extends BaseData {
 
 		this.obj.onChangeNoError = this.onChangeNoError.bind(this)
 
-		this.obj.state = {
-			email: !!email ? decodeURIComponent(email) : '',
-			emailSet: !!email,
-			token: ''
-		}
-
 		ErrorHelper.register('POST_AUTH_REGISTER', this, this.onRegisterError.bind(this))
 	}
 

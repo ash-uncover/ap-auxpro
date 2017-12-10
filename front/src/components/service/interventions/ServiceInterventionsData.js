@@ -61,12 +61,11 @@ class ServiceInterventionsData extends BaseData {
 	_onInterventionsUpdate() {
 		let canCreateInter = Object.keys(CustomerHelper.getData()).length > 0
 
-		this.obj.state = {
-			pending: [],
-			offered: [],
-			planned: [],
-			canCreateInter: canCreateInter
-		}
+		this.obj.state.pending = []
+		this.obj.state.offered = []
+		this.obj.state.planned = []
+		this.obj.state.canCreateInter = canCreateInter
+		
 		let interventions = Utils.map(InterventionHelper.getData('')).filter(this._filterInterventions)
 		for (let i = 0 ; i < interventions.length ; i++) {
 			let intervention = interventions[i]

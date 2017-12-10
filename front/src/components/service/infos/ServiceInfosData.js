@@ -39,8 +39,6 @@ class ServiceInfosData extends BaseData {
 		this.declareFunction('onModifyEmail')
 		this.declareFunction('onModifyPassword')
 
-		this.obj.state = {}
-
 		this._onServiceUpdate()
 	}
 

@@ -82,9 +82,9 @@ class AuxiliaryZoneEditData extends BaseData {
 		this.declareFunction('onCancel')
 		this.declareFunction('onSubmit')
 
-		this.obj.state = {
+		this.setState({
 			mode: geozoneId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
-		}
+		})
 
 		// Initial data
 		let geozone = GeozoneHelper.getData(this.geozoneId) || {}

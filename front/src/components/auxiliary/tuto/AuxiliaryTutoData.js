@@ -24,11 +24,6 @@ class AuxiliaryTutoData extends BaseData {
 		
 		this.declareFunction('onSlideChange')
 		this.declareFunction('onFinishTutorial')
-
-		this.obj.state = {
-			currentIndex: 0,
-			maxIndex: 0
-		}
 	}
 
 

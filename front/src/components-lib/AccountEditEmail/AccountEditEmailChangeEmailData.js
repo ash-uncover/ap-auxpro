@@ -12,10 +12,10 @@ class AccountEditEmailChangeEmailData extends BaseData {
 		this.declareFunction('onSubmit')
 		this.declareFunction('isSubmitDisabled')
 
-		this.obj.state = {
+		this.setState({
 			email: '',
 			token: token
-		}
+		})
 		
 		ErrorHelper.register('PUT_AUTH_CHANGEMAIL', this, this.handleError.bind(this))
 	}

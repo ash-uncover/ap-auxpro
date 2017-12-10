@@ -14,6 +14,7 @@ class ServiceInterventionMatch extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {}
 		this.buildMatches = this._buildMatches.bind(this)
 	}
 

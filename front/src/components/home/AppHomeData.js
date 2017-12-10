@@ -20,9 +20,6 @@ class AppHomeData extends BaseData {
 		this.obj.onRegisterAux = AppHelper.navigate.bind(AppHelper, '/auth/register/auxiliary')
 		this.obj.onRegisterSad = AppHelper.navigate.bind(AppHelper, '/auth/register/service')
 		this.obj.onNavDGE = this.onNavDGE.bind(this)
-
-		// State
-		this.obj.state = {}
 	}
 
 	unregister() {

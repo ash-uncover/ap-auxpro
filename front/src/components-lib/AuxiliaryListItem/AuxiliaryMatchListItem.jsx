@@ -16,6 +16,7 @@ class AuxiliaryMatchListItem extends BaseComponent {
 		super(props)
 		this.onShowAuxliaryDetails = this._onShowAuxliaryDetails.bind(this)
 		// Base classes
+		this.state = {}
 		this.baseClasses = [ 'ap-auxiliary-list-item', 'ap-auxiliary-list-item-match' ]
 		// Sub components properties
 		this.ListGroupItemLinkProps = {}
@@ -36,11 +37,9 @@ class AuxiliaryMatchListItem extends BaseComponent {
 
 	componentWillMount() {
 		let auxiliary = AuxiliaryHelper.getData(this.props.auxiliaryId)
-		this.state = {
-			avatar: auxiliary.avatar,
-			name: AuxiliaryUtils.getFullName(auxiliary),
-			address: AuxiliaryUtils.getAddress(auxiliary)
-		}
+		this.state.avatar = auxiliary.avatar
+		this.state.name = AuxiliaryUtils.getFullName(auxiliary)
+		this.state.address = AuxiliaryUtils.getAddress(auxiliary)
 	}
 
 	componentDidMount() {

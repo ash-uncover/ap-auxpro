@@ -8,6 +8,15 @@ class AccountEditPasswordChange extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {
+			oldPassword: '',
+			newPassword: '',
+			newConfirm: '',
+			passwordChanged: false,
+			errorLastTry: false,
+			errorJustHappened: false,
+			errorMessage: ''
+		}
 	}
 
 	componentWillMount() {

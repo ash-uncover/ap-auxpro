@@ -8,6 +8,13 @@ class RecoverConfirm extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {
+			email: '',
+			emailSet: false,
+			token: '',
+			password: '',
+			confirm: ''
+		}
 	}
 
 	componentWillMount() {

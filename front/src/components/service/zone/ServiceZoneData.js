@@ -35,7 +35,7 @@ class ServiceZoneData extends BaseData {
 
 		this.service = ServiceHelper.getData(AuthHelper.getEntityId())
 		
-		this.obj.state = {
+		this.setState({
 			service: this.service,
 			showInterventions: true,
 			showCustomers: true,
@@ -46,7 +46,7 @@ class ServiceZoneData extends BaseData {
 			customer: null,
 			auxiliary: null,
 			interventions: []
-		}
+		})
 
 		this.homeMarkers = [ this.buildHomeMarker() ]
 		this.auxiliaryMarkers = this.resolveAuxiliaries().map(this.buildAuxiliaryMarker.bind(this))

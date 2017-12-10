@@ -10,10 +10,6 @@ class RecoverData extends BaseData {
 
 		this.obj.onCancel = AppHelper.navigate.bind(AppHelper, '/home')
 		this.obj.onSubmit = this.onSubmit.bind(this)
-		
-		this.obj.state = {
-			email: ''
-		}
 	}
 
 	unregister() {

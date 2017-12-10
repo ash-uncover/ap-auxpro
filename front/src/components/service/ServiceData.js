@@ -20,10 +20,10 @@ class ServiceData extends BaseData {
 	register(obj) {
 		super.register(obj)
 
-		this.obj.state = {
+		this.setState({
 			showHeader: false,
 			loaded:!! ServiceHelper.getData(AuthHelper.getEntityId())
-		}
+		})
 		
 		/* TODO > find a way to generate this stuff */
 		if (AuthHelper.getType() !== 'service') {

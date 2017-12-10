@@ -11,6 +11,12 @@ class AppHeader extends React.Component {
 
 	constructor(props) {
 		super(props)
+
+		this.state = {
+			authType: null,
+			tutoMode: true,
+			profilMode: true
+		}
 	}
 
 	componentWillMount() {
