@@ -9,7 +9,14 @@ import moment from 'moment'
 import OfferStatusAux from 'utils/constants/OfferStatusAux'
 import OfferStatusSad from 'utils/constants/OfferStatusSad'
 
+import OfferStatus from 'utils-lib/constants/OfferStatus'
+import OfferUtils from 'utils-lib/entities/OfferUtils'
+
 class AuxiliaryOffersData extends BaseData {
+
+	constructor() {
+		super(...arguments)
+	}
 
 	register(obj) {
 		super.register(obj)
@@ -17,11 +24,21 @@ class AuxiliaryOffersData extends BaseData {
 		this.declareFunction('onFilterState')
 
 		this.declareFunction('onOfferView')
-		this.declareFunction('onOfferAccept')
-		this.declareFunction('onOfferDecline')
 		this.declareFunction('onOfferHide')
+		
+		this.declareFunction('onOfferAccept')
+		this.declareFunction('onCancelAccept')
+		this.declareFunction('onConfirmAccept')
+
+		this.declareFunction('onOfferDecline')
+		this.declareFunction('onCancelDecline')
+		this.declareFunction('onConfirmDecline')
 
 		this._onOffersUpdate()
+
+		this.setState({
+			filterState: OfferStatus.RECEIVED
+		})
 
 		OfferHelper.register('', this, this.onOffersUpdate.bind(this))
 	}
@@ -42,14 +59,10 @@ class AuxiliaryOffersData extends BaseData {
 	_onOffersUpdate() {
 		let offers = Utils.reduce(OfferHelper.getData(), function (result, offer) {
 			if (!offer.hideToAux) {
-				let sadStatus = OfferStatusSad.get(offer.sadStatus)
-				let auxStatus = OfferStatusAux.get(offer.auxStatus)
-				if (sadStatus === OfferStatusSad.PENDING && auxStatus === OfferStatusAux.ACCEPTED) {
-					result[auxStatus.key] = result[auxStatus.key] || []
-					result[auxStatus.key].push(offer)
-				} else {
-					result[sadStatus.key] = result[sadStatus.key] || []
-					result[sadStatus.key].push(offer)
+				let status = OfferUtils.getStatus(offer)
+				if (status) {
+					result[status.key] = result[status.key] || []
+					result[status.key].push(offer)
 				}
 			}
 			return result
@@ -65,8 +78,21 @@ class AuxiliaryOffersData extends BaseData {
 	onOfferView(offer) {
 		AppHelper.navigate('/auxiliary/offers/' + offer.id)
 	}
-	
+
 	onOfferAccept(offer) {
+		this.setState({
+			showAccept: true,
+			offer: offer
+		})
+	}
+	onCancelAccept(offer) {
+		this.setState({
+			showAccept: false,
+			offer: null
+		})
+	}
+	onConfirmAccept() {
+		let offer = this.getState('offer')
 		AppHelper.setBusy(true).
 		then(function() {
 			return OfferHelper.putOfferAccept(offer)
@@ -76,15 +102,37 @@ class AuxiliaryOffersData extends BaseData {
 		}).
 		then(function () {
 			setTimeout(AppHelper.setBusy, 200)
-		}).
+			this.setState({
+				showAccept: false,
+				offer: null
+			})
+		}.bind(this)).
 		catch(function (error) {
 			setTimeout(AppHelper.setBusy, 200)
+			this.setState({
+				showAccept: false,
+				offer: null
+			})
 			console.error('Error while accepting offer')
 			console.error(error)
+		}.bind(this))
+	}
+
+
+	onOfferDecline(offer) {
+		this.setState({
+			showDecline: true,
+			offer: offer
 		})
 	}
-	
-	onOfferDecline(offer) {
+	onCancelDecline(offer) {
+		this.setState({
+			showDecline: false,
+			offer: null
+		})
+	}
+	onConfirmDecline() {
+		let offer = this.getState('offer')
 		AppHelper.setBusy(true).
 		then(function() {
 			return OfferHelper.putOfferDecline({ id: offer.id })
@@ -93,14 +141,24 @@ class AuxiliaryOffersData extends BaseData {
 			return OfferHelper.getOffer(offer.id)
 		}).
 		then(function () {
+			this.setState({
+				showDecline: false,
+				offer: null
+			})
 			setTimeout(AppHelper.setBusy, 200)
-		}).
+		}.bind(this)).
 		catch(function (error) {
 			setTimeout(AppHelper.setBusy, 200)
+			this.setState({
+				showDecline: false,
+				offer: null
+			})
 			console.error('Error while accepting offer')
 			console.error(error)
-		})
+		}.bind(this))
 	}
+	
+
 
 	onOfferHide(offer) {
 		offer.hideToAux = true
