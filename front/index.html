@@ -1,33 +1,40 @@
 <!doctype html>
 <html>
-	<head>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100592766-3"></script>
-			<script>
-			  window.dataLayer = window.dataLayer || [];
-			  function gtag(){dataLayer.push(arguments);}
-			  gtag('js', new Date());
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100592766-3"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-			  gtag('config', 'UA-100592766-3');
-			</script>
+          gtag('config', 'UA-100592766-3');
+        </script>
 
-		<meta charset="UTF-8">
-		<meta charset="utf-8">
+        <meta charset="UTF-8">
+        <meta charset="utf-8">
 
-		<meta content="IE=edge" http-equiv="X-UA-Compatible">
-		<meta content="width=device-width, initial-scale=1" name="viewport">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
 
-		<title>AuXpros - Plateforme Emploi Auxiliaire de Vie</title>
+        <meta property="og:type" content="website"/>
+        <meta property="og:site_name" content="AuXpros.fr"/>
+        <meta property="og:image" content="https://www.auxpros.fr/assets/images/auxpro-land-image1.png" />
+        <meta property="og:title" content="AuXpros - Plateforme Emploi Auxiliaire de Vie" />
+        <meta property="og:description" content="Trouvez un emploi grâce à AuXpros, la 1ère plateforme de mise en relation professionnelle entre intervenant(e)s à domicile et services d’aides à la personne" />
+        <meta property="og:url" content="https://www.auxpros.fr/">
 
-		<meta name="Description" content="Trouvez un emploi grâce à AuXpros, la 1ère plateforme de mise en relation professionnelle entre intervenant(e)s à domicile et services d’aides à la personne">
+        <title>AuXpros - Plateforme Emploi Auxiliaire de Vie</title>
 
-		<link rel="icon" type="image/png" href="/assets/images/auxpros-favicon.png" />
+        <meta name="Description" content="Trouvez un emploi grâce à AuXpros, la 1ère plateforme de mise en relation professionnelle entre intervenant(e)s à domicile et services d’aides à la personne">
 
-		<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCdEku3Q5NJItJW7GhFaFPz_PjxKaD-bWk"></script>
+        <link rel="icon" type="image/png" href="/assets/images/auxpros-favicon.png" />
 
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCdEku3Q5NJItJW7GhFaFPz_PjxKaD-bWk"></script>
 
-		<script type="text/javascript">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+
+        <script type="text/javascript">
             ap = {
                 preload: false,
                 listeners: []
@@ -43,27 +50,27 @@
 
         <script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-	</head>
-	<body>
-		<div id="fb-root"></div>
-		<script>
-			(function(d, s, id) {
-					var js, fjs = d.getElementsByTagName(s)[0];
-					if (d.getElementById(id)) return;
-					js = d.createElement(s); js.id = id;
-					js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.10";
-					fjs.parentNode.insertBefore(js, fjs);
-				}(document, 'script', 'facebook-jssdk'));
-		</script>
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <script>
+            (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.10";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+        </script>
 
 
-		<div id="app" class="ap-auxpro"></div>
+        <div id="app" class="ap-auxpro"></div>
 
-		<script src="/auxpro.bundle.js"></script>
+        <script src="/auxpro.bundle.js"></script>
 
-		<script type="text/javascript">
-			ap.onPreload()
-		</script>
+        <script type="text/javascript">
+            ap.onPreload()
+        </script>
 
-	</body>
+    </body>
 </html>
