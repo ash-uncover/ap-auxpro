@@ -13,12 +13,20 @@ class DiplomaUtils {
 			}
 			return filtered
 		}, []).sort(function (value1, value2) {
+			if (value1.key === Diploma.DIPLOMA_NONE.key) return -1
+			if (value2.key === Diploma.DIPLOMA_NONE.key) return 1
+			if (value1.key === Diploma.DIPLOMA_STUDY.key) return -1
+			if (value2.key === Diploma.DIPLOMA_STUDY.key) return 1
 			return (value1.value.localeCompare(value2.value))
 		})
 	}
 
 	static getName(skill) {
 		switch (skill) {
+			case Diploma.DIPLOMA_NONE:
+			case Diploma.DIPLOMA_NONE.key: return 'Aucun diplôme'
+			case Diploma.DIPLOMA_STUDY:
+			case Diploma.DIPLOMA_STUDY.key: return 'En formation'
 			case Diploma.DIPLOMA_1:
 			case Diploma.DIPLOMA_1.key: return "Agent d'accompagnement auprès des personnes âgées et des personnes dépendantes (AAPAPD)"
 			case Diploma.DIPLOMA_2:

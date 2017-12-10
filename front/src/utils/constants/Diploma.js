@@ -3,6 +3,14 @@
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class Diploma {
 
+	static get DIPLOMA_NONE() {
+		return _DIPLOMA_NONE
+	}
+
+	static get DIPLOMA_STUDY() {
+		return _DIPLOMA_STUDY
+	}
+
 	static get DIPLOMA_1() {
 		return _DIPLOMA_1
 	}
@@ -149,6 +157,8 @@ class Diploma {
 
 	static get VALUES() {
 		return [
+			_DIPLOMA_NONE,
+			_DIPLOMA_STUDY,
 			_DIPLOMA_1,
 			_DIPLOMA_2,
 			_DIPLOMA_3,
@@ -193,6 +203,8 @@ class Diploma {
 	}
 
 }
+let _DIPLOMA_NONE = { key: 'diploma_none' }
+let _DIPLOMA_STUDY = { key: 'diploma_study' }
 let _DIPLOMA_1 = { key: 'diploma_1' }
 let _DIPLOMA_2 = { key: 'diploma_2' }
 let _DIPLOMA_3 = { key: 'diploma_3' }

@@ -4,6 +4,9 @@ import $ from 'jquery'
 import 'bootstrap'
 import GoogleMapActions from 'actions/GoogleMapActions'
 
+import { StoreRegistry } from 'ap-flux'
+StoreRegistry.getStore('AUTH_STORE').loadFromLocalStorage()
+
 class Boot {
 	static onUpdate() {
 		window.scrollTo(0, 0)
