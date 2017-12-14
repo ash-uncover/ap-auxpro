@@ -15,7 +15,13 @@ class ServiceAuxiliary extends React.Component {
 
 	constructor(props) {
 		super(props)
-
+		this.state = {
+			avatar: '',
+			name: '',
+			address: '',
+			email: '',
+			diploma: []
+		}
 		this.buildSkill = this._buildSkill.bind(this)
 		this.sortSkills = this._sortSkills.bind(this)
 	}

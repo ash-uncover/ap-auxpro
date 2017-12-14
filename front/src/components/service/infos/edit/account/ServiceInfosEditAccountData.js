@@ -15,12 +15,12 @@ class ServiceInfosEditAccountData extends BaseData {
 
 		this.declareFunction('isSubmitDisabled')
 
-		this.obj.state = {
+		this.setState({
 			accountType: null,
 			accountExpiryDate: null,
 			accountCode: '',
 			errorMessage: ''
-		}
+		})
 
 		ServiceHelper.register(AuthHelper.getEntityId(), this, this.onServiceUpdate.bind(this))
 

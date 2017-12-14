@@ -70,9 +70,7 @@ class ServiceCustomerEditData extends BaseData {
 		this.declareFunction('onCancel')
 		this.declareFunction('onSubmit')
 		
-		this.obj.state = {
-			mode: customerId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
-		}
+		this.obj.state.mode = customerId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
 
 		let customer = CustomerHelper.getData(this.customerId) || {}
 		this.obj.state.customerName = this.customerId !== 'new' ? CustomerUtils.getFullName(customer) : 'Nouvel usager'

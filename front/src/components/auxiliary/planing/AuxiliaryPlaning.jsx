@@ -8,6 +8,7 @@ class AuxiliaryPlaning extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {}
 		this.buildIndisponibility = this._buildIndisponibility.bind(this)
 	}
 

@@ -14,6 +14,7 @@ class ServiceInterventionFollow extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {}
 		this.buildOffers = this._buildOffers.bind(this)
 	}
 

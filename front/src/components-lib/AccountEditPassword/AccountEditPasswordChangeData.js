@@ -13,16 +13,6 @@ class AccountEditPasswordChangeData extends BaseData {
 		this.declareFunction('onSubmit')
 
 		this.declareFunction('isSubmitDisabled')
-		
-		this.obj.state = {
-			oldPassword: '',
-			newPassword: '',
-			newConfirm: '',
-			passwordChanged: false,
-			errorLastTry: false,
-			errorJustHappened: false,
-			errorMessage: ''
-		}
 
 		ErrorHelper.register('PUT_AUTH_PASSWORD', this, this.handlePutAuthPasswordError.bind(this))
 	}

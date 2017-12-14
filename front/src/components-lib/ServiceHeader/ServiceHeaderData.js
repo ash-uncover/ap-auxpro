@@ -14,14 +14,6 @@ class ServiceHeaderData extends BaseData {
 	register(obj) {
 		super.register(obj)
 
-		this.obj.state = {
-			avatar: '',
-			society: '',
-			address: '',
-			email: '',
-			socialReason: ''
-		}
-
 		this._onServiceUpdate()
 
 		ServiceHelper.register(AuthHelper.getEntityId(), this, this._onServiceUpdate.bind(this))

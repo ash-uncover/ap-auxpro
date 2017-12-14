@@ -15,14 +15,6 @@ class ServiceAuxiliaryData extends BaseData {
 		this.declareFunction('onCancel')
 
 		this.auxiliaryId = auxiliaryId
-		
-		this.obj.state = {
-			avatar: '',
-			name: '',
-			address: '',
-			email: '',
-			diploma: []
-		}
 
 		this._onAuxiliaryUpdate()
 		AuxiliaryHelper.register(auxiliaryId, this, this._onAuxiliaryUpdate.bind(this))

@@ -41,8 +41,6 @@ class ServiceCustomerData extends BaseData {
 
 		this.obj.onBack = AppHelper.navigateBack.bind(AppHelper)
 		
-		this.obj.state = {}
-		
 		this._onCustomerUpdate()
 	}
 

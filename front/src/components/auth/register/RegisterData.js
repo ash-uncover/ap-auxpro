@@ -9,8 +9,6 @@ class RegisterData extends BaseData {
 		// Callbacks
 		this.obj.onRegisterAux = AppHelper.navigate.bind(AppHelper, '/auth/register/auxiliary')
 		this.obj.onRegisterSad = AppHelper.navigate.bind(AppHelper, '/auth/register/service')
-		
-		this.obj.state = {}
 	}
 
 	unregister() {

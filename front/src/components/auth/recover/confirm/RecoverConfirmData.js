@@ -15,14 +15,6 @@ class RecoverConfirmData extends BaseData {
 
 		this.obj.onChangeNoError = this.onChangeNoError.bind(this)
 
-		this.obj.state = {
-			email: !!email ? decodeURIComponent(email) : '',
-			emailSet: !!email,
-			token: '',
-			password: '',
-			confirm: ''
-		}
-
 		ErrorHelper.register('POST_AUTH_RECOVER_CHECK', this, this.onRecoverCodeError.bind(this))
 		ErrorHelper.register('PUT_AUTH_RECOVER', this, this.onRecoverPasswordError.bind(this))
 	}

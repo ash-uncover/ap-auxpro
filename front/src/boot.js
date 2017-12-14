@@ -4,6 +4,23 @@ import $ from 'jquery'
 import 'bootstrap'
 import GoogleMapActions from 'actions/GoogleMapActions'
 
+import { StoreRegistry } from 'ap-flux'
+
+
+const version = '1.0'
+const versionItem = 'AP-LS_VERSION'
+
+let currentVersion = localStorage.getItem(versionItem)
+
+if (currentVersion === version) {
+	console.warn('Info retrieved from local storage')
+	StoreRegistry.getStore('AUTH_STORE').loadFromLocalStorage()
+} else {
+	console.warn('New version detected, reseting local storage')
+	StoreRegistry.getStore('AUTH_STORE').removeFromLocalStorage()
+	localStorage.setItem(versionItem, version)
+}
+
 class Boot {
 	static onUpdate() {
 		window.scrollTo(0, 0)

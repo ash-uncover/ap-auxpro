@@ -17,6 +17,7 @@ class ServiceCustomerEdit extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {}
 
 		this.buildFormGroup = this._buildFormGroup.bind(this)
 		this.buildFormControl = this._buildFormControl.bind(this)

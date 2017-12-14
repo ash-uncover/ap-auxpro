@@ -10,15 +10,21 @@ import ModalDialog from 'components-lib/Modal/ModalDialog'
 
 import OfferStatusAux from 'utils/constants/OfferStatusAux'
 import OfferStatusSad from 'utils/constants/OfferStatusSad'
+import OfferStatus from 'utils-lib/constants/OfferStatus'
 
 import OfferStatusAuxUtils from 'utils-lib/entities/OfferStatusAuxUtils'
 import OfferStatusSadUtils from 'utils-lib/entities/OfferStatusSadUtils'
+import OfferStatusUtils from 'utils-lib/entities/OfferStatusUtils'
 
 class AuxiliaryOffers extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {
+			filterState: null
+		}
 		this.buildOffer = this._buildOffer.bind(this)
+		
 	}
 
 	componentWillMount() {
@@ -45,22 +51,19 @@ class AuxiliaryOffers extends React.Component {
 		return (
 			<Button 
 				bsStyle={this.state.filterState === status ? 'primary' : 'default'}
-				onClick={this.onFilterState.bind(this, status)}
-				disabled={!(this.state.offers[key] || []).length}>
-				{ (OfferStatusSadUtils.getNamePlural(key) || OfferStatusAuxUtils.getNamePlural(key)) + ' (' + offers.length + ')' }
+				onClick={this.onFilterState.bind(this, status)}>
+				{ OfferStatusUtils.getNamePlural(status) + ' (' + offers.length + ')' }
 			</Button>
 		)
 	}
 
-	showStatus(status) {
-		let isInFilter = !this.state.filterState || this.state.filterState === status
-		let hasValues = (this.state.offers[status.key] || []).length
-		return isInFilter && hasValues
-			
-	}
-
-	buildOffers(status) {
-		return (this.state.offers[status.key] || []).map(this.buildOffer)
+	buildOffers() {
+		let offers = this.state.offers[this.state.filterState.key]
+		if (offers &&  offers.length) {
+			return offers.map(this.buildOffer)
+		} else {
+			return 'Aucune mission correspondante'
+		}
 	}
 
 	_buildOffer(offer, index) {
@@ -76,58 +79,48 @@ class AuxiliaryOffers extends React.Component {
 	}
 
 	render() {
-		let showPending = this.showStatus(OfferStatusSad.PENDING)
-		let showAccepted = this.showStatus(OfferStatusAux.ACCEPTED)
-		let showConfirmed = this.showStatus(OfferStatusSad.CONFIRMED)
-		let showRejected = this.showStatus(OfferStatusSad.REJECTED)
-		let showCanceled = this.showStatus(OfferStatusSad.CANCELED)
 		return (
 			<div className='ap-auxiliary-offers'>
 				<Panel>
 					<Panel.Header>
-						Mes offres
+						Mes missions
 					</Panel.Header>
 					<Panel.Body>
 						<Grid.Row>
 							<Grid.Col xs={12} className='ap-auxiliary-offers-filter-buttons'>
 								<ButtonGroup>
-									<Button 
-										bsStyle={this.state.filterState ? 'default' : 'primary'}
-										onClick={this.onFilterState}>
-										{ 'Toutes (' + this.countOffers() + ')' }
-									</Button>
-									{this.buildStateButton(OfferStatusSad.PENDING)}
-									{this.buildStateButton(OfferStatusAux.ACCEPTED)}
-									{this.buildStateButton(OfferStatusSad.CONFIRMED)}
-									{this.buildStateButton(OfferStatusSad.REJECTED)}
-									{this.buildStateButton(OfferStatusSad.CANCELED)}
+									{this.buildStateButton(OfferStatus.RECEIVED)}
+									{this.buildStateButton(OfferStatus.WAITING)}
+									{this.buildStateButton(OfferStatus.PLANNED)}
 								</ButtonGroup>
 							</Grid.Col>
 						</Grid.Row>
 						<br/>
-						{ showPending ? <h4>Offres en attente</h4> : null }
-						{ showPending ? this.buildOffers(OfferStatusSad.PENDING) : null }
-						{ showPending ? <Grid.Clearfix /> : null }
-
-						{ showAccepted ? <h4>Offres acceptées</h4> : null }
-						{ showAccepted ? this.buildOffers(OfferStatusAux.ACCEPTED) : null }
-						{ showAccepted ? <Grid.Clearfix /> : null }
-
-						{ showConfirmed ? <h4>Offres confirmées</h4> : null }
-						{ showConfirmed ? this.buildOffers(OfferStatusSad.CONFIRMED) : null }
-						{ showConfirmed ? <Grid.Clearfix /> : null }
-
-						{ showRejected ? <h4>Offres rejetées</h4> : null }
-						{ showRejected ? this.buildOffers(OfferStatusSad.REJECTED) : null }
-						{ showRejected ? <Grid.Clearfix /> : null }
-
-						{ showCanceled ? <h4>Offres annulées</h4> : null }
-						{ showCanceled ? this.buildOffers(OfferStatusSad.CANCELED) : null }
-						{ showCanceled ? <Grid.Clearfix /> : null }
+						{this.buildOffers()}
 					</Panel.Body>
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
+				<ModalDialog 
+					title="Refuser l'offre de mission ?"
+					show={this.state.showDecline}
+					onCancel={this.onCancelDecline}
+					confirmStyle='danger'
+					onConfirm={this.onConfirmDecline}>
+					Êtes-vous sûr ?
+					<br/>
+					Votre refus sera communiqué au SAP et vous ne serez plus notifié pour cette offre de mission.
+				</ModalDialog>
+				<ModalDialog 
+					title="Accepter l'offre de mission ?"
+					show={this.state.showAccept}
+					onCancel={this.onCancelAccept}
+					confirmStyle='success'
+					onConfirm={this.onConfirmAccept}>
+					Êtes-vous sûr ?
+					<br/>
+					En acceptant l'offre de mission
+				</ModalDialog>
 			</div>
 		)
 	}

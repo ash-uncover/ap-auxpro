@@ -1,7 +1,7 @@
 import React from 'react'
 import './Modal.scss'
 
-import { BaseComponent, Panel, Button } from 'ap-react-bootstrap'
+import { BaseComponent, Panel, Button, Grid } from 'ap-react-bootstrap'
 
 import Modal from './Modal.jsx'
 
@@ -18,6 +18,8 @@ class ModalDialog extends BaseComponent {
 		}
 		//
 		this.dialogProps = {}
+		this.cancelProps = {}
+		this.confirmProps = {}
 		// Component properties
 		this.propsInfos = {
 			required : {
@@ -27,8 +29,10 @@ class ModalDialog extends BaseComponent {
 			},
 			optionnal : {
 				show: { defaultValue: false },
-				cancelLabel: { defaultValue: 'Annuler', store: this.dialogProps },
-				confirmLabel: { defaultValue: 'OK', store: this.dialogProps },
+				cancelStyle: { defaultValue: 'primary', rename: 'bsStyle', store: this.cancelProps },
+				cancelLabel: { defaultValue: 'Annuler', rename: 'children', store: this.cancelProps },
+				confirmStyle: { defaultValue: 'primary', rename: 'bsStyle', store: this.confirmProps },
+				confirmLabel: { defaultValue: 'OK', rename: 'children', store: this.confirmProps },
 				onCancel: {}
 			}
 		}
@@ -67,16 +71,20 @@ class ModalDialog extends BaseComponent {
 						{this.props.children}
 					</Panel.Body>
 					<Panel.Footer>
-						<Button
-							bsStyle='primary'
-							onClick={this.onCancel}>
-							{this.dialogProps.cancelLabel}
-						</Button>
-						<Button
-							bsStyle='primary'
-							onClick={this.onConfirm}>
-							{this.dialogProps.confirmLabel}
-						</Button>
+						<Grid.Row>
+							<Grid.Col xs={6}>
+								<Button
+									block
+									{...this.cancelProps}
+									onClick={this.onCancel} />
+							</Grid.Col>
+							<Grid.Col xs={6}>
+								<Button
+									block
+									{...this.confirmProps}
+									onClick={this.onConfirm} />
+							</Grid.Col>
+						</Grid.Row>
 					</Panel.Footer>
 				</Panel>
 			</Modal>

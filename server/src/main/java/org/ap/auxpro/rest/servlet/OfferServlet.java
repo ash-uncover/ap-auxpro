@@ -9,8 +9,8 @@ import org.ap.web.internal.APWebException;
 import javax.annotation.security.RolesAllowed;
 import org.ap.auxpro.helpers.OfferHelper;
 import org.ap.auxpro.bean.OfferBean;
-import org.ap.auxpro.storage.OfferData;
-import org.ap.auxpro.storage.OfferCollection;
+import org.ap.auxpro.storage.offer.OfferData;
+import org.ap.auxpro.storage.offer.OfferCollection;
 import org.ap.common.TimeHelper;
 import org.ap.auxpro.bean.OfferEmptyBean;
 
@@ -50,15 +50,15 @@ public class OfferServlet extends APServletBase {
 			bean.auxStatus = data.getAuxStatus();
 			bean.auxStatusChanged = TimeHelper.toIntegers(data.getAuxStatusChanged());
 			bean.hideToAux = data.getHideToAux();
-			bean.auxiliaryId = data.getAuxiliaryId();
 			bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-			bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
-			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-			bean.customerId = data.getCustomerId();
 			bean.sadStatus = data.getSadStatus();
+			bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
 			bean.id = data.getId();
-			bean.serviceId = data.getServiceId();
+			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
 			bean.hideToSad = data.getHideToSad();
+			bean.auxiliaryId = data.getAuxiliaryId();
+			bean.customerId = data.getCustomerId();
+			bean.serviceId = data.getServiceId();
 			bean.interventionId = data.getInterventionId();
 			
 			return Response.status(Status.OK).entity(bean).build();

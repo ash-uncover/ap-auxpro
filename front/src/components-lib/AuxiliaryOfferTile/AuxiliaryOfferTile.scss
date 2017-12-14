@@ -12,23 +12,29 @@
 			margin: 0;
 		}
 
-		.ap-button {
+		
+	}
+
+	.ap-panel-body {
+		display: flex;
+
+		.ap-offer-tile-text {
+			height: 100%;
+			flex-grow: 1;
+		}
+		.ap-offer-tile-actions {
+			height: 100%;
 			flex-grow: 0;
-			margin: 0 0.1rem;
-			color: $ap-secondary-color;
-			background: transparent;
 
-			&:hover {
-				color: $ap-primary-color;
-				background: rgba(0, 0, 0, 0.05);
-			}
-
-			&:first-child {
-				margin-left: 0;
-			}
-
-			&:last-child {
-				margin-right: 0;
+			.ap-button {
+				display: flex;
+				align-items: center;
+				min-width: 115px;
+				
+				.text {
+					margin-left: 10px;
+					padding: 3px;
+				}
 			}
 		}
 	}

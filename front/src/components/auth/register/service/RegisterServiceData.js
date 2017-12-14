@@ -14,15 +14,6 @@ class RegisterServiceData extends BaseData {
 
 		this.obj.onChangeNoError = this.onChangeNoError.bind(this)
 
-		this.obj.state = {
-			email: '',
-			password: '',
-			confirm: '',
-			errorLastTry: false,
-			errorJustHappened: false,
-			errorMessage: ''
-		}
-
 		ErrorHelper.register('POST_SERVICE', this, this.onRegisterError.bind(this))
 	}
 

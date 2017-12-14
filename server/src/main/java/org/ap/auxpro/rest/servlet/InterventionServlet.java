@@ -9,8 +9,8 @@ import org.ap.web.internal.APWebException;
 import javax.annotation.security.RolesAllowed;
 import org.ap.auxpro.helpers.InterventionHelper;
 import org.ap.auxpro.bean.InterventionBean;
-import org.ap.auxpro.storage.InterventionData;
-import org.ap.auxpro.storage.InterventionCollection;
+import org.ap.auxpro.storage.intervention.InterventionData;
+import org.ap.auxpro.storage.intervention.InterventionCollection;
 import org.ap.common.TimeHelper;
 import org.ap.auxpro.bean.InterventionPutBean;
 import java.util.Date;
@@ -49,22 +49,22 @@ public class InterventionServlet extends APServletBase {
 				return Response.status(Status.NOT_FOUND).build();
 			}
 			InterventionBean bean = new InterventionBean();
-			bean.period = data.getPeriod();
 			bean.auxiliaryId = data.getAuxiliaryId();
+			bean.period = data.getPeriod();
 			bean.endDate = TimeHelper.toIntegers(data.getEndDate());
 			bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 			bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
 			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-			bean.customerId = data.getCustomerId();
 			bean.sadStatus = data.getSadStatus();
 			bean.days = data.getDays();
 			bean.diplomas = data.getDiplomas();
 			bean.startTime = data.getStartTime();
 			bean.endTime = data.getEndTime();
 			bean.id = data.getId();
-			bean.serviceId = data.getServiceId();
 			bean.hideToSad = data.getHideToSad();
 			bean.startDate = TimeHelper.toIntegers(data.getStartDate());
+			bean.customerId = data.getCustomerId();
+			bean.serviceId = data.getServiceId();
 			
 			return Response.status(Status.OK).entity(bean).build();
 			
@@ -91,14 +91,14 @@ public class InterventionServlet extends APServletBase {
 			data.setLastUpdateDate(new Date());
 			data.setPeriod(interventionPutBean.period);
 			data.setEndDate(TimeHelper.toDate(interventionPutBean.endDate));
-			data.setCustomerId(interventionPutBean.customerId);
 			data.setDays(interventionPutBean.days);
 			data.setDiplomas(interventionPutBean.diplomas);
 			data.setStartTime(interventionPutBean.startTime);
 			data.setEndTime(interventionPutBean.endTime);
-			data.setServiceId(interventionPutBean.serviceId);
 			data.setHideToSad(interventionPutBean.hideToSad);
 			data.setStartDate(TimeHelper.toDate(interventionPutBean.startDate));
+			data.setCustomerId(interventionPutBean.customerId);
+			data.setServiceId(interventionPutBean.serviceId);
 			// Store the updated data object
 			InterventionCollection.updateNull(data);
 			// Send the response

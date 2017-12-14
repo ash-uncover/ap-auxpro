@@ -6,6 +6,7 @@ import ErrorHelper from 'helpers/ErrorHelper'
 import { BaseData, Nationality } from 'ap-react-bootstrap'
 
 import AuxiliaryFields from 'utils/entities/AuxiliaryFields'
+import Diploma from 'utils/constants/Diploma'
 
 import AuxiliaryStatusUtils from 'utils-lib/entities/AuxiliaryStatusUtils'
 import BooleanUtils from 'utils-lib/BooleanUtils'
@@ -62,11 +63,6 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 		this.declareFunction('onSubmit')
 
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
-		
-		this.obj.state = {
-			errorMsg: null,
-			errorJustHappened: false
-		}
 
 		for (let i = 0; i < this.FIELDS.length; i++) {
 			let field = this.FIELDS[i]
@@ -103,6 +99,23 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 		this.obj.state.errorJustHappened = false
 		if (id === 'addressSearch') {
 			this.onChangeAddress(...arguments)
+		} else if (id === 'diploma') {
+			let isCurrentNone = this.obj.state.diploma.length === 1 && this.obj.state.diploma.indexOf(Diploma.DIPLOMA_NONE.key) !== -1
+			let isCurrentStudy = this.obj.state.diploma.length === 1 && this.obj.state.diploma.indexOf(Diploma.DIPLOMA_STUDY.key) !== -1
+			let isNewNone = arguments.length > 2 && arguments[2].indexOf(Diploma.DIPLOMA_NONE.key) !== -1
+			let isNewStudy = arguments.length > 2 && arguments[2].indexOf(Diploma.DIPLOMA_STUDY.key) !== -1
+			let args = [].concat(arguments[2])
+
+			if (isCurrentNone && arguments[2].length > 1) {
+				args.splice(args.indexOf(Diploma.DIPLOMA_NONE.key), 1)
+			} else if (!isCurrentNone && isNewNone) {
+				args = [Diploma.DIPLOMA_NONE.key]
+			} else if (isCurrentStudy && arguments[2].length > 1) {
+				args.splice(args.indexOf(Diploma.DIPLOMA_STUDY.key), 1)
+			} else if (!isCurrentStudy && isNewStudy) {
+				args = [Diploma.DIPLOMA_STUDY.key]
+			}
+			this.onChangeDirty(id, arguments[1], args)
 		} else {
 			this.onChangeDirty(...arguments)
 		}

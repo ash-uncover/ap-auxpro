@@ -35,9 +35,9 @@ class ServiceInterventionData extends BaseData {
 		this.declareFunction('onCancel')
 		this.declareFunction('onSubmit')
 
-		this.obj.state = {
+		this.setState({
 			mode: interventionId !== 'new' ? MODES.EDIT : MODES.CREATE
-		}
+		})
 
 		let defaultDate = MomentHelper.toLocalDate(moment())
 		let customers = this.getCustomers()

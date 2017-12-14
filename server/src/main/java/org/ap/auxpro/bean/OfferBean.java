@@ -10,15 +10,15 @@ public class OfferBean {
 	public String auxStatus;
 	public List<Integer> auxStatusChanged;
 	public Boolean hideToAux;
-	public String auxiliaryId;
 	public List<Integer> lastUpdateDate;
-	public List<Integer> sadStatusChanged;
-	public List<Integer> creationDate;
-	public String customerId;
 	public String sadStatus;
+	public List<Integer> sadStatusChanged;
 	public String id;
-	public String serviceId;
+	public List<Integer> creationDate;
 	public Boolean hideToSad;
+	public String auxiliaryId;
+	public String customerId;
+	public String serviceId;
 	public String interventionId;
 
 }

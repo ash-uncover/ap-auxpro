@@ -24,10 +24,10 @@ class ServiceCustomersData extends BaseData {
 		this.declareFunction('onCancelDelete')
 		this.declareFunction('onConfirmDelete')
 		
-		this.obj.state = {
+		this.setState({
 			customers: Utils.map(CustomerHelper.getData()),
 			search: ''
-		}
+		})
 
 		CustomerHelper.register('', this, this.onCustomersUpdate.bind(this))
 	}

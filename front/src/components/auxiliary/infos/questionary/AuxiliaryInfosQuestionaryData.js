@@ -10,9 +10,7 @@ class AuxiliaryInfosQuestionaryData extends BaseData {
 		
 		this.declareFunction('onCancel')
 		
-		this.obj.state = {
-			skillAnswers: AuxiliaryHelper.getData(AuthHelper.getEntityId()).skillAnswers
-		}
+		this.obj.state.skillAnswers = AuxiliaryHelper.getData(AuthHelper.getEntityId()).skillAnswers
 	}
 
 	unregister() {

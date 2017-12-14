@@ -10,10 +10,6 @@ class FAQData extends BaseData {
 
 		this.declareFunction('onLiveSearch')
 
-		this.obj.state = {
-			topics: []
-		}
-
 		this._onHelpfaqUpdate()
 
 		HelpfaqHelper.register('', this, this.onHelpfaqUpdate.bind(this))

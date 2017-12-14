@@ -32,11 +32,11 @@ class ServiceInterventionFollowData extends BaseData {
 		}
 		let customer = CustomerHelper.getData(intervention.customerId)
 		
-		this.obj.state = {
+		this.setState({
 			offers: InterventionUtils.getOffers(intervention),
 			intervention: intervention,
 			customer: customer
-		}
+		})
 	}
 
 	unregister() {

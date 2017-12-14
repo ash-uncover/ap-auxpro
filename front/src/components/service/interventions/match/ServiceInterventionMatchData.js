@@ -29,12 +29,12 @@ class ServiceInterventionMatchData extends BaseData {
 		}
 		let customer = CustomerHelper.getData(intervention.customerId)
 
-		this.obj.state = {
+		this.setState({
 			matches: intervention.match,
 			intervention: intervention,
 			customer: customer,
 			selected: []
-		}
+		})
 	}
 
 	unregister() {

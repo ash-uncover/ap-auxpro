@@ -21,6 +21,7 @@ class ServiceInterventions extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {}
 		this.buildPending = this._buildPending.bind(this)
 		this.buildOffered = this._buildOffered.bind(this)
 		this.buildPlanned = this._buildPlanned.bind(this)

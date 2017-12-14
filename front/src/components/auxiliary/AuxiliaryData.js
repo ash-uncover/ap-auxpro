@@ -22,10 +22,6 @@ class AuxiliaryData extends BaseData {
 	register(obj) {
 		super.register(obj)
 
-		this.obj.state = {
-			showHeader: false
-		}		
-
 		/* TODO > find a way to generate this stuff */
 		if (AuthHelper.getType() !== 'auxiliary') {
 			AppHelper.navigate('/home')

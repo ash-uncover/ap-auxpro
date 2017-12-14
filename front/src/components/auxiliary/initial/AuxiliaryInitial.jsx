@@ -13,6 +13,8 @@ class AuxiliaryInitial extends React.Component {
 	constructor(props) {
 		super(props)
 
+		this.state = {}
+
 		this.buildFormGroup = FormHelper.buildFormGroup.bind(this, AuxiliaryUtils.getFieldName)
 		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 	}

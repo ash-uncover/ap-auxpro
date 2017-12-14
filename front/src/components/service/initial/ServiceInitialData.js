@@ -45,8 +45,6 @@ class ServiceInitialData extends BaseData {
 
 		let service = ServiceHelper.getData(AuthHelper.getEntityId()) || {}
 		
-		this.obj.state = {}
-
 		for (let i = 0; i < this.FIELDS.length; i++) {
 			let field = this.FIELDS[i]
 			let value = service[field.key]

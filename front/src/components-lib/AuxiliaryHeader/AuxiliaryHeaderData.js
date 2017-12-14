@@ -12,15 +12,7 @@ class AuxiliaryHeaderData extends BaseData {
 
 	register(obj) {
 		super.register(obj)
-
-		this.obj.state = {
-			avatar: '',
-			name: '',
-			address: '',
-			email: '',
-			phone: ''
-		}
-
+		
 		this._onAuxiliaryUpdate()
 
 		AuxiliaryHelper.register(AuthHelper.getEntityId(), this, this._onAuxiliaryUpdate.bind(this))

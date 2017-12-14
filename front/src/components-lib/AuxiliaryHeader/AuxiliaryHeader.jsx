@@ -9,6 +9,13 @@ class AuxiliaryHeader extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {
+			avatar: '',
+			name: '',
+			address: '',
+			email: '',
+			phone: ''
+		}
 	}
 
 	componentWillMount() {

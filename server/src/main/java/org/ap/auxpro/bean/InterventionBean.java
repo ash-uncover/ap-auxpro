@@ -7,21 +7,21 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class InterventionBean {
 
-	public String period;
 	public String auxiliaryId;
+	public String period;
 	public List<Integer> endDate;
 	public List<Integer> lastUpdateDate;
 	public List<Integer> sadStatusChanged;
 	public List<Integer> creationDate;
-	public String customerId;
 	public String sadStatus;
 	public List<String> days;
 	public List<String> diplomas;
 	public List<Integer> startTime;
 	public List<Integer> endTime;
 	public String id;
-	public String serviceId;
 	public Boolean hideToSad;
 	public List<Integer> startDate;
+	public String customerId;
+	public String serviceId;
 
 }

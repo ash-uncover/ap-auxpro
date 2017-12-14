@@ -72,8 +72,6 @@ class AuxiliaryInfosData extends BaseData {
 		this.declareFunction('onModifyEmail')
 		this.declareFunction('onModifyPassword')
 
-		this.obj.state = {}
-
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
 		for (let i = 0; i < this.FIELDS.length; i++) {
 			let field = this.FIELDS[i]

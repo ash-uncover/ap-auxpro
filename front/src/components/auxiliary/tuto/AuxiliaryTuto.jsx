@@ -8,6 +8,10 @@ class AuxiliaryTuto extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {
+			currentIndex: 0,
+			maxIndex: 0
+		}
 	}
 
 	componentWillMount() {

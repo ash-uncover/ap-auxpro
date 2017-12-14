@@ -13,6 +13,11 @@ class AuxiliaryInfosEditInfos extends React.Component {
 
 	constructor(props) {
 		super(props)
+
+		this.state = {
+			errorMsg: null,
+			errorJustHappened: false
+		}
 		
 		this.buildFormGroup = FormHelper.buildFormGroup.bind(this, AuxiliaryUtils.getFieldName)
 		this.buildFormControl = FormHelper.buildFormControl.bind(this)

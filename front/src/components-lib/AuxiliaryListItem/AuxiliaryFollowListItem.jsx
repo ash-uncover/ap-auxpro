@@ -19,6 +19,7 @@ class AuxiliaryFollowListItem extends BaseComponent {
 	constructor(props) {
 		super(props)
 		this.onShowAuxliaryDetails = this._onShowAuxliaryDetails.bind(this)
+		this.state = {}
 		// Base classes
 		this.baseClasses = [ 'ap-auxiliary-list-item', 'ap-auxiliary-list-item-follow' ]
 		// Component properties
@@ -36,12 +37,10 @@ class AuxiliaryFollowListItem extends BaseComponent {
 		let offer = OfferHelper.getData(this.props.offerId)
 		this.auxiliaryId = offer.auxiliaryId
 		let auxiliary = AuxiliaryHelper.getData(offer.auxiliaryId)
-		this.state = {
-			avatar: auxiliary.avatar,
-			name: AuxiliaryUtils.getFullName(auxiliary),
-			address: AuxiliaryUtils.getAddress(auxiliary),
-			status: OfferStatusAux.get(offer.auxStatus)
-		}
+		this.state.avatar = auxiliary.avatar
+		this.state.name = AuxiliaryUtils.getFullName(auxiliary)
+		this.state.address = AuxiliaryUtils.getAddress(auxiliary)
+		this.state.status = OfferStatusAux.get(offer.auxStatus)
 	}
 
 

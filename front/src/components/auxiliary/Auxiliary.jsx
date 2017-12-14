@@ -10,6 +10,9 @@ class Auxiliary extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {
+			showHeader: false
+		}
 	}
 
 	componentWillMount() {

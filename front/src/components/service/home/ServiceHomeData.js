@@ -21,13 +21,13 @@ class ServiceHomeData extends BaseData {
 		let interventionsCount = Utils.map(InterventionHelper.getData()).length
 		let auxiliariesCount = Utils.map(AuxiliaryHelper.getData()).length
 
-		this.obj.state = {
+		this.setState({
 			premium: (service.accountType || '') === AccountType.PREMIUM.key,
 			profilCompleted: service.profilCompleted,
 			customersCount: customersCount,
 			interventionsCount: interventionsCount,
 			auxiliariesCount: auxiliariesCount
-		}
+		})
 	}
 }
 let ServiceHomeObj = new ServiceHomeData()

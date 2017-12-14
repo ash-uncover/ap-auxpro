@@ -75,11 +75,11 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 		this.declareFunction('onConfirmDelete')
 		this.declareFunction('onSubmit')
 		
-		this.obj.state = {
+		this.setState({
 			errorMsg: null,
 			errorJustHappened: false,
 			mode: indisponibilityId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
-		}
+		})
 
 		let indisponibility = IndisponibilityHelper.getData(this.indisponibilityId) || {}
 		for (let i = 0; i < this.FIELDS.length; i++) {

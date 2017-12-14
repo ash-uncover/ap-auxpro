@@ -7,6 +7,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class CustomerBean {
 
+	public String serviceId;
 	public String lastName;
 	public String country;
 	public String civility;
@@ -28,7 +29,6 @@ public class CustomerBean {
 	public Integer skillHousework;
 	public Integer skillDoityourself;
 	public String id;
-	public String serviceId;
 	public String email;
 	public Double longitude;
 

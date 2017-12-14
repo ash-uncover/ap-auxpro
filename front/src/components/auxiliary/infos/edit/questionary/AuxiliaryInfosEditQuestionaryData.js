@@ -19,10 +19,8 @@ class AuxiliaryInfosEditQuestionaryData extends BaseData {
 		this.declareFunction('onCancel')
 		this.declareFunction('onSubmit')
 		
-		this.obj.state = {
-			dirty: false,
-			skillAnswers: AuxiliaryHelper.getData(AuthHelper.getEntityId()).skillAnswers || DEFAULT_ANSWERS
-		}
+		this.obj.state.dirty = false
+		this.obj.state.skillAnswers = AuxiliaryHelper.getData(AuthHelper.getEntityId()).skillAnswers || DEFAULT_ANSWERS
 	}
 
 	unregister() {

@@ -6,8 +6,6 @@ class AuxiliaryServiceData extends BaseData {
 
 	register(obj, serviceId) {
 		super.register(obj)
-		
-		this.obj.state = {}
 	}
 
 	unregister() {

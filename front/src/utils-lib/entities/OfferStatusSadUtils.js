@@ -27,13 +27,13 @@ class OfferStatusSadUtils {
 	static getNameOfferPlural(status, nb) {
 		switch (status) {
 			case OfferStatusSad.PENDING.key: 
-				return TextUtils.pluralize('nouvelle', nb) + ' ' + TextUtils.pluralize('offre', nb)
+				return TextUtils.pluralize('mission', nb) + ' ' + TextUtils.pluralize('reçue', nb)
 			case OfferStatusSad.CANCELED.key: 
-				return TextUtils.pluralize('offre', nb) + ' ' + TextUtils.pluralize('annulée', nb)
+				return TextUtils.pluralize('mission', nb) + ' ' + TextUtils.pluralize('annulée', nb)
 			case OfferStatusSad.CONFIRMED.key: 
-				return TextUtils.pluralize('offre', nb) + ' ' + TextUtils.pluralize('confirmée', nb)
+				return TextUtils.pluralize('mission', nb) + ' ' + TextUtils.pluralize('confirmée', nb)
 			case OfferStatusSad.REJECTED.key: 
-				return TextUtils.pluralize('offre', nb) + ' ' + TextUtils.pluralize('rejetée', nb)
+				return TextUtils.pluralize('mission', nb) + ' ' + TextUtils.pluralize('rejetée', nb)
 		}
 		return ''
 	}

@@ -12,6 +12,18 @@ class AuxiliaryHome extends React.Component {
 
 	constructor(props) {
 		super(props)
+
+		this.state = {
+			premium: false,
+			profilCompleted: false,
+			offersPendingCount: 0,
+			offersConfirmedCount: 0,
+			offersRejectedCount: 0,
+			offersCanceledCount: 0,
+			customersCount: 0,
+			interventionsCount: 0,
+			missionsCount: 0
+		}
 	}
 
 	componentWillMount() {
@@ -26,7 +38,7 @@ class AuxiliaryHome extends React.Component {
 		let count = this.state['offers' + status + 'Count']
 		return (
 			<div>
-				<strong><b>{count}</b></strong>
+				J'ai <strong><b>{count}</b></strong>
 				{' ' + TextUtils.capitalize(OfferStatusSadUtils.getNameOfferPlural(OfferStatusSad[status.toUpperCase()].key, count)) + '.'}
 			</div>
 		)
@@ -56,7 +68,7 @@ class AuxiliaryHome extends React.Component {
 							Statut profil
 						</Panel.Header>
 						<Panel.Body>
-							<strong>{'Votre profil est ' + (this.state.profilCompleted ? 'actif' : 'incomplet') + '.'}</strong>
+							<strong>{'Votre profil est ' + (this.state.profilCompleted ? 'complet' : 'incomplet') + '.'}</strong>
 						</Panel.Body>
 						<Panel.Footer>
 						</Panel.Footer>
@@ -85,8 +97,8 @@ class AuxiliaryHome extends React.Component {
 						</Panel.Header>
 						<Panel.Body>
 							<div>
-								<strong><b>{this.state.interventionsCount}</b></strong>
-								{' ' + TextUtils.pluralize('Intervention', this.state.interventionsCount) + ' en cours.'}
+								J'ai <strong><b>{this.state.interventionsCount}</b></strong>
+								{' ' + TextUtils.pluralize('mission', this.state.interventionsCount) + ' actuellement ' + TextUtils.pluralize('planifiée', this.state.interventionsCount) + '.'}
 							</div>
 						</Panel.Body>
 						<Panel.Footer>
@@ -100,8 +112,8 @@ class AuxiliaryHome extends React.Component {
 						</Panel.Header>
 						<Panel.Body>
 							<div>
-								<strong><b>{this.state.customersCount}</b></strong>
-								{' ' + TextUtils.pluralize('Usagers', this.state.interventionsCount) + '.'}
+								J'interviens chez <strong><b>{this.state.customersCount}</b></strong>
+								{' ' + TextUtils.pluralize('usager', this.state.customersCount) + '.'}
 							</div>
 						</Panel.Body>
 						<Panel.Footer>

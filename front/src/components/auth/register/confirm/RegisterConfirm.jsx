@@ -8,6 +8,12 @@ class RegisterConfirm extends React.Component {
 
 	constructor(props) {
 		super(props)
+
+		this.obj.state = {
+			email: '',
+			emailSet: false,
+			token: ''
+		}
 	}
 
 	componentWillMount() {

@@ -38,9 +38,7 @@ class ServiceInterventionEditData extends BaseData {
 		this.declareFunction('onCancel')
 		this.declareFunction('onSubmit')
 
-		this.obj.state = {
-			mode: interventionId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
-		}
+		this.obj.state.mode = interventionId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
 
 		if (this.getState('mode') === this.MODES.EDIT) {
 			let type = InterventionUtils.getType(InterventionHelper.getData(interventionId))

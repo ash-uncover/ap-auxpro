@@ -12,10 +12,6 @@ class AccountEditEmailDemandInitialData extends BaseData {
 		this.declareFunction('onHasCode')
 		this.declareFunction('onSubmit')
 
-		this.obj.state = {
-			errorMessage: ''
-		}
-
 		ErrorHelper.register('POST_AUTH_CHANGEMAIL', this, this.handleError.bind(this))
 	}
 

@@ -22,7 +22,7 @@ class AuxiliaryOfferData extends BaseData {
 		let customer = CustomerHelper.getData(offer.customerId)
 		let intervention = InterventionHelper.getData(offer.interventionId)
 		
-		this.obj.state = {
+		this.setState({
 			serviceName: service.socialReason,
 			serviceAddress1: service.address,
 			serviceAddress2: service.postalCode + ' ' + service.city,
@@ -31,7 +31,7 @@ class AuxiliaryOfferData extends BaseData {
 			customerName: CustomerUtils.getShortName(customer),
 			customerAddress: CustomerUtils.getShortAddress(customer),
 			interventionText: InterventionUtils.getText(intervention)
-		}
+		})
 	}
 
 	unregister() {

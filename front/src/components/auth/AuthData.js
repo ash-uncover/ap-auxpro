@@ -13,8 +13,6 @@ class AuthData extends BaseData {
 			AppHelper.navigate('/home')
 			return;
 		}
-
-		this.obj.state = {}
 	}
 
 	unregister() {

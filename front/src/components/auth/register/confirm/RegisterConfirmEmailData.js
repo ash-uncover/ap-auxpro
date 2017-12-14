@@ -6,8 +6,6 @@ class RegisterConfirmEmailData extends BaseData {
 
 	register(obj, email) {
 		super.register(obj)
-		
-		this.obj.state = {}
 	}
 
 	unregister() {
