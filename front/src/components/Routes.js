@@ -68,10 +68,10 @@ let authRoutes = [
 	{ path: '/login', component: Login },
 	{ path: '/register/auxiliary', component: RegisterAuxiliary },
 	{ path: '/register/service', component: RegisterService },
-	{ path: '/register/confirm/:email', component: RegisterConfirmEmail },
+	{ path: '/register/confirm/:data', component: RegisterConfirmEmail },
 	{ path: '/register/confirm', component: RegisterConfirm },
 	{ path: '/register', component: Register },
-	{ path: '/recover/confirm/:email', component: RecoverConfirmEmail },
+	{ path: '/recover/confirm/:data', component: RecoverConfirmEmail },
 	{ path: '/recover/confirm', component: RecoverConfirm },
 	{ path: '/recover', component: Recover },
 ]

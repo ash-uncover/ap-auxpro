@@ -9,10 +9,11 @@ class RegisterConfirmEmail extends React.Component {
 
 	constructor(props) {
 		super(props)
+		this.state = {}
 	}
 
 	componentWillMount() {
-		RegisterConfirmEmailData.register(this, this.props.params.email)
+		RegisterConfirmEmailData.register(this, this.props.params.data)
 	}
 
 	componentWillUnmount() {
@@ -21,7 +22,7 @@ class RegisterConfirmEmail extends React.Component {
 
 	render() {
 		return (
-			<RegisterConfirm email={this.props.params.email} />
+			<RegisterConfirm {...this.state} />
 		)
 	}
 

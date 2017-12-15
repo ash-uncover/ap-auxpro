@@ -70,7 +70,7 @@ db.apauth.insert({
 db.apmail.insert({
 	"id":"mail_auth_register",
 	"subject":"{type} account registration",
-	"content":"Hello {user},\n\nTo complete your registration enter the following code when prompted:\n\n {code}"
+	"content":"Hello {user},\n\nTo complete your registration enter the following code when prompted:\n\n {code} \n\n {url}"
 })
 
 db.apmail.insert({

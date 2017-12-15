@@ -6,13 +6,25 @@ import { BaseData } from 'ap-react-bootstrap'
 
 class RegisterConfirmData extends BaseData {
 
-	register(obj, email) {
+	register(obj) {
 		super.register(obj)
 		
 		this.obj.onCancel = AppHelper.navigate.bind(AppHelper, '/home')
-		this.obj.onSubmit = this.onSubmit.bind(this)
+		this.declareFunction('onSubmit')
+		this.declareFunction('onChangeNoError')
 
-		this.obj.onChangeNoError = this.onChangeNoError.bind(this)
+		if (this.obj.props.email) {
+			this.obj.state.email = this.obj.props.email
+			this.obj.state.emailSet = true
+		}
+		if (this.obj.props.token) {
+			this.obj.state.token = this.obj.props.token
+			this.obj.state.tokenSet = true
+		}
+
+		if (this.obj.props.email && this.obj.props.token) {
+			this.onSubmit()
+		}
 
 		ErrorHelper.register('POST_AUTH_REGISTER', this, this.onRegisterError.bind(this))
 	}

@@ -9,15 +9,16 @@ class RegisterConfirm extends React.Component {
 	constructor(props) {
 		super(props)
 
-		this.obj.state = {
+		this.state = {
 			email: '',
 			emailSet: false,
-			token: ''
+			token: '',
+			tokenSet: false
 		}
 	}
 
 	componentWillMount() {
-		RegisterConfirmData.register(this, this.props.email)
+		RegisterConfirmData.register(this)
 	}
 
 	componentWillUnmount() {

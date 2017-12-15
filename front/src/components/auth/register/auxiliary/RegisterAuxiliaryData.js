@@ -41,8 +41,11 @@ class RegisterAuxiliaryData extends BaseData {
 		}.bind(this)).
 		then(function () {
 			setTimeout(AppHelper.setBusy, 200)
-
-			AppHelper.navigate('/auth/register/confirm/' + encodeURIComponent(email))
+			let data = { email: email }
+			let dataString = JSON.stringify({ email: email })
+			let dataBase64 = btoa(dataString)
+			let dataUrl = encodeURIComponent(dataBase64)
+			AppHelper.navigate('/auth/register/confirm/' + dataUrl)
 		}).
 		catch(function (error) {
 			setTimeout(AppHelper.setBusy, 200)
