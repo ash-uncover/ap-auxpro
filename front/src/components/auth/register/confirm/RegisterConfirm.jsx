@@ -15,10 +15,14 @@ class RegisterConfirm extends React.Component {
 			token: '',
 			tokenSet: false
 		}
+
+		this.buildHeader = this._buildHeader.bind(this)
+		this.buildMessage = this._buildMessage.bind(this)
+		this.buildFooter = this._buildFooter.bind(this)
 	}
 
 	componentWillMount() {
-		RegisterConfirmData.register(this)
+		RegisterConfirmData.register(this, this.props.params.data)
 	}
 
 	componentWillUnmount() {
@@ -29,7 +33,7 @@ class RegisterConfirm extends React.Component {
 		if (this.state.confirmed) {
 			return this.renderConfirmed()
 		}
-		return this.renderCode()
+		return this.renderForm()
 	}
 
 	renderConfirmed() {
@@ -50,22 +54,68 @@ class RegisterConfirm extends React.Component {
 		)
 	}
 
-	renderCode() {
+	_buildHeader() {
+		return (
+			<Panel.Header>
+				{this.state.errorLastTry ? 'Echec de confirmation de compte' : 'Confirmation de compte' }
+			</Panel.Header>
+		)
+	}
+
+	_buildMessage() {
+		switch(this.state.state) {
+		case RegisterConfirmData.STATES.ASK_ALL:
+			return (<p>Veuillez saisir les informations de confirmation de votre demande de création de compte.</p>)
+		case RegisterConfirmData.STATES.ASK_CODE:
+			return (<p>Un code de confirmation a été envoyé à votre adresse électronique, veuillez le saisir ci-dessous.</p>)
+		case RegisterConfirmData.STATES.ASK_NONE:
+			return !this.state.errorLastTry && (<p>Validation de votre compte en cours.</p>)
+		}
+	}
+
+	_buildFooter() {
+		console.log(this.state)
+		let submitDisable = !this.state.token || !this.state.email
+		return (
+			<Panel.Footer>
+			{this.state.state !== RegisterConfirmData.STATES.ASK_NONE &&
+				<Grid.Row>
+					<Grid.Col sm={6}>
+						<Button 
+							block 
+							bsSize='large' 
+							bsStyle='primary'
+							onClick={this.onCancel}>
+							Annuler
+						</Button>
+					</Grid.Col>
+					<br className='visible-xs-block'/>
+					<Grid.Col sm={6}>
+						<Button 
+							block 
+							bsSize='large' 
+							bsStyle={submitDisable ? 'default' : 'success'}
+							disabled={submitDisable}
+							onClick={this.onSubmit}>
+							Envoyer code
+						</Button>
+					</Grid.Col>
+				</Grid.Row>
+			}
+			</Panel.Footer>
+		)
+	}
+
+	renderForm() {
 		let submitDisable = !this.state.token || !this.state.email
 		return (
 			<Grid.Container className='ap-register-confirm'>
 				<Panel>
-					<Panel.Header>
-						{this.state.errorLastTry ? 'Echec de confirmation de compte' : 'Confirmation de compte' }
-					</Panel.Header>
+					{this.buildHeader()}
 					<Panel.Body>
 						<Form>
-							{this.state.emailSet ?
-								<p>Un code de confirmation a été envoyé à votre adresse électronique, veuillez le saisir ci-dessous.</p>
-							:
-								<p>Veuillez saisir les informations de confirmation de votre demande de création de compte.</p>
-							}
-							{!this.state.emailSet ?
+							{this.buildMessage()}
+							{!this.state.emailSet &&
 								<Form.Group>
 									<Form.Label 
 										htmlFor='confirmEmail'>
@@ -77,50 +127,31 @@ class RegisterConfirm extends React.Component {
 										value={this.state.email}
 										onChange={this.onChange.bind(this, 'email')} />
 								</Form.Group>
-							: null }
-							<Form.Group>
-								<Form.Label 
-									htmlFor='confirmToken'>
-									Code de confirmation
-								</Form.Label>
-								<Form.Input 
-									id='confirmToken'
-									type='text'
-									value={this.state.token}
-									onChange={this.onChange.bind(this, 'token')} />
-							</Form.Group>
-							<Form.Submit 
-								className='ap-hidden' 
-								type='submit' 
-								disabled={this.state.errorJustHappened || submitDisable}
-								onSubmit={this.onSubmit} />
+							}
+							{!this.state.tokenSet &&
+								<Form.Group>
+									<Form.Label 
+										htmlFor='confirmToken'>
+										Code de confirmation
+									</Form.Label>
+									<Form.Input 
+										id='confirmToken'
+										type='text'
+										value={this.state.token}
+										onChange={this.onChange.bind(this, 'token')} />
+								</Form.Group>
+							}
+							{RegisterConfirmData.STATES.ASK_NONE !== this.state.state &&
+								<Form.Submit 
+									className='ap-hidden' 
+									type='submit' 
+									disabled={this.state.errorJustHappened || submitDisable}
+									onSubmit={this.onSubmit} />
+							}
 						</Form>
 						{this.state.errorJustHappened && this.state.errorMessage}
 					</Panel.Body>
-					<Panel.Footer>
-						<Grid.Row>
-							<Grid.Col sm={6}>
-								<Button 
-									block 
-									bsSize='large' 
-									bsStyle='primary'
-									onClick={this.onCancel}>
-									Annuler
-								</Button>
-							</Grid.Col>
-							<br className='visible-xs-block'/>
-							<Grid.Col sm={6}>
-								<Button 
-									block 
-									bsSize='large' 
-									bsStyle={submitDisable ? 'default' : 'success'}
-									disabled={submitDisable}
-									onClick={this.onSubmit}>
-									Envoyer code
-								</Button>
-							</Grid.Col>
-							</Grid.Row>
-					</Panel.Footer>
+					{this.buildFooter()}
 				</Panel>
 			</Grid.Container>
 		)

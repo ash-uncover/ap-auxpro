@@ -21,8 +21,6 @@ class Auth extends React.Component {
 		return (
 			<div className='ap-auth'>
 				{this.props.children}
-				<div />
-				<div />
 			</div>
 		)
 	}

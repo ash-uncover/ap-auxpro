@@ -31,12 +31,13 @@ class RegisterAuxiliaryData extends BaseData {
 
 	onSubmit() {
 		let email = this.getState('email')
+		let password = this.getState('password')
 		AppHelper.setBusy(true).
 		then(function() {
 			return AuxiliaryHelper.postAuxiliary({
 				username: email,
 				email: email,
-				password: this.getState('password')			
+				password: password
 			})
 		}.bind(this)).
 		then(function () {
