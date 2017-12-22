@@ -35,14 +35,14 @@ class RegisterAuxiliary extends React.Component {
 			<Grid.Container className='ap-register-auxiliary'>
 				<Panel>
 					<Panel.Header>
-						{this.state.errorLastTry ? 'Echec de création de compte' : 'Création compte Auxiliaire' }
+						{this.state.errorLastTry ? 'Echec de création de compte' : 'Création compte Intervenant' }
 					</Panel.Header>
 					<Panel.Body>
 						<Form>
 							<Form.Group>
 								<Form.Label 
 									htmlFor='registerEmail'>
-									Addresse électronique
+									Adresse électronique
 								</Form.Label>
 								<Form.Input 
 									id='registerEmail'

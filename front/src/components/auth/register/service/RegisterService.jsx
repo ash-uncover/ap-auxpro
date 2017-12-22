@@ -41,7 +41,7 @@ class RegisterService extends React.Component {
 							<Form.Group>
 								<Form.Label 
 									htmlFor='registerEmail'>
-									Addresse électronique
+									Adresse électronique
 								</Form.Label>
 								<Form.Input 
 									id='registerEmail'
