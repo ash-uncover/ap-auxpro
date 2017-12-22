@@ -28,7 +28,7 @@ class Register extends React.Component {
 						bsStyle='primary'
 						className='ap-register-button'
 						onClick={this.onRegisterAux.bind(this)}>
-						<b>Créer un compte<br/>Auxiliaire de vie</b>
+						<b>Créer un compte<br/>Intervenant</b>
 					</Button>
 				</Grid.Col>
 				<br className='visible-xs-block'/>
