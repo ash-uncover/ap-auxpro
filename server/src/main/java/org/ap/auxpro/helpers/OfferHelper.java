@@ -75,7 +75,7 @@ public class OfferHelper {
 			AuxiliaryData auxiliary = AuxiliaryCollection.getById(offerBean.auxiliaryId);
 			ApauthData apauth = ApauthCollection.get(and(eq("entityId", auxiliary.getId()))).get(0);
 			if (auxiliary.getNotifyOffersMail()) {
-				MailSender.sendAuxiliaryOffer(apauth.getEmail(), auxiliary.getFirstName());
+				MailSender.getInstance().sendAuxiliaryOffer(apauth.getEmail(), auxiliary.getFirstName());
 			}
 		} catch (Exception e) {
 			// Still the offer was created so we dont want to crash here
@@ -97,7 +97,7 @@ public class OfferHelper {
 			// Send notification mail
 			ServiceData service = ServiceCollection.getById(offer.getServiceId());
 			ApauthData apauth = ApauthCollection.get(and(eq("entityId", service.getId()))).get(0);
-			MailSender.sendServiceOffer(apauth.getEmail());
+			MailSender.getInstance().sendServiceOffer(apauth.getEmail());
 		} catch (Exception e) {
 			// Still the offer was updated so we dont want to crash here
 			e.printStackTrace();

@@ -31,18 +31,23 @@ class RegisterServiceData extends BaseData {
 
 	onSubmit() {
 		let email = this.getState('email')
+		let password = this.getState('password')
 		AppHelper.setBusy(true).
 		then(function() {
 			return ServiceHelper.postService({
 				username: email,
 				email: email,
-				password: this.getState('password')			
+				password: password
 			})
 		}.bind(this)).
 		then(function () {
 			setTimeout(AppHelper.setBusy, 200)
+			let data = { email: email }
+			let dataString = JSON.stringify({ email: email })
+			let dataBase64 = btoa(dataString)
+			let dataUrl = encodeURIComponent(dataBase64)
 
-			AppHelper.navigate('/auth/register/confirm/' + encodeURIComponent(email))
+			AppHelper.navigate('/auth/register/confirm/' + dataUrl)
 		}).
 		catch(function (error) {
 			setTimeout(AppHelper.setBusy, 200)
