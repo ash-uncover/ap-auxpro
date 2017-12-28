@@ -36,6 +36,14 @@ public class MailSender extends MailSenderBase {
 		sendTextMail(EConfigProperties.SMTP_USER.getValue(), EConfigProperties.SMTP_USERNAME.getValue(), data.email, format(mail.getSubject(), keys), format(mail.getContent(), keys));
 	}
 	
+	@Override
+	public void sendPasswordRecoveryMail(ApauthData data) throws APWebException {
+		ApmailData mail = ApmailCollection.getById(MAIL_AUTH_RECOVER);
+		Map<String, String> keys = prepare(data, data.token);
+		addUrlKey(keys, data, "/auth/recover/confirm/");
+		sendTextMail(EConfigProperties.SMTP_USER.getValue(), EConfigProperties.SMTP_USERNAME.getValue(), data.email, format(mail.getSubject(), keys), format(mail.getContent(), keys));
+	}
+	
 	public void sendAuxiliaryOffer(String email, String firstName) throws APWebException {
 		ApmailData mail = ApmailCollection.getById(MAIL_OFFER_SEND);
 		Map<String, String> keys = new HashMap<String, String>();

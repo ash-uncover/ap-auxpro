@@ -3,11 +3,13 @@ import RecoverConfirmData from './RecoverConfirmData'
 import './RecoverConfirm.scss'
 
 import { Panel, Form, Grid, Button } from 'ap-react-bootstrap'
+import PanelFooterConfirm from 'components-lib/Panel/PanelFooterConfirm'
 
 class RecoverConfirm extends React.Component {
 
 	constructor(props) {
 		super(props)
+		
 		this.state = {
 			email: '',
 			emailSet: false,
@@ -18,7 +20,7 @@ class RecoverConfirm extends React.Component {
 	}
 
 	componentWillMount() {
-		RecoverConfirmData.register(this, this.props.email)
+		RecoverConfirmData.register(this, this.props.params.data)
 	}
 
 	componentWillUnmount() {
@@ -55,7 +57,7 @@ class RecoverConfirm extends React.Component {
 			<Grid.Container className='ap-recover-confirm'>
 				<Panel>
 					<Panel.Header>
-						Mot de passe modifiié
+						Mot de passe modifié
 					</Panel.Header>
 					<Panel.Body>
 						<p>Votre mot de passe a bien été modifié.</p>
@@ -106,30 +108,11 @@ class RecoverConfirm extends React.Component {
 						</Form>
 						{this.state.errorJustHappened && this.state.errorMessage}
 					</Panel.Body>
-					<Panel.Footer>
-						<Grid.Row>
-							<Grid.Col sm={6}>
-								<Button 
-									block 
-									bsSize='large' 
-									bsStyle='primary'
-									onClick={this.onCancel}>
-									Annuler
-								</Button>
-							</Grid.Col>
-							<br className='visible-xs-block'/>
-							<Grid.Col sm={6}>
-								<Button 
-									block 
-									bsSize='large' 
-									bsStyle={submitDisable ? 'default' : 'success'}
-									disabled={submitDisable}
-									onClick={this.onSubmitPassword}>
-									Modifier mot de passe
-								</Button>
-							</Grid.Col>
-						</Grid.Row>
-					</Panel.Footer>
+					<PanelFooterConfirm 
+						onCancel={this.onCancel}
+						submitDisabled={submitDisable}
+						onSubmit={this.onSubmitPassword}
+						submitText='Modifier mot de passe' />
 				</Panel>
 			</Grid.Container>
 		)
@@ -150,7 +133,7 @@ class RecoverConfirm extends React.Component {
 							:
 								<p>Veuillez saisir les informations de confirmation de votre demande de réinitialisation de mot de passe.</p>
 							}
-							{!this.state.emailSet ?
+							{!this.state.emailSet &&
 								<Form.Group>
 									<Form.Label 
 										htmlFor='confirmEmail'>
@@ -162,48 +145,31 @@ class RecoverConfirm extends React.Component {
 										value={this.state.email}
 										onChange={this.onChangeNoError.bind(this, 'email')} />
 								</Form.Group>
-							: null }
-							<Form.Group>
-								<Form.Label 
-									htmlFor='confirmToken'>
-									Code de confirmation
-								</Form.Label>
-								<Form.Input 
-									id='confirmToken'
-									type='text'
-									value={this.state.token}
-									onChange={this.onChangeNoError.bind(this, 'token')} />
-							</Form.Group>
+							}
+							{!this.state.tokenSet &&
+								<Form.Group>
+									<Form.Label 
+										htmlFor='confirmToken'>
+										Code de confirmation
+									</Form.Label>
+									<Form.Input 
+										id='confirmToken'
+										type='text'
+										value={this.state.token}
+										onChange={this.onChangeNoError.bind(this, 'token')} />
+								</Form.Group>
+							}
 							<Form.Submit 
 								disabled={this.state.errorJustHappened || submitDisable}
 								onSubmit={this.onSubmitCode} />
 						</Form>
 						{this.state.errorJustHappened && this.state.errorMessage}
 					</Panel.Body>
-					<Panel.Footer>
-						<Grid.Row>
-							<Grid.Col sm={6}>
-								<Button 
-									block 
-									bsSize='large' 
-									bsStyle='primary'
-									onClick={this.onCancel}>
-									Annuler
-								</Button>
-							</Grid.Col>
-							<br className='visible-xs-block'/>
-							<Grid.Col sm={6}>
-								<Button 
-									block 
-									bsSize='large' 
-									bsStyle={submitDisable ? 'default' : 'success'}
-									disabled={submitDisable}
-									onClick={this.onSubmitCode}>
-									Envoyer code
-								</Button>
-							</Grid.Col>
-						</Grid.Row>
-					</Panel.Footer>
+					<PanelFooterConfirm 
+						onCancel={this.onCancel}
+						submitDisabled={submitDisable}
+						onSubmit={this.onSubmitCode}
+						submitText='Envoyer code' />
 				</Panel>
 			</Grid.Container>
 		)

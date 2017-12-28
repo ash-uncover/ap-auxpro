@@ -25,7 +25,13 @@ class RecoverData extends BaseData {
 		then(function() {
 			setTimeout(AppHelper.setBusy, 200)
 			let email = this.getState('email')
-			AppHelper.navigate('/auth/recover/confirm/' + encodeURIComponent(email))
+
+			let data = { email: email }
+			let dataString = JSON.stringify({ email: email })
+			let dataBase64 = btoa(dataString)
+			let dataUrl = encodeURIComponent(dataBase64)
+
+			AppHelper.navigate('/auth/recover/confirm/' + dataUrl)
 		}.bind(this)).
 		catch(function (error) {
 			setTimeout(AppHelper.setBusy, 200)

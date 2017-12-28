@@ -7,7 +7,6 @@ import RegisterAuxiliary from 'components/auth/register/auxiliary/RegisterAuxili
 import RegisterService from 'components/auth/register/service/RegisterService'
 import RegisterConfirm from 'components/auth/register/confirm/RegisterConfirm'
 import Register from 'components/auth/register/Register'
-import RecoverConfirmEmail from 'components/auth/recover/confirm/RecoverConfirmEmail'
 import RecoverConfirm from 'components/auth/recover/confirm/RecoverConfirm'
 import Recover from 'components/auth/recover/Recover'
 import Logout from 'components/logout/Logout'
@@ -69,8 +68,7 @@ let authRoutes = [
 	{ path: '/register/service', component: RegisterService },
 	{ path: '/register/confirm/:data', component: RegisterConfirm },
 	{ path: '/register', component: Register },
-	{ path: '/recover/confirm/:data', component: RecoverConfirmEmail },
-	{ path: '/recover/confirm', component: RecoverConfirm },
+	{ path: '/recover/confirm/:data', component: RecoverConfirm },
 	{ path: '/recover', component: Recover },
 ]
 let serviceRoutes = [
