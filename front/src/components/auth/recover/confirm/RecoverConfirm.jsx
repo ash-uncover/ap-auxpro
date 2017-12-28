@@ -118,6 +118,16 @@ class RecoverConfirm extends React.Component {
 		)
 	}
 
+	_buildCodeMessage() {
+		if (this.state.emailSet && this.state.tokenSet && !this.state.errorLastTry) {
+			return 'Vérification du lien.'
+		}
+		if (this.state.emailSet) {
+			return 'Un code de confirmation a été envoyé à votre adresse électronique, veuillez le saisir ci-dessous.'
+		}
+		return 'Veuillez saisir les informations de confirmation de votre demande de réinitialisation de mot de passe.'
+	}
+
 	renderCode() {
 		let submitDisable = !this.state.token || !this.state.email
 		return (
@@ -128,11 +138,6 @@ class RecoverConfirm extends React.Component {
 					</Panel.Header>
 					<Panel.Body>
 						<Form>
-							{this.state.emailSet ?
-								<p>Un code de confirmation a été envoyé à votre adresse électronique, veuillez le saisir ci-dessous.</p>
-							:
-								<p>Veuillez saisir les informations de confirmation de votre demande de réinitialisation de mot de passe.</p>
-							}
 							{!this.state.emailSet &&
 								<Form.Group>
 									<Form.Label 
@@ -165,11 +170,13 @@ class RecoverConfirm extends React.Component {
 						</Form>
 						{this.state.errorJustHappened && this.state.errorMessage}
 					</Panel.Body>
-					<PanelFooterConfirm 
-						onCancel={this.onCancel}
-						submitDisabled={submitDisable}
-						onSubmit={this.onSubmitCode}
-						submitText='Envoyer code' />
+					{(!this.state.emailSet || !this.state.tokenSet) &&
+						<PanelFooterConfirm 
+							onCancel={this.onCancel}
+							submitDisabled={submitDisable}
+							onSubmit={this.onSubmitCode}
+							submitText='Envoyer code' />
+					}
 				</Panel>
 			</Grid.Container>
 		)
