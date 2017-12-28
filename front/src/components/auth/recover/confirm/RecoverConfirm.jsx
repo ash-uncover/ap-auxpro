@@ -137,6 +137,7 @@ class RecoverConfirm extends React.Component {
 						{this.state.errorLastTry ? 'Echec de confirmation de réinitialisation' : 'Réinitialisation du mot de passe' }
 					</Panel.Header>
 					<Panel.Body>
+						{this._buildCodeMessage()}
 						<Form>
 							{!this.state.emailSet &&
 								<Form.Group>
