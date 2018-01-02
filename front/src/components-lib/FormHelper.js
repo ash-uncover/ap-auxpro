@@ -13,7 +13,7 @@ class FormControlBuilder {
 		}
 		return (
 			<Form.Group key={field.key} state={state}>
-				<Form.Label className='col-sm-5 col-md-4'>
+				<Form.Label className={(field.smLabel || 'col-sm-5') + ' ' + (field.mdLabel || 'col-md-4')}>
 					{field.name || (nameProvider ? nameProvider(field.key) : field.key)}
 				</Form.Label>
 				<Grid.Col sm={7} md={8}>

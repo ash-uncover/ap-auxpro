@@ -44,7 +44,6 @@ public enum AuxiliaryFields {
 	IS_ENTREPRENEUR ("isEntrepreneur", "String", EValidators.NON_NULL.getValidator()),
 	PHONE ("phone", "String", EValidators.PHONE.getValidator()),
 	SKILL_ADMINISTRATIVE ("skillAdministrative", "Integer", EValidators.DEFAULT.getValidator()),
-	ID_CARD_NUMBER ("idCardNumber", "String", EValidators.ID_CARD_NUMBER.getValidator()),
 	SKILL_HOUSEWORK ("skillHousework", "Integer", EValidators.DEFAULT.getValidator()),
 	NOTIFY_OFFERS_MAIL ("notifyOffersMail", "Boolean", EValidators.DEFAULT.getValidator()),
 	;

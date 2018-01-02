@@ -160,10 +160,6 @@ class AuxiliaryFields {
 		return _SKILL_ADMINISTRATIVE
 	}
 
-	static get ID_CARD_NUMBER() {
-		return _ID_CARD_NUMBER
-	}
-
 	static get SKILL_HOUSEWORK() {
 		return _SKILL_HOUSEWORK
 	}
@@ -212,7 +208,6 @@ class AuxiliaryFields {
 			_IS_ENTREPRENEUR,
 			_PHONE,
 			_SKILL_ADMINISTRATIVE,
-			_ID_CARD_NUMBER,
 			_SKILL_HOUSEWORK,
 			_NOTIFY_OFFERS_MAIL,
 		]
@@ -398,11 +393,6 @@ let _PHONE = {
 let _SKILL_ADMINISTRATIVE = {
 	key: 'skillAdministrative',
 	type: 'number',
-}
-let _ID_CARD_NUMBER = {
-	key: 'idCardNumber',
-	type: 'string',
-	validator: Validators.IdCardNumber,
 }
 let _SKILL_HOUSEWORK = {
 	key: 'skillHousework',

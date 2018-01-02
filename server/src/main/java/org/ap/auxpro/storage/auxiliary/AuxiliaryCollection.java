@@ -134,7 +134,6 @@ public class AuxiliaryCollection {
 		data.isEntrepreneur = document.getString("isEntrepreneur");
 		data.phone = document.getString("phone");
 		data.skillAdministrative = document.getInteger("skillAdministrative");
-		data.idCardNumber = document.getString("idCardNumber");
 		data.skillHousework = document.getInteger("skillHousework");
 		data.notifyOffersMail = document.getBoolean("notifyOffersMail");
 		return data;
@@ -220,8 +219,6 @@ public class AuxiliaryCollection {
 			document.append("phone", auxiliary.phone);
 		if (auxiliary.skillAdministrative != null)
 			document.append("skillAdministrative", auxiliary.skillAdministrative);
-		if (auxiliary.idCardNumber != null)
-			document.append("idCardNumber", auxiliary.idCardNumber);
 		if (auxiliary.skillHousework != null)
 			document.append("skillHousework", auxiliary.skillHousework);
 		if (auxiliary.notifyOffersMail != null)
@@ -270,7 +267,6 @@ public class AuxiliaryCollection {
 		document.append("isEntrepreneur", auxiliary.isEntrepreneur);
 		document.append("phone", auxiliary.phone);
 		document.append("skillAdministrative", auxiliary.skillAdministrative);
-		document.append("idCardNumber", auxiliary.idCardNumber);
 		document.append("skillHousework", auxiliary.skillHousework);
 		document.append("notifyOffersMail", auxiliary.notifyOffersMail);
 		return document;

@@ -63,6 +63,9 @@ class AuxiliaryInitial extends React.Component {
 							<Grid.Col sm={6} lg={5}>
 								{AuxiliaryInitialData.FIELDS_FORM2.map(this.buildFormGroup)}
 							</Grid.Col>
+							<Grid.Col xs={12} lgOffset={1} lg={10}>
+								{AuxiliaryInitialData.FIELDS_FORM3.map(this.buildFormGroup)}
+							</Grid.Col>
 						</Form>
 					</Panel.Body>
 					<Panel.Footer>
