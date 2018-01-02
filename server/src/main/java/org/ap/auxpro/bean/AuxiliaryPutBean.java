@@ -33,7 +33,6 @@ public class AuxiliaryPutBean {
 	public String nationality;
 	public String isEntrepreneur;
 	public String phone;
-	public String idCardNumber;
 	public Boolean notifyOffersMail;
 
 }

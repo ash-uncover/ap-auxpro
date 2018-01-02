@@ -131,7 +131,6 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.phone = data.getPhone();
 				bean.skillAdministrative = data.getSkillAdministrative();
 				bean.skillHousework = data.getSkillHousework();
-				bean.idCardNumber = data.getIdCardNumber();
 				bean.notifyOffersMail = data.getNotifyOffersMail();
 				
 				beanList.add(bean);
@@ -258,7 +257,6 @@ public class AuxiliaryServlet extends APServletBase {
 			bean.phone = data.getPhone();
 			bean.skillAdministrative = data.getSkillAdministrative();
 			bean.skillHousework = data.getSkillHousework();
-			bean.idCardNumber = data.getIdCardNumber();
 			bean.notifyOffersMail = data.getNotifyOffersMail();
 			
 			return Response.status(Status.OK).entity(bean).build();
@@ -307,7 +305,6 @@ public class AuxiliaryServlet extends APServletBase {
 			data.setNationality(auxiliaryPutBean.nationality);
 			data.setIsEntrepreneur(auxiliaryPutBean.isEntrepreneur);
 			data.setPhone(auxiliaryPutBean.phone);
-			data.setIdCardNumber(auxiliaryPutBean.idCardNumber);
 			data.setNotifyOffersMail(auxiliaryPutBean.notifyOffersMail);
 			// Store the updated data object
 			AuxiliaryCollection.updateNull(data);

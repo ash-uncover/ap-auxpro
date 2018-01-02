@@ -45,7 +45,6 @@ public class AuxiliaryData {
 	public String isEntrepreneur;
 	public String phone;
 	public Integer skillAdministrative;
-	public String idCardNumber;
 	public Integer skillHousework;
 	public Boolean notifyOffersMail;
 
@@ -359,14 +358,6 @@ public class AuxiliaryData {
 
 	public void setSkillAdministrative(Integer skillAdministrative) {
 		this.skillAdministrative = skillAdministrative;
-	}
-
-	public String getIdCardNumber() {
-		return this.idCardNumber;
-	}
-
-	public void setIdCardNumber(String idCardNumber) {
-		this.idCardNumber = idCardNumber;
 	}
 
 	public Integer getSkillHousework() {
