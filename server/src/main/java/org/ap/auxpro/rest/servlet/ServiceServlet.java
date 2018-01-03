@@ -347,6 +347,7 @@ public class ServiceServlet extends APServletBase {
 				bean.phone = data.getPhone();
 				bean.skillAdministrative = data.getSkillAdministrative();
 				bean.skillHousework = data.getSkillHousework();
+				bean.idCardNumber = data.getIdCardNumber();
 				bean.notifyOffersMail = data.getNotifyOffersMail();
 				
 				beanList.add(bean);
