@@ -10,6 +10,11 @@ import javax.ws.rs.core.SecurityContext;
 import org.ap.auxpro.bean.AuxiliaryPutBean;
 import org.ap.auxpro.bean.AuxiliaryQuestionaryBean;
 import org.ap.auxpro.bean.PromotionCodePostBean;
+<<<<<<< HEAD
+=======
+import org.ap.auxpro.constants.EDiploma;
+import org.ap.auxpro.constants.EGeozoneType;
+>>>>>>> parent of 28a3f91... Revert "Merge pull request #4 from ash-uncover/dev"
 import org.ap.auxpro.storage.auxiliary.AuxiliaryCollection;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryData;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryFields;
@@ -27,6 +32,11 @@ public class AuxiliaryHelper {
 			throw new APWebException("forbidden", Status.FORBIDDEN);
 		}
 		AuxiliaryData data = AuxiliaryCollection.getById(id);
+		// Set default values
+		if (auxiliaryBean.diploma.size() == 0) {
+			auxiliaryBean.diploma.add(EDiploma._DIPLOMA_NONE.getName());
+		}
+		
 		// Check profil progress & completion
 		boolean profilCompleted = true;
 		int profilProgress = 0;
@@ -88,7 +98,6 @@ public class AuxiliaryHelper {
 		}
 		// Check secret info (total: 100)
 		if (
-			((IValidator<String>)AuxiliaryFields.ID_CARD_NUMBER.getValidator()).getState(auxiliaryBean.idCardNumber) &&
 			((IValidator<String>)AuxiliaryFields.SOCIAL_NUMBER.getValidator()).getState(auxiliaryBean.socialNumber)
 		) {
 			profilProgress += 10;

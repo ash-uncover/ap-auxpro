@@ -9,7 +9,6 @@ class AuxiliaryUtils {
 			case AuxiliaryFields.FIRST_NAME.key: return 'Prénom'
 			case AuxiliaryFields.AVATAR.key: return 'Photo'
 			case AuxiliaryFields.PHONE.key: return 'Téléphone'
-			case AuxiliaryFields.ID_CARD_NUMBER.key: return "Numéro de carte d'identité"
 			case AuxiliaryFields.NATIONALITY.key: return 'Nationalité'
 			case AuxiliaryFields.BIRTH_DATE.key: return 'Date de naissance'
 			case AuxiliaryFields.BIRTH_CITY.key: return 'Ville de naissance'
