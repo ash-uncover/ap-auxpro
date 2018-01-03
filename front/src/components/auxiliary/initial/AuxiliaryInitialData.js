@@ -1,7 +1,6 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
-import GeozoneHelper from 'helpers/GeozoneHelper'
 import { BaseData, Nationality } from 'ap-react-bootstrap'
 
 import Civility from 'utils/constants/Civility'
@@ -98,9 +97,6 @@ class AuxiliaryInitialData extends BaseData {
 		}.bind(this)).
 		then(function () {
 			return AuxiliaryHelper.getAuxiliary(AuthHelper.getEntityId())
-		}).
-		then(function () {
-			return GeozoneHelper.getAuxiliaryGeozones(AuthHelper.getEntityId())
 		}).
 		then(function () {
 			setTimeout(AppHelper.setBusy, 200)
