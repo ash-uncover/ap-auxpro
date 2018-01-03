@@ -196,7 +196,7 @@ public class AuxiliaryServlet extends APServletBase {
 			dataEntity.setLastUpdateDate(new Date());
 			AuxiliaryCollection.create(dataEntity);
 			
-			MailSender.getInstance().sendRegistrationMail(dataAuth);
+			MailSender.sendRegistrationMail(dataAuth);
 			
 			return Response.status(Status.CREATED).build();
 			

@@ -142,7 +142,7 @@ public class AuthServlet extends APServletBase {
 			dataAuth.setTokenData(null);
 			ApauthCollection.updateNull(dataAuth);
 			// send mail
-			MailSender.getInstance().sendPasswordRecoveryMail(dataAuth);
+			MailSender.sendPasswordRecoveryMail(dataAuth);
 			// send response
 			return Response.status(Status.OK).build();
 			
@@ -261,7 +261,7 @@ public class AuthServlet extends APServletBase {
 			dataAuth.setTokenData(null);
 			ApauthCollection.updateNull(dataAuth);
 			// send mail
-			MailSender.getInstance().sendChangeUsernameMail(dataAuth);
+			MailSender.sendChangeUsernameMail(dataAuth);
 			// send response
 			return Response.status(Status.OK).build();
 			
@@ -344,7 +344,7 @@ public class AuthServlet extends APServletBase {
 			ApauthCollection.update(dataAuth);
 			// send mail
 			dataAuth.setEmail(bean.email);
-			MailSender.getInstance().sendConfirmUsernameMail(dataAuth);
+			MailSender.sendConfirmUsernameMail(dataAuth);
 			// send response
 			return Response.status(Status.OK).build();
 			

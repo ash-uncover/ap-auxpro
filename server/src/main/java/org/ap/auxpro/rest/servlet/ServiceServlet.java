@@ -166,7 +166,7 @@ public class ServiceServlet extends APServletBase {
 			dataEntity.setLastUpdateDate(new Date());
 			ServiceCollection.create(dataEntity);
 			
-			MailSender.getInstance().sendRegistrationMail(dataAuth);
+			MailSender.sendRegistrationMail(dataAuth);
 			
 			return Response.status(Status.CREATED).build();
 			
