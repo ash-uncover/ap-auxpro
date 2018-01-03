@@ -63,7 +63,7 @@ class AppLand extends React.Component {
 										Découvrez AuXpros, votre outil de recrutement
 									</h2>
 									<h3>
-										Pour adapter votre offre aux besoins des bénéficiaires
+										Adaptez votre offre aux besoins des bénéficiaires
 									</h3>
 									<p>
 										AuXpros est le premier outil d'aide au recrutement sur le
