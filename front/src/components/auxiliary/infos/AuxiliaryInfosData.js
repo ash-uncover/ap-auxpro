@@ -27,7 +27,8 @@ class AuxiliaryInfosData extends BaseData {
 			AuxiliaryFields.FIRST_NAME,
 			AuxiliaryFields.LAST_NAME,
 			AuxiliaryFields.PHONE,
-			AuxiliaryFields.SOCIAL_NUMBER
+			AuxiliaryFields.SOCIAL_NUMBER,
+			AuxiliaryFields.ID_CARD_NUMBER
 		]
 		this.FIELDS_FORM2 = [
 			AuxiliaryFields.ADDRESS,

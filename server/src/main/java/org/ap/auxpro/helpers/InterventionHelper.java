@@ -19,7 +19,6 @@ import javax.ws.rs.core.SecurityContext;
 import org.ap.auxpro.bean.BasicBean;
 import org.ap.auxpro.bean.InterventionEmptyBean;
 import org.ap.auxpro.bean.InterventionPostBean;
-import org.ap.auxpro.constants.EDiploma;
 import org.ap.auxpro.constants.EInterventionStatus;
 import org.ap.auxpro.constants.EMissionStatus;
 import org.ap.auxpro.constants.EOfferStatusSad;
@@ -96,7 +95,7 @@ public class InterventionHelper {
 		List<AuxiliaryData> auxiliaries = null;
 		//
 		List<String> diplomas = intervention.getDiplomas();
-		if (diplomas != null && diplomas.size() > 0 && !diplomas.contains(EDiploma._DIPLOMA_NONE) && !diplomas.contains(EDiploma._DIPLOMA_STUDY)) {
+		if (diplomas != null && diplomas.size() > 0) {
 			List<Bson> conditions = new ArrayList<Bson>();
 			for (String diploma : diplomas) {
 				conditions.add(in("diploma", diploma));

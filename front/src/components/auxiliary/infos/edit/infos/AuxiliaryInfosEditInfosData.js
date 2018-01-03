@@ -40,7 +40,8 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.POSTAL_CODE),
 			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.CITY),
 			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.COUNTRY),
-			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.SOCIAL_NUMBER)
+			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.SOCIAL_NUMBER),
+			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.ID_CARD_NUMBER)
 		]
 		this.FIELDS_FORM3 = [
 			Object.assign({ defaultValue: '', form: 'textarea' }, AuxiliaryFields.DESCRIPTION),
