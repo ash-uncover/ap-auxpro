@@ -1,7 +1,5 @@
 package org.ap.auxpro.helpers;
 
-import static com.mongodb.client.model.Filters.eq;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -12,19 +10,15 @@ import javax.ws.rs.core.SecurityContext;
 import org.ap.auxpro.bean.AuxiliaryPutBean;
 import org.ap.auxpro.bean.AuxiliaryQuestionaryBean;
 import org.ap.auxpro.bean.PromotionCodePostBean;
-import org.ap.auxpro.constants.EDiploma;
-import org.ap.auxpro.constants.EGeozoneType;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryCollection;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryData;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryFields;
-import org.ap.auxpro.storage.geozone.GeozoneCollection;
-import org.ap.auxpro.storage.geozone.GeozoneData;
 import org.ap.auxpro.storage.promotioncode.PromotioncodeCollection;
 import org.ap.auxpro.storage.promotioncode.PromotioncodeData;
 import org.ap.common.TimeHelper;
 import org.ap.common.validators.IValidator;
 import org.ap.web.internal.APWebException;
-import org.ap.web.internal.UUIDGenerator;
+
 public class AuxiliaryHelper {
 
 	@SuppressWarnings("unchecked")
@@ -33,11 +27,6 @@ public class AuxiliaryHelper {
 			throw new APWebException("forbidden", Status.FORBIDDEN);
 		}
 		AuxiliaryData data = AuxiliaryCollection.getById(id);
-		// Set default values
-		if (auxiliaryBean.diploma.size() == 0) {
-			auxiliaryBean.diploma.add(EDiploma._DIPLOMA_NONE.getName());
-		}
-		
 		// Check profil progress & completion
 		boolean profilCompleted = true;
 		int profilProgress = 0;
@@ -99,6 +88,7 @@ public class AuxiliaryHelper {
 		}
 		// Check secret info (total: 100)
 		if (
+			((IValidator<String>)AuxiliaryFields.ID_CARD_NUMBER.getValidator()).getState(auxiliaryBean.idCardNumber) &&
 			((IValidator<String>)AuxiliaryFields.SOCIAL_NUMBER.getValidator()).getState(auxiliaryBean.socialNumber)
 		) {
 			profilProgress += 10;
@@ -106,22 +96,6 @@ public class AuxiliaryHelper {
 		
 		if (Boolean.TRUE.equals(data.getProfilCompleted()) && !profilCompleted) {
 			throw new APWebException("Invalid data", Status.BAD_REQUEST);
-		}
-		
-		if (profilCompleted && GeozoneCollection.get(eq("auxiliaryId", data.getId())).size() == 0) {
-			GeozoneData geozone = new GeozoneData();
-			geozone.setId(UUIDGenerator.nextId());
-			geozone.setCreationDate(new Date());
-			geozone.setLastUpdateDate(new Date());			
-			geozone.setAuxiliaryId(data.getId());
-			geozone.setAddress(auxiliaryBean.address);
-			geozone.setCity(auxiliaryBean.city);
-			geozone.setLattitude(auxiliaryBean.lattitude);
-			geozone.setLongitude(auxiliaryBean.longitude);
-			geozone.setPostalCode(auxiliaryBean.postalCode);
-			geozone.setRadius(2000);
-			geozone.setType(EGeozoneType._AREA.getName());			
-			GeozoneCollection.create(geozone);			
 		}
 
 		data.setProfilProgression(profilProgress);

@@ -116,7 +116,7 @@ post_auth_recover_check.do = function(args) {
 		token: Utils.encode('guest', 'guest'),
 		data: args.data
 	};
-	return RestService.request(reqParam);
+	return RestService._request(reqParam);
 }
 
 put_auth_recover.do = function(args) {

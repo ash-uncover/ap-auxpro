@@ -46,6 +46,7 @@ public class AuxiliaryGetBean {
 	public String phone;
 	public Integer skillAdministrative;
 	public Integer skillHousework;
+	public String idCardNumber;
 	public Boolean notifyOffersMail;
 
 }

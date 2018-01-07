@@ -44,7 +44,7 @@ class Recover extends React.Component {
 									value={this.state.email}
 									onChange={this.onChange.bind(this, 'email')} />
 							</Form.Group>
-							<Link href='/auth/recover/confirm/e30='>J'ai déjà un code.</Link>
+							<Link href='/auth/recover/confirm'>J'ai déjà un code.</Link>
 							<Form.Submit
 								disabled={submitDisabled}
 								onSubmit={this.onSubmit} />

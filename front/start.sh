@@ -1,4 +1,4 @@
-npm cache clean
+npm cache verify
 npm update ap-flux
 npm update ap-react-bootstrap
 npm install

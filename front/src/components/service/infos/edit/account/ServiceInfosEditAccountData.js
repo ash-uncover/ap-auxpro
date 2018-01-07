@@ -24,7 +24,7 @@ class ServiceInfosEditAccountData extends BaseData {
 
 		ServiceHelper.register(AuthHelper.getEntityId(), this, this.onServiceUpdate.bind(this))
 
-		this.onServiceUpdate()
+		this._onServiceUpdate()
 	}
 
 	unregister() {
@@ -36,11 +36,14 @@ class ServiceInfosEditAccountData extends BaseData {
 	// --------------------------------------------------------------------------------
 
 	onServiceUpdate() {
+		this._onServiceUpdate()
+		this.forceUpdate()
+	}
+
+	_onServiceUpdate() {
 		let service = ServiceHelper.getData(AuthHelper.getEntityId()) || {}
-		this.setState({
-			accountType: service.accountType,
-			accountExpiryDate: Formatters.Date.getFormattedValue(service.accountExpiryDate)
-		})
+		this.obj.state.accountType = service.accountType
+		this.obj.state.accountExpiryDate = Formatters.Date.getFormattedValue(service.accountExpiryDate)
 	}
 
 	// View callbacks //

@@ -8,10 +8,8 @@ import IndisponibilityHelper from 'helpers/IndisponibilityHelper'
 import MissionHelper from 'helpers/MissionHelper'
 import OfferHelper from 'helpers/OfferHelper'
 import ServiceHelper from 'helpers/ServiceHelper'
-import PromotioncodeHelper from 'helpers/PromotioncodeHelper'
 
-import { BaseData, ArraySet, Utils, MomentHelper } from 'ap-react-bootstrap'
-import moment from 'moment'
+import { BaseData, ArraySet, Utils } from 'ap-react-bootstrap'
 
 // Header not be displayed for the following path
 let PATHS_NO_HEADER = [
@@ -52,14 +50,6 @@ class AuxiliaryData extends BaseData {
 			interventions = interventions.array
 			for (let i = 0; i < interventions.length; i++) {
 				promises.push(InterventionHelper.getIntervention(interventions[i]))
-			}
-			// Force premium if not
-			let auxiliary = AuxiliaryHelper.getData(id)
-			if (!auxiliary.accountExpiryDate || MomentHelper.fromLocalDate(auxiliary.accountExpiryDate).isBefore(moment())) {
-				promises.push(PromotioncodeHelper.postAuxiliaryCode({
-					id: id,
-					name: 'AUXPROS-2018'
-				}))
 			}
 			return Promise.all(promises)
 		}).
