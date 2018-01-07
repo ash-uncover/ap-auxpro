@@ -5,11 +5,11 @@ class AuxiliaryStatusUtils {
 	static getName(status) {
 		switch (status) {
 			case AuxiliaryStatus.AUTO:
-			case AuxiliaryStatus.AUTO.key: return 'Auto entrepreneur'
-			case AuxiliaryStatus.SALARY:
-			case AuxiliaryStatus.SALARY.key: return 'Salarié'
-			case AuxiliaryStatus.BOTH:
-			case AuxiliaryStatus.BOTH.key: return 'Salarié & auto entrepreneur'
+			case AuxiliaryStatus.AUTO.key: return 'Je souhaite travailler pour un particulier (mandataire)' 
+ 			case AuxiliaryStatus.SALARY: 
+			case AuxiliaryStatus.SALARY.key: return 'Je souhaite travailler pour une entreprise (prestataire)' 
+ 			case AuxiliaryStatus.BOTH: 
+			case AuxiliaryStatus.BOTH.key: return 'Les deux' 
 		}
 		return ''
 	}

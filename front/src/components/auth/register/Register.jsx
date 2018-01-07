@@ -39,7 +39,7 @@ class Register extends React.Component {
 						bsSize='lg'
 						className='ap-register-button'
 						onClick={this.onRegisterSad.bind(this)}>
-						<b>Créer un compte<br/>SAD</b>
+						<b>Créer un compte<br/>SAP</b>
 					</Button>
 				</Grid.Col>
 			</Grid.Container>
