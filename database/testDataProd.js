@@ -24,7 +24,7 @@ db.promotioncode.insert({
 db.promotioncode.insert({
     "id":"AUXPROS-2018",
     "name":"AUXPROS-2018",
-    "validityDate": new Date("2018-12-31"),
+    "validityDate":new Date("2018-01-01"),
 })
 
 

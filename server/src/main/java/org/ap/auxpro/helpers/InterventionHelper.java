@@ -19,7 +19,6 @@ import javax.ws.rs.core.SecurityContext;
 import org.ap.auxpro.bean.BasicBean;
 import org.ap.auxpro.bean.InterventionEmptyBean;
 import org.ap.auxpro.bean.InterventionPostBean;
-import org.ap.auxpro.constants.EDiploma;
 import org.ap.auxpro.constants.EInterventionStatus;
 import org.ap.auxpro.constants.EMissionStatus;
 import org.ap.auxpro.constants.EOfferStatusSad;

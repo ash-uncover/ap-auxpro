@@ -17,7 +17,7 @@ class AuxiliaryInfosEditAccountData extends BaseData {
 
 		AuxiliaryHelper.register(AuthHelper.getEntityId(), this, this.onAuxiliaryUpdate.bind(this))
 
-		this.onAuxiliaryUpdate()
+		this._onAuxiliaryUpdate()
 	}
 
 	unregister() {
@@ -29,11 +29,14 @@ class AuxiliaryInfosEditAccountData extends BaseData {
 	// --------------------------------------------------------------------------------
 
 	onAuxiliaryUpdate() {
+		this._onAuxiliaryUpdate()
+		this.forceUpdate()
+	}
+
+	_onAuxiliaryUpdate() {
 		let Auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
-		this.setState({
-			accountType: Auxiliary.accountType,
-			accountExpiryDate: Formatters.Date.getFormattedValue(Auxiliary.accountExpiryDate)
-		})
+		this.obj.state.accountType = Auxiliary.accountType
+		this.obj.state.accountExpiryDate = Formatters.Date.getFormattedValue(Auxiliary.accountExpiryDate)
 	}
 
 	// View callbacks //

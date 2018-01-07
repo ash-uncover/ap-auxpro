@@ -6,47 +6,14 @@ import { BaseData } from 'ap-react-bootstrap'
 
 class RegisterConfirmData extends BaseData {
 
-	constructor() {
-		super(...arguments)
-
-		this.STATES = {
-			ASK_ALL: 'ASK_ALL',
-			ASK_CODE: 'ASK_CODE',
-			ASK_NONE: 'ASK_NONE'
-		}
-	}
-
-	register(obj, propsData) {
+	register(obj, email) {
 		super.register(obj)
 		
 		this.obj.onCancel = AppHelper.navigate.bind(AppHelper, '/home')
-		this.declareFunction('onSubmit')
-		this.declareFunction('onChangeNoError')
+		this.obj.onSubmit = this.onSubmit.bind(this)
 
-		let data = {}
-		try {
-			data = JSON.parse(atob(propsData))
-		} catch (error) {
-			console.error('failed to decode data')
-		}
+		this.obj.onChangeNoError = this.onChangeNoError.bind(this)
 
-		if (data && data.email && data.token) {
-			this.obj.state.email = data.email
-			this.obj.state.emailSet = true
-			this.obj.state.state = this.STATES.ASK_NONE
-			this.obj.state.token = data.token
-			this.obj.state.tokenSet = true
-			this.onSubmit()
-
-		} else if (data && data.email) {
-			this.obj.state.email = data.email
-			this.obj.state.emailSet = true
-			this.obj.state.state = this.STATES.ASK_CODE
-
-		} else {
-			this.obj.state.state = this.STATES.ASK_ALL
-		}
-		
 		ErrorHelper.register('POST_AUTH_REGISTER', this, this.onRegisterError.bind(this))
 	}
 

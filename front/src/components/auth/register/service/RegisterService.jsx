@@ -41,7 +41,7 @@ class RegisterService extends React.Component {
 							<Form.Group>
 								<Form.Label 
 									htmlFor='registerEmail'>
-									Addresse électronique
+									Adresse électronique
 								</Form.Label>
 								<Form.Input 
 									id='registerEmail'
@@ -71,7 +71,7 @@ class RegisterService extends React.Component {
 									value={this.state.confirm}
 									onChange={this.onChangeNoError.bind(this, 'confirm')} />
 							</Form.Group>
-							<Link href='/auth/register/confirm/e30='>J'ai déjà un code.</Link>
+							<Link href='/auth/register/confirm'>J'ai déjà un code.</Link>
 							<p className='ap-error'>{this.state.errorJustHappened && this.state.errorMessage}</p>
 							<Form.Submit 
 								disabled={this.state.errorJustHappened || submitDisable}

@@ -70,24 +70,24 @@ db.apauth.insert({
 db.apmail.insert({
 	"id":"mail_auth_register",
 	"subject":"{type} account registration",
-	"content":"Hello {user},\n\nTo complete your registration enter the following code when prompted:\n\n {code} \n\n{url}"
+	"content":"Hello {user},\n\nTo complete your registration enter the following code when prompted:\n\n {code}"
 })
 
 db.apmail.insert({
 	"id":"mail_auth_changemail",
 	"subject":"{type} email modification",
-	"content":"Hello {user},\n\nTo confirm your email change enter the following code when prompted:\n\n {code} \n\n{url}"
+	"content":"Hello {user},\n\nTo confirm your email change enter the following code when prompted:\n\n {code}"
 })
 
 db.apmail.insert({
 	"id":"mail_auth_confirmmail",
 	"subject":"{type} email confirmation",
-	"content":"Hello {user},\n\nTo confirm your email change enter the following code when prompted:\n\n {code} \n\n{url}"
+	"content":"Hello {user},\n\nTo confirm your email change enter the following code when prompted:\n\n {code}"
 })
 
 db.apmail.insert({
 	"id":"mail_auth_recover",
 	"subject":"{type} recover password",
-	"content":"Hello {user},\n\nTo recover your password enter the following code when prompted:\n\n {code} \n\n{url}"
+	"content":"Hello {user},\n\nTo recover your password enter the following code when prompted:\n\n {code}"
 })
 

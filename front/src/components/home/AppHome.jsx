@@ -40,7 +40,7 @@ class AppHome extends React.Component {
 						bsSize='lg'
 						className='ap-land-button'
 						onClick={this.onRegisterAux.bind(this)}>
-						<b>Créer un compte<br/>Auxiliaire de vie</b>
+						<b>Créer un compte<br/>Intervenant</b>
 					</Button>
 				</Grid.Col>
 				<br className='visible-xs-block'/>

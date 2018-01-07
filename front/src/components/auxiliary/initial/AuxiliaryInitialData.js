@@ -1,16 +1,13 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
-import GeozoneHelper from 'helpers/GeozoneHelper'
 import { BaseData, Nationality } from 'ap-react-bootstrap'
 
 import Civility from 'utils/constants/Civility'
 
 import AuxiliaryFields from 'utils/entities/AuxiliaryFields'
 
-import AuxiliaryStatusUtils from 'utils-lib/entities/AuxiliaryStatusUtils'
 import NationalityUtils from 'utils-lib/geo/NationalityUtils'
-import DiplomaUtils from 'utils-lib/entities/DiplomaUtils'
 
 class AuxiliaryInitialData extends BaseData {
 
@@ -39,14 +36,10 @@ class AuxiliaryInitialData extends BaseData {
 			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.CITY),
 			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.COUNTRY),
 			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.SOCIAL_NUMBER),
-			Object.assign({ defaultValue: 'true', form: 'select' }, AuxiliaryFields.IS_ENTREPRENEUR, { values: AuxiliaryStatusUtils.getValues() })
-			
-		]
-		this.FIELDS_FORM3 = [
-			Object.assign({ defaultValue: [], form: 'selectmulti' }, AuxiliaryFields.DIPLOMA, { values: DiplomaUtils.getDiplomas() })
+			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.ID_CARD_NUMBER)
 		]
 
-		this.FIELDS = this.FIELDS_FORM0.concat(this.FIELDS_FORM1).concat(this.FIELDS_FORM2).concat(this.FIELDS_FORM3)
+		this.FIELDS = this.FIELDS_FORM0.concat(this.FIELDS_FORM1).concat(this.FIELDS_FORM2)
 	}
 
 	register(obj) {
@@ -104,9 +97,6 @@ class AuxiliaryInitialData extends BaseData {
 		}.bind(this)).
 		then(function () {
 			return AuxiliaryHelper.getAuxiliary(AuthHelper.getEntityId())
-		}).
-		then(function () {
-			return GeozoneHelper.getAuxiliaryGeozones(AuthHelper.getEntityId())
 		}).
 		then(function () {
 			setTimeout(AppHelper.setBusy, 200)
