@@ -96,7 +96,7 @@ public class InterventionHelper {
 		List<AuxiliaryData> auxiliaries = null;
 		//
 		List<String> diplomas = intervention.getDiplomas();
-		if (diplomas != null && diplomas.size() > 0 && !diplomas.contains(EDiploma._DIPLOMA_NONE) && !diplomas.contains(EDiploma._DIPLOMA_STUDY)) {
+		if (diplomas != null && diplomas.size() > 0 && !diplomas.contains(EDiploma._DIPLOMA_NONE.getName()) && !diplomas.contains(EDiploma._DIPLOMA_STUDY.getName())) {
 			List<Bson> conditions = new ArrayList<Bson>();
 			for (String diploma : diplomas) {
 				conditions.add(in("diploma", diploma));
