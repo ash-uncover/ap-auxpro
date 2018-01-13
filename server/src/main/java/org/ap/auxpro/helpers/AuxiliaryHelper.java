@@ -4,6 +4,7 @@ import static com.mongodb.client.model.Filters.eq;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.ws.rs.core.Response.Status;
@@ -34,6 +35,9 @@ public class AuxiliaryHelper {
 		}
 		AuxiliaryData data = AuxiliaryCollection.getById(id);
 		// Set default values
+		if (auxiliaryBean.diploma == null) {
+			auxiliaryBean.diploma = new ArrayList<String>();
+		}
 		if (auxiliaryBean.diploma.size() == 0) {
 			auxiliaryBean.diploma.add(EDiploma._DIPLOMA_NONE.getName());
 		}
