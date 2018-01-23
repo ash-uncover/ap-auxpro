@@ -22,10 +22,10 @@ import org.ap.auxpro.storage.geozone.GeozoneCollection;
 import org.ap.auxpro.storage.geozone.GeozoneData;
 import org.ap.auxpro.storage.promotioncode.PromotioncodeCollection;
 import org.ap.auxpro.storage.promotioncode.PromotioncodeData;
-import org.ap.common.TimeHelper;
+import org.ap.common.exception.APWebException;
+import org.ap.common.time.TimeHelper;
+import org.ap.common.util.UUIDGenerator;
 import org.ap.common.validators.IValidator;
-import org.ap.web.internal.APWebException;
-import org.ap.web.internal.UUIDGenerator;
 public class AuxiliaryHelper {
 
 	@SuppressWarnings("unchecked")

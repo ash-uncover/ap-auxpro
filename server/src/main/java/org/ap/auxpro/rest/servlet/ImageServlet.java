@@ -7,8 +7,8 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 import java.io.InputStream;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import java.io.IOException;
-import org.ap.web.server.IFileServer;
-import org.ap.web.server.FileServer;
+import org.ap.common.server.IFileServer;
+import org.ap.common.server.FileServer;
 import java.io.ByteArrayOutputStream;
 import org.ap.auxpro.internal.EConfigProperties;
 

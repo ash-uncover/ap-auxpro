@@ -14,7 +14,7 @@ import org.ap.auxpro.constants.EInterventionRecurencePeriod;
 import org.ap.auxpro.storage.indisponibility.IndisponibilityData;
 import org.ap.auxpro.storage.intervention.InterventionData;
 import org.ap.auxpro.storage.mission.MissionData;
-import org.ap.common.TimeHelper;
+import org.ap.common.time.TimeHelper;
 
 public class Event {
 	public LocalDate date;

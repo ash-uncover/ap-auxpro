@@ -2,7 +2,7 @@ package org.ap.auxpro.rest;
 
 import org.ap.auxpro.internal.EConfigProperties;
 import org.ap.auxpro.rest.filter.HeadersResponseFilter;
-import org.ap.web.storage.Mongo;
+import org.ap.common.mongo.Mongo;
 import javax.ws.rs.ApplicationPath;
 import java.io.IOException;
 import org.glassfish.jersey.jackson.JacksonFeature;
