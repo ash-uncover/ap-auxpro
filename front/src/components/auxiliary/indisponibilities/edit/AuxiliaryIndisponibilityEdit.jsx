@@ -4,13 +4,13 @@ import './AuxiliaryIndisponibilityEdit.scss'
 
 import { Button, Panel, Grid, Form } from 'ap-react-bootstrap'
 
+// components-lib
 import FormHelper from 'components-lib/FormHelper'
 import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeekDays'
-
 import ModalDialog from 'components-lib/Modal/ModalDialog'
-
+// utils
 import IndisponibilityRecurencePeriod from 'utils/constants/IndisponibilityRecurencePeriod'
-
+// utils-lib
 import IndisponibilityUtils from 'utils-lib/entities/IndisponibilityUtils'
 
 class AuxiliaryIndisponibilityEdit extends React.Component {
@@ -51,6 +51,11 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 					<Panel.Body>
 						<Form horizontal className='col-sm-8 col-lg-7'>
 							{AuxiliaryIndisponibilityEditData.FIELDS_FORM1.map(this.buildFormGroup)}
+							{ this.state.indisponibilityNightly ?
+								<p className='ap-warning col-sm-7 col-sm-offset-5 col-md-8 col-md-offset-4'>
+									Cette intervention a lieu de nuit et se termine le lendemain.
+								</p>
+							: null }
 						</Form>
 						{ this.state.period !== IndisponibilityRecurencePeriod.HOURS.key && this.state.period !== IndisponibilityRecurencePeriod.DAYS.key ?
 						<Form className='col-sm-3 col-lg-2'>
@@ -64,21 +69,33 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
-				{ this.state.errorJustHappened ?
+				{this.state.showWarning ?
+					<Panel>
+						<Panel.Body className='ap-warning'>
+							<div>Veuillez vérifier les valeurs</div>
+							<ul>
+								{this.state.warningMsg.map((msg, index) => (<li key={index}>{msg}</li>) )}
+							</ul>
+						</Panel.Body>
+					</Panel>
+				: null}
+				{this.state.showError ?
 					<Panel>
 						<Panel.Body className='ap-error'>
 							<div>Une erreur est survenue</div>
-							<div>Veuillez vérifier les valeurs saisies</div>
+							<ul>
+								{this.state.errorMsg.map((msg, index) => (<li key={index}>{msg}</li>) )}
+							</ul>
 						</Panel.Body>
 					</Panel>
-				: null }
+				: null}
 				{ this.state.mode === AuxiliaryIndisponibilityEditData.MODES.CREATE ?
 					<Button 
 						block 
-						bsStyle={this.state.errorJustHappened ? 'danger' : submitDisabled ? 'default' : 'success'}
-						disabled={this.state.errorJustHappened || submitDisabled}
+						bsStyle={this.state.showError ? 'danger' : this.state.showWarning ? 'warning' : submitDisabled ? 'default' : 'success'}
+						disabled={this.state.showError || this.state.showWarning || submitDisabled}
 						onClick={this.onSubmit}>
-						{ this.state.errorJustHappened ? 'Erreur' : 'Créer indisponibilité' }
+						Créer indisponibilité
 					</Button>
 				:
 					<Grid.Row>
@@ -94,10 +111,10 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 						<Grid.Col sm={6}>
 							<Button 
 								block 
-								bsStyle={this.state.errorJustHappened ? 'danger' : submitDisabled ? 'default' : 'success'}
-								disabled={this.state.errorJustHappened || submitDisabled}
+								bsStyle={this.state.showWarning ? 'danger' : submitDisabled ? 'default' : 'success'}
+								disabled={this.state.showWarning || submitDisabled}
 								onClick={this.onSubmit}>
-								{ this.state.errorJustHappened ? 'Erreur' : 'Enregistrer modifications' }
+								Enregistrer modifications
 							</Button>
 						</Grid.Col>
 					</Grid.Row>
@@ -115,6 +132,5 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 			</div>
 		)
 	}
-
 }
 export default AuxiliaryIndisponibilityEdit
