@@ -2,7 +2,7 @@ import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import ErrorHelper from 'helpers/ErrorHelper'
 import IndisponibilityHelper from 'helpers/IndisponibilityHelper'
-import { BaseData, MomentHelper } from 'ap-react-bootstrap'
+import { BaseData, Day, MomentHelper } from 'ap-react-bootstrap'
 
 import IndisponibilityRecurencePeriod from 'utils/constants/IndisponibilityRecurencePeriod'
 
@@ -23,6 +23,8 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 			EDIT: 'EDIT'
 		}
 
+		let defaultDate = MomentHelper.toLocalDate(moment())
+
 		this.FIELDS_FORM1 = [
 			Object.assign(
 				{ defaultValue: IndisponibilityRecurencePeriod.HOURS.key, form: 'select' }, 
@@ -30,12 +32,14 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 				{ values: IndisponibilityRecurencePeriod.VALUES.map(this.getRecurence) }
 			),
 			Object.assign(
-				{ defaultValue: MomentHelper.toLocalDate(moment()), form: 'date' }, 
+				{ defaultValue: defaultDate, form: 'date' },
 				IndisponibilityFields.START_DATE,
 				{ validator: this.getStartDateValidator() }
 			),
 			Object.assign(
-				{ defaultValue: MomentHelper.toLocalDate(moment()), form: 'date' }, 
+				{ defaultValue: defaultDate, form: 'date', hidden: function() {
+                    return this.getState(IndisponibilityFields.PERIOD.key) === IndisponibilityRecurencePeriod.HOURS.key
+                }.bind(this) },
 				IndisponibilityFields.END_DATE,
 				{ validator: this.getEndDateValidator() }
 			),
@@ -53,7 +57,7 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 
 		this.FIELDS_FORM2 = [
 			Object.assign(
-				{ defaultValue: [], form: 'days' }, 
+				{ defaultValue: [], values: Day.VALUES }, 
 				IndisponibilityFields.DAYS,
 				{ validator: this.getDaysValidator() }
 			)
@@ -66,8 +70,6 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 		super.register(obj)
 
 		this.indisponibilityId = indisponibilityId
-
-		this.declareFunction('onChangeDirty')
 
 		this.declareFunction('onCancel')
 		this.declareFunction('onDelete')
@@ -115,7 +117,7 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 		AppHelper.navigateBack()
 	}
 
-	onChangeDirty(id, event, value) {
+	onChange(id, event, value) {
 		this.obj.state.dirty = true
 		this.obj.state.errorJustHappened = false
 		this.obj.state[id] = value
