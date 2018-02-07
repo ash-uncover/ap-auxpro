@@ -39,10 +39,11 @@ import org.ap.auxpro.storage.offer.OfferCollection;
 import org.ap.auxpro.storage.offer.OfferData;
 import org.ap.auxpro.storage.service.ServiceCollection;
 import org.ap.auxpro.storage.service.ServiceData;
-import org.ap.common.GeoHelper;
-import org.ap.common.TimeHelper;
-import org.ap.web.internal.APWebException;
-import org.ap.web.internal.UUIDGenerator;
+import org.ap.common.exception.APWebException;
+import org.ap.common.geo.GeoHelper;
+import org.ap.common.time.TimeEvent;
+import org.ap.common.time.TimeHelper;
+import org.ap.common.util.UUIDGenerator;
 import org.bson.conversions.Bson;
 
 import com.mongodb.MongoWriteException;
@@ -147,18 +148,18 @@ public class InterventionHelper {
 		for (AuxiliaryData aux : auxiliaries) {
 			List<MissionData> missions = MissionCollection.get(eq("auxiliaryId", aux.getId()));
 			List<IndisponibilityData> indisponibilities = IndisponibilityCollection.get(eq("auxiliaryId", aux.getId()));
-			Event[] interventionEvents = Event.buildEvents(intervention);
+			List<TimeEvent> interventionEvents = new TimeEventDefinition(intervention).getEvents();
 			int overlaps = 0;
 
-			for (Event interventionEvent : interventionEvents) {
+			for (TimeEvent interventionEvent : interventionEvents) {
 				boolean overlaped = false;
 				for (MissionData mission : missions) {
 					InterventionData mIntervention = InterventionCollection.getById(mission.getInterventionId());
 					if (EMissionStatus._CANCELED.equals(EMissionStatus.getByName(mIntervention.getSadStatus()))) {
 						break;
 					}
-					Event[] missionEvents = Event.buildEvents(mission, mIntervention);
-					if (Event.hasOverlap(missionEvents, interventionEvent)) {
+					List<TimeEvent> missionEvents = new TimeEventDefinition(mission, intervention).getEvents();
+					if (TimeEvent.hasOverlap(missionEvents, interventionEvent)) {
 						overlaped = true;
 						break;
 					}
@@ -168,14 +169,14 @@ public class InterventionHelper {
 					continue;
 				}
 				for (IndisponibilityData indisponibility : indisponibilities) {
-					Event[] indisponibilityEvents = Event.buildEvents(indisponibility);
-					if (Event.hasOverlap(indisponibilityEvents, interventionEvent)) {
+					List<TimeEvent> indisponibilityEvents = new TimeEventDefinition(indisponibility).getEvents();
+					if (TimeEvent.hasOverlap(indisponibilityEvents, interventionEvent)) {
 						overlaps++;
 						break;
 					}
 				}				
 			}	
-			scores.get(aux).timeScore = 100 - 100 * overlaps / interventionEvents.length;
+			scores.get(aux).timeScore = 100 - 100 * overlaps / interventionEvents.size();
 		}
 
 		// Compute skill score
