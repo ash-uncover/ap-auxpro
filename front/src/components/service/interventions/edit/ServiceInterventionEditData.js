@@ -7,6 +7,7 @@ import moment from 'moment'
 import { BaseData, Day, Formatters, Utils, MomentHelper } from 'ap-react-bootstrap'
 
 // utils
+import Diploma from 'utils/constants/Diploma'
 import InterventionRecurencePeriod from 'utils/constants/InterventionRecurencePeriod'
 // utils-lib
 import InterventionType from 'utils-lib/constants/InterventionType'
@@ -157,32 +158,33 @@ class ServiceInterventionEditData extends BaseData {
 	// --------------------------------------------------------------------------------
 
 	onChange(id, event, value) {
+        // Pre processing on values
         if (id === InterventionFields.DIPLOMAS.key) {
             let current = this.getState(InterventionFields.DIPLOMAS.key)
-            if (value.indexOf('diploma_none') !== -1) {
-                if (current.indexOf('diploma_none') === -1) {
-                    value = ['diploma_none']
+            if (value.indexOf(Diploma.DIPLOMA_NONE.key) !== -1) {
+                if (current.indexOf(Diploma.DIPLOMA_NONE.key) === -1) {
+                    value = [Diploma.DIPLOMA_NONE.key]
                 } else {
-                    value.splice(value.indexOf('diploma_none'), 1)
+                    value.splice(value.indexOf(Diploma.DIPLOMA_NONE.key), 1)
                 }
-            } else if (value.indexOf('diploma_study') !== -1) {
-                if (current.indexOf('diploma_study') === -1) {
-                    value = ['diploma_study']
+            } else if (value.indexOf(Diploma.DIPLOMA_STUDY.key) !== -1) {
+                if (current.indexOf(Diploma.DIPLOMA_STUDY.key) === -1) {
+                    value = [Diploma.DIPLOMA_STUDY.key]
                 } else {
-                    value.splice(value.indexOf('diploma_study'), 1)
+                    value.splice(value.indexOf(Diploma.DIPLOMA_STUDY.key), 1)
                 }
             }
         }
-         
+        // State global update
 		this.obj.state.dirty = true
         this.obj.state.errorShow = false
         this.obj.state.errorMsg = []
         this.obj.state.warningShow = false
         this.obj.state.warningMsg = []
         this.obj.state[id] = value
-
+        // Check data consistency
         this.checkIntervention(this.obj.state)
-
+        // Update component
 		this.forceUpdate()
 	}
 
