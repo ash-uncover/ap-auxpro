@@ -5,9 +5,11 @@ import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
 import ErrorHelper from 'helpers/ErrorHelper'
 import { BaseData, Nationality } from 'ap-react-bootstrap'
 
+// utils
 import AuxiliaryFields from 'utils/entities/AuxiliaryFields'
 import Diploma from 'utils/constants/Diploma'
-
+// utils-lib
+import AuxiliaryUtils from 'utils-lib/entities/AuxiliaryUtils'
 import AuxiliaryStatusUtils from 'utils-lib/entities/AuxiliaryStatusUtils'
 import BooleanUtils from 'utils-lib/BooleanUtils'
 import DiplomaUtils from 'utils-lib/entities/DiplomaUtils'
@@ -25,27 +27,27 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 			AuxiliaryFields.LONGITUDE
 		]
 		this.FIELDS_FORM1 = [
-			Object.assign({ defaultValue: 'Mme', form: 'select' }, AuxiliaryFields.CIVILITY),
-			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.FIRST_NAME),
-			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.LAST_NAME),
-			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.PHONE),
-			Object.assign({ defaultValue: 'FR', form: 'select', values: NationalityUtils.getNationalities() }, AuxiliaryFields.NATIONALITY),
-			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.BIRTH_CITY),
-			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.BIRTH_COUNTRY),
-			Object.assign({ defaultValue: [1980,1,1], form: 'date' }, AuxiliaryFields.BIRTH_DATE)
+			Object.assign({ defaultValue: 'Mme', form: 'select', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.CIVILITY) }, AuxiliaryFields.CIVILITY),
+			Object.assign({ defaultValue: '', form: 'input', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.FIRST_NAME) }, AuxiliaryFields.FIRST_NAME),
+			Object.assign({ defaultValue: '', form: 'input', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.LAST_NAME) }, AuxiliaryFields.LAST_NAME),
+			Object.assign({ defaultValue: '', form: 'input', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.PHONE) }, AuxiliaryFields.PHONE),
+			Object.assign({ defaultValue: 'FR', form: 'select', values: NationalityUtils.getNationalities(), name: AuxiliaryUtils.getFieldName(AuxiliaryFields.NATIONALITY) }, AuxiliaryFields.NATIONALITY),
+			Object.assign({ defaultValue: '', form: 'input', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.BIRTH_CITY) }, AuxiliaryFields.BIRTH_CITY),
+			Object.assign({ defaultValue: '', form: 'input', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.BIRTH_COUNTRY) }, AuxiliaryFields.BIRTH_COUNTRY),
+			Object.assign({ defaultValue: [1980,1,1], form: 'date', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.BIRTH_DATE) }, AuxiliaryFields.BIRTH_DATE)
 		]
 		this.FIELDS_FORM2 = [
 			{ form: 'address', key: 'addressSearch', name: 'Adresse' },
-			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.ADDRESS),
-			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.POSTAL_CODE),
-			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.CITY),
-			Object.assign({ defaultValue: '', form: 'static' }, AuxiliaryFields.COUNTRY),
-			Object.assign({ defaultValue: '', form: 'input' }, AuxiliaryFields.SOCIAL_NUMBER)
+			Object.assign({ defaultValue: '', form: 'static', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.ADDRESS) }, AuxiliaryFields.ADDRESS),
+			Object.assign({ defaultValue: '', form: 'static', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.POSTAL_CODE) }, AuxiliaryFields.POSTAL_CODE),
+			Object.assign({ defaultValue: '', form: 'static', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.CITY) }, AuxiliaryFields.CITY),
+			Object.assign({ defaultValue: '', form: 'static', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.COUNTRY) }, AuxiliaryFields.COUNTRY),
+			Object.assign({ defaultValue: '', form: 'input', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.SOCIAL_NUMBER) }, AuxiliaryFields.SOCIAL_NUMBER)
 		]
 		this.FIELDS_FORM3 = [
-			Object.assign({ defaultValue: '', form: 'textarea' }, AuxiliaryFields.DESCRIPTION),
-			Object.assign({ defaultValue: 'true', form: 'select' }, AuxiliaryFields.IS_ENTREPRENEUR, { values: AuxiliaryStatusUtils.getValues() }),
-			Object.assign({ defaultValue: [], form: 'selectmulti' }, AuxiliaryFields.DIPLOMA, { values: DiplomaUtils.getDiplomas() })
+			Object.assign({ defaultValue: '', form: 'textarea', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.DESCRIPTION) }, AuxiliaryFields.DESCRIPTION),
+			Object.assign({ defaultValue: 'true', form: 'select', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.IS_ENTREPRENEUR) }, AuxiliaryFields.IS_ENTREPRENEUR, { values: AuxiliaryStatusUtils.getValues() }),
+			Object.assign({ defaultValue: [], form: 'selectmulti', name: AuxiliaryUtils.getFieldName(AuxiliaryFields.DIPLOMA) }, AuxiliaryFields.DIPLOMA, { values: DiplomaUtils.getDiplomas() })
 		]
 
 		this.FIELDS = this.FIELDS_FORM0.concat(this.FIELDS_FORM1).concat(this.FIELDS_FORM2).concat(this.FIELDS_FORM3)

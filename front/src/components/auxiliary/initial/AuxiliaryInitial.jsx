@@ -6,8 +6,6 @@ import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 
 import FormHelper from 'components-lib/FormHelper'
 
-import AuxiliaryUtils from 'utils-lib/entities/AuxiliaryUtils'
-
 class AuxiliaryInitial extends React.Component {
 
 	constructor(props) {
@@ -15,7 +13,7 @@ class AuxiliaryInitial extends React.Component {
 
 		this.state = {}
 
-		this.buildFormGroup = FormHelper.buildFormGroup.bind(this, AuxiliaryUtils.getFieldName)
+		this.buildFormGroup = FormHelper.buildFormGroup.bind(this)
 		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 	}
 

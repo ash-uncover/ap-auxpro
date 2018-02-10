@@ -27,29 +27,29 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 
         this.FIELDS_FORM1 = [
             Object.assign(
-                { defaultValue: IndisponibilityRecurencePeriod.HOURS.key, form: 'select' }, 
+                { defaultValue: IndisponibilityRecurencePeriod.HOURS.key, form: 'select', name: IndisponibilityUtils.getFieldName(IndisponibilityFields.PERIOD) }, 
                 IndisponibilityFields.PERIOD, 
                 { values: IndisponibilityRecurencePeriod.VALUES.map(this.getRecurence) }
             ),
             Object.assign(
-                { defaultValue: defaultDate, form: 'date' },
+                { defaultValue: defaultDate, form: 'date', name: IndisponibilityUtils.getFieldName(IndisponibilityFields.START_DATE) },
                 IndisponibilityFields.START_DATE,
                 { validator: this.getStartDateValidator() }
             ),
             Object.assign(
                 { defaultValue: defaultDate, form: 'date', hidden: function() {
                     return this.getState(IndisponibilityFields.PERIOD.key) === IndisponibilityRecurencePeriod.HOURS.key
-                }.bind(this) },
+                }.bind(this), name: IndisponibilityUtils.getFieldName(IndisponibilityFields.END_DATE) },
                 IndisponibilityFields.END_DATE,
                 { validator: this.getEndDateValidator() }
             ),
             Object.assign(
-                { defaultValue: [0, 0], form: 'time' }, 
+                { defaultValue: [0, 0], form: 'time', name: IndisponibilityUtils.getFieldName(IndisponibilityFields.START_TIME) }, 
                 IndisponibilityFields.START_TIME,
                 { validator: this.getStartTimeValidator() }
             ),
             Object.assign(
-                { defaultValue: [0, 0], form: 'time' }, 
+                { defaultValue: [0, 0], form: 'time', name: IndisponibilityUtils.getFieldName(IndisponibilityFields.END_TIME) }, 
                 IndisponibilityFields.END_TIME,
                 { validator: this.getEndTimeValidator() }
             )
@@ -57,7 +57,7 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 
         this.FIELDS_FORM2 = [
             Object.assign(
-                { defaultValue: [], values: Day.VALUES }, 
+                { defaultValue: [], values: Day.VALUES, name: IndisponibilityUtils.getFieldName(IndisponibilityFields.DAYS) }, 
                 IndisponibilityFields.DAYS,
                 { validator: this.getDaysValidator() }
             )
@@ -147,6 +147,7 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
                 this.obj.state.warningMsg.push("Valeur invalide pour le champ : '" + IndisponibilityUtils.getFieldName(field.key) + "'")
             }
         }
+        this.obj.state.indisponibilityNightly = false
         let startTime = MomentHelper.fromLocalTime(this.getState('startTime'))
         let endTime = MomentHelper.fromLocalTime(this.getState('endTime'))
         if (endTime.isSameOrBefore(startTime)) {

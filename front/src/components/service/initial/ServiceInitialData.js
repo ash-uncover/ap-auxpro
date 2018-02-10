@@ -4,8 +4,10 @@ import ErrorHelper from 'helpers/ErrorHelper'
 import ServiceHelper from 'helpers/ServiceHelper'
 import { BaseData } from 'ap-react-bootstrap'
 
+// utils
 import ServiceFields from 'utils/entities/ServiceFields'
-
+// utils-lib
+import ServiceUtils from 'utils-lib/entities/ServiceUtils'
 import SocFunctionUtils from 'utils-lib/entities/SocFunctionUtils'
 import SocFunction from 'utils/constants/SocFunction'
 
@@ -20,18 +22,18 @@ class ServiceInitialData extends BaseData {
 			ServiceFields.LONGITUDE
 		]
 		this.FIELDS_FORM1 = [
-			Object.assign({ defaultValue: '', form: 'input' }, ServiceFields.SOCIAL_REASON),
-			Object.assign({ defaultValue: SocFunction.MAND.key, form: 'select' }, ServiceFields.FUNCTION, { values: SocFunctionUtils.getValues() }),
-			Object.assign({ defaultValue: '', form: 'input' }, ServiceFields.SIRET),
-			Object.assign({ defaultValue: '', form: 'input' }, ServiceFields.PHONE)
+			Object.assign({ defaultValue: '', form: 'input', name: ServiceUtils.getFieldName(ServiceFields.SOCIAL_REASON) }, ServiceFields.SOCIAL_REASON),
+			Object.assign({ defaultValue: SocFunction.MAND.key, form: 'select', name: ServiceUtils.getFieldName(ServiceFields.FUNCTION) }, ServiceFields.FUNCTION, { values: SocFunctionUtils.getValues() }),
+			Object.assign({ defaultValue: '', form: 'input', name: ServiceUtils.getFieldName(ServiceFields.SIRET) }, ServiceFields.SIRET),
+			Object.assign({ defaultValue: '', form: 'input', name: ServiceUtils.getFieldName(ServiceFields.PHONE) }, ServiceFields.PHONE)
 			
 		]
 		this.FIELDS_FORM2 = [
 			{ form: 'address', key: 'addressSearch', name: 'Adresse' },
-			Object.assign({ defaultValue: '', form: 'static' }, ServiceFields.ADDRESS),
-			Object.assign({ defaultValue: '', form: 'static' }, ServiceFields.POSTAL_CODE),
-			Object.assign({ defaultValue: '', form: 'static' }, ServiceFields.CITY),
-			Object.assign({ defaultValue: '', form: 'static' }, ServiceFields.COUNTRY)
+			Object.assign({ defaultValue: '', form: 'static', name: ServiceUtils.getFieldName(ServiceFields.ADDRESS) }, ServiceFields.ADDRESS),
+			Object.assign({ defaultValue: '', form: 'static', name: ServiceUtils.getFieldName(ServiceFields.POSTAL_CODE) }, ServiceFields.POSTAL_CODE),
+			Object.assign({ defaultValue: '', form: 'static', name: ServiceUtils.getFieldName(ServiceFields.CITY) }, ServiceFields.CITY),
+			Object.assign({ defaultValue: '', form: 'static', name: ServiceUtils.getFieldName(ServiceFields.COUNTRY) }, ServiceFields.COUNTRY)
 		]
 		this.FIELDS = this.FIELDS_FORM0.concat(this.FIELDS_FORM1).concat(this.FIELDS_FORM2)
 

@@ -2,19 +2,20 @@
 import React from 'react'
 
 import { Button, Panel, Form, Grid, Google } from 'ap-react-bootstrap'
+import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeekDays'
 
 class FormControlBuilder {
 
-	static buildFormGroup(nameProvider, field) { 
-        if (field.hidden && field.hidden()) return
-		let state = ''
-		if (field.validator) {
+	static buildFormGroup(field) { 
+        if ((field.hidden === true) || (field.hidden && field.hidden())) return
+		let state = field.state
+		if (!field.state && field.validator) {
 			state = field.validator.getState(this.state[field.key])
 		}
 		return (
 			<Form.Group key={field.key} state={state}>
 				<Form.Label className={(field.smLabel || 'col-sm-5') + ' ' + (field.mdLabel || 'col-md-4')}>
-					{field.name || (nameProvider ? nameProvider(field.key) : field.key)}
+					{field.name || field.key}
 				</Form.Label>
 				<Grid.Col sm={7} md={8}>
 					{this.buildFormControl(field)}
@@ -75,6 +76,11 @@ class FormControlBuilder {
 					minuteValues={[{key: 0, value: '00'}, {key: 15, value: '15'}, {key: 30, value: '30'}, {key: 45, value: '45'}]}
 					onChange={this.onChange.bind(this, field.key)} />
 				)
+            case 'days': return (
+                <FormSelectWeekDays 
+                    values={this.state[field.key]} 
+                    onChange={this.onChange.bind(this, field.key)} />
+                )
 			default: return (
 				<Form.Static>
 					{this.state[field.key]}

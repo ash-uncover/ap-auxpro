@@ -19,6 +19,10 @@ import moment from 'moment'
 
 class AuxiliaryPlaningData extends BaseData {
 
+    constructor() {
+        super(...arguments)
+    }
+
 	register(obj) {
 		super.register(obj)
 

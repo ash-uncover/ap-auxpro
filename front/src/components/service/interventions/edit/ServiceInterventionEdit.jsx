@@ -9,15 +9,14 @@ import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeek
 
 import InterventionRecurencePeriod from 'utils/constants/InterventionRecurencePeriod'
 
-import InterventionUtils from 'utils-lib/entities/InterventionUtils'
-
 class ServiceInterventionEdit extends React.Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {}
-		this.buildFormGroup = FormHelper.buildFormGroup.bind(this, InterventionUtils.getFieldName)
-		this.buildFormControl = FormHelper.buildFormControl.bind(this)
+		//this.buildFormGroup = FormHelper.buildFormGroup.bind(this)
+        this.buildFormGroup = this._renderFromGroup.bind(this)        
+		this.renderFormControl = FormHelper.buildFormControl.bind(this)
 	}
 
 	componentWillMount() {
@@ -32,9 +31,22 @@ class ServiceInterventionEdit extends React.Component {
 	// Rendering functions //
 	// --------------------------------------------------------------------------------
 
+    _renderFromGroup(field) {
+        if ((field.hidden === true) || (field.hidden && field.hidden())) return
+        return (
+            <Form.Group key={field.key} state={this.state[field.key + 'State']}>
+                <Form.Label className='col-sm-5 col-md-4'>
+                    {field.name}
+                </Form.Label>
+                <Grid.Col sm={7} md={8}>
+                    {this.renderFormControl(field)}
+                </Grid.Col>
+            </Form.Group>
+        )
+    }
+
 	render() {
-		let errors = InterventionUtils.checkValidity(this.state)
-		let submitDisabled = !this.state.dirty || errors !== null
+		let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
 		return (
 			<div className='ap-service-intervention-edit'>
 				<Button 
@@ -56,16 +68,27 @@ class ServiceInterventionEdit extends React.Component {
 									{ServiceInterventionEditData.FIELDS_FORM0.map(this.buildFormGroup)}
 								</Form>
 							</Grid.Col>
+                        </Grid.Row>
+                        <Grid.Row>
+                            <Grid.Col sm={8} md={7} lg={6} lgOffset={1}>
+                                <h4>Planification</h4>
+                            </Grid.Col>
+                        </Grid.Row>
+                        <Grid.Row>
 							<Grid.Col sm={8} md={7} lg={6} lgOffset={1}>
-								<h4>Planification</h4>
 								<Form horizontal>
 									{ServiceInterventionEditData.FIELDS_FORM1.map(this.buildFormGroup)}
 								</Form>
+                                { this.state.endTime[0] < this.state.startTime[0] || (this.state.endTime[0] === this.state.startTime[0] && this.state.endTime[1] === this.state.startTime[1]) ?
+                                    <p className='ap-warning col-sm-7 col-sm-offset-5 col-md-8 col-md-offset-4'>
+                                        Cette intervention a lieu de nuit et se termine le lendemain
+                                    </p>
+                                : null}
 							</Grid.Col>
 							{ this.state.period !== InterventionRecurencePeriod.HOURS.key ?
 							<Grid.Col sm={3} smOffset={1}>
 								<Form>
-									<Form.Group>
+									<Form.Group state={this.state.daysState}>
 										<Form.Label>Jours</Form.Label>
 										<FormSelectWeekDays values={this.state.days} onChange={this.onChange.bind(this, 'days')}/>
 									</Form.Group>
@@ -84,10 +107,30 @@ class ServiceInterventionEdit extends React.Component {
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
+                {this.state.warningShow ?
+                    <Panel>
+                        <Panel.Body className='ap-warning'>
+                            <div>Veuillez vérifier les valeurs</div>
+                            <ul>
+                                {this.state.warningMsg.map((warning, index) => (<li key={warning.key}>{warning.value}</li>) )}
+                            </ul>
+                        </Panel.Body>
+                    </Panel>
+                : null}
+                {this.state.errorShow ?
+                    <Panel>
+                        <Panel.Body className='ap-error'>
+                            <div>Une erreur est survenue</div>
+                            <ul>
+                                {this.state.errorMsg.map((error, index) => (<li key={index}>{error}</li>) )}
+                            </ul>
+                        </Panel.Body>
+                    </Panel>
+                : null}
 				<Button 
 					block 
-					bsStyle={submitDisabled ? 'default' : 'success'}
-					disabled={submitDisabled}
+					bsStyle={this.state.errorShow ? 'danger' : submitDisabled ? 'default' : 'success'}
+                    disabled={submitDisabled}
 					onClick={this.onSubmit}>
 					{ this.state.mode === ServiceInterventionEditData.MODES.CREATE ? 'Créer demande de prestation' : 'Enregistrer modifications' }
 				</Button>

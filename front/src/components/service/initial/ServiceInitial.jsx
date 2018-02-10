@@ -2,8 +2,6 @@ import React from 'react'
 import ServiceInitialData from './ServiceInitialData'
 import './ServiceInitial.scss'
 
-import ServiceUtils from 'utils-lib/entities/ServiceUtils'
-
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 import FormHelper from 'components-lib/FormHelper'
 
@@ -15,7 +13,7 @@ class ServiceInitial extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {}
-		this.buildFormGroup = FormHelper.buildFormGroup.bind(this, ServiceUtils.getFieldName)
+		this.buildFormGroup = FormHelper.buildFormGroup.bind(this)
 		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 	}
 

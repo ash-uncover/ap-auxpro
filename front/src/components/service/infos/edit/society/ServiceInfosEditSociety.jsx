@@ -2,8 +2,6 @@ import React from 'react'
 import ServiceInfosEditSocietyData from './ServiceInfosEditSocietyData'
 import './ServiceInfosEditSociety.scss'
 
-import ServiceUtils from 'utils-lib/entities/ServiceUtils'
-
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 import FormHelper from 'components-lib/FormHelper'
 
@@ -14,7 +12,7 @@ class ServiceInfosEditSociety extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {}
-		this.buildFormGroup = FormHelper.buildFormGroup.bind(this, ServiceUtils.getFieldName)
+		this.buildFormGroup = FormHelper.buildFormGroup.bind(this)
 		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 	}
 

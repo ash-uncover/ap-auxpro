@@ -10,15 +10,13 @@ import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeek
 import ModalDialog from 'components-lib/Modal/ModalDialog'
 // utils
 import IndisponibilityRecurencePeriod from 'utils/constants/IndisponibilityRecurencePeriod'
-// utils-lib
-import IndisponibilityUtils from 'utils-lib/entities/IndisponibilityUtils'
 
 class AuxiliaryIndisponibilityEdit extends React.Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {}
-		this.buildFormGroup = FormHelper.buildFormGroup.bind(this, IndisponibilityUtils.getFieldName)
+		this.buildFormGroup = FormHelper.buildFormGroup.bind(this)
 		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 	}
 
@@ -35,7 +33,7 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 	// --------------------------------------------------------------------------------
 
 	render() {
-		let submitDisabled = !this.state.dirty || !this.state.indisponibilityValid
+		let submitDisabled = !this.state.dirty || !this.state.indisponibilityValid || this.state.showError || this.state.showWarning
 		return (
 			<div className='ap-auxiliary-indisponibility-edit'>
 				<Button block bsStyle='primary' onClick={this.onCancel}>Annuler</Button>
@@ -53,7 +51,7 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 							{AuxiliaryIndisponibilityEditData.FIELDS_FORM1.map(this.buildFormGroup)}
 							{ this.state.indisponibilityNightly ?
 								<p className='ap-warning col-sm-7 col-sm-offset-5 col-md-8 col-md-offset-4'>
-									Cette intervention a lieu de nuit et se termine le lendemain.
+									Cette indisponibilité a lieu de nuit et se termine le lendemain.
 								</p>
 							: null }
 						</Form>
@@ -93,7 +91,7 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 					<Button 
 						block 
 						bsStyle={this.state.showError ? 'danger' : this.state.showWarning ? 'warning' : submitDisabled ? 'default' : 'success'}
-						disabled={this.state.showError || this.state.showWarning || submitDisabled}
+						disabled={submitDisabled}
 						onClick={this.onSubmit}>
 						Créer indisponibilité
 					</Button>
@@ -112,7 +110,7 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 							<Button 
 								block 
 								bsStyle={this.state.showWarning ? 'danger' : submitDisabled ? 'default' : 'success'}
-								disabled={this.state.showWarning || submitDisabled}
+								disabled={submitDisabled}
 								onClick={this.onSubmit}>
 								Enregistrer modifications
 							</Button>

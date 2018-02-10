@@ -5,8 +5,6 @@ import './AuxiliaryInfosEditInfos.scss'
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 import FormHelper from 'components-lib/FormHelper'
 
-import AuxiliaryUtils from 'utils-lib/entities/AuxiliaryUtils'
-
 import ImageUploader from 'components-lib/Image/ImageUploader'
 
 class AuxiliaryInfosEditInfos extends React.Component {
@@ -19,7 +17,7 @@ class AuxiliaryInfosEditInfos extends React.Component {
 			errorJustHappened: false
 		}
 		
-		this.buildFormGroup = FormHelper.buildFormGroup.bind(this, AuxiliaryUtils.getFieldName)
+		this.buildFormGroup = FormHelper.buildFormGroup.bind(this)
 		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 	}
 

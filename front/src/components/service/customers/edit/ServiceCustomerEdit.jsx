@@ -4,12 +4,12 @@ import './ServiceCustomerEdit.scss'
 
 import { Button, Panel, Form, Grid, Google } from 'ap-react-bootstrap'
 
+// components-lib
 import SkillTile from 'components-lib/SkillTile/SkillTile'
 import SkillTileAdd from 'components-lib/SkillTile/SkillTileAdd'
-
+// utils
 import CustomerFields from 'utils/entities/CustomerFields'
-
-
+// utils-lib
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 import SkillUtils from 'utils-lib/entities/SkillUtils'
 
