@@ -102,11 +102,7 @@ class ServiceInterventionEditData extends BaseData {
 		this.declareFunction('onSubmit')
 
 		this.obj.state.mode = interventionId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
-		this.obj.state.errorShow = false
-		this.obj.state.errorMsg = []
-		this.obj.state.warningShow = false
-		this.obj.state.warningMsg = []
-
+		
 		if (this.getState('mode') === this.MODES.EDIT) {
 			let type = InterventionUtils.getType(InterventionHelper.getData(interventionId))
 			if (type === InterventionType.OFFERED || type === InterventionType.PLANNED) {
@@ -120,7 +116,8 @@ class ServiceInterventionEditData extends BaseData {
 		this.FIELDS.CUSTOMER_ID.values = customers
 		this.FIELDS.CUSTOMER_ID.defaultValue = customers && customers.length && customers[0].key
 
-		this.onInterventionUpdate()
+		this.loadIntervention(InterventionHelper.getData(interventionId) || {})
+		this.checkIntervention()
 
 		ErrorHelper.register('GET_INTERVENTION', this, this.handleGetInterventionError.bind(this))
 		ErrorHelper.register('POST_INTERVENTION', this, this.handlePostInterventionError.bind(this))
@@ -136,21 +133,41 @@ class ServiceInterventionEditData extends BaseData {
 	// Store notifications //
 	// --------------------------------------------------------------------------------
 
-	onInterventionUpdate() {
-		this.checkIntervention(InterventionHelper.getData(this.interventionId))
-	}
-
 	handleGetInterventionError() {
 		let errorData = ErrorHelper.getData('GET_INTERVENTION')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la récupération de l'intervention" ]
+			})
+		}
 	}
 	handlePutInterventionError() {
 		let errorData = ErrorHelper.getData('PUT_INTERVENTION')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la mise à jour de l'intervention" ]
+			})
+		}
 	}
 	handlePostInterventionError() {
 		let errorData = ErrorHelper.getData('POST_INTERVENTION')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la création de l'intervention" ]
+			})
+		}
 	}
 	handleDeleteInterventionError() {
 		let errorData = ErrorHelper.getData('DELETE_INTERVENTION')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la supression de l'intervention" ]
+			})
+		}
 	}
 
 
@@ -220,20 +237,43 @@ class ServiceInterventionEditData extends BaseData {
 	// Internal methods //
 	// --------------------------------------------------------------------------------
 
-	checkIntervention(intervention) {
+	buildIntervention() {
+		let intervention = (this.getState('mode') === this.MODES.CREATE) ?
+			{ serviceId: AuthHelper.getEntityId() } :
+			Object.assign({}, InterventionHelper.getData(this.interventionId))
+			
 		for (let f in this.FIELDS) {
 			let field = this.FIELDS[f]
-			
-			let value = (intervention && intervention[field.key]) || field.defaultValue
-			this.obj.state[field.key] = (field.formatter && field.formatter(value)) || value
-			
-			let isDefault = !!(intervention && intervention[field.key])
-			this.obj.state[field.key + 'Default'] = isDefault
+			if (InterventionFields.get(field.key)) {
+				intervention[field.key] = this.getState(field.key)
+			}
+		}
+		if (intervention.period === InterventionRecurencePeriod.HOURS.key) {
+			delete intervention.days
+			delete intervention.endDate
+		}
+		return intervention
+	}
 
-			let state = field.validator(value)
+	loadIntervention(intervention) {
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
+			let value = intervention[field.key] || field.defaultValue
+			this.obj.state[field.key] = field.formatter ? field.formatter(value) : value
+		}
+	}
+
+	checkIntervention() {
+		this.obj.state.errorShow = false
+		this.obj.state.errorMsg = []
+		this.obj.state.warningShow = false
+		this.obj.state.warningMsg = []
+		//
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
+			let state = field.validator(this.getState(field.key))
 			this.obj.state[field.key + 'State'] = state.state
 			this.obj.state[field.key + 'Warning'] = state.message
-
 			if (state.message) {
 				this.obj.state.warningMsg.push({
 					key: field.key,
@@ -324,24 +364,6 @@ class ServiceInterventionEditData extends BaseData {
 	}
 	getCustomers() {
 		return Utils.map(CustomerHelper.getData(), this.getCustomer)
-	}
-
-	buildIntervention() {
-		let intervention = (this.getState('mode') === this.MODES.CREATE) ?
-			{ serviceId: AuthHelper.getEntityId() } :
-			Object.assign({}, InterventionHelper.getData(this.interventionId))
-			
-		for (let f in this.FIELDS) {
-			let field = this.FIELDS[f]
-			if (InterventionFields.get(field.key)) {
-				intervention[field.key] = this.getState(field.key)
-			}
-		}
-		if (intervention.period === InterventionRecurencePeriod.HOURS.key) {
-			delete intervention.days
-			delete intervention.endDate
-		}
-		return intervention
 	}
 }
 

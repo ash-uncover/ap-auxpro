@@ -83,6 +83,10 @@ class ServiceCustomerEditData extends BaseData {
 				CustomerFields.COUNTRY,
 				{ validator: this.checkCountry.bind(this) }
 			),
+			ADDRESS_SEARCH: Object.assign(
+				{ form: 'address', key: 'addressSearch', name: 'Adresse' },
+				{ validator: this.checkAddressSearch.bind(this) }
+			),
 			EMAIL: Object.assign(
 				{ defaultValue: '', form: 'input', name: CustomerUtils.getFieldName(CustomerFields.EMAIL) }, 
 				CustomerFields.EMAIL,
@@ -115,13 +119,10 @@ class ServiceCustomerEditData extends BaseData {
 			SKILL_SHOPPING: Object.assign(
 				{ defaultValue: 0, name: CustomerUtils.getFieldName(CustomerFields.SKILL_SHOPPING) }, 
 				CustomerFields.SKILL_SHOPPING
-			)
+			),
+			SKILLS_CHECKER: { key: 'skillsChecker', validator: this.checkSkillsChecker.bind(this) }
 		}
 
-		this.FIELDS_FORM0 = [
-			this.FIELDS.LATTITUDE,
-			this.FIELDS.LONGITUDE
-		]
 		this.FIELDS_FORM1 = [
 			this.FIELDS.CIVILITY,
 			this.FIELDS.LAST_NAME,
@@ -131,7 +132,7 @@ class ServiceCustomerEditData extends BaseData {
 			this.FIELDS.PHONE
 		]
 		this.FIELDS_FORM2 = [
-			{ form: 'address', key: 'addressSearch', name: 'Adresse' },
+			this.FIELDS.ADDRESS_SEARCH,
 			this.FIELDS.ADDRESS,
 			this.FIELDS.POSTAL_CODE,
 			this.FIELDS.CITY,
@@ -162,25 +163,9 @@ class ServiceCustomerEditData extends BaseData {
 		this.declareFunction('onSubmit')
 		
 		this.obj.state.mode = customerId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
-		this.obj.state.errorShow = false
-		this.obj.state.errorMsg = []
-		this.obj.state.warningShow = false
-		this.obj.state.warningMsg = []
-
-		let customer = CustomerHelper.getData(this.customerId) || {}
-		this.obj.state.customerName = this.customerId !== 'new' ? CustomerUtils.getFullName(customer) : 'Nouvel usager'
-		for (let f in this.FIELDS) {
-			let field = this.FIELDS[f]
-			let value = customer[field.key]
-			this.obj.state[field.key] = value || field.defaultValue
-			if (field.defaultValue && this.obj.state[field.key] === field.defaultValue && this.obj.state.mode === this.MODES.CREATE) {
-				this.obj.state[field.key + 'Default'] = 'warning'
-			}
-		}
-		this.obj.state.skills = Skills.VALUES.sort(this.sortSkills)
-		this.obj.state.showAllSkills = false
-
-		this.onCustomerUpdate()
+		
+		this.loadCustomer(CustomerHelper.getData(this.customerId) || {})
+		this.checkCustomer()
 
 		ErrorHelper.register('GET_CUSTOMER', this, this.handleGetCustomerError.bind(this))
 		ErrorHelper.register('POST_CUSTOMER', this, this.handlePostCustomerError.bind(this))
@@ -196,21 +181,41 @@ class ServiceCustomerEditData extends BaseData {
 	// Store notifications //
 	// --------------------------------------------------------------------------------
 
-	onCustomerUpdate() {
-		this.checkCustomer(CustomerHelper.getData(this.customerId))
-	}
-
 	handleGetCustomerError() {
 		let errorData = ErrorHelper.getData('GET_CUSTOMER')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la récupération des informations de l'usager" ]
+			})
+		}
 	}
 	handlePutCustomerError() {
 		let errorData = ErrorHelper.getData('PUT_CUSTOMER')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la mise à jour des informations de l'usager" ]
+			})
+		}
 	}
 	handlePostCustomerError() {
 		let errorData = ErrorHelper.getData('POST_CUSTOMER')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la création de l'usager" ]
+			})
+		}
 	}
 	handleDeleteCustomerError() {
 		let errorData = ErrorHelper.getData('DELETE_CUSTOMER')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la suppression de l'usager" ]
+			})
+		}
 	}
 
 
@@ -220,11 +225,6 @@ class ServiceCustomerEditData extends BaseData {
 	onChange(id, event, value) {
 		// State global update
 		this.obj.state.dirty = true
-		this.obj.state.errorShow = false
-		this.obj.state.errorMsg = []
-		this.obj.state.warningShow = false
-		this.obj.state.warningMsg = []
-		this.obj.state[id] = value
 		// Pre processing on values
 		if (id === 'addressSearch') {
 			this.obj.state.addressSearch = ''
@@ -234,6 +234,11 @@ class ServiceCustomerEditData extends BaseData {
 			this.obj.state.postalCode = event.postalCode
 			this.obj.state.city = event.city
 			this.obj.state.country = event.country
+		} else if (id === CustomerFields.PHONE.key && Validators.Phone.getBlockedValue(value) !== value) {
+			this.forceUpdate()
+			return
+		} else {
+			this.obj.state[id] = value
 		}
 		// Check data consistency
 		this.checkCustomer(this.obj.state)
@@ -241,20 +246,6 @@ class ServiceCustomerEditData extends BaseData {
 		this.forceUpdate()
 	}
 	
-	onChangeAddress(address) {
-		let data = {
-			address: address.address,
-			lattitude: address.lattitude,
-			longitude: address.longitude,
-			postalCode: address.postalCode,
-			city: address.city,
-			country: address.country,
-			dirty: true,
-			customerValid: true
-		}
-		this.setState(data)
-	}
-
 	onSkillAdd() {
 		this.setState({ 
 			skills: Skills.VALUES.sort(this.sortSkillsSecondary),
@@ -294,21 +285,42 @@ class ServiceCustomerEditData extends BaseData {
 	// Internal methods //
 	// --------------------------------------------------------------------------------
 
-	checkCustomer(customer) {
+	buildCustomer() {
+		let customer = (this.getState('mode') === this.MODES.CREATE) ?
+			{ serviceId: AuthHelper.getEntityId() } :
+			CustomerHelper.getData(this.customerId)
+			
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
+			if (CustomerFields.get(field.key)) {
+				customer[field.key] = this.getState(field.key)
+			}
+		}
+		return customer
+	}
+
+	loadCustomer(customer) {
+		this.obj.state.customerName = this.customerId !== 'new' ? CustomerUtils.getFullName(customer) : 'Nouvel usager'
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
+			let value = customer[field.key]
+			this.obj.state[field.key] = value || field.defaultValue
+		}
+		this.obj.state.skills = Skills.VALUES.sort(this.sortSkills)
+		this.obj.state.showAllSkills = false
+	}
+
+	checkCustomer() {
+		this.obj.state.errorShow = false
+		this.obj.state.errorMsg = []
+		this.obj.state.warningShow = false
+		this.obj.state.warningMsg = []
 		// Fields individual status
 		for (let f in this.FIELDS) {
 			let field = this.FIELDS[f]
-			
-			let value = (customer && customer[field.key]) || field.defaultValue
-			this.obj.state[field.key] = (field.formatter && field.formatter(value)) || value
-			
-			let isDefault = !!(customer && customer[field.key])
-			this.obj.state[field.key + 'Default'] = isDefault
-
-			let state = (field.validator && field.validator(value)) || {}
+			let state = (field.validator && field.validator(this.getState(field.key))) || {}
 			this.obj.state[field.key + 'State'] = state.state
 			this.obj.state[field.key + 'Warning'] = state.message
-
 			if (state.message) {
 				this.obj.state.warningMsg.push({
 					key: field.key,
@@ -316,46 +328,6 @@ class ServiceCustomerEditData extends BaseData {
 				})
 				this.obj.state.warningShow = true
 			}
-		}
-		// Handling address
-		this.obj.state.addressSearchState = null
-		this.obj.state.addressSearchWarning = null
-		if (this.obj.state.addressState === 'error' ||
-			this.obj.state.addressPostalCode === 'error' ||
-			this.obj.state.addressCity === 'error' ||
-			this.obj.state.addressCountry === 'error' ||
-			this.obj.state.addressLattitude === 'error' ||
-			this.obj.state.addressLongitude === 'error') {
-			let msg = 'Veuillez saisir une addresse valide'
-			this.obj.state.addressSearchState = 'error'
-			this.obj.state.addressSearchWarning = msg
-			this.obj.state.warningMsg.push({
-				key: 'addressSearch',
-				value: msg
-			})
-			this.obj.state.warningShow = true
-		} else if (this.obj.state.addressState === 'success' ||
-			this.obj.state.addressPostalCode === 'success' ||
-			this.obj.state.addressCity === 'success' ||
-			this.obj.state.addressCountry === 'success' ||
-			this.obj.state.addressLattitude === 'success' ||
-			this.obj.state.addressLongitude === 'success') {
-			this.obj.state.addressSearchState = 'success'
-		}
-		// Handling skills
-		if ((this.obj.state.SKILL_ADMINISTRATIVE + 
-			this.obj.state.SKILL_NURSING + 
-			this.obj.state.SKILL_SHOPPING + 
-			this.obj.state.SKILL_HOUSEWORK +
-			this.obj.state.SKILL_DOITYOURSELF +
-			this.obj.state.SKILL_COMPAGNY +
-			this.obj.state.SKILL_CHILDHOOD) === 0) {
-			console.log(this.obj.state)
-			this.obj.state.warningShow = true
-			this.obj.state.warningMsg.push({
-				key: 'addressSearch',
-				value: 'Vous devez ajouter au moins un besoin'
-			})
 		}
 	}
 	checkLattitude() {
@@ -400,6 +372,17 @@ class ServiceCustomerEditData extends BaseData {
 		}
 		return { state: 'success' }
 	}
+	checkAddressSearch() {
+		if (this.getState('addressState') === 'error' ||
+			this.getState('postalCodeState') === 'error' ||
+			this.getState('cityState') === 'error' ||
+			this.getState('countryState') === 'error' ||
+			this.getState('lattitudeState') === 'error' ||
+			this.getState('longitudeState') === 'error') {
+			return { state: 'error', message: 'Veuillez saisir une addresse valide' }
+		}
+		return { state: 'success' }
+	}
 	checkAddress() {
 		return this.getState('address') ? { state: 'success' } : { state: 'error' }
 	}
@@ -418,19 +401,17 @@ class ServiceCustomerEditData extends BaseData {
 		}
 		return { state: 'success' }
 	}
-
-	buildCustomer() {
-		let customer = (this.getState('mode') === this.MODES.CREATE) ?
-			{ serviceId: AuthHelper.getEntityId() } :
-			CustomerHelper.getData(this.customerId)
-			
-		for (let f in this.FIELDS) {
-			let field = this.FIELDS[f]
-			if (CustomerFields.get(field.key)) {
-				customer[field.key] = this.getState(field.key)
-			}
+	checkSkillsChecker() {
+		if ((this.obj.state[CustomerFields.SKILL_ADMINISTRATIVE.key] + 
+			this.obj.state[CustomerFields.SKILL_NURSING.key] + 
+			this.obj.state[CustomerFields.SKILL_SHOPPING.key] + 
+			this.obj.state[CustomerFields.SKILL_HOUSEWORK.key] +
+			this.obj.state[CustomerFields.SKILL_DOITYOURSELF.key] +
+			this.obj.state[CustomerFields.SKILL_COMPAGNY.key] +
+			this.obj.state[CustomerFields.SKILL_CHILDHOOD.key]) === 0) {
+			return { state: 'error', message: 'Vous devez ajouter au moins un besoin' }
 		}
-		return customer
+		return { state: 'success' }
 	}
 
 	_sortSkills(s1, s2) {
