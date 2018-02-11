@@ -227,6 +227,9 @@ class ServiceCustomerEditData extends BaseData {
 			this.obj.state.postalCode = event.postalCode
 			this.obj.state.city = event.city
 			this.obj.state.country = event.country
+		} else if (id === CustomerFields.PHONE.key && Validators.Phone.getBlockedValue(value) !== value) {
+			this.forceUpdate()
+			return
 		} else {
 			this.obj.state[id] = value
 		}
