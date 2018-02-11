@@ -164,21 +164,8 @@ class ServiceCustomerEditData extends BaseData {
 		
 		this.obj.state.mode = customerId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
 		
-
-		let customer = CustomerHelper.getData(this.customerId) || {}
-		this.obj.state.customerName = this.customerId !== 'new' ? CustomerUtils.getFullName(customer) : 'Nouvel usager'
-		for (let f in this.FIELDS) {
-			let field = this.FIELDS[f]
-			let value = customer[field.key]
-			this.obj.state[field.key] = value || field.defaultValue
-			if (field.defaultValue && this.obj.state[field.key] === field.defaultValue && this.obj.state.mode === this.MODES.CREATE) {
-				this.obj.state[field.key + 'Default'] = 'warning'
-			}
-		}
-		this.obj.state.skills = Skills.VALUES.sort(this.sortSkills)
-		this.obj.state.showAllSkills = false
-
-		this.onCustomerUpdate()
+		this.loadCustomer(CustomerHelper.getData(this.customerId) || {})
+		this.checkCustomer()
 
 		ErrorHelper.register('GET_CUSTOMER', this, this.handleGetCustomerError.bind(this))
 		ErrorHelper.register('POST_CUSTOMER', this, this.handlePostCustomerError.bind(this))
@@ -193,10 +180,6 @@ class ServiceCustomerEditData extends BaseData {
 
 	// Store notifications //
 	// --------------------------------------------------------------------------------
-
-	onCustomerUpdate() {
-		this.checkCustomer(CustomerHelper.getData(this.customerId))
-	}
 
 	handleGetCustomerError() {
 		let errorData = ErrorHelper.getData('GET_CUSTOMER')
@@ -263,20 +246,6 @@ class ServiceCustomerEditData extends BaseData {
 		this.forceUpdate()
 	}
 	
-	onChangeAddress(address) {
-		let data = {
-			address: address.address,
-			lattitude: address.lattitude,
-			longitude: address.longitude,
-			postalCode: address.postalCode,
-			city: address.city,
-			country: address.country,
-			dirty: true,
-			customerValid: true
-		}
-		this.setState(data)
-	}
-
 	onSkillAdd() {
 		this.setState({ 
 			skills: Skills.VALUES.sort(this.sortSkillsSecondary),
@@ -316,7 +285,32 @@ class ServiceCustomerEditData extends BaseData {
 	// Internal methods //
 	// --------------------------------------------------------------------------------
 
-	checkCustomer(customer) {
+	buildCustomer() {
+		let customer = (this.getState('mode') === this.MODES.CREATE) ?
+			{ serviceId: AuthHelper.getEntityId() } :
+			CustomerHelper.getData(this.customerId)
+			
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
+			if (CustomerFields.get(field.key)) {
+				customer[field.key] = this.getState(field.key)
+			}
+		}
+		return customer
+	}
+
+	loadCustomer(customer) {
+		this.obj.state.customerName = this.customerId !== 'new' ? CustomerUtils.getFullName(customer) : 'Nouvel usager'
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
+			let value = customer[field.key]
+			this.obj.state[field.key] = value || field.defaultValue
+		}
+		this.obj.state.skills = Skills.VALUES.sort(this.sortSkills)
+		this.obj.state.showAllSkills = false
+	}
+
+	checkCustomer() {
 		this.obj.state.errorShow = false
 		this.obj.state.errorMsg = []
 		this.obj.state.warningShow = false
@@ -324,17 +318,9 @@ class ServiceCustomerEditData extends BaseData {
 		// Fields individual status
 		for (let f in this.FIELDS) {
 			let field = this.FIELDS[f]
-			
-			let value = (customer && customer[field.key]) || field.defaultValue
-			this.obj.state[field.key] = (field.formatter && field.formatter(value)) || value
-			
-			let isDefault = !!(customer && customer[field.key])
-			this.obj.state[field.key + 'Default'] = isDefault
-
-			let state = (field.validator && field.validator(value)) || {}
+			let state = (field.validator && field.validator(this.getState(field.key))) || {}
 			this.obj.state[field.key + 'State'] = state.state
 			this.obj.state[field.key + 'Warning'] = state.message
-
 			if (state.message) {
 				this.obj.state.warningMsg.push({
 					key: field.key,
@@ -343,8 +329,6 @@ class ServiceCustomerEditData extends BaseData {
 				this.obj.state.warningShow = true
 			}
 		}
-		// Handling skills
-		
 	}
 	checkLattitude() {
 	}
@@ -428,20 +412,6 @@ class ServiceCustomerEditData extends BaseData {
 			return { state: 'error', message: 'Vous devez ajouter au moins un besoin' }
 		}
 		return { state: 'success' }
-	}
-
-	buildCustomer() {
-		let customer = (this.getState('mode') === this.MODES.CREATE) ?
-			{ serviceId: AuthHelper.getEntityId() } :
-			CustomerHelper.getData(this.customerId)
-			
-		for (let f in this.FIELDS) {
-			let field = this.FIELDS[f]
-			if (CustomerFields.get(field.key)) {
-				customer[field.key] = this.getState(field.key)
-			}
-		}
-		return customer
 	}
 
 	_sortSkills(s1, s2) {
