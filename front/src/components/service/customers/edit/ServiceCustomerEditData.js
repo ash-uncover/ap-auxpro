@@ -1,13 +1,14 @@
+import { MomentHelper, BaseData, Nationality, Validators } from 'ap-react-bootstrap'
+import moment from 'moment'
+// helpers
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
-
 import CustomerHelper from 'helpers/CustomerHelper'
-
-import { BaseData, Nationality } from 'ap-react-bootstrap'
-
+import ErrorHelper from 'helpers/ErrorHelper'
+// utils
 import Skills from 'utils/constants/Skills'
-
 import CustomerFields from 'utils/entities/CustomerFields'
+// utils-lib
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 import NationalityUtils from 'utils-lib/geo/NationalityUtils'
 
@@ -21,61 +22,155 @@ class ServiceCustomerEditData extends BaseData {
 			EDIT: 'EDIT'
 		}
 
+		this.FIELDS = {
+			LATTITUDE: Object.assign(
+				{},
+				CustomerFields.LATTITUDE,
+				{ validator: this.checkLattitude.bind(this) }
+			),
+			LONGITUDE: Object.assign(
+				{},
+				CustomerFields.LONGITUDE,
+				{ validator: this.checkLongitude.bind(this) }
+			),
+			CIVILITY: Object.assign(
+				{ defaultValue: 'Mme', form: 'select', name: CustomerUtils.getFieldName(CustomerFields.CIVILITY) }, 
+				CustomerFields.CIVILITY,
+				{ validator: this.checkCivility.bind(this) }
+			),
+			LAST_NAME: Object.assign(
+				{ defaultValue: '', form: 'input', name: CustomerUtils.getFieldName(CustomerFields.LAST_NAME) }, 
+				CustomerFields.LAST_NAME,
+				{ validator: this.checkLastName.bind(this) }
+			),
+			FIRST_NAME: Object.assign(
+				{ defaultValue: '', form: 'input', name: CustomerUtils.getFieldName(CustomerFields.FIRST_NAME) }, 
+				CustomerFields.FIRST_NAME,
+				{ validator: this.checkFirstName.bind(this) }
+			),
+			BIRTH_DATE: Object.assign(
+				{ defaultValue: [1950,1,1], form: 'date', name: CustomerUtils.getFieldName(CustomerFields.BIRTH_DATE) }, 
+				CustomerFields.BIRTH_DATE,
+				{ validator: this.checkBirthDate.bind(this) }
+			),
+			NATIONALITY: Object.assign(
+				{ defaultValue: 'FR', form: 'select', name: CustomerUtils.getFieldName(CustomerFields.NATIONALITY) }, 
+				CustomerFields.NATIONALITY,
+				{ validator: this.checkNationality.bind(this), values: NationalityUtils.getNationalities() }
+			),
+			PHONE: Object.assign(
+				{ defaultValue: '', form: 'input', name: CustomerUtils.getFieldName(CustomerFields.PHONE) }, 
+				CustomerFields.PHONE,
+				{ validator: this.checkPhone.bind(this) }
+			),
+			ADDRESS: Object.assign(
+				{ defaultValue: '', form: 'static', name: CustomerUtils.getFieldName(CustomerFields.ADDRESS) }, 
+				CustomerFields.ADDRESS,
+				{ validator: this.checkAddress.bind(this) }
+			),
+			POSTAL_CODE: Object.assign(
+				{ defaultValue: '', form: 'static', name: CustomerUtils.getFieldName(CustomerFields.POSTAL_CODE) }, 
+				CustomerFields.POSTAL_CODE,
+				{ validator: this.checkPostalCode.bind(this) }
+			),
+			CITY: Object.assign(
+				{ defaultValue: '', form: 'static', name: CustomerUtils.getFieldName(CustomerFields.CITY) }, 
+				CustomerFields.CITY,
+				{ validator: this.checkCity.bind(this) }
+			),
+			COUNTRY: Object.assign(
+				{ defaultValue: '', form: 'static', name: CustomerUtils.getFieldName(CustomerFields.COUNTRY) }, 
+				CustomerFields.COUNTRY,
+				{ validator: this.checkCountry.bind(this) }
+			),
+			EMAIL: Object.assign(
+				{ defaultValue: '', form: 'input', name: CustomerUtils.getFieldName(CustomerFields.EMAIL) }, 
+				CustomerFields.EMAIL,
+				{ validator: this.checkEmail.bind(this) }
+			),
+			SKILL_ADMINISTRATIVE: Object.assign(
+				{ defaultValue: 0, name: CustomerUtils.getFieldName(CustomerFields.SKILL_ADMINISTRATIVE) }, 
+				CustomerFields.SKILL_ADMINISTRATIVE
+			),
+			SKILL_CHILDHOOD: Object.assign(
+				{ defaultValue: 0, name: CustomerUtils.getFieldName(CustomerFields.SKILL_CHILDHOOD) }, 
+				CustomerFields.SKILL_CHILDHOOD
+			),
+			SKILL_COMPAGNY: Object.assign(
+				{ defaultValue: 0, name: CustomerUtils.getFieldName(CustomerFields.SKILL_COMPAGNY) }, 
+				CustomerFields.SKILL_COMPAGNY
+			),
+			SKILL_DOITYOURSELF: Object.assign(
+				{ defaultValue: 0, name: CustomerUtils.getFieldName(CustomerFields.SKILL_DOITYOURSELF) }, 
+				CustomerFields.SKILL_DOITYOURSELF
+			),
+			SKILL_HOUSEWORK: Object.assign(
+				{ defaultValue: 0, name: CustomerUtils.getFieldName(CustomerFields.SKILL_HOUSEWORK) }, 
+				CustomerFields.SKILL_HOUSEWORK
+			),
+			SKILL_NURSING: Object.assign(
+				{ defaultValue: 0, name: CustomerUtils.getFieldName(CustomerFields.SKILL_NURSING) }, 
+				CustomerFields.SKILL_NURSING
+			),
+			SKILL_SHOPPING: Object.assign(
+				{ defaultValue: 0, name: CustomerUtils.getFieldName(CustomerFields.SKILL_SHOPPING) }, 
+				CustomerFields.SKILL_SHOPPING
+			)
+		}
+
 		this.FIELDS_FORM0 = [
-			CustomerFields.LATTITUDE,
-			CustomerFields.LONGITUDE
+			this.FIELDS.LATTITUDE,
+			this.FIELDS.LONGITUDE
 		]
 		this.FIELDS_FORM1 = [
-			Object.assign({ defaultValue: 'Mme', form: 'select' }, CustomerFields.CIVILITY),
-			Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.LAST_NAME),
-			Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.FIRST_NAME),
-			Object.assign({ defaultValue: [1950,1,1], form: 'date' }, CustomerFields.BIRTH_DATE),
-			Object.assign({ defaultValue: 'FR', form: 'select', values: NationalityUtils.getNationalities() }, CustomerFields.NATIONALITY),
-			Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.PHONE),
+			this.FIELDS.CIVILITY,
+			this.FIELDS.LAST_NAME,
+			this.FIELDS.FIRST_NAME,
+			this.FIELDS.BIRTH_DATE,
+			this.FIELDS.NATIONALITY,
+			this.FIELDS.PHONE
 		]
 		this.FIELDS_FORM2 = [
 			{ form: 'address', key: 'addressSearch', name: 'Adresse' },
-			Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.ADDRESS),
-			Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.POSTAL_CODE),
-			Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.CITY),
-			Object.assign({ defaultValue: '', form: 'static' }, CustomerFields.COUNTRY),
-			Object.assign({ defaultValue: '', form: 'input' }, CustomerFields.EMAIL)
+			this.FIELDS.ADDRESS,
+			this.FIELDS.POSTAL_CODE,
+			this.FIELDS.CITY,
+			this.FIELDS.COUNTRY,
+			this.FIELDS.EMAIL
 		]
 		this.FIELDS_FORM3 = [
-			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_ADMINISTRATIVE),
-			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_CHILDHOOD),
-			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_COMPAGNY),
-			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_DOITYOURSELF),
-			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_HOUSEWORK),
-			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_NURSING),
-			Object.assign({ defaultValue: 0 }, CustomerFields.SKILL_SHOPPING)
+			this.FIELDS.SKILL_ADMINISTRATIVE,
+			this.FIELDS.SKILL_CHILDHOOD,
+			this.FIELDS.SKILL_COMPAGNY,
+			this.FIELDS.SKILL_DOITYOURSELF,
+			this.FIELDS.SKILL_HOUSEWORK,
+			this.FIELDS.SKILL_NURSING,
+			this.FIELDS.SKILL_SHOPPING
 		]
-		this.FIELDS = this.FIELDS_FORM0.concat(this.FIELDS_FORM1).concat(this.FIELDS_FORM2).concat(this.FIELDS_FORM3)
-
 
 		this.sortSkills = this._sortSkills.bind(this)
 		this.sortSkillsSecondary = this._sortSkillsSecondary.bind(this)
-
 	}
+
 	register(obj, customerId) {
 		super.register(obj)
 
 		this.customerId = customerId
-		this.obj.onBack = AppHelper.navigateBack.bind(AppHelper)
 
-		this.declareFunction('onChangeDirty')
-		this.declareFunction('onChangeAddress')
 		this.declareFunction('onSkillAdd')
-
 		this.declareFunction('onCancel')
 		this.declareFunction('onSubmit')
 		
 		this.obj.state.mode = customerId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
+		this.obj.state.errorShow = false
+		this.obj.state.errorMsg = []
+		this.obj.state.warningShow = false
+		this.obj.state.warningMsg = []
 
 		let customer = CustomerHelper.getData(this.customerId) || {}
 		this.obj.state.customerName = this.customerId !== 'new' ? CustomerUtils.getFullName(customer) : 'Nouvel usager'
-		for (let i = 0; i < this.FIELDS.length; i++) {
-			let field = this.FIELDS[i]
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
 			let value = customer[field.key]
 			this.obj.state[field.key] = value || field.defaultValue
 			if (field.defaultValue && this.obj.state[field.key] === field.defaultValue && this.obj.state.mode === this.MODES.CREATE) {
@@ -83,40 +178,69 @@ class ServiceCustomerEditData extends BaseData {
 			}
 		}
 		this.obj.state.skills = Skills.VALUES.sort(this.sortSkills)
-		this.obj.state.showAllSkills = false		
+		this.obj.state.showAllSkills = false
+
+		this.onCustomerUpdate()
+
+		ErrorHelper.register('GET_CUSTOMER', this, this.handleGetCustomerError.bind(this))
+		ErrorHelper.register('POST_CUSTOMER', this, this.handlePostCustomerError.bind(this))
+		ErrorHelper.register('PUT_CUSTOMER', this, this.handlePutCustomerError.bind(this))
+		ErrorHelper.register('DELETE_CUSTOMER', this, this.handleDeleteCustomerError.bind(this))	
+	}
+
+	unregister() {
+		ErrorHelper.unregister(this)
 	}
 
 
 	// Store notifications //
 	// --------------------------------------------------------------------------------
 
-	_sortSkills(s1, s2) {
-		return this.getState(s2.key) - this.getState(s1.key)
+	onCustomerUpdate() {
+		this.checkCustomer(CustomerHelper.getData(this.customerId))
 	}
-	_sortSkillsSecondary(s1, s2) {
-		if (this.getState(s2.key) === 0) {
-			return -1
-		}
-		if (this.getState(s1.key) === 0) {
-			return 1
-		}
-		return this.getState(s2.key) - this.getState(s1.key)
+
+	handleGetCustomerError() {
+		let errorData = ErrorHelper.getData('GET_CUSTOMER')
+	}
+	handlePutCustomerError() {
+		let errorData = ErrorHelper.getData('PUT_CUSTOMER')
+	}
+	handlePostCustomerError() {
+		let errorData = ErrorHelper.getData('POST_CUSTOMER')
+	}
+	handleDeleteCustomerError() {
+		let errorData = ErrorHelper.getData('DELETE_CUSTOMER')
 	}
 
 
 	// View callbacks //
 	// --------------------------------------------------------------------------------
 
-	onChangeDirty(id, event, value) {
-		let data = {
-			dirty: true,
-			customerValid: true
+	onChange(id, event, value) {
+		// State global update
+		this.obj.state.dirty = true
+		this.obj.state.errorShow = false
+		this.obj.state.errorMsg = []
+		this.obj.state.warningShow = false
+		this.obj.state.warningMsg = []
+		this.obj.state[id] = value
+		// Pre processing on values
+		if (id === 'addressSearch') {
+			this.obj.state.addressSearch = ''
+			this.obj.state.address = event.address
+			this.obj.state.lattitude = event.lattitude
+			this.obj.state.longitude = event.longitude
+			this.obj.state.postalCode = event.postalCode
+			this.obj.state.city = event.city
+			this.obj.state.country = event.country
 		}
-		data[id] = value
-		data[id + 'Default'] = null
-		this.setState(data)
+		// Check data consistency
+		this.checkCustomer(this.obj.state)
+		// Update component
+		this.forceUpdate()
 	}
-
+	
 	onChangeAddress(address) {
 		let data = {
 			address: address.address,
@@ -142,20 +266,6 @@ class ServiceCustomerEditData extends BaseData {
 		AppHelper.navigateBack()
 	}
 
-	buildCustomer() {
-		let customer = (this.getState('mode') === this.MODES.CREATE) ?
-			{ serviceId: AuthHelper.getEntityId() } :
-			CustomerHelper.getData(this.customerId)
-			
-		for (let i = 0 ; i < this.FIELDS.length ; i++) {
-			let field = this.FIELDS[i]
-			if (CustomerFields.get(field.key)) {
-				customer[field.key] = this.getState(field.key)
-			}
-		}
-		return customer
-	}
-
 	onSubmit() {
 		AppHelper.setBusy(true).
 		then(function() {
@@ -179,6 +289,164 @@ class ServiceCustomerEditData extends BaseData {
 			console.error(error)
 		})
 	}
+
+
+	// Internal methods //
+	// --------------------------------------------------------------------------------
+
+	checkCustomer(customer) {
+		// Fields individual status
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
+			
+			let value = (customer && customer[field.key]) || field.defaultValue
+			this.obj.state[field.key] = (field.formatter && field.formatter(value)) || value
+			
+			let isDefault = !!(customer && customer[field.key])
+			this.obj.state[field.key + 'Default'] = isDefault
+
+			let state = (field.validator && field.validator(value)) || {}
+			this.obj.state[field.key + 'State'] = state.state
+			this.obj.state[field.key + 'Warning'] = state.message
+
+			if (state.message) {
+				this.obj.state.warningMsg.push({
+					key: field.key,
+					value: state.message
+				})
+				this.obj.state.warningShow = true
+			}
+		}
+		// Handling address
+		this.obj.state.addressSearchState = null
+		this.obj.state.addressSearchWarning = null
+		if (this.obj.state.addressState === 'error' ||
+			this.obj.state.addressPostalCode === 'error' ||
+			this.obj.state.addressCity === 'error' ||
+			this.obj.state.addressCountry === 'error' ||
+			this.obj.state.addressLattitude === 'error' ||
+			this.obj.state.addressLongitude === 'error') {
+			let msg = 'Veuillez saisir une addresse valide'
+			this.obj.state.addressSearchState = 'error'
+			this.obj.state.addressSearchWarning = msg
+			this.obj.state.warningMsg.push({
+				key: 'addressSearch',
+				value: msg
+			})
+			this.obj.state.warningShow = true
+		} else if (this.obj.state.addressState === 'success' ||
+			this.obj.state.addressPostalCode === 'success' ||
+			this.obj.state.addressCity === 'success' ||
+			this.obj.state.addressCountry === 'success' ||
+			this.obj.state.addressLattitude === 'success' ||
+			this.obj.state.addressLongitude === 'success') {
+			this.obj.state.addressSearchState = 'success'
+		}
+		// Handling skills
+		if ((this.obj.state.SKILL_ADMINISTRATIVE + 
+			this.obj.state.SKILL_NURSING + 
+			this.obj.state.SKILL_SHOPPING + 
+			this.obj.state.SKILL_HOUSEWORK +
+			this.obj.state.SKILL_DOITYOURSELF +
+			this.obj.state.SKILL_COMPAGNY +
+			this.obj.state.SKILL_CHILDHOOD) === 0) {
+			console.log(this.obj.state)
+			this.obj.state.warningShow = true
+			this.obj.state.warningMsg.push({
+				key: 'addressSearch',
+				value: 'Vous devez ajouter au moins un besoin'
+			})
+		}
+	}
+	checkLattitude() {
+	}
+	checkLongitude() {
+	}
+	checkCivility() {
+		if (!this.getState('civility')) {
+			return { state: 'error', message: 'Vous devez spécifier une civilité' }
+		}
+		return { state: 'success' }
+	}
+	checkLastName() {
+		if (!this.getState('lastName')) {
+			return { state: 'error', message: 'Vous devez spécifier un nom' }
+		}
+		return { state: 'success' }
+	}
+	checkFirstName() {
+		if (!this.getState('firstName')) {
+			return { state: 'error', message: 'Vous devez spécifier un prénom' }
+		}
+		return { state: 'success' }
+	}
+	checkBirthDate() {
+		let birthMoment = MomentHelper.fromLocalDate(this.getState('birthDate'))
+		let currentMoment = moment()
+		if (birthMoment.isAfter(currentMoment)) {
+			return { state: 'error', message: "La date de naissance n'est pas valide" }
+		}
+		return { state: 'success' }
+	}
+	checkNationality() {
+		if (!this.getState('nationality')) {
+			return { state: 'error', message: 'Vous devez spécifier une nationnalité' }
+		}
+		return { state: 'success' }
+	}
+	checkPhone() {
+		if (Validators.Phone.getState(this.getState('phone')) !== 'success') {
+			return { state: 'error', message: 'Veuilez saisir un numéro de téléphone valide' }
+		}
+		return { state: 'success' }
+	}
+	checkAddress() {
+		return this.getState('address') ? { state: 'success' } : { state: 'error' }
+	}
+	checkPostalCode() {
+		return this.getState('postalCode') ? { state: 'success' } : { state: 'error' }
+	}
+	checkCity() {
+		return this.getState('city') ? { state: 'success' } : { state: 'error' }
+	}
+	checkCountry() {
+		return this.getState('country') ? { state: 'success' } : { state: 'error' }
+	}
+	checkEmail() {
+		if (Validators.Email.getState(this.getState('email')) !== 'success') {
+			return { state: 'error', message: 'Veuilez saisir une addresse électronique valide' }
+		}
+		return { state: 'success' }
+	}
+
+	buildCustomer() {
+		let customer = (this.getState('mode') === this.MODES.CREATE) ?
+			{ serviceId: AuthHelper.getEntityId() } :
+			CustomerHelper.getData(this.customerId)
+			
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
+			if (CustomerFields.get(field.key)) {
+				customer[field.key] = this.getState(field.key)
+			}
+		}
+		return customer
+	}
+
+	_sortSkills(s1, s2) {
+		return this.getState(s2.key) - this.getState(s1.key)
+	}
+
+	_sortSkillsSecondary(s1, s2) {
+		if (this.getState(s2.key) === 0) {
+			return -1
+		}
+		if (this.getState(s1.key) === 0) {
+			return 1
+		}
+		return this.getState(s2.key) - this.getState(s1.key)
+	}
+
 }
 
 let ServiceCustomerEditObj = new ServiceCustomerEditData()

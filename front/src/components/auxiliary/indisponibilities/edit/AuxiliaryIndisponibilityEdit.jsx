@@ -16,7 +16,7 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {}
-		this.buildFormGroup = FormHelper.buildFormGroup.bind(this)
+		this.buildFormGroup = this._renderFromGroup.bind(this)
 		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 	}
 
@@ -32,8 +32,22 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 	// Rendering functions //
 	// --------------------------------------------------------------------------------
 
+    _renderFromGroup(field) {
+        if ((field.hidden === true) || (field.hidden && field.hidden())) return
+        return (
+            <Form.Group key={field.key} state={this.state[field.key + 'State']}>
+                <Form.Label className='col-sm-5 col-md-4'>
+                    {field.name}
+                </Form.Label>
+                <Grid.Col sm={7} md={8}>
+                    {this.buildFormControl(field)}
+                </Grid.Col>
+            </Form.Group>
+        )
+    }
+
 	render() {
-		let submitDisabled = !this.state.dirty || !this.state.indisponibilityValid || this.state.showError || this.state.showWarning
+		let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
 		return (
 			<div className='ap-auxiliary-indisponibility-edit'>
 				<Button block bsStyle='primary' onClick={this.onCancel}>Annuler</Button>
@@ -57,7 +71,7 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 						</Form>
 						{ this.state.period !== IndisponibilityRecurencePeriod.HOURS.key && this.state.period !== IndisponibilityRecurencePeriod.DAYS.key ?
 						<Form className='col-sm-3 col-lg-2'>
-							<Form.Group>
+							<Form.Group state={this.state.daysState}>
 								<Form.Label>Jours</Form.Label>
 								<FormSelectWeekDays values={this.state.days} onChange={this.onChange.bind(this, 'days')}/>
 							</Form.Group>
@@ -67,22 +81,22 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
-				{this.state.showWarning ?
+				{this.state.warningShow ?
 					<Panel>
 						<Panel.Body className='ap-warning'>
 							<div>Veuillez vérifier les valeurs</div>
 							<ul>
-								{this.state.warningMsg.map((msg, index) => (<li key={index}>{msg}</li>) )}
+								{this.state.warningMsg.map((warning, index) => (<li key={warning.key}>{warning.value}</li>) )}
 							</ul>
 						</Panel.Body>
 					</Panel>
 				: null}
-				{this.state.showError ?
+				{this.state.errorShow ?
 					<Panel>
 						<Panel.Body className='ap-error'>
 							<div>Une erreur est survenue</div>
 							<ul>
-								{this.state.errorMsg.map((msg, index) => (<li key={index}>{msg}</li>) )}
+								{this.state.errorMsg.map((error, index) => (<li key={index}>{error}</li>) )}
 							</ul>
 						</Panel.Body>
 					</Panel>
@@ -90,7 +104,7 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 				{ this.state.mode === AuxiliaryIndisponibilityEditData.MODES.CREATE ?
 					<Button 
 						block 
-						bsStyle={this.state.showError ? 'danger' : this.state.showWarning ? 'warning' : submitDisabled ? 'default' : 'success'}
+						bsStyle={this.state.errorShow ? 'danger' : submitDisabled ? 'default' : 'success'}
 						disabled={submitDisabled}
 						onClick={this.onSubmit}>
 						Créer indisponibilité
@@ -109,7 +123,7 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 						<Grid.Col sm={6}>
 							<Button 
 								block 
-								bsStyle={this.state.showWarning ? 'danger' : submitDisabled ? 'default' : 'success'}
+								bsStyle={this.state.errorShow ? 'danger' : submitDisabled ? 'default' : 'success'}
 								disabled={submitDisabled}
 								onClick={this.onSubmit}>
 								Enregistrer modifications
