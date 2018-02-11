@@ -76,16 +76,18 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 	register(obj, indisponibilityId) {
 		super.register(obj)
 
+		this.indisponibilityId = indisponibilityId
+
 		this.declareFunction('onCancel')
 		this.declareFunction('onDelete')
 		this.declareFunction('onCancelDelete')
 		this.declareFunction('onConfirmDelete')
 		this.declareFunction('onSubmit')
 		
-		this.indisponibilityId = indisponibilityId
 		this.obj.state.mode = indisponibilityId !== 'new' ? this.MODES.EDIT : this.MODES.CREATE
 
-		this.onIndisponibilityUpdate()
+		this.loadIndisponibility(IndisponibilityHelper.getData(this.indisponibilityId) || {})
+		this.checkIndisponibility()
 
 		ErrorHelper.register('GET_INDISPONIBILITY', this, this.handleGetIndisponibilityError.bind(this))
 		ErrorHelper.register('POST_INDISPONIBILITY', this, this.handlePostIndisponibilityError.bind(this))
@@ -101,21 +103,41 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 	// Store notification //
 	// --------------------------------------------------------------------------------
 
-	onIndisponibilityUpdate() {
-		this.checkIndisponibility(IndisponibilityHelper.getData(this.indisponibilityId))
-	}
-
 	handleGetIndisponibilityError() {
 		let errorData = ErrorHelper.getData('GET_INDISPONIBILITY')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la récupération de l'indisponibilité" ]
+			})
+		}
 	}
 	handlePutIndisponibilityError() {
 		let errorData = ErrorHelper.getData('PUT_INDISPONIBILITY')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la mise à jour de l'indisponibilité" ]
+			})
+		}
 	}
 	handlePostIndisponibilityError() {
 		let errorData = ErrorHelper.getData('POST_INDISPONIBILITY')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la création de l'indisponibilité" ]
+			})
+		}
 	}
 	handleDeleteIndisponibilityError() {
 		let errorData = ErrorHelper.getData('DELETE_INDISPONIBILITY')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la suppression de l'indisponibilité" ]
+			})
+		}
 	}
 
 
@@ -129,13 +151,9 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 	onChange(id, event, value) {
 		// State global update
 		this.obj.state.dirty = true
-		this.obj.state.errorShow = false
-		this.obj.state.errorMsg = []
-		this.obj.state.warningShow = false
-		this.obj.state.warningMsg = []
 		this.obj.state[id] = value
 		// Check data consistency
-		this.checkIndisponibility(this.obj.state)
+		this.checkIndisponibility()
 		// Update component
 		this.forceUpdate()
 	}
@@ -202,17 +220,46 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 	// Internal methods //
 	// --------------------------------------------------------------------------------
 
-	checkIndisponibility(indisponibility) {
+	buildIndisponibility() {
+		let indiponibility = (this.getState('mode') === this.MODES.CREATE) ?
+			{ auxiliaryId: AuthHelper.getEntityId() } :
+			Object.assign({}, IndisponibilityHelper.getData(this.indisponibilityId))
+			
 		for (let f in this.FIELDS) {
 			let field = this.FIELDS[f]
-			
-			let value = (indisponibility && indisponibility[field.key]) || field.defaultValue
-			this.obj.state[field.key] = (field.formatter && field.formatter(value)) || value
-			
-			let isDefault = !!(indisponibility && indisponibility[field.key])
-			this.obj.state[field.key + 'Default'] = isDefault
+			if (IndisponibilityFields.get(field.key)) {
+				indiponibility[field.key] = this.getState(field.key)
+			}
+		}
+		if (indiponibility.period === IndisponibilityRecurencePeriod.HOURS.key) {
+			delete indiponibility.days
+			delete indiponibility.endDate
+		}
+		if (indiponibility.period === IndisponibilityRecurencePeriod.DAYS.key) {
+			delete indiponibility.days
+			delete indiponibility.startTime
+			delete indiponibility.endTime
+		}
+		return indiponibility
+	}
 
-			let state = field.validator(value)
+	loadIndisponibility(indisponibility) {
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
+			let value = indisponibility[field.key] || field.defaultValue
+			this.obj.state[field.key] = field.formatter ? field.formatter(value) : value
+		}
+	}
+
+	checkIndisponibility(indisponibility) {
+		this.obj.state.errorShow = false
+		this.obj.state.errorMsg = []
+		this.obj.state.warningShow = false
+		this.obj.state.warningMsg = []
+		//
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
+			let state = field.validator(this.getState(field.key))
 			this.obj.state[field.key + 'State'] = state.state
 			this.obj.state[field.key + 'Warning'] = state.message
 
@@ -224,6 +271,7 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 				this.obj.state.warningShow = true
 			}
 		}
+		//
 		this.obj.state.indisponibilityNightly = false
 		let startTime = MomentHelper.fromLocalTime(this.getState('startTime'))
 		let endTime = MomentHelper.fromLocalTime(this.getState('endTime'))
@@ -232,7 +280,9 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 		}
 	}
 	checkPeriod() {
-		return this.getState('period') ? { state: 'success' } : { state: 'error', message: 'Vous devez sélectionner une période' }
+		return this.getState('period') ? 
+			{ state: 'success' } : 
+			{ state: 'error', message: 'Vous devez sélectionner une période' }
 	}
 	checkStartDate() {
 		if (!this.getState('startDate')) {
@@ -294,29 +344,6 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 			key: value.key,
 			value: IndisponibilityRecurencePeriodUtils.getShortName(value.key)
 		}
-	}
-
-	buildIndisponibility() {
-		let indiponibility = (this.getState('mode') === this.MODES.CREATE) ?
-			{ auxiliaryId: AuthHelper.getEntityId() } :
-			Object.assign({}, IndisponibilityHelper.getData(this.indisponibilityId))
-			
-		for (let f in this.FIELDS) {
-			let field = this.FIELDS[f]
-			if (IndisponibilityFields.get(field.key)) {
-				indiponibility[field.key] = this.getState(field.key)
-			}
-		}
-		if (indiponibility.period === IndisponibilityRecurencePeriod.HOURS.key) {
-			delete indiponibility.days
-			delete indiponibility.endDate
-		}
-		if (indiponibility.period === IndisponibilityRecurencePeriod.DAYS.key) {
-			delete indiponibility.days
-			delete indiponibility.startTime
-			delete indiponibility.endTime
-		}
-		return indiponibility
 	}
 }
 let AuxiliaryIndisponibilityObj = new AuxiliaryIndisponibilityEditData()
