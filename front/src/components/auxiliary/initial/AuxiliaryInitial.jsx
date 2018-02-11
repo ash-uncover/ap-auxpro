@@ -3,7 +3,7 @@ import AuxiliaryInitialData from './AuxiliaryInitialData'
 import './AuxiliaryInitial.scss'
 
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
-
+// components-lib
 import FormHelper from 'components-lib/FormHelper'
 
 class AuxiliaryInitial extends React.Component {
@@ -13,7 +13,7 @@ class AuxiliaryInitial extends React.Component {
 
 		this.state = {}
 
-		this.buildFormGroup = FormHelper.buildFormGroup.bind(this)
+		this.buildFormGroup = this._buildFormGroup.bind(this)
 		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 	}
 
@@ -29,21 +29,35 @@ class AuxiliaryInitial extends React.Component {
 	// Rendering functions //
 	// --------------------------------------------------------------------------------
 
+	_buildFormGroup(field) { 
+		if ((field.hidden === true) || (field.hidden && field.hidden())) return
+		return (
+			<Form.Group key={field.key} state={this.state[field.key + 'State']}>
+				<Form.Label className='col-sm-5 col-md-4'>
+					{field.name}
+				</Form.Label>
+				<Grid.Col sm={7} md={8}>
+					{this.buildFormControl(field)}
+				</Grid.Col>
+			</Form.Group>
+		)
+	}
+
 	render() {
-		let submitEnabled = this.state.dirty && this.state.auxiliaryValid
+		let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
 		return (
 			<div className='ap-auxiliary-initial'>
 				<Panel>
 					<Panel.Header>
 						Statut profil	
 					</Panel.Header>
-					{submitEnabled ?
+					{submitDisabled ?
 						<Panel.Body className='ap-error'>
-							Suite à des changements sur le site veuillez revalider vos informations. Merci.
+							Votre profil est incomplet, veuillez saisir les champs obligatoires ci-dessous
 						</Panel.Body>
 						:
 						<Panel.Body className='ap-error'>
-							Votre profil est incomplet, veuillez saisir les champs obligatoires ci-dessous
+							Suite à des changements sur le site veuillez revalider vos informations. Merci.
 						</Panel.Body>
 					}
 					<Panel.Footer>	
@@ -69,19 +83,31 @@ class AuxiliaryInitial extends React.Component {
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
-				{ this.state.errorJustHappened ? 
+				{this.state.warningShow ?
+					<Panel>
+						<Panel.Body className='ap-warning'>
+							<div>Veuillez vérifier les valeurs</div>
+							<ul>
+								{this.state.warningMsg.map((warning, index) => (<li key={warning.key}>{warning.value}</li>) )}
+							</ul>
+						</Panel.Body>
+					</Panel>
+				: null}
+				{this.state.errorShow ?
 					<Panel>
 						<Panel.Body className='ap-error'>
 							<div>Une erreur est survenue</div>
-							<div>Veuillez vérifier les valeurs saisies</div>
+							<ul>
+								{this.state.errorMsg.map((error, index) => (<li key={index}>{error}</li>) )}
+							</ul>
 						</Panel.Body>
 					</Panel>
-				: null }
+				: null}
 				<Button
 					block 
-					bsStyle={submitEnabled ? 'success' : 'default'}
-					disabled={!submitEnabled}
-					tooltip={submitEnabled ? 'Enregistrer vos informations' : 'Vous devez remplir les informations'}
+					bsStyle={this.state.errorShow ? 'danger' : submitDisabled ? 'default' : 'success'}
+					disabled={submitDisabled}
+					tooltip={submitDisabled ? 'Vous devez remplir les informations' : 'Enregistrer vos informations'}
 					onClick={this.onSubmit}>
 					Continuer vers AuXpros
 				</Button>

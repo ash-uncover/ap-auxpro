@@ -355,8 +355,6 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 			{ state: 'error', message: "La date de naissance n'est pas valide" }
 	}
 	checkAddressSearch() {
-		console.log('checking search')
-		console.log(this.getState('postalCodeState'))
 		if (this.getState('addressState') === 'error' ||
 			this.getState('postalCodeState') === 'error' ||
 			this.getState('cityState') === 'error' ||

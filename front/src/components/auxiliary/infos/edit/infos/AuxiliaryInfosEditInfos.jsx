@@ -31,22 +31,22 @@ class AuxiliaryInfosEditInfos extends React.Component {
 	// Rendering functions //
 	// --------------------------------------------------------------------------------
 
-    _buildFormGroup(field) { 
-        if ((field.hidden === true) || (field.hidden && field.hidden())) return
-        return (
-            <Form.Group key={field.key} state={this.state[field.key + 'State']}>
-                <Form.Label className='col-sm-5 col-md-4'>
-                    {field.name}
-                </Form.Label>
-                <Grid.Col sm={7} md={8}>
-                    {this.buildFormControl(field)}
-                </Grid.Col>
-            </Form.Group>
-        )
-    }
+	_buildFormGroup(field) { 
+		if ((field.hidden === true) || (field.hidden && field.hidden())) return
+		return (
+			<Form.Group key={field.key} state={this.state[field.key + 'State']}>
+				<Form.Label className='col-sm-5 col-md-4'>
+					{field.name}
+				</Form.Label>
+				<Grid.Col sm={7} md={8}>
+					{this.buildFormControl(field)}
+				</Grid.Col>
+			</Form.Group>
+		)
+	}
 
 	render() {
-        let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
+		let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
 		return (
 			<div className='ap-auxiliary-infos-edit-infos'>
 				<Button block bsStyle='primary' onClick={this.onCancel}>Retour au profil</Button>
@@ -84,25 +84,25 @@ class AuxiliaryInfosEditInfos extends React.Component {
 					</Panel.Footer>
 				</Panel>
 				{this.state.warningShow ?
-                    <Panel>
-                        <Panel.Body className='ap-warning'>
-                            <div>Veuillez vérifier les valeurs</div>
-                            <ul>
-                                {this.state.warningMsg.map((warning, index) => (<li key={warning.key}>{warning.value}</li>) )}
-                            </ul>
-                        </Panel.Body>
-                    </Panel>
-                : null}
-                {this.state.errorShow ?
-                    <Panel>
-                        <Panel.Body className='ap-error'>
-                            <div>Une erreur est survenue</div>
-                            <ul>
-                                {this.state.errorMsg.map((error, index) => (<li key={index}>{error}</li>) )}
-                            </ul>
-                        </Panel.Body>
-                    </Panel>
-                : null}
+					<Panel>
+						<Panel.Body className='ap-warning'>
+							<div>Veuillez vérifier les valeurs</div>
+							<ul>
+								{this.state.warningMsg.map((warning, index) => (<li key={warning.key}>{warning.value}</li>) )}
+							</ul>
+						</Panel.Body>
+					</Panel>
+				: null}
+				{this.state.errorShow ?
+					<Panel>
+						<Panel.Body className='ap-error'>
+							<div>Une erreur est survenue</div>
+							<ul>
+								{this.state.errorMsg.map((error, index) => (<li key={index}>{error}</li>) )}
+							</ul>
+						</Panel.Body>
+					</Panel>
+				: null}
 				<Button 
 					block 
 					bsStyle={this.state.errorShow ? 'danger' : submitDisabled ?  'default' : 'success'}
