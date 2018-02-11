@@ -4,19 +4,32 @@ class CustomerUtils {
 
 	static getFieldName(field) {
 		switch (field) {
-			case CustomerFields.LAST_NAME.key: return 'Nom'
-			case CustomerFields.COUNTRY.key: return 'Pays'
-			case CustomerFields.CIVILITY.key: return 'Civilité'
-			case CustomerFields.ADDRESS.key: return 'Voie'
-			case CustomerFields.CITY.key: return 'Ville'
-			case CustomerFields.LATTITUDE.key: return 'Lattitude'
-			case CustomerFields.POSTAL_CODE.key: return 'Code postal'
-			case CustomerFields.BIRTH_DATE.key: return 'Date de naissance'
-			case CustomerFields.FIRST_NAME.key: return 'Prénom'
-			case CustomerFields.NATIONALITY.key: return 'Nationalité'
-			case CustomerFields.PHONE.key: return 'Téléphone'
-			case CustomerFields.EMAIL.key: return 'Email'
-			case CustomerFields.LONGITUDE.key: return 'Longitude'
+			case CustomerFields.LAST_NAME:
+            case CustomerFields.LAST_NAME.key: return 'Nom'
+			case CustomerFields.COUNTRY:
+            case CustomerFields.COUNTRY.key: return 'Pays'
+			case CustomerFields.CIVILITY:
+            case CustomerFields.CIVILITY.key: return 'Civilité'
+			case CustomerFields.ADDRESS:
+            case CustomerFields.ADDRESS.key: return 'Voie'
+			case CustomerFields.CITY:
+            case CustomerFields.CITY.key: return 'Ville'
+			case CustomerFields.LATTITUDE:
+            case CustomerFields.LATTITUDE.key: return 'Lattitude'
+			case CustomerFields.POSTAL_CODE:
+            case CustomerFields.POSTAL_CODE.key: return 'Code postal'
+			case CustomerFields.BIRTH_DATE:
+            case CustomerFields.BIRTH_DATE.key: return 'Date de naissance'
+			case CustomerFields.FIRST_NAME:
+            case CustomerFields.FIRST_NAME.key: return 'Prénom'
+			case CustomerFields.NATIONALITY:
+            case CustomerFields.NATIONALITY.key: return 'Nationalité'
+			case CustomerFields.PHONE:
+            case CustomerFields.PHONE.key: return 'Téléphone'
+			case CustomerFields.EMAIL:
+            case CustomerFields.EMAIL.key: return 'Email'
+			case CustomerFields.LONGITUDE:
+            case CustomerFields.LONGITUDE.key: return 'Longitude'
 		}
 		return '! UNKNOWN FIELD !'
 	}

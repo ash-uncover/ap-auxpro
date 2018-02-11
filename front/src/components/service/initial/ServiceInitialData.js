@@ -1,11 +1,13 @@
+import { BaseData, Validators } from 'ap-react-bootstrap'
+// helpers
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import ErrorHelper from 'helpers/ErrorHelper'
 import ServiceHelper from 'helpers/ServiceHelper'
-import { BaseData } from 'ap-react-bootstrap'
-
+// utils
 import ServiceFields from 'utils/entities/ServiceFields'
-
+// utils-lib
+import ServiceUtils from 'utils-lib/entities/ServiceUtils'
 import SocFunctionUtils from 'utils-lib/entities/SocFunctionUtils'
 import SocFunction from 'utils/constants/SocFunction'
 
@@ -14,46 +16,97 @@ class ServiceInitialData extends BaseData {
 	constructor() {
 		super(...arguments)
 
-		this.FIELDS_FORM0 = [
-			ServiceFields.PROFIL_COMPLETED,
-			ServiceFields.LATTITUDE,
-			ServiceFields.LONGITUDE
-		]
+		this.FIELDS = {
+			PROFIL_COMPLETED: Object.assign(
+				{},
+				ServiceFields.PROFIL_COMPLETED
+			),
+			LATTITUDE: Object.assign(
+				{},
+				ServiceFields.LATTITUDE,
+				{ validator: this.checkLattitude.bind(this) }
+			),
+			LONGITUDE: Object.assign(
+				{},
+				ServiceFields.LONGITUDE,
+				{ validator: this.checkLongitude.bind(this) }
+			),
+			SOCIAL_REASON: Object.assign(
+				{ defaultValue: '', form: 'input', name: ServiceUtils.getFieldName(ServiceFields.SOCIAL_REASON) }, 
+				ServiceFields.SOCIAL_REASON,
+				{ validator: this.checkSocialReason.bind(this) }
+			),
+			FUNCTION: Object.assign(
+				{ defaultValue: SocFunction.MAND.key, form: 'select', name: ServiceUtils.getFieldName(ServiceFields.FUNCTION) }, 
+				ServiceFields.FUNCTION,
+				{ validator: this.checkFunction.bind(this), values: SocFunctionUtils.getValues() }
+			),
+			SIRET: Object.assign(
+				{ defaultValue: '', form: 'input', name: ServiceUtils.getFieldName(ServiceFields.SIRET) }, 
+				ServiceFields.SIRET,
+				{ validator: this.checkSiret.bind(this) }
+			),
+			PHONE: Object.assign(
+				{ defaultValue: '', form: 'input', name: ServiceUtils.getFieldName(ServiceFields.PHONE) }, 
+				ServiceFields.PHONE,
+				{ validator: this.checkPhone.bind(this) }
+			),
+			ADDRESS: Object.assign(
+				{ defaultValue: '', form: 'static', name: ServiceUtils.getFieldName(ServiceFields.ADDRESS) }, 
+				ServiceFields.ADDRESS,
+				{ validator: this.checkAddress.bind(this) }
+			),
+			POSTAL_CODE: Object.assign(
+				{ defaultValue: '', form: 'static', name: ServiceUtils.getFieldName(ServiceFields.POSTAL_CODE) }, 
+				ServiceFields.POSTAL_CODE,
+				{ validator: this.checkPostalCode.bind(this) }
+			),
+			CITY: Object.assign(
+				{ defaultValue: '', form: 'static', name: ServiceUtils.getFieldName(ServiceFields.CITY) }, 
+				ServiceFields.CITY,
+				{ validator: this.checkCity.bind(this) }
+			),
+			COUNTRY: Object.assign(
+				{ defaultValue: '', form: 'static', name: ServiceUtils.getFieldName(ServiceFields.COUNTRY) }, 
+				ServiceFields.COUNTRY,
+				{ validator: this.checkCountry.bind(this) }
+			),
+			ADDRESS_SEARCH: Object.assign(
+				{ form: 'address', key: 'addressSearch', name: 'Adresse' },
+				{ validator: this.checkAddressSearch.bind(this) }
+			)
+		}
+
 		this.FIELDS_FORM1 = [
-			Object.assign({ defaultValue: '', form: 'input' }, ServiceFields.SOCIAL_REASON),
-			Object.assign({ defaultValue: SocFunction.MAND.key, form: 'select' }, ServiceFields.FUNCTION, { values: SocFunctionUtils.getValues() }),
-			Object.assign({ defaultValue: '', form: 'input' }, ServiceFields.SIRET),
-			Object.assign({ defaultValue: '', form: 'input' }, ServiceFields.PHONE)
+			this.FIELDS.SOCIAL_REASON,
+			this.FIELDS.FUNCTION,
+			this.FIELDS.SIRET,
+			this.FIELDS.PHONE
 			
 		]
 		this.FIELDS_FORM2 = [
-			{ form: 'address', key: 'addressSearch', name: 'Adresse' },
-			Object.assign({ defaultValue: '', form: 'static' }, ServiceFields.ADDRESS),
-			Object.assign({ defaultValue: '', form: 'static' }, ServiceFields.POSTAL_CODE),
-			Object.assign({ defaultValue: '', form: 'static' }, ServiceFields.CITY),
-			Object.assign({ defaultValue: '', form: 'static' }, ServiceFields.COUNTRY)
+			this.FIELDS.ADDRESS_SEARCH,
+			this.FIELDS.ADDRESS,
+			this.FIELDS.POSTAL_CODE,
+			this.FIELDS.CITY,
+			this.FIELDS.COUNTRY
 		]
-		this.FIELDS = this.FIELDS_FORM0.concat(this.FIELDS_FORM1).concat(this.FIELDS_FORM2)
-
 	}
 
 	register(obj) {
 		super.register(obj)
 		
-		this.declareFunction('isSubmitEnabled')
 		this.declareFunction('onSubmit')
 
-		let service = ServiceHelper.getData(AuthHelper.getEntityId()) || {}
-		
-		for (let i = 0; i < this.FIELDS.length; i++) {
-			let field = this.FIELDS[i]
-			let value = service[field.key]
-			this.obj.state[field.key] = value || field.defaultValue
+		this.loadService(ServiceHelper.getData(AuthHelper.getEntityId()) || {})
+		this.checkService()
+
+		if (!this.getState('warningShow')) {
+			this.obj.state.isAccountUpdate = true
 		}
 
-		this.obj.state.dirty = true
-		this.obj.state.valid = this.checkServiceValid()
 		ErrorHelper.register('PUT_SERVICE', this, this.handlePutServiceError.bind(this))
+		ErrorHelper.register('GET_SERVICE', this, this.handleGetServiceError.bind(this))
 	}
 
 	unregister() {
@@ -61,38 +114,59 @@ class ServiceInitialData extends BaseData {
 	}
 
 
+	// Store notification //
+	// --------------------------------------------------------------------------------
+
 	handlePutServiceError() {
-		console.error(ErrorHelper.getData('PUT_SERVICE'))
+		let errorData = ErrorHelper.getData('PUT_SERVICE')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ 'Une erreur est survenue pendant la mise à jour de vos informations' ]
+			})
+		}
+	}
+
+	handleGetServiceError() {
+		let errorData = ErrorHelper.getData('GET_SERVICE')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ 'Une erreur est survenue pendant la récupération de vos informations' ]
+			})
+		}
 	}
 
 
 	// View callbacks //
 	// --------------------------------------------------------------------------------
 
-	onChange(id) {
+	onChange(id, event, value) {
+		// State global update
 		this.obj.state.dirty = true
-		this.obj.state.errorJustHappened = false
-		if (id === 'addressSearch') {
-			this.onChangeAddress(...arguments)
+		// Value update
+		if (id === this.FIELDS.ADDRESS_SEARCH.key) {
+			this.obj.state.addressSearch = ''
+			this.obj.state.address = event.address
+			this.obj.state.lattitude = event.lattitude
+			this.obj.state.longitude = event.longitude
+			this.obj.state.postalCode = event.postalCode
+			this.obj.state.city = event.city
+			this.obj.state.country = event.country
+		} else if (id === ServiceFields.AVATAR.key) {
+			this.obj.state.avatarFile = event
+		} else if (id === ServiceFields.PHONE.key && Validators.Phone.getBlockedValue(value) !== value) {
+			this.forceUpdate()
+			return
+		} else if (id === ServiceFields.SIRET.key && Validators.SiretNumber.getBlockedValue(value) !== value) {
+			this.forceUpdate()
+			return
 		} else {
-			this.onChangeDirty(...arguments)
+			this.obj.state[id] = value
 		}
-	}
-
-	onChangeDirty(id, event, value) {
-		this.obj.state[id] = value
-		this.obj.state.valid = this.checkServiceValid()
-		this.forceUpdate()
-	}
-
-	onChangeAddress(id, address) {
-		this.obj.state.address = address.address
-		this.obj.state.lattitude = address.lattitude
-		this.obj.state.longitude = address.longitude
-		this.obj.state.postalCode = address.postalCode
-		this.obj.state.city = address.city
-		this.obj.state.country = address.country
-		this.obj.state.valid = this.checkServiceValid()
+		// Check data consistency
+		this.checkService()
+		// Update component
 		this.forceUpdate()
 	}
 
@@ -121,14 +195,10 @@ class ServiceInitialData extends BaseData {
 	// Internal methods //
 	// --------------------------------------------------------------------------------
 
-	isSubmitEnabled() {
-		return this.getState('dirty') && this.getState('valid')
-	}
-
 	buildService() {
-		let service = ServiceHelper.getData(AuthHelper.getEntityId())
-		for (let i = 0 ; i < this.FIELDS.length ; i++) {
-			let field = this.FIELDS[i]
+		let service = ServiceHelper.getData(AuthHelper.getEntityId()) || {}
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
 			if (ServiceFields.get(field.key)) {
 				service[field.key] = this.getState(field.key)
 			}
@@ -136,14 +206,99 @@ class ServiceInitialData extends BaseData {
 		return service
 	}
 
-	checkServiceValid() {
-		for (let i = 0 ; i < this.FIELDS.length ; i++) {
-			let field = this.FIELDS[i]
-			if (field.validator && field.validator.getState(this.getState(field.key)) === 'error') {
-				return false
+	loadService(service) {
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
+			let value = service[field.key] || field.defaultValue
+			this.obj.state[field.key] = field.formatter ? field.formatter(value) : value
+		}
+		if (service.avatar) {
+			this.obj.state.avatarSrc = ImageHelper.getData(this.obj.state.avatar)
+		}
+	}
+
+	checkService() {
+		this.obj.state.errorShow = false
+		this.obj.state.errorMsg = []
+		this.obj.state.warningShow = false
+		this.obj.state.warningMsg = []
+		// Fields individual status
+		for (let f in this.FIELDS) {
+			let field = this.FIELDS[f]
+			let value = this.getState(field.key)
+			let state = (field.validator && field.validator(value)) || {}
+			this.obj.state[field.key + 'State'] = state.state
+			this.obj.state[field.key + 'Warning'] = state.message
+			if (state.message) {
+				this.obj.state.warningMsg.push({
+					key: field.key,
+					value: state.message
+				})
+				this.obj.state.warningShow = true
 			}
 		}
-		return true
+	}
+	checkLattitude() {
+		return this.getState(this.FIELDS.LATTITUDE.key) ? 
+			{ state: 'success' } : 
+			{ state: 'error' }
+	}
+	checkLongitude() {
+		return this.getState(this.FIELDS.LONGITUDE.key) ? 
+			{ state: 'success' } : 
+			{ state: 'error' }
+	}
+	checkSocialReason() {
+		return this.getState(this.FIELDS.SOCIAL_REASON.key) ? 
+			{ state: 'success' } : 
+			{ state: 'error', message: 'Veuillez renseigner le nom de vote société' }
+	}
+	checkFunction() {
+		return this.getState(this.FIELDS.FUNCTION.key) ? 
+			{ state: 'success' } : 
+			{ state: 'error', message: 'Veuillez renseigner votre numéro mode de fonctionnement' }
+	}
+	checkSiret() {
+		return Validators.SiretNumber.getState(this.getState(this.FIELDS.SIRET.key)) === 'success' ? 
+			{ state: 'success' } : 
+			{ state: 'error', message: 'Veuillez renseigner votre numéro de siret' }
+	}
+	checkPhone() {
+		return Validators.Phone.getState(this.getState(this.FIELDS.PHONE.key)) === 'success' ?
+			{ state: 'success' } :
+			{ state: 'error', message: 'Veuilez saisir un numéro de téléphone valide' }
+	}
+	checkAddressSearch() {
+		if (this.getState('addressState') === 'error' ||
+			this.getState('postalCodeState') === 'error' ||
+			this.getState('cityState') === 'error' ||
+			this.getState('countryState') === 'error' ||
+			this.getState('lattitudeState') === 'error' ||
+			this.getState('longitudeState') === 'error') {
+			console.log('error')
+			return { state: 'error', message: 'Veuillez saisir une addresse valide' }
+		}
+		return { state: 'success' }
+	}
+	checkAddress() {
+		return this.getState(this.FIELDS.ADDRESS.key) ? 
+			{ state: 'success' } : 
+			{ state: 'error' }
+	}
+	checkPostalCode() {
+		return this.getState(this.FIELDS.POSTAL_CODE.key) ? 
+			{ state: 'success' } : 
+			{ state: 'error' }
+	}
+	checkCity() {
+		return this.getState(this.FIELDS.CITY.key) ? 
+			{ state: 'success' } : 
+			{ state: 'error' }
+	}
+	checkCountry() {
+		return this.getState(this.FIELDS.COUNTRY.key) ? 
+			{ state: 'success' } : 
+			{ state: 'error' }
 	}
 }
 

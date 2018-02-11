@@ -26,17 +26,28 @@ class InterventionUtils {
 
 	static getFieldName(field) {
 		switch (field) {
+        case InterventionFields.PERIOD:
 		case InterventionFields.PERIOD.key: return 'Périodicité'
+        case InterventionFields.AUXILIARY_ID:
 		case InterventionFields.AUXILIARY_ID.key: return 'Auxiliaire'
+        case InterventionFields.END_DATE:
 		case InterventionFields.END_DATE.key: return 'Fin'
-		case InterventionFields.CUSTOMER_ID.key: return 'Usager'
-		case InterventionFields.DAYS.key: return 'Jours'
-		case InterventionFields.START_TIME.key: return 'De'
-		case InterventionFields.END_TIME.key: return 'A'
-		case InterventionFields.SERVICE_ID.key: return 'Service'
-		case InterventionFields.START_DATE.key: return 'Début'
-		case InterventionFields.SAD_STATUS.key: return 'Statut'
-		case InterventionFields.DIPLOMAS.key: return 'Diplômes'
+		case InterventionFields.CUSTOMER_ID:
+        case InterventionFields.CUSTOMER_ID.key: return 'Usager'
+		case InterventionFields.DAYS:
+        case InterventionFields.DAYS.key: return 'Jours'
+		case InterventionFields.START_TIME:
+        case InterventionFields.START_TIME.key: return 'De'
+		case InterventionFields.END_TIME:
+        case InterventionFields.END_TIME.key: return 'A'
+		case InterventionFields.SERVICE_ID:
+        case InterventionFields.SERVICE_ID.key: return 'Service'
+		case InterventionFields.START_DATE:
+        case InterventionFields.START_DATE.key: return 'Début'
+		case InterventionFields.SAD_STATUS:
+        case InterventionFields.SAD_STATUS.key: return 'Statut'
+		case InterventionFields.DIPLOMAS:
+        case InterventionFields.DIPLOMAS.key: return 'Diplômes'
 		}
 	}
 
@@ -45,7 +56,7 @@ class InterventionUtils {
 			return InterventionType.PLANNED
 		}
 		let offers = Utils.map(OfferHelper.getData())
- 		for (let i = 0 ; i < offers.length ; i++) {
+		for (let i = 0 ; i < offers.length ; i++) {
 			let offer = offers[i]
 			if (offer.interventionId === intervention.id && offer.sadStatus !== InterventionStatus.CANCELED.key) {
 				return InterventionType.OFFERED
@@ -116,49 +127,40 @@ class InterventionUtils {
 	}
 
 	static checkValidity(intervention) {
-		let hasError = false
-		let errors = {}
+		let errors = []
 		// Check validator for each field
 		for (let i = 0 ; i < InterventionFields.VALUES.length ; i++) {
 			let field = InterventionFields.VALUES[i]
 			if (field.validator && field.validator.getState(intervention[field.key]) === 'error') {
-				errors[field.key] = 'Valeur invalide'
-				hasError = true
+				errors.push({ key: field.key, value: 'Valeur invalide' })
 			}
 		}
-		if (hasError) {
+		if (errors.length) {
 			return errors
 		}
 		// Check start date is in the future
 		let startDate = MomentHelper.fromLocalDate(intervention.startDate)
 		if (moment().startOf('day').isAfter(startDate)) {
-			errors.startDate = 'La date de début ne peut être dans le passé'
-			hasError = true
+			errors.push({ key: 'startDate', value: 'La date de début ne peut être dans le passé' })
 		}
 		// Check start time is before end time
 		if (intervention.startTime[0] > intervention.endTime[0] || (intervention.startTime[0] === intervention.endTime[0] && intervention.startTime[1] >= intervention.endTime[1])) {
-			errors.startTime = "L'horaire de fin doit être après l'horaire de début"
-			errors.endTime = "L'horaire de fin doit être après l'horaire de début"
-			hasError = true
+			errors.push({ key: 'startDate', value: "L'horaire de fin doit être après l'horaire de début" })
+			errors.push({ key: 'endTime', value: "L'horaire de fin doit être après l'horaire de début" })
 		}
 		if (intervention.period !== InterventionRecurencePeriod.HOURS.key) {
 			// Check end date is after start date
 			let endDate = MomentHelper.fromLocalDate(intervention.endDate)
 			if (startDate.isAfter(endDate)) {
-				errors.startDate = 'La date de fin doit être après la date de début'
-				errors.endDate = 'La date de fin doit être après la date de début'
-				hasError = true
+				errors.push({ key: 'startDate', value: 'La date de fin doit être après la date de début' })
+				errors.push({ key: 'endTime', value: 'La date de fin doit être après la date de début' })
 			}
 			// Check at least one day is selected
 			if (intervention.days.length === 0) {
-				errors.days = 'Vous devez sélectionner au moins un jour'
-				hasError = true
+				errors.push({ key: 'days', value: 'Vous devez sélectionner au moins un jour' })
 			}
 		}
-		if (hasError) {
-			return errors
-		}
-		return null
+		return errors
 	}
 
 	static getOffers(intervention) {

@@ -105,5 +105,22 @@ class DiplomaUtils {
 	static getList(diplomas) {
 		return (diplomas || []).map(DiplomaUtils.getName)
 	}
+    
+    static resolveDiplomas(oldList, newList) {
+        if (newList.indexOf(Diploma.DIPLOMA_NONE.key) !== -1) {
+            if (oldList.indexOf(Diploma.DIPLOMA_NONE.key) === -1) {
+                return [Diploma.DIPLOMA_NONE.key]
+            } else {
+                return newList.concat([]).splice(newList.indexOf(Diploma.DIPLOMA_NONE.key), 1)
+            }
+        } else if (newList.indexOf(Diploma.DIPLOMA_STUDY.key) !== -1) {
+            if (oldList.indexOf(Diploma.DIPLOMA_STUDY.key) === -1) {
+                return [Diploma.DIPLOMA_STUDY.key]
+            } else {
+                return newList.concat([]).splice(newList.indexOf(Diploma.DIPLOMA_STUDY.key), 1)
+            }
+        }
+        return newList
+    }
 }
 export default DiplomaUtils

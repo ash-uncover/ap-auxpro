@@ -2,20 +2,17 @@ import React from 'react'
 import ServiceInitialData from './ServiceInitialData'
 import './ServiceInitial.scss'
 
-import ServiceUtils from 'utils-lib/entities/ServiceUtils'
-
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 import FormHelper from 'components-lib/FormHelper'
 
 import ImageUploader from 'components-lib/Image/ImageUploader'
-
 
 class ServiceInitial extends React.Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {}
-		this.buildFormGroup = FormHelper.buildFormGroup.bind(this, ServiceUtils.getFieldName)
+		this.buildFormGroup = this._buildFormGroup.bind(this)
 		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 	}
 
@@ -31,19 +28,33 @@ class ServiceInitial extends React.Component {
 	// Rendering functions //
 	// --------------------------------------------------------------------------------
 
+	_buildFormGroup(field) { 
+		if ((field.hidden === true) || (field.hidden && field.hidden())) return
+		return (
+			<Form.Group key={field.key} state={this.state[field.key + 'State']}>
+				<Form.Label className='col-sm-5 col-md-4'>
+					{field.name}
+				</Form.Label>
+				<Grid.Col sm={7} md={8}>
+					{this.buildFormControl(field)}
+				</Grid.Col>
+			</Form.Group>
+		)
+	}
+
 	render() {
-		let submitEnabled = this.isSubmitEnabled()
+		let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
 		return (
 			<div className='ap-service-initial'>
 				<Panel>
 					<Panel.Header>
 						Statut profil	
 					</Panel.Header>
-					{submitEnabled ?
+					{this.state.isAccountUpdate ?
 						<Panel.Body className='ap-error'>
 							Suite à des changements sur le site veuillez revalider vos informations. Merci.
 						</Panel.Body>
-						:
+					:
 						<Panel.Body className='ap-error'>
 							Votre profil est incomplet, veuillez saisir les champs obligatoires ci-dessous
 						</Panel.Body>
@@ -70,18 +81,30 @@ class ServiceInitial extends React.Component {
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
-				{ this.state.errorJustHappened ? 
+				{this.state.warningShow ?
+					<Panel>
+						<Panel.Body className='ap-warning'>
+							<div>Veuillez vérifier les valeurs</div>
+							<ul>
+								{this.state.warningMsg.map((warning, index) => (<li key={warning.key}>{warning.value}</li>) )}
+							</ul>
+						</Panel.Body>
+					</Panel>
+				: null}
+				{this.state.errorShow ?
 					<Panel>
 						<Panel.Body className='ap-error'>
 							<div>Une erreur est survenue</div>
-							<div>Veuillez vérifier les valeurs saisies</div>
+							<ul>
+								{this.state.errorMsg.map((error, index) => (<li key={index}>{error}</li>) )}
+							</ul>
 						</Panel.Body>
 					</Panel>
-				: null }
+				: null}
 				<Button 
 					block 
-					bsStyle={this.state.errorJustHappened ? 'danger' : submitEnabled ? 'success' : 'default'}
-					disabled={this.state.errorJustHappened || !submitEnabled}
+					bsStyle={this.state.errorShow ? 'danger' : submitDisabled ? 'default' : 'success'}
+					disabled={submitDisabled}
 					onClick={this.onSubmit}>
 					{this.state.errorJustHappened ? 'Erreur' : 'Enregistrer modifications' }
 				</Button>

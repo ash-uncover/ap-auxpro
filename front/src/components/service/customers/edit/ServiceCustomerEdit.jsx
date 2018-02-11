@@ -4,12 +4,13 @@ import './ServiceCustomerEdit.scss'
 
 import { Button, Panel, Form, Grid, Google } from 'ap-react-bootstrap'
 
+// components-lib
+import FormHelper from 'components-lib/FormHelper'
 import SkillTile from 'components-lib/SkillTile/SkillTile'
 import SkillTileAdd from 'components-lib/SkillTile/SkillTileAdd'
-
+// utils
 import CustomerFields from 'utils/entities/CustomerFields'
-
-
+// utils-lib
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 import SkillUtils from 'utils-lib/entities/SkillUtils'
 
@@ -17,10 +18,11 @@ class ServiceCustomerEdit extends React.Component {
 
 	constructor(props) {
 		super(props)
+		
 		this.state = {}
 
 		this.buildFormGroup = this._buildFormGroup.bind(this)
-		this.buildFormControl = this._buildFormControl.bind(this)
+		this.buildFormControl = FormHelper.buildFormControl.bind(this)
 		this.buildSkill = this._buildSkill.bind(this)
 	}
 
@@ -33,54 +35,17 @@ class ServiceCustomerEdit extends React.Component {
 	}
 
 	_buildFormGroup(field) { 
-		let state = this.state[field.key + 'Default']
-		if (!state && field.validator) {
-			state = field.validator.getState(this.state[field.key])	
-		}
+		if ((field.hidden === true) || (field.hidden && field.hidden())) return
 		return (
-			<Form.Group key={field.key} state={state}>
+			<Form.Group key={field.key} state={this.state[field.key + 'State']}>
 				<Form.Label className='col-sm-5 col-md-4'>
-					{field.name || CustomerUtils.getFieldName(field.key)}
+					{field.name}
 				</Form.Label>
 				<Grid.Col sm={7} md={8}>
 					{this.buildFormControl(field)}
 				</Grid.Col>
 			</Form.Group>
 		)
-	}
-
-	_buildFormControl(field) {
-		switch (field.form) {
-			case 'input': return (
-				<Form.Input 
-					value={this.state[field.key]} 
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			case 'select': return (
-				<Form.Select 
-					values={field.values}
-					value={this.state[field.key]}
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			case 'address': return (
-				<Google.Autocomplete 
-					placeholder='Saisir adresse.'
-					onChange={this.onChangeAddress.bind(this)}
-					options={{ componentRestrictions: { country: 'fr' } }}  />
-				)
-			case 'date': return (
-				<Form.Date 
-					date={this.state[field.key][2]}
-					month={this.state[field.key][1]}
-					year={this.state[field.key][0]}
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			default: return (
-				<Form.Static>
-					{this.state[field.key]}
-				</Form.Static>
-			)
-		}
 	}
 
 	_buildSkill(skill) {
@@ -91,27 +56,16 @@ class ServiceCustomerEdit extends React.Component {
 					title={SkillUtils.getName(skill)}
 					value={this.state[skill.key]}
 					starMax={5}
-					onChange={this.onChangeDirty.bind(this, skill.key)}/>
+					onChange={this.onChange.bind(this, skill.key)}/>
 			)
 		}
 	}
 
-
-	checkValidity() {
-		for (let i = 0 ; i < ServiceCustomerEditData.FIELDS.length ; i++) {
-			let field = ServiceCustomerEditData.FIELDS[i]
-			if (field.validator && field.validator.getState(this.state[field.key]) === 'error') {
-				return false
-			}
-		}
-		return true
-	}
-
 	render() {
-		let submitDisabled = !this.state.dirty || !this.checkValidity()
+		let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
 		return (
 			<div className='ap-service-customer-edit'>
-				<Button block bsStyle='primary' onClick={this.onBack}>Annuler</Button>
+				<Button block bsStyle='primary' onClick={this.onCancel}>Annuler</Button>
 				<br/>
 				<Panel>
 					<Panel.Header>
@@ -143,9 +97,29 @@ class ServiceCustomerEdit extends React.Component {
 					<Panel.Footer>
 					</Panel.Footer>
 				</Panel>
+				{this.state.warningShow ?
+					<Panel>
+						<Panel.Body className='ap-warning'>
+							<div>Veuillez vérifier les valeurs</div>
+							<ul>
+								{this.state.warningMsg.map((warning, index) => (<li key={warning.key}>{warning.value}</li>) )}
+							</ul>
+						</Panel.Body>
+					</Panel>
+				: null}
+				{this.state.errorShow ?
+					<Panel>
+						<Panel.Body className='ap-error'>
+							<div>Une erreur est survenue</div>
+							<ul>
+								{this.state.errorMsg.map((error, index) => (<li key={index}>{error}</li>) )}
+							</ul>
+						</Panel.Body>
+					</Panel>
+				: null}
 				<Button 
 					block 
-					bsStyle={submitDisabled ? 'default' : 'success'}
+					bsStyle={this.state.errorShow ? 'danger' : submitDisabled ? 'default' : 'success'}
 					disabled={submitDisabled}
 					onClick={this.onSubmit}>
 					{ this.state.mode === ServiceCustomerEditData.MODES.CREATE ? 'Créer utilisateur' : 'Enregistrer modifications' }
