@@ -200,15 +200,39 @@ class ServiceCustomerEditData extends BaseData {
 
 	handleGetCustomerError() {
 		let errorData = ErrorHelper.getData('GET_CUSTOMER')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la récupération des informations de l'usager" ]
+			})
+		}
 	}
 	handlePutCustomerError() {
 		let errorData = ErrorHelper.getData('PUT_CUSTOMER')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la mise à jour des informations de l'usager" ]
+			})
+		}
 	}
 	handlePostCustomerError() {
 		let errorData = ErrorHelper.getData('POST_CUSTOMER')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la création de l'usager" ]
+			})
+		}
 	}
 	handleDeleteCustomerError() {
 		let errorData = ErrorHelper.getData('DELETE_CUSTOMER')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ "Une erreur est survenue pendant la suppression de l'usager" ]
+			})
+		}
 	}
 
 

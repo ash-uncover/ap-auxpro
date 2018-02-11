@@ -168,15 +168,33 @@ class AuxiliaryInitialData extends BaseData {
 	// --------------------------------------------------------------------------------
 
 	handlePutAuxiliaryError() {
-		console.log(ErrorHelper.getData('PUT_AUXILIARY'))
+		let errorData = ErrorHelper.getData('PUT_AUXILIARY')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ 'Une erreur est survenue pendant la mise à jour de vos informations' ]
+			})
+		}
 	}
 
 	handleGetAuxiliaryError() {
-		console.log(ErrorHelper.getData('GET_AUXILIARY'))
+		let errorData = ErrorHelper.getData('GET_AUXILIARY')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ 'Une erreur est survenue pendant la récupération de vos informations' ]
+			})
+		}
 	}
 	
 	handleGetAuxiliaryGeozonesError() {
-		console.log(ErrorHelper.getData('GET_AUXILIARY_GEOZONES'))
+		let errorData = ErrorHelper.getData('GET_AUXILIARY_GEOZONES')
+		if (errorData) {
+			this.setState({
+				errorShow: true,
+				errorMsg: [ 'Une erreur est survenue pendant la récupération de vos informations' ]
+			})
+		}
 	}
 
 
