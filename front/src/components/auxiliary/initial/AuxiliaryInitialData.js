@@ -186,10 +186,6 @@ class AuxiliaryInitialData extends BaseData {
 	onChange(id, event, value) {
 		// State global update
 		this.obj.state.dirty = true
-		this.obj.state.errorShow = false
-		this.obj.state.errorMsg = []
-		this.obj.state.warningShow = false
-		this.obj.state.warningMsg = []
 		// Value update
 		if (id === this.FIELDS.ADDRESS_SEARCH.key) {
 			this.obj.state.addressSearch = ''
@@ -203,6 +199,12 @@ class AuxiliaryInitialData extends BaseData {
 			this.obj.state[id] = DiplomaUtils.resolveDiplomas(this.getState(AuxiliaryFields.DIPLOMA.key), value)
 		} else if (id === AuxiliaryFields.AVATAR.key) {
 			this.obj.state.avatarFile = event
+		} else if (id === AuxiliaryFields.PHONE.key && Validators.Phone.getBlockedValue(value) !== value) {
+			this.forceUpdate()
+			return
+		} else if (id === AuxiliaryFields.SOCIAL_NUMBER.key && Validators.SocialNumberShort.getBlockedValue(value) !== value) {
+			this.forceUpdate()
+			return
 		} else {
 			this.obj.state[id] = value
 		}
@@ -264,6 +266,10 @@ class AuxiliaryInitialData extends BaseData {
 	}
 
 	checkAuxiliary() {
+		this.obj.state.errorShow = false
+		this.obj.state.errorMsg = []
+		this.obj.state.warningShow = false
+		this.obj.state.warningMsg = []
 		// Fields individual status
 		for (let f in this.FIELDS) {
 			let field = this.FIELDS[f]
@@ -339,7 +345,6 @@ class AuxiliaryInitialData extends BaseData {
 			this.getState('countryState') === 'error' ||
 			this.getState('lattitudeState') === 'error' ||
 			this.getState('longitudeState') === 'error') {
-			console.log('error')
 			return { state: 'error', message: 'Veuillez saisir une addresse valide' }
 		}
 		return { state: 'success' }
@@ -365,7 +370,7 @@ class AuxiliaryInitialData extends BaseData {
 			{ state: 'error' }
 	}
 	checkSocialNumber() {
-		return this.getState(this.FIELDS.SOCIAL_NUMBER.key) ? 
+		return Validators.SocialNumberShort.getState(this.getState(this.FIELDS.SOCIAL_NUMBER.key)) === 'success' ? 
 			{ state: 'success' } : 
 			{ state: 'error', message: 'Veuillez saisir les 7 premiers chiffres de votre numéro de sécurité sociale' }
 	}

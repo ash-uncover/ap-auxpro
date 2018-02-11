@@ -173,6 +173,12 @@ class ServiceInfosEditSocietyData extends BaseData {
 			this.obj.state.country = event.country
 		} else if (id === ServiceFields.AVATAR.key) {
 			this.obj.state.avatarFile = event
+        } else if (id === ServiceFields.PHONE.key && Validators.Phone.getBlockedValue(value) !== value) {
+            this.forceUpdate()
+            return
+        } else if (id === ServiceFields.SIRET.key && Validators.SiretNumber.getBlockedValue(value) !== value) {
+            this.forceUpdate()
+            return
 		} else {
 			this.obj.state[id] = value
 		}
