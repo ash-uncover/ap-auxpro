@@ -50,13 +50,13 @@ class ServiceInitial extends React.Component {
 					<Panel.Header>
 						Statut profil	
 					</Panel.Header>
-					{submitDisabled ?
+					{this.state.isAccountUpdate ?
 						<Panel.Body className='ap-error'>
-							Votre profil est incomplet, veuillez saisir les champs obligatoires ci-dessous
+							Suite à des changements sur le site veuillez revalider vos informations. Merci.
 						</Panel.Body>
 					:
 						<Panel.Body className='ap-error'>
-							Suite à des changements sur le site veuillez revalider vos informations. Merci.
+							Votre profil est incomplet, veuillez saisir les champs obligatoires ci-dessous
 						</Panel.Body>
 					}
 					<Panel.Footer>	

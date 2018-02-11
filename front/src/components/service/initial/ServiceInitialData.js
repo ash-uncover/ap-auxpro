@@ -101,6 +101,10 @@ class ServiceInitialData extends BaseData {
 		this.loadService(ServiceHelper.getData(AuthHelper.getEntityId()) || {})
 		this.checkService()
 
+		if (!this.getState('warningShow')) {
+			this.obj.state.isAccountUpdate = true
+		}
+
 		ErrorHelper.register('PUT_SERVICE', this, this.handlePutServiceError.bind(this))
 		ErrorHelper.register('GET_SERVICE', this, this.handleGetServiceError.bind(this))
 	}
@@ -249,7 +253,7 @@ class ServiceInitialData extends BaseData {
 			{ state: 'error', message: 'Veuillez renseigner votre numéro mode de fonctionnement' }
 	}
 	checkSiret() {
-		return this.getState(this.FIELDS.SIRET.key) ? 
+		return Validators.SiretNumber.getState(this.getState(this.FIELDS.SIRET.key)) === 'success' ? 
 			{ state: 'success' } : 
 			{ state: 'error', message: 'Veuillez renseigner votre numéro de siret' }
 	}

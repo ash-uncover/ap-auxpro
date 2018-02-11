@@ -287,7 +287,7 @@ class ServiceInfosEditSocietyData extends BaseData {
 			{ state: 'error', message: 'Veuillez renseigner votre numéro mode de fonctionnement' }
 	}
 	checkSiret() {
-		return this.getState(this.FIELDS.SIRET.key) ? 
+		return Validators.SiretNumber.getState(this.getState(this.FIELDS.SIRET.key)) === 'success' ? 
 			{ state: 'success' } : 
 			{ state: 'error', message: 'Veuillez renseigner votre numéro de siret' }
 	}

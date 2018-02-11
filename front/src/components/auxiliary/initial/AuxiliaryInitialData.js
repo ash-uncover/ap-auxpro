@@ -148,7 +148,11 @@ class AuxiliaryInitialData extends BaseData {
 		this.obj.state.warningMsg = []
 
 		this.loadAuxiliary(AuxiliaryHelper.getData(AuthHelper.getEntityId()))
-		this.checkAuxiliary()		
+		this.checkAuxiliary()
+
+		if (!this.getState('warningShow')) {
+			this.obj.state.isAccountUpdate = true
+		}	
 		
 		ErrorHelper.register('PUT_AUXILIARY', this, this.handlePutAuxiliaryError.bind(this))
 		ErrorHelper.register('GET_AUXILIARY', this, this.handleGetAuxiliaryError.bind(this))
