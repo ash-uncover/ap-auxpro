@@ -60,7 +60,11 @@ class Login extends React.Component {
 									value={this.state.password}
 									onChange={this.onChangeNoError.bind(this, 'password')} />
 							</Form.Group>
-							<Link href='/auth/recover'>Mot de passe oublié ?</Link>
+							<Link 
+                                className='ap-login-recover'
+                                href='/auth/recover'>
+                                Mot de passe oublié ?
+                            </Link>
 							{ this.state.errorJustHappened ?
 								<p className='ap-login-error'>{this.state.errorMessage}</p>
 							: null }
