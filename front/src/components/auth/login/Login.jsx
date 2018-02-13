@@ -62,7 +62,7 @@ class Login extends React.Component {
 							</Form.Group>
 							<Link href='/auth/recover'>Mot de passe oublié ?</Link>
 							{ this.state.errorJustHappened ?
-								<p>{this.state.errorMessage}</p>
+								<p className='ap-login-error'>{this.state.errorMessage}</p>
 							: null }
 							<Form.Submit
 								disabled={this.state.errorJustHappened || submitDisable}
@@ -73,6 +73,7 @@ class Login extends React.Component {
 						<Grid.Row>
 							<Grid.Col sm={6}>
 								<Button 
+                                    className='ap-login-cancel'
 									block 
 									bsSize='large' 
 									bsStyle='primary'
@@ -83,6 +84,7 @@ class Login extends React.Component {
 							<br className='visible-xs-block'/>
 							<Grid.Col sm={6}>
 								<Button 
+                                    className='ap-login-submit'
 									block 
 									bsSize='large' 
 									bsStyle={ submitDisable ? 'default' : 'success' }
