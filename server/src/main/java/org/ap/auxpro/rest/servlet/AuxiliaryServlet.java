@@ -111,6 +111,11 @@ public class AuxiliaryServlet extends APServletBase {
 				bean.skillDoityourself = data.getSkillDoityourself();
 				bean.diploma = data.getDiploma();
 				bean.id = data.getId();
+				ApauthData dataAuth = ApauthCollection.getById(data.getAuthId());
+				if(dataAuth == null) {
+					return Response.status(Status.NOT_FOUND).build();
+				}
+				bean.email = dataAuth.getEmail();
 				bean.longitude = data.getLongitude();
 				bean.skillNursing = data.getSkillNursing();
 				bean.address = data.getAddress();
@@ -237,6 +242,11 @@ public class AuxiliaryServlet extends APServletBase {
 			bean.skillDoityourself = data.getSkillDoityourself();
 			bean.diploma = data.getDiploma();
 			bean.id = data.getId();
+			ApauthData dataAuth = ApauthCollection.getById(data.getAuthId());
+			if(dataAuth == null) {
+				return Response.status(Status.NOT_FOUND).build();
+			}
+			bean.email = dataAuth.getEmail();
 			bean.longitude = data.getLongitude();
 			bean.skillNursing = data.getSkillNursing();
 			bean.address = data.getAddress();

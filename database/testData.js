@@ -156,7 +156,7 @@ db.apauth.insert({
  */
 db.auxiliary.insert({
 	"id":"auxa",
-	"userId":"userauxa",
+	"authId":"userauxa",
 	"profilCompleted":true,
 	"profilProgression":NumberInt(80),
 	"accountType": "Premium",
@@ -198,7 +198,7 @@ db.auxiliary.insert({
 })
 db.auxiliary.insert({
 	"id":"auxb",
-	"userId":"userauxb",
+	"authId":"userauxb",
 	"profilCompleted":true,
 	"profilProgression":NumberInt(80),
 	"accountType": "Premium",
@@ -240,7 +240,7 @@ db.auxiliary.insert({
 })
 db.auxiliary.insert({
 	"id":"auxc",
-	"userId":"userauxc",
+	"authId":"userauxc",
 	"profilCompleted":true,
 	"profilProgression":NumberInt(80),
 	"accountType": "Premium",
@@ -273,7 +273,7 @@ db.auxiliary.insert({
 })
 db.auxiliary.insert({
 	"id":"auxd",
-	"userId":"userauxd",
+	"authId":"userauxd",
 	"profilCompleted":true,
 	"profilProgression":NumberInt(80),
 	"accountType": "Premium",
@@ -315,7 +315,7 @@ db.auxiliary.insert({
 })
 db.auxiliary.insert({
 	"id":"auxe",
-	"userId":"userauxe",
+	"authId":"userauxe",
 	"profilCompleted":true,
 	"profilProgression":NumberInt(80),
 	"accountType": "Premium",
@@ -357,7 +357,7 @@ db.auxiliary.insert({
 })
 db.auxiliary.insert({
 	"id":"auxf",
-	"userId":"userauxf",
+	"authId":"userauxf",
 	"profilCompleted":true,
 	"profilProgression":NumberInt(80),
 	"notifyOffersMail":false,
@@ -397,7 +397,7 @@ db.auxiliary.insert({
 })
 db.auxiliary.insert({
 	"id":"auxg",
-	"userId":"userauxg",
+	"authId":"userauxg",
 	"profilCompleted":true,
 	"profilProgression":NumberInt(80),
 	"notifyOffersMail":false,
@@ -428,7 +428,7 @@ db.auxiliary.insert({
 })
 db.auxiliary.insert({
 	"id":"auxh",
-	"userId":"userauxh",
+	"authId":"userauxh",
 	"profilCompleted":false,
 	"profilProgression":NumberInt(80),
 	"accountType": "Premium",
@@ -482,7 +482,7 @@ db.auxiliary.insert({
  */
 db.service.insert({
 	"id":"sadz",
-	"userId":"usersadz",
+	"authId":"usersadz",
 	"profilCompleted":true,
 	"accountType": "Premium",
 	"accountExpiryDate":new Date("2017-12-31"),
@@ -503,7 +503,7 @@ db.service.insert({
 })
 db.service.insert({
 	"id":"sady",
-	"userId":"usersady",
+	"authId":"usersady",
 	"profilCompleted":true,
 	"accountType": "Premium",
 	"accountExpiryDate":new Date("2017-12-31"),
@@ -526,7 +526,7 @@ db.service.insert({
 
 db.service.insert({
 	"id":"sadantoine",
-	"userId":"usersadantoine",
+	"authId":"usersadantoine",
 	"creationDate":new Date("2017-02-02"),
 	"lastUpdateDate":new Date("2017-02-02"),
 	"isTutoSkipped":true

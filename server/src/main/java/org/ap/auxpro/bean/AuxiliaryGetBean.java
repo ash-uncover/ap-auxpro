@@ -26,6 +26,7 @@ public class AuxiliaryGetBean {
 	public Integer skillDoityourself;
 	public List<String> diploma;
 	public String id;
+	public String email;
 	public Double longitude;
 	public Integer skillNursing;
 	public String address;
