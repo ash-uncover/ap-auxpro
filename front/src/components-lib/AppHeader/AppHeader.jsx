@@ -51,34 +51,34 @@ class AppHeader extends React.Component {
 		switch (this.state.authType) {
 			case 'auxiliary': 
 				return (
-					<Navbar.Group right className='collapse navbar-collapse' id='myNavbar'>
-						{this._buildLink('AuXpros','/auxiliary/home', this.state.tutoMode || this.state.profilMode)}
-						{this._buildLink('Profil','/auxiliary/infos', this.state.tutoMode || this.state.profilMode)}
-						{this._buildLink('Planning','/auxiliary/planing', this.state.tutoMode || this.state.profilMode)}
-						{this._buildLink('Zone','/auxiliary/zone', this.state.tutoMode || this.state.profilMode)}
-						{this._buildLink('Missions','/auxiliary/offers', this.state.tutoMode || this.state.profilMode)}
-						{this._buildLink('Déconnexion','/logout')}
+					<Navbar.Group right className='collapse navbar-collapse ap-auxpro-header-auxiliary' id='myNavbar'>
+						{this._buildLink('AuXpros','/auxiliary/home', this.state.tutoMode || this.state.profilMode, 'ap-app-header-aux-home')}
+						{this._buildLink('Profil','/auxiliary/infos', this.state.tutoMode || this.state.profilMode, 'ap-app-header-aux-infos')}
+						{this._buildLink('Planning','/auxiliary/planing', this.state.tutoMode || this.state.profilMode, 'ap-app-header-aux-planing')}
+						{this._buildLink('Zone','/auxiliary/zone', this.state.tutoMode || this.state.profilMode, 'ap-app-header-aux-zone')}
+						{this._buildLink('Missions','/auxiliary/offers', this.state.tutoMode || this.state.profilMode, 'ap-app-header-aux-offers')}
+						{this._buildLink('Déconnexion','/logout', false, 'ap-app-header-logout')}
 					</Navbar.Group>
 				)
 			case 'service': 
 				return (
-					<Navbar.Group right className='collapse navbar-collapse' id='myNavbar'>
-						{this._buildLink('AuXpros','/service/home', this.state.tutoMode || this.state.profilMode)}
-						{this._buildLink('Profil','/service/infos', this.state.tutoMode || this.state.profilMode)}
-						{this._buildLink('Zone','/service/zone', this.state.tutoMode || this.state.profilMode)}
-						{this._buildLink('Usagers','/service/customers', this.state.tutoMode || this.state.profilMode)}
-						{this._buildLink('Interventions','/service/interventions', this.state.tutoMode || this.state.profilMode)}
-						{this._buildLink('Déconnexion','/logout')}
+					<Navbar.Group right className='collapse navbar-collapse ap-auxpro-header-service' id='myNavbar'>
+						{this._buildLink('AuXpros','/service/home', this.state.tutoMode || this.state.profilMode, 'ap-app-header-sad-home')}
+						{this._buildLink('Profil','/service/infos', this.state.tutoMode || this.state.profilMode, 'ap-app-header-sad-infos')}
+						{this._buildLink('Zone','/service/zone', this.state.tutoMode || this.state.profilMode, 'ap-app-header-sad-zone')}
+						{this._buildLink('Usagers','/service/customers', this.state.tutoMode || this.state.profilMode, 'ap-app-header-sad-customers')}
+						{this._buildLink('Interventions','/service/interventions', this.state.tutoMode || this.state.profilMode, 'ap-app-header-sad-interventions')}
+						{this._buildLink('Déconnexion','/logout', false, 'ap-app-header-logout')}
 					</Navbar.Group>
 				)
 			default: 
 				return (
-					<Navbar.Group right className='collapse navbar-collapse' id='myNavbar'>
-						{this._buildLink('AuXpros','/home')}
-						{this._buildLink('Qui sommes-nous','/infos/presentation')}
-						{this._buildLink('Nos services','/infos/services')}
-						{this._buildLink('Connexion','/auth/login', false, 'navbar-btn-default')}
-						{this._buildLink("S'inscrire",'/auth/register', false, 'navbar-btn-primary')}
+					<Navbar.Group right className='collapse navbar-collapse ap-auxpro-header-default' id='myNavbar'>
+						{this._buildLink('AuXpros','/home', false, 'ap-app-header-default-home')}
+						{this._buildLink('Qui sommes-nous','/infos/presentation', false, 'ap-app-header-default-presentation')}
+						{this._buildLink('Nos services','/infos/services', false, 'ap-app-header-default-service')}
+						{this._buildLink('Connexion','/auth/login', false, 'navbar-btn-default ap-app-header-default-login')}
+						{this._buildLink("S'inscrire",'/auth/register', false, 'navbar-btn-primary ap-app-header-default-register')}
 					</Navbar.Group>
 				)
 		}
