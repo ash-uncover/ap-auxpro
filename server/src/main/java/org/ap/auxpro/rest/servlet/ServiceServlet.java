@@ -102,6 +102,11 @@ public class ServiceServlet extends APServletBase {
 				bean.profilCompleted = data.getProfilCompleted();
 				bean.id = data.getId();
 				bean.socialReason = data.getSocialReason();
+				ApauthData dataAuth = ApauthCollection.getById(data.getAuthId());
+				if(dataAuth == null) {
+					return Response.status(Status.NOT_FOUND).build();
+				}
+				bean.email = dataAuth.getEmail();
 				bean.longitude = data.getLongitude();
 				
 				beanList.add(bean);
@@ -208,6 +213,11 @@ public class ServiceServlet extends APServletBase {
 			bean.profilCompleted = data.getProfilCompleted();
 			bean.id = data.getId();
 			bean.socialReason = data.getSocialReason();
+			ApauthData dataAuth = ApauthCollection.getById(data.getAuthId());
+			if(dataAuth == null) {
+				return Response.status(Status.NOT_FOUND).build();
+			}
+			bean.email = dataAuth.getEmail();
 			bean.longitude = data.getLongitude();
 			
 			return Response.status(Status.OK).entity(bean).build();
