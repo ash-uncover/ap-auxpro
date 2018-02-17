@@ -3,11 +3,12 @@ import ServiceAuxiliaryData from './ServiceAuxiliaryData'
 import './ServiceAuxiliary.scss'
 
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
+// components-lib
 import Image from 'components-lib/Image/Image'
 import SkillTile from 'components-lib/SkillTile/SkillTile'
-
+// utils
 import Skills from 'utils/constants/Skills'
-
+// utils-lib
 import DiplomaUtils from 'utils-lib/entities/DiplomaUtils'
 import SkillUtils from 'utils-lib/entities/SkillUtils'
 
@@ -88,7 +89,12 @@ class ServiceAuxiliary extends React.Component {
 						<Grid.Col sm={8} md={9} lg={10} className='ap-info-column'>
 							<p><b>{this.state.name}</b></p>
 							<p>{this.state.address}</p>
-							<p>{this.state.email}</p>
+							{ this.state.phone ? 
+								<p>{this.state.phone}</p>
+							: null }
+							{ this.state.email ? 
+								<p>{this.state.email}</p>
+							: null }
 						</Grid.Col>
 					</Panel.Body>
 					<Panel.Footer>

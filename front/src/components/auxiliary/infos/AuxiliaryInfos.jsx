@@ -62,7 +62,7 @@ class AuxiliaryInfos extends React.Component {
 				<Form.Label className='col-sm-5'>
 					{field.name || AuxiliaryUtils.getFieldName(field.key)}
 				</Form.Label>
-				<Form.Static className='col-sm-7 user-select-text'>
+				<Form.Static className={'col-sm-7 user-select-text ap-form-' + field.key}>
 					{this.state[field.key]}
 				</Form.Static>
 			</Form.Group>
@@ -116,7 +116,9 @@ class AuxiliaryInfos extends React.Component {
 								</Grid.Row>
 							</Form>
 							<br/>
-							<Button block bsStyle='primary' onClick={this.onModifyInfos}>Modifier mes informations</Button>
+							<Button className="ap-auxiliary-infos-to-edit" block bsStyle='primary' onClick={this.onModifyInfos}>
+                                Modifier mes informations
+                            </Button>
 						</Panel.Body>
 						<Panel.Footer>
 						</Panel.Footer>

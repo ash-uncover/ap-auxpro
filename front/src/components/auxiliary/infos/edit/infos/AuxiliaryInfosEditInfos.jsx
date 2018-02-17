@@ -49,7 +49,9 @@ class AuxiliaryInfosEditInfos extends React.Component {
 		let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
 		return (
 			<div className='ap-auxiliary-infos-edit-infos'>
-				<Button block bsStyle='primary' onClick={this.onCancel}>Retour au profil</Button>
+				<Button className='ap-cancel' block bsStyle='primary' onClick={this.onCancel}>
+                    Retour au profil
+                </Button>
 				<br/>
 				<Panel>
 					<Panel.Header>
@@ -105,6 +107,7 @@ class AuxiliaryInfosEditInfos extends React.Component {
 				: null}
 				<Button 
 					block 
+                    className='ap-submit'
 					bsStyle={this.state.errorShow ? 'danger' : submitDisabled ?  'default' : 'success'}
 					disabled={submitDisabled}
 					onClick={this.onSubmit}>
