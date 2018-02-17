@@ -26,6 +26,7 @@ public class ServiceGetBean {
 	public Boolean profilCompleted;
 	public String id;
 	public String socialReason;
+	public String email;
 	public Double longitude;
 
 }
