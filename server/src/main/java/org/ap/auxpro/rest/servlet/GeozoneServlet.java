@@ -27,14 +27,7 @@ public class GeozoneServlet extends APServletBase {
 			data.setId(UUIDGenerator.nextId());
 			data.setCreationDate(new Date());
 			data.setLastUpdateDate(new Date());
-			data.setAuxiliaryId(geozoneBean.auxiliaryId);
-			data.setAddress(geozoneBean.address);
-			data.setLattitude(geozoneBean.lattitude);
-			data.setCity(geozoneBean.city);
-			data.setPostalCode(geozoneBean.postalCode);
-			data.setType(geozoneBean.type);
-			data.setRadius(geozoneBean.radius);
-			data.setLongitude(geozoneBean.longitude);
+			geozoneBean.fillData(data);
 			GeozoneCollection.create(data);
 			return Response.status(Status.CREATED).entity("{\"id\": \"" + data.id + "\"}").build();
 			
