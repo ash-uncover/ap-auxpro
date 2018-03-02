@@ -12,7 +12,7 @@ public enum EInterventionRecurencePeriod {
 
 	private String _name;
 
-	private  EInterventionRecurencePeriod(String name) {
+	private EInterventionRecurencePeriod(String name) {
 		_name = name;
 	}
 

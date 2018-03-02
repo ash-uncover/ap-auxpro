@@ -10,7 +10,7 @@ public enum ESocFunction {
 
 	private String _name;
 
-	private  ESocFunction(String name) {
+	private ESocFunction(String name) {
 		_name = name;
 	}
 

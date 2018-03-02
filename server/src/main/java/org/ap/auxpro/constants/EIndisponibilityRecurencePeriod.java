@@ -13,7 +13,7 @@ public enum EIndisponibilityRecurencePeriod {
 
 	private String _name;
 
-	private  EIndisponibilityRecurencePeriod(String name) {
+	private EIndisponibilityRecurencePeriod(String name) {
 		_name = name;
 	}
 

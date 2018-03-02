@@ -10,7 +10,7 @@ public enum EMissionStatus {
 
 	private String _name;
 
-	private  EMissionStatus(String name) {
+	private EMissionStatus(String name) {
 		_name = name;
 	}
 

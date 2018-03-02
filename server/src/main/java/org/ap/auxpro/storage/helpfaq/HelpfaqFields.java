@@ -17,7 +17,7 @@ public enum HelpfaqFields {
 	private String _type;
 	private IValidator<?> _validator;
 
-	private  HelpfaqFields(String id, String type, IValidator<?> validator) {
+	private HelpfaqFields(String id, String type, IValidator<?> validator) {
 		_id = id;
 		_type = type;
 		_validator = validator;

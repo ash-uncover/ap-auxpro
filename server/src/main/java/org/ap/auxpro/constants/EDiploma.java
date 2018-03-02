@@ -45,7 +45,7 @@ public enum EDiploma {
 
 	private String _name;
 
-	private  EDiploma(String name) {
+	private EDiploma(String name) {
 		_name = name;
 	}
 

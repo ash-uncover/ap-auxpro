@@ -11,7 +11,7 @@ public enum EInterventionStatus {
 
 	private String _name;
 
-	private  EInterventionStatus(String name) {
+	private EInterventionStatus(String name) {
 		_name = name;
 	}
 

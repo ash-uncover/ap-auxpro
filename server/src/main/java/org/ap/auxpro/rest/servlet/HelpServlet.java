@@ -11,9 +11,9 @@ import org.ap.common.exception.APWebException;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.helptopic.HelptopicFields;
+import org.ap.common.web.http.URLHelper;
 import java.util.List;
 import java.util.ArrayList;
-import org.ap.common.time.TimeHelper;
 import org.ap.auxpro.bean.HelpFaqBean;
 import org.ap.auxpro.storage.helpfaq.HelpfaqData;
 import org.ap.auxpro.storage.helpfaq.HelpfaqCollection;
@@ -35,14 +35,8 @@ public class HelpServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				HelptopicFields field = HelptopicFields.byId(key);
 				if (field != null) {
-					List<Bson> subConditions = new ArrayList<Bson>();
-					for (String value : info.getQueryParameters().get(key)) {
-						if (field.getType().equals("Boolean")) {
-							subConditions.add(eq(key, new Boolean(value)));
-						} else {
-							subConditions.add(eq(key, value));
-						}
-					}
+					List<String> filterValues = info.getQueryParameters().get(key);
+					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
 					conditions.add(or(subConditions));
 				}
 			}
@@ -56,13 +50,7 @@ public class HelpServlet extends APServletBase {
 			
 			List<HelpTopicBean> beanList = new ArrayList<HelpTopicBean>();
 			for (HelptopicData data : datas) {
-				HelpTopicBean bean = new HelpTopicBean();
-				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-				bean.id = data.getId();
-				bean.title = data.getTitle();
-				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.content = data.getContent();
-				
+				HelpTopicBean bean = new HelpTopicBean(data);
 				beanList.add(bean);
 			}
 			
@@ -85,14 +73,8 @@ public class HelpServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				HelpfaqFields field = HelpfaqFields.byId(key);
 				if (field != null) {
-					List<Bson> subConditions = new ArrayList<Bson>();
-					for (String value : info.getQueryParameters().get(key)) {
-						if (field.getType().equals("Boolean")) {
-							subConditions.add(eq(key, new Boolean(value)));
-						} else {
-							subConditions.add(eq(key, value));
-						}
-					}
+					List<String> filterValues = info.getQueryParameters().get(key);
+					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
 					conditions.add(or(subConditions));
 				}
 			}
@@ -106,13 +88,7 @@ public class HelpServlet extends APServletBase {
 			
 			List<HelpFaqBean> beanList = new ArrayList<HelpFaqBean>();
 			for (HelpfaqData data : datas) {
-				HelpFaqBean bean = new HelpFaqBean();
-				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-				bean.id = data.getId();
-				bean.title = data.getTitle();
-				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.content = data.getContent();
-				
+				HelpFaqBean bean = new HelpFaqBean(data);
 				beanList.add(bean);
 			}
 			

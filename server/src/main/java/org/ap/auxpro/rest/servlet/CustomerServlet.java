@@ -10,7 +10,6 @@ import org.ap.auxpro.storage.customer.CustomerCollection;
 import org.ap.common.exception.APWebException;
 import org.ap.common.util.UUIDGenerator;
 import java.util.Date;
-import org.ap.common.time.TimeHelper;
 import com.mongodb.MongoWriteException;
 import org.ap.auxpro.bean.InterventionBean;
 import org.ap.auxpro.storage.intervention.InterventionData;
@@ -18,6 +17,7 @@ import org.ap.auxpro.storage.intervention.InterventionCollection;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.intervention.InterventionFields;
+import org.ap.common.web.http.URLHelper;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -36,27 +36,7 @@ public class CustomerServlet extends APServletBase {
 			data.setId(UUIDGenerator.nextId());
 			data.setCreationDate(new Date());
 			data.setLastUpdateDate(new Date());
-			data.setServiceId(customerBean.serviceId);
-			data.setLastName(customerBean.lastName);
-			data.setCountry(customerBean.country);
-			data.setCivility(customerBean.civility);
-			data.setAddress(customerBean.address);
-			data.setSkillNursing(customerBean.skillNursing);
-			data.setCity(customerBean.city);
-			data.setLattitude(customerBean.lattitude);
-			data.setPostalCode(customerBean.postalCode);
-			data.setBirthDate(TimeHelper.toDate(customerBean.birthDate));
-			data.setSkillChildhood(customerBean.skillChildhood);
-			data.setSkillCompagny(customerBean.skillCompagny);
-			data.setSkillShopping(customerBean.skillShopping);
-			data.setFirstName(customerBean.firstName);
-			data.setNationality(customerBean.nationality);
-			data.setPhone(customerBean.phone);
-			data.setSkillAdministrative(customerBean.skillAdministrative);
-			data.setSkillHousework(customerBean.skillHousework);
-			data.setSkillDoityourself(customerBean.skillDoityourself);
-			data.setEmail(customerBean.email);
-			data.setLongitude(customerBean.longitude);
+			customerBean.fillData(data);
 			CustomerCollection.create(data);
 			return Response.status(Status.CREATED).entity("{\"id\": \"" + data.id + "\"}").build();
 			
@@ -73,35 +53,10 @@ public class CustomerServlet extends APServletBase {
 	public Response getCustomer(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
 			CustomerData data = CustomerCollection.getById(id);
-			if(data == null) {
+			if (data == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
-			CustomerBean bean = new CustomerBean();
-			bean.serviceId = data.getServiceId();
-			bean.lastName = data.getLastName();
-			bean.country = data.getCountry();
-			bean.civility = data.getCivility();
-			bean.address = data.getAddress();
-			bean.skillNursing = data.getSkillNursing();
-			bean.city = data.getCity();
-			bean.lattitude = data.getLattitude();
-			bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-			bean.postalCode = data.getPostalCode();
-			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-			bean.birthDate = TimeHelper.toIntegers(data.getBirthDate());
-			bean.skillChildhood = data.getSkillChildhood();
-			bean.skillCompagny = data.getSkillCompagny();
-			bean.skillShopping = data.getSkillShopping();
-			bean.firstName = data.getFirstName();
-			bean.nationality = data.getNationality();
-			bean.phone = data.getPhone();
-			bean.skillAdministrative = data.getSkillAdministrative();
-			bean.skillHousework = data.getSkillHousework();
-			bean.skillDoityourself = data.getSkillDoityourself();
-			bean.id = data.getId();
-			bean.email = data.getEmail();
-			bean.longitude = data.getLongitude();
-			
+			CustomerBean bean = new CustomerBean(data);
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (APWebException e) {
@@ -124,27 +79,7 @@ public class CustomerServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setLastUpdateDate(new Date());
-			data.setServiceId(customerBean.serviceId);
-			data.setLastName(customerBean.lastName);
-			data.setCountry(customerBean.country);
-			data.setCivility(customerBean.civility);
-			data.setAddress(customerBean.address);
-			data.setSkillNursing(customerBean.skillNursing);
-			data.setCity(customerBean.city);
-			data.setLattitude(customerBean.lattitude);
-			data.setPostalCode(customerBean.postalCode);
-			data.setBirthDate(TimeHelper.toDate(customerBean.birthDate));
-			data.setSkillChildhood(customerBean.skillChildhood);
-			data.setSkillCompagny(customerBean.skillCompagny);
-			data.setSkillShopping(customerBean.skillShopping);
-			data.setFirstName(customerBean.firstName);
-			data.setNationality(customerBean.nationality);
-			data.setPhone(customerBean.phone);
-			data.setSkillAdministrative(customerBean.skillAdministrative);
-			data.setSkillHousework(customerBean.skillHousework);
-			data.setSkillDoityourself(customerBean.skillDoityourself);
-			data.setEmail(customerBean.email);
-			data.setLongitude(customerBean.longitude);
+			customerBean.fillData(data);
 			// Store the updated data object
 			CustomerCollection.updateNull(data);
 			// Send the response
@@ -185,14 +120,8 @@ public class CustomerServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				InterventionFields field = InterventionFields.byId(key);
 				if (field != null) {
-					List<Bson> subConditions = new ArrayList<Bson>();
-					for (String value : info.getQueryParameters().get(key)) {
-						if (field.getType().equals("Boolean")) {
-							subConditions.add(eq(key, new Boolean(value)));
-						} else {
-							subConditions.add(eq(key, value));
-						}
-					}
+					List<String> filterValues = info.getQueryParameters().get(key);
+					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
 					conditions.add(or(subConditions));
 				}
 			}
@@ -207,24 +136,7 @@ public class CustomerServlet extends APServletBase {
 			
 			List<InterventionBean> beanList = new ArrayList<InterventionBean>();
 			for (InterventionData data : datas) {
-				InterventionBean bean = new InterventionBean();
-				bean.auxiliaryId = data.getAuxiliaryId();
-				bean.period = data.getPeriod();
-				bean.endDate = TimeHelper.toIntegers(data.getEndDate());
-				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
-				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.sadStatus = data.getSadStatus();
-				bean.days = data.getDays();
-				bean.diplomas = data.getDiplomas();
-				bean.startTime = data.getStartTime();
-				bean.endTime = data.getEndTime();
-				bean.id = data.getId();
-				bean.hideToSad = data.getHideToSad();
-				bean.startDate = TimeHelper.toIntegers(data.getStartDate());
-				bean.customerId = data.getCustomerId();
-				bean.serviceId = data.getServiceId();
-				
+				InterventionBean bean = new InterventionBean(data);
 				beanList.add(bean);
 			}
 			

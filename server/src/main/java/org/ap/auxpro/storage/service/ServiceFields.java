@@ -32,7 +32,7 @@ public enum ServiceFields {
 	private String _type;
 	private IValidator<?> _validator;
 
-	private  ServiceFields(String id, String type, IValidator<?> validator) {
+	private ServiceFields(String id, String type, IValidator<?> validator) {
 		_id = id;
 		_type = type;
 		_validator = validator;

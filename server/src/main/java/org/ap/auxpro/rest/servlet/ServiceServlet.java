@@ -11,15 +11,16 @@ import org.ap.common.exception.APWebException;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.service.ServiceFields;
+import org.ap.common.web.http.URLHelper;
 import java.util.List;
 import java.util.ArrayList;
-import org.ap.common.time.TimeHelper;
 import org.ap.auxpro.bean.ServicePostBean;
 import org.ap.auxpro.storage.apauth.ApauthCollection;
 import org.ap.auxpro.storage.apauth.ApauthData;
 import com.mongodb.MongoWriteException;
 import org.ap.auxpro.internal.MailSender;
 import org.ap.auxpro.internal.ETokenType;
+import org.ap.common.time.TimeHelper;
 import org.ap.common.util.UUIDGenerator;
 import org.ap.auxpro.bean.ServicePutBean;
 import org.ap.auxpro.helpers.ServiceHelper;
@@ -61,14 +62,8 @@ public class ServiceServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				ServiceFields field = ServiceFields.byId(key);
 				if (field != null) {
-					List<Bson> subConditions = new ArrayList<Bson>();
-					for (String value : info.getQueryParameters().get(key)) {
-						if (field.getType().equals("Boolean")) {
-							subConditions.add(eq(key, new Boolean(value)));
-						} else {
-							subConditions.add(eq(key, value));
-						}
-					}
+					List<String> filterValues = info.getQueryParameters().get(key);
+					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
 					conditions.add(or(subConditions));
 				}
 			}
@@ -82,33 +77,11 @@ public class ServiceServlet extends APServletBase {
 			
 			List<ServiceGetBean> beanList = new ArrayList<ServiceGetBean>();
 			for (ServiceData data : datas) {
-				ServiceGetBean bean = new ServiceGetBean();
-				bean.country = data.getCountry();
-				bean.address = data.getAddress();
-				bean.city = data.getCity();
-				bean.lattitude = data.getLattitude();
-				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-				bean.accountType = data.getAccountType();
-				bean.postalCode = data.getPostalCode();
-				bean.isTutoSkipped = data.getIsTutoSkipped();
-				bean.notifyPartners = data.getNotifyPartners();
-				bean.accountExpiryDate = TimeHelper.toIntegers(data.getAccountExpiryDate());
-				bean.avatar = data.getAvatar();
-				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.siret = data.getSiret();
-				bean.notifyAuxpros = data.getNotifyAuxpros();
-				bean.phone = data.getPhone();
-				bean.function = data.getFunction();
-				bean.profilCompleted = data.getProfilCompleted();
-				bean.id = data.getId();
-				bean.socialReason = data.getSocialReason();
 				ApauthData dataAuth = ApauthCollection.getById(data.getAuthId());
-				if(dataAuth == null) {
+				if (dataAuth == null) {
 					return Response.status(Status.NOT_FOUND).build();
 				}
-				bean.email = dataAuth.getEmail();
-				bean.longitude = data.getLongitude();
-				
+				ServiceGetBean bean = new ServiceGetBean(data, dataAuth);
 				beanList.add(bean);
 			}
 			
@@ -190,36 +163,14 @@ public class ServiceServlet extends APServletBase {
 	public Response getService(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
 			ServiceData data = ServiceCollection.getById(id);
-			if(data == null) {
+			if (data == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
-			ServiceGetBean bean = new ServiceGetBean();
-			bean.country = data.getCountry();
-			bean.address = data.getAddress();
-			bean.city = data.getCity();
-			bean.lattitude = data.getLattitude();
-			bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-			bean.accountType = data.getAccountType();
-			bean.postalCode = data.getPostalCode();
-			bean.isTutoSkipped = data.getIsTutoSkipped();
-			bean.notifyPartners = data.getNotifyPartners();
-			bean.accountExpiryDate = TimeHelper.toIntegers(data.getAccountExpiryDate());
-			bean.avatar = data.getAvatar();
-			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-			bean.siret = data.getSiret();
-			bean.notifyAuxpros = data.getNotifyAuxpros();
-			bean.phone = data.getPhone();
-			bean.function = data.getFunction();
-			bean.profilCompleted = data.getProfilCompleted();
-			bean.id = data.getId();
-			bean.socialReason = data.getSocialReason();
 			ApauthData dataAuth = ApauthCollection.getById(data.getAuthId());
-			if(dataAuth == null) {
+			if (dataAuth == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
-			bean.email = dataAuth.getEmail();
-			bean.longitude = data.getLongitude();
-			
+			ServiceGetBean bean = new ServiceGetBean(data, dataAuth);
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (APWebException e) {
@@ -243,20 +194,7 @@ public class ServiceServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setLastUpdateDate(new Date());
-			data.setCountry(servicePutBean.country);
-			data.setAddress(servicePutBean.address);
-			data.setCity(servicePutBean.city);
-			data.setLattitude(servicePutBean.lattitude);
-			data.setPostalCode(servicePutBean.postalCode);
-			data.setIsTutoSkipped(servicePutBean.isTutoSkipped);
-			data.setNotifyPartners(servicePutBean.notifyPartners);
-			data.setAvatar(servicePutBean.avatar);
-			data.setSiret(servicePutBean.siret);
-			data.setNotifyAuxpros(servicePutBean.notifyAuxpros);
-			data.setPhone(servicePutBean.phone);
-			data.setFunction(servicePutBean.function);
-			data.setSocialReason(servicePutBean.socialReason);
-			data.setLongitude(servicePutBean.longitude);
+			servicePutBean.fillData(data);
 			// Store the updated data object
 			ServiceCollection.updateNull(data);
 			// Send the response
@@ -295,14 +233,8 @@ public class ServiceServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				AuxiliaryFields field = AuxiliaryFields.byId(key);
 				if (field != null) {
-					List<Bson> subConditions = new ArrayList<Bson>();
-					for (String value : info.getQueryParameters().get(key)) {
-						if (field.getType().equals("Boolean")) {
-							subConditions.add(eq(key, new Boolean(value)));
-						} else {
-							subConditions.add(eq(key, value));
-						}
-					}
+					List<String> filterValues = info.getQueryParameters().get(key);
+					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
 					conditions.add(or(subConditions));
 				}
 			}
@@ -317,53 +249,11 @@ public class ServiceServlet extends APServletBase {
 			
 			List<AuxiliaryGetBean> beanList = new ArrayList<AuxiliaryGetBean>();
 			for (AuxiliaryData data : datas) {
-				AuxiliaryGetBean bean = new AuxiliaryGetBean();
-				bean.country = data.getCountry();
-				bean.lastName = data.getLastName();
-				bean.civility = data.getCivility();
-				bean.city = data.getCity();
-				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-				bean.postalCode = data.getPostalCode();
-				bean.isTutoSkipped = data.getIsTutoSkipped();
-				bean.description = data.getDescription();
-				bean.socialNumber = data.getSocialNumber();
-				bean.accountExpiryDate = TimeHelper.toIntegers(data.getAccountExpiryDate());
-				bean.profilProgression = data.getProfilProgression();
-				bean.skillShopping = data.getSkillShopping();
-				bean.notifyOffersSms = data.getNotifyOffersSms();
-				bean.notifyAuxpros = data.getNotifyAuxpros();
-				bean.birthCountry = data.getBirthCountry();
-				bean.profilCompleted = data.getProfilCompleted();
-				bean.skillDoityourself = data.getSkillDoityourself();
-				bean.diploma = data.getDiploma();
-				bean.id = data.getId();
 				ApauthData dataAuth = ApauthCollection.getById(data.getAuthId());
-				if(dataAuth == null) {
+				if (dataAuth == null) {
 					return Response.status(Status.NOT_FOUND).build();
 				}
-				bean.email = dataAuth.getEmail();
-				bean.longitude = data.getLongitude();
-				bean.skillNursing = data.getSkillNursing();
-				bean.address = data.getAddress();
-				bean.lattitude = data.getLattitude();
-				bean.accountType = data.getAccountType();
-				bean.notifyPartners = data.getNotifyPartners();
-				bean.birthCity = data.getBirthCity();
-				bean.avatar = data.getAvatar();
-				bean.areSkillSet = data.getAreSkillSet();
-				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.birthDate = TimeHelper.toIntegers(data.getBirthDate());
-				bean.skillChildhood = data.getSkillChildhood();
-				bean.skillCompagny = data.getSkillCompagny();
-				bean.firstName = data.getFirstName();
-				bean.skillAnswers = data.getSkillAnswers();
-				bean.nationality = data.getNationality();
-				bean.isEntrepreneur = data.getIsEntrepreneur();
-				bean.phone = data.getPhone();
-				bean.skillAdministrative = data.getSkillAdministrative();
-				bean.skillHousework = data.getSkillHousework();
-				bean.notifyOffersMail = data.getNotifyOffersMail();
-				
+				AuxiliaryGetBean bean = new AuxiliaryGetBean(data, dataAuth);
 				beanList.add(bean);
 			}
 			
@@ -386,14 +276,8 @@ public class ServiceServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				CustomerFields field = CustomerFields.byId(key);
 				if (field != null) {
-					List<Bson> subConditions = new ArrayList<Bson>();
-					for (String value : info.getQueryParameters().get(key)) {
-						if (field.getType().equals("Boolean")) {
-							subConditions.add(eq(key, new Boolean(value)));
-						} else {
-							subConditions.add(eq(key, value));
-						}
-					}
+					List<String> filterValues = info.getQueryParameters().get(key);
+					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
 					conditions.add(or(subConditions));
 				}
 			}
@@ -408,32 +292,7 @@ public class ServiceServlet extends APServletBase {
 			
 			List<CustomerBean> beanList = new ArrayList<CustomerBean>();
 			for (CustomerData data : datas) {
-				CustomerBean bean = new CustomerBean();
-				bean.serviceId = data.getServiceId();
-				bean.lastName = data.getLastName();
-				bean.country = data.getCountry();
-				bean.civility = data.getCivility();
-				bean.address = data.getAddress();
-				bean.skillNursing = data.getSkillNursing();
-				bean.city = data.getCity();
-				bean.lattitude = data.getLattitude();
-				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-				bean.postalCode = data.getPostalCode();
-				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.birthDate = TimeHelper.toIntegers(data.getBirthDate());
-				bean.skillChildhood = data.getSkillChildhood();
-				bean.skillCompagny = data.getSkillCompagny();
-				bean.skillShopping = data.getSkillShopping();
-				bean.firstName = data.getFirstName();
-				bean.nationality = data.getNationality();
-				bean.phone = data.getPhone();
-				bean.skillAdministrative = data.getSkillAdministrative();
-				bean.skillHousework = data.getSkillHousework();
-				bean.skillDoityourself = data.getSkillDoityourself();
-				bean.id = data.getId();
-				bean.email = data.getEmail();
-				bean.longitude = data.getLongitude();
-				
+				CustomerBean bean = new CustomerBean(data);
 				beanList.add(bean);
 			}
 			
@@ -456,14 +315,8 @@ public class ServiceServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				InterventionFields field = InterventionFields.byId(key);
 				if (field != null) {
-					List<Bson> subConditions = new ArrayList<Bson>();
-					for (String value : info.getQueryParameters().get(key)) {
-						if (field.getType().equals("Boolean")) {
-							subConditions.add(eq(key, new Boolean(value)));
-						} else {
-							subConditions.add(eq(key, value));
-						}
-					}
+					List<String> filterValues = info.getQueryParameters().get(key);
+					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
 					conditions.add(or(subConditions));
 				}
 			}
@@ -478,24 +331,7 @@ public class ServiceServlet extends APServletBase {
 			
 			List<InterventionBean> beanList = new ArrayList<InterventionBean>();
 			for (InterventionData data : datas) {
-				InterventionBean bean = new InterventionBean();
-				bean.auxiliaryId = data.getAuxiliaryId();
-				bean.period = data.getPeriod();
-				bean.endDate = TimeHelper.toIntegers(data.getEndDate());
-				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
-				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.sadStatus = data.getSadStatus();
-				bean.days = data.getDays();
-				bean.diplomas = data.getDiplomas();
-				bean.startTime = data.getStartTime();
-				bean.endTime = data.getEndTime();
-				bean.id = data.getId();
-				bean.hideToSad = data.getHideToSad();
-				bean.startDate = TimeHelper.toIntegers(data.getStartDate());
-				bean.customerId = data.getCustomerId();
-				bean.serviceId = data.getServiceId();
-				
+				InterventionBean bean = new InterventionBean(data);
 				beanList.add(bean);
 			}
 			
@@ -518,14 +354,8 @@ public class ServiceServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				OfferFields field = OfferFields.byId(key);
 				if (field != null) {
-					List<Bson> subConditions = new ArrayList<Bson>();
-					for (String value : info.getQueryParameters().get(key)) {
-						if (field.getType().equals("Boolean")) {
-							subConditions.add(eq(key, new Boolean(value)));
-						} else {
-							subConditions.add(eq(key, value));
-						}
-					}
+					List<String> filterValues = info.getQueryParameters().get(key);
+					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
 					conditions.add(or(subConditions));
 				}
 			}
@@ -540,21 +370,7 @@ public class ServiceServlet extends APServletBase {
 			
 			List<OfferBean> beanList = new ArrayList<OfferBean>();
 			for (OfferData data : datas) {
-				OfferBean bean = new OfferBean();
-				bean.auxStatus = data.getAuxStatus();
-				bean.auxStatusChanged = TimeHelper.toIntegers(data.getAuxStatusChanged());
-				bean.hideToAux = data.getHideToAux();
-				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-				bean.sadStatus = data.getSadStatus();
-				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
-				bean.id = data.getId();
-				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.hideToSad = data.getHideToSad();
-				bean.auxiliaryId = data.getAuxiliaryId();
-				bean.customerId = data.getCustomerId();
-				bean.serviceId = data.getServiceId();
-				bean.interventionId = data.getInterventionId();
-				
+				OfferBean bean = new OfferBean(data);
 				beanList.add(bean);
 			}
 			
@@ -577,14 +393,8 @@ public class ServiceServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				MissionFields field = MissionFields.byId(key);
 				if (field != null) {
-					List<Bson> subConditions = new ArrayList<Bson>();
-					for (String value : info.getQueryParameters().get(key)) {
-						if (field.getType().equals("Boolean")) {
-							subConditions.add(eq(key, new Boolean(value)));
-						} else {
-							subConditions.add(eq(key, value));
-						}
-					}
+					List<String> filterValues = info.getQueryParameters().get(key);
+					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
 					conditions.add(or(subConditions));
 				}
 			}
@@ -599,22 +409,7 @@ public class ServiceServlet extends APServletBase {
 			
 			List<MissionBean> beanList = new ArrayList<MissionBean>();
 			for (MissionData data : datas) {
-				MissionBean bean = new MissionBean();
-				bean.auxiliaryId = data.getAuxiliaryId();
-				bean.customerId = data.getCustomerId();
-				bean.serviceId = data.getServiceId();
-				bean.interventionId = data.getInterventionId();
-				bean.date = TimeHelper.toIntegers(data.getDate());
-				bean.auxStatus = data.getAuxStatus();
-				bean.auxStatusChanged = TimeHelper.toIntegers(data.getAuxStatusChanged());
-				bean.hideToAux = data.getHideToAux();
-				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-				bean.sadStatus = data.getSadStatus();
-				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
-				bean.id = data.getId();
-				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.hideToSad = data.getHideToSad();
-				
+				MissionBean bean = new MissionBean(data);
 				beanList.add(bean);
 			}
 			
