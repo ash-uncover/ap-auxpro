@@ -70,14 +70,7 @@ public class GeozoneServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setLastUpdateDate(new Date());
-			data.setAuxiliaryId(geozoneBean.auxiliaryId);
-			data.setAddress(geozoneBean.address);
-			data.setLattitude(geozoneBean.lattitude);
-			data.setCity(geozoneBean.city);
-			data.setPostalCode(geozoneBean.postalCode);
-			data.setType(geozoneBean.type);
-			data.setRadius(geozoneBean.radius);
-			data.setLongitude(geozoneBean.longitude);
+			geozoneBean.fillData(data);
 			// Store the updated data object
 			GeozoneCollection.updateNull(data);
 			// Send the response

@@ -199,20 +199,7 @@ public class ServiceServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setLastUpdateDate(new Date());
-			data.setCountry(servicePutBean.country);
-			data.setAddress(servicePutBean.address);
-			data.setCity(servicePutBean.city);
-			data.setLattitude(servicePutBean.lattitude);
-			data.setPostalCode(servicePutBean.postalCode);
-			data.setIsTutoSkipped(servicePutBean.isTutoSkipped);
-			data.setNotifyPartners(servicePutBean.notifyPartners);
-			data.setAvatar(servicePutBean.avatar);
-			data.setSiret(servicePutBean.siret);
-			data.setNotifyAuxpros(servicePutBean.notifyAuxpros);
-			data.setPhone(servicePutBean.phone);
-			data.setFunction(servicePutBean.function);
-			data.setSocialReason(servicePutBean.socialReason);
-			data.setLongitude(servicePutBean.longitude);
+			servicePutBean.fillData(data);
 			// Store the updated data object
 			ServiceCollection.updateNull(data);
 			// Send the response

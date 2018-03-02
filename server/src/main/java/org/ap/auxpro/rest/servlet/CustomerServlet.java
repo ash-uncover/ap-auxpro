@@ -11,7 +11,6 @@ import org.ap.common.exception.APWebException;
 import org.ap.common.util.UUIDGenerator;
 import java.util.Date;
 import com.mongodb.MongoWriteException;
-import org.ap.common.time.TimeHelper;
 import org.ap.auxpro.bean.InterventionBean;
 import org.ap.auxpro.storage.intervention.InterventionData;
 import org.ap.auxpro.storage.intervention.InterventionCollection;
@@ -79,27 +78,7 @@ public class CustomerServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setLastUpdateDate(new Date());
-			data.setServiceId(customerBean.serviceId);
-			data.setLastName(customerBean.lastName);
-			data.setCountry(customerBean.country);
-			data.setCivility(customerBean.civility);
-			data.setAddress(customerBean.address);
-			data.setSkillNursing(customerBean.skillNursing);
-			data.setCity(customerBean.city);
-			data.setLattitude(customerBean.lattitude);
-			data.setPostalCode(customerBean.postalCode);
-			data.setBirthDate(TimeHelper.toDate(customerBean.birthDate));
-			data.setSkillChildhood(customerBean.skillChildhood);
-			data.setSkillCompagny(customerBean.skillCompagny);
-			data.setSkillShopping(customerBean.skillShopping);
-			data.setFirstName(customerBean.firstName);
-			data.setNationality(customerBean.nationality);
-			data.setPhone(customerBean.phone);
-			data.setSkillAdministrative(customerBean.skillAdministrative);
-			data.setSkillHousework(customerBean.skillHousework);
-			data.setSkillDoityourself(customerBean.skillDoityourself);
-			data.setEmail(customerBean.email);
-			data.setLongitude(customerBean.longitude);
+			customerBean.fillData(data);
 			// Store the updated data object
 			CustomerCollection.updateNull(data);
 			// Send the response

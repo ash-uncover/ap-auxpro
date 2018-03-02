@@ -208,30 +208,7 @@ public class AuxiliaryServlet extends APServletBase {
 			}
 			// Update the data object
 			data.setLastUpdateDate(new Date());
-			data.setCountry(auxiliaryPutBean.country);
-			data.setLastName(auxiliaryPutBean.lastName);
-			data.setCivility(auxiliaryPutBean.civility);
-			data.setCity(auxiliaryPutBean.city);
-			data.setPostalCode(auxiliaryPutBean.postalCode);
-			data.setIsTutoSkipped(auxiliaryPutBean.isTutoSkipped);
-			data.setDescription(auxiliaryPutBean.description);
-			data.setSocialNumber(auxiliaryPutBean.socialNumber);
-			data.setNotifyOffersSms(auxiliaryPutBean.notifyOffersSms);
-			data.setNotifyAuxpros(auxiliaryPutBean.notifyAuxpros);
-			data.setBirthCountry(auxiliaryPutBean.birthCountry);
-			data.setDiploma(auxiliaryPutBean.diploma);
-			data.setLongitude(auxiliaryPutBean.longitude);
-			data.setAddress(auxiliaryPutBean.address);
-			data.setLattitude(auxiliaryPutBean.lattitude);
-			data.setNotifyPartners(auxiliaryPutBean.notifyPartners);
-			data.setBirthCity(auxiliaryPutBean.birthCity);
-			data.setAvatar(auxiliaryPutBean.avatar);
-			data.setBirthDate(TimeHelper.toDate(auxiliaryPutBean.birthDate));
-			data.setFirstName(auxiliaryPutBean.firstName);
-			data.setNationality(auxiliaryPutBean.nationality);
-			data.setIsEntrepreneur(auxiliaryPutBean.isEntrepreneur);
-			data.setPhone(auxiliaryPutBean.phone);
-			data.setNotifyOffersMail(auxiliaryPutBean.notifyOffersMail);
+			auxiliaryPutBean.fillData(data);
 			// Store the updated data object
 			AuxiliaryCollection.updateNull(data);
 			// Send the response
