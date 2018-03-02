@@ -15,9 +15,9 @@ public enum HelptopicFields {
 
 	private String _id;
 	private String _type;
-	private IValidator<?> _validator;
+	private IValidator _validator;
 
-	private HelptopicFields(String id, String type, IValidator<?> validator) {
+	private HelptopicFields(String id, String type, IValidator validator) {
 		_id = id;
 		_type = type;
 		_validator = validator;
@@ -31,7 +31,7 @@ public enum HelptopicFields {
 		return _type;
 	}
 
-	public IValidator<?> getValidator() {
+	public IValidator getValidator() {
 		return _validator;
 	}
 

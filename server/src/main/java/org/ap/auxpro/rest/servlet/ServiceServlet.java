@@ -11,7 +11,6 @@ import org.ap.common.exception.APWebException;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.service.ServiceFields;
-import org.ap.common.web.http.URLHelper;
 import java.util.List;
 import java.util.ArrayList;
 import org.ap.auxpro.bean.ServicePostBean;
@@ -62,8 +61,14 @@ public class ServiceServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				ServiceFields field = ServiceFields.byId(key);
 				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
+					List<Bson> subConditions = new ArrayList<Bson>();
+					for (String value : info.getQueryParameters().get(key)) {
+						if (field.getType().equals("Boolean")) {
+							subConditions.add(eq(key, new Boolean(value)));
+						} else {
+							subConditions.add(eq(key, value));
+						}
+					}
 					conditions.add(or(subConditions));
 				}
 			}
@@ -100,8 +105,8 @@ public class ServiceServlet extends APServletBase {
 		try {
 			ApauthData dataAuth = ApauthCollection.getByUsername(servicePostBean.username);
 			ServiceData dataEntity;
-			if(dataAuth != null) {
-				if(dataAuth.getRegistered()) {
+			if (dataAuth != null) {
+				if (dataAuth.getRegistered()) {
 					throw APWebException.AP_AUTH_REG_001;
 				} else {
 					ServiceCollection.deleteByAuthId(dataAuth.id);
@@ -109,8 +114,8 @@ public class ServiceServlet extends APServletBase {
 				}
 			}
 			dataAuth = ApauthCollection.getByEmail(servicePostBean.email);
-			if(dataAuth != null) {
-				if(dataAuth.getRegistered()) {
+			if (dataAuth != null) {
+				if (dataAuth.getRegistered()) {
 					throw APWebException.AP_AUTH_REG_002;
 				} else {
 					ServiceCollection.deleteByAuthId(dataAuth.id);
@@ -233,8 +238,14 @@ public class ServiceServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				AuxiliaryFields field = AuxiliaryFields.byId(key);
 				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
+					List<Bson> subConditions = new ArrayList<Bson>();
+					for (String value : info.getQueryParameters().get(key)) {
+						if (field.getType().equals("Boolean")) {
+							subConditions.add(eq(key, new Boolean(value)));
+						} else {
+							subConditions.add(eq(key, value));
+						}
+					}
 					conditions.add(or(subConditions));
 				}
 			}
@@ -276,8 +287,14 @@ public class ServiceServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				CustomerFields field = CustomerFields.byId(key);
 				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
+					List<Bson> subConditions = new ArrayList<Bson>();
+					for (String value : info.getQueryParameters().get(key)) {
+						if (field.getType().equals("Boolean")) {
+							subConditions.add(eq(key, new Boolean(value)));
+						} else {
+							subConditions.add(eq(key, value));
+						}
+					}
 					conditions.add(or(subConditions));
 				}
 			}
@@ -315,8 +332,14 @@ public class ServiceServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				InterventionFields field = InterventionFields.byId(key);
 				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
+					List<Bson> subConditions = new ArrayList<Bson>();
+					for (String value : info.getQueryParameters().get(key)) {
+						if (field.getType().equals("Boolean")) {
+							subConditions.add(eq(key, new Boolean(value)));
+						} else {
+							subConditions.add(eq(key, value));
+						}
+					}
 					conditions.add(or(subConditions));
 				}
 			}
@@ -354,8 +377,14 @@ public class ServiceServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				OfferFields field = OfferFields.byId(key);
 				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
+					List<Bson> subConditions = new ArrayList<Bson>();
+					for (String value : info.getQueryParameters().get(key)) {
+						if (field.getType().equals("Boolean")) {
+							subConditions.add(eq(key, new Boolean(value)));
+						} else {
+							subConditions.add(eq(key, value));
+						}
+					}
 					conditions.add(or(subConditions));
 				}
 			}
@@ -393,8 +422,14 @@ public class ServiceServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				MissionFields field = MissionFields.byId(key);
 				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
+					List<Bson> subConditions = new ArrayList<Bson>();
+					for (String value : info.getQueryParameters().get(key)) {
+						if (field.getType().equals("Boolean")) {
+							subConditions.add(eq(key, new Boolean(value)));
+						} else {
+							subConditions.add(eq(key, value));
+						}
+					}
 					conditions.add(or(subConditions));
 				}
 			}

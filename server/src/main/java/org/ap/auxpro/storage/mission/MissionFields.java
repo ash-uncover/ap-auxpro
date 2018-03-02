@@ -24,9 +24,9 @@ public enum MissionFields {
 
 	private String _id;
 	private String _type;
-	private IValidator<?> _validator;
+	private IValidator _validator;
 
-	private MissionFields(String id, String type, IValidator<?> validator) {
+	private MissionFields(String id, String type, IValidator validator) {
 		_id = id;
 		_type = type;
 		_validator = validator;
@@ -40,7 +40,7 @@ public enum MissionFields {
 		return _type;
 	}
 
-	public IValidator<?> getValidator() {
+	public IValidator getValidator() {
 		return _validator;
 	}
 

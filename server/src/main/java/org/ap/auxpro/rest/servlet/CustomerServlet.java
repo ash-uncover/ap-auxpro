@@ -17,7 +17,6 @@ import org.ap.auxpro.storage.intervention.InterventionCollection;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.intervention.InterventionFields;
-import org.ap.common.web.http.URLHelper;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -120,8 +119,14 @@ public class CustomerServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				InterventionFields field = InterventionFields.byId(key);
 				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
+					List<Bson> subConditions = new ArrayList<Bson>();
+					for (String value : info.getQueryParameters().get(key)) {
+						if (field.getType().equals("Boolean")) {
+							subConditions.add(eq(key, new Boolean(value)));
+						} else {
+							subConditions.add(eq(key, value));
+						}
+					}
 					conditions.add(or(subConditions));
 				}
 			}
