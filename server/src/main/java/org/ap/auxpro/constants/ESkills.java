@@ -14,7 +14,7 @@ public enum ESkills {
 
 	private String _name;
 
-	private  ESkills(String name) {
+	private ESkills(String name) {
 		_name = name;
 	}
 

@@ -11,7 +11,7 @@ public enum EOfferStatusSad {
 
 	private String _name;
 
-	private  EOfferStatusSad(String name) {
+	private EOfferStatusSad(String name) {
 		_name = name;
 	}
 

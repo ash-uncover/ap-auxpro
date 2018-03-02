@@ -9,7 +9,7 @@ public enum EAccountType {
 
 	private String _name;
 
-	private  EAccountType(String name) {
+	private EAccountType(String name) {
 		_name = name;
 	}
 

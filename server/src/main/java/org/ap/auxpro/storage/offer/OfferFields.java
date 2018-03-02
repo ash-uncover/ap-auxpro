@@ -25,7 +25,7 @@ public enum OfferFields {
 	private String _type;
 	private IValidator<?> _validator;
 
-	private  OfferFields(String id, String type, IValidator<?> validator) {
+	private OfferFields(String id, String type, IValidator<?> validator) {
 		_id = id;
 		_type = type;
 		_validator = validator;

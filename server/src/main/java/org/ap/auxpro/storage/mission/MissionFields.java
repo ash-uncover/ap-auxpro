@@ -26,7 +26,7 @@ public enum MissionFields {
 	private String _type;
 	private IValidator<?> _validator;
 
-	private  MissionFields(String id, String type, IValidator<?> validator) {
+	private MissionFields(String id, String type, IValidator<?> validator) {
 		_id = id;
 		_type = type;
 		_validator = validator;

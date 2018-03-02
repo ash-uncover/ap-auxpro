@@ -10,7 +10,7 @@ public enum EAuxiliaryStatus {
 
 	private String _name;
 
-	private  EAuxiliaryStatus(String name) {
+	private EAuxiliaryStatus(String name) {
 		_name = name;
 	}
 

@@ -23,7 +23,7 @@ public enum ECollections {
 
 	public Set<String> _links;
 
-	private  ECollections(String[] links) {
+	private ECollections(String[] links) {
 		_links = new HashSet<String>();
 		for (String link: links) {
 			_links.add(link);

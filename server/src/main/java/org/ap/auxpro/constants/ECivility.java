@@ -9,7 +9,7 @@ public enum ECivility {
 
 	private String _name;
 
-	private  ECivility(String name) {
+	private ECivility(String name) {
 		_name = name;
 	}
 

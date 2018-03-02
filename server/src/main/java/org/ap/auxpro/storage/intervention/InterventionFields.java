@@ -28,7 +28,7 @@ public enum InterventionFields {
 	private String _type;
 	private IValidator<?> _validator;
 
-	private  InterventionFields(String id, String type, IValidator<?> validator) {
+	private InterventionFields(String id, String type, IValidator<?> validator) {
 		_id = id;
 		_type = type;
 		_validator = validator;

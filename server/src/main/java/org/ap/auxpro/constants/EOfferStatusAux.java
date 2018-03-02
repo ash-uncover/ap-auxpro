@@ -10,7 +10,7 @@ public enum EOfferStatusAux {
 
 	private String _name;
 
-	private  EOfferStatusAux(String name) {
+	private EOfferStatusAux(String name) {
 		_name = name;
 	}
 

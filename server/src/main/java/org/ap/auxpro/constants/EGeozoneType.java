@@ -9,7 +9,7 @@ public enum EGeozoneType {
 
 	private String _name;
 
-	private  EGeozoneType(String name) {
+	private EGeozoneType(String name) {
 		_name = name;
 	}
 

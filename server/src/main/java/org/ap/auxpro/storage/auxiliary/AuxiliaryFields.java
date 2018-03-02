@@ -52,7 +52,7 @@ public enum AuxiliaryFields {
 	private String _type;
 	private IValidator<?> _validator;
 
-	private  AuxiliaryFields(String id, String type, IValidator<?> validator) {
+	private AuxiliaryFields(String id, String type, IValidator<?> validator) {
 		_id = id;
 		_type = type;
 		_validator = validator;
