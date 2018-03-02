@@ -51,21 +51,10 @@ public class IndisponibilityServlet extends APServletBase {
 	public Response getIndisponibility(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
 			IndisponibilityData data = IndisponibilityCollection.getById(id);
-			if(data == null) {
+			if (data == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
-			IndisponibilityBean bean = new IndisponibilityBean();
-			bean.auxiliaryId = data.getAuxiliaryId();
-			bean.period = data.getPeriod();
-			bean.endDate = TimeHelper.toIntegers(data.getEndDate());
-			bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-			bean.days = data.getDays();
-			bean.startTime = data.getStartTime();
-			bean.endTime = data.getEndTime();
-			bean.id = data.getId();
-			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-			bean.startDate = TimeHelper.toIntegers(data.getStartDate());
-			
+			IndisponibilityBean bean = new IndisponibilityBean(data);
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (APWebException e) {

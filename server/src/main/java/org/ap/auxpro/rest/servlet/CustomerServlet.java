@@ -73,35 +73,10 @@ public class CustomerServlet extends APServletBase {
 	public Response getCustomer(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
 			CustomerData data = CustomerCollection.getById(id);
-			if(data == null) {
+			if (data == null) {
 				return Response.status(Status.NOT_FOUND).build();
 			}
-			CustomerBean bean = new CustomerBean();
-			bean.serviceId = data.getServiceId();
-			bean.lastName = data.getLastName();
-			bean.country = data.getCountry();
-			bean.civility = data.getCivility();
-			bean.address = data.getAddress();
-			bean.skillNursing = data.getSkillNursing();
-			bean.city = data.getCity();
-			bean.lattitude = data.getLattitude();
-			bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-			bean.postalCode = data.getPostalCode();
-			bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-			bean.birthDate = TimeHelper.toIntegers(data.getBirthDate());
-			bean.skillChildhood = data.getSkillChildhood();
-			bean.skillCompagny = data.getSkillCompagny();
-			bean.skillShopping = data.getSkillShopping();
-			bean.firstName = data.getFirstName();
-			bean.nationality = data.getNationality();
-			bean.phone = data.getPhone();
-			bean.skillAdministrative = data.getSkillAdministrative();
-			bean.skillHousework = data.getSkillHousework();
-			bean.skillDoityourself = data.getSkillDoityourself();
-			bean.id = data.getId();
-			bean.email = data.getEmail();
-			bean.longitude = data.getLongitude();
-			
+			CustomerBean bean = new CustomerBean(data);
 			return Response.status(Status.OK).entity(bean).build();
 			
 		} catch (APWebException e) {
@@ -207,24 +182,7 @@ public class CustomerServlet extends APServletBase {
 			
 			List<InterventionBean> beanList = new ArrayList<InterventionBean>();
 			for (InterventionData data : datas) {
-				InterventionBean bean = new InterventionBean();
-				bean.auxiliaryId = data.getAuxiliaryId();
-				bean.period = data.getPeriod();
-				bean.endDate = TimeHelper.toIntegers(data.getEndDate());
-				bean.lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-				bean.sadStatusChanged = TimeHelper.toIntegers(data.getSadStatusChanged());
-				bean.creationDate = TimeHelper.toIntegers(data.getCreationDate());
-				bean.sadStatus = data.getSadStatus();
-				bean.days = data.getDays();
-				bean.diplomas = data.getDiplomas();
-				bean.startTime = data.getStartTime();
-				bean.endTime = data.getEndTime();
-				bean.id = data.getId();
-				bean.hideToSad = data.getHideToSad();
-				bean.startDate = TimeHelper.toIntegers(data.getStartDate());
-				bean.customerId = data.getCustomerId();
-				bean.serviceId = data.getServiceId();
-				
+				InterventionBean bean = new InterventionBean(data);
 				beanList.add(bean);
 			}
 			
