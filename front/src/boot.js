@@ -7,7 +7,7 @@ import GoogleMapActions from 'actions/GoogleMapActions'
 import { StoreRegistry } from 'ap-flux'
 
 
-const version = '1.0'
+const version = '1.1'
 const versionItem = 'AP-LS_VERSION'
 
 let currentVersion = localStorage.getItem(versionItem)
