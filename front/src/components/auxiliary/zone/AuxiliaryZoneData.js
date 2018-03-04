@@ -75,8 +75,6 @@ class AuxiliaryZoneData extends BaseData {
 		this.obj.state.showServices = true
 		this.obj.state.showAllServices = true
 
-		console.log(this.obj.state)
-
 		this.buildAuxiliaryData()
 		this.buildGeozoneData()
 		this.buildCustomerData()
