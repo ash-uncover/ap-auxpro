@@ -100,8 +100,8 @@ public class ServiceServlet extends APServletBase {
 		try {
 			ApauthData dataAuth = ApauthCollection.getByUsername(servicePostBean.username);
 			ServiceData dataEntity;
-			if(dataAuth != null) {
-				if(dataAuth.getRegistered()) {
+			if (dataAuth != null) {
+				if (dataAuth.getRegistered()) {
 					throw APWebException.AP_AUTH_REG_001;
 				} else {
 					ServiceCollection.deleteByAuthId(dataAuth.id);
@@ -109,8 +109,8 @@ public class ServiceServlet extends APServletBase {
 				}
 			}
 			dataAuth = ApauthCollection.getByEmail(servicePostBean.email);
-			if(dataAuth != null) {
-				if(dataAuth.getRegistered()) {
+			if (dataAuth != null) {
+				if (dataAuth.getRegistered()) {
 					throw APWebException.AP_AUTH_REG_002;
 				} else {
 					ServiceCollection.deleteByAuthId(dataAuth.id);

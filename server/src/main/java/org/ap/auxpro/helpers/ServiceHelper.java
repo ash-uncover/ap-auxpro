@@ -15,37 +15,35 @@ import org.ap.auxpro.storage.service.ServiceCollection;
 import org.ap.auxpro.storage.service.ServiceData;
 import org.ap.auxpro.storage.service.ServiceFields;
 import org.ap.common.exception.APWebException;
-import org.ap.common.validators.IValidator;
 
 public class ServiceHelper {
 
-	@SuppressWarnings("unchecked")
 	public static void beforePutService(SecurityContext sc, String id, ServicePutBean serviceBean) throws APWebException {
 		ServiceData data = ServiceCollection.getById(id);
 		// Check profil completion
 		boolean profilCompleted = true;
-		if (!((IValidator<String>)ServiceFields.ADDRESS.getValidator()).getState(serviceBean.address)) {
+		if (!ServiceFields.ADDRESS.getValidator().getState(serviceBean.address)) {
 			profilCompleted = false;
 		}
-		if (!((IValidator<String>)ServiceFields.POSTAL_CODE.getValidator()).getState(serviceBean.postalCode)) {
+		if (!ServiceFields.POSTAL_CODE.getValidator().getState(serviceBean.postalCode)) {
 			profilCompleted = false;
 		}
-		if (!((IValidator<String>)ServiceFields.CITY.getValidator()).getState(serviceBean.city)) {
+		if (!ServiceFields.CITY.getValidator().getState(serviceBean.city)) {
 			profilCompleted = false;
 		}
-		if (!((IValidator<String>)ServiceFields.COUNTRY.getValidator()).getState(serviceBean.country)) {
+		if (!ServiceFields.COUNTRY.getValidator().getState(serviceBean.country)) {
 			profilCompleted = false;
 		}
-		if (!((IValidator<String>)ServiceFields.PHONE.getValidator()).getState(serviceBean.phone)) {
+		if (!ServiceFields.PHONE.getValidator().getState(serviceBean.phone)) {
 			profilCompleted = false;
 		}
-		if (!((IValidator<String>)ServiceFields.SOCIAL_REASON.getValidator()).getState(serviceBean.socialReason)) {
+		if (!ServiceFields.SOCIAL_REASON.getValidator().getState(serviceBean.socialReason)) {
 			profilCompleted = false;
 		}
-		if (!((IValidator<String>)ServiceFields.SIRET.getValidator()).getState(serviceBean.siret)) {
+		if (!ServiceFields.SIRET.getValidator().getState(serviceBean.siret)) {
 			profilCompleted = false;
 		}
-		if (!((IValidator<String>)ServiceFields.FUNCTION.getValidator()).getState(serviceBean.function)) {
+		if (!ServiceFields.FUNCTION.getValidator().getState(serviceBean.function)) {
 			profilCompleted = false;
 		}
 		

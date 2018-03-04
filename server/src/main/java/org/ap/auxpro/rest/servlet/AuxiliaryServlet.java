@@ -109,8 +109,8 @@ public class AuxiliaryServlet extends APServletBase {
 		try {
 			ApauthData dataAuth = ApauthCollection.getByUsername(auxiliaryPostBean.username);
 			AuxiliaryData dataEntity;
-			if(dataAuth != null) {
-				if(dataAuth.getRegistered()) {
+			if (dataAuth != null) {
+				if (dataAuth.getRegistered()) {
 					throw APWebException.AP_AUTH_REG_001;
 				} else {
 					AuxiliaryCollection.deleteByAuthId(dataAuth.id);
@@ -118,8 +118,8 @@ public class AuxiliaryServlet extends APServletBase {
 				}
 			}
 			dataAuth = ApauthCollection.getByEmail(auxiliaryPostBean.email);
-			if(dataAuth != null) {
-				if(dataAuth.getRegistered()) {
+			if (dataAuth != null) {
+				if (dataAuth.getRegistered()) {
 					throw APWebException.AP_AUTH_REG_002;
 				} else {
 					AuxiliaryCollection.deleteByAuthId(dataAuth.id);

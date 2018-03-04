@@ -34,9 +34,9 @@ public enum CustomerFields {
 
 	private String _id;
 	private String _type;
-	private IValidator<?> _validator;
+	private IValidator _validator;
 
-	private CustomerFields(String id, String type, IValidator<?> validator) {
+	private CustomerFields(String id, String type, IValidator validator) {
 		_id = id;
 		_type = type;
 		_validator = validator;
@@ -50,7 +50,7 @@ public enum CustomerFields {
 		return _type;
 	}
 
-	public IValidator<?> getValidator() {
+	public IValidator getValidator() {
 		return _validator;
 	}
 

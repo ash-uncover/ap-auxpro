@@ -30,9 +30,9 @@ public enum ServiceFields {
 
 	private String _id;
 	private String _type;
-	private IValidator<?> _validator;
+	private IValidator _validator;
 
-	private ServiceFields(String id, String type, IValidator<?> validator) {
+	private ServiceFields(String id, String type, IValidator validator) {
 		_id = id;
 		_type = type;
 		_validator = validator;
@@ -46,7 +46,7 @@ public enum ServiceFields {
 		return _type;
 	}
 
-	public IValidator<?> getValidator() {
+	public IValidator getValidator() {
 		return _validator;
 	}
 

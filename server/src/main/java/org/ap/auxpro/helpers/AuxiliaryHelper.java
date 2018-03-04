@@ -25,10 +25,8 @@ import org.ap.auxpro.storage.promotioncode.PromotioncodeData;
 import org.ap.common.exception.APWebException;
 import org.ap.common.time.TimeHelper;
 import org.ap.common.util.UUIDGenerator;
-import org.ap.common.validators.IValidator;
 public class AuxiliaryHelper {
 
-	@SuppressWarnings("unchecked")
 	public static void beforePutAuxiliary(SecurityContext sc, String id, AuxiliaryPutBean auxiliaryBean) throws APWebException {
 		if (!sc.isUserInRole(id)) {
 			throw new APWebException("forbidden", Status.FORBIDDEN);
@@ -55,9 +53,9 @@ public class AuxiliaryHelper {
 		}
 		// Check civil info (total: 50)
 		if (
-			((IValidator<String>)AuxiliaryFields.CIVILITY.getValidator()).getState(auxiliaryBean.civility) &&
-			((IValidator<String>)AuxiliaryFields.LAST_NAME.getValidator()).getState(auxiliaryBean.lastName) &&
-			((IValidator<String>)AuxiliaryFields.FIRST_NAME.getValidator()).getState(auxiliaryBean.firstName)
+			AuxiliaryFields.CIVILITY.getValidator().getState(auxiliaryBean.civility) &&
+			AuxiliaryFields.LAST_NAME.getValidator().getState(auxiliaryBean.lastName) &&
+			AuxiliaryFields.FIRST_NAME.getValidator().getState(auxiliaryBean.firstName)
 		) {
 			profilProgress += 10;
 		} else {
@@ -65,10 +63,10 @@ public class AuxiliaryHelper {
 		}
 		// Check birth info (total: 60)
 		if (
-			((IValidator<String>)AuxiliaryFields.NATIONALITY.getValidator()).getState(auxiliaryBean.nationality) &&
-			((IValidator<LocalDate>)AuxiliaryFields.BIRTH_DATE.getValidator()).getState(TimeHelper.toLocalDate(auxiliaryBean.birthDate)) &&
-			((IValidator<String>)AuxiliaryFields.BIRTH_CITY.getValidator()).getState(auxiliaryBean.birthCity) &&
-			((IValidator<String>)AuxiliaryFields.BIRTH_COUNTRY.getValidator()).getState(auxiliaryBean.birthCountry)
+			AuxiliaryFields.NATIONALITY.getValidator().getState(auxiliaryBean.nationality) &&
+			AuxiliaryFields.BIRTH_DATE.getValidator().getState(TimeHelper.toLocalDate(auxiliaryBean.birthDate)) &&
+			AuxiliaryFields.BIRTH_CITY.getValidator().getState(auxiliaryBean.birthCity) &&
+			AuxiliaryFields.BIRTH_COUNTRY.getValidator().getState(auxiliaryBean.birthCountry)
 		) {
 			profilProgress += 10;
 		} else {
@@ -76,10 +74,10 @@ public class AuxiliaryHelper {
 		}
 		// Check address info (total: 70)
 		if (
-			((IValidator<String>)AuxiliaryFields.ADDRESS.getValidator()).getState(auxiliaryBean.address) &&
-			((IValidator<String>)AuxiliaryFields.POSTAL_CODE.getValidator()).getState(auxiliaryBean.postalCode) &&
-			((IValidator<String>)AuxiliaryFields.CITY.getValidator()).getState(auxiliaryBean.city) &&
-			((IValidator<String>)AuxiliaryFields.COUNTRY.getValidator()).getState(auxiliaryBean.country)
+			AuxiliaryFields.ADDRESS.getValidator().getState(auxiliaryBean.address) &&
+			AuxiliaryFields.POSTAL_CODE.getValidator().getState(auxiliaryBean.postalCode) &&
+			AuxiliaryFields.CITY.getValidator().getState(auxiliaryBean.city) &&
+			AuxiliaryFields.COUNTRY.getValidator().getState(auxiliaryBean.country)
 		) {
 			profilProgress += 10;
 		} else {
@@ -87,7 +85,7 @@ public class AuxiliaryHelper {
 		}
 		// Check contact info (total: 80)
 		if (
-			((IValidator<String>)AuxiliaryFields.PHONE.getValidator()).getState(auxiliaryBean.phone)
+			AuxiliaryFields.PHONE.getValidator().getState(auxiliaryBean.phone)
 		) {
 			profilProgress += 10;
 		} else {
@@ -95,15 +93,15 @@ public class AuxiliaryHelper {
 		}
 		// Check profesionnal info (total: 90)
 		if (
-			((IValidator<String>)AuxiliaryFields.DESCRIPTION.getValidator()).getState(auxiliaryBean.description) &&
-			((IValidator<String>)AuxiliaryFields.IS_ENTREPRENEUR.getValidator()).getState(auxiliaryBean.isEntrepreneur) &&
-			((IValidator<Object[]>)AuxiliaryFields.DIPLOMA.getValidator()).getState(auxiliaryBean.diploma.toArray())
+			AuxiliaryFields.DESCRIPTION.getValidator().getState(auxiliaryBean.description) &&
+			AuxiliaryFields.IS_ENTREPRENEUR.getValidator().getState(auxiliaryBean.isEntrepreneur) &&
+			AuxiliaryFields.DIPLOMA.getValidator().getState(auxiliaryBean.diploma.toArray())
 		) {
 			profilProgress += 10;
 		}
 		// Check secret info (total: 100)
 		if (
-			((IValidator<String>)AuxiliaryFields.SOCIAL_NUMBER.getValidator()).getState(auxiliaryBean.socialNumber)
+			AuxiliaryFields.SOCIAL_NUMBER.getValidator().getState(auxiliaryBean.socialNumber)
 		) {
 			profilProgress += 10;
 		}

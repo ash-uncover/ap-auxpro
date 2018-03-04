@@ -20,9 +20,9 @@ public enum IndisponibilityFields {
 
 	private String _id;
 	private String _type;
-	private IValidator<?> _validator;
+	private IValidator _validator;
 
-	private IndisponibilityFields(String id, String type, IValidator<?> validator) {
+	private IndisponibilityFields(String id, String type, IValidator validator) {
 		_id = id;
 		_type = type;
 		_validator = validator;
@@ -36,7 +36,7 @@ public enum IndisponibilityFields {
 		return _type;
 	}
 
-	public IValidator<?> getValidator() {
+	public IValidator getValidator() {
 		return _validator;
 	}
 
