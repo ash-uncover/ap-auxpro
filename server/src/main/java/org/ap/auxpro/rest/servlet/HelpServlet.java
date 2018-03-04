@@ -11,6 +11,7 @@ import org.ap.common.exception.APWebException;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.helptopic.HelptopicFields;
+import org.ap.common.web.http.URLHelper;
 import java.util.List;
 import java.util.ArrayList;
 import org.ap.auxpro.bean.HelpFaqBean;
@@ -34,14 +35,8 @@ public class HelpServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				HelptopicFields field = HelptopicFields.byId(key);
 				if (field != null) {
-					List<Bson> subConditions = new ArrayList<Bson>();
-					for (String value : info.getQueryParameters().get(key)) {
-						if (field.getType().equals("Boolean")) {
-							subConditions.add(eq(key, new Boolean(value)));
-						} else {
-							subConditions.add(eq(key, value));
-						}
-					}
+					List<String> filterValues = info.getQueryParameters().get(key);
+					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
 					conditions.add(or(subConditions));
 				}
 			}
@@ -78,14 +73,8 @@ public class HelpServlet extends APServletBase {
 			for (String key : info.getQueryParameters().keySet()) {
 				HelpfaqFields field = HelpfaqFields.byId(key);
 				if (field != null) {
-					List<Bson> subConditions = new ArrayList<Bson>();
-					for (String value : info.getQueryParameters().get(key)) {
-						if (field.getType().equals("Boolean")) {
-							subConditions.add(eq(key, new Boolean(value)));
-						} else {
-							subConditions.add(eq(key, value));
-						}
-					}
+					List<String> filterValues = info.getQueryParameters().get(key);
+					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
 					conditions.add(or(subConditions));
 				}
 			}
