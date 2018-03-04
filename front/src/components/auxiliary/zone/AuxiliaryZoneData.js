@@ -69,18 +69,13 @@ class AuxiliaryZoneData extends BaseData {
 
 		this.onMarkerClicked = this._onMarkerClicked.bind(this)
 
-		this.setState({
-			mode: this.MODE.INFO,
-			showOffers: true,
-			showInterventions: true,
-			showServices: true,
-			showAllServices: true,
-			showDelete: false,
-			auxiliaryId: null,
-			customerId: null,
-			geozoneId: null,
-			serviceId: null
-		})
+		this.obj.state.mode = this.MODE.INFO
+		this.obj.state.showOffers = true
+		this.obj.state.showInterventions = true
+		this.obj.state.showServices = true
+		this.obj.state.showAllServices = true
+
+		console.log(this.obj.state)
 
 		this.buildAuxiliaryData()
 		this.buildGeozoneData()
