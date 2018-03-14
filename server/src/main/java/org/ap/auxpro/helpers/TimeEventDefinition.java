@@ -2,6 +2,7 @@ package org.ap.auxpro.helpers;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -14,7 +15,6 @@ import org.ap.auxpro.storage.intervention.InterventionData;
 import org.ap.auxpro.storage.mission.MissionData;
 import org.ap.common.time.TimeEvent;
 import org.ap.common.time.TimeHelper;
-import org.ap.common.time.TimeSlot;
 import org.ap.common.time.TimeUtils;
 
 public class TimeEventDefinition {
@@ -158,27 +158,39 @@ public class TimeEventDefinition {
 	
 	public List<TimeEvent> getEvents() {
 		List<TimeEvent> result = new ArrayList<TimeEvent>();
-		int days = getEndTime().isBefore(getStartTime()) ? 1 : 0;
-
+		LocalDateTime startDateTime, endDateTime;
 		LocalDate currentDate = getStartDate().plusDays(0);
 		switch (getPeriodUnit()) {
 		case HOURS:
-			TimeSlot slot = new TimeSlot(getStartTime(), getEndTime(), days);
-			result.add(new TimeEvent(slot, getStartDate()));
+			startDateTime = LocalDateTime.of(getStartDate(), getStartTime());
+			endDateTime = LocalDateTime.of(getStartDate(), getEndTime());
+			if (!getEndTime().isAfter(getStartTime())) {
+				endDateTime = endDateTime.plusDays(1);
+			}
+			result.add(new TimeEvent(startDateTime, endDateTime));
 			break;
 		case DAYS:
 			while (!currentDate.isAfter(getEndDate())) {
-				result.add(new TimeEvent(new TimeSlot(LocalTime.MIN, LocalTime.MAX), currentDate));
+				startDateTime = LocalDateTime.of(currentDate, getStartTime());
+				endDateTime = LocalDateTime.of(currentDate, getEndTime());
+				if (!getEndTime().isAfter(getStartTime())) {
+					endDateTime = endDateTime.plusDays(1);
+				}
+				result.add(new TimeEvent(startDateTime, endDateTime));
 				currentDate = currentDate.plusDays(1);
 			}
 			break;
 		case WEEKS:
-			slot = new TimeSlot(getStartTime(), getEndTime(), days);
 			while (!currentDate.isAfter(getEndDate())) {
 				currentDate = TimeUtils.getPreviousOfDay(currentDate, DayOfWeek.MONDAY);
 				for (int i = 0; i < 7; i++) {
 					if (getDays().contains(currentDate.getDayOfWeek()) && !currentDate.isBefore(getStartDate()) && !currentDate.isAfter(getEndDate())) {
-						result.add(new TimeEvent(slot, currentDate));
+						startDateTime = LocalDateTime.of(currentDate, getStartTime());
+						endDateTime = LocalDateTime.of(currentDate, getEndTime());
+						if (!getEndTime().isAfter(getStartTime())) {
+							endDateTime = endDateTime.plusDays(1);
+						}
+						result.add(new TimeEvent(startDateTime, endDateTime));
 					}
 					currentDate = currentDate.plusDays(1);
 				}
