@@ -54,7 +54,7 @@ public class HelpServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new HelpTopicBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);
@@ -92,7 +92,7 @@ public class HelpServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new HelpFaqBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);

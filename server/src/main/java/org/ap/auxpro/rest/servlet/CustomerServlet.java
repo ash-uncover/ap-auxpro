@@ -140,7 +140,7 @@ public class CustomerServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new InterventionBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);
