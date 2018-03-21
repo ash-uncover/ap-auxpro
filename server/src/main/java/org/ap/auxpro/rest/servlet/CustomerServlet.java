@@ -17,7 +17,6 @@ import org.ap.auxpro.storage.intervention.InterventionCollection;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.intervention.InterventionFields;
-import org.ap.common.web.http.URLHelper;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -115,16 +114,7 @@ public class CustomerServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getCustomerInterventions(@Context SecurityContext sc, @PathParam("customerId") final String customerId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				InterventionFields field = InterventionFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), InterventionFields.class);
 			
 			conditions.add(eq("customerId", customerId));
 			List<InterventionData> datas = null;

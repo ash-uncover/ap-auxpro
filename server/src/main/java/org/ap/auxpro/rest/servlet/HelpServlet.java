@@ -11,7 +11,6 @@ import org.ap.common.exception.APWebException;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.helptopic.HelptopicFields;
-import org.ap.common.web.http.URLHelper;
 import java.util.List;
 import java.util.ArrayList;
 import org.ap.auxpro.bean.HelpFaqBean;
@@ -30,16 +29,7 @@ public class HelpServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getHelpTopics(@Context SecurityContext sc, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				HelptopicFields field = HelptopicFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), HelptopicFields.class);
 			
 			List<HelptopicData> datas = null;
 			if (conditions.size() > 0) {
@@ -68,16 +58,7 @@ public class HelpServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getHelpFaqs(@Context SecurityContext sc, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				HelpfaqFields field = HelpfaqFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), HelpfaqFields.class);
 			
 			List<HelpfaqData> datas = null;
 			if (conditions.size() > 0) {

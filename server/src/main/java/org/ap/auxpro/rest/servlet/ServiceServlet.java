@@ -11,7 +11,6 @@ import org.ap.common.exception.APWebException;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.service.ServiceFields;
-import org.ap.common.web.http.URLHelper;
 import java.util.List;
 import java.util.ArrayList;
 import org.ap.auxpro.bean.ServicePostBean;
@@ -57,16 +56,7 @@ public class ServiceServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getServices(@Context SecurityContext sc, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				ServiceFields field = ServiceFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), ServiceFields.class);
 			
 			List<ServiceData> datas = null;
 			if (conditions.size() > 0) {
@@ -228,16 +218,7 @@ public class ServiceServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getServiceAuxiliarys(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				AuxiliaryFields field = AuxiliaryFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), AuxiliaryFields.class);
 			
 			conditions.add(eq("serviceId", serviceId));
 			List<AuxiliaryData> datas = null;
@@ -271,16 +252,7 @@ public class ServiceServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getServiceCustomers(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				CustomerFields field = CustomerFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), CustomerFields.class);
 			
 			conditions.add(eq("serviceId", serviceId));
 			List<CustomerData> datas = null;
@@ -310,16 +282,7 @@ public class ServiceServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getServiceInterventions(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				InterventionFields field = InterventionFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), InterventionFields.class);
 			
 			conditions.add(eq("serviceId", serviceId));
 			List<InterventionData> datas = null;
@@ -349,16 +312,7 @@ public class ServiceServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getServiceOffers(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				OfferFields field = OfferFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), OfferFields.class);
 			
 			conditions.add(eq("serviceId", serviceId));
 			List<OfferData> datas = null;
@@ -388,16 +342,7 @@ public class ServiceServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getServiceMissions(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				MissionFields field = MissionFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), MissionFields.class);
 			
 			conditions.add(eq("serviceId", serviceId));
 			List<MissionData> datas = null;
