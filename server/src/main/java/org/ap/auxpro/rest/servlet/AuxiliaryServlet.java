@@ -11,7 +11,6 @@ import org.ap.common.exception.APWebException;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryFields;
-import org.ap.common.web.http.URLHelper;
 import java.util.List;
 import java.util.ArrayList;
 import org.ap.auxpro.bean.AuxiliaryPostBean;
@@ -66,16 +65,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getAuxiliarys(@Context SecurityContext sc, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				AuxiliaryFields field = AuxiliaryFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), AuxiliaryFields.class);
 			
 			List<AuxiliaryData> datas = null;
 			if (conditions.size() > 0) {
@@ -94,7 +84,7 @@ public class AuxiliaryServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new AuxiliaryGetBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);
@@ -253,16 +243,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getAuxiliaryServices(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				ServiceFields field = ServiceFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), ServiceFields.class);
 			
 			conditions.add(eq("auxiliaryId", auxiliaryId));
 			List<ServiceData> datas = null;
@@ -282,7 +263,7 @@ public class AuxiliaryServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new ServiceGetBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);
@@ -296,16 +277,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getAuxiliaryCustomers(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				CustomerFields field = CustomerFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), CustomerFields.class);
 			
 			conditions.add(eq("auxiliaryId", auxiliaryId));
 			List<CustomerData> datas = null;
@@ -321,7 +293,7 @@ public class AuxiliaryServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new CustomerBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);
@@ -335,16 +307,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getAuxiliaryInterventions(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				InterventionFields field = InterventionFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), InterventionFields.class);
 			
 			conditions.add(eq("auxiliaryId", auxiliaryId));
 			List<InterventionData> datas = null;
@@ -360,7 +323,7 @@ public class AuxiliaryServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new InterventionBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);
@@ -374,16 +337,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getAuxiliaryOffers(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				OfferFields field = OfferFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), OfferFields.class);
 			
 			conditions.add(eq("auxiliaryId", auxiliaryId));
 			List<OfferData> datas = null;
@@ -399,7 +353,7 @@ public class AuxiliaryServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new OfferBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);
@@ -413,16 +367,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getAuxiliaryMissions(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				MissionFields field = MissionFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), MissionFields.class);
 			
 			conditions.add(eq("auxiliaryId", auxiliaryId));
 			List<MissionData> datas = null;
@@ -438,7 +383,7 @@ public class AuxiliaryServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new MissionBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);
@@ -452,16 +397,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getAuxiliaryIndisponibilitys(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				IndisponibilityFields field = IndisponibilityFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), IndisponibilityFields.class);
 			
 			conditions.add(eq("auxiliaryId", auxiliaryId));
 			List<IndisponibilityData> datas = null;
@@ -477,7 +413,7 @@ public class AuxiliaryServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new IndisponibilityBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);
@@ -491,16 +427,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response getAuxiliaryGeozones(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
-			List<Bson> conditions = new ArrayList<Bson>();
-			
-			for (String key : info.getQueryParameters().keySet()) {
-				GeozoneFields field = GeozoneFields.byId(key);
-				if (field != null) {
-					List<String> filterValues = info.getQueryParameters().get(key);
-					List<Bson> subConditions = URLHelper.parseFilters(key, filterValues, field.getType());
-					conditions.add(or(subConditions));
-				}
-			}
+			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), GeozoneFields.class);
 			
 			conditions.add(eq("auxiliaryId", auxiliaryId));
 			List<GeozoneData> datas = null;
@@ -516,7 +443,7 @@ public class AuxiliaryServlet extends APServletBase {
 				beanList.add(bean);
 			}
 			
-			return Response.status(Status.OK).entity(beanList.toArray(new GeozoneBean[beanList.size()])).build();
+			return Response.status(Status.OK).entity(beanList).build();
 			
 		} catch (APWebException e) {
 			return sendException(e);

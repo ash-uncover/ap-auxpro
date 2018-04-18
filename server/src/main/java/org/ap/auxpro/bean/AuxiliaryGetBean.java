@@ -204,4 +204,5 @@ public class AuxiliaryGetBean {
 			throw new APWebException("AP_AUXILIARY_INVALID_FIELDS", "Invalid fields within 'auxiliary'", errors, Status.BAD_REQUEST);
 		}
 	}
+
 }

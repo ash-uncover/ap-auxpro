@@ -91,6 +91,7 @@ public class InterventionCollection {
 		data.lastUpdateDate = document.getDate("lastUpdateDate");
 		data.sadStatusChanged = document.getDate("sadStatusChanged");
 		data.creationDate = document.getDate("creationDate");
+		data.missionType = document.getString("missionType");
 		data.customerId = document.getString("customerId");
 		data.days = (List<String>)document.get("days");
 		data.diplomas = (List<String>)document.get("diplomas");
@@ -118,6 +119,8 @@ public class InterventionCollection {
 			document.append("sadStatusChanged", intervention.sadStatusChanged);
 		if (intervention.creationDate != null)
 			document.append("creationDate", intervention.creationDate);
+		if (intervention.missionType != null)
+			document.append("missionType", intervention.missionType);
 		if (intervention.customerId != null)
 			document.append("customerId", intervention.customerId);
 		if (intervention.days != null)
@@ -149,6 +152,7 @@ public class InterventionCollection {
 		document.append("lastUpdateDate", intervention.lastUpdateDate);
 		document.append("sadStatusChanged", intervention.sadStatusChanged);
 		document.append("creationDate", intervention.creationDate);
+		document.append("missionType", intervention.missionType);
 		document.append("customerId", intervention.customerId);
 		document.append("days", intervention.days);
 		document.append("diplomas", intervention.diplomas);

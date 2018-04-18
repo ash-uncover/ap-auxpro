@@ -5,6 +5,9 @@ import OfferHelper from 'helpers/OfferHelper'
 import ServiceHelper from 'helpers/ServiceHelper'
 import { BaseData } from 'ap-react-bootstrap'
 
+import AuxiliaryStatus from 'utils/constants/AuxiliaryStatus'
+
+import AuxiliaryStatusUtils from 'utils-lib/entities/AuxiliaryStatusUtils'
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 
@@ -30,7 +33,8 @@ class AuxiliaryOfferData extends BaseData {
 			servicePhone: service.phone,
 			customerName: CustomerUtils.getShortName(customer),
 			customerAddress: CustomerUtils.getShortAddress(customer),
-			interventionText: InterventionUtils.getText(intervention)
+			interventionText: InterventionUtils.getText(intervention),
+            missionType: AuxiliaryStatusUtils.getNameIntervention(intervention.missionType || AuxiliaryStatus.BOTH)
 		})
 	}
 

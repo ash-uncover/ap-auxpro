@@ -12,6 +12,7 @@ public class InterventionData {
 	public Date lastUpdateDate;
 	public Date sadStatusChanged;
 	public Date creationDate;
+	public String missionType;
 	public String customerId;
 	public List<String> days;
 	public List<String> diplomas;
@@ -69,6 +70,14 @@ public class InterventionData {
 
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+
+	public String getMissionType() {
+		return this.missionType;
+	}
+
+	public void setMissionType(String missionType) {
+		this.missionType = missionType;
 	}
 
 	public String getCustomerId() {

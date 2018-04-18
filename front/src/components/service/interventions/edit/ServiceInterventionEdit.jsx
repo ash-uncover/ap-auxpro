@@ -71,13 +71,21 @@ class ServiceInterventionEdit extends React.Component {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Col sm={8} md={7} lg={6} lgOffset={1}>
+                                <h4>Prestation</h4>
+                                <Form horizontal>
+                                    {ServiceInterventionEditData.FIELDS_FORM1.map(this.buildFormGroup)}
+                                </Form>
+                            </Grid.Col>
+                        </Grid.Row>
+                        <Grid.Row>
+                            <Grid.Col sm={8} md={7} lg={6} lgOffset={1}>
                                 <h4>Planification</h4>
                             </Grid.Col>
                         </Grid.Row>
                         <Grid.Row>
 							<Grid.Col sm={8} md={7} lg={6} lgOffset={1}>
 								<Form horizontal>
-									{ServiceInterventionEditData.FIELDS_FORM1.map(this.buildFormGroup)}
+									{ServiceInterventionEditData.FIELDS_FORM2.map(this.buildFormGroup)}
 								</Form>
                                 { this.state.endTime[0] < this.state.startTime[0] || (this.state.endTime[0] === this.state.startTime[0] && this.state.endTime[1] === this.state.startTime[1]) ?
                                     <p className='ap-warning col-sm-7 col-sm-offset-5 col-md-8 col-md-offset-4'>
@@ -99,7 +107,7 @@ class ServiceInterventionEdit extends React.Component {
 								<h4>Compétences requises</h4>
 								<p>Si vous ajoutez des critères ci dessous, seules les auxiliaires possédant au moins l'un des diplômes sélectionnés seront retenues lors du MATCHING.</p>
 								<Form horizontal>
-									{ServiceInterventionEditData.FIELDS_FORM3.map(this.buildFormGroup)}
+									{ServiceInterventionEditData.FIELDS_FORM4.map(this.buildFormGroup)}
 								</Form>
 							</Grid.Col>
 						</Grid.Row>

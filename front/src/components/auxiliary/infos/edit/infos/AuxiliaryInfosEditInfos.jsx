@@ -65,7 +65,7 @@ class AuxiliaryInfosEditInfos extends React.Component {
 									id='avatarFile'
 									className={this.state.avatar ? '' : 'ap-no-image'}
 									src={this.state.avatarSrc}
-									onChange={this.onChangeAvatar} />
+									onChange={this.onChange.bind(this, 'avatar')} />
 							</Grid.Col>
 							<br/>
 							<br/>

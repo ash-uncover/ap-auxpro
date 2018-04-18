@@ -30,6 +30,8 @@ class InterventionUtils {
 		case InterventionFields.PERIOD.key: return 'Périodicité'
         case InterventionFields.AUXILIARY_ID:
 		case InterventionFields.AUXILIARY_ID.key: return 'Auxiliaire'
+        case InterventionFields.MISSION_TYPE:
+        case InterventionFields.MISSION_TYPE.key: return 'Type de prestation'
         case InterventionFields.END_DATE:
 		case InterventionFields.END_DATE.key: return 'Fin'
 		case InterventionFields.CUSTOMER_ID:

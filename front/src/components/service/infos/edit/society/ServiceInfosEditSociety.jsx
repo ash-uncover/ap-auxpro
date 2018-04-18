@@ -59,7 +59,7 @@ class ServiceInfosEditSociety extends React.Component {
 									<ImageUploader 
 										className={this.state.avatar ? '' : 'ap-no-image'}
 										src={this.state.avatarSrc}
-										onChange={this.onChangeImage} />
+										onChange={this.onChange.bind(this, 'avatar')} />
 								</Grid.Col>
 								<Grid.Col sm={6} lg={5} lgOffset={1}>
 									{ServiceInfosEditSocietyData.FIELDS_FORM1.map(this.buildFormGroup)}
