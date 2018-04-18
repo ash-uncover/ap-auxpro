@@ -42,7 +42,6 @@ import org.ap.auxpro.storage.service.ServiceData;
 import org.ap.common.exception.APWebException;
 import org.ap.common.geo.GeoHelper;
 import org.ap.common.time.TimeEvent;
-import org.ap.common.time.TimeHelper;
 import org.ap.common.util.UUIDGenerator;
 import org.bson.conversions.Bson;
 
@@ -53,14 +52,20 @@ public class InterventionHelper {
 	public static Object createIntervention(SecurityContext sc, InterventionPostBean interventionBean) throws APWebException {
 		BasicBean result = new BasicBean();
 		try {
+			// Load received values
+			InterventionData intervention = interventionBean.toData();
+			// Load default values
 			String id = UUIDGenerator.nextId();
 			Date now = new Date();
-
-			InterventionData intervention = new InterventionData();
 			intervention.setId(id);
 			intervention.setCreationDate(now);
 			intervention.setLastUpdateDate(now);
+			intervention.setSadStatus(EInterventionStatus._PENDING.getName());
+			intervention.setSadStatusChanged(now);
+			intervention.setHideToSad(false);
+			InterventionCollection.create(intervention);
 			
+			/*
 			intervention.setCustomerId(interventionBean.customerId);
 			intervention.setServiceId(interventionBean.serviceId);
 			intervention.setPeriod(interventionBean.period);
@@ -70,12 +75,7 @@ public class InterventionHelper {
 			intervention.setEndTime(interventionBean.endTime);
 			intervention.setDays(interventionBean.days);
 			intervention.setDiplomas(interventionBean.diplomas);
-			
-			intervention.setSadStatus(EInterventionStatus._PENDING.getName());
-			intervention.setSadStatusChanged(now);
-			intervention.setHideToSad(false);
-			InterventionCollection.create(intervention);
-			
+			*/
 			result.id = id;
 		} catch (MongoWriteException e) {
 			throw APWebException.MONGO_WRITE_EXCEPTION;

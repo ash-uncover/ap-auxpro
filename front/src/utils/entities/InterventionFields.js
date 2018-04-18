@@ -1,5 +1,6 @@
 import { Validators } from 'ap-react-bootstrap'
 import InterventionRecurencePeriod from 'utils/constants/InterventionRecurencePeriod'
+import AuxiliaryStatus from 'utils/constants/AuxiliaryStatus'
 import Diploma from 'utils/constants/Diploma'
 import InterventionStatus from 'utils/constants/InterventionStatus'
 
@@ -29,6 +30,10 @@ class InterventionFields {
 
 	static get CREATION_DATE() {
 		return _CREATION_DATE
+	}
+
+	static get MISSION_TYPE() {
+		return _MISSION_TYPE
 	}
 
 	static get CUSTOMER_ID() {
@@ -79,6 +84,7 @@ class InterventionFields {
 			_LAST_UPDATE_DATE,
 			_SAD_STATUS_CHANGED,
 			_CREATION_DATE,
+			_MISSION_TYPE,
 			_CUSTOMER_ID,
 			_DAYS,
 			_DIPLOMAS,
@@ -125,6 +131,12 @@ let _SAD_STATUS_CHANGED = {
 let _CREATION_DATE = {
 	key: 'creationDate',
 	type: 'Date',
+}
+let _MISSION_TYPE = {
+	key: 'missionType',
+	type: 'string',
+	values: AuxiliaryStatus.VALUES,
+	validator: Validators.NonNull,
 }
 let _CUSTOMER_ID = {
 	key: 'customerId',

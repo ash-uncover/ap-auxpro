@@ -7,10 +7,12 @@ import moment from 'moment'
 import { BaseData, Day, Utils, MomentHelper } from 'ap-react-bootstrap'
 
 // utils
+import AuxiliaryStatus from 'utils/constants/AuxiliaryStatus'
 import Diploma from 'utils/constants/Diploma'
 import InterventionRecurencePeriod from 'utils/constants/InterventionRecurencePeriod'
 // utils-lib
 import InterventionType from 'utils-lib/constants/InterventionType'
+import AuxiliaryStatusUtils from 'utils-lib/entities/AuxiliaryStatusUtils'
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 import DiplomaUtils from 'utils-lib/entities/DiplomaUtils'
 import InterventionFields from 'utils/entities/InterventionFields'
@@ -35,6 +37,11 @@ class ServiceInterventionEditData extends BaseData {
 				InterventionFields.CUSTOMER_ID,
 				{ validator: this.checkCustomerId.bind(this) }
 			),
+            MISSION_TYPE: Object.assign(
+                { form: 'select', defaultValue: AuxiliaryStatus.AUTO.key, name: InterventionUtils.getFieldName(InterventionFields.MISSION_TYPE) }, 
+                InterventionFields.MISSION_TYPE,
+                { validator: this.checkMissionType.bind(this), values: AuxiliaryStatusUtils.getValuesIntervention() }
+            ),
 			PERIOD: Object.assign(
 				{ form: 'select', defaultValue: InterventionRecurencePeriod.HOURS.key, name: InterventionUtils.getFieldName(InterventionFields.PERIOD) },
 				InterventionFields.PERIOD, 
@@ -76,7 +83,11 @@ class ServiceInterventionEditData extends BaseData {
 			this.FIELDS.CUSTOMER_ID
 		]
 
-		this.FIELDS_FORM1 = [
+        this.FIELDS_FORM1 = [
+            this.FIELDS.MISSION_TYPE
+        ]
+
+		this.FIELDS_FORM2 = [
 			this.FIELDS.PERIOD,
 			this.FIELDS.START_DATE,
 			this.FIELDS.END_DATE,
@@ -84,11 +95,11 @@ class ServiceInterventionEditData extends BaseData {
 			this.FIELDS.END_TIME
 		]
 
-		this.FIELDS_FORM2 = [
+		this.FIELDS_FORM3 = [
 			this.FIELDS.DAYS
 		]
 
-		this.FIELDS_FORM3 = [
+		this.FIELDS_FORM4 = [
 			this.FIELDS.DIPLOMAS
 		]
 	}
@@ -286,6 +297,9 @@ class ServiceInterventionEditData extends BaseData {
 	checkCustomerId() {
 		return this.getState('customerId') ? { state: 'success' } : { state: 'error', message: 'Vous devez sélectionner un usager' }
 	}
+    checkMissionType() {
+        return this.getState('missionType') ? { state: 'success' } : { state: 'error', message: 'Vous devez sélectionner un type de mission' }
+    }
 	checkPeriod() {
 		return this.getState('period') ? { state: 'success' } : { state: 'error', message: 'Vous devez sélectionner une période' }
 	}

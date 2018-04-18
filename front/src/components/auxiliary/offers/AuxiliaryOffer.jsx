@@ -57,6 +57,8 @@ class AuxiliaryOffer extends React.Component {
 								Détails de la mission
 							</Panel.Header>
 							<Panel.Body>
+                                <div>{this.state.missionType}</div>
+                                <br/>
 								<div><b>{this.state.customerName}</b></div>
 								<div>{this.state.customerAddress}</div>
 								<br/>

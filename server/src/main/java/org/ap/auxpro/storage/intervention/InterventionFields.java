@@ -13,6 +13,7 @@ public enum InterventionFields implements IFieldEnum {
 	LAST_UPDATE_DATE ("lastUpdateDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	SAD_STATUS_CHANGED ("sadStatusChanged", "List<Integer>", EValidators.DEFAULT.getValidator()),
 	CREATION_DATE ("creationDate", "List<Integer>", EValidators.DEFAULT.getValidator()),
+	MISSION_TYPE ("missionType", "String", EValidators.NON_NULL.getValidator()),
 	CUSTOMER_ID ("customerId", "String", EValidators.DEFAULT.getValidator()),
 	DAYS ("days", "String", EValidators.DEFAULT.getValidator()),
 	DIPLOMAS ("diplomas", "String", EValidators.DEFAULT.getValidator()),
