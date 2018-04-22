@@ -1,0 +1,26 @@
+.ap-account-register {
+	max-width: 700px;
+
+	.ap-form-group {
+		margin-bottom: 0;
+	}
+	input + .ap-error-container {
+		overflow: hidden;
+		.ap-error {
+			transform: translateY(-100%);
+			min-height: 22px;
+			text-align: right;
+			background: #FFEEEE;
+			padding: 2px 5px;
+			font-style: italic;
+			font-size: 80%;
+			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+			transition: transform 0.2s;
+			
+			&.visible {
+				transform: translateY(0);
+			}
+		}
+	}
+}
