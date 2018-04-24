@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import org.ap.auxpro.storage.geozone.GeozoneData;
 import org.ap.common.time.TimeHelper;
+import org.ap.common.validators.EValidatorState;
+import org.ap.common.validators.ValidationState;
 import org.ap.common.exception.APWebException;
 import org.ap.common.exception.APWebError;
 import java.util.ArrayList;
@@ -62,25 +64,32 @@ public class GeozoneBean {
 
 	public void check() throws APWebException {
 		List<APWebError> errors = new ArrayList<APWebError>();
-		if (GeozoneFields.ADDRESS.getValidator().getState(address)) {
+		ValidationState addressState = GeozoneFields.ADDRESS.getValidator().VALIDATOR().check(address);
+		if (!addressState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_GEOZONE_INVALID_FIELDS", "Invalid field 'address'"));
 		}
-		if (GeozoneFields.LATTITUDE.getValidator().getState(lattitude)) {
+		ValidationState lattitudeState = GeozoneFields.LATTITUDE.getValidator().VALIDATOR().check(lattitude);
+		if (!lattitudeState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_GEOZONE_INVALID_FIELDS", "Invalid field 'lattitude'"));
 		}
-		if (GeozoneFields.CITY.getValidator().getState(city)) {
+		ValidationState cityState = GeozoneFields.CITY.getValidator().VALIDATOR().check(city);
+		if (!cityState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_GEOZONE_INVALID_FIELDS", "Invalid field 'city'"));
 		}
-		if (GeozoneFields.POSTAL_CODE.getValidator().getState(postalCode)) {
+		ValidationState postalCodeState = GeozoneFields.POSTAL_CODE.getValidator().VALIDATOR().check(postalCode);
+		if (!postalCodeState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_GEOZONE_INVALID_FIELDS", "Invalid field 'postalCode'"));
 		}
-		if (GeozoneFields.TYPE.getValidator().getState(type)) {
+		ValidationState typeState = GeozoneFields.TYPE.getValidator().VALIDATOR().check(type);
+		if (!typeState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_GEOZONE_INVALID_FIELDS", "Invalid field 'type'"));
 		}
-		if (GeozoneFields.RADIUS.getValidator().getState(radius)) {
+		ValidationState radiusState = GeozoneFields.RADIUS.getValidator().VALIDATOR().check(radius);
+		if (!radiusState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_GEOZONE_INVALID_FIELDS", "Invalid field 'radius'"));
 		}
-		if (GeozoneFields.LONGITUDE.getValidator().getState(longitude)) {
+		ValidationState longitudeState = GeozoneFields.LONGITUDE.getValidator().VALIDATOR().check(longitude);
+		if (!longitudeState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_GEOZONE_INVALID_FIELDS", "Invalid field 'longitude'"));
 		}
 		if (errors.size() > 0) {

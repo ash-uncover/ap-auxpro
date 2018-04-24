@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import org.ap.auxpro.storage.customer.CustomerData;
 import org.ap.common.time.TimeHelper;
+import org.ap.common.validators.EValidatorState;
+import org.ap.common.validators.ValidationState;
 import org.ap.common.exception.APWebException;
 import org.ap.common.exception.APWebError;
 import java.util.ArrayList;
@@ -101,34 +103,44 @@ public class CustomerBean {
 
 	public void check() throws APWebException {
 		List<APWebError> errors = new ArrayList<APWebError>();
-		if (CustomerFields.LAST_NAME.getValidator().getState(lastName)) {
+		ValidationState lastNameState = CustomerFields.LAST_NAME.getValidator().VALIDATOR().check(lastName);
+		if (!lastNameState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'lastName'"));
 		}
-		if (CustomerFields.COUNTRY.getValidator().getState(country)) {
+		ValidationState countryState = CustomerFields.COUNTRY.getValidator().VALIDATOR().check(country);
+		if (!countryState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'country'"));
 		}
-		if (CustomerFields.CIVILITY.getValidator().getState(civility)) {
+		ValidationState civilityState = CustomerFields.CIVILITY.getValidator().VALIDATOR().check(civility);
+		if (!civilityState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'civility'"));
 		}
-		if (CustomerFields.ADDRESS.getValidator().getState(address)) {
+		ValidationState addressState = CustomerFields.ADDRESS.getValidator().VALIDATOR().check(address);
+		if (!addressState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'address'"));
 		}
-		if (CustomerFields.CITY.getValidator().getState(city)) {
+		ValidationState cityState = CustomerFields.CITY.getValidator().VALIDATOR().check(city);
+		if (!cityState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'city'"));
 		}
-		if (CustomerFields.POSTAL_CODE.getValidator().getState(postalCode)) {
+		ValidationState postalCodeState = CustomerFields.POSTAL_CODE.getValidator().VALIDATOR().check(postalCode);
+		if (!postalCodeState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'postalCode'"));
 		}
-		if (CustomerFields.BIRTH_DATE.getValidator().getState(birthDate)) {
+		ValidationState birthDateState = CustomerFields.BIRTH_DATE.getValidator().VALIDATOR().check(birthDate);
+		if (!birthDateState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'birthDate'"));
 		}
-		if (CustomerFields.FIRST_NAME.getValidator().getState(firstName)) {
+		ValidationState firstNameState = CustomerFields.FIRST_NAME.getValidator().VALIDATOR().check(firstName);
+		if (!firstNameState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'firstName'"));
 		}
-		if (CustomerFields.NATIONALITY.getValidator().getState(nationality)) {
+		ValidationState nationalityState = CustomerFields.NATIONALITY.getValidator().VALIDATOR().check(nationality);
+		if (!nationalityState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'nationality'"));
 		}
-		if (CustomerFields.PHONE.getValidator().getState(phone)) {
+		ValidationState phoneState = CustomerFields.PHONE.getValidator().VALIDATOR().check(phone);
+		if (!phoneState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'phone'"));
 		}
 		if (errors.size() > 0) {

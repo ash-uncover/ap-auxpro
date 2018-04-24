@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryData;
 import org.ap.common.time.TimeHelper;
+import org.ap.common.validators.EValidatorState;
+import org.ap.common.validators.ValidationState;
 import org.ap.auxpro.storage.apauth.ApauthData;
 import org.ap.common.exception.APWebException;
 import org.ap.common.exception.APWebError;
@@ -152,52 +154,68 @@ public class AuxiliaryGetBean {
 
 	public void check() throws APWebException {
 		List<APWebError> errors = new ArrayList<APWebError>();
-		if (AuxiliaryFields.COUNTRY.getValidator().getState(country)) {
+		ValidationState countryState = AuxiliaryFields.COUNTRY.getValidator().VALIDATOR().check(country);
+		if (!countryState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'country'"));
 		}
-		if (AuxiliaryFields.LAST_NAME.getValidator().getState(lastName)) {
+		ValidationState lastNameState = AuxiliaryFields.LAST_NAME.getValidator().VALIDATOR().check(lastName);
+		if (!lastNameState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'lastName'"));
 		}
-		if (AuxiliaryFields.CIVILITY.getValidator().getState(civility)) {
+		ValidationState civilityState = AuxiliaryFields.CIVILITY.getValidator().VALIDATOR().check(civility);
+		if (!civilityState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'civility'"));
 		}
-		if (AuxiliaryFields.CITY.getValidator().getState(city)) {
+		ValidationState cityState = AuxiliaryFields.CITY.getValidator().VALIDATOR().check(city);
+		if (!cityState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'city'"));
 		}
-		if (AuxiliaryFields.POSTAL_CODE.getValidator().getState(postalCode)) {
+		ValidationState postalCodeState = AuxiliaryFields.POSTAL_CODE.getValidator().VALIDATOR().check(postalCode);
+		if (!postalCodeState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'postalCode'"));
 		}
-		if (AuxiliaryFields.DESCRIPTION.getValidator().getState(description)) {
+		ValidationState descriptionState = AuxiliaryFields.DESCRIPTION.getValidator().VALIDATOR().check(description);
+		if (!descriptionState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'description'"));
 		}
-		if (AuxiliaryFields.SOCIAL_NUMBER.getValidator().getState(socialNumber)) {
+		ValidationState socialNumberState = AuxiliaryFields.SOCIAL_NUMBER.getValidator().VALIDATOR().check(socialNumber);
+		if (!socialNumberState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'socialNumber'"));
 		}
-		if (AuxiliaryFields.BIRTH_COUNTRY.getValidator().getState(birthCountry)) {
+		ValidationState birthCountryState = AuxiliaryFields.BIRTH_COUNTRY.getValidator().VALIDATOR().check(birthCountry);
+		if (!birthCountryState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'birthCountry'"));
 		}
-		if (AuxiliaryFields.DIPLOMA.getValidator().getState(diploma)) {
+		ValidationState diplomaState = AuxiliaryFields.DIPLOMA.getValidator().VALIDATOR().check(diploma);
+		if (!diplomaState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'diploma'"));
 		}
-		if (AuxiliaryFields.ADDRESS.getValidator().getState(address)) {
+		ValidationState addressState = AuxiliaryFields.ADDRESS.getValidator().VALIDATOR().check(address);
+		if (!addressState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'address'"));
 		}
-		if (AuxiliaryFields.BIRTH_CITY.getValidator().getState(birthCity)) {
+		ValidationState birthCityState = AuxiliaryFields.BIRTH_CITY.getValidator().VALIDATOR().check(birthCity);
+		if (!birthCityState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'birthCity'"));
 		}
-		if (AuxiliaryFields.BIRTH_DATE.getValidator().getState(birthDate)) {
+		ValidationState birthDateState = AuxiliaryFields.BIRTH_DATE.getValidator().VALIDATOR().check(birthDate);
+		if (!birthDateState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'birthDate'"));
 		}
-		if (AuxiliaryFields.FIRST_NAME.getValidator().getState(firstName)) {
+		ValidationState firstNameState = AuxiliaryFields.FIRST_NAME.getValidator().VALIDATOR().check(firstName);
+		if (!firstNameState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'firstName'"));
 		}
-		if (AuxiliaryFields.NATIONALITY.getValidator().getState(nationality)) {
+		ValidationState nationalityState = AuxiliaryFields.NATIONALITY.getValidator().VALIDATOR().check(nationality);
+		if (!nationalityState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'nationality'"));
 		}
-		if (AuxiliaryFields.IS_ENTREPRENEUR.getValidator().getState(isEntrepreneur)) {
+		ValidationState isEntrepreneurState = AuxiliaryFields.IS_ENTREPRENEUR.getValidator().VALIDATOR().check(isEntrepreneur);
+		if (!isEntrepreneurState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'isEntrepreneur'"));
 		}
-		if (AuxiliaryFields.PHONE.getValidator().getState(phone)) {
+		ValidationState phoneState = AuxiliaryFields.PHONE.getValidator().VALIDATOR().check(phone);
+		if (!phoneState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_AUXILIARY_INVALID_FIELDS", "Invalid field 'phone'"));
 		}
 		if (errors.size() > 0) {

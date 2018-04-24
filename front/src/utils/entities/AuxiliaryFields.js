@@ -264,7 +264,7 @@ let _DESCRIPTION = {
 let _SOCIAL_NUMBER = {
 	key: 'socialNumber',
 	type: 'string',
-	validator: Validators.SocialNumberShort,
+	validator: Validators.SocialNumber,
 }
 let _ACCOUNT_EXPIRY_DATE = {
 	key: 'accountExpiryDate',

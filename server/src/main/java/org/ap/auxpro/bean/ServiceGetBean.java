@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import org.ap.auxpro.storage.service.ServiceData;
 import org.ap.common.time.TimeHelper;
+import org.ap.common.validators.EValidatorState;
+import org.ap.common.validators.ValidationState;
 import org.ap.auxpro.storage.apauth.ApauthData;
 import org.ap.common.exception.APWebException;
 import org.ap.common.exception.APWebError;
@@ -92,28 +94,36 @@ public class ServiceGetBean {
 
 	public void check() throws APWebException {
 		List<APWebError> errors = new ArrayList<APWebError>();
-		if (ServiceFields.COUNTRY.getValidator().getState(country)) {
+		ValidationState countryState = ServiceFields.COUNTRY.getValidator().VALIDATOR().check(country);
+		if (!countryState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_SERVICE_INVALID_FIELDS", "Invalid field 'country'"));
 		}
-		if (ServiceFields.ADDRESS.getValidator().getState(address)) {
+		ValidationState addressState = ServiceFields.ADDRESS.getValidator().VALIDATOR().check(address);
+		if (!addressState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_SERVICE_INVALID_FIELDS", "Invalid field 'address'"));
 		}
-		if (ServiceFields.CITY.getValidator().getState(city)) {
+		ValidationState cityState = ServiceFields.CITY.getValidator().VALIDATOR().check(city);
+		if (!cityState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_SERVICE_INVALID_FIELDS", "Invalid field 'city'"));
 		}
-		if (ServiceFields.POSTAL_CODE.getValidator().getState(postalCode)) {
+		ValidationState postalCodeState = ServiceFields.POSTAL_CODE.getValidator().VALIDATOR().check(postalCode);
+		if (!postalCodeState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_SERVICE_INVALID_FIELDS", "Invalid field 'postalCode'"));
 		}
-		if (ServiceFields.SIRET.getValidator().getState(siret)) {
+		ValidationState siretState = ServiceFields.SIRET.getValidator().VALIDATOR().check(siret);
+		if (!siretState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_SERVICE_INVALID_FIELDS", "Invalid field 'siret'"));
 		}
-		if (ServiceFields.PHONE.getValidator().getState(phone)) {
+		ValidationState phoneState = ServiceFields.PHONE.getValidator().VALIDATOR().check(phone);
+		if (!phoneState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_SERVICE_INVALID_FIELDS", "Invalid field 'phone'"));
 		}
-		if (ServiceFields.FUNCTION.getValidator().getState(function)) {
+		ValidationState functionState = ServiceFields.FUNCTION.getValidator().VALIDATOR().check(function);
+		if (!functionState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_SERVICE_INVALID_FIELDS", "Invalid field 'function'"));
 		}
-		if (ServiceFields.SOCIAL_REASON.getValidator().getState(socialReason)) {
+		ValidationState socialReasonState = ServiceFields.SOCIAL_REASON.getValidator().VALIDATOR().check(socialReason);
+		if (!socialReasonState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_SERVICE_INVALID_FIELDS", "Invalid field 'socialReason'"));
 		}
 		if (errors.size() > 0) {

@@ -1,8 +1,8 @@
 package org.ap.auxpro.internal;
 
-import org.ap.common.validators.v2.EValidatorState;
-import org.ap.common.validators.v2.ValidationState;
-import org.ap.common.validators.v2.ValidatorProvider;
+import org.ap.common.validators.EValidatorState;
+import org.ap.common.validators.ValidationState;
+import org.ap.common.validators.ValidatorProvider;
 import org.junit.Test;
 
 import junit.framework.TestCase;
