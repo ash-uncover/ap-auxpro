@@ -5,6 +5,8 @@ import java.util.List;
 import org.ap.auxpro.storage.indisponibility.IndisponibilityData;
 import org.ap.common.time.TimeHelper;
 import org.ap.common.exception.APWebException;
+import org.ap.common.validators.ValidationState;
+import org.ap.common.validators.EValidatorState;
 import org.ap.common.exception.APWebError;
 import java.util.ArrayList;
 import javax.ws.rs.core.Response.Status;
@@ -59,7 +61,8 @@ public class IndisponibilityBean {
 
 	public void check() throws APWebException {
 		List<APWebError> errors = new ArrayList<APWebError>();
-		if (IndisponibilityFields.PERIOD.getValidator().getState(period)) {
+		ValidationState periodState = IndisponibilityFields.PERIOD.getValidator().check(period);
+		if (!periodState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_INDISPONIBILITY_INVALID_FIELDS", "Invalid field 'period'"));
 		}
 		if (errors.size() > 0) {

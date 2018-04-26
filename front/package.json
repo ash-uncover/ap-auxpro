@@ -12,7 +12,7 @@
   "dependencies": {
     "ap-flux": "git+https://github.com/ash-uncover/ap-flux.git",
     "ap-react-bootstrap": "git+https://github.com/ash-uncover/ap-react-bootstrap.git",
-    "ap-validators": "0.0.61",
+    "ap-validators": "^0.0.62",
     "bootstrap": "^3.3.7",
     "jquery": "^3.2.1",
     "moment": "^2.21.1",

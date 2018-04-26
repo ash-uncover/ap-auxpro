@@ -25,6 +25,7 @@ import org.ap.auxpro.storage.promotioncode.PromotioncodeData;
 import org.ap.common.exception.APWebException;
 import org.ap.common.time.TimeHelper;
 import org.ap.common.util.UUIDGenerator;
+import org.ap.common.validators.EValidatorState;
 public class AuxiliaryHelper {
 
 	public static void beforePutAuxiliary(SecurityContext sc, String id, AuxiliaryPutBean auxiliaryBean) throws APWebException {
@@ -53,9 +54,9 @@ public class AuxiliaryHelper {
 		}
 		// Check civil info (total: 50)
 		if (
-			AuxiliaryFields.CIVILITY.getValidator().getState(auxiliaryBean.civility) &&
-			AuxiliaryFields.LAST_NAME.getValidator().getState(auxiliaryBean.lastName) &&
-			AuxiliaryFields.FIRST_NAME.getValidator().getState(auxiliaryBean.firstName)
+			AuxiliaryFields.CIVILITY.getValidator().check(auxiliaryBean.civility).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.LAST_NAME.getValidator().check(auxiliaryBean.lastName).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.FIRST_NAME.getValidator().check(auxiliaryBean.firstName).getState().equals(EValidatorState.SUCCESS)
 		) {
 			profilProgress += 10;
 		} else {
@@ -63,10 +64,10 @@ public class AuxiliaryHelper {
 		}
 		// Check birth info (total: 60)
 		if (
-			AuxiliaryFields.NATIONALITY.getValidator().getState(auxiliaryBean.nationality) &&
-			AuxiliaryFields.BIRTH_DATE.getValidator().getState(TimeHelper.toLocalDate(auxiliaryBean.birthDate)) &&
-			AuxiliaryFields.BIRTH_CITY.getValidator().getState(auxiliaryBean.birthCity) &&
-			AuxiliaryFields.BIRTH_COUNTRY.getValidator().getState(auxiliaryBean.birthCountry)
+			AuxiliaryFields.NATIONALITY.getValidator().check(auxiliaryBean.nationality).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.BIRTH_DATE.getValidator().check(TimeHelper.toLocalDate(auxiliaryBean.birthDate)).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.BIRTH_CITY.getValidator().check(auxiliaryBean.birthCity).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.BIRTH_COUNTRY.getValidator().check(auxiliaryBean.birthCountry).getState().equals(EValidatorState.SUCCESS)
 		) {
 			profilProgress += 10;
 		} else {
@@ -74,10 +75,10 @@ public class AuxiliaryHelper {
 		}
 		// Check address info (total: 70)
 		if (
-			AuxiliaryFields.ADDRESS.getValidator().getState(auxiliaryBean.address) &&
-			AuxiliaryFields.POSTAL_CODE.getValidator().getState(auxiliaryBean.postalCode) &&
-			AuxiliaryFields.CITY.getValidator().getState(auxiliaryBean.city) &&
-			AuxiliaryFields.COUNTRY.getValidator().getState(auxiliaryBean.country)
+			AuxiliaryFields.ADDRESS.getValidator().check(auxiliaryBean.address).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.POSTAL_CODE.getValidator().check(auxiliaryBean.postalCode).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.CITY.getValidator().check(auxiliaryBean.city).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.COUNTRY.getValidator().check(auxiliaryBean.country).getState().equals(EValidatorState.SUCCESS)
 		) {
 			profilProgress += 10;
 		} else {
@@ -85,7 +86,7 @@ public class AuxiliaryHelper {
 		}
 		// Check contact info (total: 80)
 		if (
-			AuxiliaryFields.PHONE.getValidator().getState(auxiliaryBean.phone)
+			AuxiliaryFields.PHONE.getValidator().check(auxiliaryBean.phone).getState().equals(EValidatorState.SUCCESS)
 		) {
 			profilProgress += 10;
 		} else {
@@ -93,15 +94,15 @@ public class AuxiliaryHelper {
 		}
 		// Check profesionnal info (total: 90)
 		if (
-			AuxiliaryFields.DESCRIPTION.getValidator().getState(auxiliaryBean.description) &&
-			AuxiliaryFields.IS_ENTREPRENEUR.getValidator().getState(auxiliaryBean.isEntrepreneur) &&
-			AuxiliaryFields.DIPLOMA.getValidator().getState(auxiliaryBean.diploma.toArray())
+			AuxiliaryFields.DESCRIPTION.getValidator().check(auxiliaryBean.description).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.IS_ENTREPRENEUR.getValidator().check(auxiliaryBean.isEntrepreneur).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.DIPLOMA.getValidator().check(auxiliaryBean.diploma.toArray()).getState().equals(EValidatorState.SUCCESS)
 		) {
 			profilProgress += 10;
 		}
 		// Check secret info (total: 100)
 		if (
-			AuxiliaryFields.SOCIAL_NUMBER.getValidator().getState(auxiliaryBean.socialNumber)
+			AuxiliaryFields.SOCIAL_NUMBER.getValidator().check(auxiliaryBean.socialNumber).getState().equals(EValidatorState.SUCCESS)
 		) {
 			profilProgress += 10;
 		}
