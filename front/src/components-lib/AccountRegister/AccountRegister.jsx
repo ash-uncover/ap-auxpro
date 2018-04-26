@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { validators } from 'ap-validators'
+import validators from 'utils/validators'
 import { Panel, Form, Grid, Button } from 'ap-react-bootstrap'
 
 import Link from 'components-lib/Link/Link'
@@ -54,7 +54,7 @@ class AccountRegister extends React.Component {
 	}
 
 	_onEmailChange(event, value) {
-		const state = validators.email.isRequired.check(value)
+		const state = validators.EMAIL.VALIDATOR.isRequired.check(value)
 		this.setState({
 			email: value,
 			emailError: this._buildEmailError(state),
@@ -69,7 +69,7 @@ class AccountRegister extends React.Component {
 	}
 
 	_onPasswordChange(event, value) {
-		const state = validators.password.isRequired.check(value)
+		const state = validators.PASSWORD.VALIDATOR.isRequired.check(value)
 		this.setState({
 			password: value,
 			passwordError: this._buildPasswordError(state),

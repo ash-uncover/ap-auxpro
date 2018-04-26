@@ -31,6 +31,17 @@ public class Validators {
 				.matches("[0-9_]", ERRORS.MUST_CONTAIN_SPECIAL);
 	}
 
+	public static class EMAIL {
+		public static class ERRORS {
+			public static final String MUST_BE_A_STRING = "MUST_BE_A_STRING";
+			public static final String CANNOT_BE_NULL = "CANNOT_BE_NULL";
+			public static final String INVALID_EMAIL = "INVALID_EMAIL";
+		}
+		public static final IValidator VALIDATOR = ValidatorTypes.STRING()
+				.isRequired()
+				.matches("^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$", ERRORS.INVALID_EMAIL);
+	}
+
 	public static class NON_NULL {
 		public static class ERRORS {
 			public static final String CANNOT_BE_NULL = "CANNOT_BE_NULL";
