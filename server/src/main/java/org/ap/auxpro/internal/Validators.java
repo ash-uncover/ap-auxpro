@@ -177,7 +177,7 @@ public class Validators {
 		public static final IValidator VALIDATOR = ValidatorTypes.DATE()
 				.isRequired()
 				.isBeforeNow()
-				.isMaxInclusive(true);
+				.isBeforeInclusive(true);
 	}
 
 	public static class AFTER_TODAY {
@@ -200,7 +200,7 @@ public class Validators {
 		public static final IValidator VALIDATOR = ValidatorTypes.DATE()
 				.isRequired()
 				.isAfterNow()
-				.isMinInclusive(true);
+				.isAfterInclusive(true);
 	}
 
 }
