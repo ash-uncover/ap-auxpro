@@ -23,28 +23,28 @@ public class ServiceHelper {
 		ServiceData data = ServiceCollection.getById(id);
 		// Check profil completion
 		boolean profilCompleted = true;
-		if (!ServiceFields.ADDRESS.getValidator().VALIDATOR().check(serviceBean.address).getState().equals(EValidatorState.SUCCESS)) {
+		if (!ServiceFields.ADDRESS.getValidator().check(serviceBean.address).getState().equals(EValidatorState.SUCCESS)) {
 			profilCompleted = false;
 		}
-		if (!ServiceFields.POSTAL_CODE.getValidator().VALIDATOR().check(serviceBean.postalCode).getState().equals(EValidatorState.SUCCESS)) {
+		if (!ServiceFields.POSTAL_CODE.getValidator().check(serviceBean.postalCode).getState().equals(EValidatorState.SUCCESS)) {
 			profilCompleted = false;
 		}
-		if (!ServiceFields.CITY.getValidator().VALIDATOR().check(serviceBean.city).getState().equals(EValidatorState.SUCCESS)) {
+		if (!ServiceFields.CITY.getValidator().check(serviceBean.city).getState().equals(EValidatorState.SUCCESS)) {
 			profilCompleted = false;
 		}
-		if (!ServiceFields.COUNTRY.getValidator().VALIDATOR().check(serviceBean.country).getState().equals(EValidatorState.SUCCESS)) {
+		if (!ServiceFields.COUNTRY.getValidator().check(serviceBean.country).getState().equals(EValidatorState.SUCCESS)) {
 			profilCompleted = false;
 		}
-		if (!ServiceFields.PHONE.getValidator().VALIDATOR().check(serviceBean.phone).getState().equals(EValidatorState.SUCCESS)) {
+		if (!ServiceFields.PHONE.getValidator().check(serviceBean.phone).getState().equals(EValidatorState.SUCCESS)) {
 			profilCompleted = false;
 		}
-		if (!ServiceFields.SOCIAL_REASON.getValidator().VALIDATOR().check(serviceBean.socialReason).getState().equals(EValidatorState.SUCCESS)) {
+		if (!ServiceFields.SOCIAL_REASON.getValidator().check(serviceBean.socialReason).getState().equals(EValidatorState.SUCCESS)) {
 			profilCompleted = false;
 		}
-		if (!ServiceFields.SIRET.getValidator().VALIDATOR().check(serviceBean.siret).getState().equals(EValidatorState.SUCCESS)) {
+		if (!ServiceFields.SIRET.getValidator().check(serviceBean.siret).getState().equals(EValidatorState.SUCCESS)) {
 			profilCompleted = false;
 		}
-		if (!ServiceFields.FUNCTION.getValidator().VALIDATOR().check(serviceBean.function).getState().equals(EValidatorState.SUCCESS)) {
+		if (!ServiceFields.FUNCTION.getValidator().check(serviceBean.function).getState().equals(EValidatorState.SUCCESS)) {
 			profilCompleted = false;
 		}
 		

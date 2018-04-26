@@ -1,8 +1,8 @@
 package org.ap.auxpro.internal;
 
 import org.ap.common.validators.EValidatorState;
+import org.ap.common.validators.IValidator;
 import org.ap.common.validators.ValidationState;
-import org.ap.common.validators.ValidatorProvider;
 import org.junit.Test;
 
 import junit.framework.TestCase;
@@ -11,54 +11,54 @@ public class ValidatorsPasswordTest {
 
 	/* TEST DATA */
 	
-	private ValidatorProvider provider = new Validators.PASSWORD();
+	private IValidator validator = Validators.PASSWORD.VALIDATOR;
 	
 	/* TEST CASES */
 	
 	@Test
 	public void testV_nullValue() {
-		ValidationState state = provider.VALIDATOR().check(null);
+		ValidationState state = validator.check(null);
 		TestCase.assertEquals(EValidatorState.ERROR, state.getState());
 		TestCase.assertEquals(Validators.PASSWORD.ERRORS.CANNOT_BE_NULL, state.getMessage());
 	}
 	@Test
 	public void testV_tooShort() {
-		ValidationState state = provider.VALIDATOR().check("passwor");
+		ValidationState state = validator.check("passwor");
 		TestCase.assertEquals(EValidatorState.ERROR, state.getState());
 		TestCase.assertEquals(Validators.PASSWORD.ERRORS.MIN_LENGTH_EXCEEDED, state.getMessage());
 	}
 	@Test
 	public void testV_forbiddenChars() {
-		ValidationState state = provider.VALIDATOR().check("Pàssword1");
+		ValidationState state = validator.check("Pàssword1");
 		TestCase.assertEquals(EValidatorState.ERROR, state.getState());
 		TestCase.assertEquals(Validators.PASSWORD.ERRORS.CONTAIN_FORBIDDEN_CHARS, state.getMessage());
 	}
 	@Test
 	public void testV_noUpperCase() {
-		ValidationState state = provider.VALIDATOR().check("password1");
+		ValidationState state = validator.check("password1");
 		TestCase.assertEquals(EValidatorState.ERROR, state.getState());
 		TestCase.assertEquals(Validators.PASSWORD.ERRORS.MUST_CONTAIN_UPPERCASE, state.getMessage());
 	}
 	@Test
 	public void testV_noLowerCase() {
-		ValidationState state = provider.VALIDATOR().check("PASSWORD1");
+		ValidationState state = validator.check("PASSWORD1");
 		TestCase.assertEquals(EValidatorState.ERROR, state.getState());
 		TestCase.assertEquals(Validators.PASSWORD.ERRORS.MUST_CONTAIN_LOWERCASE, state.getMessage());
 	}
 	@Test
 	public void testV_noSpecialChars() {
-		ValidationState state = provider.VALIDATOR().check("Password");
+		ValidationState state = validator.check("Password");
 		TestCase.assertEquals(EValidatorState.ERROR, state.getState());
 		TestCase.assertEquals(Validators.PASSWORD.ERRORS.MUST_CONTAIN_SPECIAL, state.getMessage());
 	}
 	@Test
 	public void testV_validValue() {
-		ValidationState state = provider.VALIDATOR().check("Password1");
+		ValidationState state = validator.check("Password1");
 		TestCase.assertEquals(EValidatorState.SUCCESS, state.getState());
 	}
 	@Test
 	public void testV_validValueUnderscore() {
-		ValidationState state = provider.VALIDATOR().check("Password_");
+		ValidationState state = validator.check("Password_");
 		TestCase.assertEquals(EValidatorState.SUCCESS, state.getState());
 	}
 }

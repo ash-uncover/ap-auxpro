@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import org.ap.auxpro.storage.intervention.InterventionData;
 import org.ap.common.time.TimeHelper;
-import org.ap.common.validators.EValidatorState;
-import org.ap.common.validators.ValidationState;
 import org.ap.common.exception.APWebException;
+import org.ap.common.validators.ValidationState;
+import org.ap.common.validators.EValidatorState;
 import org.ap.common.exception.APWebError;
 import java.util.ArrayList;
 import javax.ws.rs.core.Response.Status;
@@ -70,7 +70,7 @@ public class InterventionPostBean {
 
 	public void check() throws APWebException {
 		List<APWebError> errors = new ArrayList<APWebError>();
-		ValidationState missionTypeState = InterventionFields.MISSION_TYPE.getValidator().VALIDATOR().check(missionType);
+		ValidationState missionTypeState = InterventionFields.MISSION_TYPE.getValidator().check(missionType);
 		if (!missionTypeState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'missionType'"));
 		}

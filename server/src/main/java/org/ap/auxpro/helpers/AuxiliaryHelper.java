@@ -54,9 +54,9 @@ public class AuxiliaryHelper {
 		}
 		// Check civil info (total: 50)
 		if (
-			AuxiliaryFields.CIVILITY.getValidator().VALIDATOR().check(auxiliaryBean.civility).getState().equals(EValidatorState.SUCCESS) &&
-			AuxiliaryFields.LAST_NAME.getValidator().VALIDATOR().check(auxiliaryBean.lastName).getState().equals(EValidatorState.SUCCESS) &&
-			AuxiliaryFields.FIRST_NAME.getValidator().VALIDATOR().check(auxiliaryBean.firstName).getState().equals(EValidatorState.SUCCESS)
+			AuxiliaryFields.CIVILITY.getValidator().check(auxiliaryBean.civility).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.LAST_NAME.getValidator().check(auxiliaryBean.lastName).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.FIRST_NAME.getValidator().check(auxiliaryBean.firstName).getState().equals(EValidatorState.SUCCESS)
 		) {
 			profilProgress += 10;
 		} else {
@@ -64,10 +64,10 @@ public class AuxiliaryHelper {
 		}
 		// Check birth info (total: 60)
 		if (
-			AuxiliaryFields.NATIONALITY.getValidator().VALIDATOR().check(auxiliaryBean.nationality).getState().equals(EValidatorState.SUCCESS) &&
-			AuxiliaryFields.BIRTH_DATE.getValidator().VALIDATOR().check(TimeHelper.toLocalDate(auxiliaryBean.birthDate)).getState().equals(EValidatorState.SUCCESS) &&
-			AuxiliaryFields.BIRTH_CITY.getValidator().VALIDATOR().check(auxiliaryBean.birthCity).getState().equals(EValidatorState.SUCCESS) &&
-			AuxiliaryFields.BIRTH_COUNTRY.getValidator().VALIDATOR().check(auxiliaryBean.birthCountry).getState().equals(EValidatorState.SUCCESS)
+			AuxiliaryFields.NATIONALITY.getValidator().check(auxiliaryBean.nationality).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.BIRTH_DATE.getValidator().check(TimeHelper.toLocalDate(auxiliaryBean.birthDate)).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.BIRTH_CITY.getValidator().check(auxiliaryBean.birthCity).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.BIRTH_COUNTRY.getValidator().check(auxiliaryBean.birthCountry).getState().equals(EValidatorState.SUCCESS)
 		) {
 			profilProgress += 10;
 		} else {
@@ -75,10 +75,10 @@ public class AuxiliaryHelper {
 		}
 		// Check address info (total: 70)
 		if (
-			AuxiliaryFields.ADDRESS.getValidator().VALIDATOR().check(auxiliaryBean.address).getState().equals(EValidatorState.SUCCESS) &&
-			AuxiliaryFields.POSTAL_CODE.getValidator().VALIDATOR().check(auxiliaryBean.postalCode).getState().equals(EValidatorState.SUCCESS) &&
-			AuxiliaryFields.CITY.getValidator().VALIDATOR().check(auxiliaryBean.city).getState().equals(EValidatorState.SUCCESS) &&
-			AuxiliaryFields.COUNTRY.getValidator().VALIDATOR().check(auxiliaryBean.country).getState().equals(EValidatorState.SUCCESS)
+			AuxiliaryFields.ADDRESS.getValidator().check(auxiliaryBean.address).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.POSTAL_CODE.getValidator().check(auxiliaryBean.postalCode).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.CITY.getValidator().check(auxiliaryBean.city).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.COUNTRY.getValidator().check(auxiliaryBean.country).getState().equals(EValidatorState.SUCCESS)
 		) {
 			profilProgress += 10;
 		} else {
@@ -86,7 +86,7 @@ public class AuxiliaryHelper {
 		}
 		// Check contact info (total: 80)
 		if (
-			AuxiliaryFields.PHONE.getValidator().VALIDATOR().check(auxiliaryBean.phone).getState().equals(EValidatorState.SUCCESS)
+			AuxiliaryFields.PHONE.getValidator().check(auxiliaryBean.phone).getState().equals(EValidatorState.SUCCESS)
 		) {
 			profilProgress += 10;
 		} else {
@@ -94,15 +94,15 @@ public class AuxiliaryHelper {
 		}
 		// Check profesionnal info (total: 90)
 		if (
-			AuxiliaryFields.DESCRIPTION.getValidator().VALIDATOR().check(auxiliaryBean.description).getState().equals(EValidatorState.SUCCESS) &&
-			AuxiliaryFields.IS_ENTREPRENEUR.getValidator().VALIDATOR().check(auxiliaryBean.isEntrepreneur).getState().equals(EValidatorState.SUCCESS) &&
-			AuxiliaryFields.DIPLOMA.getValidator().VALIDATOR().check(auxiliaryBean.diploma.toArray()).getState().equals(EValidatorState.SUCCESS)
+			AuxiliaryFields.DESCRIPTION.getValidator().check(auxiliaryBean.description).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.IS_ENTREPRENEUR.getValidator().check(auxiliaryBean.isEntrepreneur).getState().equals(EValidatorState.SUCCESS) &&
+			AuxiliaryFields.DIPLOMA.getValidator().check(auxiliaryBean.diploma.toArray()).getState().equals(EValidatorState.SUCCESS)
 		) {
 			profilProgress += 10;
 		}
 		// Check secret info (total: 100)
 		if (
-			AuxiliaryFields.SOCIAL_NUMBER.getValidator().VALIDATOR().check(auxiliaryBean.socialNumber).getState().equals(EValidatorState.SUCCESS)
+			AuxiliaryFields.SOCIAL_NUMBER.getValidator().check(auxiliaryBean.socialNumber).getState().equals(EValidatorState.SUCCESS)
 		) {
 			profilProgress += 10;
 		}
