@@ -36,7 +36,7 @@ class AppLand extends React.Component {
 						<Grid.Row className='row-title'>
 							<Grid.Col xs={12} className='column-title'>
 								<h1>
-									{I18NHelper.get('APP_LAND_SECTION1_TITLE')}
+									La plateforme des professionnels du SAP
 								</h1>
 							</Grid.Col>
 						</Grid.Row>
