@@ -190,6 +190,7 @@ class AuxiliaryInfosEditInfosData extends BaseData {
             let newValue = value
             switch (field) {
             case this.FIELDS.ADDRESS_SEARCH:
+                newValue = ''
                 this.obj.state.address = value.address || ''
                 this.obj.state.city = value.city || ''
                 this.obj.state.postalCode = value.postalCode || ''
@@ -307,12 +308,12 @@ class AuxiliaryInfosEditInfosData extends BaseData {
         this.obj.state[field.key + 'Message'] = state.message
         
         if (state.state === STATES.ERROR) {
-        	const messageId = `AUXILIARY_FIELD_ERROR_${id}_${state.message}`
-        	const message =  I18NHelper.get(messageId)
-	        if (message && this.obj.state.warningMsg.indexOf(message) === -1) {
-	            this.obj.state.warningMsg.push(message)
-	            this.obj.state.warningShow = true
-	        }
+            const messageId = `AUXILIARY_FIELD_ERROR_${id}_${state.message}`
+            const message =  I18NHelper.get(messageId)
+            if (message && this.obj.state.warningMsg.indexOf(message) === -1) {
+                this.obj.state.warningMsg.push(message)
+                this.obj.state.warningShow = true
+            }
         }
     }
 

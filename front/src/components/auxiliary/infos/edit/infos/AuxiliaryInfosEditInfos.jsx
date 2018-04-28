@@ -6,8 +6,6 @@ import './AuxiliaryInfosEditInfos.scss'
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 
 // components-lib
-import FormHelper from 'components-lib/FormHelper'
-import FormGroup from 'components-lib/FormGroup/FormGroup'
 import FormGroupBuilder from 'components-lib/FormGroup/FormGroupBuilder'
 import ImageUploader from 'components-lib/Image/ImageUploader'
 
@@ -18,11 +16,7 @@ class AuxiliaryInfosEditInfos extends React.Component {
 
         this.state = {}
         
-        this.buildFormGroup = this._buildFormGroup.bind(this)
-        this.buildFormControl = FormHelper.buildFormControl.bind(this)
-        
-        this.buildFormGroup2 = this._buildFormGroup2.bind(this)
-        this.buildFormControl2 = FormGroupBuilder.buildFormControl.bind(this)
+        this.buildFormGroup = FormGroupBuilder.buildFormGroup.bind(this)
 
     }
 
@@ -37,33 +31,6 @@ class AuxiliaryInfosEditInfos extends React.Component {
 
     // Rendering functions //
     // --------------------------------------------------------------------------------
-
-    _buildFormGroup(field) { 
-        if ((field.hidden === true) || (field.hidden && field.hidden())) return
-        return (
-            <Form.Group key={field.key} state={this.state[field.key + 'State']}>
-                <Form.Label className='col-sm-5 col-md-4'>
-                    {field.name}
-                </Form.Label>
-                <Grid.Col sm={7} md={8}>
-                    {this.buildFormControl(field)}
-                </Grid.Col>
-            </Form.Group>
-        )
-    }
-
-    _buildFormGroup2(id, field) { 
-        if ((field.hidden === true) || (field.hidden && field.hidden())) return
-
-        return (
-            <FormGroup 
-                key={field.key} 
-                label={field.name}
-                state={this.state[field.key + 'State']}>
-                {this.buildFormControl2(id, field)}
-            </FormGroup>
-        )
-    }
 
     render() {
         let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
@@ -91,19 +58,19 @@ class AuxiliaryInfosEditInfos extends React.Component {
                             <br/>
                             <Grid.Col sm={6} lg={5} lgOffset={1}>
                                 {Object.keys(AuxiliaryInfosEditInfosData.FIELDS_FORM1).map((key) => (
-                                    this.buildFormGroup2(key, AuxiliaryInfosEditInfosData.FIELDS_FORM1[key])
+                                    this.buildFormGroup(key, AuxiliaryInfosEditInfosData.FIELDS_FORM1[key])
                                 ))}
                             </Grid.Col>
                             <Grid.Col sm={6} lg={5}>
                             	{Object.keys(AuxiliaryInfosEditInfosData.FIELDS_FORM2).map((key) => (
-                                    this.buildFormGroup2(key, AuxiliaryInfosEditInfosData.FIELDS_FORM2[key])
+                                    this.buildFormGroup(key, AuxiliaryInfosEditInfosData.FIELDS_FORM2[key])
                                 ))}
                             </Grid.Col>
                             <h4 className='col-xs-12'>Mes informations professionnelles</h4>
                             <br/>
                             <Grid.Col xs={12} sm={10} smOffset={1} md={8} mdOffset={2}>
                                 {Object.keys(AuxiliaryInfosEditInfosData.FIELDS_FORM3).map((key) => (
-                                    this.buildFormGroup2(key, AuxiliaryInfosEditInfosData.FIELDS_FORM3[key])
+                                    this.buildFormGroup(key, AuxiliaryInfosEditInfosData.FIELDS_FORM3[key])
                                 ))}
                             </Grid.Col>
                         </Form>

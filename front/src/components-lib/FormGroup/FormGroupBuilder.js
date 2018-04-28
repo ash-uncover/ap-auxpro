@@ -1,11 +1,24 @@
 /* ! CAUTION ! Use this class only when you know what you are doing  */
 import React from 'react'
 
-import { Button, Panel, Form, Grid, Google } from 'ap-react-bootstrap'
+import { Form, Grid, Google } from 'ap-react-bootstrap'
 import FormGroup from 'components-lib/FormGroup/FormGroup'
 import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeekDays'
 
 class FormGroupBuilder {
+
+    static buildFormGroup(id, field) { 
+        if ((field.hidden === true) || (field.hidden && field.hidden())) return
+
+        return (
+            <FormGroup 
+                key={field.key} 
+                label={field.name}
+                state={this.state[field.key + 'State']}>
+                {FormGroupBuilder.buildFormControl.call(this, id, field)}
+            </FormGroup>
+        )
+    }
 
     static onValueChanged(id, event, value) {
         const hasValue = !(typeof value === 'undefined') && value !== null
