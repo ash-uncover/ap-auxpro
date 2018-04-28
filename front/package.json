@@ -1,14 +1,14 @@
 {
-  "name": "temp",
+  "name": "ap-auxpro",
   "version": "1.0.0",
-  "description": "auxprogen",
+  "description": "ap-auxpro frontend",
   "main": "main.js",
+  "author": "",
+  "license": "",
   "scripts": {
     "watch": "webpack-dev-server --progress --colors --history-api-fallback",
     "prod": "webpack -p"
   },
-  "author": "",
-  "license": "",
   "dependencies": {
     "ap-flux": "git+https://github.com/ash-uncover/ap-flux.git",
     "ap-react-bootstrap": "git+https://github.com/ash-uncover/ap-react-bootstrap.git",
