@@ -256,7 +256,7 @@ let _POSTAL_CODE = {
 let _IS_TUTO_SKIPPED = {
 	key: 'isTutoSkipped',
 	type: 'boolean',
-	validator: validators.DEFAULT,
+	validator: validators.BOOLEAN,
 }
 let _DESCRIPTION = {
 	key: 'description',
@@ -286,12 +286,12 @@ let _SKILL_SHOPPING = {
 let _NOTIFY_OFFERS_SMS = {
 	key: 'notifyOffersSms',
 	type: 'boolean',
-	validator: validators.DEFAULT,
+	validator: validators.BOOLEAN,
 }
 let _NOTIFY_AUXPROS = {
 	key: 'notifyAuxpros',
 	type: 'boolean',
-	validator: validators.DEFAULT,
+	validator: validators.BOOLEAN,
 }
 let _BIRTH_COUNTRY = {
 	key: 'birthCountry',
@@ -348,7 +348,7 @@ let _ACCOUNT_TYPE = {
 let _NOTIFY_PARTNERS = {
 	key: 'notifyPartners',
 	type: 'boolean',
-	validator: validators.DEFAULT,
+	validator: validators.BOOLEAN,
 }
 let _BIRTH_CITY = {
 	key: 'birthCity',
@@ -424,6 +424,6 @@ let _SKILL_HOUSEWORK = {
 let _NOTIFY_OFFERS_MAIL = {
 	key: 'notifyOffersMail',
 	type: 'boolean',
-	validator: validators.DEFAULT,
+	validator: validators.BOOLEAN,
 }
 export default AuxiliaryFields
