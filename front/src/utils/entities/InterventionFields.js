@@ -1,4 +1,4 @@
-import { Validators } from 'ap-react-bootstrap'
+import validators from 'utils/validators'
 import InterventionRecurencePeriod from 'utils/constants/InterventionRecurencePeriod'
 import AuxiliaryStatus from 'utils/constants/AuxiliaryStatus'
 import Diploma from 'utils/constants/Diploma'
@@ -111,73 +111,89 @@ let _PERIOD = {
 	key: 'period',
 	type: 'string',
 	values: InterventionRecurencePeriod.VALUES,
+	validator: validators.DEFAULT,
 }
 let _AUXILIARY_ID = {
 	key: 'auxiliaryId',
 	type: 'string',
+	validator: validators.DEFAULT,
 }
 let _END_DATE = {
 	key: 'endDate',
 	type: 'Date',
+	validator: validators.DEFAULT,
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
 	type: 'Date',
+	validator: validators.DEFAULT,
 }
 let _SAD_STATUS_CHANGED = {
 	key: 'sadStatusChanged',
 	type: 'Date',
+	validator: validators.DEFAULT,
 }
 let _CREATION_DATE = {
 	key: 'creationDate',
 	type: 'Date',
+	validator: validators.DEFAULT,
 }
 let _MISSION_TYPE = {
 	key: 'missionType',
 	type: 'string',
 	values: AuxiliaryStatus.VALUES,
-	validator: Validators.NonNull,
+	validator: validators.NON_NULL,
 }
 let _CUSTOMER_ID = {
 	key: 'customerId',
 	type: 'string',
+	validator: validators.DEFAULT,
 }
 let _DAYS = {
 	key: 'days',
 	type: 'string',
+	validator: validators.DEFAULT,
 }
 let _DIPLOMAS = {
 	key: 'diplomas',
 	type: 'string',
 	values: Diploma.VALUES,
+	validator: validators.DEFAULT,
 }
 let _SAD_STATUS = {
 	key: 'sadStatus',
 	type: 'string',
 	values: InterventionStatus.VALUES,
+	validator: validators.DEFAULT,
 }
 let _START_TIME = {
 	key: 'startTime',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _ID = {
 	key: 'id',
 	type: 'string',
+	validator: validators.DEFAULT,
 }
 let _END_TIME = {
 	key: 'endTime',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _SERVICE_ID = {
 	key: 'serviceId',
 	type: 'string',
+	validator: validators.DEFAULT,
 }
 let _HIDE_TO_SAD = {
 	key: 'hideToSad',
 	type: 'boolean',
+	validator: validators.DEFAULT,
 }
 let _START_DATE = {
 	key: 'startDate',
 	type: 'Date',
+	validator: validators.DEFAULT,
 }
 export default InterventionFields

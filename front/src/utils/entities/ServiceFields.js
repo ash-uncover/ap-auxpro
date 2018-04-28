@@ -1,4 +1,4 @@
-import { Validators } from 'ap-react-bootstrap'
+import validators from 'utils/validators'
 import AccountType from 'utils/constants/AccountType'
 import SocFunction from 'utils/constants/SocFunction'
 
@@ -123,91 +123,103 @@ class ServiceFields {
 let _COUNTRY = {
 	key: 'country',
 	type: 'string',
-	validator: Validators.NonEmptyString,
+	validator: validators.NON_EMPTY_STRING,
 }
 let _ADDRESS = {
 	key: 'address',
 	type: 'string',
-	validator: Validators.NonEmptyString,
+	validator: validators.NON_EMPTY_STRING,
 }
 let _CITY = {
 	key: 'city',
 	type: 'string',
-	validator: Validators.NonEmptyString,
+	validator: validators.NON_EMPTY_STRING,
 }
 let _LATTITUDE = {
 	key: 'lattitude',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
 	type: 'Date',
+	validator: validators.DEFAULT,
 }
 let _POSTAL_CODE = {
 	key: 'postalCode',
 	type: 'string',
-	validator: Validators.PostalCode,
+	validator: validators.POSTAL_CODE,
 }
 let _ACCOUNT_TYPE = {
 	key: 'accountType',
 	type: 'string',
 	values: AccountType.VALUES,
+	validator: validators.DEFAULT,
 }
 let _IS_TUTO_SKIPPED = {
 	key: 'isTutoSkipped',
 	type: 'boolean',
+	validator: validators.DEFAULT,
 }
 let _NOTIFY_PARTNERS = {
 	key: 'notifyPartners',
 	type: 'boolean',
+	validator: validators.DEFAULT,
 }
 let _AVATAR = {
 	key: 'avatar',
 	type: 'string',
+	validator: validators.DEFAULT,
 }
 let _ACCOUNT_EXPIRY_DATE = {
 	key: 'accountExpiryDate',
 	type: 'Date',
+	validator: validators.DEFAULT,
 }
 let _CREATION_DATE = {
 	key: 'creationDate',
 	type: 'Date',
+	validator: validators.DEFAULT,
 }
 let _SIRET = {
 	key: 'siret',
 	type: 'string',
-	validator: Validators.SiretNumber,
+	validator: validators.SIRET_NUMBER,
 }
 let _NOTIFY_AUXPROS = {
 	key: 'notifyAuxpros',
 	type: 'boolean',
+	validator: validators.DEFAULT,
 }
 let _PHONE = {
 	key: 'phone',
 	type: 'string',
-	validator: Validators.Phone,
+	validator: validators.PHONE,
 }
 let _FUNCTION = {
 	key: 'function',
 	type: 'string',
 	values: SocFunction.VALUES,
-	validator: Validators.NonNull,
+	validator: validators.NON_NULL,
 }
 let _PROFIL_COMPLETED = {
 	key: 'profilCompleted',
 	type: 'boolean',
+	validator: validators.DEFAULT,
 }
 let _ID = {
 	key: 'id',
 	type: 'string',
+	validator: validators.DEFAULT,
 }
 let _SOCIAL_REASON = {
 	key: 'socialReason',
 	type: 'string',
-	validator: Validators.NonEmptyString,
+	validator: validators.NON_EMPTY_STRING,
 }
 let _LONGITUDE = {
 	key: 'longitude',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 export default ServiceFields

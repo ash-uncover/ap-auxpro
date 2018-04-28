@@ -1,5 +1,6 @@
 import moment from 'moment'
-import { BaseData, Nationality, Validators, MomentHelper } from 'ap-react-bootstrap'
+import validators from 'ap-validators'
+import { BaseData, Nationality, MomentHelper } from 'ap-react-bootstrap'
 // helpers
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
@@ -205,7 +206,7 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 			this.obj.state[id] = DiplomaUtils.resolveDiplomas(this.getState(AuxiliaryFields.DIPLOMA.key), value)
 		} else if (id === AuxiliaryFields.AVATAR.key) {
 			this.obj.state.avatarFile = event
-        } else if (id === AuxiliaryFields.PHONE.key && Validators.Phone.getBlockedValue(value) !== value) {
+        } else if (id === AuxiliaryFields.PHONE.key && validators.PHONE.VALIDATOR.check(value).error === validators.PHONE.ERRORS.MAX_LENGTH_EXCEEDED) {
             this.forceUpdate()
             return
         } else if (id === AuxiliaryFields.SOCIAL_NUMBER.key && Validators.SocialNumberShort.getBlockedValue(value) !== value) {
@@ -296,7 +297,7 @@ class AuxiliaryInfosEditInfosData extends BaseData {
 		for (let f in this.FIELDS) {
 			let field = this.FIELDS[f]
 			let value = this.getState(field.key)
-			let state = (field.validator && field.validator(value)) || {}
+			let state = (field.validator && field.validator.VALIDATOR && field.validator.VALIDATOR.check(value)) || {}
 			this.obj.state[field.key + 'State'] = state.state
 			this.obj.state[field.key + 'Warning'] = state.message
 			if (state.message) {
