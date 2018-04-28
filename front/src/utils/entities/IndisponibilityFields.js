@@ -83,7 +83,7 @@ let _AUXILIARY_ID = {
 let _END_DATE = {
 	key: 'endDate',
 	type: 'Date',
-	validator: validators.DEFAULT,
+	validator: validators.NON_NULL,
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
@@ -93,17 +93,17 @@ let _LAST_UPDATE_DATE = {
 let _DAYS = {
 	key: 'days',
 	type: 'string',
-	validator: validators.DEFAULT,
+	validator: validators.NON_EMPTY_ARRAY,
 }
 let _START_TIME = {
 	key: 'startTime',
 	type: 'number',
-	validator: validators.DEFAULT,
+	validator: validators.TIME_ARRAY,
 }
 let _END_TIME = {
 	key: 'endTime',
 	type: 'number',
-	validator: validators.DEFAULT,
+	validator: validators.TIME_ARRAY,
 }
 let _ID = {
 	key: 'id',
@@ -118,6 +118,6 @@ let _CREATION_DATE = {
 let _START_DATE = {
 	key: 'startDate',
 	type: 'Date',
-	validator: validators.DEFAULT,
+	validator: validators.NON_NULL,
 }
 export default IndisponibilityFields

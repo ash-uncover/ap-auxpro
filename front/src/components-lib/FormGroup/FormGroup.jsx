@@ -18,12 +18,18 @@ class FormGroup extends React.Component {
     render() {
         return (
             <Form.Group state={this.props.state}>
-                <Form.Label className='col-sm-5 col-md-4'>
-                    {this.props.label}
-                </Form.Label>
-                <Grid.Col sm={7} md={8}>
-                    {this.props.children}
-                </Grid.Col>
+            	{this.props.label && (
+	                <Form.Label className={this.props.horizontal ? 'col-sm-5 col-md-4' : ''}>
+	                    {this.props.label}
+	                </Form.Label>
+	            )}
+                {this.props.horizontal ? (
+	                <Grid.Col sm={7} md={8}>
+	                    {this.props.children}
+	                </Grid.Col>
+	            ) : (
+	            	this.props.children
+	        	)}
             </Form.Group>
         )
     }
@@ -31,12 +37,14 @@ class FormGroup extends React.Component {
 
 FormGroup.propTypes = {
     state: PropTypes.string,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
+    horizontal: PropTypes.bool,
     children: PropTypes.any.isRequired
 }
 
 FormGroup.defaultProps = {
-    state: 'default'
+    state: 'default',
+    horizontal: false
 }
 
 export default FormGroup

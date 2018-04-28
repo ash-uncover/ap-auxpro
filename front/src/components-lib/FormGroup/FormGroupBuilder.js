@@ -7,13 +7,14 @@ import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeek
 
 class FormGroupBuilder {
 
-    static buildFormGroup(id, field) { 
+    static buildFormGroup(id, field, horizontal) { 
         if ((field.hidden === true) || (field.hidden && field.hidden())) return
 
         return (
             <FormGroup 
                 key={field.key} 
                 label={field.name}
+                horizontal={!!horizontal}
                 state={this.state[field.key + 'State']}>
                 {FormGroupBuilder.buildFormControl.call(this, id, field)}
             </FormGroup>

@@ -168,6 +168,19 @@ public class Validators {
 				.hasMaxLength(140);
 	}
 
+	public static class TIME_ARRAY {
+		public static class ERRORS {
+			public static final String MUST_BE_AN_ARRAY = "MUST_BE_AN_ARRAY";
+			public static final String CANNOT_BE_NULL = "CANNOT_BE_NULL";
+			public static final String MIN_LENGTH_EXCEEDED = "MIN_LENGTH_EXCEEDED";
+			public static final String MAX_LENGTH_EXCEEDED = "MAX_LENGTH_EXCEEDED";
+		}
+		public static final IValidator VALIDATOR = ValidatorTypes.ARRAY()
+				.isRequired()
+				.hasMinLength(2)
+				.hasMaxLength(2);
+	}
+
 	public static class BEFORE_TODAY {
 		public static class ERRORS {
 			public static final String MUST_BE_A_DATE = "MUST_BE_A_DATE";

@@ -17,7 +17,6 @@ class AuxiliaryInfosEditInfos extends React.Component {
         this.state = {}
         
         this.buildFormGroup = FormGroupBuilder.buildFormGroup.bind(this)
-
     }
 
     componentWillMount() {
@@ -58,19 +57,19 @@ class AuxiliaryInfosEditInfos extends React.Component {
                             <br/>
                             <Grid.Col sm={6} lg={5} lgOffset={1}>
                                 {Object.keys(AuxiliaryInfosEditInfosData.FIELDS_FORM1).map((key) => (
-                                    this.buildFormGroup(key, AuxiliaryInfosEditInfosData.FIELDS_FORM1[key])
+                                    this.buildFormGroup(key, AuxiliaryInfosEditInfosData.FIELDS_FORM1[key], true)
                                 ))}
                             </Grid.Col>
                             <Grid.Col sm={6} lg={5}>
                             	{Object.keys(AuxiliaryInfosEditInfosData.FIELDS_FORM2).map((key) => (
-                                    this.buildFormGroup(key, AuxiliaryInfosEditInfosData.FIELDS_FORM2[key])
+                                    this.buildFormGroup(key, AuxiliaryInfosEditInfosData.FIELDS_FORM2[key], true)
                                 ))}
                             </Grid.Col>
                             <h4 className='col-xs-12'>Mes informations professionnelles</h4>
                             <br/>
                             <Grid.Col xs={12} sm={10} smOffset={1} md={8} mdOffset={2}>
                                 {Object.keys(AuxiliaryInfosEditInfosData.FIELDS_FORM3).map((key) => (
-                                    this.buildFormGroup(key, AuxiliaryInfosEditInfosData.FIELDS_FORM3[key])
+                                    this.buildFormGroup(key, AuxiliaryInfosEditInfosData.FIELDS_FORM3[key], true)
                                 ))}
                             </Grid.Col>
                         </Form>

@@ -98,6 +98,18 @@ db.apauth.insert({
 	"registered":true
 })
 db.apauth.insert({
+	"id":"userauxi",
+	"entityId":"auxi",
+	"username":"i",
+	"email":"kikolol@yopmail.com",
+	"password":"i",
+	"roles":["auxiliary","apauth"],
+	"type":"auxiliary",
+	"active":true,
+	"registrationDate": new Date("2016-05-15"),
+	"registered":true
+})
+db.apauth.insert({
 	"id":"usersadz",
 	"entityId":"sadz",
 	"username":"z",
@@ -470,12 +482,13 @@ db.auxiliary.insert({
 })
 
 db.auxiliary.insert({
-	"authId":"userauxantoine",
-	"id":"auxantoine",
+	"id":"auxi",
+	"authId":"userauxi",
 	"creationDate":new Date("2018-02-02"),
 	"lastUpdateDate":new Date("2018-02-02"),
 	"isTutoSkipped":true
 })
+
 
 /* ****************************************************************************************
  * DB-SERVICE

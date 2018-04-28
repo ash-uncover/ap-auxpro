@@ -9,14 +9,14 @@ public enum IndisponibilityFields implements IFieldEnum {
 
 	PERIOD ("period", "String", Validators.NON_NULL.VALIDATOR),
 	AUXILIARY_ID ("auxiliaryId", "String", Validators.DEFAULT.VALIDATOR),
-	END_DATE ("endDate", "List<Integer>", Validators.DEFAULT.VALIDATOR),
+	END_DATE ("endDate", "List<Integer>", Validators.NON_NULL.VALIDATOR),
 	LAST_UPDATE_DATE ("lastUpdateDate", "List<Integer>", Validators.DEFAULT.VALIDATOR),
-	DAYS ("days", "String", Validators.DEFAULT.VALIDATOR),
-	START_TIME ("startTime", "Integer", Validators.DEFAULT.VALIDATOR),
-	END_TIME ("endTime", "Integer", Validators.DEFAULT.VALIDATOR),
+	DAYS ("days", "String", Validators.NON_EMPTY_ARRAY.VALIDATOR),
+	START_TIME ("startTime", "Integer", Validators.TIME_ARRAY.VALIDATOR),
+	END_TIME ("endTime", "Integer", Validators.TIME_ARRAY.VALIDATOR),
 	ID ("id", "String", Validators.DEFAULT.VALIDATOR),
 	CREATION_DATE ("creationDate", "List<Integer>", Validators.DEFAULT.VALIDATOR),
-	START_DATE ("startDate", "List<Integer>", Validators.DEFAULT.VALIDATOR),
+	START_DATE ("startDate", "List<Integer>", Validators.NON_NULL.VALIDATOR),
 	;
 
 	private String _id;

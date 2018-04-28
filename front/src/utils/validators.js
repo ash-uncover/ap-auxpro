@@ -60,6 +60,10 @@ class Validators {
 		return _TWEET
 	}
 
+	static get TIME_ARRAY() {
+		return _TIME_ARRAY
+	}
+
 	static get BEFORE_TODAY() {
 		return _BEFORE_TODAY
 	}
@@ -236,6 +240,19 @@ const _TWEET = {
 		isRequired.
 		hasMinLength(1).
 		hasMaxLength(140)
+}
+
+const _TIME_ARRAY = {
+	ERRORS: {
+		MUST_BE_AN_ARRAY: 'MUST_BE_AN_ARRAY',
+		CANNOT_BE_NULL: 'CANNOT_BE_NULL',
+		MIN_LENGTH_EXCEEDED: 'MIN_LENGTH_EXCEEDED',
+		MAX_LENGTH_EXCEEDED: 'MAX_LENGTH_EXCEEDED',
+	},
+	VALIDATOR: ValidatorTypes.array.
+		isRequired.
+		hasMinLength(2).
+		hasMaxLength(2)
 }
 
 const _BEFORE_TODAY = {
