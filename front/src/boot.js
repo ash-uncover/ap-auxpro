@@ -3,6 +3,8 @@ import $ from 'jquery'
 // bootstrap
 import 'bootstrap'
 import GoogleMapActions from 'actions/GoogleMapActions'
+import I18NActions from 'actions/I18NActions'
+import I18NStore from 'stores/I18NStore'
 
 import { StoreRegistry } from 'ap-flux'
 

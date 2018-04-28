@@ -232,7 +232,7 @@ const _BEFORE_TODAY = {
 	},
 	VALIDATOR: ValidatorTypes.date.
 		isRequired.
-		isBeforeNow()
+		isBeforeNow
 }
 
 const _BEFORE_TODAY_OR_TODAY = {
@@ -242,8 +242,8 @@ const _BEFORE_TODAY_OR_TODAY = {
 	},
 	VALIDATOR: ValidatorTypes.date.
 		isRequired.
-		isBeforeNow().
-		isBeforeInclusive(true)
+		isBeforeNow.
+		isBeforeInclusive
 }
 
 const _AFTER_TODAY = {
@@ -253,7 +253,7 @@ const _AFTER_TODAY = {
 	},
 	VALIDATOR: ValidatorTypes.date.
 		isRequired.
-		isAfterNow()
+		isAfterNow
 }
 
 const _AFTER_TODAY_OR_TODAY = {
@@ -263,8 +263,8 @@ const _AFTER_TODAY_OR_TODAY = {
 	},
 	VALIDATOR: ValidatorTypes.date.
 		isRequired.
-		isAfterNow().
-		isAfterInclusive(true)
+		isAfterNow.
+		isAfterInclusive
 }
 
 export default Validators

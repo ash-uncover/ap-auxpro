@@ -1,0 +1,6 @@
+{
+	"APP_LAND_SECTION1_TITLE": "La plateforme des professionnels du SAP",
+	"AUXILIARY_FIELD_ERROR_CIVILITY_CANNOT_BE_NULL": "Veuillez renseigner votre civilité",
+	"AUXILIARY_FIELD_ERROR_FIRST_NAME_CANNOT_BE_NULL": "Veuillez renseigner votre prénom",
+	"AUXILIARY_FIELD_ERROR_FIRST_NAME_MIN_LENGTH_EXCEEDED": "Veuillez renseigner votre prénom"
+}
