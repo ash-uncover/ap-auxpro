@@ -5,7 +5,7 @@ import './AuxiliaryIndisponibilityEdit.scss'
 import { Button, Panel, Grid, Form } from 'ap-react-bootstrap'
 
 // components-lib
-import FormHelper from 'components-lib/FormHelper'
+import FormGroupBuilder from 'components-lib/FormGroup/FormGroupBuilder'
 import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeekDays'
 import ModalDialog from 'components-lib/Modal/ModalDialog'
 // utils
@@ -15,9 +15,10 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 
 	constructor(props) {
 		super(props)
+
 		this.state = {}
-		this.buildFormGroup = this._renderFromGroup.bind(this)
-		this.buildFormControl = FormHelper.buildFormControl.bind(this)
+
+		this.buildFormGroup = FormGroupBuilder.buildFormGroup.bind(this)
 	}
 
 	componentWillMount() {
@@ -32,21 +33,8 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 	// Rendering functions //
 	// --------------------------------------------------------------------------------
 
-    _renderFromGroup(field) {
-        if ((field.hidden === true) || (field.hidden && field.hidden())) return
-        return (
-            <Form.Group key={field.key} state={this.state[field.key + 'State']}>
-                <Form.Label className='col-sm-5 col-md-4'>
-                    {field.name}
-                </Form.Label>
-                <Grid.Col sm={7} md={8}>
-                    {this.buildFormControl(field)}
-                </Grid.Col>
-            </Form.Group>
-        )
-    }
-
 	render() {
+		console.log(this.state)
 		let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
 		return (
 			<div className='ap-auxiliary-indisponibility-edit'>
@@ -62,7 +50,9 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 					</Panel.Header>
 					<Panel.Body>
 						<Form horizontal className='col-sm-8 col-lg-7'>
-							{AuxiliaryIndisponibilityEditData.FIELDS_FORM1.map(this.buildFormGroup)}
+							{Object.keys(AuxiliaryIndisponibilityEditData.FIELDS_FORM1).map((key) => (
+                                this.buildFormGroup(key, AuxiliaryIndisponibilityEditData.FIELDS_FORM1[key], true)
+                            ))}
 							{ this.state.indisponibilityNightly ?
 								<p className='ap-warning col-sm-7 col-sm-offset-5 col-md-8 col-md-offset-4'>
 									Cette indisponibilité a lieu de nuit et se termine le lendemain.
@@ -71,10 +61,9 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 						</Form>
 						{ this.state.period !== IndisponibilityRecurencePeriod.HOURS.key && this.state.period !== IndisponibilityRecurencePeriod.DAYS.key ?
 						<Form className='col-sm-3 col-lg-2'>
-							<Form.Group state={this.state.daysState}>
-								<Form.Label>Jours</Form.Label>
-								<FormSelectWeekDays values={this.state.days} onChange={this.onChange.bind(this, 'days')}/>
-							</Form.Group>
+							{Object.keys(AuxiliaryIndisponibilityEditData.FIELDS_FORM2).map((key) => (
+                                this.buildFormGroup(key, AuxiliaryIndisponibilityEditData.FIELDS_FORM2[key])
+                            ))}
 						</Form>
 						: null }
 					</Panel.Body>
@@ -86,7 +75,7 @@ class AuxiliaryIndisponibilityEdit extends React.Component {
 						<Panel.Body className='ap-warning'>
 							<div>Veuillez vérifier les valeurs</div>
 							<ul>
-								{this.state.warningMsg.map((warning, index) => (<li key={warning.key}>{warning.value}</li>) )}
+								{this.state.warningMsg.map((warning, index) => (<li key={index}>{warning}</li>) )}
 							</ul>
 						</Panel.Body>
 					</Panel>

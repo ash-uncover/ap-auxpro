@@ -65,6 +65,26 @@ public class IndisponibilityBean {
 		if (!periodState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_INDISPONIBILITY_INVALID_FIELDS", "Invalid field 'period'"));
 		}
+		ValidationState endDateState = IndisponibilityFields.END_DATE.getValidator().check(endDate);
+		if (!endDateState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INDISPONIBILITY_INVALID_FIELDS", "Invalid field 'endDate'"));
+		}
+		ValidationState daysState = IndisponibilityFields.DAYS.getValidator().check(days);
+		if (!daysState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INDISPONIBILITY_INVALID_FIELDS", "Invalid field 'days'"));
+		}
+		ValidationState startTimeState = IndisponibilityFields.START_TIME.getValidator().check(startTime);
+		if (!startTimeState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INDISPONIBILITY_INVALID_FIELDS", "Invalid field 'startTime'"));
+		}
+		ValidationState endTimeState = IndisponibilityFields.END_TIME.getValidator().check(endTime);
+		if (!endTimeState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INDISPONIBILITY_INVALID_FIELDS", "Invalid field 'endTime'"));
+		}
+		ValidationState startDateState = IndisponibilityFields.START_DATE.getValidator().check(startDate);
+		if (!startDateState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INDISPONIBILITY_INVALID_FIELDS", "Invalid field 'startDate'"));
+		}
 		if (errors.size() > 0) {
 			throw new APWebException("AP_INDISPONIBILITY_INVALID_FIELDS", "Invalid fields within 'indisponibility'", errors, Status.BAD_REQUEST);
 		}

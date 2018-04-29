@@ -5,13 +5,21 @@ class GeozoneUtils {
 
 	static getFieldName(field) {
 		switch (field) {
+			case GeozoneFields.AUXILIARY_ID:
 			case GeozoneFields.AUXILIARY_ID.key: return 'Auxiliaire'
+			case GeozoneFields.TYPE:
 			case GeozoneFields.TYPE.key: return 'Type'
+			case GeozoneFields.ADDRESS:
 			case GeozoneFields.ADDRESS.key: return 'Addresse'
+			case GeozoneFields.POSTAL_CODE:
 			case GeozoneFields.POSTAL_CODE.key: return 'Code postal'
+			case GeozoneFields.CITY:
 			case GeozoneFields.CITY.key: return 'Ville'
+			case GeozoneFields.RADIUS:
 			case GeozoneFields.RADIUS.key: return 'Distance (m)'
+			case GeozoneFields.LATTITUDE:
 			case GeozoneFields.LATTITUDE.key: return 'Lattitude'
+			case GeozoneFields.LONGITUDE:
 			case GeozoneFields.LONGITUDE.key: return 'Longitude'
 		}
 		return '! UNKNOWN FIELD !'

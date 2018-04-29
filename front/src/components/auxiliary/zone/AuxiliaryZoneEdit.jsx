@@ -2,20 +2,25 @@ import React from 'react'
 import AuxiliaryZoneEditData from './AuxiliaryZoneEditData'
 import './AuxiliaryZone.scss'
 
-import { Grid, Panel, Form, Button, Google } from 'ap-react-bootstrap'
+import { Grid, Panel, Button, Form } from 'ap-react-bootstrap'
+
+import FormGroupBuilder from 'components-lib/FormGroup/FormGroupBuilder'
 
 import GeozoneType from 'utils/constants/GeozoneType'
 
-import GeozoneUtils from 'utils-lib/entities/GeozoneUtils'
-
 class AuxiliaryZoneEdit extends React.Component {
 
-	constructor(props) {
-		super(props)
+	constructor() {
+		super(...arguments)
+		
 		this.state = {}
-		this.buildFormGroup = this._buildFormGroup.bind(this)
-		this.buildFormControl = this._buildFormControl.bind(this)
+		
+		this.buildFormGroup = FormGroupBuilder.buildFormGroup.bind(this)
 	}
+
+
+    // Component lifecycle //
+    // --------------------------------------------------------------------------------
 
 	componentWillMount() {
 		AuxiliaryZoneEditData.register(this, this.props.geozoneId)
@@ -25,63 +30,27 @@ class AuxiliaryZoneEdit extends React.Component {
 		AuxiliaryZoneEditData.unregister()
 	}
 
-	_buildFormGroup(field) { 
-		let state = this.state[field.key + 'Default']
-		if (!state && field.validator) {
-			state = field.validator.getState(this.state[field.key])	
-		}
-		return (
-			<Form.Group key={field.key} state={state}>
-				<Form.Label className='col-sm-5 col-md-4'>
-					{field.name || GeozoneUtils.getFieldName(field.key)}
-				</Form.Label>
-				<Grid.Col sm={7} md={8}>
-					{this.buildFormControl(field)}
-				</Grid.Col>
-			</Form.Group>
-		)
-	}
 
-	_buildFormControl(field) {
-		switch (field.form) {
-			case 'input': return (
-				<Form.Input 
-					value={this.state[field.key]} 
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			case 'select': return (
-				<Form.Select 
-					values={field.values}
-					value={this.state[field.key]}
-					onChange={this.onChangeDirty.bind(this, field.key)} />
-				)
-			case 'address': return (
-				<Google.Autocomplete 
-					placeholder='Saisir adresse.'
-					onChange={this.onChangeAddress.bind(this)}
-					options={{ componentRestrictions: { country: 'fr' } }} />
-				)
-			default: return (
-				<Form.Static>
-					{this.state[field.key]}
-				</Form.Static>
-			)
-		}
-	}
+    // Rendering functions //
+    // --------------------------------------------------------------------------------
 
 	render() {
-		let submitEnabled = this.state.dirty && this.state.geozoneValid
+		let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
 		return (
 			<Panel className='ap-auxiliary-zone-edit'>
 				<Panel.Header>
 					{ this.state.mode === AuxiliaryZoneEditData.MODES.CREATE ? "Créer zone d'intervention" : "Modifier zone d'intervention" }
 				</Panel.Header>
 				<Panel.Body>
-					<Form horizontal>
+					<Form horizontal onSubmit={event => event.preventDefault()}>
 						{ this.state.type === GeozoneType.AREA.key ? 
-							AuxiliaryZoneEditData.FIELDS_FORM1.map(this.buildFormGroup)
+							Object.keys(AuxiliaryZoneEditData.FIELDS_FORM1).map((key) => (
+                                this.buildFormGroup(key, AuxiliaryZoneEditData.FIELDS_FORM1[key], true)
+                            ))
 						: 
-							AuxiliaryZoneEditData.FIELDS_FORM2.map(this.buildFormGroup) 
+							Object.keys(AuxiliaryZoneEditData.FIELDS_FORM2).map((key) => (
+                                this.buildFormGroup(key, AuxiliaryZoneEditData.FIELDS_FORM2[key], true)
+                            ))
 						}
 					</Form>
 					<Button
@@ -92,8 +61,8 @@ class AuxiliaryZoneEdit extends React.Component {
 					</Button>
 					<Button
 						block
-						disabled={!submitEnabled}
-						bsStyle={submitEnabled ? 'success' : 'default'}
+						disabled={submitDisabled}
+						bsStyle={submitDisabled ? 'default' : 'success'}
 						onClick={this.onSubmit}>
 						{ this.state.mode === AuxiliaryZoneEditData.MODES.CREATE ? 'Créer zone' : 'Enregistrer modifications' }
 					</Button>

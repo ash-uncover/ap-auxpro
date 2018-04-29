@@ -2,6 +2,7 @@
 import React from 'react'
 
 import { Button, Panel, Form, Grid, Google } from 'ap-react-bootstrap'
+import FormGroup from 'components-lib/FormGroup/FormGroup'
 import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeekDays'
 
 class FormControlBuilder {
@@ -13,14 +14,9 @@ class FormControlBuilder {
 			state = field.validator.getState(this.state[field.key])
 		}
 		return (
-			<Form.Group key={field.key} state={state}>
-				<Form.Label className={(field.smLabel || 'col-sm-5') + ' ' + (field.mdLabel || 'col-md-4')}>
-					{field.name || field.key}
-				</Form.Label>
-				<Grid.Col sm={7} md={8}>
+			<FormGroup label={field.name} state={state}>
 					{this.buildFormControl(field)}
-				</Grid.Col>
-			</Form.Group>
+			</FormGroup>
 		)
 	}
 

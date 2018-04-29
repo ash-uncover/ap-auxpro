@@ -31,6 +31,17 @@ public class Validators {
 				.matches("[0-9_]", ERRORS.MUST_CONTAIN_SPECIAL);
 	}
 
+	public static class EMAIL {
+		public static class ERRORS {
+			public static final String MUST_BE_A_STRING = "MUST_BE_A_STRING";
+			public static final String CANNOT_BE_NULL = "CANNOT_BE_NULL";
+			public static final String INVALID_EMAIL = "INVALID_EMAIL";
+		}
+		public static final IValidator VALIDATOR = ValidatorTypes.STRING()
+				.isRequired()
+				.matches("^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$", ERRORS.INVALID_EMAIL);
+	}
+
 	public static class NON_NULL {
 		public static class ERRORS {
 			public static final String CANNOT_BE_NULL = "CANNOT_BE_NULL";
@@ -157,6 +168,19 @@ public class Validators {
 				.hasMaxLength(140);
 	}
 
+	public static class TIME_ARRAY {
+		public static class ERRORS {
+			public static final String MUST_BE_AN_ARRAY = "MUST_BE_AN_ARRAY";
+			public static final String CANNOT_BE_NULL = "CANNOT_BE_NULL";
+			public static final String MIN_LENGTH_EXCEEDED = "MIN_LENGTH_EXCEEDED";
+			public static final String MAX_LENGTH_EXCEEDED = "MAX_LENGTH_EXCEEDED";
+		}
+		public static final IValidator VALIDATOR = ValidatorTypes.ARRAY()
+				.isRequired()
+				.hasMinLength(2)
+				.hasMaxLength(2);
+	}
+
 	public static class BEFORE_TODAY {
 		public static class ERRORS {
 			public static final String MUST_BE_A_DATE = "MUST_BE_A_DATE";
@@ -177,7 +201,7 @@ public class Validators {
 		public static final IValidator VALIDATOR = ValidatorTypes.DATE()
 				.isRequired()
 				.isBeforeNow()
-				.isMaxInclusive(true);
+				.isBeforeInclusive();
 	}
 
 	public static class AFTER_TODAY {
@@ -200,7 +224,7 @@ public class Validators {
 		public static final IValidator VALIDATOR = ValidatorTypes.DATE()
 				.isRequired()
 				.isAfterNow()
-				.isMinInclusive(true);
+				.isAfterInclusive();
 	}
 
 }

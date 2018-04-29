@@ -2,17 +2,16 @@ import React from 'react'
 import ServiceCustomerEditData from './ServiceCustomerEditData'
 import './ServiceCustomerEdit.scss'
 
-import { Button, Panel, Form, Grid, Google } from 'ap-react-bootstrap'
+import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 
 // components-lib
-import FormHelper from 'components-lib/FormHelper'
+import FormGroupBuilder from 'components-lib/FormGroup/FormGroupBuilder'
 import SkillTile from 'components-lib/SkillTile/SkillTile'
 import SkillTileAdd from 'components-lib/SkillTile/SkillTileAdd'
 // utils
 import CustomerFields from 'utils/entities/CustomerFields'
 // utils-lib
 import CustomerUtils from 'utils-lib/entities/CustomerUtils'
-import SkillUtils from 'utils-lib/entities/SkillUtils'
 
 class ServiceCustomerEdit extends React.Component {
 
@@ -21,10 +20,15 @@ class ServiceCustomerEdit extends React.Component {
 		
 		this.state = {}
 
-		this.buildFormGroup = this._buildFormGroup.bind(this)
-		this.buildFormControl = FormHelper.buildFormControl.bind(this)
+		this.buildFormGroup = FormGroupBuilder.buildFormGroup.bind(this)
+
 		this.buildSkill = this._buildSkill.bind(this)
+		this.onSkillChange = this._onSkillChange.bind(this)
 	}
+
+
+    // Component lifecycle //
+    // --------------------------------------------------------------------------------
 
 	componentWillMount() {
 		ServiceCustomerEditData.register(this, this.props.params.customerId)
@@ -34,31 +38,22 @@ class ServiceCustomerEdit extends React.Component {
 		ServiceCustomerEditData.unregister()
 	}
 
-	_buildFormGroup(field) { 
-		if ((field.hidden === true) || (field.hidden && field.hidden())) return
+
+    // Rendering functions //
+    // --------------------------------------------------------------------------------
+
+	_buildSkill(id, skill) {
 		return (
-			<Form.Group key={field.key} state={this.state[field.key + 'State']}>
-				<Form.Label className='col-sm-5 col-md-4'>
-					{field.name}
-				</Form.Label>
-				<Grid.Col sm={7} md={8}>
-					{this.buildFormControl(field)}
-				</Grid.Col>
-			</Form.Group>
+			<SkillTile
+				key={skill.key}
+				title={skill.name}
+				value={this.state[skill.key]}
+				starMax={5}
+				onChange={this.onSkillChange.bind(this, id)}/>
 		)
 	}
-
-	_buildSkill(skill) {
-		if (this.state.showAllSkills || this.state[skill.key]) {
-			return (
-				<SkillTile
-					key={skill.key}
-					title={SkillUtils.getName(skill)}
-					value={this.state[skill.key]}
-					starMax={5}
-					onChange={this.onChange.bind(this, skill.key)}/>
-			)
-		}
+	_onSkillChange(id, event, value) {
+		this.onChange(id, value)
 	}
 
 	render() {
@@ -80,18 +75,28 @@ class ServiceCustomerEdit extends React.Component {
 							</p>
 							<Grid.Row>
 								<Grid.Col sm={6} lg={5} lgOffset={1}>
-									{ServiceCustomerEditData.FIELDS_FORM1.map(this.buildFormGroup)}
+									{Object.keys(ServiceCustomerEditData.FIELDS_FORM1).map((key) => (
+                                        this.buildFormGroup(key, ServiceCustomerEditData.FIELDS_FORM1[key], true)
+                                    ))}
 								</Grid.Col>
 								<Grid.Col sm={6} lg={5}>
-									{ServiceCustomerEditData.FIELDS_FORM2.map(this.buildFormGroup)}	
+									{Object.keys(ServiceCustomerEditData.FIELDS_FORM2).map((key) => (
+                                        this.buildFormGroup(key, ServiceCustomerEditData.FIELDS_FORM2[key], true)
+                                    ))}
 								</Grid.Col>
 							</Grid.Row>
 							<h4>Besoins</h4>
 							<p>Veuillez saisir les besoins de l'usager</p>
-							{this.state.skills.map(this.buildSkill)}
-							{!this.state.showAllSkills ?
+							{Object.keys(ServiceCustomerEditData.FIELDS_FORM_SKILLS).filter((id) => {
+								const field = ServiceCustomerEditData.FIELDS_FORM_SKILLS[id]
+								return this.state.showAllSkills || this.state[field.key]
+							}).map((id) => {
+								const field = ServiceCustomerEditData.FIELDS_FORM_SKILLS[id]
+                                return this.buildSkill(id, field)
+                            })}
+							{!this.state.showAllSkills &&
 								<SkillTileAdd onClick={this.onSkillAdd}/>
-							: null }
+							}
 						</Form>
 					</Panel.Body>
 					<Panel.Footer>
@@ -102,7 +107,7 @@ class ServiceCustomerEdit extends React.Component {
 						<Panel.Body className='ap-warning'>
 							<div>Veuillez vérifier les valeurs</div>
 							<ul>
-								{this.state.warningMsg.map((warning, index) => (<li key={warning.key}>{warning.value}</li>) )}
+								{this.state.warningMsg.map((warning, index) => (<li key={index}>{warning}</li>) )}
 							</ul>
 						</Panel.Body>
 					</Panel>

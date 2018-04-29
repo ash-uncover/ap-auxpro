@@ -1,4 +1,4 @@
-import { Validators } from 'ap-react-bootstrap'
+import validators from 'utils/validators'
 import Civility from 'utils/constants/Civility'
 import Diploma from 'utils/constants/Diploma'
 import AccountType from 'utils/constants/AccountType'
@@ -225,181 +225,205 @@ class AuxiliaryFields {
 let _COUNTRY = {
 	key: 'country',
 	type: 'string',
-	validator: Validators.NonEmptyString,
+	validator: validators.NON_EMPTY_STRING,
 }
 let _LAST_NAME = {
 	key: 'lastName',
 	type: 'string',
-	validator: Validators.NonEmptyString,
+	validator: validators.NON_EMPTY_STRING,
 }
 let _CIVILITY = {
 	key: 'civility',
 	type: 'string',
 	values: Civility.VALUES,
-	validator: Validators.NonNull,
+	validator: validators.NON_NULL,
 }
 let _CITY = {
 	key: 'city',
 	type: 'string',
-	validator: Validators.NonEmptyString,
+	validator: validators.NON_EMPTY_STRING,
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
 	type: 'Date',
+	validator: validators.DEFAULT,
 }
 let _POSTAL_CODE = {
 	key: 'postalCode',
 	type: 'string',
-	validator: Validators.PostalCode,
+	validator: validators.POSTAL_CODE,
 }
 let _IS_TUTO_SKIPPED = {
 	key: 'isTutoSkipped',
 	type: 'boolean',
+	validator: validators.BOOLEAN,
 }
 let _DESCRIPTION = {
 	key: 'description',
 	type: 'string',
-	validator: Validators.Tweet,
+	validator: validators.TWEET,
 }
 let _SOCIAL_NUMBER = {
 	key: 'socialNumber',
 	type: 'string',
-	validator: Validators.SocialNumber,
+	validator: validators.SOCIAL_NUMBER,
 }
 let _ACCOUNT_EXPIRY_DATE = {
 	key: 'accountExpiryDate',
 	type: 'Date',
+	validator: validators.DEFAULT,
 }
 let _PROFIL_PROGRESSION = {
 	key: 'profilProgression',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _SKILL_SHOPPING = {
 	key: 'skillShopping',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _NOTIFY_OFFERS_SMS = {
 	key: 'notifyOffersSms',
 	type: 'boolean',
+	validator: validators.BOOLEAN,
 }
 let _NOTIFY_AUXPROS = {
 	key: 'notifyAuxpros',
 	type: 'boolean',
+	validator: validators.BOOLEAN,
 }
 let _BIRTH_COUNTRY = {
 	key: 'birthCountry',
 	type: 'string',
-	validator: Validators.NonEmptyString,
+	validator: validators.NON_EMPTY_STRING,
 }
 let _PROFIL_COMPLETED = {
 	key: 'profilCompleted',
 	type: 'boolean',
+	validator: validators.DEFAULT,
 }
 let _ID = {
 	key: 'id',
 	type: 'string',
+	validator: validators.DEFAULT,
 }
 let _DIPLOMA = {
 	key: 'diploma',
 	type: 'string',
 	values: Diploma.VALUES,
-	validator: Validators.NonEmptyArray,
+	validator: validators.NON_EMPTY_ARRAY,
 }
 let _SKILL_DOITYOURSELF = {
 	key: 'skillDoityourself',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _LONGITUDE = {
 	key: 'longitude',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _ADDRESS = {
 	key: 'address',
 	type: 'string',
-	validator: Validators.NonEmptyString,
+	validator: validators.NON_EMPTY_STRING,
 }
 let _SKILL_NURSING = {
 	key: 'skillNursing',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _LATTITUDE = {
 	key: 'lattitude',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _ACCOUNT_TYPE = {
 	key: 'accountType',
 	type: 'string',
 	values: AccountType.VALUES,
+	validator: validators.DEFAULT,
 }
 let _NOTIFY_PARTNERS = {
 	key: 'notifyPartners',
 	type: 'boolean',
+	validator: validators.BOOLEAN,
 }
 let _BIRTH_CITY = {
 	key: 'birthCity',
 	type: 'string',
-	validator: Validators.NonEmptyString,
+	validator: validators.NON_EMPTY_STRING,
 }
 let _AVATAR = {
 	key: 'avatar',
 	type: 'string',
+	validator: validators.DEFAULT,
 }
 let _CREATION_DATE = {
 	key: 'creationDate',
 	type: 'Date',
+	validator: validators.DEFAULT,
 }
 let _ARE_SKILL_SET = {
 	key: 'areSkillSet',
 	type: 'boolean',
+	validator: validators.DEFAULT,
 }
 let _BIRTH_DATE = {
 	key: 'birthDate',
 	type: 'Date',
-	validator: Validators.BeforeToday,
+	validator: validators.BEFORE_TODAY,
 }
 let _SKILL_CHILDHOOD = {
 	key: 'skillChildhood',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _SKILL_COMPAGNY = {
 	key: 'skillCompagny',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _FIRST_NAME = {
 	key: 'firstName',
 	type: 'string',
-	validator: Validators.NonEmptyString,
+	validator: validators.NON_EMPTY_STRING,
 }
 let _SKILL_ANSWERS = {
 	key: 'skillAnswers',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _NATIONALITY = {
 	key: 'nationality',
 	type: 'string',
-	validator: Validators.NonNull,
+	validator: validators.NON_NULL,
 }
 let _IS_ENTREPRENEUR = {
 	key: 'isEntrepreneur',
 	type: 'string',
 	values: AuxiliaryStatus.VALUES,
-	validator: Validators.NonNull,
+	validator: validators.NON_NULL,
 }
 let _PHONE = {
 	key: 'phone',
 	type: 'string',
-	validator: Validators.Phone,
+	validator: validators.PHONE,
 }
 let _SKILL_ADMINISTRATIVE = {
 	key: 'skillAdministrative',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _SKILL_HOUSEWORK = {
 	key: 'skillHousework',
 	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _NOTIFY_OFFERS_MAIL = {
 	key: 'notifyOffersMail',
 	type: 'boolean',
+	validator: validators.BOOLEAN,
 }
 export default AuxiliaryFields

@@ -1,6 +1,7 @@
 import React from 'react'
 import AppLandData from './AppLandData'
 import './AppLand.scss'
+import I18NHelper from 'helpers/I18NHelper'
 
 import { Grid, Panel, Button } from 'ap-react-bootstrap'
 
@@ -26,6 +27,7 @@ class AppLand extends React.Component {
 	}
 
 	render() {
+		console.log('rendering app land')
 		return (
 			<div className='ap-app-land'>
 

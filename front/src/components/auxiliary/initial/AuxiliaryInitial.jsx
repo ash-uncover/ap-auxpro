@@ -4,7 +4,7 @@ import './AuxiliaryInitial.scss'
 
 import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 // components-lib
-import FormHelper from 'components-lib/FormHelper'
+import FormGroupBuilder from 'components-lib/FormGroup/FormGroupBuilder'
 
 class AuxiliaryInitial extends React.Component {
 
@@ -13,8 +13,7 @@ class AuxiliaryInitial extends React.Component {
 
 		this.state = {}
 
-		this.buildFormGroup = this._buildFormGroup.bind(this)
-		this.buildFormControl = FormHelper.buildFormControl.bind(this)
+		this.buildFormGroup = FormGroupBuilder.buildFormGroup.bind(this)
 	}
 
 	componentWillMount() {
@@ -28,20 +27,6 @@ class AuxiliaryInitial extends React.Component {
 
 	// Rendering functions //
 	// --------------------------------------------------------------------------------
-
-	_buildFormGroup(field) { 
-		if ((field.hidden === true) || (field.hidden && field.hidden())) return
-		return (
-			<Form.Group key={field.key} state={this.state[field.key + 'State']}>
-				<Form.Label className='col-sm-5 col-md-4'>
-					{field.name}
-				</Form.Label>
-				<Grid.Col sm={7} md={8}>
-					{this.buildFormControl(field)}
-				</Grid.Col>
-			</Form.Group>
-		)
-	}
 
 	render() {
 		let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
@@ -70,13 +55,19 @@ class AuxiliaryInitial extends React.Component {
 					<Panel.Body>
 						<Form horizontal className='row'>
 							<Grid.Col sm={6} lg={5} lgOffset={1}>
-								{AuxiliaryInitialData.FIELDS_FORM1.map(this.buildFormGroup)}
+								{Object.keys(AuxiliaryInitialData.FIELDS_FORM1).map((key) => (
+                                    this.buildFormGroup(key, AuxiliaryInitialData.FIELDS_FORM1[key], true)
+                                ))}
 							</Grid.Col>
 							<Grid.Col sm={6} lg={5}>
-								{AuxiliaryInitialData.FIELDS_FORM2.map(this.buildFormGroup)}
+								{Object.keys(AuxiliaryInitialData.FIELDS_FORM2).map((key) => (
+                                    this.buildFormGroup(key, AuxiliaryInitialData.FIELDS_FORM2[key], true)
+                                ))}
 							</Grid.Col>
 							<Grid.Col xs={12} lgOffset={1} lg={10}>
-								{AuxiliaryInitialData.FIELDS_FORM3.map(this.buildFormGroup)}
+								{Object.keys(AuxiliaryInitialData.FIELDS_FORM3).map((key) => (
+                                    this.buildFormGroup(key, AuxiliaryInitialData.FIELDS_FORM3[key], true)
+                                ))}
 							</Grid.Col>
 						</Form>
 					</Panel.Body>
@@ -88,7 +79,7 @@ class AuxiliaryInitial extends React.Component {
 						<Panel.Body className='ap-warning'>
 							<div>Veuillez vérifier les valeurs</div>
 							<ul>
-								{this.state.warningMsg.map((warning, index) => (<li key={warning.key}>{warning.value}</li>) )}
+								{this.state.warningMsg.map((warning, index) => (<li key={index}>{warning}</li>) )}
 							</ul>
 						</Panel.Body>
 					</Panel>

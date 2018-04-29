@@ -3,43 +3,43 @@
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class Skills {
 
-	static get SKILLHOUSEWORK() {
-		return _SKILLHOUSEWORK
+	static get SKILL_HOUSEWORK() {
+		return _SKILL_HOUSEWORK
 	}
 
-	static get SKILLCHILDHOOD() {
-		return _SKILLCHILDHOOD
+	static get SKILL_CHILDHOOD() {
+		return _SKILL_CHILDHOOD
 	}
 
-	static get SKILLSHOPPING() {
-		return _SKILLSHOPPING
+	static get SKILL_SHOPPING() {
+		return _SKILL_SHOPPING
 	}
 
-	static get SKILLNURSING() {
-		return _SKILLNURSING
+	static get SKILL_NURSING() {
+		return _SKILL_NURSING
 	}
 
-	static get SKILLCOMPAGNY() {
-		return _SKILLCOMPAGNY
+	static get SKILL_COMPAGNY() {
+		return _SKILL_COMPAGNY
 	}
 
-	static get SKILLADMINISTRATIVE() {
-		return _SKILLADMINISTRATIVE
+	static get SKILL_ADMINISTRATIVE() {
+		return _SKILL_ADMINISTRATIVE
 	}
 
-	static get SKILLDOITYOURSELF() {
-		return _SKILLDOITYOURSELF
+	static get SKILL_DOITYOURSELF() {
+		return _SKILL_DOITYOURSELF
 	}
 
 	static get VALUES() {
 		return [
-			_SKILLHOUSEWORK,
-			_SKILLCHILDHOOD,
-			_SKILLSHOPPING,
-			_SKILLNURSING,
-			_SKILLCOMPAGNY,
-			_SKILLADMINISTRATIVE,
-			_SKILLDOITYOURSELF,
+			_SKILL_HOUSEWORK,
+			_SKILL_CHILDHOOD,
+			_SKILL_SHOPPING,
+			_SKILL_NURSING,
+			_SKILL_COMPAGNY,
+			_SKILL_ADMINISTRATIVE,
+			_SKILL_DOITYOURSELF,
 		]
 	}
 
@@ -48,11 +48,11 @@ class Skills {
 	}
 
 }
-let _SKILLHOUSEWORK = { key: 'skillHousework' }
-let _SKILLCHILDHOOD = { key: 'skillChildhood' }
-let _SKILLSHOPPING = { key: 'skillShopping' }
-let _SKILLNURSING = { key: 'skillNursing' }
-let _SKILLCOMPAGNY = { key: 'skillCompagny' }
-let _SKILLADMINISTRATIVE = { key: 'skillAdministrative' }
-let _SKILLDOITYOURSELF = { key: 'skillDoityourself' }
+let _SKILL_HOUSEWORK = { key: 'skillHousework' }
+let _SKILL_CHILDHOOD = { key: 'skillChildhood' }
+let _SKILL_SHOPPING = { key: 'skillShopping' }
+let _SKILL_NURSING = { key: 'skillNursing' }
+let _SKILL_COMPAGNY = { key: 'skillCompagny' }
+let _SKILL_ADMINISTRATIVE = { key: 'skillAdministrative' }
+let _SKILL_DOITYOURSELF = { key: 'skillDoityourself' }
 export default Skills
