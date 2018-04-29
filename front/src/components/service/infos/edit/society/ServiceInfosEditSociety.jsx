@@ -16,6 +16,10 @@ class ServiceInfosEditSociety extends React.Component {
         this.buildFormGroup = FormGroupBuilder.buildFormGroup.bind(this)
     }
 
+
+    // Component lifecycle //
+    // --------------------------------------------------------------------------------
+
     componentWillMount() {
         ServiceInfosEditSocietyData.register(this)
     }
@@ -50,12 +54,12 @@ class ServiceInfosEditSociety extends React.Component {
                                 </Grid.Col>
                                 <Grid.Col sm={6} lg={5} lgOffset={1}>
                                     {Object.keys(ServiceInfosEditSocietyData.FIELDS_FORM1).map((key) => (
-                                        this.buildFormGroup(key, ServiceInfosEditSocietyData.FIELDS_FORM1[key])
+                                        this.buildFormGroup(key, ServiceInfosEditSocietyData.FIELDS_FORM1[key], true)
                                     ))}
                                 </Grid.Col>
                                 <Grid.Col sm={6} lg={5}>
                                     {Object.keys(ServiceInfosEditSocietyData.FIELDS_FORM2).map((key) => (
-                                        this.buildFormGroup(key, ServiceInfosEditSocietyData.FIELDS_FORM2[key])
+                                        this.buildFormGroup(key, ServiceInfosEditSocietyData.FIELDS_FORM2[key], true)
                                     ))}
                                 </Grid.Col>
                             </Grid.Row>

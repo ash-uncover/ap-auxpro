@@ -2,13 +2,11 @@ import React from 'react'
 import AuxiliaryZoneEditData from './AuxiliaryZoneEditData'
 import './AuxiliaryZone.scss'
 
-import { Grid, Panel, Button, Form, Google } from 'ap-react-bootstrap'
+import { Grid, Panel, Button, Form } from 'ap-react-bootstrap'
 
 import FormGroupBuilder from 'components-lib/FormGroup/FormGroupBuilder'
 
 import GeozoneType from 'utils/constants/GeozoneType'
-
-import GeozoneUtils from 'utils-lib/entities/GeozoneUtils'
 
 class AuxiliaryZoneEdit extends React.Component {
 

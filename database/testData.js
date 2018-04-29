@@ -133,7 +133,18 @@ db.apauth.insert({
 	"registrationDate": new Date("2016-05-21"),
 	"registered":true
 })
-
+db.apauth.insert({
+	"id":"usersadx",
+	"entityId":"sadx",
+	"username":"x",
+	"email":"kikotest@yopmail.com",
+	"password":"x",
+	"roles":["service","apauth"],
+	"type":"service",
+	"active":true,
+	"registrationDate": new Date("2016-05-21"),
+	"registered":true
+})
 
 db.apauth.insert({ 
 	"id":"userauxantoine",
@@ -536,6 +547,14 @@ db.service.insert({
 	"lastUpdateDate":new Date("2018-02-02")
 })
 
+
+db.service.insert({
+	"id":"sadx",
+	"authId":"usersadx",
+	"creationDate":new Date("2018-02-02"),
+	"lastUpdateDate":new Date("2018-02-02"),
+	"isTutoSkipped":true
+})
 
 db.service.insert({
 	"id":"sadantoine",
