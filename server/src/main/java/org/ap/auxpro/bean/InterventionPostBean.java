@@ -70,9 +70,37 @@ public class InterventionPostBean {
 
 	public void check() throws APWebException {
 		List<APWebError> errors = new ArrayList<APWebError>();
+		ValidationState periodState = InterventionFields.PERIOD.getValidator().check(period);
+		if (!periodState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'period'"));
+		}
 		ValidationState missionTypeState = InterventionFields.MISSION_TYPE.getValidator().check(missionType);
 		if (!missionTypeState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'missionType'"));
+		}
+		ValidationState endDateState = InterventionFields.END_DATE.getValidator().check(endDate);
+		if (!endDateState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'endDate'"));
+		}
+		ValidationState daysState = InterventionFields.DAYS.getValidator().check(days);
+		if (!daysState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'days'"));
+		}
+		ValidationState diplomasState = InterventionFields.DIPLOMAS.getValidator().check(diplomas);
+		if (!diplomasState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'diplomas'"));
+		}
+		ValidationState startTimeState = InterventionFields.START_TIME.getValidator().check(startTime);
+		if (!startTimeState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'startTime'"));
+		}
+		ValidationState endTimeState = InterventionFields.END_TIME.getValidator().check(endTime);
+		if (!endTimeState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'endTime'"));
+		}
+		ValidationState startDateState = InterventionFields.START_DATE.getValidator().check(startDate);
+		if (!startDateState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'startDate'"));
 		}
 		if (errors.size() > 0) {
 			throw new APWebException("AP_INTERVENTION_INVALID_FIELDS", "Invalid fields within 'intervention'", errors, Status.BAD_REQUEST);

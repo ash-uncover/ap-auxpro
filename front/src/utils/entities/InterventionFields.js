@@ -111,7 +111,7 @@ let _PERIOD = {
 	key: 'period',
 	type: 'string',
 	values: InterventionRecurencePeriod.VALUES,
-	validator: validators.DEFAULT,
+	validator: validators.NON_NULL,
 }
 let _AUXILIARY_ID = {
 	key: 'auxiliaryId',
@@ -121,7 +121,7 @@ let _AUXILIARY_ID = {
 let _END_DATE = {
 	key: 'endDate',
 	type: 'Date',
-	validator: validators.DEFAULT,
+	validator: validators.NON_NULL,
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
@@ -152,13 +152,13 @@ let _CUSTOMER_ID = {
 let _DAYS = {
 	key: 'days',
 	type: 'string',
-	validator: validators.DEFAULT,
+	validator: validators.NON_EMPTY_ARRAY,
 }
 let _DIPLOMAS = {
 	key: 'diplomas',
 	type: 'string',
 	values: Diploma.VALUES,
-	validator: validators.DEFAULT,
+	validator: validators.NON_NULL,
 }
 let _SAD_STATUS = {
 	key: 'sadStatus',
@@ -169,7 +169,7 @@ let _SAD_STATUS = {
 let _START_TIME = {
 	key: 'startTime',
 	type: 'number',
-	validator: validators.DEFAULT,
+	validator: validators.TIME_ARRAY,
 }
 let _ID = {
 	key: 'id',
@@ -179,7 +179,7 @@ let _ID = {
 let _END_TIME = {
 	key: 'endTime',
 	type: 'number',
-	validator: validators.DEFAULT,
+	validator: validators.TIME_ARRAY,
 }
 let _SERVICE_ID = {
 	key: 'serviceId',
@@ -194,6 +194,6 @@ let _HIDE_TO_SAD = {
 let _START_DATE = {
 	key: 'startDate',
 	type: 'Date',
-	validator: validators.DEFAULT,
+	validator: validators.NON_NULL,
 }
 export default InterventionFields
