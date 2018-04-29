@@ -6,15 +6,14 @@ import { Button, Panel, Grid, Form } from 'ap-react-bootstrap'
 
 // components-lib
 import FormGroupBuilder from 'components-lib/FormGroup/FormGroupBuilder'
-import FormSelectWeekDays from 'components-lib/FormSelectWeekDays/FormSelectWeekDays'
 import ModalDialog from 'components-lib/Modal/ModalDialog'
 // utils
 import IndisponibilityRecurencePeriod from 'utils/constants/IndisponibilityRecurencePeriod'
 
 class AuxiliaryIndisponibilityEdit extends React.Component {
 
-	constructor(props) {
-		super(props)
+	constructor() {
+		super(...arguments)
 
 		this.state = {}
 
