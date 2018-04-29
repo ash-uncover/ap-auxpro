@@ -21,7 +21,6 @@ class ServiceCustomerEditData extends BaseData {
         super(...arguments)
 
         this.checkField = this._checkField.bind(this)
-        this.checkSkill = this._checkSkill.bind(this)
 
         this.MODES = {
             CREATE: 'CREATE',
@@ -252,9 +251,7 @@ class ServiceCustomerEditData extends BaseData {
     }
     
     onSkillAdd() {
-        this.setState({ 
-            showAllSkills: true 
-        })
+        this.setState({ showAddSkill: false })
     }
 
     onCancel() {
@@ -305,12 +302,19 @@ class ServiceCustomerEditData extends BaseData {
 
     loadCustomer(customer) {
         this.obj.state.customerName = this.customerId !== 'new' ? CustomerUtils.getFullName(customer) : 'Nouvel usager'
-        for (let f in this.FIELDS) {
-            let field = this.FIELDS[f]
-            let value = customer[field.key]
+        Object.keys(this.FIELDS).map(id => {
+            const field = this.FIELDS[id]
+            const value = customer[field.key]
             this.obj.state[field.key] = value || field.defaultValue
+        })
+        if (this.getState('mode') === this.MODES.CREATE) {
+            this.obj.state.showAddSkill = false
+        } else {
+            this.obj.state.showAddSkill = Object.keys(this.FIELDS_FORM_SKILLS).reduce((value, id) => {
+                const field = this.FIELDS[id]
+                return !this.getState(field.key) || value
+            }, false)
         }
-        this.obj.state.showAllSkills = false
     }
 
     checkCustomer() {
@@ -338,34 +342,17 @@ class ServiceCustomerEditData extends BaseData {
         }
     }
     checkSkillsChecker() {
-        const skillTotal = Object.keys(this.FIELDS_FORM_SKILLS).reduce(this.checkSkill, 0)
-        console.log('checker ' + skillTotal)
+        const skillTotal = Object.keys(this.FIELDS_FORM_SKILLS).reduce((total, id) => {
+            return total + this.getState(this.FIELDS_FORM_SKILLS[id].key)    
+        }, 0)
         if (skillTotal === 0) {
             return { 
-                state: 'error', 
+                state: STATES.ERROR, 
                 message: 'NO_SKILLS_SET' 
             }
         }
-        return { state: 'success' }
+        return { state: STATES.SUCCESS }
     }
-    _checkSkill(total, key) {
-        return total + this.getState(this.FIELDS_FORM_SKILLS[key].key)
-    }
-
-    _sortSkills(s1, s2) {
-        return this.getState(s2.key) - this.getState(s1.key)
-    }
-
-    _sortSkillsSecondary(s1, s2) {
-        if (this.getState(s2.key) === 0) {
-            return -1
-        }
-        if (this.getState(s1.key) === 0) {
-            return 1
-        }
-        return this.getState(s2.key) - this.getState(s1.key)
-    }
-
 }
 
 let ServiceCustomerEditObj = new ServiceCustomerEditData()
