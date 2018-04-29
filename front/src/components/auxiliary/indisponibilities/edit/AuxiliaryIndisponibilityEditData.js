@@ -261,8 +261,8 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
         }
         if (indiponibility.period === IndisponibilityRecurencePeriod.DAYS.key) {
             delete indiponibility.days
-            delete indiponibility.startTime
-            delete indiponibility.endTime
+            indiponibility.startTime = [0, 0]
+            indiponibility.endTime = [23, 59]
         }
         return indiponibility
     }
