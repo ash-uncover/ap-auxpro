@@ -57,6 +57,7 @@ class ServiceCustomerEdit extends React.Component {
 	}
 
 	render() {
+		console.log(this.state)
 		let submitDisabled = !this.state.dirty || this.state.errorShow || this.state.warningShow
 		return (
 			<div className='ap-service-customer-edit'>
@@ -89,12 +90,12 @@ class ServiceCustomerEdit extends React.Component {
 							<p>Veuillez saisir les besoins de l'usager</p>
 							{Object.keys(ServiceCustomerEditData.FIELDS_FORM_SKILLS).filter((id) => {
 								const field = ServiceCustomerEditData.FIELDS_FORM_SKILLS[id]
-								return this.state.showAllSkills || this.state[field.key]
+								return !this.state.showAddSkill || this.state[field.key]
 							}).map((id) => {
 								const field = ServiceCustomerEditData.FIELDS_FORM_SKILLS[id]
                                 return this.buildSkill(id, field)
                             })}
-							{!this.state.showAllSkills &&
+							{this.state.showAddSkill &&
 								<SkillTileAdd onClick={this.onSkillAdd}/>
 							}
 						</Form>

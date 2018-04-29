@@ -45,23 +45,21 @@ class AuxiliaryPlaningData extends BaseData {
 		this.declareFunction('onDaySelect')
 		this.declareFunction('onMonthChange')
 		
-		this.setState({
-			selectedDay: MomentHelper.toLocalDate(moment()),
-			selectedMonth: MomentHelper.toLocalDate(moment()),
-			showIndisponibilities: true,
-			showMissions: true,
-			filterCustomer: '__ALL__',
-			filterService: '__ALL__',
-			filterStatus: '__ALL__',
-			customers: this.buildCustomers(),
-			services: this.buildServices(),
-			statuses: [
-				{ key: '__ALL__', value: 'Toutes' },
-				{ key: 'COMPLETED', value: 'Réalisées' },
-				{ key: 'PENDING', value: 'Planifiées' },
-				{ key: 'CANCELED', value: 'Annulées' }
-			]
-		})
+		this.obj.state.selectedDay = MomentHelper.toLocalDate(moment())
+		this.obj.state.selectedMonth = MomentHelper.toLocalDate(moment())
+		this.obj.state.showIndisponibilities = true
+		this.obj.state.showMissions = true
+		this.obj.state.filterCustomer = '__ALL__'
+		this.obj.state.filterService = '__ALL__'
+		this.obj.state.filterStatus = '__ALL__'
+		this.obj.state.customers = this.buildCustomers()
+		this.obj.state.services = this.buildServices()
+		this.obj.state.statuses= [
+			{ key: '__ALL__', value: 'Toutes' },
+			{ key: 'COMPLETED', value: 'Réalisées' },
+			{ key: 'PENDING', value: 'Planifiées' },
+			{ key: 'CANCELED', value: 'Annulées' }
+		]
 		this.obj.state.indisponibilities = this.buildIndisponibilities()
 		let missions = this.buildMissions()
 		this.obj.state.missionsPlanned = missions.planned
@@ -70,6 +68,7 @@ class AuxiliaryPlaningData extends BaseData {
 		
 		this.buildHours()
 		this.buildInformation()
+		this.forceUpdate()
 
 		IndisponibilityHelper.register('', this, this.onIndisponibilitiesUpdate.bind(this))
 	}
@@ -152,9 +151,7 @@ class AuxiliaryPlaningData extends BaseData {
 				while (current.isSameOrBefore(endDate)) {
 					absences.push({
 						indisponibilityId: indisponibility.id,
-						date: MomentHelper.toLocalDate(current),
-						startTime: current.clone().startOf('day'),
-						endTime: current.clone().endOf('day')
+						date: MomentHelper.toLocalDate(current)
 					})
 					current.add(1, 'day')
 				}
