@@ -39,22 +39,33 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
             { validator: { VALIDATOR : { check: this.checkStartDate.bind(this) } } }
         )
         const END_DATE = Object.assign(
-            { defaultValue: defaultDate, form: 'date', hidden: function() {
-                return this.getState(IndisponibilityFields.PERIOD.key) === IndisponibilityRecurencePeriod.HOURS.key
-            }.bind(this), name: IndisponibilityUtils.getFieldName(IndisponibilityFields.END_DATE) },
+            { defaultValue: defaultDate, form: 'date', hidden: () => {
+                const period = this.getState(IndisponibilityFields.PERIOD.key)
+                return period === IndisponibilityRecurencePeriod.HOURS.key
+            }, name: IndisponibilityUtils.getFieldName(IndisponibilityFields.END_DATE) },
             IndisponibilityFields.END_DATE,
             { validator: { VALIDATOR: { check: this.checkEndDate.bind(this) } } }
         )
         const START_TIME = Object.assign(
-            { defaultValue: [0, 0], form: 'time', name: IndisponibilityUtils.getFieldName(IndisponibilityFields.START_TIME) }, 
+            { defaultValue: [0, 0], form: 'time', hidden: () => {
+                const period = this.getState(IndisponibilityFields.PERIOD.key)
+                return period === IndisponibilityRecurencePeriod.DAYS.key
+            }, name: IndisponibilityUtils.getFieldName(IndisponibilityFields.START_TIME) }, 
             IndisponibilityFields.START_TIME
         )
         const END_TIME = Object.assign(
-            { defaultValue: [12, 0], form: 'time', name: IndisponibilityUtils.getFieldName(IndisponibilityFields.END_TIME) }, 
+            { defaultValue: [12, 0], form: 'time', hidden: () => {
+                const period = this.getState(IndisponibilityFields.PERIOD.key)
+                return period === IndisponibilityRecurencePeriod.DAYS.key
+            }, name: IndisponibilityUtils.getFieldName(IndisponibilityFields.END_TIME) }, 
             IndisponibilityFields.END_TIME
         )
         const DAYS = Object.assign(
-            { defaultValue: [], form: 'days', values: Day.VALUES, name: IndisponibilityUtils.getFieldName(IndisponibilityFields.DAYS) }, 
+            { defaultValue: [], form: 'days', values: Day.VALUES, hidden: () => {
+                const period = this.getState(IndisponibilityFields.PERIOD.key)
+                return period === IndisponibilityRecurencePeriod.HOURS.key ||
+                    period === IndisponibilityRecurencePeriod.DAYS.key
+            }, name: IndisponibilityUtils.getFieldName(IndisponibilityFields.DAYS) }, 
             IndisponibilityFields.DAYS,
             { validator: { VALIDATOR: { check: this.checkDays.bind(this) } } }
         )
