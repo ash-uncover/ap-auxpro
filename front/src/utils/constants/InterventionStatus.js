@@ -11,8 +11,8 @@ class InterventionStatus {
 		return _MATCHING
 	}
 
-	static get ONGOING() {
-		return _ONGOING
+	static get ON_GOING() {
+		return _ON_GOING
 	}
 
 	static get CANCELED() {
@@ -23,7 +23,7 @@ class InterventionStatus {
 		return [
 			_PENDING,
 			_MATCHING,
-			_ONGOING,
+			_ON_GOING,
 			_CANCELED,
 		]
 	}
@@ -35,6 +35,6 @@ class InterventionStatus {
 }
 let _PENDING = { key: 'Pending' }
 let _MATCHING = { key: 'Matching' }
-let _ONGOING = { key: 'OnGoing' }
+let _ON_GOING = { key: 'OnGoing' }
 let _CANCELED = { key: 'Canceled' }
 export default InterventionStatus
