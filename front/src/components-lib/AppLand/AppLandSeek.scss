@@ -1,0 +1,58 @@
+// Variables
+@import 'src/components/AppLand.scss';
+
+.app-land-seek {
+    color: $ap-alt1-color;
+    background: $ap-alt1-background;
+    
+    text-align: center;
+
+    .title {
+        margin: 0;
+        font-size: 2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .text {
+        margin: 20px 0 10px 0;
+        max-width: 530px;
+        display: inline-block;
+        color: $ap-alt1-color-light;
+        font-size: 1.7rem;
+    }
+
+    .buttons {
+        text-align: center;
+
+        .ap-link {
+            margin: 15px 35px 0 35px;
+            border: 0.2rem solid $ap-alt1-color;
+            border-radius: 1rem;
+            padding: 1rem;
+            color: $ap-alt1-color;
+            text-decoration: none;
+            display: block;
+            font-weight: bold;
+            font-size: 1.6rem;
+
+            &.contrast {
+                background: $ap-alt1-color;
+                color: $ap-alt1-background;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $screen-md-min) {
+    .app-land-seek {
+        .buttons {
+            display: flex;
+            justify-content: center;
+            .ap-link {
+                margin: 0 15px;
+                width: 350px;
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+// Variables
+@import 'src/components/AppLand.scss';
+
+.app-land-skills {
+    background: $ap-main-background;
+
+    .skills-row {
+        display: flex;
+        justify-content: space-around;
+
+        .app-land-skill {
+            max-width: 25%;
+            img {
+                max-width: 50%;
+            }
+            p {
+                min-height: 44px;
+            }
+        }
+    }   
+}

@@ -2,90 +2,92 @@
 @import 'assets/styles/variables';
 
 html {
-	height: 100%;
+    height: 100%;
 }
 
 body {
-	height: 100%;
-	padding:0;
-	margin:0;
-	font-family: 'Open Sans', sans-serif;
-	background: $ap-global-background;
-	font-size: 14px;
+    height: 100%;
+    padding:0;
+    margin:0;
+    font-family: 'Open Sans', sans-serif;
+    background: $ap-global-background;
+    font-size: 14px;
 }
 
 /* Small devices (tablets, 768px and up) */
 @media only screen and (min-width: $screen-sm-min) {
-	body {
-		font-size: 15px;
-	}
+    body {
+        font-size: 15px;
+    }
 }
 
 /* Medium devices (desktops, 992px and up) */
 @media only screen and (min-width: $screen-md-min) {
-	body {
-		font-size: 16px;
-	}	
+    body {
+        font-size: 16px;
+    }   
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media only screen and (min-width: $screen-lg-min) {
-	body {
-		font-size: 16px;
-	}
+    body {
+        font-size: 16px;
+    }
 }
 
 .row {
-	border: none;
+    border: none;
 }
 .ap-hidden {
-	display: none;
+    display: none;
 }
 
 .ap-auxpro {
-	height: 100%;
+    height: 100%;
+    overflow-x: hidden;
 
-	.ap-app {
-		height: 100%;
-		user-select: none;
 
-		display: flex;
-		flex-direction: column;
+    .ap-app {
+        height: 100%;
+        user-select: none;
 
-		.ap-error {
-			color: $ap-danger-color;
-		}
-		.ap-warning {
-			color: $ap-warning-color;
-		}
+        display: flex;
+        flex-direction: column;
 
-		.user-select-text {
-			user-select: text;
-		}
+        .ap-error {
+            color: $ap-danger-color;
+        }
+        .ap-warning {
+            color: $ap-warning-color;
+        }
 
-		.ap-app-main-content {
-			display: flex;
-			justify-content: center;
-			flex-grow: 1;
-			flex-shrink: 0;
-			
-			.panel-off {
-				padding: 20px;
-				background: #f9f9f9;
-				border: none;
-				h2 {
-					color: #1d70b6;
-					font-weight: 700;
-					font-size: 20px;
-					background: transparent;
-					overflow: hidden;
-					position: relative;
-					border: 0;
-					margin: 0;
-					height: 42px;
-				}
-			}
-		}
-	}
+        .user-select-text {
+            user-select: text;
+        }
+
+        .ap-app-main-content {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+            flex-shrink: 0;
+            
+            .panel-off {
+                padding: 20px;
+                background: #f9f9f9;
+                border: none;
+                h2 {
+                    color: #1d70b6;
+                    font-weight: 700;
+                    font-size: 20px;
+                    background: transparent;
+                    overflow: hidden;
+                    position: relative;
+                    border: 0;
+                    margin: 0;
+                    height: 42px;
+                }
+            }
+        }
+    }
 }
 

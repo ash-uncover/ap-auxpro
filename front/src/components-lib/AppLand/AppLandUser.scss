@@ -1,0 +1,154 @@
+// Variables
+@import 'src/components/AppLand.scss';
+
+.app-land-user {
+
+    &.sap {
+        background: $ap-alt3-background;
+        color: $ap-alt3-color;
+        .ap-app-land-section-right {            
+            background-image: url('/assets/images/land/img_sap.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            .ap-app-land-section-content {
+                width: 100%;
+                padding-bottom: 80%;
+                position: relative;
+                .title-big {
+                    position: absolute;
+                    top:0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            }
+        }
+        .ap-app-land-section-left {
+            background: $ap-alt3-gradient;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+    }
+
+    &.aux {
+        background: $ap-alt1-background;
+        color: $ap-alt1-color;
+        .ap-app-land-section-right {
+            background: $ap-alt1-gradient;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .ap-app-land-section-left {
+            background-image: url('/assets/images/land/img_aux.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            .ap-app-land-section-content {
+                width: 100%;
+                padding-bottom: 80%;
+                position: relative;
+                .title-big {
+                    position: absolute;
+                    top:0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .title {
+        padding: 0 0 20px 20%;
+        text-transform: uppercase;
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin: 0;
+        text-align: left;
+    }
+    .item {
+        display: flex;
+        min-height: 70px;
+        .item-icon {
+            padding-right: 15px;
+            text-align: right;
+            width: 20%;
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+        .item-content {
+            text-align: left;
+            width: 80%;
+            h2 {
+                text-transform: uppercase;
+                line-height: 25px;
+                font-size: 2rem;
+                font-weight: bold;
+                margin: 0;
+            }
+            p {
+                width: 85%;
+                font-size: 1.3rem;
+                margin: 0;
+            }
+        }
+
+        &:last-child {
+            min-height: 0;  
+        }
+    }
+    .button {
+        margin: 15px 10% 0 20%;
+        text-align:center;
+        .ap-link {
+            background: $ap-alt3-draw;
+            border: 0.2rem solid $ap-alt3-draw;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            color: $ap-alt3-color;
+            text-decoration: none;
+            display: block;
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+    }
+}
+
+@media only screen and (min-width: $screen-sm-min) {
+    .ap-app-land {
+        .title-big {
+            font-size: 3rem;
+        }
+    }
+}
+@media only screen and (min-width: $screen-md-min) {
+    .ap-app-land {
+        .title-big {
+            font-size: 4rem;
+        }
+    }
+}
+@media only screen and (min-width: $screen-lg-min) {
+    .ap-app-land {
+        .title-big {
+            font-size: 5rem;
+        }
+    }
+}

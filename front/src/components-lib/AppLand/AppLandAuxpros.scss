@@ -1,0 +1,80 @@
+// Variables
+@import 'src/components/AppLand.scss';
+
+.app-land-auxpros {
+    color: $ap-main-color;
+    background: $ap-main-background;
+    text-align: center;
+
+    .title {
+        font-size: 1.7rem;
+        font-weight: bold;
+        margin: 0;
+    }
+    .text {
+        font-size: 1.3rem;
+        line-height: 1.6rem;
+        margin: 15px 0 25px 0;
+    }
+
+    .icons {
+        display: flex;
+        justify-content: center;
+        .icon {
+            img {
+                max-width: 55%;
+            }
+            p {
+                line-height: 1.6rem;
+                font-weight: bold;
+                margin: 0;
+                margin-top: 15px;
+            }
+        }
+    }
+    .buttons {
+        text-align: center;
+        padding: 25px 0 0 0;
+
+        .ap-link {
+            border: 0.2rem solid $ap-alt1-background;
+            background: $ap-alt1-background;
+            border-radius: 1rem;
+            color: $ap-alt1-color;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 30%;
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+    }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (min-width: $screen-sm-min) {
+    .app-land-auxpros {
+        padding: 20px 15px 25px 15px;
+        .title {
+            padding: 15px 0;
+            font-size: 3rem;
+        }
+        .text {
+            font-size: 2rem;
+            line-height: 2.5rem;
+            display: inline-block;
+            max-width: 550px;
+        }
+        .icons {
+            padding: 25px 0;
+            .icon {
+                p {
+                    font-size: 2.5rem;
+                    line-height: 3rem;
+                    max-width: 220px;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
