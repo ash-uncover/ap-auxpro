@@ -1,0 +1,18 @@
+// Variables
+@import 'src/components/AppLand.scss';
+
+.app-land-social {
+    color: $ap-main-color;
+    background: $ap-main-background;
+
+    .feeds {
+        display: flex;
+        .feed {
+            width: 50%;
+
+            >* {
+                border: 1px solid grey !important;
+            }
+        }
+    }
+}
