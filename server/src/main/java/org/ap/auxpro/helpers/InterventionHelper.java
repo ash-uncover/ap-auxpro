@@ -49,6 +49,8 @@ import com.mongodb.MongoWriteException;
 
 public class InterventionHelper {
 	
+	private static final int _MAX_MATCHES = 10;
+
 	public static Object createIntervention(SecurityContext sc, InterventionPostBean interventionBean) throws APWebException {
 		BasicBean result = new BasicBean();
 		try {
@@ -212,7 +214,7 @@ public class InterventionHelper {
 				result.add(score);
 			}
 		}
-		return result;
+		return result.subList(0, Math.min(_MAX_MATCHES, result.size()));
 	}
 	
 	public static int getSkillScore(Integer auxScore, Integer custScore) {

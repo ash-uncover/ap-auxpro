@@ -170,16 +170,10 @@ public class TimeEventDefinition {
 			result.add(new TimeEvent(startDateTime, endDateTime));
 			break;
 		case DAYS:
-			while (!currentDate.isAfter(getEndDate())) {
-				startDateTime = LocalDateTime.of(currentDate, getStartTime());
-				endDateTime = LocalDateTime.of(currentDate, getEndTime());
-				if (!getEndTime().isAfter(getStartTime())) {
-					endDateTime = endDateTime.plusDays(1);
-				}
-				result.add(new TimeEvent(startDateTime, endDateTime));
-				currentDate = currentDate.plusDays(1);
-			}
-			break;
+			startDateTime = LocalDateTime.of(currentDate, LocalTime.MIN);
+			endDateTime = LocalDateTime.of(currentDate, LocalTime.MAX);
+			result.add(new TimeEvent(startDateTime, endDateTime));
+ 			break;
 		case WEEKS:
 			while (!currentDate.isAfter(getEndDate())) {
 				currentDate = TimeUtils.getPreviousOfDay(currentDate, DayOfWeek.MONDAY);
