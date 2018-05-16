@@ -11,6 +11,9 @@ class AppLandSkills extends React.Component {
         return (
             <div className='ap-app-land-section app-land-skills'>
                 <div className='ap-app-land-section-content'>
+                    <h1 className='title'>
+                        Les missions réalisées par les intervenants
+                    </h1>
                     <div className='skills-row'>
                         <AppLandSkill
                             src='assets/images/land/icon_skill_compagny.png'

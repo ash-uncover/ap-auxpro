@@ -17,38 +17,17 @@ import AppLandUserSapBig from 'components-lib/AppLand/AppLandUserSapBig'
 
 import Link from 'components-lib/Link/Link'
 
-function onFbInit(e) {
-    console.log('facebook loding')
-    FB.XFBML.parse()
-}
-
 class AppLand extends React.Component {
 
     constructor(props) {
         super(props)
-
-        this.waitForFB = this._waitForFB.bind(this)
     }
 
     componentWillMount() {
         AppLandData.register(this)
     }
 
-    componentDidMount() {
-        //document.addEventListener('fb_init', onFbInit);
-        this.waitForFB()
-    }
-
-    _waitForFB() {
-        if (FB) {
-            onFbInit()
-        } else {
-            setTimeout(this.waitForFB, 500)
-        }   
-    }
-
     componentWillUnmount() {
-        //document.removeEventListener('fb_init', onFbInit);
         AppLandData.unregister()
     }
 
@@ -79,31 +58,5 @@ class AppLand extends React.Component {
         )
     }
 }
-/*
-
-            <Grid.Container >
-
-                    <Grid.Row className='visible-xs'>
-                        
-                        
-                        
-                        
-                        <AppLandSeparator diagonal topColor='alt2' botColor='alt3' />
-                        
-                        <AppLandSeparator diagonal topColor='alt3' botColor='alt1'/>
-                        <AppLandUserAux xs={12} />
-                    </Grid.Row>
-
-                    <Grid.Row className='hidden-xs'>
-                        <AppLandSeek xs={12} />
-                        <AppLandAuxpros xs={12} />
-                        <AppLandUserAux xs={12} />
-                        <AppLandUserSap xs={12} />
-                        
-                        <AppLandAdvantages xs={12} />                        
-                    </Grid.Row>
-
-                </Grid.Container>
-*/
 
 export default AppLand

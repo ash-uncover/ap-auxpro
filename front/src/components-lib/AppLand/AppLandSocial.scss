@@ -5,9 +5,19 @@
     color: $ap-main-color;
     background: $ap-main-background;
 
-    .feeds {
+    .title {
+        text-transform: uppercase;
+        font-size: 3rem;
+        font-weight: bold;
+        margin-top: 10px;
+        margin-bottom: 45px;
+    }
+
+    .feeds-md,
+    .feeds-lg {
         display: flex;
-        .feed {
+        .feed-md,
+        .feed-lg {
             width: 50%;
 
             >* {
