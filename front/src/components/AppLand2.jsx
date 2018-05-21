@@ -27,7 +27,6 @@ class AppLand extends React.Component {
     }
 
     render() {
-        console.log('rendering app land')
         return (
             <div className='ap-app-land'>
 

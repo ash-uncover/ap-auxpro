@@ -136,6 +136,27 @@
         .title-big {
             font-size: 3rem;
         }
+        .ap-app-land-section-content {
+            .items {
+                .item {
+                    .item-icon {
+                        img {
+                            width: 2rem;
+                            height: 2rem;
+                        }
+                    }
+                    .item-content {
+                        h2 {
+                            font-size: 2.5rem;
+                        }
+                        p {
+                            margin: 5px 0 10px 0;
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 @media only screen and (min-width: $screen-md-min) {
@@ -143,12 +164,54 @@
         .title-big {
             font-size: 4rem;
         }
+        .ap-app-land-section-content {
+            .items {
+                .item {
+                    .item-icon {
+                        img {
+                            width: 2.5rem;
+                            height: 2.5rem;
+                        }
+                    }
+                    .item-content {
+                        h2 {
+                            font-size: 2.8rem;
+                        }
+                        p {
+                            margin: 7px 0 15px 0;
+                            font-size: 1.7rem;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 @media only screen and (min-width: $screen-lg-min) {
     .ap-app-land {
         .title-big {
             font-size: 5rem;
+        }
+        .ap-app-land-section-content {
+            .items {
+                .item {
+                    .item-icon {
+                        img {
+                            width: 2.8rem;
+                            height: 2.8rem;
+                        }
+                    }
+                    .item-content {
+                        h2 {
+                            font-size: 3.5rem;
+                        }
+                        p {
+                            margin: 10px 0 25px 0;
+                            font-size: 2rem;
+                        }
+                    }
+                }
+            }
         }
     }
 }
