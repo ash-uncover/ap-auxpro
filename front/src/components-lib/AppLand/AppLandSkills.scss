@@ -1,0 +1,36 @@
+// Variables
+@import 'src/components/AppLand.scss';
+
+.app-land-skills {
+    background: $ap-main-background;
+
+    .title {
+        text-transform: uppercase;
+        margin-top: 10px;
+        margin-bottom: 45px;
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .skills-row {
+        display: flex;
+        justify-content: space-around;
+
+        .app-land-skill {
+            max-width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            img {
+                max-width: 50%;
+            }
+            p {
+                min-height: 44px;
+                max-width: 150px;
+                margin-top: 10px;
+                font-weight: bold;
+            }
+        }
+    }   
+}

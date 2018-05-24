@@ -19,7 +19,7 @@ class AppFooter extends React.Component {
 
 	render() {
 		return (
-			<footer className='hidden-print ap-app-footer'>
+			<footer className='hidden-print ap-app-footer hidden-xs'>
 				<Grid.Container>
 					<Grid.Col md={5} className='ap-footer-area-logos'>
 						<h3 className='ap-footer-title'>

@@ -1,0 +1,65 @@
+// Variables
+@import 'src/components/AppLand.scss';
+
+$border-width: 20px;
+
+.app-land-separator {
+    height: ($border-width * 2);
+    position: relative;
+
+    &:before {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border: 0;
+        border-color: transparent;
+        border-style: solid;
+        border-top-width: ($border-width * 2);
+        border-right-width: 100vw;
+    }
+
+    &.top-main {
+        &:before {
+            border-top-color: $ap-main-background;
+        }
+    }
+    &.top-alt1 {
+        &:before {
+            border-top-color: $ap-alt1-background;
+        }
+    }
+    &.top-alt2 {
+        &:before {
+            border-top-color: $ap-alt2-background;
+        }
+    }
+    &.top-alt3 {
+        &:before {
+            border-top-color: $ap-alt3-background;
+        }
+    }
+
+    &.bot-main {
+        &:before {
+            border-right-color: $ap-main-background;
+        }
+    }
+    &.bot-alt1 {
+        &:before {
+            border-right-color: $ap-alt1-background;
+        }
+    }
+    &.bot-alt2 {
+        &:before {
+            border-right-color: $ap-alt2-background;
+        }
+    }
+    &.bot-alt3 {
+        &:before {
+            border-right-color: $ap-alt3-background;
+        }
+    }
+}

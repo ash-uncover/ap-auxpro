@@ -1,401 +1,125 @@
 // Variables
 @import 'assets/styles/variables';
 
+$ap-main-background: #FFF;
+$ap-main-color: #000;
+$ap-main-color-light: #333;
+$ap-main-draw: #1D70B6;
+
+$ap-alt1-background: #1D70B6;
+$ap-alt1-gradient: linear-gradient(to right, #0067B1, #0080C4);
+$ap-alt1-color: #FFF;
+$ap-alt1-color-light: #EEE;
+$ap-alt1-draw: #FFF;
+
+$ap-alt2-background: #00D1AA;
+$ap-alt2-color: #FFF;
+$ap-alt2-color-light: #EEE;
+$ap-alt2-draw: $ap-alt2-background;
+
+$ap-alt3-background: #EE7A51;
+$ap-alt3-gradient: linear-gradient(to right, #ED8454, #ED995D);
+$ap-alt3-color: #FFF;
+$ap-alt3-color-light: #EEE;
+$ap-alt3-draw: $ap-alt2-background;
+
 .ap-app-land {
-	width: 100%;
+    background: pink;
+    display: block;
+    width: 100%;
 
-	h1 {
-		font-size: 30px;
-	}
-	h2 {
-		font-weight: lighter;
-		font-size: 25px;
-	}
-	h3 {
-		font-weight: bold;
-		font-size: 15px;
-	}
-	p {
-		font-size: 14px;	
-	}
-
-	.ap-land-link {
-		display: inline-block;
-		line-height: 48px;
-		height: 50px;
-		min-width: 150px;
-		border-radius: 25px;
-		text-transform: uppercase;
-		font-size: 12px;
-		text-align: center;
-
-		&:hover {
-			text-decoration: none;
-		}
-		&:focus {
-			outline: 0;
-			text-decoration: none;
-			box-shadow: 0 0 2pt 1pt $ap-primary-color;
-		}
-
-		&.ap-default {
-			color: #000000;
-			font-weight: bold;
-			background: $ap-btn-default-background;
-			border: 2px solid $ap-btn-default-border;
-			&:hover {
-				background: $ap-btn-default-background-hover;
-			}
-		}
-
-		&.ap-primary {
-			color: #FFFFFF;
-			background: $ap-btn-primary-background;
-			border: 2px solid $ap-btn-primary-background;
-			&:hover {
-				background: $ap-btn-primary-background-hover;
-				border: 2px solid $ap-btn-primary-background-hover;
-			}			
-		}
-	}
-
-
-	.ap-app-land-section {
-		background: $ap-global-background;
-
-		/* SECTION 1: PLATFORM
-		 * ******************************************************************************/
-		&.ap-app-platform {
-			text-align: center;
-			padding: 10px 0;
-
-			.row-buttons {
-				margin: 20px 0;
-			}
-
-			.ap-link {
-				width: 100%;
-				margin: 0 0 15px 0;
-			}
-		}
-
-		/* SECTION 2: DISCOVER
-		 * ******************************************************************************/
-		&.ap-app-discover {
-			background: url('/assets/images/auxpro-land-image1.png');
-			background-size: cover;
-			background-position: center center;
-			position: relative;
-
-			&:before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				background: rgba(255,255,255,0.8);
-			}
-
-			.col-content {
-				padding: 0;
-				>div {					
-					padding: 25px 25px;
-					text-align: center;
-
-					.ap-link {
-						width: 100%;
-						margin: 15px 0;
-					}
-				}
-			}
-
-			.col-image {
-				img {
-					max-height: 100%;
-					max-width: 100%;
-					object-fit: contains;
-				}
-			}
-		}
-
-		/* SECTION 3: VIDEO
-		 * ******************************************************************************/
-		&.ap-app-video {
-			.col-video {
-				padding: 0;
-				.ap-youtube-video {
-					border: 10px solid black;
-				}
-			}
-			.col-content {
-				text-align: center;
-				padding: 15px;
-			}
-		}
-
-
-		/* SECTION 4: ROLES
-		 * ******************************************************************************/
-		&.ap-app-roles {
-			background: #E3E4E5;
-			
-			.ap-row {
-				padding-top: 35px;
-				padding-left: 15px;
-				padding-right: 15px;
-				.ap-col {
-					text-align: center;
-					padding-bottom: 35px; 
-				}
-			}
-		}
-
-
-		/* SECTION 5: TOOL
-		 * ******************************************************************************/
-		&.ap-app-tool {
-			color: white;
-			background: #3379B7;
-			
-			padding: 25px 0 25px 0;
-
-			.col-content {
-				text-align: center;
-			}
-
-			.col-image {
-				img {
-					height: 100%;
-					max-width: 100%;
-					object-fit: cover;
-				}
-			}
-		}
-
-
-		/* SECTION 6: NEWS
-		 * ******************************************************************************/
-		&.ap-app-news {
-			
-			.ap-container {
-				height: 1100px;
-			}
-			.ap-title-h1 {
-				padding: 50px 0;
-				font-weight: bold;
-			}
-			.ap-col {
-				text-align: center;
-			}
-			.ap-facebook-page,
-			.ap-twitter-timeline {
-				border: 1px solid grey !important;
-			}
-		}
-
-
-		/* SECTION 6: EXPERIENCE
-		 * ******************************************************************************/
-		&.ap-app-experience {
-			background: url('/assets/images/auxpro-land-image3.png');
-			background-size: cover; 
-			padding: 30px 0 60px 0;
-
-			.ap-app-experience-content {
-				background: rgba(255,255,255,0.8);
-				text-align: center;
-				padding: 10px 15px 15px 15px;
-
-				h2 {
-					text-transform: uppercase;
-					font-weight: bold;
-				}
-
-				.ap-land-link {
-					display: block;
-				}
-
-				.ap-social-links {
-					display: flex;
-					justify-content: space-around;
-					padding: 10px 25px;
-					a {
-						height: 40px;
-
-						img {
-							height: 100%;
-						}
-						&:hover {							
-							filter: brightness(70%);
-						}
-
-						&.ap-link-youtube {
-							overflow: hidden;
-							img {
-								height: 130%;
-								margin-top: -12%;
-							}
-						}
-					}
-				}
-			}
-		}
-	}	
+    .ap-app-land-section {
+        text-align: center;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        .ap-app-land-section-content {
+            padding: 20px 15px 25px 15px;
+            display: inline-block;
+        }        
+        .ap-app-land-section-right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            .ap-app-land-section-content {
+                padding: 20px 15px 20px 0;
+                display: inline-block;
+            }
+        }
+        .ap-app-land-section-left {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            .ap-app-land-section-content {
+                padding: 20px 0 25px 15px;
+                display: inline-block;
+            }
+        }
+    }
 }
 
-/* Small devices (tablets, 768px and up) */
 @media only screen and (min-width: $screen-sm-min) {
-	.ap-app-land {
-		h1 {
-			font-size: 35px;
-		}
-		h2 {
-			font-size: 25px;
-		}
-		.ap-app-land-section {
-			&.ap-app-platform {
-				padding: 20px 0;
-				.row-buttons {
-					margin-top: 30px;
-				}
-				.column-button1 {
-					text-align: right;
-				}
-				.column-button2 {
-					text-align: left;
-				}
-
-				.ap-link {
-					width: 150px;
-					margin: 0;
-				}
-			}
-			&.ap-app-tool {
-				.col-content {
-					text-align: initial;
-				}
-			}
-		}
-	}
-
+    .ap-app-land {
+        .ap-app-land-section {
+            .ap-app-land-section-content {
+                width: 720px;
+            }
+            .ap-app-land-section-right {
+                text-align: right;
+                .ap-app-land-section-content {
+                   width: 360px;
+                }
+            }
+            .ap-app-land-section-left {
+                text-align: left;
+                .ap-app-land-section-content {
+                   width: 360px;
+                }
+            }
+        }
+    }
 }
 
-/* Medium devices (desktops, 992px and up) */
 @media only screen and (min-width: $screen-md-min) {
-	.ap-app-land {
-		h1 {
-			font-size: 40px;
-		}
-		h2 {
-			font-size: 30px;
-		}
-		h3 {
-			font-weight: bold;
-			font-size: 16px;
-		}
-		p {
-			font-size: 15px;	
-		}
-		.ap-app-land-section {
-			&.ap-app-platform {
-				padding: 40px 0;
-				.row-buttons {
-					margin-top: 40px;
-				}
-			}
-			&.ap-app-discover {
-				background: none;
-				.ap-row {
-					display: flex;
-					align-items: center;
-					.col-content {
-						>div {	
-							text-align: left;
-							.ap-link {
-								width: 150px;
-							}
-						}
-					}
-				}
-			}
-			&.ap-app-video {
-				padding: 40px 0;
-				.ap-row {
-					display: flex;
-					align-items: center;
-				}
-				.col-content {
-					padding-top: 0;
-					padding-left: 35px;
-					text-align: initial;
-				}
-			}
-			&.ap-app-tool {
-				.ap-container {
-					display: flex;
-					align-items: center;
-					.col-content {
-						margin-top: -25px;
-						margin-right: 25px;
-					}
-				}
-			}
-			&.ap-app-experience {
-				padding: 40px 0 100px 0;
-				.ap-app-experience-content {
-					padding: 20px 0 60px 0;
-					text-align: left;
-					.ap-land-link {
-						display: inline-block;
-					}
-					.ap-social-links {
-						height: 50px;
-						padding: 5px 0;
-						display: inline-block;
-						padding: 0;
-						a {
-							margin-left: 25px;
-							&.ap-link-youtube {
-								img {
-									margin: 0;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+    .ap-app-land {
+        .ap-app-land-section {
+            .ap-app-land-section-content {
+                width: 940px;
+            }
+            .ap-app-land-section-right {
+                text-align: right;
+                .ap-app-land-section-content {
+                   width: 470px;
+                }
+            }
+            .ap-app-land-section-left {
+                text-align: left;
+                .ap-app-land-section-content {
+                   width: 470px;
+                }
+            }
+        }
+    }
 }
-
-/* Large devices (large desktops, 1200px and up) */
 @media only screen and (min-width: $screen-lg-min) {
-	.ap-app-land {
-		h1 {
-			font-size: 50px;
-			
-		}
-		h2 {
-			font-size: 34px;
-		}
-		h3 {
-			font-weight: bold;
-			font-size: 17px;
-		}
-		p {
-			font-size: 16px;	
-		}
-		.ap-app-land-section {
-			&.ap-app-platform {
-				padding: 60px 0;
-				.row-buttons {
-					margin-top: 50px;
-				}
-			}
-			&.ap-app-experience {
-				padding: 80px 0 200px 0;
-			}
-		}		
-	}
+    .ap-app-land {
+        .ap-app-land-section {
+            .ap-app-land-section-content {
+                width: 1140px;
+            }
+            .ap-app-land-section-right {
+                text-align: right;
+                .ap-app-land-section-content {
+                   width: 570px;
+                }
+            }
+            .ap-app-land-section-left {
+                text-align: left;
+                .ap-app-land-section-content {
+                   width: 570px;
+                }
+            }
+        }
+    }
 }
