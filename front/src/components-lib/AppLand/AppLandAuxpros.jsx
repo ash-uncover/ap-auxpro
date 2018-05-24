@@ -32,7 +32,7 @@ class AppLandAuxpros extends React.Component {
                         </div>
                     </div>
                     <div className='hidden-xs buttons'>
-                        <Link href='/auth/register/service'>
+                        <Link href='/auth/register/auxiliary'>
                             Je veux recevoir des offres
                         </Link>
                     </div>
