@@ -3,6 +3,8 @@ const path = require('path');
 const paths = {
     DIST: path.resolve(__dirname, 'dist'),
     NODE_MODULES: path.resolve(__dirname, 'node_modules'),
+    AP_FLUX: path.resolve(__dirname, 'node_modules/ap-flux'),
+    AP_REACT_BOOTSTRAP: path.resolve(__dirname, 'node_modules/ap-react-bootstrap'),
     SRC: path.resolve(__dirname, 'src')
 }
 
@@ -39,6 +41,11 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
+                include: [
+                    paths.SRC,
+                    paths.AP_FLUX,
+                    paths.AP_REACT_BOOTSTRAP
+                ],
                 use: [ 'babel-loader' ]
             },
             { 
