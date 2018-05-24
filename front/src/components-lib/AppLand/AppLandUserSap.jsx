@@ -59,7 +59,7 @@ class AppLandUserSap extends React.Component {
                         </div>
                     </div>
                     <div className='button'>
-                        <Link href='/'>
+                        <Link href='/auth/register/service'>
                             Lancer le matching
                         </Link>
                     </div>

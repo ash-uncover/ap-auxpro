@@ -20,6 +20,7 @@
         .image {
             margin-top: 20px;
             max-width: 300px;
+            pointer: cursor;
             img {
                 max-width: 80%;
                 border-radius: 15px;
@@ -32,6 +33,8 @@
                 }
             }
             p {
+                text-decoration: none;
+                color: $ap-alt2-color;
                 text-transform: uppercase;
                 line-height: 1.6rem;
                 font-weight: bold;

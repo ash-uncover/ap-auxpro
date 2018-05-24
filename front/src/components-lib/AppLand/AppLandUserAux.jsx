@@ -59,8 +59,8 @@ class AppLandUserAux extends React.Component {
                         </div>
                     </div>
                     <div className='button'>
-                        <Link href='/'>
-                            J'ai besoin d'intervenant.e.s
+                        <Link href='/auth/register/auxiliary'>
+                            Je veux trouver du travail
                         </Link>
                     </div>
                 </div>

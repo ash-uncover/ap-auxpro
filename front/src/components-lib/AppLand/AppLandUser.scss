@@ -11,9 +11,9 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
+            justify-content: center;
             .ap-app-land-section-content {
                 width: 100%;
-                padding-bottom: 80%;
                 position: relative;
                 .title-big {
                     position: absolute;
@@ -35,6 +35,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
+            padding: 40px 0 40px 15px;
         }
     }
 
@@ -46,15 +47,16 @@
             display: flex;
             justify-content: center;
             align-items: flex-end;
+            padding: 40px 15px 40px 0;
         }
         .ap-app-land-section-left {
             background-image: url('/assets/images/land/img_aux.png');
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
+            justify-content: center;
             .ap-app-land-section-content {
                 width: 100%;
-                padding-bottom: 80%;
                 position: relative;
                 .title-big {
                     position: absolute;
@@ -132,7 +134,7 @@
 }
 
 @media only screen and (min-width: $screen-sm-min) {
-    .ap-app-land {
+    .app-land-user {
         .title-big {
             font-size: 3rem;
         }
@@ -160,7 +162,7 @@
     }
 }
 @media only screen and (min-width: $screen-md-min) {
-    .ap-app-land {
+    .app-land-user {
         .title-big {
             font-size: 4rem;
         }
@@ -188,28 +190,21 @@
     }
 }
 @media only screen and (min-width: $screen-lg-min) {
-    .ap-app-land {
+    .app-land-user {
         .title-big {
             font-size: 5rem;
         }
-        .ap-app-land-section-content {
-            .items {
-                .item {
-                    .item-icon {
-                        img {
-                            width: 2.8rem;
-                            height: 2.8rem;
-                        }
-                    }
-                    .item-content {
-                        h2 {
-                            font-size: 3.5rem;
-                        }
-                        p {
-                            margin: 10px 0 25px 0;
-                            font-size: 2rem;
-                        }
-                    }
+        &.sap {
+            .ap-app-land-section-left {
+                .ap-app-land-section-content {
+                    width: 100%;
+                }
+            }
+        }
+        &.aux {
+            .ap-app-land-section-right {
+                .ap-app-land-section-content {
+                    width: 100%;
                 }
             }
         }

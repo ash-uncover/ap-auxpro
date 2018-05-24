@@ -16,12 +16,16 @@ class AppLandAdvantages extends React.Component {
                     </h1>
                     <div className='images'>
                         <div className='image'>
-                            <img className='aux' src='assets/images/land-avantages/button_aux1.png' />
-                            <p>Pour les intervenant.e.s</p>
+                            <Link href='/infos/services/auxiliary'>
+                                <img className='aux' src='assets/images/land-avantages/button_aux1.png' />
+                                <p>Pour les intervenant.e.s</p>
+                            </Link>
                         </div>
                         <div className='image'>
-                            <img className='sap' src='assets/images/land-avantages/button_sap1.png' />
-                            <p>Pour les services à la personne</p>
+                            <Link href='/infos/services/service'>
+                                <img className='sap' src='assets/images/land-avantages/button_sap1.png' />
+                                <p>Pour les services à la personne</p>
+                            </Link>
                         </div>
                     </div>
                 </div>

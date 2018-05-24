@@ -21,8 +21,11 @@
         display: flex;
         justify-content: center;
         .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             img {
-                max-width: 55%;
+                max-width: 40%;
             }
             p {
                 line-height: 1.6rem;
@@ -69,8 +72,8 @@
             padding: 25px 0;
             .icon {
                 p {
-                    font-size: 2.5rem;
-                    line-height: 3rem;
+                    font-size: 2.3rem;
+                    line-height: 2.8rem;
                     max-width: 220px;
                     display: inline-block;
                 }
