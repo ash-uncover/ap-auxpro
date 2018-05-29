@@ -59,7 +59,12 @@ class FacebookPage extends BaseComponent {
 	}
 
 	_facebookLoaded() {
-		FB && FB.XFBML && FB.XFBML.parse()
+        try {
+            FB && FB.XFBML && FB.XFBML.parse()
+        } catch (error) {
+            
+        }
+		
 	}
 
 	componentDidMount() {
