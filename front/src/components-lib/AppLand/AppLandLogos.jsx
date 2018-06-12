@@ -1,24 +1,46 @@
 import React from 'react'
 import './AppLandLogos.scss'
 
-const LOGOS = [
-    {
-        src: 'logo_adjacent_services',
-        link: ''
-    }, {
-        src: 'logo_cap92',
-        link: 'http://cap-92.fr/'
-    }, {
-        src: 'logo_adpi',
-        link: 'https://www.adpiformation.fr/'
-    }
-]
-
 const getLogoPath = (logo) => {
     return `assets/images/logos/${logo}.jpg`
 }
 
 class AppLandLogos extends React.Component {
+
+    constructor() {
+        super(...arguments)
+
+        this.state = { 
+            error: true,
+            logos: []
+        }
+
+        this.onLoad = this.onLoad.bind(this)
+        this.onError = this.onError.bind(this)
+
+        $.ajax({
+            url: '/assets/images/logos/logos.json',
+            dataType: 'json',
+            success: this.onLoad,
+            error: this.onError
+        })
+
+    }
+
+    onLoad(response) {
+        this.setState({
+            error: false,
+            logos: response
+        })
+    }
+    onError() {
+        this.setState({ 
+            error: true,
+            logos: []
+        })
+    }
+
+    /* RENDERING */
 
     buildLogo(logo, index) {
         if (logo.link) {
@@ -42,11 +64,14 @@ class AppLandLogos extends React.Component {
     }
 
     render() {
+        if (this.state.error) {
+            return null
+        }
         return (
             <div className='ap-app-land-section app-land-logos'>
                 <div className='ap-app-land-section-content'>
                     <h1 className='title'>ILS NOUS FONT CONFIANCE</h1>
-                    {LOGOS.map(this.buildLogo)}
+                    {this.state.logos.map(this.buildLogo)}
                 </div>
             </div>
         )
