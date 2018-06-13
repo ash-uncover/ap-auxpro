@@ -14,11 +14,13 @@ class AccountEditPasswordChangeData extends BaseData {
 
 		this.declareFunction('isSubmitDisabled')
 
-		ErrorHelper.register('PUT_AUTH_PASSWORD', this, this.handlePutAuthPasswordError.bind(this))
+        this.handlePutAuthPasswordError = this.handlePutAuthPasswordError.bind(this)
+
+		ErrorHelper.register('PUT_AUTH_PASSWORD', this.handlePutAuthPasswordError)
 	}
 
 	unregister() {
-		ErrorHelper.unregister(this)
+		ErrorHelper.unregister('PUT_AUTH_PASSWORD', this.handlePutAuthPasswordError)
 	}
 
 

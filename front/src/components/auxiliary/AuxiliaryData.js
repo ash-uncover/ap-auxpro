@@ -94,11 +94,12 @@ class AuxiliaryData extends BaseData {
 			console.error(error)
 		})
 
-		AppHelper.register('/path', this, this._onAppStorePathUpdate.bind(this));
+        this.onAppStorePathUpdate = this._onAppStorePathUpdate.bind(this)
+		AppHelper.register('/path', this.onAppStorePathUpdate)
 	}
 
 	unregister() {
-		AppHelper.unregister(this)
+		AppHelper.unregister('/path', this.onAppStorePathUpdate)
 	}
 
 	_onAppStorePathUpdate() {

@@ -40,14 +40,17 @@ class ServiceInterventionsData extends BaseData {
 		this.declareFunction('onViewCustomer')
 		this.declareFunction('onViewAuxiliary')
 
-		InterventionHelper.register('', this, this.onInterventionsUpdate.bind(this))
-		OfferHelper.register('', this, this.onInterventionsUpdate.bind(this))
+        this.onInterventionsUpdate = this.onInterventionsUpdate.bind(this)
+
+		InterventionHelper.register('', this.onInterventionsUpdate)
+		OfferHelper.register('', this.onInterventionsUpdate)
 
 		this._onInterventionsUpdate()
 	}
 
 	unregister() {
-		InterventionHelper.unregister(this)
+		InterventionHelper.unregister('', this.onInterventionsUpdate)
+        OfferHelper.unregister('', this.onInterventionsUpdate)
 	}
 
 

@@ -5,12 +5,12 @@ import AuthHelper from 'helpers/AuthHelper'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class MissionHelper {
 
-	register(id, obj, callback) {
-		StoreRegistry.register('REST_STORE/mission' + (id ? '/' + id : ''), obj, callback);
+	register(id, callback) {
+		StoreRegistry.register('REST_STORE', 'mission' + (id ? '/' + id : ''), callback)
 	}
 
-	unregister(obj) {
-		StoreRegistry.unregister('REST_STORE', obj);
+	unregister(id, callback) {
+		StoreRegistry.unregister('REST_STORE', 'mission' + (id ? '/' + id : ''), callback)
 	}
 
 	getAuxiliaryMissions(auxiliaryId, query) {

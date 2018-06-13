@@ -159,14 +159,22 @@ class ServiceCustomerEditData extends BaseData {
         this.loadCustomer(CustomerHelper.getData(this.customerId) || {})
         this.checkCustomer()
 
-        ErrorHelper.register('GET_CUSTOMER', this, this.handleGetCustomerError.bind(this))
-        ErrorHelper.register('POST_CUSTOMER', this, this.handlePostCustomerError.bind(this))
-        ErrorHelper.register('PUT_CUSTOMER', this, this.handlePutCustomerError.bind(this))
-        ErrorHelper.register('DELETE_CUSTOMER', this, this.handleDeleteCustomerError.bind(this))    
+        this.handleGetCustomerError = this.handleGetCustomerError.bind(this)
+        this.handlePostCustomerError = this.handlePostCustomerError.bind(this)
+        this.handlePutCustomerError = this.handlePutCustomerError.bind(this)
+        this.handleDeleteCustomerError = this.handleDeleteCustomerError.bind(this)
+
+        ErrorHelper.register('GET_CUSTOMER', this.handleGetCustomerError)
+        ErrorHelper.register('POST_CUSTOMER', this.handlePostCustomerError)
+        ErrorHelper.register('PUT_CUSTOMER', this.handlePutCustomerError)
+        ErrorHelper.register('DELETE_CUSTOMER', this.handleDeleteCustomerError)
     }
 
     unregister() {
-        ErrorHelper.unregister(this)
+        ErrorHelper.unregister('GET_CUSTOMER', this.handleGetCustomerError)
+        ErrorHelper.unregister('POST_CUSTOMER', this.handlePostCustomerError)
+        ErrorHelper.unregister('PUT_CUSTOMER', this.handlePutCustomerError)
+        ErrorHelper.unregister('DELETE_CUSTOMER', this.handleDeleteCustomerError)
     }
 
 

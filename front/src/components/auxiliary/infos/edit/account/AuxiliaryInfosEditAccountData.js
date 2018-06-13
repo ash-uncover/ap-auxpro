@@ -15,13 +15,14 @@ class AuxiliaryInfosEditAccountData extends BaseData {
 
 		this.declareFunction('isSubmitDisabled')
 
-		AuxiliaryHelper.register(AuthHelper.getEntityId(), this, this.onAuxiliaryUpdate.bind(this))
+        this.onAuxiliaryUpdate = this.onAuxiliaryUpdate.bind(this)
+		AuxiliaryHelper.register(AuthHelper.getEntityId(), this.onAuxiliaryUpdate)
 
 		this.onAuxiliaryUpdate()
 	}
 
 	unregister() {
-		AuxiliaryHelper.unregister(this)
+		AuxiliaryHelper.unregister(AuthHelper.getEntityId(), this.onAuxiliaryUpdate)
 	}
 
 

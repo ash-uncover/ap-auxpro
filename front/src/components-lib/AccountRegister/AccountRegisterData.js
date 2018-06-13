@@ -14,23 +14,22 @@ class AccountRegisterData extends React.Component {
 		this.state = {}
 
 		this.onSubmit = this._onSubmit.bind(this)
+        this.forceUpdate = this.forceUpdate.bind(this)
 	}
 
 	/* Component lifecycle */
 
 	componentWillMount() {
-		ErrorHelper.register(this.props.action, this, this.forceUpdate.bind(this))
+		ErrorHelper.register(this.props.action, this.forceUpdate)
 	}
 
 	componentWillUnmount() {
-		ErrorHelper.unregister(this)
+		ErrorHelper.register(this.props.action, this.forceUpdate)
 	}
 
 	/* View callbacks */
 
 	_onSubmit(data) {
-		console.log('----------------')
-		console.log(data)
 		AppHelper.setBusy(true)
 		.then(() => this.props.helper({
 			username: data.email,

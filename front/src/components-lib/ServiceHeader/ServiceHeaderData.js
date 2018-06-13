@@ -16,11 +16,12 @@ class ServiceHeaderData extends BaseData {
 
 		this._onServiceUpdate()
 
-		ServiceHelper.register(AuthHelper.getEntityId(), this, this._onServiceUpdate.bind(this))
+        this.onServiceUpdate = this._onServiceUpdate.bind(this)
+		ServiceHelper.register(AuthHelper.getEntityId(), this.onServiceUpdate)
 	}
 
 	unregister() {
-		ServiceHelper.unregister(this)
+		ServiceHelper.unregister(AuthHelper.getEntityId(), this.onServiceUpdate)
 	}
 
 	_onServiceUpdate() {

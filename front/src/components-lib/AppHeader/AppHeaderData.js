@@ -11,13 +11,17 @@ class AppHeaderData extends BaseData {
 
 		this._onAuthChanged()
 
-		AuthHelper.register('', this, this._onAuthChanged.bind(this))
+        this.onAuthChanged = this._onAuthChanged.bind(this)
+        this.onAuxiliaryChanged = this._onAuxiliaryChanged.bind(this)
+        this.onServiceChanged = this._onServiceChanged.bind(this)
+
+		AuthHelper.register('', this.onAuthChanged)
 	}
 
 	unregister() {
-		AuthHelper.unregister(this)
-		AuxiliaryHelper.unregister(this)
-		ServiceHelper.unregister(this)
+		AuthHelper.unregister('', this.onAuthChanged)
+		AuxiliaryHelper.unregister(AuthHelper.getEntityId(), this.onAuxiliaryChanged)
+		ServiceHelper.unregister(AuthHelper.getEntityId(), this.onServiceChanged)
 	}
 
 	_onAuthChanged() {
@@ -27,12 +31,12 @@ class AppHeaderData extends BaseData {
 			switch (AuthHelper.getType()) {
 			case 'auxiliary':
 				this._onAuxiliaryChanged()
-				AuxiliaryHelper.register(AuthHelper.getEntityId(), this, this._onAuxiliaryChanged.bind(this))
+				AuxiliaryHelper.register(AuthHelper.getEntityId(), this.onAuxiliaryChanged)
 				this.setState({ authType: 'auxiliary' })
 				break
 			case 'service':
 				this._onServiceChanged()
-				ServiceHelper.register(AuthHelper.getEntityId(), this, this._onServiceChanged.bind(this))
+				ServiceHelper.register(AuthHelper.getEntityId(), this.onServiceChanged)
 				this.setState({ authType: 'service' })
 				break
 			default:

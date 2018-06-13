@@ -12,13 +12,14 @@ class FAQData extends BaseData {
 
 		this._onHelpfaqUpdate()
 
-		HelpfaqHelper.register('', this, this.onHelpfaqUpdate.bind(this))
+        this.onHelpfaqUpdate = this.onHelpfaqUpdate.bind(this)
+		HelpfaqHelper.register('', this.onHelpfaqUpdate)
 
 		HelpfaqHelper.getHelpFaqs()
 	}
 
 	unregister() {
-		HelpfaqHelper.unregister(this)
+		HelpfaqHelper.unregister('', this.onHelpfaqUpdate)
 	}
 
 

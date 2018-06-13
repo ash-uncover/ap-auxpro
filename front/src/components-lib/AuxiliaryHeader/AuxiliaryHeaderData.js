@@ -15,11 +15,12 @@ class AuxiliaryHeaderData extends BaseData {
 		
 		this._onAuxiliaryUpdate()
 
-		AuxiliaryHelper.register(AuthHelper.getEntityId(), this, this._onAuxiliaryUpdate.bind(this))
+        this.onAuxiliaryUpdate = this._onAuxiliaryUpdate.bind(this)
+		AuxiliaryHelper.register(AuthHelper.getEntityId(), this.onAuxiliaryUpdate)
 	}
 
 	unregister() {
-		AuxiliaryHelper.unregister(this)
+		AuxiliaryHelper.unregister(AuthHelper.getEntityId(), this.onAuxiliaryUpdate)
 	}
 
 	_onAuxiliaryUpdate() {

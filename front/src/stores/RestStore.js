@@ -7,7 +7,7 @@ var ImageStore = new StoreBase ({ name: 'IMAGE_STORE', content: {} })
 var RestStore = new StoreBase ({ name: 'REST_STORE', content: {} })
 
 AuthStore.handleGetAuth = function(result, params) {
-	let content = AuthStore.getContent()
+	let content = AuthStore.content
 	content.entityId = result.entityId
 	content.username = result.username
 	content.email = result.email
@@ -18,13 +18,13 @@ AuthStore.handleGetAuth = function(result, params) {
 }
 
 AuthStore.handleLogout = function(result, params) {
-	AuthStore.setContent({})
+	AuthStore.content = {}
 	AuthStore.removeFromLocalStorage()
 	AuthStore.notify()
 }
 
 AuthStore.handlePutPassword = function(result, params) {
-	let content = AuthStore.getContent()
+	let content = AuthStore.content
 	content.token = Utils.encode(content.username, params.data.password)
 	AuthStore.storeToLocalStorage()
 	AuthStore.notify()
@@ -39,152 +39,152 @@ ImageStore.handleGetImage = function(result, params) {
 	}
 	let btoaResult = btoa(strings.join(''))
 	let source = 'data:' + result.type + ';base64,' + btoaResult
-	let content = ImageStore.getContent()
+	let content = ImageStore.content
 	content[params.id] = source
-	ImageStore.notifyPath('/' + params.id)
+	ImageStore.notify('/' + params.id)
 }
 
 RestStore.handleLogout = function(results, params) {
-	RestStore.setContent({});
+	RestStore.content = {}
 }
 
 RestStore.handleGetAuxiliarys = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.auxiliary = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.auxiliary[result[i].id] = result[i];
-	RestStore.notifyPath('/auxiliary')
+	RestStore.notify('/auxiliary')
 }
 
 RestStore.handleGetAuxiliary = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	if (!content.auxiliary)
 		content.auxiliary = {};
 	content.auxiliary[result.id] = result;
-	RestStore.notifyPath('/auxiliary/' + result.id)
+	RestStore.notify('/auxiliary/' + result.id)
 }
 
 RestStore.handleGetAuxiliaryServices = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.service = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.service[result[i].id] = result[i];
-	RestStore.notifyPath('/service')
+	RestStore.notify('/service')
 }
 
 RestStore.handleGetAuxiliaryCustomers = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.customer = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.customer[result[i].id] = result[i];
-	RestStore.notifyPath('/customer')
+	RestStore.notify('/customer')
 }
 
 RestStore.handleGetAuxiliaryInterventions = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.intervention = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.intervention[result[i].id] = result[i];
-	RestStore.notifyPath('/intervention')
+	RestStore.notify('/intervention')
 }
 
 RestStore.handleGetAuxiliaryOffers = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.offer = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.offer[result[i].id] = result[i];
-	RestStore.notifyPath('/offer')
+	RestStore.notify('/offer')
 }
 
 RestStore.handleGetAuxiliaryMissions = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.mission = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.mission[result[i].id] = result[i];
-	RestStore.notifyPath('/mission')
+	RestStore.notify('/mission')
 }
 
 RestStore.handleGetAuxiliaryIndisponibilitys = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.indisponibility = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.indisponibility[result[i].id] = result[i];
-	RestStore.notifyPath('/indisponibility')
+	RestStore.notify('/indisponibility')
 }
 
 RestStore.handleGetAuxiliaryGeozones = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.geozone = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.geozone[result[i].id] = result[i];
-	RestStore.notifyPath('/geozone')
+	RestStore.notify('/geozone')
 }
 
 RestStore.handleGetCustomer = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	if (!content.customer)
 		content.customer = {};
 	content.customer[result.id] = result;
-	RestStore.notifyPath('/customer/' + result.id)
+	RestStore.notify('/customer/' + result.id)
 }
 
 RestStore.handleGetCustomerInterventions = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.intervention = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.intervention[result[i].id] = result[i];
-	RestStore.notifyPath('/intervention')
+	RestStore.notify('/intervention')
 }
 
 RestStore.handleGetGeozone = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	if (!content.geozone)
 		content.geozone = {};
 	content.geozone[result.id] = result;
-	RestStore.notifyPath('/geozone/' + result.id)
+	RestStore.notify('/geozone/' + result.id)
 }
 
 RestStore.handleGetHelpTopics = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.helptopic = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.helptopic[result[i].id] = result[i];
-	RestStore.notifyPath('/helptopic')
+	RestStore.notify('/helptopic')
 }
 
 RestStore.handleGetHelpFaqs = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.helpfaq = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.helpfaq[result[i].id] = result[i];
-	RestStore.notifyPath('/helpfaq')
+	RestStore.notify('/helpfaq')
 }
 
 RestStore.handleGetIndisponibility = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	if (!content.indisponibility)
 		content.indisponibility = {};
 	content.indisponibility[result.id] = result;
-	RestStore.notifyPath('/indisponibility/' + result.id)
+	RestStore.notify('/indisponibility/' + result.id)
 }
 
 RestStore.handleGetIntervention = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	if (!content.intervention)
 		content.intervention = {};
 	content.intervention[result.id] = result;
-	RestStore.notifyPath('/intervention/' + result.id)
+	RestStore.notify('/intervention/' + result.id)
 }
 
 RestStore.handleGetInterventionMatch = function(result, params) {
@@ -192,81 +192,81 @@ RestStore.handleGetInterventionMatch = function(result, params) {
 }
 
 RestStore.handleGetMission = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	if (!content.mission)
 		content.mission = {};
 	content.mission[result.id] = result;
-	RestStore.notifyPath('/mission/' + result.id)
+	RestStore.notify('/mission/' + result.id)
 }
 
 RestStore.handleGetOffer = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	if (!content.offer)
 		content.offer = {};
 	content.offer[result.id] = result;
-	RestStore.notifyPath('/offer/' + result.id)
+	RestStore.notify('/offer/' + result.id)
 }
 
 RestStore.handleGetServices = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.service = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.service[result[i].id] = result[i];
-	RestStore.notifyPath('/service')
+	RestStore.notify('/service')
 }
 
 RestStore.handleGetService = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	if (!content.service)
 		content.service = {};
 	content.service[result.id] = result;
-	RestStore.notifyPath('/service/' + result.id)
+	RestStore.notify('/service/' + result.id)
 }
 
 RestStore.handleGetServiceAuxiliarys = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.auxiliary = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.auxiliary[result[i].id] = result[i];
-	RestStore.notifyPath('/auxiliary')
+	RestStore.notify('/auxiliary')
 }
 
 RestStore.handleGetServiceCustomers = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.customer = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.customer[result[i].id] = result[i];
-	RestStore.notifyPath('/customer')
+	RestStore.notify('/customer')
 }
 
 RestStore.handleGetServiceInterventions = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.intervention = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.intervention[result[i].id] = result[i];
-	RestStore.notifyPath('/intervention')
+	RestStore.notify('/intervention')
 }
 
 RestStore.handleGetServiceOffers = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.offer = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.offer[result[i].id] = result[i];
-	RestStore.notifyPath('/offer')
+	RestStore.notify('/offer')
 }
 
 RestStore.handleGetServiceMissions = function(result, params) {
-	let content = RestStore.getContent()
+	let content = RestStore.content
 	content.mission = {};
 	if (result && result.length)
 		for (var i = 0; i < result.length; i++)
 			content.mission[result[i].id] = result[i];
-	RestStore.notifyPath('/mission')
+	RestStore.notify('/mission')
 }
 
 Dispatcher.register('GET_AUTH', AuthStore.handleGetAuth)

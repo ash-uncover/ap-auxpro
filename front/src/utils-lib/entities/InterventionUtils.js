@@ -21,7 +21,7 @@ class InterventionUtils {
     static storeInterventionMatch(result, params) {
         let intervention = InterventionHelper.getData(params.id)
         intervention.match = result
-        StoreRegistry.getStore('REST_STORE').notifyPath('intervention/' + params.id)    
+        StoreRegistry.getStore('REST_STORE').notify('intervention/' + params.id)    
     }
 
     static getFieldName(field) {

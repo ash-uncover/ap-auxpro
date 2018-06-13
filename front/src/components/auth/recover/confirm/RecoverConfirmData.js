@@ -49,12 +49,16 @@ class RecoverConfirmData extends BaseData {
 			this.obj.state.state = this.STATES.ASK_ALL
 		}
 
-		ErrorHelper.register('POST_AUTH_RECOVER_CHECK', this, this.onRecoverCodeError.bind(this))
-		ErrorHelper.register('PUT_AUTH_RECOVER', this, this.onRecoverPasswordError.bind(this))
+        this.onRecoverCodeError = this.onRecoverCodeError.bind(this)
+        this.onRecoverPasswordError = this.onRecoverPasswordError.bind(this)
+
+		ErrorHelper.register('POST_AUTH_RECOVER_CHECK', this.onRecoverCodeError)
+		ErrorHelper.register('PUT_AUTH_RECOVER', this.onRecoverPasswordError)
 	}
 
 	unregister() {
-		ErrorHelper.unregister()
+        ErrorHelper.unregister('POST_AUTH_RECOVER_CHECK', this.onRecoverCodeError)
+        ErrorHelper.unregister('PUT_AUTH_RECOVER', this.onRecoverPasswordError)
 	}
 
 	onChangeNoError() {

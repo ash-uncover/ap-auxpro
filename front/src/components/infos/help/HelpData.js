@@ -12,13 +12,14 @@ class HelpData extends BaseData {
 
 		this._onHelptopicUpdate()
 
-		HelptopicHelper.register('', this, this.onHelptopicUpdate.bind(this))
+        this.onHelptopicUpdate = this.onHelptopicUpdate.bind(this)
+		HelptopicHelper.register('', this.onHelptopicUpdate)
 
 		HelptopicHelper.getHelpTopics()
 	}
 
 	unregister() {
-		HelptopicHelper.unregister(this)
+		HelptopicHelper.unregister('', this.onHelptopicUpdate)
 	}
 
 

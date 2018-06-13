@@ -11,7 +11,7 @@
     "watch": "webpack-dev-server --progress --colors --history-api-fallback"
   },
   "dependencies": {
-    "ap-flux": "git+https://github.com/ash-uncover/ap-flux.git",
+    "ap-flux": "^0.0.14",
     "ap-react-bootstrap": "git+https://github.com/ash-uncover/ap-react-bootstrap.git",
     "ap-validators": "^0.0.71",
     "bootstrap": "^3.3.7",

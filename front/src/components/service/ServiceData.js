@@ -81,11 +81,12 @@ class ServiceData extends BaseData {
 			console.error(error)
 		})
 
-		AppHelper.register('/path', this, this._onAppStorePathUpdate.bind(this));
+        this._onAppStorePathUpdate = this._onAppStorePathUpdate.bind(this)
+		AppHelper.register('/path', this._onAppStorePathUpdate)
 	}
 
 	unregister() {
-		AppHelper.unregister(this)
+		AppHelper.unregister('/path', this._onAppStorePathUpdate)
 	}
 
 	_onAppStorePathUpdate() {

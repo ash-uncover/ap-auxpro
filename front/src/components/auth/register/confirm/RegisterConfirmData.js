@@ -47,10 +47,12 @@ class RegisterConfirmData extends BaseData {
 			this.obj.state.state = this.STATES.ASK_ALL
 		}
 		
-		ErrorHelper.register('POST_AUTH_REGISTER', this, this.onRegisterError.bind(this))
+        this.onRegisterError = this.onRegisterError.bind(this)
+		ErrorHelper.register('POST_AUTH_REGISTER', this.onRegisterError)
 	}
 
 	unregister() {
+        ErrorHelper.unregister('POST_AUTH_REGISTER',this.onRegisterError)
 	}
 
 	onChangeNoError() {

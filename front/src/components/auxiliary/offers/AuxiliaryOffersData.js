@@ -40,11 +40,12 @@ class AuxiliaryOffersData extends BaseData {
 			filterState: OfferStatus.RECEIVED
 		})
 
-		OfferHelper.register('', this, this.onOffersUpdate.bind(this))
+        this.onOffersUpdate = this.onOffersUpdate.bind(this)
+		OfferHelper.register('', this.onOffersUpdate)
 	}
 
 	unregister() {
-		OfferHelper.unregister(this)
+		OfferHelper.unregister('', this.onOffersUpdate)
 	}
 
 

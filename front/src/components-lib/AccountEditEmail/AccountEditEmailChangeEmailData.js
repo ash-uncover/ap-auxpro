@@ -17,11 +17,12 @@ class AccountEditEmailChangeEmailData extends BaseData {
 			token: token
 		})
 		
-		ErrorHelper.register('PUT_AUTH_CHANGEMAIL', this, this.handleError.bind(this))
+        this.handleError = this.handleError.bind(this)
+		ErrorHelper.register('PUT_AUTH_CHANGEMAIL', this.handleError)
 	}
 
 	unregister() {
-		ErrorHelper.unregister(this)
+		ErrorHelper.unregister('PUT_AUTH_CHANGEMAIL', this.handleError)
 	}
 
 

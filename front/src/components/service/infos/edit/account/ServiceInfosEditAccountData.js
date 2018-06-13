@@ -22,13 +22,14 @@ class ServiceInfosEditAccountData extends BaseData {
 			errorMessage: ''
 		})
 
-		ServiceHelper.register(AuthHelper.getEntityId(), this, this.onServiceUpdate.bind(this))
+        this.onServiceUpdate = this.onServiceUpdate.bind(this)
+		ServiceHelper.register(AuthHelper.getEntityId(), this.onServiceUpdate)
 
 		this.onServiceUpdate()
 	}
 
 	unregister() {
-		ServiceHelper.unregister(this)
+		ServiceHelper.unregister(AuthHelper.getEntityId(), this.onServiceUpdate)
 	}
 
 

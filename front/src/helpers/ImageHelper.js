@@ -5,12 +5,12 @@ import AuthHelper from 'helpers/AuthHelper'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class ImageHelper {
 
-	register(id, obj, callback) {
-		StoreRegistry.register('IMAGE_STORE' + (id ? '/' + id: ''), obj, callback);
+	register(id, callback) {
+		StoreRegistry.register('IMAGE_STORE', (id ? '/' + id: ''), callback)
 	}
 
-	unregister(obj) {
-		StoreRegistry.unregister('IMAGE_STORE', obj);
+	unregister(id, callback) {
+		StoreRegistry.unregister('IMAGE_STORE', (id ? '/' + id: ''), callback)
 	}
 
 	getImage(id) {

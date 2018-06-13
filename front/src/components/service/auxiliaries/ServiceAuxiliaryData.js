@@ -22,11 +22,12 @@ class ServiceAuxiliaryData extends BaseData {
 		this.auxiliaryId = auxiliaryId
 
 		this._onAuxiliaryUpdate()
-		AuxiliaryHelper.register(auxiliaryId, this, this._onAuxiliaryUpdate.bind(this))
+        this.onAuxiliaryUpdate = this._onAuxiliaryUpdate.bind(this)
+		AuxiliaryHelper.register(auxiliaryId, this.onAuxiliaryUpdate)
 	}
 
 	unregister() {
-		AuxiliaryHelper.unregister(this)
+		AuxiliaryHelper.unregister(auxiliaryId, this.onAuxiliaryUpdate)
 	}
 
 	onAuxiliaryUpdate() {

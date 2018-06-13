@@ -29,11 +29,12 @@ class ServiceCustomersData extends BaseData {
 			search: ''
 		})
 
-		CustomerHelper.register('', this, this.onCustomersUpdate.bind(this))
+        this.onCustomersUpdate = this.onCustomersUpdate.bind(this)
+		CustomerHelper.register('', this.onCustomersUpdate)
 	}
 
 	unregister() {
-		CustomerHelper.unregister(this)
+		CustomerHelper.unregister('', this.onCustomersUpdate)
 	}
 
 

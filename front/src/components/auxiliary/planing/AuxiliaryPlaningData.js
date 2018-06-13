@@ -70,11 +70,12 @@ class AuxiliaryPlaningData extends BaseData {
 		this.buildInformation()
 		this.forceUpdate()
 
-		IndisponibilityHelper.register('', this, this.onIndisponibilitiesUpdate.bind(this))
+        this.onIndisponibilitiesUpdate = this.onIndisponibilitiesUpdate.bind(this)
+		IndisponibilityHelper.register('', this.onIndisponibilitiesUpdate)
 	}
 
 	unregister() {
-		IndisponibilityHelper.unregister(this)
+		IndisponibilityHelper.unregister('', this.onIndisponibilitiesUpdate)
 	}
 
 
