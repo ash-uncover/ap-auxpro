@@ -24,7 +24,7 @@ class AccountRegisterData extends React.Component {
 	}
 
 	componentWillUnmount() {
-		ErrorHelper.register(this.props.action, this.forceUpdate)
+		ErrorHelper.unregister(this.props.action, this.forceUpdate)
 	}
 
 	/* View callbacks */
