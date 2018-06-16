@@ -2,7 +2,7 @@ import React from 'react'
 import './AppLandLogos.scss'
 
 const getLogoPath = (logo) => {
-    return `assets/images/logos/${logo}.jpg`
+    return `assets/images/logos/${logo}`
 }
 
 class AppLandLogos extends React.Component {

@@ -1,12 +1,18 @@
 [
     {
-        "src": "logo_adjacent_services",
+        "src": "logo_adjacent_services.png",
         "link": ""
     }, {
-        "src": "logo_cap92",
+        "src": "logo_cap92.png",
         "link": "http://cap-92.fr/"
     }, {
-        "src": "logo_adpi",
+        "src": "logo_adpi.png",
         "link": "https://www.adpiformation.fr/"
+    }, {
+        "src": "logo_epec.png",
+        "link": "https://http://www.epec.paris//"
+    }, {
+        "src": "logo_ass.png",
+        "link": ""
     }
 ]
