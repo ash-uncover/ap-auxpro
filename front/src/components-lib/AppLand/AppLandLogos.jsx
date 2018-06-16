@@ -78,4 +78,10 @@ class AppLandLogos extends React.Component {
     }
 }
 
+AppLandLogos.propTypes = {
+}
+
+AppLandLogos.defaultProps = {
+}
+
 export default AppLandLogos
