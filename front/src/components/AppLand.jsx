@@ -6,6 +6,7 @@ import { Grid } from 'ap-react-bootstrap'
 
 import AppLandAdvantages from 'components-lib/AppLand/AppLandAdvantages'
 import AppLandAuxpros from 'components-lib/AppLand/AppLandAuxpros'
+import AppLandLogos from 'components-lib/AppLand/AppLandLogos'
 import AppLandSeek from 'components-lib/AppLand/AppLandSeek'
 import AppLandSeparator from 'components-lib/AppLand/AppLandSeparator'
 import AppLandSkills from 'components-lib/AppLand/AppLandSkills'
@@ -52,6 +53,7 @@ class AppLand extends React.Component {
                     <AppLandUserSapBig />  
                     <AppLandSkills />
                     <AppLandAdvantages />
+                    <AppLandLogos />
                     <AppLandSocial />
                 </div>
             </div>
