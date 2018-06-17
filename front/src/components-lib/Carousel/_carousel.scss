@@ -57,6 +57,7 @@
             border-radius: 50%;
             outline: none;
             background: lightgrey;
+            pointer-events: none;
             &.current {
                 background: grey;
             }
