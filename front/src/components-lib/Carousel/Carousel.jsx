@@ -80,8 +80,7 @@ class Carousel extends React.Component {
         return (
             <button 
                 key={index} 
-                className={className} 
-                onClick={this.moveToItem.bind(this, index)} />
+                className={className} />
         )
     }
 
