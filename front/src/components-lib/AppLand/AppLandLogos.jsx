@@ -1,19 +1,28 @@
 import React from 'react'
 import './AppLandLogos.scss'
 
+import Carousel from 'components-lib/Carousel/Carousel'
+
 const getLogoPath = (logo) => {
     return `assets/images/logos/${logo}`
 }
 
-class AppLandLogos extends React.Component {
+const ITEMS_PER_SLIDE = 2
+
+class AppLandLogos2 extends React.Component {
 
     constructor() {
         super(...arguments)
 
         this.state = { 
+            previousIndex: 0,
+            currentIndex: 0,
             error: true,
             logos: []
         }
+
+        this.buildLogo = this.buildLogo.bind(this)
+        this.buildLogos = this.buildLogos.bind(this)
 
         this.onLoad = this.onLoad.bind(this)
         this.onError = this.onError.bind(this)
@@ -30,7 +39,14 @@ class AppLandLogos extends React.Component {
     onLoad(response) {
         this.setState({
             error: false,
-            logos: response
+            logos: response.reduce((result, item, index) => {
+                if (index % ITEMS_PER_SLIDE === 0) {
+                    result.push([ item ])
+                } else {
+                    result[result.length - 1].push(item)
+                }
+                return result
+            }, [])
         })
     }
     onError() {
@@ -41,6 +57,14 @@ class AppLandLogos extends React.Component {
     }
 
     /* RENDERING */
+
+    buildLogos(logos, index) {
+        return (
+            <div key={index} className='app-land-logo-group' >
+                {logos.map(this.buildLogo)}
+            </div>
+        )
+    }
 
     buildLogo(logo, index) {
         if (logo.link) {
@@ -71,17 +95,19 @@ class AppLandLogos extends React.Component {
             <div className='ap-app-land-section app-land-logos'>
                 <div className='ap-app-land-section-content'>
                     <h1 className='title'>ILS NOUS FONT CONFIANCE</h1>
-                    {this.state.logos.map(this.buildLogo)}
+                    <Carousel slideInterval={2500} showButtons={true}>
+                        {this.state.logos.map(this.buildLogos)}
+                    </Carousel>
                 </div>
             </div>
         )
     }
 }
 
-AppLandLogos.propTypes = {
+AppLandLogos2.propTypes = {
 }
 
-AppLandLogos.defaultProps = {
+AppLandLogos2.defaultProps = {
 }
 
-export default AppLandLogos
+export default AppLandLogos2
