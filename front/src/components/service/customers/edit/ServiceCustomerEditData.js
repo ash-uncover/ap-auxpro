@@ -21,6 +21,10 @@ class ServiceCustomerEditData extends BaseData {
         super(...arguments)
 
         this.checkField = this._checkField.bind(this)
+        this.handleGetCustomerError = this.handleGetCustomerError.bind(this)
+        this.handlePostCustomerError = this.handlePostCustomerError.bind(this)
+        this.handlePutCustomerError = this.handlePutCustomerError.bind(this)
+        this.handleDeleteCustomerError = this.handleDeleteCustomerError.bind(this)
 
         this.MODES = {
             CREATE: 'CREATE',
@@ -159,10 +163,6 @@ class ServiceCustomerEditData extends BaseData {
         this.loadCustomer(CustomerHelper.getData(this.customerId) || {})
         this.checkCustomer()
 
-        this.handleGetCustomerError = this.handleGetCustomerError.bind(this)
-        this.handlePostCustomerError = this.handlePostCustomerError.bind(this)
-        this.handlePutCustomerError = this.handlePutCustomerError.bind(this)
-        this.handleDeleteCustomerError = this.handleDeleteCustomerError.bind(this)
 
         ErrorHelper.register('GET_CUSTOMER', this.handleGetCustomerError)
         ErrorHelper.register('POST_CUSTOMER', this.handlePostCustomerError)

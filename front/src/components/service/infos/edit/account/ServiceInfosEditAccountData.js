@@ -7,22 +7,27 @@ import { BaseData, Formatters } from 'ap-react-bootstrap'
 
 class ServiceInfosEditAccountData extends BaseData {
 
-	register(obj) {
-		super.register(obj)
-		
-		this.declareFunction('onCancel')
-		this.declareFunction('onSubmit')
-
-		this.declareFunction('isSubmitDisabled')
-
-		this.setState({
-			accountType: null,
-			accountExpiryDate: null,
-			accountCode: '',
-			errorMessage: ''
-		})
-
+    constructor() {
+        super(...arguments)
+        
         this.onServiceUpdate = this.onServiceUpdate.bind(this)
+    }
+
+    register(obj) {
+        super.register(obj)
+        
+        this.declareFunction('onCancel')
+        this.declareFunction('onSubmit')
+
+        this.declareFunction('isSubmitDisabled')
+
+        this.setState({
+            accountType: null,
+            accountExpiryDate: null,
+            accountCode: '',
+            errorMessage: ''
+        })
+
 		ServiceHelper.register(AuthHelper.getEntityId(), this.onServiceUpdate)
 
 		this.onServiceUpdate()

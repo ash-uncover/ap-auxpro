@@ -7,12 +7,16 @@ import { browserHistory } from 'react-router'
 
 class AppData extends BaseData {
 
-    register(obj) {
-        super.register(obj)
-
+    constructor() {
+        super(...arguments)
+        
         this.onAppStorePathUpdate = this._onAppStorePathUpdate.bind(this)
         this.onAppBusyUpdate = this._onAppBusyUpdate.bind(this)
         this.onI18NLoad = this._onI18NLoad.bind(this)
+    }
+
+    register(obj) {
+        super.register(obj)
 
         AppHelper.register('/path', this.onAppStorePathUpdate)
         AppHelper.register('/app/busy', this.onAppBusyUpdate)

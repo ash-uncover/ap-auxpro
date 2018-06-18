@@ -7,15 +7,20 @@ import { BaseData, Formatters } from 'ap-react-bootstrap'
 
 class AuxiliaryInfosEditAccountData extends BaseData {
 
-	register(obj) {
-		super.register(obj)
-		
-		this.declareFunction('onCancel')
-		this.declareFunction('onSubmit')
-
-		this.declareFunction('isSubmitDisabled')
-
+    constructor() {
+        super(...arguments)
+        
         this.onAuxiliaryUpdate = this.onAuxiliaryUpdate.bind(this)
+    }
+
+    register(obj) {
+        super.register(obj)
+        
+        this.declareFunction('onCancel')
+        this.declareFunction('onSubmit')
+
+        this.declareFunction('isSubmitDisabled')
+
 		AuxiliaryHelper.register(AuthHelper.getEntityId(), this.onAuxiliaryUpdate)
 
 		this.onAuxiliaryUpdate()

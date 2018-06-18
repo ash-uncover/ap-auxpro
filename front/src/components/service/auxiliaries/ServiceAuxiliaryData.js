@@ -14,15 +14,20 @@ import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 
 class ServiceAuxiliaryData extends BaseData {
 
-	register(obj, auxiliaryId) {
-		super.register(obj)
-
-		this.declareFunction('onCancel')
-
-		this.auxiliaryId = auxiliaryId
-
-		this._onAuxiliaryUpdate()
+    constructor() {
+        super(...arguments)
+        
         this.onAuxiliaryUpdate = this._onAuxiliaryUpdate.bind(this)
+    }
+
+    register(obj, auxiliaryId) {
+        super.register(obj)
+
+        this.declareFunction('onCancel')
+
+        this.auxiliaryId = auxiliaryId
+
+        this.onAuxiliaryUpdate()
 		AuxiliaryHelper.register(auxiliaryId, this.onAuxiliaryUpdate)
 	}
 

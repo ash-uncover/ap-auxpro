@@ -16,31 +16,36 @@ import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 
 class ServiceInterventionsData extends BaseData {
 
-	register(obj) {
-		super.register(obj)
-		
-		this.declareFunction('onCreateIntervention')
-		this.declareFunction('onEditIntervention')		
-		this.declareFunction('onMatchIntervention')
-		
-		this.declareFunction('onDeleteIntervention')
-		this.declareFunction('onCancelDeleteIntervention')
-		this.declareFunction('onConfirmDeleteIntervention')
-
-		this.declareFunction('onFollowMatching')
-
-		this.declareFunction('onCancelMatching')
-		this.declareFunction('onCancelCancelMatching')
-		this.declareFunction('onConfirmCancelMatching')
-
-		this.declareFunction('onCancelIntervention')
-		this.declareFunction('onCancelCancelIntervention')
-		this.declareFunction('onConfirmCancelIntervention')
-
-		this.declareFunction('onViewCustomer')
-		this.declareFunction('onViewAuxiliary')
-
+    constructor() {
+        super(...arguments)
+        
         this.onInterventionsUpdate = this.onInterventionsUpdate.bind(this)
+    }
+
+    register(obj) {
+        super.register(obj)
+        
+        this.declareFunction('onCreateIntervention')
+        this.declareFunction('onEditIntervention')      
+        this.declareFunction('onMatchIntervention')
+        
+        this.declareFunction('onDeleteIntervention')
+        this.declareFunction('onCancelDeleteIntervention')
+        this.declareFunction('onConfirmDeleteIntervention')
+
+        this.declareFunction('onFollowMatching')
+
+        this.declareFunction('onCancelMatching')
+        this.declareFunction('onCancelCancelMatching')
+        this.declareFunction('onConfirmCancelMatching')
+
+        this.declareFunction('onCancelIntervention')
+        this.declareFunction('onCancelCancelIntervention')
+        this.declareFunction('onConfirmCancelIntervention')
+
+        this.declareFunction('onViewCustomer')
+        this.declareFunction('onViewAuxiliary')
+
 
 		InterventionHelper.register('', this.onInterventionsUpdate)
 		OfferHelper.register('', this.onInterventionsUpdate)

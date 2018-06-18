@@ -27,6 +27,10 @@ class ServiceInterventionEditData extends BaseData {
         super()
 
         this.checkField = this._checkField.bind(this)
+        this.handleGetInterventionError = this.handleGetInterventionError.bind(this)
+        this.handlePostInterventionError = this.handlePostInterventionError.bind(this)
+        this.handlePutInterventionError = this.handlePutInterventionError.bind(this)
+        this.handleDeleteInterventionError = this.handleDeleteInterventionError.bind(this)
 
         this.MODES = {
             CREATE: 'CREATE',
@@ -137,10 +141,6 @@ class ServiceInterventionEditData extends BaseData {
         this.loadIntervention(InterventionHelper.getData(interventionId) || {})
         this.checkIntervention()
 
-        this.handleGetInterventionError = this.handleGetInterventionError.bind(this)
-        this.handlePostInterventionError = this.handlePostInterventionError.bind(this)
-        this.handlePutInterventionError = this.handlePutInterventionError.bind(this)
-        this.handleDeleteInterventionError = this.handleDeleteInterventionError.bind(this)
 
         ErrorHelper.register('GET_INTERVENTION', this.handleGetInterventionError)
         ErrorHelper.register('POST_INTERVENTION', this.handlePostInterventionError)

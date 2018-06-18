@@ -8,28 +8,32 @@ import CustomerUtils from 'utils-lib/entities/CustomerUtils'
 
 class ServiceCustomersData extends BaseData {
 
-	register(obj) {
-		super.register(obj)
-		
-		this.filterCustomers = this._filterCustomers.bind(this)
-
-		this.declareFunction('onSearch')
-
-		this.declareFunction('onCreate')
-
-		this.declareFunction('onView')
-		this.declareFunction('onEdit')
-
-		this.declareFunction('onDelete')
-		this.declareFunction('onCancelDelete')
-		this.declareFunction('onConfirmDelete')
-		
-		this.setState({
-			customers: Utils.map(CustomerHelper.getData()),
-			search: ''
-		})
-
+    constructor() {
+        super(...arguments)
+        
+        this.filterCustomers = this._filterCustomers.bind(this)
         this.onCustomersUpdate = this.onCustomersUpdate.bind(this)
+    }
+
+    register(obj) {
+        super.register(obj)
+        
+        this.declareFunction('onSearch')
+
+        this.declareFunction('onCreate')
+
+        this.declareFunction('onView')
+        this.declareFunction('onEdit')
+
+        this.declareFunction('onDelete')
+        this.declareFunction('onCancelDelete')
+        this.declareFunction('onConfirmDelete')
+        
+        this.setState({
+            customers: Utils.map(CustomerHelper.getData()),
+            search: ''
+        })
+
 		CustomerHelper.register('', this.onCustomersUpdate)
 	}
 

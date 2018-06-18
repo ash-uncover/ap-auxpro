@@ -20,6 +20,10 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
         super(...arguments)
 
         this.checkField = this._checkField.bind(this)
+        this.handleGetIndisponibilityError = this.handleGetIndisponibilityError.bind(this)
+        this.handlePostIndisponibilityError = this.handlePostIndisponibilityError.bind(this)
+        this.handlePutIndisponibilityError = this.handlePutIndisponibilityError.bind(this)
+        this.handleDeleteIndisponibilityError = this.handleDeleteIndisponibilityError.bind(this)
 
         this.MODES = {
             CREATE: 'CREATE',
@@ -105,11 +109,6 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
 
         this.loadIndisponibility(IndisponibilityHelper.getData(this.indisponibilityId) || {})
         this.checkIndisponibility()
-
-        this.handleGetIndisponibilityError = this.handleGetIndisponibilityError.bind(this)
-        this.handlePostIndisponibilityError = this.handlePostIndisponibilityError.bind(this)
-        this.handlePutIndisponibilityError = this.handlePutIndisponibilityError.bind(this)
-        this.handleDeleteIndisponibilityError = this.handleDeleteIndisponibilityError.bind(this)
 
         ErrorHelper.register('GET_INDISPONIBILITY', this.handleGetIndisponibilityError)
         ErrorHelper.register('POST_INDISPONIBILITY', this.handlePostIndisponibilityError)

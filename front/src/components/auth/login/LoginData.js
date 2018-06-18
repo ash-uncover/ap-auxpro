@@ -6,18 +6,22 @@ import { BaseData } from 'ap-react-bootstrap'
 
 class LoginData extends BaseData {
 
-    register(obj) {
-        super.register(obj)
+    constructor() {
+        super(...arguments)
 
         this.onLogon = this.onLogon.bind(this)
         this.onLogonError = this.onLogonError.bind(this)
+    }
+
+    register(obj) {
+        super.register(obj)
 
         AuthHelper.register('', this.onLogon)
         ErrorHelper.register('GET_AUTH', this.onLogonError)
 
         this.obj.onCancel = this.onCancel.bind(this)
         this.obj.onSubmit = this.onSubmit.bind(this)
-
+        
         this.obj.onChangeNoError = this.onChangeNoError.bind(this)
     }
 

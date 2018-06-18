@@ -13,41 +13,42 @@ class RegisterConfirmData extends BaseData {
 			ASK_ALL: 'ASK_ALL',
 			ASK_CODE: 'ASK_CODE',
 			ASK_NONE: 'ASK_NONE'
-		}
-	}
-
-	register(obj, propsData) {
-		super.register(obj)
-		
-		this.obj.onCancel = AppHelper.navigate.bind(AppHelper, '/home')
-		this.declareFunction('onSubmit')
-		this.declareFunction('onChangeNoError')
-
-		let data = {}
-		try {
-			data = JSON.parse(atob(propsData))
-		} catch (error) {
-			console.error('failed to decode data')
-		}
-
-		if (data && data.email && data.token) {
-			this.obj.state.email = data.email
-			this.obj.state.emailSet = true
-			this.obj.state.state = this.STATES.ASK_NONE
-			this.obj.state.token = data.token
-			this.obj.state.tokenSet = true
-			this.onSubmit()
-
-		} else if (data && data.email) {
-			this.obj.state.email = data.email
-			this.obj.state.emailSet = true
-			this.obj.state.state = this.STATES.ASK_CODE
-
-		} else {
-			this.obj.state.state = this.STATES.ASK_ALL
-		}
-		
+        }
+        
         this.onRegisterError = this.onRegisterError.bind(this)
+    }
+
+    register(obj, propsData) {
+        super.register(obj)
+        
+        this.obj.onCancel = AppHelper.navigate.bind(AppHelper, '/home')
+        this.declareFunction('onSubmit')
+        this.declareFunction('onChangeNoError')
+
+        let data = {}
+        try {
+            data = JSON.parse(atob(propsData))
+        } catch (error) {
+            console.error('failed to decode data')
+        }
+
+        if (data && data.email && data.token) {
+            this.obj.state.email = data.email
+            this.obj.state.emailSet = true
+            this.obj.state.state = this.STATES.ASK_NONE
+            this.obj.state.token = data.token
+            this.obj.state.tokenSet = true
+            this.onSubmit()
+
+        } else if (data && data.email) {
+            this.obj.state.email = data.email
+            this.obj.state.emailSet = true
+            this.obj.state.state = this.STATES.ASK_CODE
+
+        } else {
+            this.obj.state.state = this.STATES.ASK_ALL
+        }
+        
 		ErrorHelper.register('POST_AUTH_REGISTER', this.onRegisterError)
 	}
 

@@ -5,6 +5,12 @@ import { BaseData } from 'ap-react-bootstrap'
 
 class AccountEditEmailDemandInitialData extends BaseData {
 
+    constructor() {
+        super(...arguments)
+        
+        this.handleError = this.handleError.bind(this)
+    }
+
     register(obj) {
         super.register(obj)
 
@@ -12,7 +18,6 @@ class AccountEditEmailDemandInitialData extends BaseData {
         this.declareFunction('onHasCode')
         this.declareFunction('onSubmit')
 
-        this.handleError = this.handleError.bind(this)
         ErrorHelper.register('POST_AUTH_CHANGEMAIL', this.handleError)
     }
 

@@ -5,16 +5,21 @@ import { BaseData } from 'ap-react-bootstrap'
 
 class AccountEditPasswordChangeData extends BaseData {
 
-	register(obj) {
-		super.register(obj)
-		
-		this.declareFunction('onChange')
-		this.declareFunction('onCancel')
-		this.declareFunction('onSubmit')
-
-		this.declareFunction('isSubmitDisabled')
-
+    constructor() {
+        super(...arguments)
+        
         this.handlePutAuthPasswordError = this.handlePutAuthPasswordError.bind(this)
+    }
+
+    register(obj) {
+        super.register(obj)
+        
+        this.declareFunction('onChange')
+        this.declareFunction('onCancel')
+        this.declareFunction('onSubmit')
+
+        this.declareFunction('isSubmitDisabled')
+
 
 		ErrorHelper.register('PUT_AUTH_PASSWORD', this.handlePutAuthPasswordError)
 	}

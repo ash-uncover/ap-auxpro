@@ -5,14 +5,19 @@ import HelptopicHelper from 'helpers/HelptopicHelper'
 
 class HelpData extends BaseData {
 
-	register(obj) {
-		super.register(obj)
-
-		this.declareFunction('onLiveSearch')
-
-		this._onHelptopicUpdate()
-
+    constructor() {
+        super(...arguments)
+        
         this.onHelptopicUpdate = this.onHelptopicUpdate.bind(this)
+    }
+
+    register(obj) {
+        super.register(obj)
+
+        this.declareFunction('onLiveSearch')
+
+        this._onHelptopicUpdate()
+
 		HelptopicHelper.register('', this.onHelptopicUpdate)
 
 		HelptopicHelper.getHelpTopics()

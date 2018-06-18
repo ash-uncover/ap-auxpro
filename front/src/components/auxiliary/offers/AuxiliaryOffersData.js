@@ -14,33 +14,34 @@ import OfferUtils from 'utils-lib/entities/OfferUtils'
 
 class AuxiliaryOffersData extends BaseData {
 
-	constructor() {
-		super(...arguments)
-	}
-
-	register(obj) {
-		super.register(obj)
-
-		this.declareFunction('onFilterState')
-
-		this.declareFunction('onOfferView')
-		this.declareFunction('onOfferHide')
-		
-		this.declareFunction('onOfferAccept')
-		this.declareFunction('onCancelAccept')
-		this.declareFunction('onConfirmAccept')
-
-		this.declareFunction('onOfferDecline')
-		this.declareFunction('onCancelDecline')
-		this.declareFunction('onConfirmDecline')
-
-		this._onOffersUpdate()
-
-		this.setState({
-			filterState: OfferStatus.RECEIVED
-		})
-
+    constructor() {
+        super(...arguments)
+        
         this.onOffersUpdate = this.onOffersUpdate.bind(this)
+    }
+
+    register(obj) {
+        super.register(obj)
+
+        this.declareFunction('onFilterState')
+
+        this.declareFunction('onOfferView')
+        this.declareFunction('onOfferHide')
+        
+        this.declareFunction('onOfferAccept')
+        this.declareFunction('onCancelAccept')
+        this.declareFunction('onConfirmAccept')
+
+        this.declareFunction('onOfferDecline')
+        this.declareFunction('onCancelDecline')
+        this.declareFunction('onConfirmDecline')
+
+        this._onOffersUpdate()
+
+        this.setState({
+            filterState: OfferStatus.RECEIVED
+        })
+
 		OfferHelper.register('', this.onOffersUpdate)
 	}
 
@@ -158,8 +159,6 @@ class AuxiliaryOffersData extends BaseData {
 			console.error(error)
 		}.bind(this))
 	}
-	
-
 
 	onOfferHide(offer) {
 		offer.hideToAux = true

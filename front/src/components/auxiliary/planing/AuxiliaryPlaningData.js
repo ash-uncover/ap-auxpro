@@ -21,56 +21,57 @@ class AuxiliaryPlaningData extends BaseData {
 
     constructor() {
         super(...arguments)
+        
+        this.onIndisponibilitiesUpdate = this.onIndisponibilitiesUpdate.bind(this)
     }
 
-	register(obj) {
-		super.register(obj)
+    register(obj) {
+        super.register(obj)
 
-		this.reduceMission = this._reduceMission.bind(this)
-		this.buildMissionHour = this._buildMissionHour.bind(this)		
+        this.reduceMission = this._reduceMission.bind(this)
+        this.buildMissionHour = this._buildMissionHour.bind(this)       
 
-		this.declareFunction('onToggleMissions')
-		this.declareFunction('onToggleIndisponibilities')
+        this.declareFunction('onToggleMissions')
+        this.declareFunction('onToggleIndisponibilities')
 
-		this.declareFunction('onFilterCustomer')
-		this.declareFunction('onFilterService')
-		this.declareFunction('onFilterStatus')
+        this.declareFunction('onFilterCustomer')
+        this.declareFunction('onFilterService')
+        this.declareFunction('onFilterStatus')
 
-		this.declareFunction('onCreateIndisponibility')
-		this.declareFunction('onEditIndisponibility')
-		this.declareFunction('onViewIndisponibility')
+        this.declareFunction('onCreateIndisponibility')
+        this.declareFunction('onEditIndisponibility')
+        this.declareFunction('onViewIndisponibility')
 
-		this.declareFunction('onPrintPlaning')
+        this.declareFunction('onPrintPlaning')
 
-		this.declareFunction('onDaySelect')
-		this.declareFunction('onMonthChange')
-		
-		this.obj.state.selectedDay = MomentHelper.toLocalDate(moment())
-		this.obj.state.selectedMonth = MomentHelper.toLocalDate(moment())
-		this.obj.state.showIndisponibilities = true
-		this.obj.state.showMissions = true
-		this.obj.state.filterCustomer = '__ALL__'
-		this.obj.state.filterService = '__ALL__'
-		this.obj.state.filterStatus = '__ALL__'
-		this.obj.state.customers = this.buildCustomers()
-		this.obj.state.services = this.buildServices()
-		this.obj.state.statuses= [
-			{ key: '__ALL__', value: 'Toutes' },
-			{ key: 'COMPLETED', value: 'Réalisées' },
-			{ key: 'PENDING', value: 'Planifiées' },
-			{ key: 'CANCELED', value: 'Annulées' }
-		]
-		this.obj.state.indisponibilities = this.buildIndisponibilities()
-		let missions = this.buildMissions()
-		this.obj.state.missionsPlanned = missions.planned
-		this.obj.state.missionsCompleted = missions.completed
-		this.obj.state.missionsCanceled = missions.canceled
-		
-		this.buildHours()
-		this.buildInformation()
-		this.forceUpdate()
+        this.declareFunction('onDaySelect')
+        this.declareFunction('onMonthChange')
+        
+        this.obj.state.selectedDay = MomentHelper.toLocalDate(moment())
+        this.obj.state.selectedMonth = MomentHelper.toLocalDate(moment())
+        this.obj.state.showIndisponibilities = true
+        this.obj.state.showMissions = true
+        this.obj.state.filterCustomer = '__ALL__'
+        this.obj.state.filterService = '__ALL__'
+        this.obj.state.filterStatus = '__ALL__'
+        this.obj.state.customers = this.buildCustomers()
+        this.obj.state.services = this.buildServices()
+        this.obj.state.statuses= [
+            { key: '__ALL__', value: 'Toutes' },
+            { key: 'COMPLETED', value: 'Réalisées' },
+            { key: 'PENDING', value: 'Planifiées' },
+            { key: 'CANCELED', value: 'Annulées' }
+        ]
+        this.obj.state.indisponibilities = this.buildIndisponibilities()
+        let missions = this.buildMissions()
+        this.obj.state.missionsPlanned = missions.planned
+        this.obj.state.missionsCompleted = missions.completed
+        this.obj.state.missionsCanceled = missions.canceled
+        
+        this.buildHours()
+        this.buildInformation()
+        this.forceUpdate()
 
-        this.onIndisponibilitiesUpdate = this.onIndisponibilitiesUpdate.bind(this)
 		IndisponibilityHelper.register('', this.onIndisponibilitiesUpdate)
 	}
 
