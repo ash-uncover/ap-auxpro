@@ -4,12 +4,12 @@ import { Dispatcher, StoreRegistry } from 'ap-flux'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class AppHelper {
 
-	register(path, obj, callback) {
-		StoreRegistry.register('APP_STORE' + (path ? path : '') , obj, callback);
+	register(path, callback) {
+		StoreRegistry.register('APP_STORE', (path ? path : ''), callback)
 	}
 
-	unregister(obj) {
-		StoreRegistry.unregister('APP_STORE', obj);
+	unregister(path, callback) {
+		StoreRegistry.unregister('APP_STORE', (path ? path : ''), callback)
 	}
 
 	getData(path) {

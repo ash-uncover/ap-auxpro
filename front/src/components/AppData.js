@@ -7,18 +7,28 @@ import { browserHistory } from 'react-router'
 
 class AppData extends BaseData {
 
+    constructor() {
+        super(...arguments)
+        
+        this.onAppStorePathUpdate = this._onAppStorePathUpdate.bind(this)
+        this.onAppBusyUpdate = this._onAppBusyUpdate.bind(this)
+        this.onI18NLoad = this._onI18NLoad.bind(this)
+    }
+
     register(obj) {
         super.register(obj)
 
-        AppHelper.register('/path', this, this._onAppStorePathUpdate.bind(this))
-        AppHelper.register('/app/busy', this, this._onAppBusyUpdate.bind(this))
-        I18NHelper.register('/loaded', this, this._onI18NLoad.bind(this))
+        AppHelper.register('/path', this.onAppStorePathUpdate)
+        AppHelper.register('/app/busy', this.onAppBusyUpdate)
+        I18NHelper.register('/loaded', this.onI18NLoad)
 
         Dispatcher.issue('LOAD_I18N')
     }
 
     unregister() {
-        AppHelper.unregister(this);
+        AppHelper.unregister('/path', this.onAppStorePathUpdate)
+        AppHelper.unregister('/app/busy', this.onAppBusyUpdate)
+        I18NHelper.unregister('/loaded', this.onI18NLoad)
     }
 
     _onAppStorePathUpdate() {

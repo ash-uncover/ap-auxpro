@@ -16,38 +16,46 @@ import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 
 class ServiceInterventionsData extends BaseData {
 
-	register(obj) {
-		super.register(obj)
-		
-		this.declareFunction('onCreateIntervention')
-		this.declareFunction('onEditIntervention')		
-		this.declareFunction('onMatchIntervention')
-		
-		this.declareFunction('onDeleteIntervention')
-		this.declareFunction('onCancelDeleteIntervention')
-		this.declareFunction('onConfirmDeleteIntervention')
+    constructor() {
+        super(...arguments)
+        
+        this.onInterventionsUpdate = this.onInterventionsUpdate.bind(this)
+    }
 
-		this.declareFunction('onFollowMatching')
+    register(obj) {
+        super.register(obj)
+        
+        this.declareFunction('onCreateIntervention')
+        this.declareFunction('onEditIntervention')      
+        this.declareFunction('onMatchIntervention')
+        
+        this.declareFunction('onDeleteIntervention')
+        this.declareFunction('onCancelDeleteIntervention')
+        this.declareFunction('onConfirmDeleteIntervention')
 
-		this.declareFunction('onCancelMatching')
-		this.declareFunction('onCancelCancelMatching')
-		this.declareFunction('onConfirmCancelMatching')
+        this.declareFunction('onFollowMatching')
 
-		this.declareFunction('onCancelIntervention')
-		this.declareFunction('onCancelCancelIntervention')
-		this.declareFunction('onConfirmCancelIntervention')
+        this.declareFunction('onCancelMatching')
+        this.declareFunction('onCancelCancelMatching')
+        this.declareFunction('onConfirmCancelMatching')
 
-		this.declareFunction('onViewCustomer')
-		this.declareFunction('onViewAuxiliary')
+        this.declareFunction('onCancelIntervention')
+        this.declareFunction('onCancelCancelIntervention')
+        this.declareFunction('onConfirmCancelIntervention')
 
-		InterventionHelper.register('', this, this.onInterventionsUpdate.bind(this))
-		OfferHelper.register('', this, this.onInterventionsUpdate.bind(this))
+        this.declareFunction('onViewCustomer')
+        this.declareFunction('onViewAuxiliary')
+
+
+		InterventionHelper.register('', this.onInterventionsUpdate)
+		OfferHelper.register('', this.onInterventionsUpdate)
 
 		this._onInterventionsUpdate()
 	}
 
 	unregister() {
-		InterventionHelper.unregister(this)
+		InterventionHelper.unregister('', this.onInterventionsUpdate)
+        OfferHelper.unregister('', this.onInterventionsUpdate)
 	}
 
 

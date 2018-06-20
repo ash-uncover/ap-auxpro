@@ -14,47 +14,52 @@ class RecoverConfirmData extends BaseData {
 			ASK_CODE: 'ASK_CODE',
 			ASK_NONE: 'ASK_NONE'
 		}
-	}
+        
+        this.onRecoverCodeError = this.onRecoverCodeError.bind(this)
+        this.onRecoverPasswordError = this.onRecoverPasswordError.bind(this)
+    }
 
-	register(obj, propsData) {
-		super.register(obj)
-		
-		this.obj.onCancel = AppHelper.navigate.bind(AppHelper, '/home')
-		
-		this.declareFunction('onSubmitCode')
-		this.declareFunction('onSubmitPassword')
-		this.declareFunction('onChangeNoError')
+    register(obj, propsData) {
+        super.register(obj)
+        
+        this.obj.onCancel = AppHelper.navigate.bind(AppHelper, '/home')
+        
+        this.declareFunction('onSubmitCode')
+        this.declareFunction('onSubmitPassword')
+        this.declareFunction('onChangeNoError')
 
-		let data = {}
-		try {
-			data = JSON.parse(atob(propsData))
-		} catch (error) {
-			console.error('failed to decode data')
-		}
+        let data = {}
+        try {
+            data = JSON.parse(atob(propsData))
+        } catch (error) {
+            console.error('failed to decode data')
+        }
 
-		if (data && data.email && data.token) {
-			this.obj.state.email = data.email
-			this.obj.state.emailSet = true
-			this.obj.state.state = this.STATES.ASK_NONE
-			this.obj.state.token = data.token
-			this.obj.state.tokenSet = true
-			this.onSubmitCode()
+        if (data && data.email && data.token) {
+            this.obj.state.email = data.email
+            this.obj.state.emailSet = true
+            this.obj.state.state = this.STATES.ASK_NONE
+            this.obj.state.token = data.token
+            this.obj.state.tokenSet = true
+            this.onSubmitCode()
 
-		} else if (data && data.email) {
-			this.obj.state.email = data.email
-			this.obj.state.emailSet = true
-			this.obj.state.state = this.STATES.ASK_CODE
+        } else if (data && data.email) {
+            this.obj.state.email = data.email
+            this.obj.state.emailSet = true
+            this.obj.state.state = this.STATES.ASK_CODE
 
-		} else {
-			this.obj.state.state = this.STATES.ASK_ALL
-		}
+        } else {
+            this.obj.state.state = this.STATES.ASK_ALL
+        }
 
-		ErrorHelper.register('POST_AUTH_RECOVER_CHECK', this, this.onRecoverCodeError.bind(this))
-		ErrorHelper.register('PUT_AUTH_RECOVER', this, this.onRecoverPasswordError.bind(this))
+
+		ErrorHelper.register('POST_AUTH_RECOVER_CHECK', this.onRecoverCodeError)
+		ErrorHelper.register('PUT_AUTH_RECOVER', this.onRecoverPasswordError)
 	}
 
 	unregister() {
-		ErrorHelper.unregister()
+        ErrorHelper.unregister('POST_AUTH_RECOVER_CHECK', this.onRecoverCodeError)
+        ErrorHelper.unregister('PUT_AUTH_RECOVER', this.onRecoverPasswordError)
 	}
 
 	onChangeNoError() {

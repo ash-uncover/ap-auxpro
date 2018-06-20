@@ -20,6 +20,10 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
         super(...arguments)
 
         this.checkField = this._checkField.bind(this)
+        this.handleGetIndisponibilityError = this.handleGetIndisponibilityError.bind(this)
+        this.handlePostIndisponibilityError = this.handlePostIndisponibilityError.bind(this)
+        this.handlePutIndisponibilityError = this.handlePutIndisponibilityError.bind(this)
+        this.handleDeleteIndisponibilityError = this.handleDeleteIndisponibilityError.bind(this)
 
         this.MODES = {
             CREATE: 'CREATE',
@@ -106,14 +110,17 @@ class AuxiliaryIndisponibilityEditData extends BaseData {
         this.loadIndisponibility(IndisponibilityHelper.getData(this.indisponibilityId) || {})
         this.checkIndisponibility()
 
-        ErrorHelper.register('GET_INDISPONIBILITY', this, this.handleGetIndisponibilityError.bind(this))
-        ErrorHelper.register('POST_INDISPONIBILITY', this, this.handlePostIndisponibilityError.bind(this))
-        ErrorHelper.register('PUT_INDISPONIBILITY', this, this.handlePutIndisponibilityError.bind(this))
-        ErrorHelper.register('DELETE_INDISPONIBILITY', this, this.handleDeleteIndisponibilityError.bind(this))
+        ErrorHelper.register('GET_INDISPONIBILITY', this.handleGetIndisponibilityError)
+        ErrorHelper.register('POST_INDISPONIBILITY', this.handlePostIndisponibilityError)
+        ErrorHelper.register('PUT_INDISPONIBILITY', this.handlePutIndisponibilityError)
+        ErrorHelper.register('DELETE_INDISPONIBILITY', this.handleDeleteIndisponibilityError)
     }
 
     unregister() {
-        ErrorHelper.unregister(this)
+        ErrorHelper.unregister('GET_INDISPONIBILITY', this.handleGetIndisponibilityError)
+        ErrorHelper.unregister('POST_INDISPONIBILITY', this.handlePostIndisponibilityError)
+        ErrorHelper.unregister('PUT_INDISPONIBILITY', this.handlePutIndisponibilityError)
+        ErrorHelper.unregister('DELETE_INDISPONIBILITY', this.handleDeleteIndisponibilityError)
     }
 
 

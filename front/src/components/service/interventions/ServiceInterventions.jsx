@@ -39,9 +39,10 @@ class ServiceInterventions extends React.Component {
 	// Rendering functions //
 	// --------------------------------------------------------------------------------
 
-	_buildPending(intervention) {
-		return (
-			<ServiceInterventionTilePending 
+	_buildPending(intervention, index) {
+        const result = []
+		result.push(
+            <ServiceInterventionTilePending 
 				key={intervention.id}
 				onEdit={this.onEditIntervention.bind(this, intervention.id)}
 				onMatch={this.onMatchIntervention.bind(this, intervention.id)}
@@ -50,9 +51,12 @@ class ServiceInterventions extends React.Component {
 				<Text text={InterventionUtils.getText(intervention)} />
 			</ServiceInterventionTilePending>
 		)
+        this._buildClearfix(result, index)
+        return result
 	}
-	_buildOffered(intervention) {
-		return (
+	_buildOffered(intervention, index) {
+		const result = []
+        result.push(
 			<ServiceInterventionTileOffered 
 				key={intervention.id}
 				onFollow={this.onFollowMatching.bind(this, intervention.id)}
@@ -61,10 +65,13 @@ class ServiceInterventions extends React.Component {
 				<Text text={InterventionUtils.getText(intervention)} />
 			</ServiceInterventionTileOffered>
 		)
+        this._buildClearfix(result, index)
+        return result
 	}
-	_buildPlanned(intervention) {
+	_buildPlanned(intervention, index) {
 		let auxiliary = AuxiliaryHelper.getData(intervention.auxiliaryId)
-		return (
+		const result = []
+        result.push(
 			<ServiceInterventionTilePlanned 
 				key={intervention.id}
 				onCancel={this.onCancelIntervention.bind(this, intervention.id)}>
@@ -82,7 +89,21 @@ class ServiceInterventions extends React.Component {
 				</div>
 			</ServiceInterventionTilePlanned>
 		)
+        this._buildClearfix(result, index)
+        return result
 	}
+    _buildClearfix(result, index) {
+        if (index && index % 3 === 2) {
+            result.push(
+                <Grid.Clearfix key={`md-${index}`} className='hidden-xs hidden-sm'/>
+            )
+        }
+        if (index && index % 2 === 1) {
+            result.push(
+                <Grid.Clearfix key={`sm-${index}`} className='visible-sm'/>
+            )
+        }
+    }
 
 	__buildCustomerContent(customerId) {
 		let customer = CustomerHelper.getData(customerId)

@@ -5,20 +5,26 @@ import HelpfaqHelper from 'helpers/HelpfaqHelper'
 
 class FAQData extends BaseData {
 
-	register(obj) {
-		super.register(obj)
+    constructor() {
+        super(...arguments)
+        
+        this.onHelpfaqUpdate = this.onHelpfaqUpdate.bind(this)
+    }
 
-		this.declareFunction('onLiveSearch')
+    register(obj) {
+        super.register(obj)
 
-		this._onHelpfaqUpdate()
+        this.declareFunction('onLiveSearch')
 
-		HelpfaqHelper.register('', this, this.onHelpfaqUpdate.bind(this))
+        this._onHelpfaqUpdate()
+
+		HelpfaqHelper.register('', this.onHelpfaqUpdate)
 
 		HelpfaqHelper.getHelpFaqs()
 	}
 
 	unregister() {
-		HelpfaqHelper.unregister(this)
+		HelpfaqHelper.unregister('', this.onHelpfaqUpdate)
 	}
 
 

@@ -9,8 +9,8 @@ let DEFAULT_APP_CONTENT = {}
 I18NStore.load_i18n = function(result, param) {
 	I18NStore._content.translations = result
 	I18NStore._content.loaded = true
-	I18NStore.notifyPath('/translations')
-	I18NStore.notifyPath('/loaded')
+	I18NStore.notify('/translations')
+	I18NStore.notify('/loaded')
 }
 
 Dispatcher.register('LOAD_I18N', I18NStore.load_i18n)

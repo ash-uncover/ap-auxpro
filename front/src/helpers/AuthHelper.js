@@ -5,12 +5,12 @@ import { Utils } from 'ap-react-bootstrap'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class AuthHelper {
 
-	register(path, obj, callback) {
-		StoreRegistry.register('AUTH_STORE' + (path ? path : ''), obj, callback);
+	register(path, callback) {
+		StoreRegistry.register('AUTH_STORE', (path ? path : ''), callback)
 	}
 
-	unregister(obj) {
-		StoreRegistry.unregister('AUTH_STORE', obj);
+	unregister(path, callback) {
+		StoreRegistry.unregister('AUTH_STORE', (path ? path : ''), callback)
 	}
 
 	getData() {

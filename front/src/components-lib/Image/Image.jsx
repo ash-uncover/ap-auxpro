@@ -21,6 +21,7 @@ class Image extends BaseComponent {
 				alt: {}
 			}
 		}
+        this.onImageUpdate = this.onImageUpdate.bind(this)
 	}
 
 	componentWillMount() {
@@ -29,17 +30,17 @@ class Image extends BaseComponent {
 	}
 
 	componentWillReceiveProps(props) {
-		ImageHelper.unregister(this)
+		ImageHelper.unregister(props.id, this.onImageUpdate)
 		this.registerImage(props.id)
 	}
 
 	componentWillUnmount() {
-		ImageHelper.unregister(this)
+		ImageHelper.unregister(this.props.id, this.onImageUpdate)
 	}
 
 	registerImage(id) {
 		if (id) {
-			ImageHelper.register(id, this, this.onImageUpdate.bind(this))
+			ImageHelper.register(id, this.onImageUpdate)
 			if (!ImageHelper.getData(id)) {
 				ImageHelper.getImage(id)
 			}

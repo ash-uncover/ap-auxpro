@@ -19,6 +19,8 @@ class ServiceInitialData extends BaseData {
         super(...arguments)
 
         this.checkField = this._checkField.bind(this)
+        this.handlePutServiceError = this.handlePutServiceError.bind(this)
+        this.handleGetServiceError = this.handleGetServiceError.bind(this)
         
         const { PROFIL_COMPLETED, LATTITUDE, LONGITUDE } = ServiceFields
         const SOCIAL_REASON = Object.assign(
@@ -86,12 +88,14 @@ class ServiceInitialData extends BaseData {
             this.obj.state.isAccountUpdate = true
         }
 
-        ErrorHelper.register('PUT_SERVICE', this, this.handlePutServiceError.bind(this))
-        ErrorHelper.register('GET_SERVICE', this, this.handleGetServiceError.bind(this))
+
+        ErrorHelper.register('PUT_SERVICE', this.handlePutServiceError)
+        ErrorHelper.register('GET_SERVICE', this.handleGetServiceError)
     }
 
     unregister() {
-        ErrorHelper.unregister(this)
+        ErrorHelper.unregister('PUT_SERVICE', this.handlePutServiceError)
+        ErrorHelper.unregister('GET_SERVICE', this.handleGetServiceError)
     }
 
 

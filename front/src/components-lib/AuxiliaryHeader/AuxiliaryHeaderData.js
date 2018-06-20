@@ -10,16 +10,22 @@ import { BaseData } from 'ap-react-bootstrap'
 
 class AuxiliaryHeaderData extends BaseData {
 
-	register(obj) {
-		super.register(obj)
-		
-		this._onAuxiliaryUpdate()
+    constructor() {
+        super(...arguments)
+        
+        this.onAuxiliaryUpdate = this._onAuxiliaryUpdate.bind(this)
+    }
 
-		AuxiliaryHelper.register(AuthHelper.getEntityId(), this, this._onAuxiliaryUpdate.bind(this))
+    register(obj) {
+        super.register(obj)
+        
+        this._onAuxiliaryUpdate()
+
+		AuxiliaryHelper.register(AuthHelper.getEntityId(), this.onAuxiliaryUpdate)
 	}
 
 	unregister() {
-		AuxiliaryHelper.unregister(this)
+		AuxiliaryHelper.unregister(AuthHelper.getEntityId(), this.onAuxiliaryUpdate)
 	}
 
 	_onAuxiliaryUpdate() {
