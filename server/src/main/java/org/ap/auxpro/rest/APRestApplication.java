@@ -8,6 +8,9 @@ import java.io.IOException;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
+import io.swagger.jaxrs.listing.ApiListingResource;
+import io.swagger.jaxrs.listing.SwaggerSerializers;
+import io.swagger.jaxrs.config.BeanConfig;
 import org.ap.auxpro.rest.filter.AuthorizationRequestFilter;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
@@ -29,6 +32,16 @@ public class APRestApplication extends ResourceConfig {
 		register(JacksonFeature.class);
 		register(HeadersResponseFilter.class);
 		register(MultiPartFeature.class);
+		register(ApiListingResource.class);
+		register(SwaggerSerializers.class);
+		
+		BeanConfig beanConfig = new BeanConfig();
+		beanConfig.setVersion("1.0.2");
+		beanConfig.setSchemes(new String[]{"http"});
+		beanConfig.setHost("localhost:8090");
+		beanConfig.setBasePath("/rest");
+		beanConfig.setResourcePackage("org.ap.auxpro.rest.servlet");
+		beanConfig.setScan(true);
 		
 		String host = EConfigProperties.DB_HOST.getValue();
 		String port = EConfigProperties.DB_PORT.getValue();

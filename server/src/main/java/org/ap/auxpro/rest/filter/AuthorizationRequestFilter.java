@@ -5,6 +5,8 @@ import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.PreMatching;
 import org.ap.common.web.security.APSecurityContext;
+import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.Context;
 import org.ap.common.util.Encoder;
 import org.ap.common.exception.APWebException;
 import javax.ws.rs.core.Response.Status;
@@ -17,6 +19,8 @@ import java.util.List;
 public class AuthorizationRequestFilter implements ContainerRequestFilter {
 
 	public static final String HEADER = "Authorization";
+	@Context
+	private UriInfo _info;
 
 	public AuthorizationRequestFilter() {
 	}
@@ -24,6 +28,7 @@ public class AuthorizationRequestFilter implements ContainerRequestFilter {
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws WebApplicationException {
 		if (requestContext.getMethod().equals("OPTIONS")) return;
+		if (_info.getPath().equals("swagger.json")) return;
 		String header = requestContext.getHeaderString(HEADER);
 		if (header == null) {
 			throw new WebApplicationException(Status.UNAUTHORIZED);
