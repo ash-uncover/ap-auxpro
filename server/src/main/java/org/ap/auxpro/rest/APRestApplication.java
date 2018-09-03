@@ -40,7 +40,7 @@ public class APRestApplication extends ResourceConfig {
 		beanConfig.setSchemes(new String[]{"http"});
 		beanConfig.setHost("localhost:8090");
 		beanConfig.setBasePath("/rest");
-		beanConfig.setResourcePackage("io.swagger.resources");
+		beanConfig.setResourcePackage("org.ap.auxpro.rest.servlet");
 		beanConfig.setScan(true);
 		
 		String host = EConfigProperties.DB_HOST.getValue();
