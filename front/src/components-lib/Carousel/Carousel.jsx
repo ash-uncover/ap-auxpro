@@ -17,6 +17,7 @@ class Carousel extends React.Component {
         this.buildItem = this.buildItem.bind(this)
         this.buildButton = this.buildButton.bind(this)
 
+        this.moveToPrevItem = this.moveToPrevItem.bind(this)
         this.moveToNextItem = this.moveToNextItem.bind(this)
     }
 
@@ -36,16 +37,21 @@ class Carousel extends React.Component {
 
     /* VIEW CALLBACKS */
 
-    moveToNextItem() {
+    moveToPrevItem() {
+        const index = (this.state.currentIndex + this.props.children.length - 1) % this.props.children.length
+        this.props.onSlideChanged(index)
         this.setState((prevState) => ({
             previousIndex: prevState.currentIndex,
-            currentIndex: (prevState.currentIndex + 1) % this.props.children.length
+            currentIndex: index
         }))
     }
-    moveToItem(index) {
-        this.setState({
-            currentIndex: index % this.props.children.length
-        })
+    moveToNextItem() {
+        const index = (this.state.currentIndex + 1) % this.props.children.length
+        this.props.onSlideChanged(index)
+        this.setState((prevState) => ({
+            previousIndex: prevState.currentIndex,
+            currentIndex: index
+        }))
     }
 
     /* RENDERING */
@@ -95,6 +101,21 @@ class Carousel extends React.Component {
                         {this.props.children.map(this.buildButton)}
                     </div>
                 : null }
+                {this.props.showSlideButtons && this.state.currentIndex !== 0 ?
+                    <div 
+                        className='carousel-slide-btn carousel-slide-prev'
+                        onClick={this.moveToPrevItem}>
+                        <span className='glyphicon glyphicon-chevron-left'></span>
+                    </div>
+                : null }
+                {this.props.showSlideButtons && this.state.currentIndex !== this.props.children.length - 1 ?
+                    <div 
+                        className='carousel-slide-btn carousel-slide-next'
+                        onClick={this.moveToNextItem}>
+                        <span className='glyphicon glyphicon-chevron-right'></span>
+                    </div>
+                : null }
+
             </div>
         )
     }
@@ -102,12 +123,18 @@ class Carousel extends React.Component {
 
 Carousel.propTypes = {
     slideInterval: PropTypes.number,
-    showButtons: PropTypes.bool
+    showButtons: PropTypes.bool,
+    showSlideButtons: PropTypes.bool,
+
+    onSlideChanged: PropTypes.func
 }
 
 Carousel.defaultProps = {
     slideInterval: 0,
-    showButtons: false
+    showButtons: false,
+    showSlideButtons: false,
+
+    onSlideChanged: () => {}
 }
 
 export default Carousel

@@ -4,12 +4,12 @@ import { StoreRegistry } from 'ap-flux'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class ErrorHelper {
 
-	register(action, obj, callback) {
-		StoreRegistry.register('ERROR_STORE' + (action ? '/' + action : '') , obj, callback);
+	register(action, callback) {
+		StoreRegistry.register('ERROR_STORE', (action ? '/' + action : ''), callback)
 	}
 
-	unregister(obj) {
-		StoreRegistry.unregister('ERROR_STORE', obj);
+	unregister(action, callback) {
+		StoreRegistry.unregister('ERROR_STORE', (action ? '/' + action : ''), callback)
 	}
 
 	getData(path) {

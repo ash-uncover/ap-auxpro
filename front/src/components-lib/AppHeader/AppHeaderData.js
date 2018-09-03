@@ -6,33 +6,41 @@ import { BaseData } from 'ap-react-bootstrap'
 
 class AppHeaderData extends BaseData {
 
-	register(obj) {
-		super.register(obj)
+    constructor() {
+        super(...arguments)
 
-		this._onAuthChanged()
+        this.onAuthChanged = this._onAuthChanged.bind(this)
+        this.onAuxiliaryChanged = this._onAuxiliaryChanged.bind(this)
+        this.onServiceChanged = this._onServiceChanged.bind(this)
+    }
 
-		AuthHelper.register('', this, this._onAuthChanged.bind(this))
+    register(obj) {
+        super.register(obj)
+
+        this.onAuthChanged()
+
+		AuthHelper.register('', this.onAuthChanged)
 	}
 
 	unregister() {
-		AuthHelper.unregister(this)
-		AuxiliaryHelper.unregister(this)
-		ServiceHelper.unregister(this)
+		AuthHelper.unregister('', this.onAuthChanged)
+		AuxiliaryHelper.unregister(AuthHelper.getEntityId(), this.onAuxiliaryChanged)
+		ServiceHelper.unregister(AuthHelper.getEntityId(), this.onServiceChanged)
 	}
 
 	_onAuthChanged() {
-		AuxiliaryHelper.unregister(this)
-		ServiceHelper.unregister(this)
+		AuxiliaryHelper.unregister(AuthHelper.getEntityId(), this.onAuxiliaryChanged)
+        ServiceHelper.unregister(AuthHelper.getEntityId(), this.onServiceChanged)
 		if (AuthHelper.getToken()) {
 			switch (AuthHelper.getType()) {
 			case 'auxiliary':
-				this._onAuxiliaryChanged()
-				AuxiliaryHelper.register(AuthHelper.getEntityId(), this, this._onAuxiliaryChanged.bind(this))
+				this.onAuxiliaryChanged()
+				AuxiliaryHelper.register(AuthHelper.getEntityId(), this.onAuxiliaryChanged)
 				this.setState({ authType: 'auxiliary' })
 				break
 			case 'service':
-				this._onServiceChanged()
-				ServiceHelper.register(AuthHelper.getEntityId(), this, this._onServiceChanged.bind(this))
+				this.onServiceChanged()
+				ServiceHelper.register(AuthHelper.getEntityId(), this.onServiceChanged)
 				this.setState({ authType: 'service' })
 				break
 			default:

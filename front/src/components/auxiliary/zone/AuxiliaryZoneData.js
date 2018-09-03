@@ -41,30 +41,31 @@ class AuxiliaryZoneData extends BaseData {
 		this.MODE = {
 			INFO: 'INFO',
 			EDIT: 'EDIT'
-		}
-	}
-
-	register(obj) {
-		super.register(obj)
-
-		this.declareFunction('onMapClicked')
-		this.declareFunction('onChangeFilter')
-
-		this.declareFunction('onGeozoneUpdate')
-		this.declareFunction('onCancelEditGeozone')
-
-		this.declareFunction('onAddGeozone')
-		this.declareFunction('onEditGeozone')
-		this.declareFunction('onDeleteGeozone')
-		this.declareFunction('onCancelDeleteGeozone')
-		this.declareFunction('onConfirmDeleteGeozone')
-
+        }
+        
 		this.buildGeozoneMarker = this._buildGeozoneMarker.bind(this)
 		this.buildGeozoneCircle = this._buildGeozoneCircle.bind(this)
 		this.buildOfferMarker = this._buildOfferMarker.bind(this)
 		this.buildInterventionMarker = this._buildInterventionMarker.bind(this)
 		this.buildServiceMarker = this._buildServiceMarker.bind(this)
 		this.buildAllServiceMarker = this._buildAllServiceMarker.bind(this)
+    }
+
+    register(obj) {
+        super.register(obj)
+
+        this.declareFunction('onMapClicked')
+        this.declareFunction('onChangeFilter')
+
+        this.declareFunction('onGeozoneUpdate')
+        this.declareFunction('onCancelEditGeozone')
+
+        this.declareFunction('onAddGeozone')
+        this.declareFunction('onEditGeozone')
+        this.declareFunction('onDeleteGeozone')
+        this.declareFunction('onCancelDeleteGeozone')
+        this.declareFunction('onConfirmDeleteGeozone')
+
 
 
 		this.onMarkerClicked = this._onMarkerClicked.bind(this)

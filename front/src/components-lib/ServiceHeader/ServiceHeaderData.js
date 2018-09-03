@@ -11,16 +11,22 @@ import { BaseData } from 'ap-react-bootstrap'
 
 class ServiceHeaderData extends BaseData {
 
-	register(obj) {
-		super.register(obj)
+    constructor() {
+        super(...arguments)
+        
+        this.onServiceUpdate = this._onServiceUpdate.bind(this)
+    }
 
-		this._onServiceUpdate()
+    register(obj) {
+        super.register(obj)
 
-		ServiceHelper.register(AuthHelper.getEntityId(), this, this._onServiceUpdate.bind(this))
+        this._onServiceUpdate()
+
+		ServiceHelper.register(AuthHelper.getEntityId(), this.onServiceUpdate)
 	}
 
 	unregister() {
-		ServiceHelper.unregister(this)
+		ServiceHelper.unregister(AuthHelper.getEntityId(), this.onServiceUpdate)
 	}
 
 	_onServiceUpdate() {

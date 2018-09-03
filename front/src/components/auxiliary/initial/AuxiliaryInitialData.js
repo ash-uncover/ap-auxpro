@@ -24,6 +24,9 @@ class AuxiliaryInitialData extends BaseData {
         super(...arguments)
 
         this.checkField = this._checkField.bind(this)
+        this.handlePutAuxiliaryError = this.handlePutAuxiliaryError.bind(this)
+        this.handleGetAuxiliaryError = this.handleGetAuxiliaryError.bind(this)
+        this.handleGetAuxiliaryGeozonesError = this.handleGetAuxiliaryGeozonesError.bind(this)
 
         const { LATTITUDE, LONGITUDE } = AuxiliaryFields
         const CIVILITY = Object.assign(
@@ -152,13 +155,16 @@ class AuxiliaryInitialData extends BaseData {
             this.obj.state.isAccountUpdate = true
         }   
         
-        ErrorHelper.register('PUT_AUXILIARY', this, this.handlePutAuxiliaryError.bind(this))
-        ErrorHelper.register('GET_AUXILIARY', this, this.handleGetAuxiliaryError.bind(this))
-        ErrorHelper.register('GET_AUXILIARY_GEOZONES', this, this.handleGetAuxiliaryGeozonesError.bind(this))
+
+        ErrorHelper.register('PUT_AUXILIARY', this.handlePutAuxiliaryError)
+        ErrorHelper.register('GET_AUXILIARY', this.handleGetAuxiliaryError)
+        ErrorHelper.register('GET_AUXILIARY_GEOZONES', this.handleGetAuxiliaryGeozonesError)
     }
 
     unregister() {
-        ErrorHelper.unregister(this)
+        ErrorHelper.unregister('PUT_AUXILIARY', this.handlePutAuxiliaryError)
+        ErrorHelper.unregister('GET_AUXILIARY', this.handleGetAuxiliaryError)
+        ErrorHelper.unregister('GET_AUXILIARY_GEOZONES', this.handleGetAuxiliaryGeozonesError)
     }
 
 

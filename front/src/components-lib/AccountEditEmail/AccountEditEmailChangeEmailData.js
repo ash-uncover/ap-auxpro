@@ -5,23 +5,29 @@ import { BaseData } from 'ap-react-bootstrap'
 
 class AccountEditEmailChangeEmailData extends BaseData {
 
-	register(obj, token) {
-		super.register(obj)
+    constructor() {
+        super(...arguments)
+        
+        this.handleError = this.handleError.bind(this)
+    }
 
-		this.declareFunction('onCancel')
-		this.declareFunction('onSubmit')
-		this.declareFunction('isSubmitDisabled')
+    register(obj, token) {
+        super.register(obj)
 
-		this.setState({
-			email: '',
-			token: token
-		})
-		
-		ErrorHelper.register('PUT_AUTH_CHANGEMAIL', this, this.handleError.bind(this))
+        this.declareFunction('onCancel')
+        this.declareFunction('onSubmit')
+        this.declareFunction('isSubmitDisabled')
+
+        this.setState({
+            email: '',
+            token: token
+        })
+        
+		ErrorHelper.register('PUT_AUTH_CHANGEMAIL', this.handleError)
 	}
 
 	unregister() {
-		ErrorHelper.unregister(this)
+		ErrorHelper.unregister('PUT_AUTH_CHANGEMAIL', this.handleError)
 	}
 
 

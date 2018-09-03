@@ -27,6 +27,10 @@ class ServiceInterventionEditData extends BaseData {
         super()
 
         this.checkField = this._checkField.bind(this)
+        this.handleGetInterventionError = this.handleGetInterventionError.bind(this)
+        this.handlePostInterventionError = this.handlePostInterventionError.bind(this)
+        this.handlePutInterventionError = this.handlePutInterventionError.bind(this)
+        this.handleDeleteInterventionError = this.handleDeleteInterventionError.bind(this)
 
         this.MODES = {
             CREATE: 'CREATE',
@@ -137,14 +141,18 @@ class ServiceInterventionEditData extends BaseData {
         this.loadIntervention(InterventionHelper.getData(interventionId) || {})
         this.checkIntervention()
 
-        ErrorHelper.register('GET_INTERVENTION', this, this.handleGetInterventionError.bind(this))
-        ErrorHelper.register('POST_INTERVENTION', this, this.handlePostInterventionError.bind(this))
-        ErrorHelper.register('PUT_INTERVENTION', this, this.handlePutInterventionError.bind(this))
-        ErrorHelper.register('DELETE_INTERVENTION', this, this.handleDeleteInterventionError.bind(this))
+
+        ErrorHelper.register('GET_INTERVENTION', this.handleGetInterventionError)
+        ErrorHelper.register('POST_INTERVENTION', this.handlePostInterventionError)
+        ErrorHelper.register('PUT_INTERVENTION', this.handlePutInterventionError)
+        ErrorHelper.register('DELETE_INTERVENTION', this.handleDeleteInterventionError)
     }
 
     unregister() {
-        ErrorHelper.unregister(this)
+        ErrorHelper.unregister('GET_INTERVENTION', this.handleGetInterventionError)
+        ErrorHelper.unregister('POST_INTERVENTION', this.handlePostInterventionError)
+        ErrorHelper.unregister('PUT_INTERVENTION', this.handlePutInterventionError)
+        ErrorHelper.unregister('DELETE_INTERVENTION', this.handleDeleteInterventionError)
     }
 
 

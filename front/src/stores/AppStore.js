@@ -10,28 +10,28 @@ AppStore.setBusy = function(busy) {
 
 AppStore.onLogout = function(result, param) {
 	AppStore._content.app = DEFAULT_APP_CONTENT
-	AppStore.notifyPath('/app')
+	AppStore.notify('/app')
 }
 
 AppStore.navigate = function(result, param) {
 	AppStore._content.path = result
-	AppStore.notifyPath('/path')
+	AppStore.notify('/path')
 }
 
 AppStore.navigate_back = function(result, param) {
 	AppStore._content.path = '___BACK___'
-	AppStore.notifyPath('/path')
+	AppStore.notify('/path')
 }
 
 AppStore.set_app_display = function(result, param) {
 	let path = '/app' + result.path
 	AppStore.setData(path, result.value)
-	AppStore.notifyPath(path + result.path)
+	AppStore.notify(path + result.path)
 }
 
 AppStore.put = function(result, param) {
 	AppStore.setData(result.path, result.value)
-	AppStore.notifyPath(result.path)
+	AppStore.notify(result.path)
 }
 
 Dispatcher.register('LOGOUT', AppStore.onLogout)

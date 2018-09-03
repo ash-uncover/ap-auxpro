@@ -36,6 +36,11 @@ class AppLandAuxpros extends React.Component {
                             Je veux recevoir des offres
                         </Link>
                     </div>
+                    <div className='blog-link'>
+                        <a href='http://www.auxpros-leblog.fr'>
+                            <img src='assets/images/auxpro-blog.png' />
+                        </a>
+                    </div>
                 </div>
             </div>
         )

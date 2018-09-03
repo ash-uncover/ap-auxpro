@@ -3,16 +3,37 @@
         "src": "logo_adjacent_services.png",
         "link": ""
     }, {
-        "src": "logo_cap92.png",
-        "link": "http://cap-92.fr/"
-    }, {
         "src": "logo_adpi.png",
         "link": "https://www.adpiformation.fr/"
+    }, {
+        "src": "logo_ass.png",
+        "link": ""
+    }, {
+        "src": "logo_cap92.png",
+        "link": "http://cap-92.fr/"
     }, {
         "src": "logo_epec.png",
         "link": "https://http://www.epec.paris//"
     }, {
-        "src": "logo_ass.png",
+        "src": "logo_fedesap.png",
+        "link": ""
+    }, {
+        "src": "logo_greta.png",
+        "link": ""
+    }, {
+        "src": "logo_invie78.png",
+        "link": ""
+    }, {
+        "src": "logo_lescargot.png",
+        "link": ""
+    }, {
+        "src": "logo_plateforme91.png",
+        "link": ""
+    }, {
+        "src": "logo_plenita.png",
+        "link": ""
+    }, {
+        "src": "logo_psap91.png",
         "link": ""
     }
 ]

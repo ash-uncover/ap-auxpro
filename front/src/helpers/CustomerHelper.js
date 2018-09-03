@@ -5,12 +5,12 @@ import AuthHelper from 'helpers/AuthHelper'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class CustomerHelper {
 
-	register(id, obj, callback) {
-		StoreRegistry.register('REST_STORE/customer' + (id ? '/' + id : ''), obj, callback);
+	register(id, callback) {
+		StoreRegistry.register('REST_STORE', 'customer' + (id ? '/' + id : ''), callback)
 	}
 
-	unregister(obj) {
-		StoreRegistry.unregister('REST_STORE', obj);
+	unregister(id, callback) {
+		StoreRegistry.unregister('REST_STORE', 'customer' + (id ? '/' + id : ''), callback)
 	}
 
 	getAuxiliaryCustomers(auxiliaryId, query) {

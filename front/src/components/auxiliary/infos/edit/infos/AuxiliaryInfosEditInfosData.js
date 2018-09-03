@@ -25,6 +25,7 @@ class AuxiliaryInfosEditInfosData extends BaseData {
         super(...arguments)
 
         this.checkField = this._checkField.bind(this)
+        this.handlePutAuxiliaryError = this.handlePutAuxiliaryError.bind(this)
 
         const AVATAR = AuxiliaryFields.AVATAR
         const PROFIL_COMPLETED = AuxiliaryFields.PROFIL_COMPLETED
@@ -164,11 +165,11 @@ class AuxiliaryInfosEditInfosData extends BaseData {
         this.loadAuxiliary(AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {})
         this.checkAuxiliary()
 
-        ErrorHelper.register('PUT_AUXILIARY', this, this.handlePutAuxiliaryError.bind(this))
+        ErrorHelper.register('PUT_AUXILIARY', this.handlePutAuxiliaryError)
     }
 
     unregister() {
-        ErrorHelper.unregister(this)
+        ErrorHelper.unregister('PUT_AUXILIARY', this.handlePutAuxiliaryError)
     }
 
     // Store notification //
