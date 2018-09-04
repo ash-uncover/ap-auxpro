@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response.*;
 import org.ap.common.web.servlet.APServletBase;
 import io.swagger.annotations.Api;
 import org.ap.auxpro.bean.AuxiliaryGetBean;
+import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryData;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryCollection;
 import org.ap.common.exception.APWebException;
@@ -65,6 +66,7 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all auxiliarys",response=AuxiliaryGetBean.class)
 	public Response getAuxiliarys(@Context SecurityContext sc, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), AuxiliaryFields.class);
@@ -161,6 +163,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@GET
 	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find auxiliarys by id",response=AuxiliaryGetBean.class)
 	public Response getAuxiliary(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
 			AuxiliaryData data = AuxiliaryCollection.getById(id);
@@ -243,6 +246,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@GET
 	@Path("/{auxiliaryId}/services")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all services associated to a auxiliarys",response=ServiceGetBean.class)
 	public Response getAuxiliaryServices(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), ServiceFields.class);
@@ -277,6 +281,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@GET
 	@Path("/{auxiliaryId}/customers")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all customers associated to a auxiliarys",response=CustomerBean.class)
 	public Response getAuxiliaryCustomers(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), CustomerFields.class);
@@ -307,6 +312,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@GET
 	@Path("/{auxiliaryId}/interventions")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all interventions associated to a auxiliarys",response=InterventionBean.class)
 	public Response getAuxiliaryInterventions(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), InterventionFields.class);
@@ -337,6 +343,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@GET
 	@Path("/{auxiliaryId}/offers")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all offers associated to a auxiliarys",response=OfferBean.class)
 	public Response getAuxiliaryOffers(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), OfferFields.class);
@@ -367,6 +374,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@GET
 	@Path("/{auxiliaryId}/missions")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all missions associated to a auxiliarys",response=MissionBean.class)
 	public Response getAuxiliaryMissions(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), MissionFields.class);
@@ -397,6 +405,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@GET
 	@Path("/{auxiliaryId}/indisponibilitys")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all indisponibilitys associated to a auxiliarys",response=IndisponibilityBean.class)
 	public Response getAuxiliaryIndisponibilitys(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), IndisponibilityFields.class);
@@ -427,6 +436,7 @@ public class AuxiliaryServlet extends APServletBase {
 	@GET
 	@Path("/{auxiliaryId}/geozones")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all geozones associated to a auxiliarys",response=GeozoneBean.class)
 	public Response getAuxiliaryGeozones(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), GeozoneFields.class);

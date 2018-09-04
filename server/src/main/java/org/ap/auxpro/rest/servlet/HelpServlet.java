@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response.*;
 import org.ap.common.web.servlet.APServletBase;
 import io.swagger.annotations.Api;
 import org.ap.auxpro.bean.HelpTopicBean;
+import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.helptopic.HelptopicData;
 import org.ap.auxpro.storage.helptopic.HelptopicCollection;
 import org.ap.common.exception.APWebException;
@@ -29,6 +30,7 @@ public class HelpServlet extends APServletBase {
 	@GET
 	@Path("/topics")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all help/topics",response=HelpTopicBean.class)
 	public Response getHelpTopics(@Context SecurityContext sc, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), HelptopicFields.class);
@@ -58,6 +60,7 @@ public class HelpServlet extends APServletBase {
 	@GET
 	@Path("/faqs")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all help/faqs",response=HelpFaqBean.class)
 	public Response getHelpFaqs(@Context SecurityContext sc, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), HelpfaqFields.class);

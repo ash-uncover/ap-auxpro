@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response.*;
 import org.ap.common.web.servlet.APServletBase;
 import io.swagger.annotations.Api;
 import org.ap.auxpro.bean.CustomerBean;
+import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.customer.CustomerData;
 import org.ap.auxpro.storage.customer.CustomerCollection;
 import org.ap.common.exception.APWebException;
@@ -51,6 +52,7 @@ public class CustomerServlet extends APServletBase {
 	@GET
 	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find customers by id",response=CustomerBean.class)
 	public Response getCustomer(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
 			CustomerData data = CustomerCollection.getById(id);
@@ -114,6 +116,7 @@ public class CustomerServlet extends APServletBase {
 	@GET
 	@Path("/{customerId}/interventions")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all interventions associated to a customers",response=InterventionBean.class)
 	public Response getCustomerInterventions(@Context SecurityContext sc, @PathParam("customerId") final String customerId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), InterventionFields.class);

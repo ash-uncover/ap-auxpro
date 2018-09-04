@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response.*;
 import org.ap.common.web.servlet.APServletBase;
 import io.swagger.annotations.Api;
 import org.ap.auxpro.bean.GeozoneBean;
+import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.geozone.GeozoneData;
 import org.ap.auxpro.storage.geozone.GeozoneCollection;
 import org.ap.common.exception.APWebException;
@@ -43,6 +44,7 @@ public class GeozoneServlet extends APServletBase {
 	@GET
 	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find geozones by id",response=GeozoneBean.class)
 	public Response getGeozone(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
 			GeozoneData data = GeozoneCollection.getById(id);

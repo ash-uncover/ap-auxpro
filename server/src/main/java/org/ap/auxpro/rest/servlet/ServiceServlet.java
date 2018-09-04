@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response.*;
 import org.ap.common.web.servlet.APServletBase;
 import io.swagger.annotations.Api;
 import org.ap.auxpro.bean.ServiceGetBean;
+import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.service.ServiceData;
 import org.ap.auxpro.storage.service.ServiceCollection;
 import org.ap.common.exception.APWebException;
@@ -56,6 +57,7 @@ public class ServiceServlet extends APServletBase {
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all services",response=ServiceGetBean.class)
 	public Response getServices(@Context SecurityContext sc, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), ServiceFields.class);
@@ -152,6 +154,7 @@ public class ServiceServlet extends APServletBase {
 	@GET
 	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find services by id",response=ServiceGetBean.class)
 	public Response getService(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
 			ServiceData data = ServiceCollection.getById(id);
@@ -218,6 +221,7 @@ public class ServiceServlet extends APServletBase {
 	@GET
 	@Path("/{serviceId}/auxiliarys")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all auxiliarys associated to a services",response=AuxiliaryGetBean.class)
 	public Response getServiceAuxiliarys(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), AuxiliaryFields.class);
@@ -252,6 +256,7 @@ public class ServiceServlet extends APServletBase {
 	@GET
 	@Path("/{serviceId}/customers")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all customers associated to a services",response=CustomerBean.class)
 	public Response getServiceCustomers(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), CustomerFields.class);
@@ -282,6 +287,7 @@ public class ServiceServlet extends APServletBase {
 	@GET
 	@Path("/{serviceId}/interventions")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all interventions associated to a services",response=InterventionBean.class)
 	public Response getServiceInterventions(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), InterventionFields.class);
@@ -312,6 +318,7 @@ public class ServiceServlet extends APServletBase {
 	@GET
 	@Path("/{serviceId}/offers")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all offers associated to a services",response=OfferBean.class)
 	public Response getServiceOffers(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), OfferFields.class);
@@ -342,6 +349,7 @@ public class ServiceServlet extends APServletBase {
 	@GET
 	@Path("/{serviceId}/missions")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all missions associated to a services",response=MissionBean.class)
 	public Response getServiceMissions(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
 		try {
 			List<Bson> conditions = loadQueryFilter(info.getQueryParameters(), MissionFields.class);

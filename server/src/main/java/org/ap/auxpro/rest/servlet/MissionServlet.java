@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response.*;
 import org.ap.common.web.servlet.APServletBase;
 import io.swagger.annotations.Api;
 import org.ap.auxpro.bean.MissionBean;
+import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.mission.MissionData;
 import org.ap.auxpro.storage.mission.MissionCollection;
 import org.ap.common.exception.APWebException;
@@ -22,6 +23,7 @@ public class MissionServlet extends APServletBase {
 	@GET
 	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find missions by id",response=MissionBean.class)
 	@RolesAllowed("apauth")
 	public Response getMission(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {

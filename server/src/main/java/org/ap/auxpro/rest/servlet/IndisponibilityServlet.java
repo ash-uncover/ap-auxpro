@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response.*;
 import org.ap.common.web.servlet.APServletBase;
 import io.swagger.annotations.Api;
 import org.ap.auxpro.bean.IndisponibilityBean;
+import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.indisponibility.IndisponibilityData;
 import org.ap.auxpro.storage.indisponibility.IndisponibilityCollection;
 import org.ap.common.exception.APWebException;
@@ -43,6 +44,7 @@ public class IndisponibilityServlet extends APServletBase {
 	@GET
 	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find indisponibilitys by id",response=IndisponibilityBean.class)
 	public Response getIndisponibility(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
 			IndisponibilityData data = IndisponibilityCollection.getById(id);

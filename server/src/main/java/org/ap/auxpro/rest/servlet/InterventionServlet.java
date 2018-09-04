@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response.*;
 import org.ap.common.web.servlet.APServletBase;
 import io.swagger.annotations.Api;
 import org.ap.auxpro.bean.InterventionPostBean;
+import io.swagger.annotations.ApiOperation;
 import org.ap.common.exception.APWebException;
 import javax.annotation.security.RolesAllowed;
 import org.ap.auxpro.helpers.InterventionHelper;
@@ -42,6 +43,7 @@ public class InterventionServlet extends APServletBase {
 	@GET
 	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find interventions by id",response=InterventionBean.class)
 	@RolesAllowed("apauth")
 	public Response getIntervention(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
@@ -89,6 +91,7 @@ public class InterventionServlet extends APServletBase {
 	@GET
 	@Path("/{id}/match")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find all match associated to a interventions",response=InterventionBean.class)
 	@RolesAllowed("service")
 	public Response getInterventionMatchs(@Context SecurityContext sc, @PathParam("id") final String id, @Context UriInfo info) {
 		try {

@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response.*;
 import org.ap.common.web.servlet.APServletBase;
 import io.swagger.annotations.Api;
 import org.ap.auxpro.bean.OfferPostBean;
+import io.swagger.annotations.ApiOperation;
 import org.ap.common.exception.APWebException;
 import javax.annotation.security.RolesAllowed;
 import org.ap.auxpro.helpers.OfferHelper;
@@ -40,6 +41,7 @@ public class OfferServlet extends APServletBase {
 	@GET
 	@Path("/{id}")
 	@Produces({MediaType.APPLICATION_JSON})
+	@ApiOperation(value="Find offers by id",response=OfferBean.class)
 	@RolesAllowed("apauth")
 	public Response getOffer(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
