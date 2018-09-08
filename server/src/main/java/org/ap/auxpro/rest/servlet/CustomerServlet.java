@@ -9,7 +9,7 @@ import org.ap.auxpro.bean.CustomerBean;
 import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.customer.CustomerData;
 import org.ap.auxpro.storage.customer.CustomerCollection;
-import org.ap.common.exception.APWebException;
+import org.ap.common.web.exception.APWebException;
 import org.ap.common.util.UUIDGenerator;
 import java.util.Date;
 import com.mongodb.MongoWriteException;

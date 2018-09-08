@@ -9,7 +9,7 @@ import org.ap.auxpro.bean.IndisponibilityBean;
 import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.indisponibility.IndisponibilityData;
 import org.ap.auxpro.storage.indisponibility.IndisponibilityCollection;
-import org.ap.common.exception.APWebException;
+import org.ap.common.web.exception.APWebException;
 import org.ap.common.util.UUIDGenerator;
 import java.util.Date;
 import com.mongodb.MongoWriteException;

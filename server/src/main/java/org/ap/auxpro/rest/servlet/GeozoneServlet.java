@@ -9,7 +9,7 @@ import org.ap.auxpro.bean.GeozoneBean;
 import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.geozone.GeozoneData;
 import org.ap.auxpro.storage.geozone.GeozoneCollection;
-import org.ap.common.exception.APWebException;
+import org.ap.common.web.exception.APWebException;
 import org.ap.common.util.UUIDGenerator;
 import java.util.Date;
 import com.mongodb.MongoWriteException;

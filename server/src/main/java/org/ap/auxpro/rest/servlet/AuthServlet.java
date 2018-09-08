@@ -11,7 +11,7 @@ import org.ap.auxpro.bean.APAuthPasswordBean;
 import org.ap.common.util.UUIDGenerator;
 import org.ap.common.time.TimeHelper;
 import org.ap.auxpro.internal.MailSender;
-import org.ap.common.exception.APWebException;
+import org.ap.common.web.exception.APWebException;
 import org.ap.auxpro.bean.APAuthTokenUsernameBean;
 import org.ap.auxpro.internal.ETokenType;
 import java.time.Duration;

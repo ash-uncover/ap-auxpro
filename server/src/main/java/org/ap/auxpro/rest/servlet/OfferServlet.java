@@ -7,7 +7,7 @@ import org.ap.common.web.servlet.APServletBase;
 import io.swagger.annotations.Api;
 import org.ap.auxpro.bean.OfferPostBean;
 import io.swagger.annotations.ApiOperation;
-import org.ap.common.exception.APWebException;
+import org.ap.common.web.exception.APWebException;
 import javax.annotation.security.RolesAllowed;
 import org.ap.auxpro.helpers.OfferHelper;
 import org.ap.auxpro.bean.OfferBean;

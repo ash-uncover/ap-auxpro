@@ -22,10 +22,10 @@ import org.ap.auxpro.storage.geozone.GeozoneCollection;
 import org.ap.auxpro.storage.geozone.GeozoneData;
 import org.ap.auxpro.storage.promotioncode.PromotioncodeCollection;
 import org.ap.auxpro.storage.promotioncode.PromotioncodeData;
-import org.ap.common.exception.APWebException;
 import org.ap.common.time.TimeHelper;
 import org.ap.common.util.UUIDGenerator;
 import org.ap.common.validators.EValidatorState;
+import org.ap.common.web.exception.APWebException;
 public class AuxiliaryHelper {
 
 	public static void beforePutAuxiliary(SecurityContext sc, String id, AuxiliaryPutBean auxiliaryBean) throws APWebException {

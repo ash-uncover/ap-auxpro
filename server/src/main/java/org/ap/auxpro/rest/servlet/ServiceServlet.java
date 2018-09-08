@@ -9,7 +9,7 @@ import org.ap.auxpro.bean.ServiceGetBean;
 import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.service.ServiceData;
 import org.ap.auxpro.storage.service.ServiceCollection;
-import org.ap.common.exception.APWebException;
+import org.ap.common.web.exception.APWebException;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.service.ServiceFields;

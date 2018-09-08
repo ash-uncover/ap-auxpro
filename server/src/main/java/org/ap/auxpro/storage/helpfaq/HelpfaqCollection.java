@@ -4,7 +4,7 @@ import static com.mongodb.client.model.Filters.*;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.ap.common.mongo.Mongo;
-import org.ap.common.exception.APWebException;
+import org.ap.common.web.exception.APWebException;
 import java.util.List;
 import java.util.ArrayList;
 import com.mongodb.client.FindIterable;

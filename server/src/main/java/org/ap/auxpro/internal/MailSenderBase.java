@@ -2,7 +2,7 @@ package org.ap.auxpro.internal;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.ap.common.exception.APWebException;
+import org.ap.common.web.exception.APWebException;
 import org.ap.common.mail.MailHelper;
 import org.ap.auxpro.storage.apauth.ApauthData;
 import org.ap.auxpro.storage.apmail.ApmailCollection;

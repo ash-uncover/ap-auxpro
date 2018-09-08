@@ -9,7 +9,7 @@ import org.ap.auxpro.bean.AuxiliaryGetBean;
 import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryData;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryCollection;
-import org.ap.common.exception.APWebException;
+import org.ap.common.web.exception.APWebException;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryFields;

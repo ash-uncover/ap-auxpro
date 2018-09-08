@@ -9,7 +9,7 @@ import org.ap.auxpro.bean.MissionBean;
 import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.mission.MissionData;
 import org.ap.auxpro.storage.mission.MissionCollection;
-import org.ap.common.exception.APWebException;
+import org.ap.common.web.exception.APWebException;
 import javax.annotation.security.RolesAllowed;
 import java.util.Date;
 

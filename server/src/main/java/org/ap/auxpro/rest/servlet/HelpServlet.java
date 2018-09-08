@@ -9,7 +9,7 @@ import org.ap.auxpro.bean.HelpTopicBean;
 import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.helptopic.HelptopicData;
 import org.ap.auxpro.storage.helptopic.HelptopicCollection;
-import org.ap.common.exception.APWebException;
+import org.ap.common.web.exception.APWebException;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.helptopic.HelptopicFields;

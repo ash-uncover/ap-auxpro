@@ -14,8 +14,8 @@ import org.ap.auxpro.storage.promotioncode.PromotioncodeData;
 import org.ap.auxpro.storage.service.ServiceCollection;
 import org.ap.auxpro.storage.service.ServiceData;
 import org.ap.auxpro.storage.service.ServiceFields;
-import org.ap.common.exception.APWebException;
 import org.ap.common.validators.EValidatorState;
+import org.ap.common.web.exception.APWebException;
 
 public class ServiceHelper {
 
