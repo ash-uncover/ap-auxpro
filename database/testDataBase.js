@@ -55,18 +55,6 @@ db.apauth.insert({
 	"registered":true
 })
 
-db.apauth.insert({
-	"id":"userguest",
-	"username":"guest",
-	"email":"guest",
-	"password":"guest",
-	"roles":[],
-	"type":"guest",
-	"active":true,
-	"registrationDate":new Date("2016-01-01"),
-	"registered":true
-})
-
 db.apmail.insert({
 	"id":"mail_auth_register",
 	"subject":"{type} account registration",

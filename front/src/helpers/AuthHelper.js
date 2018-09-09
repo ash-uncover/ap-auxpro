@@ -50,19 +50,19 @@ class AuthHelper {
 	}
 
 	postAuthRegister(data) {
-		return Dispatcher.issue('POST_AUTH_REGISTER', { token: Utils.encode('guest', 'guest'), data: data });
+		return Dispatcher.issue('POST_AUTH_REGISTER', { data: data });
 	}
 
 	postAuthRecover(data) {
-		return Dispatcher.issue('POST_AUTH_RECOVER', { token: Utils.encode('guest', 'guest'), data: data });
+		return Dispatcher.issue('POST_AUTH_RECOVER', { data: data });
 	}
 
 	postAuthRecoverCheck(data) {
-		return Dispatcher.issue('POST_AUTH_RECOVER_CHECK', { token: Utils.encode('guest', 'guest'), data: data });
+		return Dispatcher.issue('POST_AUTH_RECOVER_CHECK', { data: data });
 	}
 
 	putAuthRecover(data) {
-		return Dispatcher.issue('PUT_AUTH_RECOVER', { token: Utils.encode('guest', 'guest'), data: data });
+		return Dispatcher.issue('PUT_AUTH_RECOVER', { data: data });
 	}
 
 	postAuthChangemail() {

@@ -20,6 +20,7 @@ class FAQData extends BaseData {
 
 		HelpfaqHelper.register('', this.onHelpfaqUpdate)
 
+console.log('loading faqs')
 		HelpfaqHelper.getHelpFaqs()
 	}
 

@@ -91,7 +91,6 @@ post_auth_register.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/auth/register',
-		token: Utils.encode('guest', 'guest'),
 		data: args.data
 	};
 	return RestService.request(reqParam);
@@ -102,7 +101,6 @@ post_auth_recover.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/auth/recover',
-		token: Utils.encode('guest', 'guest'),
 		data: args.data
 	};
 	return RestService.request(reqParam);
@@ -113,7 +111,6 @@ post_auth_recover_check.do = function(args) {
 	var reqParam = {
 		method: 'POST',
 		url: '/auth/recover/check',
-		token: Utils.encode('guest', 'guest'),
 		data: args.data
 	};
 	return RestService.request(reqParam);
@@ -124,7 +121,6 @@ put_auth_recover.do = function(args) {
 	var reqParam = {
 		method: 'PUT',
 		url: '/auth/recover',
-		token: Utils.encode('guest', 'guest'),
 		data: args.data
 	};
 	return RestService.request(reqParam);
@@ -212,7 +208,6 @@ post_auxiliary.do = function(args) {
 		method: 'POST',
 		url: '/auxiliarys',
 		data: args.data,
-		token: Utils.encode('guest', 'guest'),
 	};
 	return RestService.request(reqParam);
 }
@@ -652,7 +647,6 @@ post_service.do = function(args) {
 		method: 'POST',
 		url: '/services',
 		data: args.data,
-		token: Utils.encode('guest', 'guest'),
 	};
 	return RestService.request(reqParam);
 }
