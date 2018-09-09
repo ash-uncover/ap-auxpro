@@ -3,13 +3,15 @@ import './AppLandLogos.scss'
 
 import Carousel from 'components-lib/Carousel/Carousel'
 
-const getLogoPath = (logo) => {
-    return `assets/images/logos/${logo}`
-}
+const LOGO_DIR = 'assets/data/logos/'
 
 const ITEMS_PER_SLIDE = 2
 
-class AppLandLogos2 extends React.Component {
+const getLogoPath = (logo) => {
+    return `${LOGO_DIR}${logo}`
+}
+
+class AppLandLogos extends React.Component {
 
     constructor() {
         super(...arguments)
@@ -28,7 +30,7 @@ class AppLandLogos2 extends React.Component {
         this.onError = this.onError.bind(this)
 
         $.ajax({
-            url: '/assets/images/logos/logos.json',
+            url: `${LOGO_DIR}logos.json`,
             dataType: 'json',
             success: this.onLoad,
             error: this.onError
@@ -104,10 +106,10 @@ class AppLandLogos2 extends React.Component {
     }
 }
 
-AppLandLogos2.propTypes = {
+AppLandLogos.propTypes = {
 }
 
-AppLandLogos2.defaultProps = {
+AppLandLogos.defaultProps = {
 }
 
-export default AppLandLogos2
+export default AppLandLogos
