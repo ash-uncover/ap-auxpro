@@ -7,6 +7,7 @@ import org.ap.auxpro.storage.apauth.ApauthData;
 import org.ap.auxpro.storage.apauth.ApauthCollection;
 import org.ap.common.web.servlet.APServletBase;
 import org.ap.auxpro.bean.APAuthInfoBean;
+import org.ap.common.web.auth.APSecured;
 import org.ap.auxpro.bean.APAuthPasswordBean;
 import org.ap.common.util.UUIDGenerator;
 import org.ap.common.time.TimeHelper;
@@ -30,6 +31,7 @@ public class AuthServlet extends APServletBase {
 
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
+	@APSecured
 	public Response getAuth(@Context SecurityContext sc) {
 		try {
 			// Get user from the DB
@@ -52,6 +54,7 @@ public class AuthServlet extends APServletBase {
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/password")
+	@APSecured
 	public Response putPassword(@Context SecurityContext sc, APAuthPasswordBean bean) {
 		try {
 			// Get user from the DB
@@ -250,6 +253,7 @@ public class AuthServlet extends APServletBase {
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/changemail")
+	@APSecured
 	public Response postChangemail(@Context SecurityContext sc) {
 		try {
 			// Get user from the DB
@@ -276,6 +280,7 @@ public class AuthServlet extends APServletBase {
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/changemail/check")
+	@APSecured
 	public Response postChangemailCheck(@Context SecurityContext sc, APAuthTokenBean bean) {
 		try {
 			// Get user from the DB
@@ -311,6 +316,7 @@ public class AuthServlet extends APServletBase {
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/changemail")
+	@APSecured
 	public Response putChangemail(@Context SecurityContext sc, APAuthChangemailBean bean) {
 		try {
 			// Get user from the DB
@@ -359,6 +365,7 @@ public class AuthServlet extends APServletBase {
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	@Path("/changemail/confirm")
+	@APSecured
 	public Response postChangemailConfirm(@Context SecurityContext sc, APAuthTokenBean bean) {
 		try {
 			// Get user from the DB

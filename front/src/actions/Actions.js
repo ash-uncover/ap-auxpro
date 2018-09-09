@@ -428,7 +428,6 @@ delete_geozone.do = function(args) {
 }
 
 get_help_topics.do = function(args) {
-	Utils.checkMembers(args, ['token']);
 	var reqParam = {
 		method: 'GET',
 		url: '/help/topics',
@@ -439,7 +438,6 @@ get_help_topics.do = function(args) {
 }
 
 get_help_faqs.do = function(args) {
-	Utils.checkMembers(args, ['token']);
 	var reqParam = {
 		method: 'GET',
 		url: '/help/faqs',

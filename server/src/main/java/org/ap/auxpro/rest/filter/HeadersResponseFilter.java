@@ -25,7 +25,7 @@ public class HeadersResponseFilter implements ContainerResponseFilter {
 	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
 		responseContext.getHeaders().add(ACCESS_CONTROL_ALLOW_ORIGIN, EConfigProperties.SERV_ORIGIN.getValue());
 		responseContext.getHeaders().add(ACCESS_CONTROL_ALLOW_METHODS, "GET,POST,PUT,DELETE,OPTIONS");
-		if (_resourceInfo.getResourceMethod().isAnnotationPresent(APSecured.class)) {
+		if (requestContext.getMethod().equals("OPTIONS") || _resourceInfo.getResourceMethod().isAnnotationPresent(APSecured.class)) {
 			responseContext.getHeaders().add(ACCESS_CONTROL_ALLOW_HEADERS, "content-type,authorization");
 		} else {
 			responseContext.getHeaders().add(ACCESS_CONTROL_ALLOW_HEADERS, "content-type");
