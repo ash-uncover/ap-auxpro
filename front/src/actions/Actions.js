@@ -2,6 +2,7 @@ import { ActionBase } from 'ap-flux'
 import { Utils, RestService } from 'ap-react-bootstrap'
 
 let get_auth = new ActionBase({ name: 'GET_AUTH' })
+let post_auth = new ActionBase({ name: 'POST_AUTH' })
 let put_auth_password = new ActionBase({ name: 'PUT_AUTH_PASSWORD' })
 let post_auth_register = new ActionBase({ name: 'POST_AUTH_REGISTER' })
 let post_auth_recover = new ActionBase({ name: 'POST_AUTH_RECOVER' })
@@ -71,6 +72,16 @@ get_auth.do = function(args) {
 		method: 'GET',
 		url: '/auth',
 		token : Utils.encode(args.username, args.password)
+	};
+	return RestService.request(reqParam);
+}
+
+post_auth.do = function(args) {
+	Utils.checkMembers(args, ['data']);
+	var reqParam = {
+		method: 'POST',
+		url: '/auth',
+		data: args.data
 	};
 	return RestService.request(reqParam);
 }

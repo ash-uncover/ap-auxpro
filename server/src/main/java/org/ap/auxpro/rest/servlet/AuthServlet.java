@@ -8,6 +8,8 @@ import org.ap.auxpro.storage.apauth.ApauthCollection;
 import org.ap.common.web.servlet.APServletBase;
 import org.ap.auxpro.bean.APAuthInfoBean;
 import org.ap.common.web.auth.APSecured;
+import org.ap.common.web.auth.bean.APAuthBean;
+import org.ap.common.util.Encoder;
 import org.ap.auxpro.bean.APAuthPasswordBean;
 import org.ap.common.util.UUIDGenerator;
 import org.ap.common.time.TimeHelper;
@@ -42,6 +44,34 @@ public class AuthServlet extends APServletBase {
 			result.entityId = dataAuth.getEntityId();
 			result.type = dataAuth.getType();
 			result.email = dataAuth.getEmail();
+			// send response
+			return Response.status(Status.OK).entity(result).build();
+			
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	@POST
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Response postAuth(@Context SecurityContext sc, APAuthBean bean) {
+		try {
+			// Check that the user exists in the DB
+			ApauthData dataAuth = ApauthCollection.getByUsername(bean.username);
+			if (dataAuth == null) {
+				dataAuth = ApauthCollection.getByEmail(bean.username);
+				if (dataAuth == null) {
+					throw APWebException.AP_AUTH_USERCHECK_001;
+				}
+			}
+			// check credentials
+			if (!dataAuth.password.equals(bean.password)) {
+				throw APWebException.AP_AUTH_TOKENCHECK_003;
+			}
+			// build response (auth token)
+			APAuthTokenBean result = new APAuthTokenBean();
+			result.token = Encoder.encodeBasicAuth(dataAuth.username, dataAuth.password);
 			// send response
 			return Response.status(Status.OK).entity(result).build();
 			

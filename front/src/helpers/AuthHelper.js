@@ -41,6 +41,10 @@ class AuthHelper {
 		return Dispatcher.issue('GET_AUTH', data);
 	}
 
+	postAuth(data) {
+		return Dispatcher.issue('GET_AUTH', data);
+	}
+
 	logout() {
 		return Dispatcher.issue('LOGOUT');
 	}
