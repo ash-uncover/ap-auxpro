@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.mission.MissionData;
 import org.ap.auxpro.storage.mission.MissionCollection;
 import org.ap.common.web.exception.APWebException;
+import org.ap.common.web.auth.APSecured;
 import javax.annotation.security.RolesAllowed;
 import java.util.Date;
 
@@ -22,6 +23,7 @@ public class MissionServlet extends APServletBase {
 
 	@GET
 	@Path("/{id}")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find missions by id",response=MissionBean.class)
 	@RolesAllowed("apauth")
@@ -43,6 +45,7 @@ public class MissionServlet extends APServletBase {
 
 	@PUT
 	@Path("/{id}")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@RolesAllowed("apauth")
 	public Response putMission(@Context SecurityContext sc, @PathParam("id") final String id, MissionBean missionBean) {
@@ -70,6 +73,7 @@ public class MissionServlet extends APServletBase {
 
 	@DELETE
 	@Path("/{id}")
+	@APSecured
 	@RolesAllowed("apauth")
 	public Response deleteMission(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {

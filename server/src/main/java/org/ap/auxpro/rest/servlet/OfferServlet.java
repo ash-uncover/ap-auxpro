@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import org.ap.auxpro.bean.OfferPostBean;
 import io.swagger.annotations.ApiOperation;
 import org.ap.common.web.exception.APWebException;
+import org.ap.common.web.auth.APSecured;
 import javax.annotation.security.RolesAllowed;
 import org.ap.auxpro.helpers.OfferHelper;
 import org.ap.auxpro.bean.OfferBean;
@@ -23,6 +24,7 @@ public class OfferServlet extends APServletBase {
 	public static final String PATH = "/offers";
 
 	@POST
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	@RolesAllowed("service")
@@ -40,6 +42,7 @@ public class OfferServlet extends APServletBase {
 
 	@GET
 	@Path("/{id}")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find offers by id",response=OfferBean.class)
 	@RolesAllowed("apauth")
@@ -61,6 +64,7 @@ public class OfferServlet extends APServletBase {
 
 	@PUT
 	@Path("/{id}/accept")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@RolesAllowed("auxiliary")
 	public Response putOfferAccepts(@Context SecurityContext sc, @PathParam("id") final String id, OfferEmptyBean offerEmptyBean) {
@@ -77,6 +81,7 @@ public class OfferServlet extends APServletBase {
 
 	@PUT
 	@Path("/{id}/decline")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@RolesAllowed("auxiliary")
 	public Response putOfferDeclines(@Context SecurityContext sc, @PathParam("id") final String id, OfferEmptyBean offerEmptyBean) {
@@ -93,6 +98,7 @@ public class OfferServlet extends APServletBase {
 
 	@PUT
 	@Path("/{id}/confirm")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@RolesAllowed("service")
 	public Response putOfferConfirms(@Context SecurityContext sc, @PathParam("id") final String id, OfferEmptyBean offerEmptyBean) {

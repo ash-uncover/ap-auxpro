@@ -13,6 +13,7 @@ import org.ap.common.web.exception.APWebException;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.service.ServiceFields;
+import org.ap.common.web.auth.APSecured;
 import java.util.List;
 import java.util.ArrayList;
 import org.ap.auxpro.bean.ServicePostBean;
@@ -56,6 +57,7 @@ public class ServiceServlet extends APServletBase {
 	public static final String PATH = "/services";
 
 	@GET
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all services",response=ServiceGetBean.class)
 	public Response getServices(@Context SecurityContext sc, @Context UriInfo info) {
@@ -153,6 +155,7 @@ public class ServiceServlet extends APServletBase {
 
 	@GET
 	@Path("/{id}")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find services by id",response=ServiceGetBean.class)
 	public Response getService(@Context SecurityContext sc, @PathParam("id") final String id) {
@@ -177,6 +180,7 @@ public class ServiceServlet extends APServletBase {
 
 	@PUT
 	@Path("/{id}")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response putService(@Context SecurityContext sc, @PathParam("id") final String id, ServicePutBean servicePutBean) {
 		try {
@@ -204,6 +208,7 @@ public class ServiceServlet extends APServletBase {
 
 	@POST
 	@Path("/{id}/code")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response postServiceCode(@Context SecurityContext sc, @PathParam("id") final String id, PromotionCodePostBean promotionCodePostBean) {
@@ -220,6 +225,7 @@ public class ServiceServlet extends APServletBase {
 
 	@GET
 	@Path("/{serviceId}/auxiliarys")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all auxiliarys associated to a services",response=AuxiliaryGetBean.class)
 	public Response getServiceAuxiliarys(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
@@ -255,6 +261,7 @@ public class ServiceServlet extends APServletBase {
 
 	@GET
 	@Path("/{serviceId}/customers")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all customers associated to a services",response=CustomerBean.class)
 	public Response getServiceCustomers(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
@@ -286,6 +293,7 @@ public class ServiceServlet extends APServletBase {
 
 	@GET
 	@Path("/{serviceId}/interventions")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all interventions associated to a services",response=InterventionBean.class)
 	public Response getServiceInterventions(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
@@ -317,6 +325,7 @@ public class ServiceServlet extends APServletBase {
 
 	@GET
 	@Path("/{serviceId}/offers")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all offers associated to a services",response=OfferBean.class)
 	public Response getServiceOffers(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {
@@ -348,6 +357,7 @@ public class ServiceServlet extends APServletBase {
 
 	@GET
 	@Path("/{serviceId}/missions")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all missions associated to a services",response=MissionBean.class)
 	public Response getServiceMissions(@Context SecurityContext sc, @PathParam("serviceId") final String serviceId, @Context UriInfo info) {

@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import org.ap.auxpro.bean.InterventionPostBean;
 import io.swagger.annotations.ApiOperation;
 import org.ap.common.web.exception.APWebException;
+import org.ap.common.web.auth.APSecured;
 import javax.annotation.security.RolesAllowed;
 import org.ap.auxpro.helpers.InterventionHelper;
 import org.ap.auxpro.bean.InterventionBean;
@@ -25,6 +26,7 @@ public class InterventionServlet extends APServletBase {
 	public static final String PATH = "/interventions";
 
 	@POST
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	@RolesAllowed("service")
@@ -42,6 +44,7 @@ public class InterventionServlet extends APServletBase {
 
 	@GET
 	@Path("/{id}")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find interventions by id",response=InterventionBean.class)
 	@RolesAllowed("apauth")
@@ -63,6 +66,7 @@ public class InterventionServlet extends APServletBase {
 
 	@PUT
 	@Path("/{id}")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@RolesAllowed("service")
 	public Response putIntervention(@Context SecurityContext sc, @PathParam("id") final String id, InterventionPutBean interventionPutBean) {
@@ -90,6 +94,7 @@ public class InterventionServlet extends APServletBase {
 
 	@GET
 	@Path("/{id}/match")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all match associated to a interventions",response=InterventionBean.class)
 	@RolesAllowed("service")
@@ -107,6 +112,7 @@ public class InterventionServlet extends APServletBase {
 
 	@PUT
 	@Path("/{id}/cancel")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@RolesAllowed("service")
 	public Response putInterventionCancels(@Context SecurityContext sc, @PathParam("id") final String id, InterventionEmptyBean interventionEmptyBean) {

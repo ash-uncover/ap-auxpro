@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.customer.CustomerData;
 import org.ap.auxpro.storage.customer.CustomerCollection;
 import org.ap.common.web.exception.APWebException;
+import org.ap.common.web.auth.APSecured;
 import org.ap.common.util.UUIDGenerator;
 import java.util.Date;
 import com.mongodb.MongoWriteException;
@@ -30,6 +31,7 @@ public class CustomerServlet extends APServletBase {
 	public static final String PATH = "/customers";
 
 	@POST
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response postCustomer(@Context SecurityContext sc, CustomerBean customerBean) {
@@ -51,6 +53,7 @@ public class CustomerServlet extends APServletBase {
 
 	@GET
 	@Path("/{id}")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find customers by id",response=CustomerBean.class)
 	public Response getCustomer(@Context SecurityContext sc, @PathParam("id") final String id) {
@@ -71,6 +74,7 @@ public class CustomerServlet extends APServletBase {
 
 	@PUT
 	@Path("/{id}")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response putCustomer(@Context SecurityContext sc, @PathParam("id") final String id, CustomerBean customerBean) {
 		try {
@@ -97,6 +101,7 @@ public class CustomerServlet extends APServletBase {
 
 	@DELETE
 	@Path("/{id}")
+	@APSecured
 	public Response deleteCustomer(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
 			// Try to delete the entity
@@ -115,6 +120,7 @@ public class CustomerServlet extends APServletBase {
 
 	@GET
 	@Path("/{customerId}/interventions")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all interventions associated to a customers",response=InterventionBean.class)
 	public Response getCustomerInterventions(@Context SecurityContext sc, @PathParam("customerId") final String customerId, @Context UriInfo info) {

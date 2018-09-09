@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.ap.auxpro.storage.geozone.GeozoneData;
 import org.ap.auxpro.storage.geozone.GeozoneCollection;
 import org.ap.common.web.exception.APWebException;
+import org.ap.common.web.auth.APSecured;
 import org.ap.common.util.UUIDGenerator;
 import java.util.Date;
 import com.mongodb.MongoWriteException;
@@ -22,6 +23,7 @@ public class GeozoneServlet extends APServletBase {
 	public static final String PATH = "/geozones";
 
 	@POST
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response postGeozone(@Context SecurityContext sc, GeozoneBean geozoneBean) {
@@ -43,6 +45,7 @@ public class GeozoneServlet extends APServletBase {
 
 	@GET
 	@Path("/{id}")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find geozones by id",response=GeozoneBean.class)
 	public Response getGeozone(@Context SecurityContext sc, @PathParam("id") final String id) {
@@ -63,6 +66,7 @@ public class GeozoneServlet extends APServletBase {
 
 	@PUT
 	@Path("/{id}")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response putGeozone(@Context SecurityContext sc, @PathParam("id") final String id, GeozoneBean geozoneBean) {
 		try {
@@ -89,6 +93,7 @@ public class GeozoneServlet extends APServletBase {
 
 	@DELETE
 	@Path("/{id}")
+	@APSecured
 	public Response deleteGeozone(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
 			// Try to delete the entity

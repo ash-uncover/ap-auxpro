@@ -13,6 +13,7 @@ import org.ap.common.web.exception.APWebException;
 import org.bson.conversions.Bson;
 import static com.mongodb.client.model.Filters.*;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryFields;
+import org.ap.common.web.auth.APSecured;
 import java.util.List;
 import java.util.ArrayList;
 import org.ap.auxpro.bean.AuxiliaryPostBean;
@@ -65,6 +66,7 @@ public class AuxiliaryServlet extends APServletBase {
 	public static final String PATH = "/auxiliarys";
 
 	@GET
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all auxiliarys",response=AuxiliaryGetBean.class)
 	public Response getAuxiliarys(@Context SecurityContext sc, @Context UriInfo info) {
@@ -162,6 +164,7 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@GET
 	@Path("/{id}")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find auxiliarys by id",response=AuxiliaryGetBean.class)
 	public Response getAuxiliary(@Context SecurityContext sc, @PathParam("id") final String id) {
@@ -186,6 +189,7 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@PUT
 	@Path("/{id}")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response putAuxiliary(@Context SecurityContext sc, @PathParam("id") final String id, AuxiliaryPutBean auxiliaryPutBean) {
 		try {
@@ -213,6 +217,7 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@POST
 	@Path("/{id}/questionary")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response postAuxiliaryQuestionary(@Context SecurityContext sc, @PathParam("id") final String id, AuxiliaryQuestionaryBean auxiliaryQuestionaryBean) {
@@ -229,6 +234,7 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@POST
 	@Path("/{id}/code")
+	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})
 	public Response postAuxiliaryCode(@Context SecurityContext sc, @PathParam("id") final String id, PromotionCodePostBean promotionCodePostBean) {
@@ -245,6 +251,7 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@GET
 	@Path("/{auxiliaryId}/services")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all services associated to a auxiliarys",response=ServiceGetBean.class)
 	public Response getAuxiliaryServices(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
@@ -280,6 +287,7 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@GET
 	@Path("/{auxiliaryId}/customers")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all customers associated to a auxiliarys",response=CustomerBean.class)
 	public Response getAuxiliaryCustomers(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
@@ -311,6 +319,7 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@GET
 	@Path("/{auxiliaryId}/interventions")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all interventions associated to a auxiliarys",response=InterventionBean.class)
 	public Response getAuxiliaryInterventions(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
@@ -342,6 +351,7 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@GET
 	@Path("/{auxiliaryId}/offers")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all offers associated to a auxiliarys",response=OfferBean.class)
 	public Response getAuxiliaryOffers(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
@@ -373,6 +383,7 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@GET
 	@Path("/{auxiliaryId}/missions")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all missions associated to a auxiliarys",response=MissionBean.class)
 	public Response getAuxiliaryMissions(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
@@ -404,6 +415,7 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@GET
 	@Path("/{auxiliaryId}/indisponibilitys")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all indisponibilitys associated to a auxiliarys",response=IndisponibilityBean.class)
 	public Response getAuxiliaryIndisponibilitys(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
@@ -435,6 +447,7 @@ public class AuxiliaryServlet extends APServletBase {
 
 	@GET
 	@Path("/{auxiliaryId}/geozones")
+	@APSecured
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation(value="Find all geozones associated to a auxiliarys",response=GeozoneBean.class)
 	public Response getAuxiliaryGeozones(@Context SecurityContext sc, @PathParam("auxiliaryId") final String auxiliaryId, @Context UriInfo info) {
