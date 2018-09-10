@@ -2,19 +2,27 @@ import { Dispatcher, StoreBase } from 'ap-flux'
 import { Utils } from 'ap-react-bootstrap'
 import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 
-var AuthStore = new StoreBase ({ name: 'AUTH_STORE', content: {} })
-var ImageStore = new StoreBase ({ name: 'IMAGE_STORE', content: {} })
-var RestStore = new StoreBase ({ name: 'REST_STORE', content: {} })
+const AuthStore = new StoreBase ({ name: 'AUTH_STORE', content: {} })
+const ImageStore = new StoreBase ({ name: 'IMAGE_STORE', content: {} })
+const RestStore = new StoreBase ({ name: 'REST_STORE', content: {} })
 
 AuthStore.handleGetAuth = function(result, params) {
-	let content = AuthStore.content
+	const content = AuthStore.content
 	content.entityId = result.entityId
 	content.username = result.username
 	content.email = result.email
 	content.type = result.type
-	content.token = Utils.encode(params.username, params.password)
-	AuthStore.storeToLocalStorage()
 	AuthStore.notify()
+}
+
+AuthStore.handlePostAuth = function(result, params) {
+    console.log('---------------------')
+    console.log(params)
+    console.log(result)
+    const content = AuthStore.content
+    content.token = result.token
+    AuthStore.storeToLocalStorage()
+    AuthStore.notify()
 }
 
 AuthStore.handleLogout = function(result, params) {
@@ -270,6 +278,7 @@ RestStore.handleGetServiceMissions = function(result, params) {
 }
 
 Dispatcher.register('GET_AUTH', AuthStore.handleGetAuth)
+Dispatcher.register('POST_AUTH', AuthStore.handlePostAuth)
 Dispatcher.register('LOGOUT', AuthStore.handleLogout)
 Dispatcher.register('PUT_AUTH_PASSWORD', AuthStore.handlePutPassword)
 Dispatcher.register('GET_IMAGE', ImageStore.handleGetImage)

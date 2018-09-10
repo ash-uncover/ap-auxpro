@@ -67,11 +67,11 @@ let get_service_offers = new ActionBase({ name: 'GET_SERVICE_OFFERS' })
 let get_service_missions = new ActionBase({ name: 'GET_SERVICE_MISSIONS' })
 
 get_auth.do = function(args) {
-	Utils.checkMembers(args, ['username', 'password']);
+	Utils.checkMembers(args, ['token']);
 	var reqParam = {
 		method: 'GET',
 		url: '/auth',
-		token : Utils.encode(args.username, args.password)
+		token : args.token
 	};
 	return RestService.request(reqParam);
 }

@@ -43,21 +43,26 @@ class LoginData extends BaseData {
     }
 
     onSubmit() {
-        AppHelper.setBusy(true).
-        then(function() {
-            return AuthHelper.getAuth({
-                username: this.getState('username'), 
-                password: this.getState('password')
+        AppHelper.setBusy(true)
+            .then(() => {
+                AuthHelper.getAuth({
+                    username: this.getState('username'), 
+                    password: this.getState('password')
+                })
+                return AuthHelper.postAuth({
+                    username: this.getState('username'), 
+                    password: this.getState('password')
+                })
             })
-        }.bind(this)).
-        then(function () {
-            setTimeout(AppHelper.setBusy, 200)
-        }).
-        catch(function (error) {
-            setTimeout(AppHelper.setBusy, 200)
-            console.error('Logon error')
-            console.error(error)
-        })
+            .then(() => {
+                setTimeout(AppHelper.setBusy, 200)
+                
+            })
+            .catch((error) => {
+                setTimeout(AppHelper.setBusy, 200)
+                console.error('Logon error')
+                console.error(error)
+            })
     }
 
     onLogon() {

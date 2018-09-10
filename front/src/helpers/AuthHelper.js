@@ -38,11 +38,11 @@ class AuthHelper {
 	}
 
 	getAuth(data) {
-		return Dispatcher.issue('GET_AUTH', data);
+		return Dispatcher.issue('GET_AUTH', { token: this.getToken() });
 	}
 
 	postAuth(data) {
-		return Dispatcher.issue('GET_AUTH', data);
+		return Dispatcher.issue('POST_AUTH', { data: data });
 	}
 
 	logout() {
