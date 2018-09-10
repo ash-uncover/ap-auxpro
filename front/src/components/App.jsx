@@ -16,8 +16,9 @@ class App extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			preload: ap.preload,
-			loaded: I18NHelper.isLoaded(),
+            preload: ap.preload,
+            authLoaded: false,
+			I18NLoaded: I18NHelper.isLoaded(),
 			busy: !!AppHelper.getData('/app/busy'),
 			authType: null
 		}
@@ -32,7 +33,7 @@ class App extends React.Component {
 	}
 
 	render() {
-		if (this.state.loaded) {
+		if (this.state.authLoaded && this.state.I18NLoaded) {
 			return (
 				<div className='ap-app'>
 					<AppHeader />

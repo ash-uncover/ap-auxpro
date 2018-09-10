@@ -1,5 +1,7 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
+import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
+import ServiceHelper from 'helpers/ServiceHelper'
 import I18NHelper from 'helpers/I18NHelper'
 
 import { BaseData } from 'ap-react-bootstrap'
@@ -27,6 +29,18 @@ class AppData extends BaseData {
 
         if (AuthHelper.getToken()) {
             AuthHelper.getAuth()
+                .then(() => {
+                    this.setState({ authLoaded: true })
+                    if (AuthHelper.getType() === 'auxiliary') {
+                        AuxiliaryHelper.getAuxiliary(AuthHelper.getEntityId())
+                    }
+                    if (AuthHelper.getType() === 'service') {
+                        ServiceHelper.getService(AuthHelper.getEntityId())
+                    }
+                })
+                .catch(this.setState.bind(this, { authLoaded: true }))
+        } else {
+            this.setState({ authLoaded: true })
         }
     }
 
@@ -56,7 +70,7 @@ class AppData extends BaseData {
     }
 
     _onI18NLoad() {
-        this.setState({ loaded: I18NHelper.isLoaded() })
+        this.setState({ I18NLoaded: I18NHelper.isLoaded() })
     }
 
 }
