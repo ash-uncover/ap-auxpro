@@ -37,7 +37,7 @@ class AuthHelper {
 		return StoreRegistry.getStore('AUTH_STORE').getData('/email');
 	}
 
-	getAuth(data) {
+	getAuth() {
 		return Dispatcher.issue('GET_AUTH', { token: this.getToken() });
 	}
 

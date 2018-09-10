@@ -9,9 +9,9 @@ class AppHeaderData extends BaseData {
     constructor() {
         super(...arguments)
 
-        this.onAuthChanged = this._onAuthChanged.bind(this)
-        this.onAuxiliaryChanged = this._onAuxiliaryChanged.bind(this)
-        this.onServiceChanged = this._onServiceChanged.bind(this)
+        this.onAuthChanged = this.onAuthChanged.bind(this)
+        this.onAuxiliaryChanged = this.onAuxiliaryChanged.bind(this)
+        this.onServiceChanged = this.onServiceChanged.bind(this)
     }
 
     register(obj) {
@@ -28,7 +28,7 @@ class AppHeaderData extends BaseData {
 		ServiceHelper.unregister(AuthHelper.getEntityId(), this.onServiceChanged)
 	}
 
-	_onAuthChanged() {
+	onAuthChanged() {
 		AuxiliaryHelper.unregister(AuthHelper.getEntityId(), this.onAuxiliaryChanged)
         ServiceHelper.unregister(AuthHelper.getEntityId(), this.onServiceChanged)
 		if (AuthHelper.getToken()) {
@@ -60,7 +60,7 @@ class AppHeaderData extends BaseData {
 		}
 	}
 
-	_onAuxiliaryChanged() {
+	onAuxiliaryChanged() {
 		let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId())
 		if (auxiliary) {
 			this.setState({ 
@@ -70,7 +70,7 @@ class AppHeaderData extends BaseData {
 		}
 	}
 
-	_onServiceChanged() {
+	onServiceChanged() {
 		let service = ServiceHelper.getData(AuthHelper.getEntityId())
 		if (service) {
 			this.setState({ 

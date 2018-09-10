@@ -1,6 +1,6 @@
 import { Dispatcher, StoreBase } from 'ap-flux'
 
-var ErrorStore = new StoreBase ({ name: 'ERROR_STORE', content: {} })
+const ErrorStore = new StoreBase ({ name: 'ERROR_STORE', content: {} })
 
 ErrorStore.handleLogout = function(results, params) {
 	ErrorStore.content = {}

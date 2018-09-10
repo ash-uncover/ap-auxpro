@@ -1,4 +1,5 @@
 import AppHelper from 'helpers/AppHelper'
+import AuthHelper from 'helpers/AuthHelper'
 import I18NHelper from 'helpers/I18NHelper'
 
 import { BaseData } from 'ap-react-bootstrap'
@@ -23,6 +24,10 @@ class AppData extends BaseData {
         I18NHelper.register('/loaded', this.onI18NLoad)
 
         Dispatcher.issue('LOAD_I18N')
+
+        if (AuthHelper.getToken()) {
+            AuthHelper.getAuth()
+        }
     }
 
     unregister() {

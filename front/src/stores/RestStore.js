@@ -16,13 +16,11 @@ AuthStore.handleGetAuth = function(result, params) {
 }
 
 AuthStore.handlePostAuth = function(result, params) {
-    console.log('---------------------')
-    console.log(params)
-    console.log(result)
-    const content = AuthStore.content
-    content.token = result.token
-    AuthStore.storeToLocalStorage()
-    AuthStore.notify()
+	AuthStore.content = {
+		token: result.token
+	}
+	AuthStore.storeToLocalStorage()
+	AuthStore.notify()
 }
 
 AuthStore.handleLogout = function(result, params) {

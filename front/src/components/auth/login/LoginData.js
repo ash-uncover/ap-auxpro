@@ -9,15 +9,13 @@ class LoginData extends BaseData {
     constructor() {
         super(...arguments)
 
-        this.onLogon = this.onLogon.bind(this)
-        this.onLogonError = this.onLogonError.bind(this)
+        this.onPostAuthError = this.onPostAuthError.bind(this)
     }
 
     register(obj) {
         super.register(obj)
 
-        AuthHelper.register('', this.onLogon)
-        ErrorHelper.register('GET_AUTH', this.onLogonError)
+        ErrorHelper.register('POST_AUTH', this.onPostAuthError)
 
         this.obj.onCancel = this.onCancel.bind(this)
         this.obj.onSubmit = this.onSubmit.bind(this)
@@ -26,8 +24,7 @@ class LoginData extends BaseData {
     }
 
     unregister() {
-        AuthHelper.unregister('', this.onLogon)
-        ErrorHelper.unregister('GET_AUTH', this.onLogonError)
+        ErrorHelper.unregister('POST_AUTH', this.onPostAuthError)
     }
 
     onChangeNoError() {
@@ -45,18 +42,17 @@ class LoginData extends BaseData {
     onSubmit() {
         AppHelper.setBusy(true)
             .then(() => {
-                AuthHelper.getAuth({
-                    username: this.getState('username'), 
-                    password: this.getState('password')
-                })
                 return AuthHelper.postAuth({
                     username: this.getState('username'), 
                     password: this.getState('password')
                 })
             })
             .then(() => {
+                return AuthHelper.getAuth()
+            })
+            .then(() => {
+                AppHelper.navigate('/home')
                 setTimeout(AppHelper.setBusy, 200)
-                
             })
             .catch((error) => {
                 setTimeout(AppHelper.setBusy, 200)
@@ -65,27 +61,9 @@ class LoginData extends BaseData {
             })
     }
 
-    onLogon() {
-        if (AuthHelper.getToken()) {
-            switch (AuthHelper.getType()) {
-            case 'auxiliary':
-            case 'service':
-                AppHelper.navigate('/home')
-                break
-            default:
-                AppHelper.navigate('/')
-                console.error("type d'utilisateur non supporté")
-                break
-            }   
-        } else {
-            console.error('Utilisateur non connecté')
-            AppHelper.navigate('/')
-        }
-    }
-
-    onLogonError() {
-        let errorData = ErrorHelper.getData('GET_AUTH')
-        let error = !!errorData
+    onPostAuthError() {
+        const errorData = ErrorHelper.getData('POST_AUTH')
+        const error = Boolean(errorData)
         let errorMessage = ''
         let password = this.getState('password')
         if (error) {
@@ -104,5 +82,5 @@ class LoginData extends BaseData {
     }
 
 }
-var LoginObj = new LoginData()
+const LoginObj = new LoginData()
 export default LoginObj
