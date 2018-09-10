@@ -37,12 +37,12 @@ class AuthHelper {
 		return StoreRegistry.getStore('AUTH_STORE').getData('/email');
 	}
 
-	getAuth(data) {
-		return Dispatcher.issue('GET_AUTH', data);
+	getAuth() {
+		return Dispatcher.issue('GET_AUTH', { token: this.getToken() });
 	}
 
 	postAuth(data) {
-		return Dispatcher.issue('GET_AUTH', data);
+		return Dispatcher.issue('POST_AUTH', { data: data });
 	}
 
 	logout() {
