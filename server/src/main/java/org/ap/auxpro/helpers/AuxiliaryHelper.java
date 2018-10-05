@@ -12,7 +12,6 @@ import javax.ws.rs.core.SecurityContext;
 
 import org.ap.auxpro.bean.AuxiliaryPutBean;
 import org.ap.auxpro.bean.PromotionCodePostBean;
-import org.ap.auxpro.constants.EDiploma;
 import org.ap.auxpro.constants.EGeozoneType;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryCollection;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryData;
@@ -36,17 +35,11 @@ public class AuxiliaryHelper {
 		if (auxiliaryBean.diploma == null) {
 			auxiliaryBean.diploma = new ArrayList<String>();
 		}
-		if (auxiliaryBean.diploma.size() == 0) {
-			auxiliaryBean.diploma.add(EDiploma._DIPLOMA_NONE.getName());
-		}
 		
 		// Check profil progress & completion
 		boolean profilCompleted = true;
 		int profilProgress = 0;
 		// Check skills (total: 30)
-		if (data.getAreSkillSet() != null && data.getAreSkillSet()) {
-			profilProgress += 30;
-		}
 		// Check avatar (total: 40)
 		if (auxiliaryBean.avatar != null) {
 			profilProgress += 10;

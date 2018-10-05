@@ -48,7 +48,7 @@ import org.bson.conversions.Bson;
 import com.mongodb.MongoWriteException;
 
 public class InterventionHelper {
-	
+
 	private static final int _MAX_MATCHES = 10;
 
 	public static Object createIntervention(SecurityContext sc, InterventionPostBean interventionBean) throws APWebException {
@@ -66,7 +66,7 @@ public class InterventionHelper {
 			intervention.setSadStatusChanged(now);
 			intervention.setHideToSad(false);
 			InterventionCollection.create(intervention);
-			
+
 			/*
 			intervention.setCustomerId(interventionBean.customerId);
 			intervention.setServiceId(interventionBean.serviceId);
@@ -77,25 +77,25 @@ public class InterventionHelper {
 			intervention.setEndTime(interventionBean.endTime);
 			intervention.setDays(interventionBean.days);
 			intervention.setDiplomas(interventionBean.diplomas);
-			*/
+			 */
 			result.id = id;
 		} catch (MongoWriteException e) {
 			throw APWebException.MONGO_WRITE_EXCEPTION;
 		}
-		
+
 		return result;
 	}
 
 	public static Object getInterventionMatch(SecurityContext sc, String id) throws APWebException {
 		InterventionData intervention = InterventionCollection.getById(id);
-		
+
 		// Check the call can be made
 		ServiceData service = ServiceCollection.getById(intervention.serviceId);
 		if (service == null || !sc.isUserInRole(service.id) || !Boolean.TRUE.equals(service.profilCompleted)) {
 			throw new APWebException("forbidden", Status.FORBIDDEN);
 		}
-		
-		
+
+
 		List<AuxiliaryData> auxiliaries = null;
 		//
 		List<String> diplomas = intervention.getDiplomas();
@@ -183,16 +183,70 @@ public class InterventionHelper {
 
 		// Compute skill score
 		for (AuxiliaryData aux : auxiliaries) {
-			if (Boolean.TRUE.equals(aux.getAreSkillSet())) {
-				int score = 0;
-				score += getSkillScore(aux.getSkillAdministrative(), customer.getSkillAdministrative());
-				score += getSkillScore(aux.getSkillChildhood(), customer.getSkillChildhood());
-				score += getSkillScore(aux.getSkillCompagny(), customer.getSkillCompagny());
-				score += getSkillScore(aux.getSkillDoityourself(), customer.getSkillDoityourself());
-				score += getSkillScore(aux.getSkillHousework(), customer.getSkillHousework());
+			int score = 0;
+			int nbSkills = 0;
+			if (customer.getSkillBeauty() > 0) {
+				score += getSkillScore(aux.getSkillBeauty(), customer.getSkillBeauty());
+				nbSkills++;
+			}
+			if (customer.getSkillChildrenCare() > 0) {
+				score += getSkillScore(aux.getSkillChildrenCare(), customer.getSkillChildrenCare());
+				nbSkills++;
+			}
+			if (customer.getSkillChildrenGame() > 0) {
+				score += getSkillScore(aux.getSkillChildrenGame(), customer.getSkillChildrenGame());
+				nbSkills++;
+			}
+			if (customer.getSkillChildrenKeep() > 0) {
+				score += getSkillScore(aux.getSkillChildrenKeep(), customer.getSkillChildrenKeep());
+				nbSkills++;
+			}
+			if (customer.getSkillChildrenSchool() > 0) {
+				score += getSkillScore(aux.getSkillChildrenSchool(), customer.getSkillChildrenSchool());
+				nbSkills++;
+			}
+			if (customer.getSkillClothes() > 0) {
+				score += getSkillScore(aux.getSkillClothes(), customer.getSkillClothes());
+				nbSkills++;
+			}
+			if (customer.getSkillCompany() > 0) {
+				score += getSkillScore(aux.getSkillCompany(), customer.getSkillCompany());
+				nbSkills++;
+			}
+			if (customer.getSkillFood() > 0) {
+				score += getSkillScore(aux.getSkillFood(), customer.getSkillFood());
+				nbSkills++;
+			}
+			if (customer.getSkillHandicap() > 0) {
+				score += getSkillScore(aux.getSkillHandicap(), customer.getSkillHandicap());
+				nbSkills++;
+			}
+			if (customer.getSkillHouse() > 0) {
+				score += getSkillScore(aux.getSkillHouse(), customer.getSkillHouse());
+				nbSkills++;
+			}
+			if (customer.getSkillIllness() > 0) {
+				score += getSkillScore(aux.getSkillIllness(), customer.getSkillIllness());
+				nbSkills++;
+			}
+			if (customer.getSkillNursing() > 0) {
 				score += getSkillScore(aux.getSkillNursing(), customer.getSkillNursing());
-				score += getSkillScore(aux.getSkillShopping(), customer.getSkillShopping());
-				scores.get(aux).skillScore = Math.max(0, score * 100 / 7);
+				nbSkills++;
+			}
+			if (customer.getSkillOldCare() > 0) {
+				score += getSkillScore(aux.getSkillOldCare(), customer.getSkillOldCare());
+				nbSkills++;
+			}
+			if (customer.getSkillPet() > 0) {
+				score += getSkillScore(aux.getSkillPet(), customer.getSkillPet());
+				nbSkills++;
+			}
+			if (customer.getSkillTransport() > 0) {
+				score += getSkillScore(aux.getSkillTransport(), customer.getSkillTransport());
+				nbSkills++;
+			}
+			if (nbSkills > 0) {					
+				scores.get(aux).skillScore = Math.max(0, score * 100 / nbSkills);
 			} else {
 				scores.get(aux).skillScore = 40;
 			}
@@ -216,7 +270,7 @@ public class InterventionHelper {
 		}
 		return result.subList(0, Math.min(_MAX_MATCHES, result.size()));
 	}
-	
+
 	public static int getSkillScore(Integer auxScore, Integer custScore) {
 		int aScore = auxScore == null ? 0 : auxScore;
 		int cScore = custScore == null ? 0 : custScore;
@@ -227,9 +281,9 @@ public class InterventionHelper {
 		Date now = new Date();
 
 		InterventionData intervention = InterventionCollection.getById(id);
-		
+
 		EInterventionStatus currentStatus = EInterventionStatus.getByName(intervention.sadStatus);
-		
+
 		switch(currentStatus) {		
 		case _MATCHING:
 			intervention.sadStatus = EInterventionStatus._PENDING.getName();
@@ -256,12 +310,12 @@ public class InterventionHelper {
 		default:
 			throw new APWebException("", "", Status.FORBIDDEN);
 		}
-		
+
 		intervention.lastUpdateDate = now;
 		intervention.sadStatusChanged = now;
-		
+
 		InterventionCollection.update(intervention);
-		
+
 		return "";
 	}
 
