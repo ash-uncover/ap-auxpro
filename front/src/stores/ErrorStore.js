@@ -46,16 +46,6 @@ ErrorStore.handlePutAuxiliaryError = function(error, params) {
 	ErrorStore.notify('/PUT_AUXILIARY');
 }
 
-ErrorStore.handlePostAuxiliaryQuestionarySuccess = function(results, params) {
-	delete ErrorStore._content.POST_AUXILIARY_QUESTIONARY;
-	ErrorStore.notify('/POST_AUXILIARY_QUESTIONARY');
-}
-
-ErrorStore.handlePostAuxiliaryQuestionaryError = function(error, params) {
-	ErrorStore._content.POST_AUXILIARY_QUESTIONARY = error;
-	ErrorStore.notify('/POST_AUXILIARY_QUESTIONARY');
-}
-
 ErrorStore.handlePostAuxiliaryCodeSuccess = function(results, params) {
 	delete ErrorStore._content.POST_AUXILIARY_CODE;
 	ErrorStore.notify('/POST_AUXILIARY_CODE');
@@ -641,7 +631,6 @@ Dispatcher.register('GET_AUXILIARYS', ErrorStore.handleGetAuxiliarysSuccess, Err
 Dispatcher.register('POST_AUXILIARY', ErrorStore.handlePostAuxiliarySuccess, ErrorStore.handlePostAuxiliaryError)
 Dispatcher.register('GET_AUXILIARY', ErrorStore.handleGetAuxiliarySuccess, ErrorStore.handleGetAuxiliaryError)
 Dispatcher.register('PUT_AUXILIARY', ErrorStore.handlePutAuxiliarySuccess, ErrorStore.handlePutAuxiliaryError)
-Dispatcher.register('POST_AUXILIARY_QUESTIONARY', ErrorStore.handlePostAuxiliaryQuestionarySuccess, ErrorStore.handlePostAuxiliaryQuestionaryError)
 Dispatcher.register('POST_AUXILIARY_CODE', ErrorStore.handlePostAuxiliaryCodeSuccess, ErrorStore.handlePostAuxiliaryCodeError)
 Dispatcher.register('GET_AUXILIARY_SERVICES', ErrorStore.handleGetAuxiliaryServicesSuccess, ErrorStore.handleGetAuxiliaryServicesError)
 Dispatcher.register('GET_AUXILIARY_CUSTOMERS', ErrorStore.handleGetAuxiliaryCustomersSuccess, ErrorStore.handleGetAuxiliaryCustomersError)

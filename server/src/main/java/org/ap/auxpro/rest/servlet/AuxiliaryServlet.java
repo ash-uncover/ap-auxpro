@@ -27,7 +27,6 @@ import org.ap.common.util.UUIDGenerator;
 import org.ap.auxpro.bean.AuxiliaryPutBean;
 import org.ap.auxpro.helpers.AuxiliaryHelper;
 import java.util.Date;
-import org.ap.auxpro.bean.AuxiliaryQuestionaryBean;
 import org.ap.auxpro.bean.PromotionCodePostBean;
 import org.ap.auxpro.bean.ServiceGetBean;
 import org.ap.auxpro.storage.service.ServiceData;

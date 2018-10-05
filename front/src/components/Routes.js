@@ -51,8 +51,6 @@ import AuxiliaryInfosEditInfos from 'components/auxiliary/infos/edit/infos/Auxil
 import AuxiliaryInfosEditAccount from 'components/auxiliary/infos/edit/account/AuxiliaryInfosEditAccount'
 import AuxiliaryInfosEditEmail from 'components/auxiliary/infos/edit/email/AuxiliaryInfosEditEmail'
 import AuxiliaryInfosEditPassword from 'components/auxiliary/infos/edit/password/AuxiliaryInfosEditPassword'
-import AuxiliaryInfosQuestionary from 'components/auxiliary/infos/questionary/AuxiliaryInfosQuestionary'
-import AuxiliaryInfosEditQuestionary from 'components/auxiliary/infos/edit/questionary/AuxiliaryInfosEditQuestionary'
 import AuxiliaryPlaning from 'components/auxiliary/planing/AuxiliaryPlaning'
 import AuxiliaryIndisponibility from 'components/auxiliary/indisponibilities/AuxiliaryIndisponibility'
 import AuxiliaryIndisponibilityEdit from 'components/auxiliary/indisponibilities/edit/AuxiliaryIndisponibilityEdit'
@@ -103,8 +101,6 @@ let auxiliaryRoutes = [
 	{ path: '/infos/edit/account', component: AuxiliaryInfosEditAccount },
 	{ path: '/infos/edit/email', component: AuxiliaryInfosEditEmail },
 	{ path: '/infos/edit/password', component: AuxiliaryInfosEditPassword },
-	{ path: '/infos/questionary', component: AuxiliaryInfosQuestionary },
-	{ path: '/infos/edit/questionary', component: AuxiliaryInfosEditQuestionary },
 	{ path: '/planing', component: AuxiliaryPlaning },
 	{ path: '/indisponibilities/:indisponibilityId', component: AuxiliaryIndisponibility },
 	{ path: '/indisponibilities/:indisponibilityId/edit', component: AuxiliaryIndisponibilityEdit },

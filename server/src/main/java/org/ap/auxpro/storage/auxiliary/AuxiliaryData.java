@@ -11,6 +11,8 @@ public class AuxiliaryData {
 	public String lastName;
 	public String civility;
 	public String city;
+	public Integer skillChildrenGame;
+	public Integer skillHouse;
 	public Date lastUpdateDate;
 	public String postalCode;
 	public Boolean isTutoSkipped;
@@ -18,35 +20,39 @@ public class AuxiliaryData {
 	public String socialNumber;
 	public Date accountExpiryDate;
 	public Integer profilProgression;
-	public Integer skillShopping;
+	public Integer skillBeauty;
 	public Boolean notifyOffersSms;
 	public Boolean notifyAuxpros;
+	public Integer skillHandicap;
+	public Integer skillIllness;
 	public String birthCountry;
+	public Integer skillChildrenSchool;
 	public Boolean profilCompleted;
 	public String id;
 	public List<String> diploma;
-	public Integer skillDoityourself;
+	public Integer skillChildrenKeep;
+	public Integer skillOldCare;
 	public Double longitude;
 	public String address;
 	public Integer skillNursing;
+	public Integer skillChildrenCare;
 	public Double lattitude;
+	public Integer skillFood;
 	public String accountType;
 	public Boolean notifyPartners;
 	public String birthCity;
 	public String avatar;
 	public Date creationDate;
-	public Boolean areSkillSet;
+	public Integer skillCompany;
 	public Date birthDate;
-	public Integer skillChildhood;
-	public Integer skillCompagny;
 	public String firstName;
-	public List<Integer> skillAnswers;
 	public String nationality;
 	public String isEntrepreneur;
 	public String phone;
-	public Integer skillAdministrative;
-	public Integer skillHousework;
+	public Integer skillTransport;
+	public Integer skillClothes;
 	public Boolean notifyOffersMail;
+	public Integer skillPet;
 
 	public String getAuthId() {
 		return this.authId;
@@ -86,6 +92,22 @@ public class AuxiliaryData {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public Integer getSkillChildrenGame() {
+		return this.skillChildrenGame;
+	}
+
+	public void setSkillChildrenGame(Integer skillChildrenGame) {
+		this.skillChildrenGame = skillChildrenGame;
+	}
+
+	public Integer getSkillHouse() {
+		return this.skillHouse;
+	}
+
+	public void setSkillHouse(Integer skillHouse) {
+		this.skillHouse = skillHouse;
 	}
 
 	public Date getLastUpdateDate() {
@@ -144,12 +166,12 @@ public class AuxiliaryData {
 		this.profilProgression = profilProgression;
 	}
 
-	public Integer getSkillShopping() {
-		return this.skillShopping;
+	public Integer getSkillBeauty() {
+		return this.skillBeauty;
 	}
 
-	public void setSkillShopping(Integer skillShopping) {
-		this.skillShopping = skillShopping;
+	public void setSkillBeauty(Integer skillBeauty) {
+		this.skillBeauty = skillBeauty;
 	}
 
 	public Boolean getNotifyOffersSms() {
@@ -168,12 +190,36 @@ public class AuxiliaryData {
 		this.notifyAuxpros = notifyAuxpros;
 	}
 
+	public Integer getSkillHandicap() {
+		return this.skillHandicap;
+	}
+
+	public void setSkillHandicap(Integer skillHandicap) {
+		this.skillHandicap = skillHandicap;
+	}
+
+	public Integer getSkillIllness() {
+		return this.skillIllness;
+	}
+
+	public void setSkillIllness(Integer skillIllness) {
+		this.skillIllness = skillIllness;
+	}
+
 	public String getBirthCountry() {
 		return this.birthCountry;
 	}
 
 	public void setBirthCountry(String birthCountry) {
 		this.birthCountry = birthCountry;
+	}
+
+	public Integer getSkillChildrenSchool() {
+		return this.skillChildrenSchool;
+	}
+
+	public void setSkillChildrenSchool(Integer skillChildrenSchool) {
+		this.skillChildrenSchool = skillChildrenSchool;
 	}
 
 	public Boolean getProfilCompleted() {
@@ -200,12 +246,20 @@ public class AuxiliaryData {
 		this.diploma = diploma;
 	}
 
-	public Integer getSkillDoityourself() {
-		return this.skillDoityourself;
+	public Integer getSkillChildrenKeep() {
+		return this.skillChildrenKeep;
 	}
 
-	public void setSkillDoityourself(Integer skillDoityourself) {
-		this.skillDoityourself = skillDoityourself;
+	public void setSkillChildrenKeep(Integer skillChildrenKeep) {
+		this.skillChildrenKeep = skillChildrenKeep;
+	}
+
+	public Integer getSkillOldCare() {
+		return this.skillOldCare;
+	}
+
+	public void setSkillOldCare(Integer skillOldCare) {
+		this.skillOldCare = skillOldCare;
 	}
 
 	public Double getLongitude() {
@@ -232,12 +286,28 @@ public class AuxiliaryData {
 		this.skillNursing = skillNursing;
 	}
 
+	public Integer getSkillChildrenCare() {
+		return this.skillChildrenCare;
+	}
+
+	public void setSkillChildrenCare(Integer skillChildrenCare) {
+		this.skillChildrenCare = skillChildrenCare;
+	}
+
 	public Double getLattitude() {
 		return this.lattitude;
 	}
 
 	public void setLattitude(Double lattitude) {
 		this.lattitude = lattitude;
+	}
+
+	public Integer getSkillFood() {
+		return this.skillFood;
+	}
+
+	public void setSkillFood(Integer skillFood) {
+		this.skillFood = skillFood;
 	}
 
 	public String getAccountType() {
@@ -280,12 +350,12 @@ public class AuxiliaryData {
 		this.creationDate = creationDate;
 	}
 
-	public Boolean getAreSkillSet() {
-		return this.areSkillSet;
+	public Integer getSkillCompany() {
+		return this.skillCompany;
 	}
 
-	public void setAreSkillSet(Boolean areSkillSet) {
-		this.areSkillSet = areSkillSet;
+	public void setSkillCompany(Integer skillCompany) {
+		this.skillCompany = skillCompany;
 	}
 
 	public Date getBirthDate() {
@@ -296,36 +366,12 @@ public class AuxiliaryData {
 		this.birthDate = birthDate;
 	}
 
-	public Integer getSkillChildhood() {
-		return this.skillChildhood;
-	}
-
-	public void setSkillChildhood(Integer skillChildhood) {
-		this.skillChildhood = skillChildhood;
-	}
-
-	public Integer getSkillCompagny() {
-		return this.skillCompagny;
-	}
-
-	public void setSkillCompagny(Integer skillCompagny) {
-		this.skillCompagny = skillCompagny;
-	}
-
 	public String getFirstName() {
 		return this.firstName;
 	}
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
-	}
-
-	public List<Integer> getSkillAnswers() {
-		return this.skillAnswers;
-	}
-
-	public void setSkillAnswers(List<Integer> skillAnswers) {
-		this.skillAnswers = skillAnswers;
 	}
 
 	public String getNationality() {
@@ -352,20 +398,20 @@ public class AuxiliaryData {
 		this.phone = phone;
 	}
 
-	public Integer getSkillAdministrative() {
-		return this.skillAdministrative;
+	public Integer getSkillTransport() {
+		return this.skillTransport;
 	}
 
-	public void setSkillAdministrative(Integer skillAdministrative) {
-		this.skillAdministrative = skillAdministrative;
+	public void setSkillTransport(Integer skillTransport) {
+		this.skillTransport = skillTransport;
 	}
 
-	public Integer getSkillHousework() {
-		return this.skillHousework;
+	public Integer getSkillClothes() {
+		return this.skillClothes;
 	}
 
-	public void setSkillHousework(Integer skillHousework) {
-		this.skillHousework = skillHousework;
+	public void setSkillClothes(Integer skillClothes) {
+		this.skillClothes = skillClothes;
 	}
 
 	public Boolean getNotifyOffersMail() {
@@ -374,6 +420,14 @@ public class AuxiliaryData {
 
 	public void setNotifyOffersMail(Boolean notifyOffersMail) {
 		this.notifyOffersMail = notifyOffersMail;
+	}
+
+	public Integer getSkillPet() {
+		return this.skillPet;
+	}
+
+	public void setSkillPet(Integer skillPet) {
+		this.skillPet = skillPet;
 	}
 
 }

@@ -20,26 +20,35 @@ public class CustomerBean {
 	public String lastName;
 	public String country;
 	public String civility;
-	public String address;
-	public Integer skillNursing;
 	public String city;
-	public Double lattitude;
+	public Integer skillChildrenGame;
+	public Integer skillHouse;
 	public List<Integer> lastUpdateDate;
 	public String postalCode;
+	public Integer skillBeauty;
+	public Integer skillHandicap;
+	public Integer skillIllness;
+	public Integer skillChildrenSchool;
+	public String id;
+	public Integer skillChildrenKeep;
+	public String email;
+	public Integer skillOldCare;
+	public Double longitude;
+	public String address;
+	public Integer skillNursing;
+	public Integer skillChildrenCare;
+	public Double lattitude;
+	public Integer skillFood;
+	public Integer skillCompany;
 	public List<Integer> creationDate;
 	public List<Integer> birthDate;
-	public Integer skillChildhood;
-	public Integer skillCompagny;
-	public Integer skillShopping;
 	public String firstName;
 	public String nationality;
 	public String phone;
-	public Integer skillAdministrative;
-	public Integer skillHousework;
-	public Integer skillDoityourself;
-	public String id;
-	public String email;
-	public Double longitude;
+	public Integer skillTransport;
+	public Integer skillClothes;
+	public String category;
+	public Integer skillPet;
 
 	public CustomerBean() {
 	}
@@ -49,26 +58,35 @@ public class CustomerBean {
 		lastName = data.getLastName();
 		country = data.getCountry();
 		civility = data.getCivility();
-		address = data.getAddress();
-		skillNursing = data.getSkillNursing();
 		city = data.getCity();
-		lattitude = data.getLattitude();
+		skillChildrenGame = data.getSkillChildrenGame();
+		skillHouse = data.getSkillHouse();
 		lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
 		postalCode = data.getPostalCode();
+		skillBeauty = data.getSkillBeauty();
+		skillHandicap = data.getSkillHandicap();
+		skillIllness = data.getSkillIllness();
+		skillChildrenSchool = data.getSkillChildrenSchool();
+		id = data.getId();
+		skillChildrenKeep = data.getSkillChildrenKeep();
+		email = data.getEmail();
+		skillOldCare = data.getSkillOldCare();
+		longitude = data.getLongitude();
+		address = data.getAddress();
+		skillNursing = data.getSkillNursing();
+		skillChildrenCare = data.getSkillChildrenCare();
+		lattitude = data.getLattitude();
+		skillFood = data.getSkillFood();
+		skillCompany = data.getSkillCompany();
 		creationDate = TimeHelper.toIntegers(data.getCreationDate());
 		birthDate = TimeHelper.toIntegers(data.getBirthDate());
-		skillChildhood = data.getSkillChildhood();
-		skillCompagny = data.getSkillCompagny();
-		skillShopping = data.getSkillShopping();
 		firstName = data.getFirstName();
 		nationality = data.getNationality();
 		phone = data.getPhone();
-		skillAdministrative = data.getSkillAdministrative();
-		skillHousework = data.getSkillHousework();
-		skillDoityourself = data.getSkillDoityourself();
-		id = data.getId();
-		email = data.getEmail();
-		longitude = data.getLongitude();
+		skillTransport = data.getSkillTransport();
+		skillClothes = data.getSkillClothes();
+		category = data.getCategory();
+		skillPet = data.getSkillPet();
 	}
 
 	public CustomerData toData() {
@@ -82,23 +100,32 @@ public class CustomerBean {
 		data.setLastName(lastName);
 		data.setCountry(country);
 		data.setCivility(civility);
+		data.setCity(city);
+		data.setSkillChildrenGame(skillChildrenGame);
+		data.setSkillHouse(skillHouse);
+		data.setPostalCode(postalCode);
+		data.setSkillBeauty(skillBeauty);
+		data.setSkillHandicap(skillHandicap);
+		data.setSkillIllness(skillIllness);
+		data.setSkillChildrenSchool(skillChildrenSchool);
+		data.setSkillChildrenKeep(skillChildrenKeep);
+		data.setEmail(email);
+		data.setSkillOldCare(skillOldCare);
+		data.setLongitude(longitude);
 		data.setAddress(address);
 		data.setSkillNursing(skillNursing);
-		data.setCity(city);
+		data.setSkillChildrenCare(skillChildrenCare);
 		data.setLattitude(lattitude);
-		data.setPostalCode(postalCode);
+		data.setSkillFood(skillFood);
+		data.setSkillCompany(skillCompany);
 		data.setBirthDate(TimeHelper.toDate(birthDate));
-		data.setSkillChildhood(skillChildhood);
-		data.setSkillCompagny(skillCompagny);
-		data.setSkillShopping(skillShopping);
 		data.setFirstName(firstName);
 		data.setNationality(nationality);
 		data.setPhone(phone);
-		data.setSkillAdministrative(skillAdministrative);
-		data.setSkillHousework(skillHousework);
-		data.setSkillDoityourself(skillDoityourself);
-		data.setEmail(email);
-		data.setLongitude(longitude);
+		data.setSkillTransport(skillTransport);
+		data.setSkillClothes(skillClothes);
+		data.setCategory(category);
+		data.setSkillPet(skillPet);
 	}
 
 	public void check() throws APWebException {
@@ -115,10 +142,6 @@ public class CustomerBean {
 		if (!civilityState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'civility'"));
 		}
-		ValidationState addressState = CustomerFields.ADDRESS.getValidator().check(address);
-		if (!addressState.getState().equals(EValidatorState.SUCCESS)) {
-			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'address'"));
-		}
 		ValidationState cityState = CustomerFields.CITY.getValidator().check(city);
 		if (!cityState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'city'"));
@@ -126,6 +149,10 @@ public class CustomerBean {
 		ValidationState postalCodeState = CustomerFields.POSTAL_CODE.getValidator().check(postalCode);
 		if (!postalCodeState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'postalCode'"));
+		}
+		ValidationState addressState = CustomerFields.ADDRESS.getValidator().check(address);
+		if (!addressState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'address'"));
 		}
 		ValidationState birthDateState = CustomerFields.BIRTH_DATE.getValidator().check(birthDate);
 		if (!birthDateState.getState().equals(EValidatorState.SUCCESS)) {
@@ -142,6 +169,10 @@ public class CustomerBean {
 		ValidationState phoneState = CustomerFields.PHONE.getValidator().check(phone);
 		if (!phoneState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'phone'"));
+		}
+		ValidationState categoryState = CustomerFields.CATEGORY.getValidator().check(category);
+		if (!categoryState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_CUSTOMER_INVALID_FIELDS", "Invalid field 'category'"));
 		}
 		if (errors.size() > 0) {
 			throw new APWebException("AP_CUSTOMER_INVALID_FIELDS", "Invalid fields within 'customer'", errors, Status.BAD_REQUEST);

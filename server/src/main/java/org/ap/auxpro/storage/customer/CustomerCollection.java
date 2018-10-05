@@ -87,27 +87,36 @@ public class CustomerCollection {
 		data.lastName = document.getString("lastName");
 		data.country = document.getString("country");
 		data.civility = document.getString("civility");
-		data.address = document.getString("address");
-		data.skillNursing = document.getInteger("skillNursing");
 		data.city = document.getString("city");
-		data.lattitude = document.getDouble("lattitude");
+		data.skillChildrenGame = document.getInteger("skillChildrenGame");
+		data.skillHouse = document.getInteger("skillHouse");
 		data.lastUpdateDate = document.getDate("lastUpdateDate");
 		data.postalCode = document.getString("postalCode");
+		data.skillBeauty = document.getInteger("skillBeauty");
+		data.skillHandicap = document.getInteger("skillHandicap");
+		data.skillIllness = document.getInteger("skillIllness");
+		data.skillChildrenSchool = document.getInteger("skillChildrenSchool");
+		data.id = document.getString("id");
+		data.serviceId = document.getString("serviceId");
+		data.skillChildrenKeep = document.getInteger("skillChildrenKeep");
+		data.email = document.getString("email");
+		data.skillOldCare = document.getInteger("skillOldCare");
+		data.longitude = document.getDouble("longitude");
+		data.address = document.getString("address");
+		data.skillNursing = document.getInteger("skillNursing");
+		data.skillChildrenCare = document.getInteger("skillChildrenCare");
+		data.lattitude = document.getDouble("lattitude");
+		data.skillFood = document.getInteger("skillFood");
+		data.skillCompany = document.getInteger("skillCompany");
 		data.creationDate = document.getDate("creationDate");
 		data.birthDate = document.getDate("birthDate");
-		data.skillChildhood = document.getInteger("skillChildhood");
-		data.skillCompagny = document.getInteger("skillCompagny");
-		data.skillShopping = document.getInteger("skillShopping");
 		data.firstName = document.getString("firstName");
 		data.nationality = document.getString("nationality");
 		data.phone = document.getString("phone");
-		data.skillAdministrative = document.getInteger("skillAdministrative");
-		data.skillHousework = document.getInteger("skillHousework");
-		data.skillDoityourself = document.getInteger("skillDoityourself");
-		data.id = document.getString("id");
-		data.serviceId = document.getString("serviceId");
-		data.email = document.getString("email");
-		data.longitude = document.getDouble("longitude");
+		data.skillTransport = document.getInteger("skillTransport");
+		data.skillClothes = document.getInteger("skillClothes");
+		data.category = document.getString("category");
+		data.skillPet = document.getInteger("skillPet");
 		return data;
 	}
 
@@ -119,48 +128,66 @@ public class CustomerCollection {
 			document.append("country", customer.country);
 		if (customer.civility != null)
 			document.append("civility", customer.civility);
-		if (customer.address != null)
-			document.append("address", customer.address);
-		if (customer.skillNursing != null)
-			document.append("skillNursing", customer.skillNursing);
 		if (customer.city != null)
 			document.append("city", customer.city);
-		if (customer.lattitude != null)
-			document.append("lattitude", customer.lattitude);
+		if (customer.skillChildrenGame != null)
+			document.append("skillChildrenGame", customer.skillChildrenGame);
+		if (customer.skillHouse != null)
+			document.append("skillHouse", customer.skillHouse);
 		if (customer.lastUpdateDate != null)
 			document.append("lastUpdateDate", customer.lastUpdateDate);
 		if (customer.postalCode != null)
 			document.append("postalCode", customer.postalCode);
+		if (customer.skillBeauty != null)
+			document.append("skillBeauty", customer.skillBeauty);
+		if (customer.skillHandicap != null)
+			document.append("skillHandicap", customer.skillHandicap);
+		if (customer.skillIllness != null)
+			document.append("skillIllness", customer.skillIllness);
+		if (customer.skillChildrenSchool != null)
+			document.append("skillChildrenSchool", customer.skillChildrenSchool);
+		if (customer.id != null)
+			document.append("id", customer.id);
+		if (customer.serviceId != null)
+			document.append("serviceId", customer.serviceId);
+		if (customer.skillChildrenKeep != null)
+			document.append("skillChildrenKeep", customer.skillChildrenKeep);
+		if (customer.email != null)
+			document.append("email", customer.email);
+		if (customer.skillOldCare != null)
+			document.append("skillOldCare", customer.skillOldCare);
+		if (customer.longitude != null)
+			document.append("longitude", customer.longitude);
+		if (customer.address != null)
+			document.append("address", customer.address);
+		if (customer.skillNursing != null)
+			document.append("skillNursing", customer.skillNursing);
+		if (customer.skillChildrenCare != null)
+			document.append("skillChildrenCare", customer.skillChildrenCare);
+		if (customer.lattitude != null)
+			document.append("lattitude", customer.lattitude);
+		if (customer.skillFood != null)
+			document.append("skillFood", customer.skillFood);
+		if (customer.skillCompany != null)
+			document.append("skillCompany", customer.skillCompany);
 		if (customer.creationDate != null)
 			document.append("creationDate", customer.creationDate);
 		if (customer.birthDate != null)
 			document.append("birthDate", customer.birthDate);
-		if (customer.skillChildhood != null)
-			document.append("skillChildhood", customer.skillChildhood);
-		if (customer.skillCompagny != null)
-			document.append("skillCompagny", customer.skillCompagny);
-		if (customer.skillShopping != null)
-			document.append("skillShopping", customer.skillShopping);
 		if (customer.firstName != null)
 			document.append("firstName", customer.firstName);
 		if (customer.nationality != null)
 			document.append("nationality", customer.nationality);
 		if (customer.phone != null)
 			document.append("phone", customer.phone);
-		if (customer.skillAdministrative != null)
-			document.append("skillAdministrative", customer.skillAdministrative);
-		if (customer.skillHousework != null)
-			document.append("skillHousework", customer.skillHousework);
-		if (customer.skillDoityourself != null)
-			document.append("skillDoityourself", customer.skillDoityourself);
-		if (customer.id != null)
-			document.append("id", customer.id);
-		if (customer.serviceId != null)
-			document.append("serviceId", customer.serviceId);
-		if (customer.email != null)
-			document.append("email", customer.email);
-		if (customer.longitude != null)
-			document.append("longitude", customer.longitude);
+		if (customer.skillTransport != null)
+			document.append("skillTransport", customer.skillTransport);
+		if (customer.skillClothes != null)
+			document.append("skillClothes", customer.skillClothes);
+		if (customer.category != null)
+			document.append("category", customer.category);
+		if (customer.skillPet != null)
+			document.append("skillPet", customer.skillPet);
 		return document;
 	}
 
@@ -169,27 +196,36 @@ public class CustomerCollection {
 		document.append("lastName", customer.lastName);
 		document.append("country", customer.country);
 		document.append("civility", customer.civility);
-		document.append("address", customer.address);
-		document.append("skillNursing", customer.skillNursing);
 		document.append("city", customer.city);
-		document.append("lattitude", customer.lattitude);
+		document.append("skillChildrenGame", customer.skillChildrenGame);
+		document.append("skillHouse", customer.skillHouse);
 		document.append("lastUpdateDate", customer.lastUpdateDate);
 		document.append("postalCode", customer.postalCode);
+		document.append("skillBeauty", customer.skillBeauty);
+		document.append("skillHandicap", customer.skillHandicap);
+		document.append("skillIllness", customer.skillIllness);
+		document.append("skillChildrenSchool", customer.skillChildrenSchool);
+		document.append("id", customer.id);
+		document.append("serviceId", customer.serviceId);
+		document.append("skillChildrenKeep", customer.skillChildrenKeep);
+		document.append("email", customer.email);
+		document.append("skillOldCare", customer.skillOldCare);
+		document.append("longitude", customer.longitude);
+		document.append("address", customer.address);
+		document.append("skillNursing", customer.skillNursing);
+		document.append("skillChildrenCare", customer.skillChildrenCare);
+		document.append("lattitude", customer.lattitude);
+		document.append("skillFood", customer.skillFood);
+		document.append("skillCompany", customer.skillCompany);
 		document.append("creationDate", customer.creationDate);
 		document.append("birthDate", customer.birthDate);
-		document.append("skillChildhood", customer.skillChildhood);
-		document.append("skillCompagny", customer.skillCompagny);
-		document.append("skillShopping", customer.skillShopping);
 		document.append("firstName", customer.firstName);
 		document.append("nationality", customer.nationality);
 		document.append("phone", customer.phone);
-		document.append("skillAdministrative", customer.skillAdministrative);
-		document.append("skillHousework", customer.skillHousework);
-		document.append("skillDoityourself", customer.skillDoityourself);
-		document.append("id", customer.id);
-		document.append("serviceId", customer.serviceId);
-		document.append("email", customer.email);
-		document.append("longitude", customer.longitude);
+		document.append("skillTransport", customer.skillTransport);
+		document.append("skillClothes", customer.skillClothes);
+		document.append("category", customer.category);
+		document.append("skillPet", customer.skillPet);
 		return document;
 	}
 

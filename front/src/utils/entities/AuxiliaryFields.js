@@ -24,6 +24,14 @@ class AuxiliaryFields {
 		return _CITY
 	}
 
+	static get SKILL_CHILDREN_GAME() {
+		return _SKILL_CHILDREN_GAME
+	}
+
+	static get SKILL_HOUSE() {
+		return _SKILL_HOUSE
+	}
+
 	static get LAST_UPDATE_DATE() {
 		return _LAST_UPDATE_DATE
 	}
@@ -52,8 +60,8 @@ class AuxiliaryFields {
 		return _PROFIL_PROGRESSION
 	}
 
-	static get SKILL_SHOPPING() {
-		return _SKILL_SHOPPING
+	static get SKILL_BEAUTY() {
+		return _SKILL_BEAUTY
 	}
 
 	static get NOTIFY_OFFERS_SMS() {
@@ -64,8 +72,20 @@ class AuxiliaryFields {
 		return _NOTIFY_AUXPROS
 	}
 
+	static get SKILL_HANDICAP() {
+		return _SKILL_HANDICAP
+	}
+
+	static get SKILL_ILLNESS() {
+		return _SKILL_ILLNESS
+	}
+
 	static get BIRTH_COUNTRY() {
 		return _BIRTH_COUNTRY
+	}
+
+	static get SKILL_CHILDREN_SCHOOL() {
+		return _SKILL_CHILDREN_SCHOOL
 	}
 
 	static get PROFIL_COMPLETED() {
@@ -80,8 +100,12 @@ class AuxiliaryFields {
 		return _DIPLOMA
 	}
 
-	static get SKILL_DOITYOURSELF() {
-		return _SKILL_DOITYOURSELF
+	static get SKILL_CHILDREN_KEEP() {
+		return _SKILL_CHILDREN_KEEP
+	}
+
+	static get SKILL_OLD_CARE() {
+		return _SKILL_OLD_CARE
 	}
 
 	static get LONGITUDE() {
@@ -96,8 +120,16 @@ class AuxiliaryFields {
 		return _SKILL_NURSING
 	}
 
+	static get SKILL_CHILDREN_CARE() {
+		return _SKILL_CHILDREN_CARE
+	}
+
 	static get LATTITUDE() {
 		return _LATTITUDE
+	}
+
+	static get SKILL_FOOD() {
+		return _SKILL_FOOD
 	}
 
 	static get ACCOUNT_TYPE() {
@@ -120,28 +152,16 @@ class AuxiliaryFields {
 		return _CREATION_DATE
 	}
 
-	static get ARE_SKILL_SET() {
-		return _ARE_SKILL_SET
+	static get SKILL_COMPANY() {
+		return _SKILL_COMPANY
 	}
 
 	static get BIRTH_DATE() {
 		return _BIRTH_DATE
 	}
 
-	static get SKILL_CHILDHOOD() {
-		return _SKILL_CHILDHOOD
-	}
-
-	static get SKILL_COMPAGNY() {
-		return _SKILL_COMPAGNY
-	}
-
 	static get FIRST_NAME() {
 		return _FIRST_NAME
-	}
-
-	static get SKILL_ANSWERS() {
-		return _SKILL_ANSWERS
 	}
 
 	static get NATIONALITY() {
@@ -156,16 +176,20 @@ class AuxiliaryFields {
 		return _PHONE
 	}
 
-	static get SKILL_ADMINISTRATIVE() {
-		return _SKILL_ADMINISTRATIVE
+	static get SKILL_TRANSPORT() {
+		return _SKILL_TRANSPORT
 	}
 
-	static get SKILL_HOUSEWORK() {
-		return _SKILL_HOUSEWORK
+	static get SKILL_CLOTHES() {
+		return _SKILL_CLOTHES
 	}
 
 	static get NOTIFY_OFFERS_MAIL() {
 		return _NOTIFY_OFFERS_MAIL
+	}
+
+	static get SKILL_PET() {
+		return _SKILL_PET
 	}
 
 	static get VALUES() {
@@ -174,6 +198,8 @@ class AuxiliaryFields {
 			_LAST_NAME,
 			_CIVILITY,
 			_CITY,
+			_SKILL_CHILDREN_GAME,
+			_SKILL_HOUSE,
 			_LAST_UPDATE_DATE,
 			_POSTAL_CODE,
 			_IS_TUTO_SKIPPED,
@@ -181,35 +207,39 @@ class AuxiliaryFields {
 			_SOCIAL_NUMBER,
 			_ACCOUNT_EXPIRY_DATE,
 			_PROFIL_PROGRESSION,
-			_SKILL_SHOPPING,
+			_SKILL_BEAUTY,
 			_NOTIFY_OFFERS_SMS,
 			_NOTIFY_AUXPROS,
+			_SKILL_HANDICAP,
+			_SKILL_ILLNESS,
 			_BIRTH_COUNTRY,
+			_SKILL_CHILDREN_SCHOOL,
 			_PROFIL_COMPLETED,
 			_ID,
 			_DIPLOMA,
-			_SKILL_DOITYOURSELF,
+			_SKILL_CHILDREN_KEEP,
+			_SKILL_OLD_CARE,
 			_LONGITUDE,
 			_ADDRESS,
 			_SKILL_NURSING,
+			_SKILL_CHILDREN_CARE,
 			_LATTITUDE,
+			_SKILL_FOOD,
 			_ACCOUNT_TYPE,
 			_NOTIFY_PARTNERS,
 			_BIRTH_CITY,
 			_AVATAR,
 			_CREATION_DATE,
-			_ARE_SKILL_SET,
+			_SKILL_COMPANY,
 			_BIRTH_DATE,
-			_SKILL_CHILDHOOD,
-			_SKILL_COMPAGNY,
 			_FIRST_NAME,
-			_SKILL_ANSWERS,
 			_NATIONALITY,
 			_IS_ENTREPRENEUR,
 			_PHONE,
-			_SKILL_ADMINISTRATIVE,
-			_SKILL_HOUSEWORK,
+			_SKILL_TRANSPORT,
+			_SKILL_CLOTHES,
 			_NOTIFY_OFFERS_MAIL,
+			_SKILL_PET,
 		]
 	}
 
@@ -242,6 +272,16 @@ let _CITY = {
 	key: 'city',
 	type: 'string',
 	validator: validators.NON_EMPTY_STRING,
+}
+let _SKILL_CHILDREN_GAME = {
+	key: 'skillChildrenGame',
+	type: 'number',
+	validator: validators.DEFAULT,
+}
+let _SKILL_HOUSE = {
+	key: 'skillHouse',
+	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _LAST_UPDATE_DATE = {
 	key: 'lastUpdateDate',
@@ -278,8 +318,8 @@ let _PROFIL_PROGRESSION = {
 	type: 'number',
 	validator: validators.DEFAULT,
 }
-let _SKILL_SHOPPING = {
-	key: 'skillShopping',
+let _SKILL_BEAUTY = {
+	key: 'skillBeauty',
 	type: 'number',
 	validator: validators.DEFAULT,
 }
@@ -293,10 +333,25 @@ let _NOTIFY_AUXPROS = {
 	type: 'boolean',
 	validator: validators.BOOLEAN,
 }
+let _SKILL_HANDICAP = {
+	key: 'skillHandicap',
+	type: 'number',
+	validator: validators.DEFAULT,
+}
+let _SKILL_ILLNESS = {
+	key: 'skillIllness',
+	type: 'number',
+	validator: validators.DEFAULT,
+}
 let _BIRTH_COUNTRY = {
 	key: 'birthCountry',
 	type: 'string',
 	validator: validators.NON_EMPTY_STRING,
+}
+let _SKILL_CHILDREN_SCHOOL = {
+	key: 'skillChildrenSchool',
+	type: 'number',
+	validator: validators.DEFAULT,
 }
 let _PROFIL_COMPLETED = {
 	key: 'profilCompleted',
@@ -314,8 +369,13 @@ let _DIPLOMA = {
 	values: AuxiliaryDiploma.VALUES,
 	validator: validators.NON_EMPTY_ARRAY,
 }
-let _SKILL_DOITYOURSELF = {
-	key: 'skillDoityourself',
+let _SKILL_CHILDREN_KEEP = {
+	key: 'skillChildrenKeep',
+	type: 'number',
+	validator: validators.DEFAULT,
+}
+let _SKILL_OLD_CARE = {
+	key: 'skillOldCare',
 	type: 'number',
 	validator: validators.DEFAULT,
 }
@@ -334,8 +394,18 @@ let _SKILL_NURSING = {
 	type: 'number',
 	validator: validators.DEFAULT,
 }
+let _SKILL_CHILDREN_CARE = {
+	key: 'skillChildrenCare',
+	type: 'number',
+	validator: validators.DEFAULT,
+}
 let _LATTITUDE = {
 	key: 'lattitude',
+	type: 'number',
+	validator: validators.DEFAULT,
+}
+let _SKILL_FOOD = {
+	key: 'skillFood',
 	type: 'number',
 	validator: validators.DEFAULT,
 }
@@ -365,9 +435,9 @@ let _CREATION_DATE = {
 	type: 'Date',
 	validator: validators.DEFAULT,
 }
-let _ARE_SKILL_SET = {
-	key: 'areSkillSet',
-	type: 'boolean',
+let _SKILL_COMPANY = {
+	key: 'skillCompany',
+	type: 'number',
 	validator: validators.DEFAULT,
 }
 let _BIRTH_DATE = {
@@ -375,25 +445,10 @@ let _BIRTH_DATE = {
 	type: 'Date',
 	validator: validators.BEFORE_TODAY,
 }
-let _SKILL_CHILDHOOD = {
-	key: 'skillChildhood',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _SKILL_COMPAGNY = {
-	key: 'skillCompagny',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
 let _FIRST_NAME = {
 	key: 'firstName',
 	type: 'string',
 	validator: validators.NON_EMPTY_STRING,
-}
-let _SKILL_ANSWERS = {
-	key: 'skillAnswers',
-	type: 'number',
-	validator: validators.DEFAULT,
 }
 let _NATIONALITY = {
 	key: 'nationality',
@@ -411,13 +466,13 @@ let _PHONE = {
 	type: 'string',
 	validator: validators.PHONE,
 }
-let _SKILL_ADMINISTRATIVE = {
-	key: 'skillAdministrative',
+let _SKILL_TRANSPORT = {
+	key: 'skillTransport',
 	type: 'number',
 	validator: validators.DEFAULT,
 }
-let _SKILL_HOUSEWORK = {
-	key: 'skillHousework',
+let _SKILL_CLOTHES = {
+	key: 'skillClothes',
 	type: 'number',
 	validator: validators.DEFAULT,
 }
@@ -425,5 +480,10 @@ let _NOTIFY_OFFERS_MAIL = {
 	key: 'notifyOffersMail',
 	type: 'boolean',
 	validator: validators.BOOLEAN,
+}
+let _SKILL_PET = {
+	key: 'skillPet',
+	type: 'number',
+	validator: validators.DEFAULT,
 }
 export default AuxiliaryFields
