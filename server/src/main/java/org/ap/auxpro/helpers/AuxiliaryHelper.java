@@ -11,7 +11,6 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
 
 import org.ap.auxpro.bean.AuxiliaryPutBean;
-import org.ap.auxpro.bean.AuxiliaryQuestionaryBean;
 import org.ap.auxpro.bean.PromotionCodePostBean;
 import org.ap.auxpro.constants.EDiploma;
 import org.ap.auxpro.constants.EGeozoneType;
@@ -130,49 +129,6 @@ public class AuxiliaryHelper {
 		data.setProfilProgression(profilProgress);
 		data.setProfilCompleted(profilCompleted);
 		AuxiliaryCollection.update(data);
-	}
-
-	public static Object postAuxiliaryQuestionary(SecurityContext sc, String id, AuxiliaryQuestionaryBean bean) throws APWebException {
-		AuxiliaryData data = AuxiliaryCollection.getById(id);
-		if (Boolean.TRUE.equals(data.getAreSkillSet())) {
-			throw new APWebException("Questionary already filled", Status.BAD_REQUEST);
-		}
-		int ch = 0;
-		int ho = 0;
-		int co = 0;
-		int sh = 0;
-		int nu = 0;
-		int ad = 0; 
-		int di = 0;
-		boolean isComplete = true;
-		for (EQuestion q : EQuestion.values()) {
-			Integer answer = bean.skillAnswers.get(q.getIndex());
-			if (answer == null) {
-				isComplete = false;
-			} else {
-				ch += q.getAnswers()[answer].getChildhood();
-				ho += q.getAnswers()[answer].getHousework();
-				co += q.getAnswers()[answer].getCompagny();
-				sh += q.getAnswers()[answer].getShopping();
-				nu += q.getAnswers()[answer].getNursing();
-				ad += q.getAnswers()[answer].getAdministrative();
-				di += q.getAnswers()[answer].getDoityourself();
-			}
-		}
-		if (isComplete) {
-			data.setAreSkillSet(true);
-			data.setProfilProgression(data.getProfilProgression() + 30);
-			data.setSkillChildhood(computeScore(ch));
-			data.setSkillHousework(computeScore(ho));
-			data.setSkillCompagny(computeScore(co));
-			data.setSkillShopping(computeScore(sh));
-			data.setSkillNursing(computeScore(nu));
-			data.setSkillAdministrative(computeScore(ad));
-			data.setSkillDoityourself(computeScore(di));
-		}
-		data.setSkillAnswers(bean.skillAnswers);
-		AuxiliaryCollection.update(data);
-		return null;
 	}
 
 	public static int computeScore(int baseScore) {

@@ -216,23 +216,6 @@ public class AuxiliaryServlet extends APServletBase {
 	}
 
 	@POST
-	@Path("/{id}/questionary")
-	@APSecured
-	@Consumes({MediaType.APPLICATION_JSON})
-	@Produces({MediaType.APPLICATION_JSON})
-	public Response postAuxiliaryQuestionary(@Context SecurityContext sc, @PathParam("id") final String id, AuxiliaryQuestionaryBean auxiliaryQuestionaryBean) {
-		try {
-			Object bean = AuxiliaryHelper.postAuxiliaryQuestionary(sc, id, auxiliaryQuestionaryBean);
-			return Response.status(Status.OK).entity(bean).build();
-			
-		} catch (APWebException e) {
-			return sendException(e);
-		} catch (Exception e) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
-		}
-	}
-
-	@POST
 	@Path("/{id}/code")
 	@APSecured
 	@Consumes({MediaType.APPLICATION_JSON})

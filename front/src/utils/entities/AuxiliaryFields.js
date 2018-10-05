@@ -1,6 +1,6 @@
 import validators from 'utils/validators'
 import Civility from 'utils/constants/Civility'
-import Diploma from 'utils/constants/Diploma'
+import AuxiliaryDiploma from 'utils/constants/AuxiliaryDiploma'
 import AccountType from 'utils/constants/AccountType'
 import AuxiliaryStatus from 'utils/constants/AuxiliaryStatus'
 
@@ -311,7 +311,7 @@ let _ID = {
 let _DIPLOMA = {
 	key: 'diploma',
 	type: 'string',
-	values: Diploma.VALUES,
+	values: AuxiliaryDiploma.VALUES,
 	validator: validators.NON_EMPTY_ARRAY,
 }
 let _SKILL_DOITYOURSELF = {
