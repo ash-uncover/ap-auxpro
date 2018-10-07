@@ -54,24 +54,6 @@ class AuxiliaryUtils {
             case AuxiliaryFields.NOTIFY_PARTNERS.key: return ''
             case AuxiliaryFields.NOTIFY_AUXPROS:
             case AuxiliaryFields.NOTIFY_AUXPROS.key: return ''
-            case AuxiliaryFields.ARE_SKILL_SET:
-            case AuxiliaryFields.ARE_SKILL_SET.key: return ''
-            case AuxiliaryFields.SKILL_ANSWERS:
-            case AuxiliaryFields.SKILL_ANSWERS.key: return ''
-            case AuxiliaryFields.SKILL_ADMINISTRATIVE:
-            case AuxiliaryFields.SKILL_ADMINISTRATIVE.key: return ''
-            case AuxiliaryFields.SKILL_SHOPPING:
-            case AuxiliaryFields.SKILL_SHOPPING.key: return ''
-            case AuxiliaryFields.SKILL_DOITYOURSELF:
-            case AuxiliaryFields.SKILL_DOITYOURSELF.key: return ''
-            case AuxiliaryFields.SKILL_NURSING:
-            case AuxiliaryFields.SKILL_NURSING.key: return ''
-            case AuxiliaryFields.SKILL_CHILDHOOD:
-            case AuxiliaryFields.SKILL_CHILDHOOD.key: return ''
-            case AuxiliaryFields.SKILL_HOUSEWORK:
-            case AuxiliaryFields.SKILL_HOUSEWORK.key: return ''
-            case AuxiliaryFields.SKILL_COMPAGNY:
-            case AuxiliaryFields.SKILL_COMPAGNY.key: return ''
             case AuxiliaryFields.IS_ENTREPRENEUR:
             case AuxiliaryFields.IS_ENTREPRENEUR.key: return 'Type de mission'
         }

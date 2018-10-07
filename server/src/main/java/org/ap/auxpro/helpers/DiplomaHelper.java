@@ -1,7 +1,7 @@
 package org.ap.auxpro.helpers;
 
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.ap.auxpro.constants.EAuxiliaryDiploma;
@@ -59,7 +59,7 @@ public class DiplomaHelper {
 		return result;
 	}
 	
-	public static Set<EPeopleCategory> getDiplomaCategories(List<EAuxiliaryDiploma> diplomas) {
+	public static Set<EPeopleCategory> getDiplomaCategories(Collection<EAuxiliaryDiploma> diplomas) {
 		Set<EPeopleCategory> result = new HashSet<EPeopleCategory>();
 		for (EAuxiliaryDiploma diploma : diplomas) {
 			result.addAll(DiplomaHelper.getDiplomaCategories(diploma));
@@ -109,6 +109,7 @@ public class DiplomaHelper {
 		case _DIPLOMA_TITRE_PRO:
 			break;
 		case _NO_DIPLOMA:
+			result.add(EAuxiliarySkills._SKILL_BEAUTY);
 			break;
 		default:
 			break;
@@ -116,7 +117,7 @@ public class DiplomaHelper {
 		return result;
 	}
 	
-	public static Set<EAuxiliarySkills> getDiplomaSkills(List<EAuxiliaryDiploma> diplomas) {
+	public static Set<EAuxiliarySkills> getDiplomaSkills(Collection<EAuxiliaryDiploma> diplomas) {
 		Set<EAuxiliarySkills> result = new HashSet<EAuxiliarySkills>();
 		for (EAuxiliaryDiploma diploma : diplomas) {
 			result.addAll(DiplomaHelper.getDiplomaSkills(diploma));
@@ -141,7 +142,7 @@ public class DiplomaHelper {
 		return result;
 	}
 	
-	public static Set<EAuxiliarySkills> getCategorySkills(List<EPeopleCategory> categories) {
+	public static Set<EAuxiliarySkills> getCategorySkills(Collection<EPeopleCategory> categories) {
 		Set<EAuxiliarySkills> result = new HashSet<EAuxiliarySkills>();
 		for (EPeopleCategory category: categories) {
 			result.addAll(DiplomaHelper.getCategorySkills(category));
@@ -166,7 +167,7 @@ public class DiplomaHelper {
 		return result;
 	}
 	
-	public static Set<EAuxiliaryDiploma> getCategoryDiplomas(List<EPeopleCategory> categories) {
+	public static Set<EAuxiliaryDiploma> getCategoryDiplomas(Collection<EPeopleCategory> categories) {
 		Set<EAuxiliaryDiploma> result = new HashSet<EAuxiliaryDiploma>();
 		for (EPeopleCategory category: categories) {
 			result.addAll(DiplomaHelper.getCategoryDiplomas(category));

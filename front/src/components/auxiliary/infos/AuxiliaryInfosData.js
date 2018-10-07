@@ -1,11 +1,13 @@
 import AppHelper from 'helpers/AppHelper'
 import AuthHelper from 'helpers/AuthHelper'
 import AuxiliaryHelper from 'helpers/AuxiliaryHelper'
+import I18NHelper from 'helpers/I18NHelper'
 import { BaseData, Formatters, MomentHelper } from 'ap-react-bootstrap'
 
 import AuxiliaryFields from 'utils/entities/AuxiliaryFields'
 
 import AuxiliaryStatusUtils from 'utils-lib/entities/AuxiliaryStatusUtils'
+import AuxiliarySkillsUtils from 'utils-lib/entities/AuxiliarySkillsUtils'
 import BooleanUtils from 'utils-lib/BooleanUtils'
 import DiplomaUtils from 'utils-lib/entities/DiplomaUtils'
 import NationalityUtils from 'utils-lib/geo/NationalityUtils'
@@ -18,7 +20,6 @@ class AuxiliaryInfosData extends BaseData {
 
 		this.FIELDS_FORM0 = [
 			AuxiliaryFields.AVATAR,
-			AuxiliaryFields.ARE_SKILL_SET,
 			AuxiliaryFields.PROFIL_COMPLETED,
 			AuxiliaryFields.PROFIL_PROGRESSION
 		]
@@ -42,16 +43,127 @@ class AuxiliaryInfosData extends BaseData {
 		this.FIELDS_FORM3 = [
 			AuxiliaryFields.DESCRIPTION,
 			Object.assign({ formatter: AuxiliaryStatusUtils.getName }, AuxiliaryFields.IS_ENTREPRENEUR),
-			Object.assign({ formatter: DiplomaUtils.getList }, AuxiliaryFields.DIPLOMA)
+			Object.assign(AuxiliaryFields.DIPLOMA)
 		]
 		this.FIELDS_FORM4 = [
-			Object.assign({ defaultValue: 0 }, AuxiliaryFields.SKILL_ADMINISTRATIVE),
-			Object.assign({ defaultValue: 0 }, AuxiliaryFields.SKILL_CHILDHOOD),
-			Object.assign({ defaultValue: 0 }, AuxiliaryFields.SKILL_COMPAGNY),
-			Object.assign({ defaultValue: 0 }, AuxiliaryFields.SKILL_DOITYOURSELF),
-			Object.assign({ defaultValue: 0 }, AuxiliaryFields.SKILL_HOUSEWORK),
-			Object.assign({ defaultValue: 0 }, AuxiliaryFields.SKILL_NURSING),
-			Object.assign({ defaultValue: 0 }, AuxiliaryFields.SKILL_SHOPPING)
+			Object.assign(
+				{
+					defaultValue: 0,
+					name: 'SKILL_CHILDREN_CARE',
+					hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_CHILDREN_CARE)
+				},
+				AuxiliaryFields.SKILL_CHILDREN_CARE
+			),
+			Object.assign(
+				{
+          defaultValue: 0,
+          name: 'SKILL_CHILDREN_SCHOOL',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_CHILDREN_SCHOOL) },
+				AuxiliaryFields.SKILL_CHILDREN_SCHOOL
+			),
+			Object.assign(
+				{
+          defaultValue: 0,
+          name: 'SKILL_CHILDREN_GAME',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_CHILDREN_GAME) },
+				AuxiliaryFields.SKILL_CHILDREN_GAME
+			),
+			Object.assign(
+				{
+          defaultValue: 0,
+          name: 'SKILL_CHILDREN_KEEP',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_CHILDREN_KEEP)
+        },
+				AuxiliaryFields.SKILL_CHILDREN_KEEP
+			),
+			Object.assign(
+        {
+          defaultValue: 0,
+          name: 'SKILL_OLD_CARE',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_OLD_CARE)
+        },
+				AuxiliaryFields.SKILL_OLD_CARE
+			),
+			Object.assign(
+				{
+          defaultValue: 0,
+          name: 'SKILL_FOOD',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_FOOD)
+        },
+				AuxiliaryFields.SKILL_FOOD
+			),
+			Object.assign(
+        {
+          defaultValue: 0,
+          name: 'SKILL_TRANSPORT',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_TRANSPORT)
+        },
+				AuxiliaryFields.SKILL_TRANSPORT
+			),
+			Object.assign(
+        {
+          defaultValue: 0,
+          name: 'SKILL_ILLNESS',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_ILLNESS)
+        },
+				AuxiliaryFields.SKILL_ILLNESS
+			),
+			Object.assign(
+        {
+          defaultValue: 0,
+          name: 'SKILL_NURSING',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_NURSING)
+        },
+				AuxiliaryFields.SKILL_NURSING
+			),
+			Object.assign(
+        {
+          defaultValue: 0,
+          name: 'SKILL_CLOTHES',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_CLOTHES)
+        },
+				AuxiliaryFields.SKILL_CLOTHES
+			),
+			Object.assign(
+        {
+          defaultValue: 0,
+          name: 'SKILL_HOUSE',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_HOUSE)
+        },
+				AuxiliaryFields.SKILL_HOUSE
+			),
+			Object.assign(
+        {
+          defaultValue: 0,
+          name: 'SKILL_COMPANY',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_COMPANY)
+        },
+				AuxiliaryFields.SKILL_COMPANY
+			),
+			Object.assign(
+        {
+          defaultValue: 0,
+          name: 'SKILL_PET',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_PET)
+        },
+				AuxiliaryFields.SKILL_PET
+			),
+			Object.assign(
+        {
+          defaultValue: 0,
+          name: 'SKILL_HANDICAP',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_HANDICAP)
+        },
+				AuxiliaryFields.SKILL_HANDICAP
+			),
+			Object.assign(
+        {
+          defaultValue: 0,
+          name: 'SKILL_BEAUTY',
+          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_BEAUTY)
+        },
+				AuxiliaryFields.SKILL_BEAUTY
+			)
 		]
 
 		this.FIELDS = this.FIELDS_FORM0.
@@ -65,8 +177,6 @@ class AuxiliaryInfosData extends BaseData {
 		super.register(obj)
 		
 		this.declareFunction('onModifyInfos')
-		this.declareFunction('onModifyQuestionary')
-		this.declareFunction('onViewQuestionary')
 		this.declareFunction('onModifyAccount')
 		this.declareFunction('onModifyEmail')
 		this.declareFunction('onModifyPassword')
@@ -85,18 +195,18 @@ class AuxiliaryInfosData extends BaseData {
 	unregister() {
 	}
 
-
+	checkSkillHidden(skill) {
+		console.log(this.getState('diploma'))
+    console.log(skill.key)
+    console.log(AuxiliarySkillsUtils.getDiplomasSkills(this.getState('diploma')).indexOf(skill.key) === -1)
+		//console.log(AuxiliarySkillsUtils.getDiplomasSkills(this.getState('diploma')))
+    return AuxiliarySkillsUtils.getDiplomasSkills(this.getState('diploma')).indexOf(skill.key) === -1
+	}
 	// View callbacks //
 	// --------------------------------------------------------------------------------
 
 	onModifyInfos() {
 		AppHelper.navigate('/auxiliary/infos/edit/infos')
-	}
-	onModifyQuestionary() {
-		AppHelper.navigate('/auxiliary/infos/edit/questionary')
-	}
-	onViewQuestionary() {
-		AppHelper.navigate('/auxiliary/infos/questionary')
 	}
 	onModifyAccount() {
 		AppHelper.navigate('/auxiliary/infos/edit/account')
@@ -109,5 +219,5 @@ class AuxiliaryInfosData extends BaseData {
 	}
 }
 
-let AuxiliaryInfosObj = new AuxiliaryInfosData()
+const AuxiliaryInfosObj = new AuxiliaryInfosData()
 export default AuxiliaryInfosObj

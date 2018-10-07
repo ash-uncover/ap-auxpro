@@ -214,7 +214,7 @@ db.auxiliary.insert({
 	"skillHousework":NumberInt(2),
 	"skillNursing":NumberInt(4),
 	"skillShopping":NumberInt(1),
-	"diploma":["diploma_1","diploma_3","diploma_5"],
+	"diploma":["diploma_advf"],
 	"creationDate":new Date("2018-02-02"),
 	"lastUpdateDate":new Date("2018-02-02"),
 	"idCardNumber":"123456789012"
