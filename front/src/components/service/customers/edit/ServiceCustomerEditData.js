@@ -48,7 +48,7 @@ class ServiceCustomerEditData extends BaseData {
     CustomerFields.FIRST_NAME
   )
   const CATEGORY = Object.assign(
-    { defaultValue: '', form: 'select', name: CustomerUtils.getFieldName(CustomerFields.CATEGORY) }, 
+    { defaultValue: 'old_people', form: 'select', name: CustomerUtils.getFieldName(CustomerFields.CATEGORY) }, 
     CustomerFields.CATEGORY
   )
   const BIRTH_DATE = Object.assign(

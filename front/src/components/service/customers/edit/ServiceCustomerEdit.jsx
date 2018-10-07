@@ -64,7 +64,7 @@ class ServiceCustomerEdit extends React.Component {
     return (
       <SkillTile
         key={skill.key}
-        title={skill.name}
+        title={I18NHelper.get(skill.name)}
         value={this.state[skill.key]}
         starMax={5}
         onChange={this.onSkillChange.bind(this, id)}/>
