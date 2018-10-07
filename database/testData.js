@@ -586,15 +586,13 @@ db.customer.insert({
 	"lattitude":48.892779,
 	"longitude":2.326340,
 	"category":"old_people",
-	"skillAdministrative":NumberInt(0),
-	"skillChildhood":NumberInt(2),
+	"skillChildrenSchool":NumberInt(3),
+	"skillChildrenKeep":NumberInt(3),
 	"skillCompagny":NumberInt(5),
-	"skillDoityourself":NumberInt(0),
-	"skillHousework":NumberInt(1),
+	"skillIllness":NumberInt(3),
 	"skillNursing":NumberInt(3),
-	"creationDate":new Date("2018-02-02"),
-	"lastUpdateDate":new Date("2018-02-02"),
-	"skillShopping":NumberInt(4)
+    "creationDate":new Date("2018-02-02"),
+    "lastUpdateDate":new Date("2018-02-02")
 })
 
 db.customer.insert({

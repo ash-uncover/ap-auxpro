@@ -46,7 +46,6 @@ class ServiceCustomer extends React.Component {
 
   _buildSkillFormGroup(field) { 
     if (!field.hidden || !field.hidden() && this.state[field.key]) {
-      console.log(field)
       return (
         <SkillTile 
           key={field.key}

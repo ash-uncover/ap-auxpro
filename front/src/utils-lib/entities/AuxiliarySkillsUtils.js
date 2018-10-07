@@ -1292,7 +1292,6 @@ AuxiliarySkillsUtils.getDiplomasSkills = function (diplomas) {
 }
 
 AuxiliarySkillsUtils.getCategorySkills = function (category) {
-  console.log(category)
   return MAPPINGS
     .filter((mapping) => category === mapping.category)
     .map((mapping) => mapping.skill)
