@@ -43,12 +43,16 @@ public class AuxiliaryHelper {
 				checkedList.add(diploma);
 			}
 		}
+		if (checkedList.size() > 1 && checkedList.contains(EAuxiliaryDiploma._NO_DIPLOMA.getName())) {
+			checkedList.remove(EAuxiliaryDiploma._NO_DIPLOMA.getName());
+		}
 		auxiliaryBean.diploma = checkedList;
 	}
 
 	public static void checkSkills(AuxiliaryPutBean auxiliaryBean) {
 		int defaultSkillValue = 0;
 		Set<EAuxiliaryDiploma> diplomas = new HashSet<EAuxiliaryDiploma>();
+		diplomas.add(EAuxiliaryDiploma._NO_DIPLOMA);
 		for (String diplomaName : auxiliaryBean.diploma) {
 			diplomas.add(EAuxiliaryDiploma.getByName(diplomaName));
 		}
