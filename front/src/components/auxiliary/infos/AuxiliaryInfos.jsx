@@ -38,7 +38,11 @@ class AuxiliaryInfos extends React.Component {
           {field.name || AuxiliaryUtils.getFieldName(field.key)}
         </Form.Label>
         <Form.Static className={'col-sm-7 user-select-text ap-form-' + field.key}>
-          {this.state[field.key]}
+          {field.key === 'diploma' ? 
+            this.state[field.key].map((value) => value.toUpperCase()).map(I18NHelper.get.bind(I18NHelper)) 
+          : 
+            this.state[field.key]
+          }
         </Form.Static>
       </Form.Group>
     )
