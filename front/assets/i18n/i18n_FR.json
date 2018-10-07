@@ -1,4 +1,8 @@
 {
+	"OLD_PEOPLE":"Personnes agées",
+	"CHILDREN":"Petite enfance 3 ans et moins",
+	"HANDICAP":"Personne handicapée",
+	"AUTONOMOUS":"Population non fragile",
 	"NO_DIPLOMA":"Sans diplôme",
 	"DIPLOMA_AAPAPD":"AAPAPD - Agent d'accompagnement auprès des personnes âgées et des personnes dépendantes",
 	"DIPLOMA_ADVF":"ADVF - Assistant de vie aux familles",
