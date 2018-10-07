@@ -14,6 +14,7 @@ import org.ap.common.web.auth.APSecured;
 import org.ap.common.util.UUIDGenerator;
 import java.util.Date;
 import com.mongodb.MongoWriteException;
+import org.ap.auxpro.helpers.CustomerHelper;
 import org.ap.auxpro.bean.InterventionBean;
 import org.ap.auxpro.storage.intervention.InterventionData;
 import org.ap.auxpro.storage.intervention.InterventionCollection;
@@ -78,6 +79,7 @@ public class CustomerServlet extends APServletBase {
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response putCustomer(@Context SecurityContext sc, @PathParam("id") final String id, CustomerBean customerBean) {
 		try {
+			CustomerHelper.beforePutCustomer(sc, id, customerBean);
 			// Get actual data object
 			CustomerData data = CustomerCollection.getById(id);
 			// Check data exists

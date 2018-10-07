@@ -31,7 +31,6 @@ class AuxiliaryInfosEditInfos extends React.Component {
   }
 
   buildSkillFormGroup(field) { 
-    console.log(field)
     if (!field.hidden || !field.hidden()) {
       return (
         <Form.Group key={field.key}>
