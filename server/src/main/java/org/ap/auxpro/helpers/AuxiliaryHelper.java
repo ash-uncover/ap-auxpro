@@ -32,7 +32,7 @@ import org.ap.common.validators.EValidatorState;
 import org.ap.common.web.exception.APWebException;
 public class AuxiliaryHelper {
 
-	public static void checkDiplomas(AuxiliaryPutBean auxiliaryBean) {
+	public static void getDiplomas(AuxiliaryPutBean auxiliaryBean) {
 		List<String> checkedList = new ArrayList<String>();
 		checkedList.add(EAuxiliaryDiploma._NO_DIPLOMA.getName());
 		if (auxiliaryBean.diploma == null) {
@@ -47,7 +47,7 @@ public class AuxiliaryHelper {
 	}
 
 	public static void checkSkills(AuxiliaryPutBean auxiliaryBean) {
-		int defaultSkillValue = 2;
+		int defaultSkillValue = 0;
 		Set<EAuxiliaryDiploma> diplomas = new HashSet<EAuxiliaryDiploma>();
 		for (String diplomaName : auxiliaryBean.diploma) {
 			diplomas.add(EAuxiliaryDiploma.getByName(diplomaName));
@@ -83,7 +83,7 @@ public class AuxiliaryHelper {
 		boolean profilCompleted = true;
 		int profilProgress = 0;
 		// Check skills (total: 30)
-		AuxiliaryHelper.checkDiplomas(auxiliaryBean);
+		AuxiliaryHelper.getDiplomas(auxiliaryBean);
 		AuxiliaryHelper.checkSkills(auxiliaryBean);
 		// Check avatar (total: 40)
 		if (auxiliaryBean.avatar != null) {

@@ -15,7 +15,7 @@ public class AuxiliaryHelperTest {
 	@Test
 	public void testV_checkDiplomas_diplomasNull() {
 		AuxiliaryPutBean bean = new AuxiliaryPutBean();
-		AuxiliaryHelper.checkDiplomas(bean);
+		AuxiliaryHelper.getDiplomas(bean);
 		TestCase.assertNotNull(bean.diploma);
 		TestCase.assertTrue(bean.diploma.contains(EAuxiliaryDiploma._NO_DIPLOMA.getName()));
 		TestCase.assertEquals(1, bean.diploma.size());
@@ -25,7 +25,7 @@ public class AuxiliaryHelperTest {
 	public void testV_checkDiplomas_diplomasEmpty() {
 		AuxiliaryPutBean bean = new AuxiliaryPutBean();
 		bean.diploma = new ArrayList<String>();
-		AuxiliaryHelper.checkDiplomas(bean);
+		AuxiliaryHelper.getDiplomas(bean);
 		TestCase.assertNotNull(bean.diploma);
 		TestCase.assertTrue(bean.diploma.contains(EAuxiliaryDiploma._NO_DIPLOMA.getName()));
 		TestCase.assertEquals(1, bean.diploma.size());
@@ -37,7 +37,7 @@ public class AuxiliaryHelperTest {
 		bean.diploma = new ArrayList<String>();
 		bean.diploma.add(EAuxiliaryDiploma._DIPLOMA_ADVF.getName());
 		bean.diploma.add(EAuxiliaryDiploma._DIPLOMA_ADVF.getName());
-		AuxiliaryHelper.checkDiplomas(bean);
+		AuxiliaryHelper.getDiplomas(bean);
 		TestCase.assertTrue(bean.diploma.contains(EAuxiliaryDiploma._NO_DIPLOMA.getName()));
 		TestCase.assertTrue(bean.diploma.contains(EAuxiliaryDiploma._DIPLOMA_ADVF.getName()));
 		TestCase.assertEquals(2, bean.diploma.size());
@@ -49,7 +49,7 @@ public class AuxiliaryHelperTest {
 		bean.diploma = new ArrayList<String>();
 		bean.diploma.add(EAuxiliaryDiploma._DIPLOMA_ADVF.getName());
 		bean.diploma.add(EAuxiliaryDiploma._DIPLOMA_BAC_ASSP.getName());
-		AuxiliaryHelper.checkDiplomas(bean);
+		AuxiliaryHelper.getDiplomas(bean);
 		TestCase.assertTrue(bean.diploma.contains(EAuxiliaryDiploma._NO_DIPLOMA.getName()));
 		TestCase.assertTrue(bean.diploma.contains(EAuxiliaryDiploma._DIPLOMA_ADVF.getName()));
 		TestCase.assertTrue(bean.diploma.contains(EAuxiliaryDiploma._DIPLOMA_BAC_ASSP.getName()));
@@ -61,7 +61,7 @@ public class AuxiliaryHelperTest {
 	@Test
 	public void testV_checkSkills_noDiploma() {
 		AuxiliaryPutBean bean = new AuxiliaryPutBean();
-		AuxiliaryHelper.checkDiplomas(bean);
+		AuxiliaryHelper.getDiplomas(bean);
 		AuxiliaryHelper.checkSkills(bean);
 		// No diploma skills
 		TestCase.assertEquals(0, bean.skillBeauty.intValue());
@@ -85,27 +85,27 @@ public class AuxiliaryHelperTest {
 	@Test
 	public void testV_checkSkills_belowZeroToZero() {
 		AuxiliaryPutBean bean = new AuxiliaryPutBean();
-		bean.skillBeauty = -3;
-		AuxiliaryHelper.checkDiplomas(bean);
+		bean.skillClothes = -3;
+		AuxiliaryHelper.getDiplomas(bean);
 		AuxiliaryHelper.checkSkills(bean);
-		TestCase.assertEquals(0, bean.skillBeauty.intValue());
+		TestCase.assertEquals(0, bean.skillClothes.intValue());
 	}
 	
 	@Test
 	public void testV_checkSkills_overFiveToFive() {
 		AuxiliaryPutBean bean = new AuxiliaryPutBean();
-		bean.skillBeauty = 13;
-		AuxiliaryHelper.checkDiplomas(bean);
+		bean.skillClothes = 13;
+		AuxiliaryHelper.getDiplomas(bean);
 		AuxiliaryHelper.checkSkills(bean);
-		TestCase.assertEquals(5, bean.skillBeauty.intValue());
+		TestCase.assertEquals(5, bean.skillClothes.intValue());
 	}
 	
 	@Test
 	public void testV_checkSkills_diplomaOk() {
 		AuxiliaryPutBean bean = new AuxiliaryPutBean();
-		bean.skillBeauty = 4;
-		AuxiliaryHelper.checkDiplomas(bean);
+		bean.skillClothes = 4;
+		AuxiliaryHelper.getDiplomas(bean);
 		AuxiliaryHelper.checkSkills(bean);
-		TestCase.assertEquals(4, bean.skillBeauty.intValue());
+		TestCase.assertEquals(4, bean.skillClothes.intValue());
 	}
 }
