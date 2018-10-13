@@ -8,36 +8,21 @@ public class CustomerData {
 	public String lastName;
 	public String country;
 	public String civility;
+	public String address;
 	public String city;
-	public Integer skillChildrenGame;
-	public Integer skillHouse;
+	public Double lattitude;
 	public Date lastUpdateDate;
 	public String postalCode;
-	public Integer skillBeauty;
-	public Integer skillHandicap;
-	public Integer skillIllness;
-	public Integer skillChildrenSchool;
-	public String id;
-	public String serviceId;
-	public Integer skillChildrenKeep;
-	public String email;
-	public Integer skillOldCare;
-	public Double longitude;
-	public String address;
-	public Integer skillNursing;
-	public Integer skillChildrenCare;
-	public Double lattitude;
-	public Integer skillFood;
-	public Integer skillCompany;
 	public Date creationDate;
 	public Date birthDate;
 	public String firstName;
 	public String nationality;
 	public String phone;
-	public Integer skillTransport;
-	public Integer skillClothes;
+	public String id;
+	public String serviceId;
 	public String category;
-	public Integer skillPet;
+	public String email;
+	public Double longitude;
 
 	public String getLastName() {
 		return this.lastName;
@@ -63,6 +48,14 @@ public class CustomerData {
 		this.civility = civility;
 	}
 
+	public String getAddress() {
+		return this.address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	public String getCity() {
 		return this.city;
 	}
@@ -71,20 +64,12 @@ public class CustomerData {
 		this.city = city;
 	}
 
-	public Integer getSkillChildrenGame() {
-		return this.skillChildrenGame;
+	public Double getLattitude() {
+		return this.lattitude;
 	}
 
-	public void setSkillChildrenGame(Integer skillChildrenGame) {
-		this.skillChildrenGame = skillChildrenGame;
-	}
-
-	public Integer getSkillHouse() {
-		return this.skillHouse;
-	}
-
-	public void setSkillHouse(Integer skillHouse) {
-		this.skillHouse = skillHouse;
+	public void setLattitude(Double lattitude) {
+		this.lattitude = lattitude;
 	}
 
 	public Date getLastUpdateDate() {
@@ -101,134 +86,6 @@ public class CustomerData {
 
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
-	}
-
-	public Integer getSkillBeauty() {
-		return this.skillBeauty;
-	}
-
-	public void setSkillBeauty(Integer skillBeauty) {
-		this.skillBeauty = skillBeauty;
-	}
-
-	public Integer getSkillHandicap() {
-		return this.skillHandicap;
-	}
-
-	public void setSkillHandicap(Integer skillHandicap) {
-		this.skillHandicap = skillHandicap;
-	}
-
-	public Integer getSkillIllness() {
-		return this.skillIllness;
-	}
-
-	public void setSkillIllness(Integer skillIllness) {
-		this.skillIllness = skillIllness;
-	}
-
-	public Integer getSkillChildrenSchool() {
-		return this.skillChildrenSchool;
-	}
-
-	public void setSkillChildrenSchool(Integer skillChildrenSchool) {
-		this.skillChildrenSchool = skillChildrenSchool;
-	}
-
-	public String getId() {
-		return this.id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getServiceId() {
-		return this.serviceId;
-	}
-
-	public void setServiceId(String serviceId) {
-		this.serviceId = serviceId;
-	}
-
-	public Integer getSkillChildrenKeep() {
-		return this.skillChildrenKeep;
-	}
-
-	public void setSkillChildrenKeep(Integer skillChildrenKeep) {
-		this.skillChildrenKeep = skillChildrenKeep;
-	}
-
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Integer getSkillOldCare() {
-		return this.skillOldCare;
-	}
-
-	public void setSkillOldCare(Integer skillOldCare) {
-		this.skillOldCare = skillOldCare;
-	}
-
-	public Double getLongitude() {
-		return this.longitude;
-	}
-
-	public void setLongitude(Double longitude) {
-		this.longitude = longitude;
-	}
-
-	public String getAddress() {
-		return this.address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public Integer getSkillNursing() {
-		return this.skillNursing;
-	}
-
-	public void setSkillNursing(Integer skillNursing) {
-		this.skillNursing = skillNursing;
-	}
-
-	public Integer getSkillChildrenCare() {
-		return this.skillChildrenCare;
-	}
-
-	public void setSkillChildrenCare(Integer skillChildrenCare) {
-		this.skillChildrenCare = skillChildrenCare;
-	}
-
-	public Double getLattitude() {
-		return this.lattitude;
-	}
-
-	public void setLattitude(Double lattitude) {
-		this.lattitude = lattitude;
-	}
-
-	public Integer getSkillFood() {
-		return this.skillFood;
-	}
-
-	public void setSkillFood(Integer skillFood) {
-		this.skillFood = skillFood;
-	}
-
-	public Integer getSkillCompany() {
-		return this.skillCompany;
-	}
-
-	public void setSkillCompany(Integer skillCompany) {
-		this.skillCompany = skillCompany;
 	}
 
 	public Date getCreationDate() {
@@ -271,20 +128,20 @@ public class CustomerData {
 		this.phone = phone;
 	}
 
-	public Integer getSkillTransport() {
-		return this.skillTransport;
+	public String getId() {
+		return this.id;
 	}
 
-	public void setSkillTransport(Integer skillTransport) {
-		this.skillTransport = skillTransport;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public Integer getSkillClothes() {
-		return this.skillClothes;
+	public String getServiceId() {
+		return this.serviceId;
 	}
 
-	public void setSkillClothes(Integer skillClothes) {
-		this.skillClothes = skillClothes;
+	public void setServiceId(String serviceId) {
+		this.serviceId = serviceId;
 	}
 
 	public String getCategory() {
@@ -295,12 +152,20 @@ public class CustomerData {
 		this.category = category;
 	}
 
-	public Integer getSkillPet() {
-		return this.skillPet;
+	public String getEmail() {
+		return this.email;
 	}
 
-	public void setSkillPet(Integer skillPet) {
-		this.skillPet = skillPet;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Double getLongitude() {
+		return this.longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
 	}
 
 }

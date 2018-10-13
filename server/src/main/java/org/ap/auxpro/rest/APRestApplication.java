@@ -36,10 +36,10 @@ public class APRestApplication extends ResourceConfig {
 		register(SwaggerSerializers.class);
 		
 		BeanConfig beanConfig = new BeanConfig();
-		beanConfig.setTitle("ap-auxpro-api");
-		beanConfig.setVersion("0.1.5");
-		beanConfig.setSchemes(new String[]{"https"});
-		beanConfig.setHost("www.auxpros.fr:8090");
+		beanConfig.setTitle("ap-auxpro");
+		beanConfig.setVersion("1.0.0");
+		beanConfig.setSchemes(new String[]{"http"});
+		beanConfig.setHost("localhost:8090");
 		beanConfig.setBasePath("/rest");
 		beanConfig.setResourcePackage("org.ap.auxpro.rest.servlet");
 		beanConfig.setScan(true);

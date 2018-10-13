@@ -2,9 +2,8 @@ package org.ap.auxpro.helpers;
 
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
-import static com.mongodb.client.model.Filters.in;
-import static com.mongodb.client.model.Filters.or;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,6 +11,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.SecurityContext;
@@ -19,10 +19,12 @@ import javax.ws.rs.core.SecurityContext;
 import org.ap.auxpro.bean.BasicBean;
 import org.ap.auxpro.bean.InterventionEmptyBean;
 import org.ap.auxpro.bean.InterventionPostBean;
-import org.ap.auxpro.constants.EDiploma;
+import org.ap.auxpro.bean.InterventionPutBean;
+import org.ap.auxpro.constants.EAuxiliarySkills;
 import org.ap.auxpro.constants.EInterventionStatus;
 import org.ap.auxpro.constants.EMissionStatus;
 import org.ap.auxpro.constants.EOfferStatusSad;
+import org.ap.auxpro.constants.EPeopleCategory;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryCollection;
 import org.ap.auxpro.storage.auxiliary.AuxiliaryData;
 import org.ap.auxpro.storage.customer.CustomerCollection;
@@ -43,7 +45,6 @@ import org.ap.common.geo.GeoHelper;
 import org.ap.common.time.TimeEvent;
 import org.ap.common.util.UUIDGenerator;
 import org.ap.common.web.exception.APWebException;
-import org.bson.conversions.Bson;
 
 import com.mongodb.MongoWriteException;
 
@@ -67,23 +68,45 @@ public class InterventionHelper {
 			intervention.setHideToSad(false);
 			InterventionCollection.create(intervention);
 
-			/*
-			intervention.setCustomerId(interventionBean.customerId);
-			intervention.setServiceId(interventionBean.serviceId);
-			intervention.setPeriod(interventionBean.period);
-			intervention.setStartDate(TimeHelper.toDate(interventionBean.startDate));
-			intervention.setEndDate(TimeHelper.toDate(interventionBean.endDate));
-			intervention.setStartTime(interventionBean.startTime);
-			intervention.setEndTime(interventionBean.endTime);
-			intervention.setDays(interventionBean.days);
-			intervention.setDiplomas(interventionBean.diplomas);
-			 */
+			InterventionHelper.checkInterventionSkills(intervention);
+			
 			result.id = id;
 		} catch (MongoWriteException e) {
 			throw APWebException.MONGO_WRITE_EXCEPTION;
 		}
 
 		return result;
+	}
+	
+	public static void beforePutIntervention(SecurityContext sc, String id, InterventionPutBean bean) throws APWebException {
+		InterventionData intervention = bean.toData();
+		checkInterventionSkills(intervention);
+		bean.fillData(intervention);
+	}
+
+	public static void checkInterventionSkills(InterventionData intervention) throws APWebException {
+		// Check category <> needs relation
+		CustomerData customer = CustomerCollection.getById(intervention.getCustomerId());
+		EPeopleCategory customerCategory = EPeopleCategory.getByName(customer.getCategory());
+		Set<EAuxiliarySkills> skillsAvailable = DiplomaHelper.getCategorySkills(customerCategory);
+
+		for (EAuxiliarySkills skill: EAuxiliarySkills.values()) {
+			try {
+				Field field = InterventionData.class.getField(skill.getName());
+				Integer value = (Integer)field.get(intervention);
+				if (value == null) {
+					value = 0;
+				}
+				if (value < 0) value = 0;
+				if (value > 5) value = 5;
+				if (!skillsAvailable.contains(skill)) {
+					value = 0;
+				}
+				field.set(intervention, value);
+			} catch (Exception e) {
+				System.err.println("Error while setting intervention skill: " + skill);
+			}
+		}
 	}
 
 	public static Object getInterventionMatch(SecurityContext sc, String id) throws APWebException {
@@ -95,20 +118,8 @@ public class InterventionHelper {
 			throw new APWebException("forbidden", Status.FORBIDDEN);
 		}
 
-
-		List<AuxiliaryData> auxiliaries = null;
-		//
-		List<String> diplomas = intervention.getDiplomas();
-		if (diplomas != null && diplomas.size() > 0 && !diplomas.contains(EDiploma._DIPLOMA_NONE.getName()) && !diplomas.contains(EDiploma._DIPLOMA_STUDY.getName())) {
-			List<Bson> conditions = new ArrayList<Bson>();
-			for (String diploma : diplomas) {
-				conditions.add(in("diploma", diploma));
-			}			
-			auxiliaries = AuxiliaryCollection.get(and(eq("profilCompleted", true), eq("accountType", "Premium"), or(conditions)));
-		} else {
-			auxiliaries = AuxiliaryCollection.get(and(eq("profilCompleted", true), eq("accountType", "Premium")));
-		}
 		CustomerData customer = CustomerCollection.getById(intervention.customerId);
+		List<AuxiliaryData> auxiliaries = AuxiliaryCollection.get(and(eq("profilCompleted", true), eq("accountType", "Premium")));
 		Map<AuxiliaryData, AuxiliaryMatchScore> scores = new HashMap<AuxiliaryData, AuxiliaryMatchScore>();
 
 		// Compute geo score
@@ -185,64 +196,64 @@ public class InterventionHelper {
 		for (AuxiliaryData aux : auxiliaries) {
 			int score = 0;
 			int nbSkills = 0;
-			if (customer.getSkillBeauty() > 0) {
-				score += getSkillScore(aux.getSkillBeauty(), customer.getSkillBeauty());
+			if (intervention.getSkillBeauty() > 0) {
+				score += getSkillScore(aux.getSkillBeauty(), intervention.getSkillBeauty());
 				nbSkills++;
 			}
-			if (customer.getSkillChildrenCare() > 0) {
-				score += getSkillScore(aux.getSkillChildrenCare(), customer.getSkillChildrenCare());
+			if (intervention.getSkillChildrenCare() > 0) {
+				score += getSkillScore(aux.getSkillChildrenCare(), intervention.getSkillChildrenCare());
 				nbSkills++;
 			}
-			if (customer.getSkillChildrenGame() > 0) {
-				score += getSkillScore(aux.getSkillChildrenGame(), customer.getSkillChildrenGame());
+			if (intervention.getSkillChildrenGame() > 0) {
+				score += getSkillScore(aux.getSkillChildrenGame(), intervention.getSkillChildrenGame());
 				nbSkills++;
 			}
-			if (customer.getSkillChildrenKeep() > 0) {
-				score += getSkillScore(aux.getSkillChildrenKeep(), customer.getSkillChildrenKeep());
+			if (intervention.getSkillChildrenKeep() > 0) {
+				score += getSkillScore(aux.getSkillChildrenKeep(), intervention.getSkillChildrenKeep());
 				nbSkills++;
 			}
-			if (customer.getSkillChildrenSchool() > 0) {
-				score += getSkillScore(aux.getSkillChildrenSchool(), customer.getSkillChildrenSchool());
+			if (intervention.getSkillChildrenSchool() > 0) {
+				score += getSkillScore(aux.getSkillChildrenSchool(), intervention.getSkillChildrenSchool());
 				nbSkills++;
 			}
-			if (customer.getSkillClothes() > 0) {
-				score += getSkillScore(aux.getSkillClothes(), customer.getSkillClothes());
+			if (intervention.getSkillClothes() > 0) {
+				score += getSkillScore(aux.getSkillClothes(), intervention.getSkillClothes());
 				nbSkills++;
 			}
-			if (customer.getSkillCompany() > 0) {
-				score += getSkillScore(aux.getSkillCompany(), customer.getSkillCompany());
+			if (intervention.getSkillCompany() > 0) {
+				score += getSkillScore(aux.getSkillCompany(), intervention.getSkillCompany());
 				nbSkills++;
 			}
-			if (customer.getSkillFood() > 0) {
-				score += getSkillScore(aux.getSkillFood(), customer.getSkillFood());
+			if (intervention.getSkillFood() > 0) {
+				score += getSkillScore(aux.getSkillFood(), intervention.getSkillFood());
 				nbSkills++;
 			}
-			if (customer.getSkillHandicap() > 0) {
-				score += getSkillScore(aux.getSkillHandicap(), customer.getSkillHandicap());
+			if (intervention.getSkillHandicap() > 0) {
+				score += getSkillScore(aux.getSkillHandicap(), intervention.getSkillHandicap());
 				nbSkills++;
 			}
-			if (customer.getSkillHouse() > 0) {
-				score += getSkillScore(aux.getSkillHouse(), customer.getSkillHouse());
+			if (intervention.getSkillHouse() > 0) {
+				score += getSkillScore(aux.getSkillHouse(), intervention.getSkillHouse());
 				nbSkills++;
 			}
-			if (customer.getSkillIllness() > 0) {
-				score += getSkillScore(aux.getSkillIllness(), customer.getSkillIllness());
+			if (intervention.getSkillIllness() > 0) {
+				score += getSkillScore(aux.getSkillIllness(), intervention.getSkillIllness());
 				nbSkills++;
 			}
-			if (customer.getSkillNursing() > 0) {
-				score += getSkillScore(aux.getSkillNursing(), customer.getSkillNursing());
+			if (intervention.getSkillNursing() > 0) {
+				score += getSkillScore(aux.getSkillNursing(), intervention.getSkillNursing());
 				nbSkills++;
 			}
-			if (customer.getSkillOldCare() > 0) {
-				score += getSkillScore(aux.getSkillOldCare(), customer.getSkillOldCare());
+			if (intervention.getSkillOldCare() > 0) {
+				score += getSkillScore(aux.getSkillOldCare(), intervention.getSkillOldCare());
 				nbSkills++;
 			}
-			if (customer.getSkillPet() > 0) {
-				score += getSkillScore(aux.getSkillPet(), customer.getSkillPet());
+			if (intervention.getSkillPet() > 0) {
+				score += getSkillScore(aux.getSkillPet(), intervention.getSkillPet());
 				nbSkills++;
 			}
-			if (customer.getSkillTransport() > 0) {
-				score += getSkillScore(aux.getSkillTransport(), customer.getSkillTransport());
+			if (intervention.getSkillTransport() > 0) {
+				score += getSkillScore(aux.getSkillTransport(), intervention.getSkillTransport());
 				nbSkills++;
 			}
 			if (nbSkills > 0) {					

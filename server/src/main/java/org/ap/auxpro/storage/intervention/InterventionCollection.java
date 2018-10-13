@@ -85,21 +85,35 @@ public class InterventionCollection {
 			return null;
 		}
 		InterventionData data = new InterventionData();
-		data.period = document.getString("period");
 		data.auxiliaryId = document.getString("auxiliaryId");
 		data.endDate = document.getDate("endDate");
+		data.skillChildrenGame = document.getInteger("skillChildrenGame");
+		data.skillHouse = document.getInteger("skillHouse");
 		data.lastUpdateDate = document.getDate("lastUpdateDate");
 		data.sadStatusChanged = document.getDate("sadStatusChanged");
-		data.creationDate = document.getDate("creationDate");
+		data.skillBeauty = document.getInteger("skillBeauty");
 		data.missionType = document.getString("missionType");
+		data.skillHandicap = document.getInteger("skillHandicap");
+		data.skillIllness = document.getInteger("skillIllness");
 		data.customerId = document.getString("customerId");
-		data.days = (List<String>)document.get("days");
-		data.diplomas = (List<String>)document.get("diplomas");
+		data.skillChildrenSchool = document.getInteger("skillChildrenSchool");
 		data.sadStatus = document.getString("sadStatus");
 		data.startTime = (List<Integer>)document.get("startTime");
 		data.id = document.getString("id");
-		data.endTime = (List<Integer>)document.get("endTime");
 		data.serviceId = document.getString("serviceId");
+		data.skillChildrenKeep = document.getInteger("skillChildrenKeep");
+		data.skillOldCare = document.getInteger("skillOldCare");
+		data.period = document.getString("period");
+		data.skillNursing = document.getInteger("skillNursing");
+		data.skillChildrenCare = document.getInteger("skillChildrenCare");
+		data.skillFood = document.getInteger("skillFood");
+		data.creationDate = document.getDate("creationDate");
+		data.skillCompany = document.getInteger("skillCompany");
+		data.skillTransport = document.getInteger("skillTransport");
+		data.skillClothes = document.getInteger("skillClothes");
+		data.days = (List<String>)document.get("days");
+		data.endTime = (List<Integer>)document.get("endTime");
+		data.skillPet = document.getInteger("skillPet");
 		data.hideToSad = document.getBoolean("hideToSad");
 		data.startDate = document.getDate("startDate");
 		return data;
@@ -107,36 +121,64 @@ public class InterventionCollection {
 
 	public static Document toDocument(InterventionData intervention) {
 		Document document = new Document();
-		if (intervention.period != null)
-			document.append("period", intervention.period);
 		if (intervention.auxiliaryId != null)
 			document.append("auxiliaryId", intervention.auxiliaryId);
 		if (intervention.endDate != null)
 			document.append("endDate", intervention.endDate);
+		if (intervention.skillChildrenGame != null)
+			document.append("skillChildrenGame", intervention.skillChildrenGame);
+		if (intervention.skillHouse != null)
+			document.append("skillHouse", intervention.skillHouse);
 		if (intervention.lastUpdateDate != null)
 			document.append("lastUpdateDate", intervention.lastUpdateDate);
 		if (intervention.sadStatusChanged != null)
 			document.append("sadStatusChanged", intervention.sadStatusChanged);
-		if (intervention.creationDate != null)
-			document.append("creationDate", intervention.creationDate);
+		if (intervention.skillBeauty != null)
+			document.append("skillBeauty", intervention.skillBeauty);
 		if (intervention.missionType != null)
 			document.append("missionType", intervention.missionType);
+		if (intervention.skillHandicap != null)
+			document.append("skillHandicap", intervention.skillHandicap);
+		if (intervention.skillIllness != null)
+			document.append("skillIllness", intervention.skillIllness);
 		if (intervention.customerId != null)
 			document.append("customerId", intervention.customerId);
-		if (intervention.days != null)
-			document.append("days", intervention.days);
-		if (intervention.diplomas != null)
-			document.append("diplomas", intervention.diplomas);
+		if (intervention.skillChildrenSchool != null)
+			document.append("skillChildrenSchool", intervention.skillChildrenSchool);
 		if (intervention.sadStatus != null)
 			document.append("sadStatus", intervention.sadStatus);
 		if (intervention.startTime != null)
 			document.append("startTime", intervention.startTime);
 		if (intervention.id != null)
 			document.append("id", intervention.id);
-		if (intervention.endTime != null)
-			document.append("endTime", intervention.endTime);
 		if (intervention.serviceId != null)
 			document.append("serviceId", intervention.serviceId);
+		if (intervention.skillChildrenKeep != null)
+			document.append("skillChildrenKeep", intervention.skillChildrenKeep);
+		if (intervention.skillOldCare != null)
+			document.append("skillOldCare", intervention.skillOldCare);
+		if (intervention.period != null)
+			document.append("period", intervention.period);
+		if (intervention.skillNursing != null)
+			document.append("skillNursing", intervention.skillNursing);
+		if (intervention.skillChildrenCare != null)
+			document.append("skillChildrenCare", intervention.skillChildrenCare);
+		if (intervention.skillFood != null)
+			document.append("skillFood", intervention.skillFood);
+		if (intervention.creationDate != null)
+			document.append("creationDate", intervention.creationDate);
+		if (intervention.skillCompany != null)
+			document.append("skillCompany", intervention.skillCompany);
+		if (intervention.skillTransport != null)
+			document.append("skillTransport", intervention.skillTransport);
+		if (intervention.skillClothes != null)
+			document.append("skillClothes", intervention.skillClothes);
+		if (intervention.days != null)
+			document.append("days", intervention.days);
+		if (intervention.endTime != null)
+			document.append("endTime", intervention.endTime);
+		if (intervention.skillPet != null)
+			document.append("skillPet", intervention.skillPet);
 		if (intervention.hideToSad != null)
 			document.append("hideToSad", intervention.hideToSad);
 		if (intervention.startDate != null)
@@ -146,21 +188,35 @@ public class InterventionCollection {
 
 	public static Document toNullDocument(InterventionData intervention) {
 		Document document = new Document();
-		document.append("period", intervention.period);
 		document.append("auxiliaryId", intervention.auxiliaryId);
 		document.append("endDate", intervention.endDate);
+		document.append("skillChildrenGame", intervention.skillChildrenGame);
+		document.append("skillHouse", intervention.skillHouse);
 		document.append("lastUpdateDate", intervention.lastUpdateDate);
 		document.append("sadStatusChanged", intervention.sadStatusChanged);
-		document.append("creationDate", intervention.creationDate);
+		document.append("skillBeauty", intervention.skillBeauty);
 		document.append("missionType", intervention.missionType);
+		document.append("skillHandicap", intervention.skillHandicap);
+		document.append("skillIllness", intervention.skillIllness);
 		document.append("customerId", intervention.customerId);
-		document.append("days", intervention.days);
-		document.append("diplomas", intervention.diplomas);
+		document.append("skillChildrenSchool", intervention.skillChildrenSchool);
 		document.append("sadStatus", intervention.sadStatus);
 		document.append("startTime", intervention.startTime);
 		document.append("id", intervention.id);
-		document.append("endTime", intervention.endTime);
 		document.append("serviceId", intervention.serviceId);
+		document.append("skillChildrenKeep", intervention.skillChildrenKeep);
+		document.append("skillOldCare", intervention.skillOldCare);
+		document.append("period", intervention.period);
+		document.append("skillNursing", intervention.skillNursing);
+		document.append("skillChildrenCare", intervention.skillChildrenCare);
+		document.append("skillFood", intervention.skillFood);
+		document.append("creationDate", intervention.creationDate);
+		document.append("skillCompany", intervention.skillCompany);
+		document.append("skillTransport", intervention.skillTransport);
+		document.append("skillClothes", intervention.skillClothes);
+		document.append("days", intervention.days);
+		document.append("endTime", intervention.endTime);
+		document.append("skillPet", intervention.skillPet);
 		document.append("hideToSad", intervention.hideToSad);
 		document.append("startDate", intervention.startDate);
 		return document;

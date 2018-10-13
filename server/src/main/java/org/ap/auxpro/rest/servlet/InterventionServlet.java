@@ -71,6 +71,7 @@ public class InterventionServlet extends APServletBase {
 	@RolesAllowed("service")
 	public Response putIntervention(@Context SecurityContext sc, @PathParam("id") final String id, InterventionPutBean interventionPutBean) {
 		try {
+			InterventionHelper.beforePutIntervention(sc, id, interventionPutBean);
 			// Get actual data object
 			InterventionData data = InterventionCollection.getById(id);
 			// Check data exists

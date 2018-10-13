@@ -18,16 +18,16 @@ class CustomerFields {
 		return _CIVILITY
 	}
 
+	static get ADDRESS() {
+		return _ADDRESS
+	}
+
 	static get CITY() {
 		return _CITY
 	}
 
-	static get SKILL_CHILDREN_GAME() {
-		return _SKILL_CHILDREN_GAME
-	}
-
-	static get SKILL_HOUSE() {
-		return _SKILL_HOUSE
+	static get LATTITUDE() {
+		return _LATTITUDE
 	}
 
 	static get LAST_UPDATE_DATE() {
@@ -36,70 +36,6 @@ class CustomerFields {
 
 	static get POSTAL_CODE() {
 		return _POSTAL_CODE
-	}
-
-	static get SKILL_BEAUTY() {
-		return _SKILL_BEAUTY
-	}
-
-	static get SKILL_HANDICAP() {
-		return _SKILL_HANDICAP
-	}
-
-	static get SKILL_ILLNESS() {
-		return _SKILL_ILLNESS
-	}
-
-	static get SKILL_CHILDREN_SCHOOL() {
-		return _SKILL_CHILDREN_SCHOOL
-	}
-
-	static get ID() {
-		return _ID
-	}
-
-	static get SERVICE_ID() {
-		return _SERVICE_ID
-	}
-
-	static get SKILL_CHILDREN_KEEP() {
-		return _SKILL_CHILDREN_KEEP
-	}
-
-	static get EMAIL() {
-		return _EMAIL
-	}
-
-	static get SKILL_OLD_CARE() {
-		return _SKILL_OLD_CARE
-	}
-
-	static get LONGITUDE() {
-		return _LONGITUDE
-	}
-
-	static get ADDRESS() {
-		return _ADDRESS
-	}
-
-	static get SKILL_NURSING() {
-		return _SKILL_NURSING
-	}
-
-	static get SKILL_CHILDREN_CARE() {
-		return _SKILL_CHILDREN_CARE
-	}
-
-	static get LATTITUDE() {
-		return _LATTITUDE
-	}
-
-	static get SKILL_FOOD() {
-		return _SKILL_FOOD
-	}
-
-	static get SKILL_COMPANY() {
-		return _SKILL_COMPANY
 	}
 
 	static get CREATION_DATE() {
@@ -122,20 +58,24 @@ class CustomerFields {
 		return _PHONE
 	}
 
-	static get SKILL_TRANSPORT() {
-		return _SKILL_TRANSPORT
+	static get ID() {
+		return _ID
 	}
 
-	static get SKILL_CLOTHES() {
-		return _SKILL_CLOTHES
+	static get SERVICE_ID() {
+		return _SERVICE_ID
 	}
 
 	static get CATEGORY() {
 		return _CATEGORY
 	}
 
-	static get SKILL_PET() {
-		return _SKILL_PET
+	static get EMAIL() {
+		return _EMAIL
+	}
+
+	static get LONGITUDE() {
+		return _LONGITUDE
 	}
 
 	static get VALUES() {
@@ -143,36 +83,21 @@ class CustomerFields {
 			_LAST_NAME,
 			_COUNTRY,
 			_CIVILITY,
+			_ADDRESS,
 			_CITY,
-			_SKILL_CHILDREN_GAME,
-			_SKILL_HOUSE,
+			_LATTITUDE,
 			_LAST_UPDATE_DATE,
 			_POSTAL_CODE,
-			_SKILL_BEAUTY,
-			_SKILL_HANDICAP,
-			_SKILL_ILLNESS,
-			_SKILL_CHILDREN_SCHOOL,
-			_ID,
-			_SERVICE_ID,
-			_SKILL_CHILDREN_KEEP,
-			_EMAIL,
-			_SKILL_OLD_CARE,
-			_LONGITUDE,
-			_ADDRESS,
-			_SKILL_NURSING,
-			_SKILL_CHILDREN_CARE,
-			_LATTITUDE,
-			_SKILL_FOOD,
-			_SKILL_COMPANY,
 			_CREATION_DATE,
 			_BIRTH_DATE,
 			_FIRST_NAME,
 			_NATIONALITY,
 			_PHONE,
-			_SKILL_TRANSPORT,
-			_SKILL_CLOTHES,
+			_ID,
+			_SERVICE_ID,
 			_CATEGORY,
-			_SKILL_PET,
+			_EMAIL,
+			_LONGITUDE,
 		]
 	}
 
@@ -201,18 +126,18 @@ let _CIVILITY = {
 	values: Civility.VALUES,
 	validator: validators.NON_NULL,
 }
+let _ADDRESS = {
+	key: 'address',
+	type: 'string',
+	validator: validators.NON_EMPTY_STRING,
+}
 let _CITY = {
 	key: 'city',
 	type: 'string',
 	validator: validators.NON_EMPTY_STRING,
 }
-let _SKILL_CHILDREN_GAME = {
-	key: 'skillChildrenGame',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _SKILL_HOUSE = {
-	key: 'skillHouse',
+let _LATTITUDE = {
+	key: 'lattitude',
 	type: 'number',
 	validator: validators.DEFAULT,
 }
@@ -225,86 +150,6 @@ let _POSTAL_CODE = {
 	key: 'postalCode',
 	type: 'string',
 	validator: validators.POSTAL_CODE,
-}
-let _SKILL_BEAUTY = {
-	key: 'skillBeauty',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _SKILL_HANDICAP = {
-	key: 'skillHandicap',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _SKILL_ILLNESS = {
-	key: 'skillIllness',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _SKILL_CHILDREN_SCHOOL = {
-	key: 'skillChildrenSchool',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _ID = {
-	key: 'id',
-	type: 'string',
-	validator: validators.DEFAULT,
-}
-let _SERVICE_ID = {
-	key: 'serviceId',
-	type: 'string',
-	validator: validators.DEFAULT,
-}
-let _SKILL_CHILDREN_KEEP = {
-	key: 'skillChildrenKeep',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _EMAIL = {
-	key: 'email',
-	type: 'string',
-	validator: validators.DEFAULT,
-}
-let _SKILL_OLD_CARE = {
-	key: 'skillOldCare',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _LONGITUDE = {
-	key: 'longitude',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _ADDRESS = {
-	key: 'address',
-	type: 'string',
-	validator: validators.NON_EMPTY_STRING,
-}
-let _SKILL_NURSING = {
-	key: 'skillNursing',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _SKILL_CHILDREN_CARE = {
-	key: 'skillChildrenCare',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _LATTITUDE = {
-	key: 'lattitude',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _SKILL_FOOD = {
-	key: 'skillFood',
-	type: 'number',
-	validator: validators.DEFAULT,
-}
-let _SKILL_COMPANY = {
-	key: 'skillCompany',
-	type: 'number',
-	validator: validators.DEFAULT,
 }
 let _CREATION_DATE = {
 	key: 'creationDate',
@@ -331,14 +176,14 @@ let _PHONE = {
 	type: 'string',
 	validator: validators.PHONE,
 }
-let _SKILL_TRANSPORT = {
-	key: 'skillTransport',
-	type: 'number',
+let _ID = {
+	key: 'id',
+	type: 'string',
 	validator: validators.DEFAULT,
 }
-let _SKILL_CLOTHES = {
-	key: 'skillClothes',
-	type: 'number',
+let _SERVICE_ID = {
+	key: 'serviceId',
+	type: 'string',
 	validator: validators.DEFAULT,
 }
 let _CATEGORY = {
@@ -347,8 +192,13 @@ let _CATEGORY = {
 	values: PeopleCategory.VALUES,
 	validator: validators.NON_NULL,
 }
-let _SKILL_PET = {
-	key: 'skillPet',
+let _EMAIL = {
+	key: 'email',
+	type: 'string',
+	validator: validators.DEFAULT,
+}
+let _LONGITUDE = {
+	key: 'longitude',
 	type: 'number',
 	validator: validators.DEFAULT,
 }

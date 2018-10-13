@@ -106,6 +106,7 @@ public class CustomerServlet extends APServletBase {
 	@APSecured
 	public Response deleteCustomer(@Context SecurityContext sc, @PathParam("id") final String id) {
 		try {
+			CustomerHelper.beforeDeleteCustomer(sc, id);
 			// Try to delete the entity
 			if (!CustomerCollection.deleteById(id)) {
 				throw new APWebException("customer not found", "AP_CUSTOMER_NOTFOUND", Status.BAD_REQUEST);

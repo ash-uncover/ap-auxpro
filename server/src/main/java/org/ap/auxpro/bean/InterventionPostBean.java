@@ -18,16 +18,30 @@ public class InterventionPostBean {
 
 	public String customerId;
 	public String serviceId;
-	public String period;
-	public String missionType;
 	public List<Integer> endDate;
+	public Integer skillChildrenGame;
+	public Integer skillHouse;
 	public List<Integer> lastUpdateDate;
-	public List<String> days;
-	public List<String> diplomas;
+	public Integer skillBeauty;
+	public String missionType;
+	public Integer skillHandicap;
+	public Integer skillIllness;
+	public Integer skillChildrenSchool;
 	public List<Integer> startTime;
-	public List<Integer> endTime;
 	public String id;
+	public Integer skillChildrenKeep;
+	public Integer skillOldCare;
+	public String period;
+	public Integer skillNursing;
+	public Integer skillChildrenCare;
+	public Integer skillFood;
+	public Integer skillCompany;
 	public List<Integer> creationDate;
+	public Integer skillTransport;
+	public Integer skillClothes;
+	public List<String> days;
+	public List<Integer> endTime;
+	public Integer skillPet;
 	public List<Integer> startDate;
 
 	public InterventionPostBean() {
@@ -36,16 +50,30 @@ public class InterventionPostBean {
 	public InterventionPostBean(InterventionData data) {
 		customerId = data.getCustomerId();
 		serviceId = data.getServiceId();
-		period = data.getPeriod();
-		missionType = data.getMissionType();
 		endDate = TimeHelper.toIntegers(data.getEndDate());
+		skillChildrenGame = data.getSkillChildrenGame();
+		skillHouse = data.getSkillHouse();
 		lastUpdateDate = TimeHelper.toIntegers(data.getLastUpdateDate());
-		days = data.getDays();
-		diplomas = data.getDiplomas();
+		skillBeauty = data.getSkillBeauty();
+		missionType = data.getMissionType();
+		skillHandicap = data.getSkillHandicap();
+		skillIllness = data.getSkillIllness();
+		skillChildrenSchool = data.getSkillChildrenSchool();
 		startTime = data.getStartTime();
-		endTime = data.getEndTime();
 		id = data.getId();
+		skillChildrenKeep = data.getSkillChildrenKeep();
+		skillOldCare = data.getSkillOldCare();
+		period = data.getPeriod();
+		skillNursing = data.getSkillNursing();
+		skillChildrenCare = data.getSkillChildrenCare();
+		skillFood = data.getSkillFood();
+		skillCompany = data.getSkillCompany();
 		creationDate = TimeHelper.toIntegers(data.getCreationDate());
+		skillTransport = data.getSkillTransport();
+		skillClothes = data.getSkillClothes();
+		days = data.getDays();
+		endTime = data.getEndTime();
+		skillPet = data.getSkillPet();
 		startDate = TimeHelper.toIntegers(data.getStartDate());
 	}
 
@@ -58,41 +86,51 @@ public class InterventionPostBean {
 	public void fillData(InterventionData data) {
 		data.setCustomerId(customerId);
 		data.setServiceId(serviceId);
-		data.setPeriod(period);
-		data.setMissionType(missionType);
 		data.setEndDate(TimeHelper.toDate(endDate));
-		data.setDays(days);
-		data.setDiplomas(diplomas);
+		data.setSkillChildrenGame(skillChildrenGame);
+		data.setSkillHouse(skillHouse);
+		data.setSkillBeauty(skillBeauty);
+		data.setMissionType(missionType);
+		data.setSkillHandicap(skillHandicap);
+		data.setSkillIllness(skillIllness);
+		data.setSkillChildrenSchool(skillChildrenSchool);
 		data.setStartTime(startTime);
+		data.setSkillChildrenKeep(skillChildrenKeep);
+		data.setSkillOldCare(skillOldCare);
+		data.setPeriod(period);
+		data.setSkillNursing(skillNursing);
+		data.setSkillChildrenCare(skillChildrenCare);
+		data.setSkillFood(skillFood);
+		data.setSkillCompany(skillCompany);
+		data.setSkillTransport(skillTransport);
+		data.setSkillClothes(skillClothes);
+		data.setDays(days);
 		data.setEndTime(endTime);
+		data.setSkillPet(skillPet);
 		data.setStartDate(TimeHelper.toDate(startDate));
 	}
 
 	public void check() throws APWebException {
 		List<APWebError> errors = new ArrayList<APWebError>();
-		ValidationState periodState = InterventionFields.PERIOD.getValidator().check(period);
-		if (!periodState.getState().equals(EValidatorState.SUCCESS)) {
-			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'period'"));
+		ValidationState endDateState = InterventionFields.END_DATE.getValidator().check(endDate);
+		if (!endDateState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'endDate'"));
 		}
 		ValidationState missionTypeState = InterventionFields.MISSION_TYPE.getValidator().check(missionType);
 		if (!missionTypeState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'missionType'"));
 		}
-		ValidationState endDateState = InterventionFields.END_DATE.getValidator().check(endDate);
-		if (!endDateState.getState().equals(EValidatorState.SUCCESS)) {
-			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'endDate'"));
+		ValidationState startTimeState = InterventionFields.START_TIME.getValidator().check(startTime);
+		if (!startTimeState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'startTime'"));
+		}
+		ValidationState periodState = InterventionFields.PERIOD.getValidator().check(period);
+		if (!periodState.getState().equals(EValidatorState.SUCCESS)) {
+			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'period'"));
 		}
 		ValidationState daysState = InterventionFields.DAYS.getValidator().check(days);
 		if (!daysState.getState().equals(EValidatorState.SUCCESS)) {
 			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'days'"));
-		}
-		ValidationState diplomasState = InterventionFields.DIPLOMAS.getValidator().check(diplomas);
-		if (!diplomasState.getState().equals(EValidatorState.SUCCESS)) {
-			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'diplomas'"));
-		}
-		ValidationState startTimeState = InterventionFields.START_TIME.getValidator().check(startTime);
-		if (!startTimeState.getState().equals(EValidatorState.SUCCESS)) {
-			errors.add(new APWebError("AP_INTERVENTION_INVALID_FIELDS", "Invalid field 'startTime'"));
 		}
 		ValidationState endTimeState = InterventionFields.END_TIME.getValidator().check(endTime);
 		if (!endTimeState.getState().equals(EValidatorState.SUCCESS)) {
