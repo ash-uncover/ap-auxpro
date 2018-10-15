@@ -6,6 +6,8 @@ import { BaseData, Formatters, MomentHelper } from 'ap-react-bootstrap'
 
 import AuxiliaryFields from 'utils/entities/AuxiliaryFields'
 
+import AuxiliarySkills from 'utils/constants/AuxiliarySkills'
+
 import AuxiliaryStatusUtils from 'utils-lib/entities/AuxiliaryStatusUtils'
 import AuxiliarySkillsUtils from 'utils-lib/entities/AuxiliarySkillsUtils'
 import BooleanUtils from 'utils-lib/BooleanUtils'
@@ -45,126 +47,10 @@ class AuxiliaryInfosData extends BaseData {
       Object.assign({ formatter: AuxiliaryStatusUtils.getName }, AuxiliaryFields.IS_ENTREPRENEUR),
       AuxiliaryFields.DIPLOMA
     ]
-    this.FIELDS_FORM4 = [
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_CHILDREN_CARE',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_CHILDREN_CARE)
-        },
-        AuxiliaryFields.SKILL_CHILDREN_CARE
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_CHILDREN_SCHOOL',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_CHILDREN_SCHOOL) },
-        AuxiliaryFields.SKILL_CHILDREN_SCHOOL
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_CHILDREN_GAME',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_CHILDREN_GAME) },
-        AuxiliaryFields.SKILL_CHILDREN_GAME
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_CHILDREN_KEEP',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_CHILDREN_KEEP)
-        },
-        AuxiliaryFields.SKILL_CHILDREN_KEEP
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_OLD_CARE',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_OLD_CARE)
-        },
-        AuxiliaryFields.SKILL_OLD_CARE
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_FOOD',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_FOOD)
-        },
-        AuxiliaryFields.SKILL_FOOD
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_TRANSPORT',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_TRANSPORT)
-        },
-        AuxiliaryFields.SKILL_TRANSPORT
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_ILLNESS',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_ILLNESS)
-        },
-        AuxiliaryFields.SKILL_ILLNESS
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_NURSING',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_NURSING)
-        },
-        AuxiliaryFields.SKILL_NURSING
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_CLOTHES',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_CLOTHES)
-        },
-        AuxiliaryFields.SKILL_CLOTHES
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_HOUSE',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_HOUSE)
-        },
-        AuxiliaryFields.SKILL_HOUSE
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_COMPANY',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_COMPANY)
-        },
-        AuxiliaryFields.SKILL_COMPANY
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_PET',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_PET)
-        },
-        AuxiliaryFields.SKILL_PET
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_HANDICAP',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_HANDICAP)
-        },
-        AuxiliaryFields.SKILL_HANDICAP
-      ),
-      Object.assign(
-        {
-          defaultValue: 0,
-          name: 'SKILL_BEAUTY',
-          hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_BEAUTY)
-        },
-        AuxiliaryFields.SKILL_BEAUTY
-      )
-    ]
+    this.FIELDS_FORM4 = AuxiliarySkills.VALUES.map((skill) => Object.assign(
+        { defaultValue: 0, hidden: this.checkSkillHidden.bind(this, skill) },
+        skill
+    ))
 
     this.FIELDS = this.FIELDS_FORM0.
       concat(this.FIELDS_FORM1).
@@ -181,15 +67,15 @@ class AuxiliaryInfosData extends BaseData {
     this.declareFunction('onModifyEmail')
     this.declareFunction('onModifyPassword')
 
-    let auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
-    for (let i = 0; i < this.FIELDS.length; i++) {
-      let field = this.FIELDS[i]
+    const auxiliary = AuxiliaryHelper.getData(AuthHelper.getEntityId()) || {}
+
+    this.FIELDS.forEach((field) => {
       if (field.formatter) {
         this.obj.state[field.key] = field.formatter(auxiliary[field.key])
       } else {
         this.obj.state[field.key] = auxiliary[field.key]
       }
-    }
+    })
   }
 
   unregister() {

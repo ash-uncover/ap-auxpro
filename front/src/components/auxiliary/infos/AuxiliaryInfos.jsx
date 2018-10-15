@@ -53,7 +53,7 @@ class AuxiliaryInfos extends React.Component {
       return (
         <Form.Group key={field.key}>
           <Form.Label className='col-sm-5'>
-            {I18NHelper.get(field.name)}
+            {I18NHelper.get(field.keyName)}
           </Form.Label>
           <RaterStar 
               value={this.state[field.key]} 
@@ -108,6 +108,7 @@ class AuxiliaryInfos extends React.Component {
                     {AuxiliaryInfosData.FIELDS_FORM3.map(this.buildFormGroup)}
                   </Grid.Col>
                 </Grid.Row>
+                <h4>Mes compétences</h4>
                 <Grid.Row>
                   <Grid.Col sm={10} smOffset={1} md={8} mdOffset={2}>
                     {AuxiliaryInfosData.FIELDS_FORM4.map(this.buildSkillFormGroup)}
