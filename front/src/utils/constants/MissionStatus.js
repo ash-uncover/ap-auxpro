@@ -28,7 +28,7 @@ class MissionStatus {
 	}
 
 }
-let _PENDING = { key: 'Pending' }
-let _CANCELED = { key: 'Canceled' }
-let _COMPLETED = { key: 'Completed' }
+const _PENDING = { key: 'Pending', keyName: 'PENDING' }
+const _CANCELED = { key: 'Canceled', keyName: 'CANCELED' }
+const _COMPLETED = { key: 'Completed', keyName: 'COMPLETED' }
 export default MissionStatus

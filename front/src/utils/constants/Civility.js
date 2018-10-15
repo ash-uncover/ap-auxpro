@@ -23,6 +23,6 @@ class Civility {
 	}
 
 }
-let _MR = { key: 'Mr' }
-let _MME = { key: 'Mme' }
+const _MR = { key: 'Mr', keyName: 'MR' }
+const _MME = { key: 'Mme', keyName: 'MME' }
 export default Civility

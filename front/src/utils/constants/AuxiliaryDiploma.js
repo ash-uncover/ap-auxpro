@@ -113,24 +113,24 @@ class AuxiliaryDiploma {
 	}
 
 }
-let _NO_DIPLOMA = { key: 'no_diploma' }
-let _DIPLOMA_AAPAPD = { key: 'diploma_aapapd' }
-let _DIPLOMA_ADVF = { key: 'diploma_advf' }
-let _DIPLOMA_ASSITANT_MATERNEL = { key: 'diploma_assitant_maternel' }
-let _DIPLOMA_AUXILIAIRE_PUERI = { key: 'diploma_auxiliaire_pueri' }
-let _DIPLOMA_BAC_ASSP = { key: 'diploma_bac_assp' }
-let _DIPLOMA_BEP_ACCOMPAGNEMENT = { key: 'diploma_bep_accompagnement' }
-let _DIPLOMA_BEPA = { key: 'diploma_bepa' }
-let _DIPLOMA_CAP_ASSITANT = { key: 'diploma_cap_assitant' }
-let _DIPLOMA_CAP_ENFANCE = { key: 'diploma_cap_enfance' }
-let _DIPLOMA_CAPA = { key: 'diploma_capa' }
-let _DIPLOMA_DEAES = { key: 'diploma_deaes' }
-let _DIPLOMA_DEAF = { key: 'diploma_deaf' }
-let _DIPLOMA_DEAMP = { key: 'diploma_deamp' }
-let _DIPLOMA_DEAS = { key: 'diploma_deas' }
-let _DIPLOMA_DEAVS = { key: 'diploma_deavs' }
-let _DIPLOMA_DEEJE = { key: 'diploma_deeje' }
-let _DIPLOMA_FAMILY = { key: 'diploma_family' }
-let _DIPLOMA_MENTION = { key: 'diploma_mention' }
-let _DIPLOMA_TITRE_PRO = { key: 'diploma_titre_pro' }
+const _NO_DIPLOMA = { key: 'no_diploma', keyName: 'NO_DIPLOMA' }
+const _DIPLOMA_AAPAPD = { key: 'diploma_aapapd', keyName: 'DIPLOMA_AAPAPD' }
+const _DIPLOMA_ADVF = { key: 'diploma_advf', keyName: 'DIPLOMA_ADVF' }
+const _DIPLOMA_ASSITANT_MATERNEL = { key: 'diploma_assitant_maternel', keyName: 'DIPLOMA_ASSITANT_MATERNEL' }
+const _DIPLOMA_AUXILIAIRE_PUERI = { key: 'diploma_auxiliaire_pueri', keyName: 'DIPLOMA_AUXILIAIRE_PUERI' }
+const _DIPLOMA_BAC_ASSP = { key: 'diploma_bac_assp', keyName: 'DIPLOMA_BAC_ASSP' }
+const _DIPLOMA_BEP_ACCOMPAGNEMENT = { key: 'diploma_bep_accompagnement', keyName: 'DIPLOMA_BEP_ACCOMPAGNEMENT' }
+const _DIPLOMA_BEPA = { key: 'diploma_bepa', keyName: 'DIPLOMA_BEPA' }
+const _DIPLOMA_CAP_ASSITANT = { key: 'diploma_cap_assitant', keyName: 'DIPLOMA_CAP_ASSITANT' }
+const _DIPLOMA_CAP_ENFANCE = { key: 'diploma_cap_enfance', keyName: 'DIPLOMA_CAP_ENFANCE' }
+const _DIPLOMA_CAPA = { key: 'diploma_capa', keyName: 'DIPLOMA_CAPA' }
+const _DIPLOMA_DEAES = { key: 'diploma_deaes', keyName: 'DIPLOMA_DEAES' }
+const _DIPLOMA_DEAF = { key: 'diploma_deaf', keyName: 'DIPLOMA_DEAF' }
+const _DIPLOMA_DEAMP = { key: 'diploma_deamp', keyName: 'DIPLOMA_DEAMP' }
+const _DIPLOMA_DEAS = { key: 'diploma_deas', keyName: 'DIPLOMA_DEAS' }
+const _DIPLOMA_DEAVS = { key: 'diploma_deavs', keyName: 'DIPLOMA_DEAVS' }
+const _DIPLOMA_DEEJE = { key: 'diploma_deeje', keyName: 'DIPLOMA_DEEJE' }
+const _DIPLOMA_FAMILY = { key: 'diploma_family', keyName: 'DIPLOMA_FAMILY' }
+const _DIPLOMA_MENTION = { key: 'diploma_mention', keyName: 'DIPLOMA_MENTION' }
+const _DIPLOMA_TITRE_PRO = { key: 'diploma_titre_pro', keyName: 'DIPLOMA_TITRE_PRO' }
 export default AuxiliaryDiploma

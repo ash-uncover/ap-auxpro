@@ -9,6 +9,7 @@ import { Button, Panel, Form, Grid } from 'ap-react-bootstrap'
 import Image from 'components-lib/Image/Image'
 import SkillTile from 'components-lib/SkillTile/SkillTile'
 // utils
+import AuxiliaryDiploma from 'utils/constants/AuxiliaryDiploma'
 import AuxiliarySkills from 'utils/constants/AuxiliarySkills'
 // utils-lib
 import DiplomaUtils from 'utils-lib/entities/DiplomaUtils'
@@ -39,7 +40,7 @@ class ServiceAuxiliary extends React.Component {
   _prepareSkills() {
     return AuxiliarySkills.VALUES
       .map((skill) => ({
-        title: I18NHelper.get(skill.key),
+        title: I18NHelper.get(skill.keyName),
         value: this.state[skill.key]
       }))
       .filter((skill) => Boolean(skill.value))
@@ -57,7 +58,7 @@ class ServiceAuxiliary extends React.Component {
   _buildDiploma(diploma) {
     return (
       <li key={diploma}>
-        {DiplomaUtils.getName(diploma)}
+        {I18NHelper.get(AuxiliaryDiploma.get(diploma).keyName)}
       </li>
     )
   }

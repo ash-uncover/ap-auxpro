@@ -28,7 +28,7 @@ class AuxiliaryStatus {
 	}
 
 }
-let _AUTO = { key: 'Auto' }
-let _SALARY = { key: 'Salary' }
-let _BOTH = { key: 'Both' }
+const _AUTO = { key: 'Auto', keyName: 'AUTO' }
+const _SALARY = { key: 'Salary', keyName: 'SALARY' }
+const _BOTH = { key: 'Both', keyName: 'BOTH' }
 export default AuxiliaryStatus

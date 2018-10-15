@@ -23,6 +23,6 @@ class AccountType {
 	}
 
 }
-let _BASIQUE = { key: 'Basique' }
-let _PREMIUM = { key: 'Premium' }
+const _BASIQUE = { key: 'Basique', keyName: 'BASIQUE' }
+const _PREMIUM = { key: 'Premium', keyName: 'PREMIUM' }
 export default AccountType

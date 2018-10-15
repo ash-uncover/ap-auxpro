@@ -28,7 +28,7 @@ class SocFunction {
 	}
 
 }
-let _MAND = { key: 'Mand' }
-let _PREST = { key: 'Prest' }
-let _BOTH = { key: 'Both' }
+const _MAND = { key: 'Mand', keyName: 'MAND' }
+const _PREST = { key: 'Prest', keyName: 'PREST' }
+const _BOTH = { key: 'Both', keyName: 'BOTH' }
 export default SocFunction

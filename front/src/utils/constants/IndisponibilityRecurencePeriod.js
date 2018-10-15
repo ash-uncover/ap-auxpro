@@ -43,10 +43,10 @@ class IndisponibilityRecurencePeriod {
 	}
 
 }
-let _HOURS = { key: 'Hours' }
-let _DAYS = { key: 'Days' }
-let _WEEK1 = { key: 'Week1' }
-let _WEEK2 = { key: 'Week2' }
-let _WEEK3 = { key: 'Week3' }
-let _WEEK4 = { key: 'Week4' }
+const _HOURS = { key: 'Hours', keyName: 'HOURS' }
+const _DAYS = { key: 'Days', keyName: 'DAYS' }
+const _WEEK1 = { key: 'Week1', keyName: 'WEEK1' }
+const _WEEK2 = { key: 'Week2', keyName: 'WEEK2' }
+const _WEEK3 = { key: 'Week3', keyName: 'WEEK3' }
+const _WEEK4 = { key: 'Week4', keyName: 'WEEK4' }
 export default IndisponibilityRecurencePeriod

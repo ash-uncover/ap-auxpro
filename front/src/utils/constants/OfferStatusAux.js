@@ -28,7 +28,7 @@ class OfferStatusAux {
 	}
 
 }
-let _PENDING = { key: 'Pending' }
-let _ACCEPTED = { key: 'Accepted' }
-let _DECLINED = { key: 'Declined' }
+const _PENDING = { key: 'Pending', keyName: 'PENDING' }
+const _ACCEPTED = { key: 'Accepted', keyName: 'ACCEPTED' }
+const _DECLINED = { key: 'Declined', keyName: 'DECLINED' }
 export default OfferStatusAux

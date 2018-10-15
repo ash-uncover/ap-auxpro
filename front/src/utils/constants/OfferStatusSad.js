@@ -33,8 +33,8 @@ class OfferStatusSad {
 	}
 
 }
-let _PENDING = { key: 'Pending' }
-let _CANCELED = { key: 'Canceled' }
-let _CONFIRMED = { key: 'Confirmed' }
-let _REJECTED = { key: 'Rejected' }
+const _PENDING = { key: 'Pending', keyName: 'PENDING' }
+const _CANCELED = { key: 'Canceled', keyName: 'CANCELED' }
+const _CONFIRMED = { key: 'Confirmed', keyName: 'CONFIRMED' }
+const _REJECTED = { key: 'Rejected', keyName: 'REJECTED' }
 export default OfferStatusSad

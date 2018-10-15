@@ -33,8 +33,8 @@ class PeopleCategory {
 	}
 
 }
-let _OLD_PEOPLE = { key: 'old_people' }
-let _CHILDREN = { key: 'children' }
-let _HANDICAP = { key: 'handicap' }
-let _AUTONOMOUS = { key: 'autonomous' }
+const _OLD_PEOPLE = { key: 'old_people', keyName: 'OLD_PEOPLE' }
+const _CHILDREN = { key: 'children', keyName: 'CHILDREN' }
+const _HANDICAP = { key: 'handicap', keyName: 'HANDICAP' }
+const _AUTONOMOUS = { key: 'autonomous', keyName: 'AUTONOMOUS' }
 export default PeopleCategory

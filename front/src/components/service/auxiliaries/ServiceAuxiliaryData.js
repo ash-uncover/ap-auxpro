@@ -41,21 +41,19 @@ class ServiceAuxiliaryData extends BaseData {
   }
 
   _onAuxiliaryUpdate() {
-    let showDetails = false
-    Utils.forEach(InterventionHelper.getData(), function (intervention) {
-      if (InterventionUtils.isActive(intervention) && intervention.auxiliaryId === this.auxiliaryId) {
-        showDetails = true
-      }
-    }.bind(this))
+    let showDetails = Object.values(InterventionHelper.getData())
+      .some((intervention) => InterventionUtils.isActive(intervention) && intervention.auxiliaryId === this.auxiliaryId)
     if (!showDetails) {
-      Utils.forEach(OfferHelper.getData(), function (offer) {
-        let intervention = InterventionHelper.getData(offer.interventionId)
-        if (offer.auxiliaryId === this.auxiliaryId && InterventionUtils.isCurrent(intervention) && offer.auxStatus === OfferStatusAux.ACCEPTED.key) {
-          showDetails = true
-        }
-      }.bind(this))
+      showDetails = Object.values(OfferHelper.getData())
+        .some((offer) => {
+          const intervention = InterventionHelper.getData(offer.interventionId)
+          return
+            offer.auxiliaryId === this.auxiliaryId && 
+            InterventionUtils.isCurrent(intervention) && 
+            offer.auxStatus === OfferStatusAux.ACCEPTED.key
+        })
     }
-    let auxiliary = AuxiliaryHelper.getData(this.auxiliaryId)
+    const auxiliary = AuxiliaryHelper.getData(this.auxiliaryId)
     if (auxiliary) {
       this.obj.state.avatar = auxiliary.avatar
       this.obj.state.name = AuxiliaryUtils.getFullName(auxiliary)

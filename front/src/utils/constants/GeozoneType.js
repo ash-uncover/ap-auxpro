@@ -23,6 +23,6 @@ class GeozoneType {
 	}
 
 }
-let _AREA = { key: 'Area' }
-let _CITY = { key: 'City' }
+const _AREA = { key: 'Area', keyName: 'AREA' }
+const _CITY = { key: 'City', keyName: 'CITY' }
 export default GeozoneType

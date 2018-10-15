@@ -33,8 +33,8 @@ class InterventionStatus {
 	}
 
 }
-let _PENDING = { key: 'Pending' }
-let _MATCHING = { key: 'Matching' }
-let _ON_GOING = { key: 'OnGoing' }
-let _CANCELED = { key: 'Canceled' }
+const _PENDING = { key: 'Pending', keyName: 'PENDING' }
+const _MATCHING = { key: 'Matching', keyName: 'MATCHING' }
+const _ON_GOING = { key: 'OnGoing', keyName: 'ON_GOING' }
+const _CANCELED = { key: 'Canceled', keyName: 'CANCELED' }
 export default InterventionStatus

@@ -88,19 +88,19 @@ class AuxiliarySkills {
 	}
 
 }
-let _SKILL_CHILDREN_CARE = { key: 'skillChildrenCare' }
-let _SKILL_CHILDREN_SCHOOL = { key: 'skillChildrenSchool' }
-let _SKILL_CHILDREN_GAME = { key: 'skillChildrenGame' }
-let _SKILL_CHILDREN_KEEP = { key: 'skillChildrenKeep' }
-let _SKILL_OLD_CARE = { key: 'skillOldCare' }
-let _SKILL_FOOD = { key: 'skillFood' }
-let _SKILL_TRANSPORT = { key: 'skillTransport' }
-let _SKILL_ILLNESS = { key: 'skillIllness' }
-let _SKILL_NURSING = { key: 'skillNursing' }
-let _SKILL_CLOTHES = { key: 'skillClothes' }
-let _SKILL_HOUSE = { key: 'skillHouse' }
-let _SKILL_COMPANY = { key: 'skillCompany' }
-let _SKILL_PET = { key: 'skillPet' }
-let _SKILL_HANDICAP = { key: 'skillHandicap' }
-let _SKILL_BEAUTY = { key: 'skillBeauty' }
+const _SKILL_CHILDREN_CARE = { key: 'skillChildrenCare', keyName: 'SKILL_CHILDREN_CARE' }
+const _SKILL_CHILDREN_SCHOOL = { key: 'skillChildrenSchool', keyName: 'SKILL_CHILDREN_SCHOOL' }
+const _SKILL_CHILDREN_GAME = { key: 'skillChildrenGame', keyName: 'SKILL_CHILDREN_GAME' }
+const _SKILL_CHILDREN_KEEP = { key: 'skillChildrenKeep', keyName: 'SKILL_CHILDREN_KEEP' }
+const _SKILL_OLD_CARE = { key: 'skillOldCare', keyName: 'SKILL_OLD_CARE' }
+const _SKILL_FOOD = { key: 'skillFood', keyName: 'SKILL_FOOD' }
+const _SKILL_TRANSPORT = { key: 'skillTransport', keyName: 'SKILL_TRANSPORT' }
+const _SKILL_ILLNESS = { key: 'skillIllness', keyName: 'SKILL_ILLNESS' }
+const _SKILL_NURSING = { key: 'skillNursing', keyName: 'SKILL_NURSING' }
+const _SKILL_CLOTHES = { key: 'skillClothes', keyName: 'SKILL_CLOTHES' }
+const _SKILL_HOUSE = { key: 'skillHouse', keyName: 'SKILL_HOUSE' }
+const _SKILL_COMPANY = { key: 'skillCompany', keyName: 'SKILL_COMPANY' }
+const _SKILL_PET = { key: 'skillPet', keyName: 'SKILL_PET' }
+const _SKILL_HANDICAP = { key: 'skillHandicap', keyName: 'SKILL_HANDICAP' }
+const _SKILL_BEAUTY = { key: 'skillBeauty', keyName: 'SKILL_BEAUTY' }
 export default AuxiliarySkills
