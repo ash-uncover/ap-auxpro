@@ -19,8 +19,7 @@ class ServiceCustomer extends React.Component {
     super(props)
     this.state = {}
     
-    this.buildFormGroup = this._buildFormGroup.bind(this)
-    this.buildSkillFormGroup = this._buildSkillFormGroup.bind(this)
+    this.buildFormGroup = this.buildFormGroup.bind(this)
   }
 
   componentWillMount() {
@@ -31,7 +30,7 @@ class ServiceCustomer extends React.Component {
     ServiceCustomerData.unregister()
   }
 
-  _buildFormGroup(field) { 
+  buildFormGroup(field) { 
     return (
       <Form.Group key={field.key}>
         <Form.Label className='col-sm-5 col-md-4'>
@@ -42,17 +41,6 @@ class ServiceCustomer extends React.Component {
         </Form.Static>
       </Form.Group>
     )
-  }
-
-  _buildSkillFormGroup(field) { 
-    if (!field.hidden || !field.hidden() && this.state[field.key]) {
-      return (
-        <SkillTile 
-          key={field.key}
-          title={I18NHelper.get(field.name)}
-          value={this.state[field.key]} />
-      )
-    }
   }
 
   render() {
@@ -75,8 +63,6 @@ class ServiceCustomer extends React.Component {
                   {ServiceCustomerData.FIELDS_FORM2.map(this.buildFormGroup)}
                 </Grid.Col>
               </Grid.Row>
-              <h4>Besoins</h4>
-              {ServiceCustomerData.FIELDS_FORM3.map(this.buildSkillFormGroup)}
             </Form>
           </Panel.Body>
           <Panel.Footer>
