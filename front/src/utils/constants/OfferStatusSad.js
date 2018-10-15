@@ -3,34 +3,34 @@
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class OfferStatusSad {
 
-	static get PENDING() {
-		return _PENDING
-	}
+  static get PENDING() {
+    return _PENDING
+  }
 
-	static get CANCELED() {
-		return _CANCELED
-	}
+  static get CANCELED() {
+    return _CANCELED
+  }
 
-	static get CONFIRMED() {
-		return _CONFIRMED
-	}
+  static get CONFIRMED() {
+    return _CONFIRMED
+  }
 
-	static get REJECTED() {
-		return _REJECTED
-	}
+  static get REJECTED() {
+    return _REJECTED
+  }
 
-	static get VALUES() {
-		return [
-			_PENDING,
-			_CANCELED,
-			_CONFIRMED,
-			_REJECTED,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_PENDING,
+    	_CANCELED,
+    	_CONFIRMED,
+    	_REJECTED,
+    ]
+  }
 
-	static get(id) {
-		return id && OfferStatusSad[id.toUpperCase()]
-	}
+  static get(id) {
+    return id && OfferStatusSad[id.toUpperCase()]
+  }
 
 }
 const _PENDING = { key: 'Pending', keyName: 'PENDING' }

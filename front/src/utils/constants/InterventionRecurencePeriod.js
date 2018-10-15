@@ -3,39 +3,39 @@
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class InterventionRecurencePeriod {
 
-	static get HOURS() {
-		return _HOURS
-	}
+  static get HOURS() {
+    return _HOURS
+  }
 
-	static get WEEK1() {
-		return _WEEK1
-	}
+  static get WEEK1() {
+    return _WEEK1
+  }
 
-	static get WEEK2() {
-		return _WEEK2
-	}
+  static get WEEK2() {
+    return _WEEK2
+  }
 
-	static get WEEK3() {
-		return _WEEK3
-	}
+  static get WEEK3() {
+    return _WEEK3
+  }
 
-	static get WEEK4() {
-		return _WEEK4
-	}
+  static get WEEK4() {
+    return _WEEK4
+  }
 
-	static get VALUES() {
-		return [
-			_HOURS,
-			_WEEK1,
-			_WEEK2,
-			_WEEK3,
-			_WEEK4,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_HOURS,
+    	_WEEK1,
+    	_WEEK2,
+    	_WEEK3,
+    	_WEEK4,
+    ]
+  }
 
-	static get(id) {
-		return id && InterventionRecurencePeriod[id.toUpperCase()]
-	}
+  static get(id) {
+    return id && InterventionRecurencePeriod[id.toUpperCase()]
+  }
 
 }
 const _HOURS = { key: 'Hours', keyName: 'HOURS' }

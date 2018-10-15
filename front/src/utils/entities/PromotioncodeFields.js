@@ -4,43 +4,43 @@ import validators from 'utils/validators'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class PromotioncodeFields {
 
-	static get LAST_UPDATE_DATE() {
-		return _LAST_UPDATE_DATE
-	}
+  static get LAST_UPDATE_DATE() {
+    return _LAST_UPDATE_DATE
+  }
 
-	static get VALIDITY_DATE() {
-		return _VALIDITY_DATE
-	}
+  static get VALIDITY_DATE() {
+    return _VALIDITY_DATE
+  }
 
-	static get NAME() {
-		return _NAME
-	}
+  static get NAME() {
+    return _NAME
+  }
 
-	static get ID() {
-		return _ID
-	}
+  static get ID() {
+    return _ID
+  }
 
-	static get CREATION_DATE() {
-		return _CREATION_DATE
-	}
+  static get CREATION_DATE() {
+    return _CREATION_DATE
+  }
 
-	static get VALUES() {
-		return [
-			_LAST_UPDATE_DATE,
-			_VALIDITY_DATE,
-			_NAME,
-			_ID,
-			_CREATION_DATE,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_LAST_UPDATE_DATE,
+    	_VALIDITY_DATE,
+    	_NAME,
+    	_ID,
+    	_CREATION_DATE,
+    ]
+  }
 
-	static get(id) {
-		for (let i = 0 ; i < PromotioncodeFields.VALUES.length ; i++) {
-			if (PromotioncodeFields.VALUES[i].key === id) {
-				return PromotioncodeFields.VALUES[i]
-			}
-		}
-	}
+  static get(id) {
+    for (let i = 0 ; i < PromotioncodeFields.VALUES.length ; i++) {
+    	if (PromotioncodeFields.VALUES[i].key === id) {
+    		return PromotioncodeFields.VALUES[i]
+    	}
+    }
+  }
 
 }
 let _LAST_UPDATE_DATE = {

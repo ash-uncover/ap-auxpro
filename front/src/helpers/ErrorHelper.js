@@ -4,17 +4,17 @@ import { StoreRegistry } from 'ap-flux'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class ErrorHelper {
 
-	register(action, callback) {
-		StoreRegistry.register('ERROR_STORE', (action ? '/' + action : ''), callback)
-	}
+  register(action, callback) {
+    StoreRegistry.register('ERROR_STORE', (action ? '/' + action : ''), callback)
+  }
 
-	unregister(action, callback) {
-		StoreRegistry.unregister('ERROR_STORE', (action ? '/' + action : ''), callback)
-	}
+  unregister(action, callback) {
+    StoreRegistry.unregister('ERROR_STORE', (action ? '/' + action : ''), callback)
+  }
 
-	getData(path) {
-		return StoreRegistry.getStore('ERROR_STORE').getData(path);
-	}
+  getData(path) {
+    return StoreRegistry.getStore('ERROR_STORE').getData(path);
+  }
 
 }
 var ErrorHelperObj = new ErrorHelper()

@@ -5,73 +5,73 @@ import GeozoneType from 'utils/constants/GeozoneType'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class GeozoneFields {
 
-	static get AUXILIARY_ID() {
-		return _AUXILIARY_ID
-	}
+  static get AUXILIARY_ID() {
+    return _AUXILIARY_ID
+  }
 
-	static get ADDRESS() {
-		return _ADDRESS
-	}
+  static get ADDRESS() {
+    return _ADDRESS
+  }
 
-	static get LATTITUDE() {
-		return _LATTITUDE
-	}
+  static get LATTITUDE() {
+    return _LATTITUDE
+  }
 
-	static get CITY() {
-		return _CITY
-	}
+  static get CITY() {
+    return _CITY
+  }
 
-	static get LAST_UPDATE_DATE() {
-		return _LAST_UPDATE_DATE
-	}
+  static get LAST_UPDATE_DATE() {
+    return _LAST_UPDATE_DATE
+  }
 
-	static get POSTAL_CODE() {
-		return _POSTAL_CODE
-	}
+  static get POSTAL_CODE() {
+    return _POSTAL_CODE
+  }
 
-	static get ID() {
-		return _ID
-	}
+  static get ID() {
+    return _ID
+  }
 
-	static get TYPE() {
-		return _TYPE
-	}
+  static get TYPE() {
+    return _TYPE
+  }
 
-	static get RADIUS() {
-		return _RADIUS
-	}
+  static get RADIUS() {
+    return _RADIUS
+  }
 
-	static get CREATION_DATE() {
-		return _CREATION_DATE
-	}
+  static get CREATION_DATE() {
+    return _CREATION_DATE
+  }
 
-	static get LONGITUDE() {
-		return _LONGITUDE
-	}
+  static get LONGITUDE() {
+    return _LONGITUDE
+  }
 
-	static get VALUES() {
-		return [
-			_AUXILIARY_ID,
-			_ADDRESS,
-			_LATTITUDE,
-			_CITY,
-			_LAST_UPDATE_DATE,
-			_POSTAL_CODE,
-			_ID,
-			_TYPE,
-			_RADIUS,
-			_CREATION_DATE,
-			_LONGITUDE,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_AUXILIARY_ID,
+    	_ADDRESS,
+    	_LATTITUDE,
+    	_CITY,
+    	_LAST_UPDATE_DATE,
+    	_POSTAL_CODE,
+    	_ID,
+    	_TYPE,
+    	_RADIUS,
+    	_CREATION_DATE,
+    	_LONGITUDE,
+    ]
+  }
 
-	static get(id) {
-		for (let i = 0 ; i < GeozoneFields.VALUES.length ; i++) {
-			if (GeozoneFields.VALUES[i].key === id) {
-				return GeozoneFields.VALUES[i]
-			}
-		}
-	}
+  static get(id) {
+    for (let i = 0 ; i < GeozoneFields.VALUES.length ; i++) {
+    	if (GeozoneFields.VALUES[i].key === id) {
+    		return GeozoneFields.VALUES[i]
+    	}
+    }
+  }
 
 }
 let _AUXILIARY_ID = {

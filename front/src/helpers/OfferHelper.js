@@ -5,45 +5,45 @@ import AuthHelper from 'helpers/AuthHelper'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class OfferHelper {
 
-	register(id, callback) {
-		StoreRegistry.register('REST_STORE', 'offer' + (id ? '/' + id : ''), callback)
-	}
+  register(id, callback) {
+    StoreRegistry.register('REST_STORE', 'offer' + (id ? '/' + id : ''), callback)
+  }
 
-	unregister(id, callback) {
-		StoreRegistry.unregister('REST_STORE', 'offer' + (id ? '/' + id : ''), callback)
-	}
+  unregister(id, callback) {
+    StoreRegistry.unregister('REST_STORE', 'offer' + (id ? '/' + id : ''), callback)
+  }
 
-	getAuxiliaryOffers(auxiliaryId, query) {
-		return Dispatcher.issue('GET_AUXILIARY_OFFERS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
-	}
+  getAuxiliaryOffers(auxiliaryId, query) {
+    return Dispatcher.issue('GET_AUXILIARY_OFFERS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
+  }
 
-	postOffer(data) {
-		return Dispatcher.issue('POST_OFFER', {token: AuthHelper.getToken(), data: data});
-	}
+  postOffer(data) {
+    return Dispatcher.issue('POST_OFFER', {token: AuthHelper.getToken(), data: data});
+  }
 
-	getOffer(id) {
-		return Dispatcher.issue('GET_OFFER', {token: AuthHelper.getToken(), id: id});
-	}
+  getOffer(id) {
+    return Dispatcher.issue('GET_OFFER', {token: AuthHelper.getToken(), id: id});
+  }
 
-	putOfferAccept(data) {
-		return Dispatcher.issue('PUT_OFFER_ACCEPT', {token: AuthHelper.getToken(), id: data.id, data: data});
-	}
+  putOfferAccept(data) {
+    return Dispatcher.issue('PUT_OFFER_ACCEPT', {token: AuthHelper.getToken(), id: data.id, data: data});
+  }
 
-	putOfferDecline(data) {
-		return Dispatcher.issue('PUT_OFFER_DECLINE', {token: AuthHelper.getToken(), id: data.id, data: data});
-	}
+  putOfferDecline(data) {
+    return Dispatcher.issue('PUT_OFFER_DECLINE', {token: AuthHelper.getToken(), id: data.id, data: data});
+  }
 
-	putOfferConfirm(data) {
-		return Dispatcher.issue('PUT_OFFER_CONFIRM', {token: AuthHelper.getToken(), id: data.id, data: data});
-	}
+  putOfferConfirm(data) {
+    return Dispatcher.issue('PUT_OFFER_CONFIRM', {token: AuthHelper.getToken(), id: data.id, data: data});
+  }
 
-	getServiceOffers(serviceId, query) {
-		return Dispatcher.issue('GET_SERVICE_OFFERS', {token: AuthHelper.getToken(), serviceId: serviceId, query: query});
-	}
+  getServiceOffers(serviceId, query) {
+    return Dispatcher.issue('GET_SERVICE_OFFERS', {token: AuthHelper.getToken(), serviceId: serviceId, query: query});
+  }
 
-	getData(id) {
-		return StoreRegistry.getStore('REST_STORE').getData('/offer' + (id ? '/' + id : ''));
-	}
+  getData(id) {
+    return StoreRegistry.getStore('REST_STORE').getData('/offer' + (id ? '/' + id : ''));
+  }
 
 }
 var OfferObj = new OfferHelper()

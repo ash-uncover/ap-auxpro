@@ -5,37 +5,37 @@ import AuthHelper from 'helpers/AuthHelper'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class MissionHelper {
 
-	register(id, callback) {
-		StoreRegistry.register('REST_STORE', 'mission' + (id ? '/' + id : ''), callback)
-	}
+  register(id, callback) {
+    StoreRegistry.register('REST_STORE', 'mission' + (id ? '/' + id : ''), callback)
+  }
 
-	unregister(id, callback) {
-		StoreRegistry.unregister('REST_STORE', 'mission' + (id ? '/' + id : ''), callback)
-	}
+  unregister(id, callback) {
+    StoreRegistry.unregister('REST_STORE', 'mission' + (id ? '/' + id : ''), callback)
+  }
 
-	getAuxiliaryMissions(auxiliaryId, query) {
-		return Dispatcher.issue('GET_AUXILIARY_MISSIONS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
-	}
+  getAuxiliaryMissions(auxiliaryId, query) {
+    return Dispatcher.issue('GET_AUXILIARY_MISSIONS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
+  }
 
-	getMission(id) {
-		return Dispatcher.issue('GET_MISSION', {token: AuthHelper.getToken(), id: id});
-	}
+  getMission(id) {
+    return Dispatcher.issue('GET_MISSION', {token: AuthHelper.getToken(), id: id});
+  }
 
-	putMission(data) {
-		return Dispatcher.issue('PUT_MISSION', {token: AuthHelper.getToken(), id: data.id, data: data});
-	}
+  putMission(data) {
+    return Dispatcher.issue('PUT_MISSION', {token: AuthHelper.getToken(), id: data.id, data: data});
+  }
 
-	deleteMission(id) {
-		return Dispatcher.issue('DELETE_MISSION', {token: AuthHelper.getToken(), id: id});
-	}
+  deleteMission(id) {
+    return Dispatcher.issue('DELETE_MISSION', {token: AuthHelper.getToken(), id: id});
+  }
 
-	getServiceMissions(serviceId, query) {
-		return Dispatcher.issue('GET_SERVICE_MISSIONS', {token: AuthHelper.getToken(), serviceId: serviceId, query: query});
-	}
+  getServiceMissions(serviceId, query) {
+    return Dispatcher.issue('GET_SERVICE_MISSIONS', {token: AuthHelper.getToken(), serviceId: serviceId, query: query});
+  }
 
-	getData(id) {
-		return StoreRegistry.getStore('REST_STORE').getData('/mission' + (id ? '/' + id : ''));
-	}
+  getData(id) {
+    return StoreRegistry.getStore('REST_STORE').getData('/mission' + (id ? '/' + id : ''));
+  }
 
 }
 var MissionObj = new MissionHelper()

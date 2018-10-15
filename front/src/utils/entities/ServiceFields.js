@@ -6,118 +6,118 @@ import SocFunction from 'utils/constants/SocFunction'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class ServiceFields {
 
-	static get COUNTRY() {
-		return _COUNTRY
-	}
+  static get COUNTRY() {
+    return _COUNTRY
+  }
 
-	static get ADDRESS() {
-		return _ADDRESS
-	}
+  static get ADDRESS() {
+    return _ADDRESS
+  }
 
-	static get CITY() {
-		return _CITY
-	}
+  static get CITY() {
+    return _CITY
+  }
 
-	static get LATTITUDE() {
-		return _LATTITUDE
-	}
+  static get LATTITUDE() {
+    return _LATTITUDE
+  }
 
-	static get LAST_UPDATE_DATE() {
-		return _LAST_UPDATE_DATE
-	}
+  static get LAST_UPDATE_DATE() {
+    return _LAST_UPDATE_DATE
+  }
 
-	static get POSTAL_CODE() {
-		return _POSTAL_CODE
-	}
+  static get POSTAL_CODE() {
+    return _POSTAL_CODE
+  }
 
-	static get ACCOUNT_TYPE() {
-		return _ACCOUNT_TYPE
-	}
+  static get ACCOUNT_TYPE() {
+    return _ACCOUNT_TYPE
+  }
 
-	static get IS_TUTO_SKIPPED() {
-		return _IS_TUTO_SKIPPED
-	}
+  static get IS_TUTO_SKIPPED() {
+    return _IS_TUTO_SKIPPED
+  }
 
-	static get NOTIFY_PARTNERS() {
-		return _NOTIFY_PARTNERS
-	}
+  static get NOTIFY_PARTNERS() {
+    return _NOTIFY_PARTNERS
+  }
 
-	static get AVATAR() {
-		return _AVATAR
-	}
+  static get AVATAR() {
+    return _AVATAR
+  }
 
-	static get ACCOUNT_EXPIRY_DATE() {
-		return _ACCOUNT_EXPIRY_DATE
-	}
+  static get ACCOUNT_EXPIRY_DATE() {
+    return _ACCOUNT_EXPIRY_DATE
+  }
 
-	static get CREATION_DATE() {
-		return _CREATION_DATE
-	}
+  static get CREATION_DATE() {
+    return _CREATION_DATE
+  }
 
-	static get SIRET() {
-		return _SIRET
-	}
+  static get SIRET() {
+    return _SIRET
+  }
 
-	static get NOTIFY_AUXPROS() {
-		return _NOTIFY_AUXPROS
-	}
+  static get NOTIFY_AUXPROS() {
+    return _NOTIFY_AUXPROS
+  }
 
-	static get PHONE() {
-		return _PHONE
-	}
+  static get PHONE() {
+    return _PHONE
+  }
 
-	static get FUNCTION() {
-		return _FUNCTION
-	}
+  static get FUNCTION() {
+    return _FUNCTION
+  }
 
-	static get PROFIL_COMPLETED() {
-		return _PROFIL_COMPLETED
-	}
+  static get PROFIL_COMPLETED() {
+    return _PROFIL_COMPLETED
+  }
 
-	static get ID() {
-		return _ID
-	}
+  static get ID() {
+    return _ID
+  }
 
-	static get SOCIAL_REASON() {
-		return _SOCIAL_REASON
-	}
+  static get SOCIAL_REASON() {
+    return _SOCIAL_REASON
+  }
 
-	static get LONGITUDE() {
-		return _LONGITUDE
-	}
+  static get LONGITUDE() {
+    return _LONGITUDE
+  }
 
-	static get VALUES() {
-		return [
-			_COUNTRY,
-			_ADDRESS,
-			_CITY,
-			_LATTITUDE,
-			_LAST_UPDATE_DATE,
-			_POSTAL_CODE,
-			_ACCOUNT_TYPE,
-			_IS_TUTO_SKIPPED,
-			_NOTIFY_PARTNERS,
-			_AVATAR,
-			_ACCOUNT_EXPIRY_DATE,
-			_CREATION_DATE,
-			_SIRET,
-			_NOTIFY_AUXPROS,
-			_PHONE,
-			_FUNCTION,
-			_PROFIL_COMPLETED,
-			_ID,
-			_SOCIAL_REASON,
-			_LONGITUDE,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_COUNTRY,
+    	_ADDRESS,
+    	_CITY,
+    	_LATTITUDE,
+    	_LAST_UPDATE_DATE,
+    	_POSTAL_CODE,
+    	_ACCOUNT_TYPE,
+    	_IS_TUTO_SKIPPED,
+    	_NOTIFY_PARTNERS,
+    	_AVATAR,
+    	_ACCOUNT_EXPIRY_DATE,
+    	_CREATION_DATE,
+    	_SIRET,
+    	_NOTIFY_AUXPROS,
+    	_PHONE,
+    	_FUNCTION,
+    	_PROFIL_COMPLETED,
+    	_ID,
+    	_SOCIAL_REASON,
+    	_LONGITUDE,
+    ]
+  }
 
-	static get(id) {
-		for (let i = 0 ; i < ServiceFields.VALUES.length ; i++) {
-			if (ServiceFields.VALUES[i].key === id) {
-				return ServiceFields.VALUES[i]
-			}
-		}
-	}
+  static get(id) {
+    for (let i = 0 ; i < ServiceFields.VALUES.length ; i++) {
+    	if (ServiceFields.VALUES[i].key === id) {
+    		return ServiceFields.VALUES[i]
+    	}
+    }
+  }
 
 }
 let _COUNTRY = {

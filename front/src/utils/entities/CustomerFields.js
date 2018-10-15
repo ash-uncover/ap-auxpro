@@ -6,108 +6,108 @@ import PeopleCategory from 'utils/constants/PeopleCategory'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class CustomerFields {
 
-	static get LAST_NAME() {
-		return _LAST_NAME
-	}
+  static get LAST_NAME() {
+    return _LAST_NAME
+  }
 
-	static get COUNTRY() {
-		return _COUNTRY
-	}
+  static get COUNTRY() {
+    return _COUNTRY
+  }
 
-	static get CIVILITY() {
-		return _CIVILITY
-	}
+  static get CIVILITY() {
+    return _CIVILITY
+  }
 
-	static get ADDRESS() {
-		return _ADDRESS
-	}
+  static get ADDRESS() {
+    return _ADDRESS
+  }
 
-	static get CITY() {
-		return _CITY
-	}
+  static get CITY() {
+    return _CITY
+  }
 
-	static get LATTITUDE() {
-		return _LATTITUDE
-	}
+  static get LATTITUDE() {
+    return _LATTITUDE
+  }
 
-	static get LAST_UPDATE_DATE() {
-		return _LAST_UPDATE_DATE
-	}
+  static get LAST_UPDATE_DATE() {
+    return _LAST_UPDATE_DATE
+  }
 
-	static get POSTAL_CODE() {
-		return _POSTAL_CODE
-	}
+  static get POSTAL_CODE() {
+    return _POSTAL_CODE
+  }
 
-	static get CREATION_DATE() {
-		return _CREATION_DATE
-	}
+  static get CREATION_DATE() {
+    return _CREATION_DATE
+  }
 
-	static get BIRTH_DATE() {
-		return _BIRTH_DATE
-	}
+  static get BIRTH_DATE() {
+    return _BIRTH_DATE
+  }
 
-	static get FIRST_NAME() {
-		return _FIRST_NAME
-	}
+  static get FIRST_NAME() {
+    return _FIRST_NAME
+  }
 
-	static get NATIONALITY() {
-		return _NATIONALITY
-	}
+  static get NATIONALITY() {
+    return _NATIONALITY
+  }
 
-	static get PHONE() {
-		return _PHONE
-	}
+  static get PHONE() {
+    return _PHONE
+  }
 
-	static get ID() {
-		return _ID
-	}
+  static get ID() {
+    return _ID
+  }
 
-	static get SERVICE_ID() {
-		return _SERVICE_ID
-	}
+  static get SERVICE_ID() {
+    return _SERVICE_ID
+  }
 
-	static get CATEGORY() {
-		return _CATEGORY
-	}
+  static get CATEGORY() {
+    return _CATEGORY
+  }
 
-	static get EMAIL() {
-		return _EMAIL
-	}
+  static get EMAIL() {
+    return _EMAIL
+  }
 
-	static get LONGITUDE() {
-		return _LONGITUDE
-	}
+  static get LONGITUDE() {
+    return _LONGITUDE
+  }
 
-	static get VALUES() {
-		return [
-			_LAST_NAME,
-			_COUNTRY,
-			_CIVILITY,
-			_ADDRESS,
-			_CITY,
-			_LATTITUDE,
-			_LAST_UPDATE_DATE,
-			_POSTAL_CODE,
-			_CREATION_DATE,
-			_BIRTH_DATE,
-			_FIRST_NAME,
-			_NATIONALITY,
-			_PHONE,
-			_ID,
-			_SERVICE_ID,
-			_CATEGORY,
-			_EMAIL,
-			_LONGITUDE,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_LAST_NAME,
+    	_COUNTRY,
+    	_CIVILITY,
+    	_ADDRESS,
+    	_CITY,
+    	_LATTITUDE,
+    	_LAST_UPDATE_DATE,
+    	_POSTAL_CODE,
+    	_CREATION_DATE,
+    	_BIRTH_DATE,
+    	_FIRST_NAME,
+    	_NATIONALITY,
+    	_PHONE,
+    	_ID,
+    	_SERVICE_ID,
+    	_CATEGORY,
+    	_EMAIL,
+    	_LONGITUDE,
+    ]
+  }
 
-	static get(id) {
-		for (let i = 0 ; i < CustomerFields.VALUES.length ; i++) {
-			if (CustomerFields.VALUES[i].key === id) {
-				return CustomerFields.VALUES[i]
-			}
-		}
-	}
+  static get(id) {
+    for (let i = 0 ; i < CustomerFields.VALUES.length ; i++) {
+    	if (CustomerFields.VALUES[i].key === id) {
+    		return CustomerFields.VALUES[i]
+    	}
+    }
+  }
 
 }
 let _LAST_NAME = {

@@ -3,29 +3,29 @@
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class SocFunction {
 
-	static get MAND() {
-		return _MAND
-	}
+  static get MAND() {
+    return _MAND
+  }
 
-	static get PREST() {
-		return _PREST
-	}
+  static get PREST() {
+    return _PREST
+  }
 
-	static get BOTH() {
-		return _BOTH
-	}
+  static get BOTH() {
+    return _BOTH
+  }
 
-	static get VALUES() {
-		return [
-			_MAND,
-			_PREST,
-			_BOTH,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_MAND,
+    	_PREST,
+    	_BOTH,
+    ]
+  }
 
-	static get(id) {
-		return id && SocFunction[id.toUpperCase()]
-	}
+  static get(id) {
+    return id && SocFunction[id.toUpperCase()]
+  }
 
 }
 const _MAND = { key: 'Mand', keyName: 'MAND' }

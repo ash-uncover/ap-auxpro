@@ -5,88 +5,88 @@ import MissionStatus from 'utils/constants/MissionStatus'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class MissionFields {
 
-	static get DATE() {
-		return _DATE
-	}
+  static get DATE() {
+    return _DATE
+  }
 
-	static get AUX_STATUS() {
-		return _AUX_STATUS
-	}
+  static get AUX_STATUS() {
+    return _AUX_STATUS
+  }
 
-	static get AUX_STATUS_CHANGED() {
-		return _AUX_STATUS_CHANGED
-	}
+  static get AUX_STATUS_CHANGED() {
+    return _AUX_STATUS_CHANGED
+  }
 
-	static get AUXILIARY_ID() {
-		return _AUXILIARY_ID
-	}
+  static get AUXILIARY_ID() {
+    return _AUXILIARY_ID
+  }
 
-	static get HIDE_TO_AUX() {
-		return _HIDE_TO_AUX
-	}
+  static get HIDE_TO_AUX() {
+    return _HIDE_TO_AUX
+  }
 
-	static get LAST_UPDATE_DATE() {
-		return _LAST_UPDATE_DATE
-	}
+  static get LAST_UPDATE_DATE() {
+    return _LAST_UPDATE_DATE
+  }
 
-	static get SAD_STATUS_CHANGED() {
-		return _SAD_STATUS_CHANGED
-	}
+  static get SAD_STATUS_CHANGED() {
+    return _SAD_STATUS_CHANGED
+  }
 
-	static get CREATION_DATE() {
-		return _CREATION_DATE
-	}
+  static get CREATION_DATE() {
+    return _CREATION_DATE
+  }
 
-	static get CUSTOMER_ID() {
-		return _CUSTOMER_ID
-	}
+  static get CUSTOMER_ID() {
+    return _CUSTOMER_ID
+  }
 
-	static get SAD_STATUS() {
-		return _SAD_STATUS
-	}
+  static get SAD_STATUS() {
+    return _SAD_STATUS
+  }
 
-	static get ID() {
-		return _ID
-	}
+  static get ID() {
+    return _ID
+  }
 
-	static get SERVICE_ID() {
-		return _SERVICE_ID
-	}
+  static get SERVICE_ID() {
+    return _SERVICE_ID
+  }
 
-	static get INTERVENTION_ID() {
-		return _INTERVENTION_ID
-	}
+  static get INTERVENTION_ID() {
+    return _INTERVENTION_ID
+  }
 
-	static get HIDE_TO_SAD() {
-		return _HIDE_TO_SAD
-	}
+  static get HIDE_TO_SAD() {
+    return _HIDE_TO_SAD
+  }
 
-	static get VALUES() {
-		return [
-			_DATE,
-			_AUX_STATUS,
-			_AUX_STATUS_CHANGED,
-			_AUXILIARY_ID,
-			_HIDE_TO_AUX,
-			_LAST_UPDATE_DATE,
-			_SAD_STATUS_CHANGED,
-			_CREATION_DATE,
-			_CUSTOMER_ID,
-			_SAD_STATUS,
-			_ID,
-			_SERVICE_ID,
-			_INTERVENTION_ID,
-			_HIDE_TO_SAD,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_DATE,
+    	_AUX_STATUS,
+    	_AUX_STATUS_CHANGED,
+    	_AUXILIARY_ID,
+    	_HIDE_TO_AUX,
+    	_LAST_UPDATE_DATE,
+    	_SAD_STATUS_CHANGED,
+    	_CREATION_DATE,
+    	_CUSTOMER_ID,
+    	_SAD_STATUS,
+    	_ID,
+    	_SERVICE_ID,
+    	_INTERVENTION_ID,
+    	_HIDE_TO_SAD,
+    ]
+  }
 
-	static get(id) {
-		for (let i = 0 ; i < MissionFields.VALUES.length ; i++) {
-			if (MissionFields.VALUES[i].key === id) {
-				return MissionFields.VALUES[i]
-			}
-		}
-	}
+  static get(id) {
+    for (let i = 0 ; i < MissionFields.VALUES.length ; i++) {
+    	if (MissionFields.VALUES[i].key === id) {
+    		return MissionFields.VALUES[i]
+    	}
+    }
+  }
 
 }
 let _DATE = {

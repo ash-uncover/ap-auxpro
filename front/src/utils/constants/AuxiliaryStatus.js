@@ -3,29 +3,29 @@
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class AuxiliaryStatus {
 
-	static get AUTO() {
-		return _AUTO
-	}
+  static get AUTO() {
+    return _AUTO
+  }
 
-	static get SALARY() {
-		return _SALARY
-	}
+  static get SALARY() {
+    return _SALARY
+  }
 
-	static get BOTH() {
-		return _BOTH
-	}
+  static get BOTH() {
+    return _BOTH
+  }
 
-	static get VALUES() {
-		return [
-			_AUTO,
-			_SALARY,
-			_BOTH,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_AUTO,
+    	_SALARY,
+    	_BOTH,
+    ]
+  }
 
-	static get(id) {
-		return id && AuxiliaryStatus[id.toUpperCase()]
-	}
+  static get(id) {
+    return id && AuxiliaryStatus[id.toUpperCase()]
+  }
 
 }
 const _AUTO = { key: 'Auto', keyName: 'AUTO' }

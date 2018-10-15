@@ -5,37 +5,37 @@ import AuthHelper from 'helpers/AuthHelper'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class IndisponibilityHelper {
 
-	register(id, callback) {
-		StoreRegistry.register('REST_STORE', 'indisponibility' + (id ? '/' + id : ''), callback)
-	}
+  register(id, callback) {
+    StoreRegistry.register('REST_STORE', 'indisponibility' + (id ? '/' + id : ''), callback)
+  }
 
-	unregister(id, callback) {
-		StoreRegistry.unregister('REST_STORE', 'indisponibility' + (id ? '/' + id : ''), callback)
-	}
+  unregister(id, callback) {
+    StoreRegistry.unregister('REST_STORE', 'indisponibility' + (id ? '/' + id : ''), callback)
+  }
 
-	getAuxiliaryIndisponibilitys(auxiliaryId, query) {
-		return Dispatcher.issue('GET_AUXILIARY_INDISPONIBILITYS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
-	}
+  getAuxiliaryIndisponibilitys(auxiliaryId, query) {
+    return Dispatcher.issue('GET_AUXILIARY_INDISPONIBILITYS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
+  }
 
-	postIndisponibility(data) {
-		return Dispatcher.issue('POST_INDISPONIBILITY', {token: AuthHelper.getToken(), data: data});
-	}
+  postIndisponibility(data) {
+    return Dispatcher.issue('POST_INDISPONIBILITY', {token: AuthHelper.getToken(), data: data});
+  }
 
-	getIndisponibility(id) {
-		return Dispatcher.issue('GET_INDISPONIBILITY', {token: AuthHelper.getToken(), id: id});
-	}
+  getIndisponibility(id) {
+    return Dispatcher.issue('GET_INDISPONIBILITY', {token: AuthHelper.getToken(), id: id});
+  }
 
-	putIndisponibility(data) {
-		return Dispatcher.issue('PUT_INDISPONIBILITY', {token: AuthHelper.getToken(), id: data.id, data: data});
-	}
+  putIndisponibility(data) {
+    return Dispatcher.issue('PUT_INDISPONIBILITY', {token: AuthHelper.getToken(), id: data.id, data: data});
+  }
 
-	deleteIndisponibility(id) {
-		return Dispatcher.issue('DELETE_INDISPONIBILITY', {token: AuthHelper.getToken(), id: id});
-	}
+  deleteIndisponibility(id) {
+    return Dispatcher.issue('DELETE_INDISPONIBILITY', {token: AuthHelper.getToken(), id: id});
+  }
 
-	getData(id) {
-		return StoreRegistry.getStore('REST_STORE').getData('/indisponibility' + (id ? '/' + id : ''));
-	}
+  getData(id) {
+    return StoreRegistry.getStore('REST_STORE').getData('/indisponibility' + (id ? '/' + id : ''));
+  }
 
 }
 var IndisponibilityObj = new IndisponibilityHelper()

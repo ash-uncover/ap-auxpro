@@ -5,85 +5,85 @@ import { Utils } from 'ap-react-bootstrap'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class AuthHelper {
 
-	register(path, callback) {
-		StoreRegistry.register('AUTH_STORE', (path ? path : ''), callback)
-	}
+  register(path, callback) {
+    StoreRegistry.register('AUTH_STORE', (path ? path : ''), callback)
+  }
 
-	unregister(path, callback) {
-		StoreRegistry.unregister('AUTH_STORE', (path ? path : ''), callback)
-	}
+  unregister(path, callback) {
+    StoreRegistry.unregister('AUTH_STORE', (path ? path : ''), callback)
+  }
 
-	getData() {
-		return StoreRegistry.getStore('AUTH_STORE').getData();
-	}
+  getData() {
+    return StoreRegistry.getStore('AUTH_STORE').getData();
+  }
 
-	getToken() {
-		return StoreRegistry.getStore('AUTH_STORE').getData('/token');
-	}
+  getToken() {
+    return StoreRegistry.getStore('AUTH_STORE').getData('/token');
+  }
 
-	getType() {
-		return StoreRegistry.getStore('AUTH_STORE').getData('/type');
-	}
+  getType() {
+    return StoreRegistry.getStore('AUTH_STORE').getData('/type');
+  }
 
-	getEntityId() {
-		return StoreRegistry.getStore('AUTH_STORE').getData('/entityId');
-	}
+  getEntityId() {
+    return StoreRegistry.getStore('AUTH_STORE').getData('/entityId');
+  }
 
-	getUsername() {
-		return StoreRegistry.getStore('AUTH_STORE').getData('/username');
-	}
+  getUsername() {
+    return StoreRegistry.getStore('AUTH_STORE').getData('/username');
+  }
 
-	getEmail() {
-		return StoreRegistry.getStore('AUTH_STORE').getData('/email');
-	}
+  getEmail() {
+    return StoreRegistry.getStore('AUTH_STORE').getData('/email');
+  }
 
-	getAuth() {
-		return Dispatcher.issue('GET_AUTH', { token: this.getToken() });
-	}
+  getAuth() {
+    return Dispatcher.issue('GET_AUTH', { token: this.getToken() });
+  }
 
-	postAuth(data) {
-		return Dispatcher.issue('POST_AUTH', { data: data });
-	}
+  postAuth(data) {
+    return Dispatcher.issue('POST_AUTH', { data: data });
+  }
 
-	logout() {
-		return Dispatcher.issue('LOGOUT');
-	}
+  logout() {
+    return Dispatcher.issue('LOGOUT');
+  }
 
-	putAuthPassword(data) {
-		return Dispatcher.issue('PUT_AUTH_PASSWORD', { token: this.getToken(), data: data });
-	}
+  putAuthPassword(data) {
+    return Dispatcher.issue('PUT_AUTH_PASSWORD', { token: this.getToken(), data: data });
+  }
 
-	postAuthRegister(data) {
-		return Dispatcher.issue('POST_AUTH_REGISTER', { data: data });
-	}
+  postAuthRegister(data) {
+    return Dispatcher.issue('POST_AUTH_REGISTER', { data: data });
+  }
 
-	postAuthRecover(data) {
-		return Dispatcher.issue('POST_AUTH_RECOVER', { data: data });
-	}
+  postAuthRecover(data) {
+    return Dispatcher.issue('POST_AUTH_RECOVER', { data: data });
+  }
 
-	postAuthRecoverCheck(data) {
-		return Dispatcher.issue('POST_AUTH_RECOVER_CHECK', { data: data });
-	}
+  postAuthRecoverCheck(data) {
+    return Dispatcher.issue('POST_AUTH_RECOVER_CHECK', { data: data });
+  }
 
-	putAuthRecover(data) {
-		return Dispatcher.issue('PUT_AUTH_RECOVER', { data: data });
-	}
+  putAuthRecover(data) {
+    return Dispatcher.issue('PUT_AUTH_RECOVER', { data: data });
+  }
 
-	postAuthChangemail() {
-		return Dispatcher.issue('POST_AUTH_CHANGEMAIL', { token: this.getToken() });
-	}
+  postAuthChangemail() {
+    return Dispatcher.issue('POST_AUTH_CHANGEMAIL', { token: this.getToken() });
+  }
 
-	postAuthChangemailCheck(data) {
-		return Dispatcher.issue('POST_AUTH_CHANGEMAIL_CHECK', { token: this.getToken(), data: data });
-	}
+  postAuthChangemailCheck(data) {
+    return Dispatcher.issue('POST_AUTH_CHANGEMAIL_CHECK', { token: this.getToken(), data: data });
+  }
 
-	putAuthChangemail(data) {
-		return Dispatcher.issue('PUT_AUTH_CHANGEMAIL', { token: this.getToken(), data: data });
-	}
+  putAuthChangemail(data) {
+    return Dispatcher.issue('PUT_AUTH_CHANGEMAIL', { token: this.getToken(), data: data });
+  }
 
-	postAuthChangemailConfirm(data) {
-		return Dispatcher.issue('POST_AUTH_CHANGEMAIL_CONFIRM', { token: this.getToken(), data: data });
-	}
+  postAuthChangemailConfirm(data) {
+    return Dispatcher.issue('POST_AUTH_CHANGEMAIL_CONFIRM', { token: this.getToken(), data: data });
+  }
 
 }
 var AuthHelperObj = new AuthHelper()

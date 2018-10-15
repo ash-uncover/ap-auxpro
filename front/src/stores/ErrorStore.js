@@ -3,627 +3,627 @@ import { Dispatcher, StoreBase } from 'ap-flux'
 const ErrorStore = new StoreBase ({ name: 'ERROR_STORE', content: {} })
 
 ErrorStore.handleLogout = function(results, params) {
-	ErrorStore.content = {}
+  ErrorStore.content = {}
 }
 
 ErrorStore.handleGetAuxiliarysSuccess = function(results, params) {
-	delete ErrorStore._content.GET_AUXILIARYS;
-	ErrorStore.notify('/GET_AUXILIARYS');
+  delete ErrorStore._content.GET_AUXILIARYS;
+  ErrorStore.notify('/GET_AUXILIARYS');
 }
 
 ErrorStore.handleGetAuxiliarysError = function(error, params) {
-	ErrorStore._content.GET_AUXILIARYS = error;
-	ErrorStore.notify('/GET_AUXILIARYS');
+  ErrorStore._content.GET_AUXILIARYS = error;
+  ErrorStore.notify('/GET_AUXILIARYS');
 }
 
 ErrorStore.handlePostAuxiliarySuccess = function(results, params) {
-	delete ErrorStore._content.POST_AUXILIARY;
-	ErrorStore.notify('/POST_AUXILIARY');
+  delete ErrorStore._content.POST_AUXILIARY;
+  ErrorStore.notify('/POST_AUXILIARY');
 }
 
 ErrorStore.handlePostAuxiliaryError = function(error, params) {
-	ErrorStore._content.POST_AUXILIARY = error;
-	ErrorStore.notify('/POST_AUXILIARY');
+  ErrorStore._content.POST_AUXILIARY = error;
+  ErrorStore.notify('/POST_AUXILIARY');
 }
 
 ErrorStore.handleGetAuxiliarySuccess = function(results, params) {
-	delete ErrorStore._content.GET_AUXILIARY;
-	ErrorStore.notify('/GET_AUXILIARY');
+  delete ErrorStore._content.GET_AUXILIARY;
+  ErrorStore.notify('/GET_AUXILIARY');
 }
 
 ErrorStore.handleGetAuxiliaryError = function(error, params) {
-	ErrorStore._content.GET_AUXILIARY = error;
-	ErrorStore.notify('/GET_AUXILIARY');
+  ErrorStore._content.GET_AUXILIARY = error;
+  ErrorStore.notify('/GET_AUXILIARY');
 }
 
 ErrorStore.handlePutAuxiliarySuccess = function(results, params) {
-	delete ErrorStore._content.PUT_AUXILIARY;
-	ErrorStore.notify('/PUT_AUXILIARY');
+  delete ErrorStore._content.PUT_AUXILIARY;
+  ErrorStore.notify('/PUT_AUXILIARY');
 }
 
 ErrorStore.handlePutAuxiliaryError = function(error, params) {
-	ErrorStore._content.PUT_AUXILIARY = error;
-	ErrorStore.notify('/PUT_AUXILIARY');
+  ErrorStore._content.PUT_AUXILIARY = error;
+  ErrorStore.notify('/PUT_AUXILIARY');
 }
 
 ErrorStore.handlePostAuxiliaryCodeSuccess = function(results, params) {
-	delete ErrorStore._content.POST_AUXILIARY_CODE;
-	ErrorStore.notify('/POST_AUXILIARY_CODE');
+  delete ErrorStore._content.POST_AUXILIARY_CODE;
+  ErrorStore.notify('/POST_AUXILIARY_CODE');
 }
 
 ErrorStore.handlePostAuxiliaryCodeError = function(error, params) {
-	ErrorStore._content.POST_AUXILIARY_CODE = error;
-	ErrorStore.notify('/POST_AUXILIARY_CODE');
+  ErrorStore._content.POST_AUXILIARY_CODE = error;
+  ErrorStore.notify('/POST_AUXILIARY_CODE');
 }
 
 ErrorStore.handleGetAuxiliaryServicesSuccess = function(results, params) {
-	delete ErrorStore._content.GET_AUXILIARY_SERVICES;
-	ErrorStore.notify('/GET_AUXILIARY_SERVICES');
+  delete ErrorStore._content.GET_AUXILIARY_SERVICES;
+  ErrorStore.notify('/GET_AUXILIARY_SERVICES');
 }
 
 ErrorStore.handleGetAuxiliaryServicesError = function(error, params) {
-	ErrorStore._content.GET_AUXILIARY_SERVICES = error;
-	ErrorStore.notify('/GET_AUXILIARY_SERVICES');
+  ErrorStore._content.GET_AUXILIARY_SERVICES = error;
+  ErrorStore.notify('/GET_AUXILIARY_SERVICES');
 }
 
 ErrorStore.handleGetAuxiliaryCustomersSuccess = function(results, params) {
-	delete ErrorStore._content.GET_AUXILIARY_CUSTOMERS;
-	ErrorStore.notify('/GET_AUXILIARY_CUSTOMERS');
+  delete ErrorStore._content.GET_AUXILIARY_CUSTOMERS;
+  ErrorStore.notify('/GET_AUXILIARY_CUSTOMERS');
 }
 
 ErrorStore.handleGetAuxiliaryCustomersError = function(error, params) {
-	ErrorStore._content.GET_AUXILIARY_CUSTOMERS = error;
-	ErrorStore.notify('/GET_AUXILIARY_CUSTOMERS');
+  ErrorStore._content.GET_AUXILIARY_CUSTOMERS = error;
+  ErrorStore.notify('/GET_AUXILIARY_CUSTOMERS');
 }
 
 ErrorStore.handleGetAuxiliaryInterventionsSuccess = function(results, params) {
-	delete ErrorStore._content.GET_AUXILIARY_INTERVENTIONS;
-	ErrorStore.notify('/GET_AUXILIARY_INTERVENTIONS');
+  delete ErrorStore._content.GET_AUXILIARY_INTERVENTIONS;
+  ErrorStore.notify('/GET_AUXILIARY_INTERVENTIONS');
 }
 
 ErrorStore.handleGetAuxiliaryInterventionsError = function(error, params) {
-	ErrorStore._content.GET_AUXILIARY_INTERVENTIONS = error;
-	ErrorStore.notify('/GET_AUXILIARY_INTERVENTIONS');
+  ErrorStore._content.GET_AUXILIARY_INTERVENTIONS = error;
+  ErrorStore.notify('/GET_AUXILIARY_INTERVENTIONS');
 }
 
 ErrorStore.handleGetAuxiliaryOffersSuccess = function(results, params) {
-	delete ErrorStore._content.GET_AUXILIARY_OFFERS;
-	ErrorStore.notify('/GET_AUXILIARY_OFFERS');
+  delete ErrorStore._content.GET_AUXILIARY_OFFERS;
+  ErrorStore.notify('/GET_AUXILIARY_OFFERS');
 }
 
 ErrorStore.handleGetAuxiliaryOffersError = function(error, params) {
-	ErrorStore._content.GET_AUXILIARY_OFFERS = error;
-	ErrorStore.notify('/GET_AUXILIARY_OFFERS');
+  ErrorStore._content.GET_AUXILIARY_OFFERS = error;
+  ErrorStore.notify('/GET_AUXILIARY_OFFERS');
 }
 
 ErrorStore.handleGetAuxiliaryMissionsSuccess = function(results, params) {
-	delete ErrorStore._content.GET_AUXILIARY_MISSIONS;
-	ErrorStore.notify('/GET_AUXILIARY_MISSIONS');
+  delete ErrorStore._content.GET_AUXILIARY_MISSIONS;
+  ErrorStore.notify('/GET_AUXILIARY_MISSIONS');
 }
 
 ErrorStore.handleGetAuxiliaryMissionsError = function(error, params) {
-	ErrorStore._content.GET_AUXILIARY_MISSIONS = error;
-	ErrorStore.notify('/GET_AUXILIARY_MISSIONS');
+  ErrorStore._content.GET_AUXILIARY_MISSIONS = error;
+  ErrorStore.notify('/GET_AUXILIARY_MISSIONS');
 }
 
 ErrorStore.handleGetAuxiliaryIndisponibilitysSuccess = function(results, params) {
-	delete ErrorStore._content.GET_AUXILIARY_INDISPONIBILITYS;
-	ErrorStore.notify('/GET_AUXILIARY_INDISPONIBILITYS');
+  delete ErrorStore._content.GET_AUXILIARY_INDISPONIBILITYS;
+  ErrorStore.notify('/GET_AUXILIARY_INDISPONIBILITYS');
 }
 
 ErrorStore.handleGetAuxiliaryIndisponibilitysError = function(error, params) {
-	ErrorStore._content.GET_AUXILIARY_INDISPONIBILITYS = error;
-	ErrorStore.notify('/GET_AUXILIARY_INDISPONIBILITYS');
+  ErrorStore._content.GET_AUXILIARY_INDISPONIBILITYS = error;
+  ErrorStore.notify('/GET_AUXILIARY_INDISPONIBILITYS');
 }
 
 ErrorStore.handleGetAuxiliaryGeozonesSuccess = function(results, params) {
-	delete ErrorStore._content.GET_AUXILIARY_GEOZONES;
-	ErrorStore.notify('/GET_AUXILIARY_GEOZONES');
+  delete ErrorStore._content.GET_AUXILIARY_GEOZONES;
+  ErrorStore.notify('/GET_AUXILIARY_GEOZONES');
 }
 
 ErrorStore.handleGetAuxiliaryGeozonesError = function(error, params) {
-	ErrorStore._content.GET_AUXILIARY_GEOZONES = error;
-	ErrorStore.notify('/GET_AUXILIARY_GEOZONES');
+  ErrorStore._content.GET_AUXILIARY_GEOZONES = error;
+  ErrorStore.notify('/GET_AUXILIARY_GEOZONES');
 }
 
 ErrorStore.handlePostCustomerSuccess = function(results, params) {
-	delete ErrorStore._content.POST_CUSTOMER;
-	ErrorStore.notify('/POST_CUSTOMER');
+  delete ErrorStore._content.POST_CUSTOMER;
+  ErrorStore.notify('/POST_CUSTOMER');
 }
 
 ErrorStore.handlePostCustomerError = function(error, params) {
-	ErrorStore._content.POST_CUSTOMER = error;
-	ErrorStore.notify('/POST_CUSTOMER');
+  ErrorStore._content.POST_CUSTOMER = error;
+  ErrorStore.notify('/POST_CUSTOMER');
 }
 
 ErrorStore.handleGetCustomerSuccess = function(results, params) {
-	delete ErrorStore._content.GET_CUSTOMER;
-	ErrorStore.notify('/GET_CUSTOMER');
+  delete ErrorStore._content.GET_CUSTOMER;
+  ErrorStore.notify('/GET_CUSTOMER');
 }
 
 ErrorStore.handleGetCustomerError = function(error, params) {
-	ErrorStore._content.GET_CUSTOMER = error;
-	ErrorStore.notify('/GET_CUSTOMER');
+  ErrorStore._content.GET_CUSTOMER = error;
+  ErrorStore.notify('/GET_CUSTOMER');
 }
 
 ErrorStore.handlePutCustomerSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_CUSTOMER;
-	ErrorStore.notify('/PUT_CUSTOMER');
+  delete ErrorStore._content.PUT_CUSTOMER;
+  ErrorStore.notify('/PUT_CUSTOMER');
 }
 
 ErrorStore.handlePutCustomerError = function(error, params) {
-	ErrorStore._content.PUT_CUSTOMER = error;
-	ErrorStore.notify('/PUT_CUSTOMER');
+  ErrorStore._content.PUT_CUSTOMER = error;
+  ErrorStore.notify('/PUT_CUSTOMER');
 }
 
 ErrorStore.handleDeleteCustomerSuccess = function(results, params) {
-	delete ErrorStore._content.DELETE_CUSTOMER;
-	ErrorStore.notify('/DELETE_CUSTOMER');
+  delete ErrorStore._content.DELETE_CUSTOMER;
+  ErrorStore.notify('/DELETE_CUSTOMER');
 }
 
 ErrorStore.handleDeleteCustomerError = function(error, params) {
-	ErrorStore._content.DELETE_CUSTOMER = error;
-	ErrorStore.notify('/DELETE_CUSTOMER');
+  ErrorStore._content.DELETE_CUSTOMER = error;
+  ErrorStore.notify('/DELETE_CUSTOMER');
 }
 
 ErrorStore.handleGetCustomerInterventionsSuccess = function(results, params) {
-	delete ErrorStore._content.GET_CUSTOMER_INTERVENTIONS;
-	ErrorStore.notify('/GET_CUSTOMER_INTERVENTIONS');
+  delete ErrorStore._content.GET_CUSTOMER_INTERVENTIONS;
+  ErrorStore.notify('/GET_CUSTOMER_INTERVENTIONS');
 }
 
 ErrorStore.handleGetCustomerInterventionsError = function(error, params) {
-	ErrorStore._content.GET_CUSTOMER_INTERVENTIONS = error;
-	ErrorStore.notify('/GET_CUSTOMER_INTERVENTIONS');
+  ErrorStore._content.GET_CUSTOMER_INTERVENTIONS = error;
+  ErrorStore.notify('/GET_CUSTOMER_INTERVENTIONS');
 }
 
 ErrorStore.handlePostGeozoneSuccess = function(results, params) {
-	delete ErrorStore._content.POST_GEOZONE;
-	ErrorStore.notify('/POST_GEOZONE');
+  delete ErrorStore._content.POST_GEOZONE;
+  ErrorStore.notify('/POST_GEOZONE');
 }
 
 ErrorStore.handlePostGeozoneError = function(error, params) {
-	ErrorStore._content.POST_GEOZONE = error;
-	ErrorStore.notify('/POST_GEOZONE');
+  ErrorStore._content.POST_GEOZONE = error;
+  ErrorStore.notify('/POST_GEOZONE');
 }
 
 ErrorStore.handleGetGeozoneSuccess = function(results, params) {
-	delete ErrorStore._content.GET_GEOZONE;
-	ErrorStore.notify('/GET_GEOZONE');
+  delete ErrorStore._content.GET_GEOZONE;
+  ErrorStore.notify('/GET_GEOZONE');
 }
 
 ErrorStore.handleGetGeozoneError = function(error, params) {
-	ErrorStore._content.GET_GEOZONE = error;
-	ErrorStore.notify('/GET_GEOZONE');
+  ErrorStore._content.GET_GEOZONE = error;
+  ErrorStore.notify('/GET_GEOZONE');
 }
 
 ErrorStore.handlePutGeozoneSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_GEOZONE;
-	ErrorStore.notify('/PUT_GEOZONE');
+  delete ErrorStore._content.PUT_GEOZONE;
+  ErrorStore.notify('/PUT_GEOZONE');
 }
 
 ErrorStore.handlePutGeozoneError = function(error, params) {
-	ErrorStore._content.PUT_GEOZONE = error;
-	ErrorStore.notify('/PUT_GEOZONE');
+  ErrorStore._content.PUT_GEOZONE = error;
+  ErrorStore.notify('/PUT_GEOZONE');
 }
 
 ErrorStore.handleDeleteGeozoneSuccess = function(results, params) {
-	delete ErrorStore._content.DELETE_GEOZONE;
-	ErrorStore.notify('/DELETE_GEOZONE');
+  delete ErrorStore._content.DELETE_GEOZONE;
+  ErrorStore.notify('/DELETE_GEOZONE');
 }
 
 ErrorStore.handleDeleteGeozoneError = function(error, params) {
-	ErrorStore._content.DELETE_GEOZONE = error;
-	ErrorStore.notify('/DELETE_GEOZONE');
+  ErrorStore._content.DELETE_GEOZONE = error;
+  ErrorStore.notify('/DELETE_GEOZONE');
 }
 
 ErrorStore.handleGetHelpTopicsSuccess = function(results, params) {
-	delete ErrorStore._content.GET_HELP_TOPICS;
-	ErrorStore.notify('/GET_HELP_TOPICS');
+  delete ErrorStore._content.GET_HELP_TOPICS;
+  ErrorStore.notify('/GET_HELP_TOPICS');
 }
 
 ErrorStore.handleGetHelpTopicsError = function(error, params) {
-	ErrorStore._content.GET_HELP_TOPICS = error;
-	ErrorStore.notify('/GET_HELP_TOPICS');
+  ErrorStore._content.GET_HELP_TOPICS = error;
+  ErrorStore.notify('/GET_HELP_TOPICS');
 }
 
 ErrorStore.handleGetHelpFaqsSuccess = function(results, params) {
-	delete ErrorStore._content.GET_HELP_FAQS;
-	ErrorStore.notify('/GET_HELP_FAQS');
+  delete ErrorStore._content.GET_HELP_FAQS;
+  ErrorStore.notify('/GET_HELP_FAQS');
 }
 
 ErrorStore.handleGetHelpFaqsError = function(error, params) {
-	ErrorStore._content.GET_HELP_FAQS = error;
-	ErrorStore.notify('/GET_HELP_FAQS');
+  ErrorStore._content.GET_HELP_FAQS = error;
+  ErrorStore.notify('/GET_HELP_FAQS');
 }
 
 ErrorStore.handlePostIndisponibilitySuccess = function(results, params) {
-	delete ErrorStore._content.POST_INDISPONIBILITY;
-	ErrorStore.notify('/POST_INDISPONIBILITY');
+  delete ErrorStore._content.POST_INDISPONIBILITY;
+  ErrorStore.notify('/POST_INDISPONIBILITY');
 }
 
 ErrorStore.handlePostIndisponibilityError = function(error, params) {
-	ErrorStore._content.POST_INDISPONIBILITY = error;
-	ErrorStore.notify('/POST_INDISPONIBILITY');
+  ErrorStore._content.POST_INDISPONIBILITY = error;
+  ErrorStore.notify('/POST_INDISPONIBILITY');
 }
 
 ErrorStore.handleGetIndisponibilitySuccess = function(results, params) {
-	delete ErrorStore._content.GET_INDISPONIBILITY;
-	ErrorStore.notify('/GET_INDISPONIBILITY');
+  delete ErrorStore._content.GET_INDISPONIBILITY;
+  ErrorStore.notify('/GET_INDISPONIBILITY');
 }
 
 ErrorStore.handleGetIndisponibilityError = function(error, params) {
-	ErrorStore._content.GET_INDISPONIBILITY = error;
-	ErrorStore.notify('/GET_INDISPONIBILITY');
+  ErrorStore._content.GET_INDISPONIBILITY = error;
+  ErrorStore.notify('/GET_INDISPONIBILITY');
 }
 
 ErrorStore.handlePutIndisponibilitySuccess = function(results, params) {
-	delete ErrorStore._content.PUT_INDISPONIBILITY;
-	ErrorStore.notify('/PUT_INDISPONIBILITY');
+  delete ErrorStore._content.PUT_INDISPONIBILITY;
+  ErrorStore.notify('/PUT_INDISPONIBILITY');
 }
 
 ErrorStore.handlePutIndisponibilityError = function(error, params) {
-	ErrorStore._content.PUT_INDISPONIBILITY = error;
-	ErrorStore.notify('/PUT_INDISPONIBILITY');
+  ErrorStore._content.PUT_INDISPONIBILITY = error;
+  ErrorStore.notify('/PUT_INDISPONIBILITY');
 }
 
 ErrorStore.handleDeleteIndisponibilitySuccess = function(results, params) {
-	delete ErrorStore._content.DELETE_INDISPONIBILITY;
-	ErrorStore.notify('/DELETE_INDISPONIBILITY');
+  delete ErrorStore._content.DELETE_INDISPONIBILITY;
+  ErrorStore.notify('/DELETE_INDISPONIBILITY');
 }
 
 ErrorStore.handleDeleteIndisponibilityError = function(error, params) {
-	ErrorStore._content.DELETE_INDISPONIBILITY = error;
-	ErrorStore.notify('/DELETE_INDISPONIBILITY');
+  ErrorStore._content.DELETE_INDISPONIBILITY = error;
+  ErrorStore.notify('/DELETE_INDISPONIBILITY');
 }
 
 ErrorStore.handlePostInterventionSuccess = function(results, params) {
-	delete ErrorStore._content.POST_INTERVENTION;
-	ErrorStore.notify('/POST_INTERVENTION');
+  delete ErrorStore._content.POST_INTERVENTION;
+  ErrorStore.notify('/POST_INTERVENTION');
 }
 
 ErrorStore.handlePostInterventionError = function(error, params) {
-	ErrorStore._content.POST_INTERVENTION = error;
-	ErrorStore.notify('/POST_INTERVENTION');
+  ErrorStore._content.POST_INTERVENTION = error;
+  ErrorStore.notify('/POST_INTERVENTION');
 }
 
 ErrorStore.handleGetInterventionSuccess = function(results, params) {
-	delete ErrorStore._content.GET_INTERVENTION;
-	ErrorStore.notify('/GET_INTERVENTION');
+  delete ErrorStore._content.GET_INTERVENTION;
+  ErrorStore.notify('/GET_INTERVENTION');
 }
 
 ErrorStore.handleGetInterventionError = function(error, params) {
-	ErrorStore._content.GET_INTERVENTION = error;
-	ErrorStore.notify('/GET_INTERVENTION');
+  ErrorStore._content.GET_INTERVENTION = error;
+  ErrorStore.notify('/GET_INTERVENTION');
 }
 
 ErrorStore.handlePutInterventionSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_INTERVENTION;
-	ErrorStore.notify('/PUT_INTERVENTION');
+  delete ErrorStore._content.PUT_INTERVENTION;
+  ErrorStore.notify('/PUT_INTERVENTION');
 }
 
 ErrorStore.handlePutInterventionError = function(error, params) {
-	ErrorStore._content.PUT_INTERVENTION = error;
-	ErrorStore.notify('/PUT_INTERVENTION');
+  ErrorStore._content.PUT_INTERVENTION = error;
+  ErrorStore.notify('/PUT_INTERVENTION');
 }
 
 ErrorStore.handleGetInterventionMatchSuccess = function(results, params) {
-	delete ErrorStore._content.GET_INTERVENTION_MATCH;
-	ErrorStore.notify('/GET_INTERVENTION_MATCH');
+  delete ErrorStore._content.GET_INTERVENTION_MATCH;
+  ErrorStore.notify('/GET_INTERVENTION_MATCH');
 }
 
 ErrorStore.handleGetInterventionMatchError = function(error, params) {
-	ErrorStore._content.GET_INTERVENTION_MATCH = error;
-	ErrorStore.notify('/GET_INTERVENTION_MATCH');
+  ErrorStore._content.GET_INTERVENTION_MATCH = error;
+  ErrorStore.notify('/GET_INTERVENTION_MATCH');
 }
 
 ErrorStore.handlePutInterventionCancelSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_INTERVENTION_CANCEL;
-	ErrorStore.notify('/PUT_INTERVENTION_CANCEL');
+  delete ErrorStore._content.PUT_INTERVENTION_CANCEL;
+  ErrorStore.notify('/PUT_INTERVENTION_CANCEL');
 }
 
 ErrorStore.handlePutInterventionCancelError = function(error, params) {
-	ErrorStore._content.PUT_INTERVENTION_CANCEL = error;
-	ErrorStore.notify('/PUT_INTERVENTION_CANCEL');
+  ErrorStore._content.PUT_INTERVENTION_CANCEL = error;
+  ErrorStore.notify('/PUT_INTERVENTION_CANCEL');
 }
 
 ErrorStore.handleGetMissionSuccess = function(results, params) {
-	delete ErrorStore._content.GET_MISSION;
-	ErrorStore.notify('/GET_MISSION');
+  delete ErrorStore._content.GET_MISSION;
+  ErrorStore.notify('/GET_MISSION');
 }
 
 ErrorStore.handleGetMissionError = function(error, params) {
-	ErrorStore._content.GET_MISSION = error;
-	ErrorStore.notify('/GET_MISSION');
+  ErrorStore._content.GET_MISSION = error;
+  ErrorStore.notify('/GET_MISSION');
 }
 
 ErrorStore.handlePutMissionSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_MISSION;
-	ErrorStore.notify('/PUT_MISSION');
+  delete ErrorStore._content.PUT_MISSION;
+  ErrorStore.notify('/PUT_MISSION');
 }
 
 ErrorStore.handlePutMissionError = function(error, params) {
-	ErrorStore._content.PUT_MISSION = error;
-	ErrorStore.notify('/PUT_MISSION');
+  ErrorStore._content.PUT_MISSION = error;
+  ErrorStore.notify('/PUT_MISSION');
 }
 
 ErrorStore.handleDeleteMissionSuccess = function(results, params) {
-	delete ErrorStore._content.DELETE_MISSION;
-	ErrorStore.notify('/DELETE_MISSION');
+  delete ErrorStore._content.DELETE_MISSION;
+  ErrorStore.notify('/DELETE_MISSION');
 }
 
 ErrorStore.handleDeleteMissionError = function(error, params) {
-	ErrorStore._content.DELETE_MISSION = error;
-	ErrorStore.notify('/DELETE_MISSION');
+  ErrorStore._content.DELETE_MISSION = error;
+  ErrorStore.notify('/DELETE_MISSION');
 }
 
 ErrorStore.handlePostOfferSuccess = function(results, params) {
-	delete ErrorStore._content.POST_OFFER;
-	ErrorStore.notify('/POST_OFFER');
+  delete ErrorStore._content.POST_OFFER;
+  ErrorStore.notify('/POST_OFFER');
 }
 
 ErrorStore.handlePostOfferError = function(error, params) {
-	ErrorStore._content.POST_OFFER = error;
-	ErrorStore.notify('/POST_OFFER');
+  ErrorStore._content.POST_OFFER = error;
+  ErrorStore.notify('/POST_OFFER');
 }
 
 ErrorStore.handleGetOfferSuccess = function(results, params) {
-	delete ErrorStore._content.GET_OFFER;
-	ErrorStore.notify('/GET_OFFER');
+  delete ErrorStore._content.GET_OFFER;
+  ErrorStore.notify('/GET_OFFER');
 }
 
 ErrorStore.handleGetOfferError = function(error, params) {
-	ErrorStore._content.GET_OFFER = error;
-	ErrorStore.notify('/GET_OFFER');
+  ErrorStore._content.GET_OFFER = error;
+  ErrorStore.notify('/GET_OFFER');
 }
 
 ErrorStore.handlePutOfferAcceptSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_OFFER_ACCEPT;
-	ErrorStore.notify('/PUT_OFFER_ACCEPT');
+  delete ErrorStore._content.PUT_OFFER_ACCEPT;
+  ErrorStore.notify('/PUT_OFFER_ACCEPT');
 }
 
 ErrorStore.handlePutOfferAcceptError = function(error, params) {
-	ErrorStore._content.PUT_OFFER_ACCEPT = error;
-	ErrorStore.notify('/PUT_OFFER_ACCEPT');
+  ErrorStore._content.PUT_OFFER_ACCEPT = error;
+  ErrorStore.notify('/PUT_OFFER_ACCEPT');
 }
 
 ErrorStore.handlePutOfferDeclineSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_OFFER_DECLINE;
-	ErrorStore.notify('/PUT_OFFER_DECLINE');
+  delete ErrorStore._content.PUT_OFFER_DECLINE;
+  ErrorStore.notify('/PUT_OFFER_DECLINE');
 }
 
 ErrorStore.handlePutOfferDeclineError = function(error, params) {
-	ErrorStore._content.PUT_OFFER_DECLINE = error;
-	ErrorStore.notify('/PUT_OFFER_DECLINE');
+  ErrorStore._content.PUT_OFFER_DECLINE = error;
+  ErrorStore.notify('/PUT_OFFER_DECLINE');
 }
 
 ErrorStore.handlePutOfferConfirmSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_OFFER_CONFIRM;
-	ErrorStore.notify('/PUT_OFFER_CONFIRM');
+  delete ErrorStore._content.PUT_OFFER_CONFIRM;
+  ErrorStore.notify('/PUT_OFFER_CONFIRM');
 }
 
 ErrorStore.handlePutOfferConfirmError = function(error, params) {
-	ErrorStore._content.PUT_OFFER_CONFIRM = error;
-	ErrorStore.notify('/PUT_OFFER_CONFIRM');
+  ErrorStore._content.PUT_OFFER_CONFIRM = error;
+  ErrorStore.notify('/PUT_OFFER_CONFIRM');
 }
 
 ErrorStore.handleGetServicesSuccess = function(results, params) {
-	delete ErrorStore._content.GET_SERVICES;
-	ErrorStore.notify('/GET_SERVICES');
+  delete ErrorStore._content.GET_SERVICES;
+  ErrorStore.notify('/GET_SERVICES');
 }
 
 ErrorStore.handleGetServicesError = function(error, params) {
-	ErrorStore._content.GET_SERVICES = error;
-	ErrorStore.notify('/GET_SERVICES');
+  ErrorStore._content.GET_SERVICES = error;
+  ErrorStore.notify('/GET_SERVICES');
 }
 
 ErrorStore.handlePostServiceSuccess = function(results, params) {
-	delete ErrorStore._content.POST_SERVICE;
-	ErrorStore.notify('/POST_SERVICE');
+  delete ErrorStore._content.POST_SERVICE;
+  ErrorStore.notify('/POST_SERVICE');
 }
 
 ErrorStore.handlePostServiceError = function(error, params) {
-	ErrorStore._content.POST_SERVICE = error;
-	ErrorStore.notify('/POST_SERVICE');
+  ErrorStore._content.POST_SERVICE = error;
+  ErrorStore.notify('/POST_SERVICE');
 }
 
 ErrorStore.handleGetServiceSuccess = function(results, params) {
-	delete ErrorStore._content.GET_SERVICE;
-	ErrorStore.notify('/GET_SERVICE');
+  delete ErrorStore._content.GET_SERVICE;
+  ErrorStore.notify('/GET_SERVICE');
 }
 
 ErrorStore.handleGetServiceError = function(error, params) {
-	ErrorStore._content.GET_SERVICE = error;
-	ErrorStore.notify('/GET_SERVICE');
+  ErrorStore._content.GET_SERVICE = error;
+  ErrorStore.notify('/GET_SERVICE');
 }
 
 ErrorStore.handlePutServiceSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_SERVICE;
-	ErrorStore.notify('/PUT_SERVICE');
+  delete ErrorStore._content.PUT_SERVICE;
+  ErrorStore.notify('/PUT_SERVICE');
 }
 
 ErrorStore.handlePutServiceError = function(error, params) {
-	ErrorStore._content.PUT_SERVICE = error;
-	ErrorStore.notify('/PUT_SERVICE');
+  ErrorStore._content.PUT_SERVICE = error;
+  ErrorStore.notify('/PUT_SERVICE');
 }
 
 ErrorStore.handlePostServiceCodeSuccess = function(results, params) {
-	delete ErrorStore._content.POST_SERVICE_CODE;
-	ErrorStore.notify('/POST_SERVICE_CODE');
+  delete ErrorStore._content.POST_SERVICE_CODE;
+  ErrorStore.notify('/POST_SERVICE_CODE');
 }
 
 ErrorStore.handlePostServiceCodeError = function(error, params) {
-	ErrorStore._content.POST_SERVICE_CODE = error;
-	ErrorStore.notify('/POST_SERVICE_CODE');
+  ErrorStore._content.POST_SERVICE_CODE = error;
+  ErrorStore.notify('/POST_SERVICE_CODE');
 }
 
 ErrorStore.handleGetServiceAuxiliarysSuccess = function(results, params) {
-	delete ErrorStore._content.GET_SERVICE_AUXILIARYS;
-	ErrorStore.notify('/GET_SERVICE_AUXILIARYS');
+  delete ErrorStore._content.GET_SERVICE_AUXILIARYS;
+  ErrorStore.notify('/GET_SERVICE_AUXILIARYS');
 }
 
 ErrorStore.handleGetServiceAuxiliarysError = function(error, params) {
-	ErrorStore._content.GET_SERVICE_AUXILIARYS = error;
-	ErrorStore.notify('/GET_SERVICE_AUXILIARYS');
+  ErrorStore._content.GET_SERVICE_AUXILIARYS = error;
+  ErrorStore.notify('/GET_SERVICE_AUXILIARYS');
 }
 
 ErrorStore.handleGetServiceCustomersSuccess = function(results, params) {
-	delete ErrorStore._content.GET_SERVICE_CUSTOMERS;
-	ErrorStore.notify('/GET_SERVICE_CUSTOMERS');
+  delete ErrorStore._content.GET_SERVICE_CUSTOMERS;
+  ErrorStore.notify('/GET_SERVICE_CUSTOMERS');
 }
 
 ErrorStore.handleGetServiceCustomersError = function(error, params) {
-	ErrorStore._content.GET_SERVICE_CUSTOMERS = error;
-	ErrorStore.notify('/GET_SERVICE_CUSTOMERS');
+  ErrorStore._content.GET_SERVICE_CUSTOMERS = error;
+  ErrorStore.notify('/GET_SERVICE_CUSTOMERS');
 }
 
 ErrorStore.handleGetServiceInterventionsSuccess = function(results, params) {
-	delete ErrorStore._content.GET_SERVICE_INTERVENTIONS;
-	ErrorStore.notify('/GET_SERVICE_INTERVENTIONS');
+  delete ErrorStore._content.GET_SERVICE_INTERVENTIONS;
+  ErrorStore.notify('/GET_SERVICE_INTERVENTIONS');
 }
 
 ErrorStore.handleGetServiceInterventionsError = function(error, params) {
-	ErrorStore._content.GET_SERVICE_INTERVENTIONS = error;
-	ErrorStore.notify('/GET_SERVICE_INTERVENTIONS');
+  ErrorStore._content.GET_SERVICE_INTERVENTIONS = error;
+  ErrorStore.notify('/GET_SERVICE_INTERVENTIONS');
 }
 
 ErrorStore.handleGetServiceOffersSuccess = function(results, params) {
-	delete ErrorStore._content.GET_SERVICE_OFFERS;
-	ErrorStore.notify('/GET_SERVICE_OFFERS');
+  delete ErrorStore._content.GET_SERVICE_OFFERS;
+  ErrorStore.notify('/GET_SERVICE_OFFERS');
 }
 
 ErrorStore.handleGetServiceOffersError = function(error, params) {
-	ErrorStore._content.GET_SERVICE_OFFERS = error;
-	ErrorStore.notify('/GET_SERVICE_OFFERS');
+  ErrorStore._content.GET_SERVICE_OFFERS = error;
+  ErrorStore.notify('/GET_SERVICE_OFFERS');
 }
 
 ErrorStore.handleGetServiceMissionsSuccess = function(results, params) {
-	delete ErrorStore._content.GET_SERVICE_MISSIONS;
-	ErrorStore.notify('/GET_SERVICE_MISSIONS');
+  delete ErrorStore._content.GET_SERVICE_MISSIONS;
+  ErrorStore.notify('/GET_SERVICE_MISSIONS');
 }
 
 ErrorStore.handleGetServiceMissionsError = function(error, params) {
-	ErrorStore._content.GET_SERVICE_MISSIONS = error;
-	ErrorStore.notify('/GET_SERVICE_MISSIONS');
+  ErrorStore._content.GET_SERVICE_MISSIONS = error;
+  ErrorStore.notify('/GET_SERVICE_MISSIONS');
 }
 
 ErrorStore.handleGetAuthSuccess = function(results, params) {
-	delete ErrorStore._content.GET_AUTH;
-	ErrorStore.notify('/GET_AUTH');
+  delete ErrorStore._content.GET_AUTH;
+  ErrorStore.notify('/GET_AUTH');
 }
 
 ErrorStore.handleGetAuthError = function(error, params) {
-	ErrorStore._content.GET_AUTH = error;
-	ErrorStore.notify('/GET_AUTH');
+  ErrorStore._content.GET_AUTH = error;
+  ErrorStore.notify('/GET_AUTH');
 }
 
 ErrorStore.handlePutAuthPasswordSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_AUTH_PASSWORD;
-	ErrorStore.notify('/PUT_AUTH_PASSWORD');
+  delete ErrorStore._content.PUT_AUTH_PASSWORD;
+  ErrorStore.notify('/PUT_AUTH_PASSWORD');
 }
 
 ErrorStore.handlePutAuthPasswordError = function(error, params) {
-	ErrorStore._content.PUT_AUTH_PASSWORD = error;
-	ErrorStore.notify('/PUT_AUTH_PASSWORD');
+  ErrorStore._content.PUT_AUTH_PASSWORD = error;
+  ErrorStore.notify('/PUT_AUTH_PASSWORD');
 }
 
 ErrorStore.handlePostAuthRegisterSuccess = function(results, params) {
-	delete ErrorStore._content.POST_AUTH_REGISTER;
-	ErrorStore.notify('/POST_AUTH_REGISTER');
+  delete ErrorStore._content.POST_AUTH_REGISTER;
+  ErrorStore.notify('/POST_AUTH_REGISTER');
 }
 
 ErrorStore.handlePostAuthRegisterError = function(error, params) {
-	ErrorStore._content.POST_AUTH_REGISTER = error;
-	ErrorStore.notify('/POST_AUTH_REGISTER');
+  ErrorStore._content.POST_AUTH_REGISTER = error;
+  ErrorStore.notify('/POST_AUTH_REGISTER');
 }
 
 ErrorStore.handlePostAuthRecoverSuccess = function(results, params) {
-	delete ErrorStore._content.POST_AUTH_RECOVER;
-	ErrorStore.notify('/POST_AUTH_RECOVER');
+  delete ErrorStore._content.POST_AUTH_RECOVER;
+  ErrorStore.notify('/POST_AUTH_RECOVER');
 }
 
 ErrorStore.handlePostAuthRecoverError = function(error, params) {
-	ErrorStore._content.POST_AUTH_RECOVER = error;
-	ErrorStore.notify('/POST_AUTH_RECOVER');
+  ErrorStore._content.POST_AUTH_RECOVER = error;
+  ErrorStore.notify('/POST_AUTH_RECOVER');
 }
 
 ErrorStore.handlePostAuthRecoverCheckSuccess = function(results, params) {
-	delete ErrorStore._content.POST_AUTH_RECOVER_CHECK;
-	ErrorStore.notify('/POST_AUTH_RECOVER_CHECK');
+  delete ErrorStore._content.POST_AUTH_RECOVER_CHECK;
+  ErrorStore.notify('/POST_AUTH_RECOVER_CHECK');
 }
 
 ErrorStore.handlePostAuthRecoverCheckError = function(error, params) {
-	ErrorStore._content.POST_AUTH_RECOVER_CHECK = error;
-	ErrorStore.notify('/POST_AUTH_RECOVER_CHECK');
+  ErrorStore._content.POST_AUTH_RECOVER_CHECK = error;
+  ErrorStore.notify('/POST_AUTH_RECOVER_CHECK');
 }
 
 ErrorStore.handlePutAuthRecoverSuccess = function(results, params) {
-	delete ErrorStore._content.PUT_AUTH_RECOVER;
-	ErrorStore.notify('/PUT_AUTH_RECOVER');
+  delete ErrorStore._content.PUT_AUTH_RECOVER;
+  ErrorStore.notify('/PUT_AUTH_RECOVER');
 }
 
 ErrorStore.handlePutAuthRecoverError = function(error, params) {
-	ErrorStore._content.PUT_AUTH_RECOVER = error;
-	ErrorStore.notify('/PUT_AUTH_RECOVER');
+  ErrorStore._content.PUT_AUTH_RECOVER = error;
+  ErrorStore.notify('/PUT_AUTH_RECOVER');
 }
 
 ErrorStore.handlePostAuthChangemailSuccess = function(results, params) {
-	delete ErrorStore._content.POST_AUTH_CHANGEMAIL;
-	ErrorStore.notify('/POST_AUTH_CHANGEMAIL');
+  delete ErrorStore._content.POST_AUTH_CHANGEMAIL;
+  ErrorStore.notify('/POST_AUTH_CHANGEMAIL');
 }
 
 ErrorStore.handlePostAuthChangemailError = function(error, params) {
-	ErrorStore._content.POST_AUTH_CHANGEMAIL = error;
-	ErrorStore.notify('/POST_AUTH_CHANGEMAIL');
+  ErrorStore._content.POST_AUTH_CHANGEMAIL = error;
+  ErrorStore.notify('/POST_AUTH_CHANGEMAIL');
 }
 
 ErrorStore.handlePostAuthChangemailCheckSuccess = function(results, params) {
-	delete ErrorStore._content.POST_AUTH_CHANGEMAIL_CHECK;
-	ErrorStore.notify('/POST_AUTH_CHANGEMAIL_CHECK');
+  delete ErrorStore._content.POST_AUTH_CHANGEMAIL_CHECK;
+  ErrorStore.notify('/POST_AUTH_CHANGEMAIL_CHECK');
 }
 
 ErrorStore.handlePostAuthChangemailCheckError = function(error, params) {
-	ErrorStore._content.POST_AUTH_CHANGEMAIL_CHECK = error;
-	ErrorStore.notify('/POST_AUTH_CHANGEMAIL_CHECK');
+  ErrorStore._content.POST_AUTH_CHANGEMAIL_CHECK = error;
+  ErrorStore.notify('/POST_AUTH_CHANGEMAIL_CHECK');
 }
 
 ErrorStore.handlePostAuthChangemailSuccess = function(results, params) {
-	delete ErrorStore._content.POST_AUTH_CHANGEMAIL;
-	ErrorStore.notify('/POST_AUTH_CHANGEMAIL');
+  delete ErrorStore._content.POST_AUTH_CHANGEMAIL;
+  ErrorStore.notify('/POST_AUTH_CHANGEMAIL');
 }
 
 ErrorStore.handlePostAuthChangemailError = function(error, params) {
-	ErrorStore._content.POST_AUTH_CHANGEMAIL = error;
-	ErrorStore.notify('/POST_AUTH_CHANGEMAIL');
+  ErrorStore._content.POST_AUTH_CHANGEMAIL = error;
+  ErrorStore.notify('/POST_AUTH_CHANGEMAIL');
 }
 
 ErrorStore.handlePostAuthChangemailConfirmSuccess = function(results, params) {
-	delete ErrorStore._content.POST_AUTH_CHANGEMAIL_CONFIRM;
-	ErrorStore.notify('/POST_AUTH_CHANGEMAIL_CONFIRM');
+  delete ErrorStore._content.POST_AUTH_CHANGEMAIL_CONFIRM;
+  ErrorStore.notify('/POST_AUTH_CHANGEMAIL_CONFIRM');
 }
 
 ErrorStore.handlePostAuthChangemailConfirmError = function(error, params) {
-	ErrorStore._content.POST_AUTH_CHANGEMAIL_CONFIRM = error;
-	ErrorStore.notify('/POST_AUTH_CHANGEMAIL_CONFIRM');
+  ErrorStore._content.POST_AUTH_CHANGEMAIL_CONFIRM = error;
+  ErrorStore.notify('/POST_AUTH_CHANGEMAIL_CONFIRM');
 }
 
 ErrorStore.handleGetImageSuccess = function(results, params) {
-	delete ErrorStore._content.GET_IMAGE;
-	ErrorStore.notify('/GET_IMAGE');
+  delete ErrorStore._content.GET_IMAGE;
+  ErrorStore.notify('/GET_IMAGE');
 }
 
 ErrorStore.handleGetImageError = function(error, params) {
-	ErrorStore._content.GET_IMAGE = error;
-	ErrorStore.notify('/GET_IMAGE');
+  ErrorStore._content.GET_IMAGE = error;
+  ErrorStore.notify('/GET_IMAGE');
 }
 
 ErrorStore.handlePostImageSuccess = function(results, params) {
-	delete ErrorStore._content.POST_IMAGE;
-	ErrorStore.notify('/POST_IMAGE');
+  delete ErrorStore._content.POST_IMAGE;
+  ErrorStore.notify('/POST_IMAGE');
 }
 
 ErrorStore.handlePostImageError = function(error, params) {
-	ErrorStore._content.POST_IMAGE = error;
-	ErrorStore.notify('/POST_IMAGE');
+  ErrorStore._content.POST_IMAGE = error;
+  ErrorStore.notify('/POST_IMAGE');
 }
 
 Dispatcher.register('LOGOUT', ErrorStore.handleLogout)

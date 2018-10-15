@@ -3,114 +3,114 @@
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class AuxiliaryDiploma {
 
-	static get NO_DIPLOMA() {
-		return _NO_DIPLOMA
-	}
+  static get NO_DIPLOMA() {
+    return _NO_DIPLOMA
+  }
 
-	static get DIPLOMA_AAPAPD() {
-		return _DIPLOMA_AAPAPD
-	}
+  static get DIPLOMA_AAPAPD() {
+    return _DIPLOMA_AAPAPD
+  }
 
-	static get DIPLOMA_ADVF() {
-		return _DIPLOMA_ADVF
-	}
+  static get DIPLOMA_ADVF() {
+    return _DIPLOMA_ADVF
+  }
 
-	static get DIPLOMA_ASSITANT_MATERNEL() {
-		return _DIPLOMA_ASSITANT_MATERNEL
-	}
+  static get DIPLOMA_ASSITANT_MATERNEL() {
+    return _DIPLOMA_ASSITANT_MATERNEL
+  }
 
-	static get DIPLOMA_AUXILIAIRE_PUERI() {
-		return _DIPLOMA_AUXILIAIRE_PUERI
-	}
+  static get DIPLOMA_AUXILIAIRE_PUERI() {
+    return _DIPLOMA_AUXILIAIRE_PUERI
+  }
 
-	static get DIPLOMA_BAC_ASSP() {
-		return _DIPLOMA_BAC_ASSP
-	}
+  static get DIPLOMA_BAC_ASSP() {
+    return _DIPLOMA_BAC_ASSP
+  }
 
-	static get DIPLOMA_BEP_ACCOMPAGNEMENT() {
-		return _DIPLOMA_BEP_ACCOMPAGNEMENT
-	}
+  static get DIPLOMA_BEP_ACCOMPAGNEMENT() {
+    return _DIPLOMA_BEP_ACCOMPAGNEMENT
+  }
 
-	static get DIPLOMA_BEPA() {
-		return _DIPLOMA_BEPA
-	}
+  static get DIPLOMA_BEPA() {
+    return _DIPLOMA_BEPA
+  }
 
-	static get DIPLOMA_CAP_ASSITANT() {
-		return _DIPLOMA_CAP_ASSITANT
-	}
+  static get DIPLOMA_CAP_ASSITANT() {
+    return _DIPLOMA_CAP_ASSITANT
+  }
 
-	static get DIPLOMA_CAP_ENFANCE() {
-		return _DIPLOMA_CAP_ENFANCE
-	}
+  static get DIPLOMA_CAP_ENFANCE() {
+    return _DIPLOMA_CAP_ENFANCE
+  }
 
-	static get DIPLOMA_CAPA() {
-		return _DIPLOMA_CAPA
-	}
+  static get DIPLOMA_CAPA() {
+    return _DIPLOMA_CAPA
+  }
 
-	static get DIPLOMA_DEAES() {
-		return _DIPLOMA_DEAES
-	}
+  static get DIPLOMA_DEAES() {
+    return _DIPLOMA_DEAES
+  }
 
-	static get DIPLOMA_DEAF() {
-		return _DIPLOMA_DEAF
-	}
+  static get DIPLOMA_DEAF() {
+    return _DIPLOMA_DEAF
+  }
 
-	static get DIPLOMA_DEAMP() {
-		return _DIPLOMA_DEAMP
-	}
+  static get DIPLOMA_DEAMP() {
+    return _DIPLOMA_DEAMP
+  }
 
-	static get DIPLOMA_DEAS() {
-		return _DIPLOMA_DEAS
-	}
+  static get DIPLOMA_DEAS() {
+    return _DIPLOMA_DEAS
+  }
 
-	static get DIPLOMA_DEAVS() {
-		return _DIPLOMA_DEAVS
-	}
+  static get DIPLOMA_DEAVS() {
+    return _DIPLOMA_DEAVS
+  }
 
-	static get DIPLOMA_DEEJE() {
-		return _DIPLOMA_DEEJE
-	}
+  static get DIPLOMA_DEEJE() {
+    return _DIPLOMA_DEEJE
+  }
 
-	static get DIPLOMA_FAMILY() {
-		return _DIPLOMA_FAMILY
-	}
+  static get DIPLOMA_FAMILY() {
+    return _DIPLOMA_FAMILY
+  }
 
-	static get DIPLOMA_MENTION() {
-		return _DIPLOMA_MENTION
-	}
+  static get DIPLOMA_MENTION() {
+    return _DIPLOMA_MENTION
+  }
 
-	static get DIPLOMA_TITRE_PRO() {
-		return _DIPLOMA_TITRE_PRO
-	}
+  static get DIPLOMA_TITRE_PRO() {
+    return _DIPLOMA_TITRE_PRO
+  }
 
-	static get VALUES() {
-		return [
-			_NO_DIPLOMA,
-			_DIPLOMA_AAPAPD,
-			_DIPLOMA_ADVF,
-			_DIPLOMA_ASSITANT_MATERNEL,
-			_DIPLOMA_AUXILIAIRE_PUERI,
-			_DIPLOMA_BAC_ASSP,
-			_DIPLOMA_BEP_ACCOMPAGNEMENT,
-			_DIPLOMA_BEPA,
-			_DIPLOMA_CAP_ASSITANT,
-			_DIPLOMA_CAP_ENFANCE,
-			_DIPLOMA_CAPA,
-			_DIPLOMA_DEAES,
-			_DIPLOMA_DEAF,
-			_DIPLOMA_DEAMP,
-			_DIPLOMA_DEAS,
-			_DIPLOMA_DEAVS,
-			_DIPLOMA_DEEJE,
-			_DIPLOMA_FAMILY,
-			_DIPLOMA_MENTION,
-			_DIPLOMA_TITRE_PRO,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_NO_DIPLOMA,
+    	_DIPLOMA_AAPAPD,
+    	_DIPLOMA_ADVF,
+    	_DIPLOMA_ASSITANT_MATERNEL,
+    	_DIPLOMA_AUXILIAIRE_PUERI,
+    	_DIPLOMA_BAC_ASSP,
+    	_DIPLOMA_BEP_ACCOMPAGNEMENT,
+    	_DIPLOMA_BEPA,
+    	_DIPLOMA_CAP_ASSITANT,
+    	_DIPLOMA_CAP_ENFANCE,
+    	_DIPLOMA_CAPA,
+    	_DIPLOMA_DEAES,
+    	_DIPLOMA_DEAF,
+    	_DIPLOMA_DEAMP,
+    	_DIPLOMA_DEAS,
+    	_DIPLOMA_DEAVS,
+    	_DIPLOMA_DEEJE,
+    	_DIPLOMA_FAMILY,
+    	_DIPLOMA_MENTION,
+    	_DIPLOMA_TITRE_PRO,
+    ]
+  }
 
-	static get(id) {
-		return id && AuxiliaryDiploma[id.toUpperCase()]
-	}
+  static get(id) {
+    return id && AuxiliaryDiploma[id.toUpperCase()]
+  }
 
 }
 const _NO_DIPLOMA = { key: 'no_diploma', keyName: 'NO_DIPLOMA' }

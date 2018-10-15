@@ -5,25 +5,25 @@ import AuthHelper from 'helpers/AuthHelper'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class ImageHelper {
 
-	register(id, callback) {
-		StoreRegistry.register('IMAGE_STORE', (id ? '/' + id: ''), callback)
-	}
+  register(id, callback) {
+    StoreRegistry.register('IMAGE_STORE', (id ? '/' + id: ''), callback)
+  }
 
-	unregister(id, callback) {
-		StoreRegistry.unregister('IMAGE_STORE', (id ? '/' + id: ''), callback)
-	}
+  unregister(id, callback) {
+    StoreRegistry.unregister('IMAGE_STORE', (id ? '/' + id: ''), callback)
+  }
 
-	getImage(id) {
-		return Dispatcher.issue('GET_IMAGE', {token: AuthHelper.getToken(), id: id});
-	}
+  getImage(id) {
+    return Dispatcher.issue('GET_IMAGE', {token: AuthHelper.getToken(), id: id});
+  }
 
-	postImage(data) {
-		return Dispatcher.issue('POST_IMAGE', {token: AuthHelper.getToken(), data: data});
-	}
+  postImage(data) {
+    return Dispatcher.issue('POST_IMAGE', {token: AuthHelper.getToken(), data: data});
+  }
 
-	getData(id) {
-		return StoreRegistry.getStore('IMAGE_STORE').getData((id ? '/' + id : ''));
-	}
+  getData(id) {
+    return StoreRegistry.getStore('IMAGE_STORE').getData((id ? '/' + id : ''));
+  }
 
 }
 var ImageHelperObj = new ImageHelper()

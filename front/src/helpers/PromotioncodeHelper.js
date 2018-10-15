@@ -5,25 +5,25 @@ import AuthHelper from 'helpers/AuthHelper'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class PromotioncodeHelper {
 
-	register(id, callback) {
-		StoreRegistry.register('REST_STORE', 'promotioncode' + (id ? '/' + id : ''), callback)
-	}
+  register(id, callback) {
+    StoreRegistry.register('REST_STORE', 'promotioncode' + (id ? '/' + id : ''), callback)
+  }
 
-	unregister(id, callback) {
-		StoreRegistry.unregister('REST_STORE', 'promotioncode' + (id ? '/' + id : ''), callback)
-	}
+  unregister(id, callback) {
+    StoreRegistry.unregister('REST_STORE', 'promotioncode' + (id ? '/' + id : ''), callback)
+  }
 
-	postAuxiliaryCode(data) {
-		return Dispatcher.issue('POST_AUXILIARY_CODE', {token: AuthHelper.getToken(), id: data.id, data: data});
-	}
+  postAuxiliaryCode(data) {
+    return Dispatcher.issue('POST_AUXILIARY_CODE', {token: AuthHelper.getToken(), id: data.id, data: data});
+  }
 
-	postServiceCode(data) {
-		return Dispatcher.issue('POST_SERVICE_CODE', {token: AuthHelper.getToken(), id: data.id, data: data});
-	}
+  postServiceCode(data) {
+    return Dispatcher.issue('POST_SERVICE_CODE', {token: AuthHelper.getToken(), id: data.id, data: data});
+  }
 
-	getData(id) {
-		return StoreRegistry.getStore('REST_STORE').getData('/promotioncode' + (id ? '/' + id : ''));
-	}
+  getData(id) {
+    return StoreRegistry.getStore('REST_STORE').getData('/promotioncode' + (id ? '/' + id : ''));
+  }
 
 }
 var PromotioncodeObj = new PromotioncodeHelper()

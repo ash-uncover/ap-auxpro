@@ -4,81 +4,81 @@ import ValidatorTypes from 'ap-validators'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class Validators {
 
-	static get DEFAULT() {
-		return _DEFAULT
-	}
+  static get DEFAULT() {
+    return _DEFAULT
+  }
 
-	static get PASSWORD() {
-		return _PASSWORD
-	}
+  static get PASSWORD() {
+    return _PASSWORD
+  }
 
-	static get EMAIL() {
-		return _EMAIL
-	}
+  static get EMAIL() {
+    return _EMAIL
+  }
 
-	static get NON_NULL() {
-		return _NON_NULL
-	}
+  static get NON_NULL() {
+    return _NON_NULL
+  }
 
-	static get NON_EMPTY_STRING() {
-		return _NON_EMPTY_STRING
-	}
+  static get NON_EMPTY_STRING() {
+    return _NON_EMPTY_STRING
+  }
 
-	static get NON_EMPTY_ARRAY() {
-		return _NON_EMPTY_ARRAY
-	}
+  static get NON_EMPTY_ARRAY() {
+    return _NON_EMPTY_ARRAY
+  }
 
-	static get BOOLEAN() {
-		return _BOOLEAN
-	}
+  static get BOOLEAN() {
+    return _BOOLEAN
+  }
 
-	static get PHONE() {
-		return _PHONE
-	}
+  static get PHONE() {
+    return _PHONE
+  }
 
-	static get SOCIAL_NUMBER() {
-		return _SOCIAL_NUMBER
-	}
+  static get SOCIAL_NUMBER() {
+    return _SOCIAL_NUMBER
+  }
 
-	static get POSTAL_CODE() {
-		return _POSTAL_CODE
-	}
+  static get POSTAL_CODE() {
+    return _POSTAL_CODE
+  }
 
-	static get POSITIVE_INTEGER() {
-		return _POSITIVE_INTEGER
-	}
+  static get POSITIVE_INTEGER() {
+    return _POSITIVE_INTEGER
+  }
 
-	static get ID_CARD_NUMBER() {
-		return _ID_CARD_NUMBER
-	}
+  static get ID_CARD_NUMBER() {
+    return _ID_CARD_NUMBER
+  }
 
-	static get SIRET_NUMBER() {
-		return _SIRET_NUMBER
-	}
+  static get SIRET_NUMBER() {
+    return _SIRET_NUMBER
+  }
 
-	static get TWEET() {
-		return _TWEET
-	}
+  static get TWEET() {
+    return _TWEET
+  }
 
-	static get TIME_ARRAY() {
-		return _TIME_ARRAY
-	}
+  static get TIME_ARRAY() {
+    return _TIME_ARRAY
+  }
 
-	static get BEFORE_TODAY() {
-		return _BEFORE_TODAY
-	}
+  static get BEFORE_TODAY() {
+    return _BEFORE_TODAY
+  }
 
-	static get BEFORE_TODAY_OR_TODAY() {
-		return _BEFORE_TODAY_OR_TODAY
-	}
+  static get BEFORE_TODAY_OR_TODAY() {
+    return _BEFORE_TODAY_OR_TODAY
+  }
 
-	static get AFTER_TODAY() {
-		return _AFTER_TODAY
-	}
+  static get AFTER_TODAY() {
+    return _AFTER_TODAY
+  }
 
-	static get AFTER_TODAY_OR_TODAY() {
-		return _AFTER_TODAY_OR_TODAY
-	}
+  static get AFTER_TODAY_OR_TODAY() {
+    return _AFTER_TODAY_OR_TODAY
+  }
 
 }
 const _DEFAULT = {

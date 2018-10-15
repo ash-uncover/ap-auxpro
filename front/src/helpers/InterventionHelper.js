@@ -5,49 +5,49 @@ import AuthHelper from 'helpers/AuthHelper'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class InterventionHelper {
 
-	register(id, callback) {
-		StoreRegistry.register('REST_STORE', 'intervention' + (id ? '/' + id : ''), callback)
-	}
+  register(id, callback) {
+    StoreRegistry.register('REST_STORE', 'intervention' + (id ? '/' + id : ''), callback)
+  }
 
-	unregister(id, callback) {
-		StoreRegistry.unregister('REST_STORE', 'intervention' + (id ? '/' + id : ''), callback)
-	}
+  unregister(id, callback) {
+    StoreRegistry.unregister('REST_STORE', 'intervention' + (id ? '/' + id : ''), callback)
+  }
 
-	getAuxiliaryInterventions(auxiliaryId, query) {
-		return Dispatcher.issue('GET_AUXILIARY_INTERVENTIONS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
-	}
+  getAuxiliaryInterventions(auxiliaryId, query) {
+    return Dispatcher.issue('GET_AUXILIARY_INTERVENTIONS', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
+  }
 
-	getCustomerInterventions(customerId, query) {
-		return Dispatcher.issue('GET_CUSTOMER_INTERVENTIONS', {token: AuthHelper.getToken(), customerId: customerId, query: query});
-	}
+  getCustomerInterventions(customerId, query) {
+    return Dispatcher.issue('GET_CUSTOMER_INTERVENTIONS', {token: AuthHelper.getToken(), customerId: customerId, query: query});
+  }
 
-	postIntervention(data) {
-		return Dispatcher.issue('POST_INTERVENTION', {token: AuthHelper.getToken(), data: data});
-	}
+  postIntervention(data) {
+    return Dispatcher.issue('POST_INTERVENTION', {token: AuthHelper.getToken(), data: data});
+  }
 
-	getIntervention(id) {
-		return Dispatcher.issue('GET_INTERVENTION', {token: AuthHelper.getToken(), id: id});
-	}
+  getIntervention(id) {
+    return Dispatcher.issue('GET_INTERVENTION', {token: AuthHelper.getToken(), id: id});
+  }
 
-	putIntervention(data) {
-		return Dispatcher.issue('PUT_INTERVENTION', {token: AuthHelper.getToken(), id: data.id, data: data});
-	}
+  putIntervention(data) {
+    return Dispatcher.issue('PUT_INTERVENTION', {token: AuthHelper.getToken(), id: data.id, data: data});
+  }
 
-	getInterventionMatch(id, query) {
-		return Dispatcher.issue('GET_INTERVENTION_MATCH', {token: AuthHelper.getToken(), id: id, query: query});
-	}
+  getInterventionMatch(id, query) {
+    return Dispatcher.issue('GET_INTERVENTION_MATCH', {token: AuthHelper.getToken(), id: id, query: query});
+  }
 
-	putInterventionCancel(data) {
-		return Dispatcher.issue('PUT_INTERVENTION_CANCEL', {token: AuthHelper.getToken(), id: data.id, data: data});
-	}
+  putInterventionCancel(data) {
+    return Dispatcher.issue('PUT_INTERVENTION_CANCEL', {token: AuthHelper.getToken(), id: data.id, data: data});
+  }
 
-	getServiceInterventions(serviceId, query) {
-		return Dispatcher.issue('GET_SERVICE_INTERVENTIONS', {token: AuthHelper.getToken(), serviceId: serviceId, query: query});
-	}
+  getServiceInterventions(serviceId, query) {
+    return Dispatcher.issue('GET_SERVICE_INTERVENTIONS', {token: AuthHelper.getToken(), serviceId: serviceId, query: query});
+  }
 
-	getData(id) {
-		return StoreRegistry.getStore('REST_STORE').getData('/intervention' + (id ? '/' + id : ''));
-	}
+  getData(id) {
+    return StoreRegistry.getStore('REST_STORE').getData('/intervention' + (id ? '/' + id : ''));
+  }
 
 }
 var InterventionObj = new InterventionHelper()

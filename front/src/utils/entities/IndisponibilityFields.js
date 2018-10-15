@@ -5,68 +5,68 @@ import IndisponibilityRecurencePeriod from 'utils/constants/IndisponibilityRecur
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class IndisponibilityFields {
 
-	static get PERIOD() {
-		return _PERIOD
-	}
+  static get PERIOD() {
+    return _PERIOD
+  }
 
-	static get AUXILIARY_ID() {
-		return _AUXILIARY_ID
-	}
+  static get AUXILIARY_ID() {
+    return _AUXILIARY_ID
+  }
 
-	static get END_DATE() {
-		return _END_DATE
-	}
+  static get END_DATE() {
+    return _END_DATE
+  }
 
-	static get LAST_UPDATE_DATE() {
-		return _LAST_UPDATE_DATE
-	}
+  static get LAST_UPDATE_DATE() {
+    return _LAST_UPDATE_DATE
+  }
 
-	static get DAYS() {
-		return _DAYS
-	}
+  static get DAYS() {
+    return _DAYS
+  }
 
-	static get START_TIME() {
-		return _START_TIME
-	}
+  static get START_TIME() {
+    return _START_TIME
+  }
 
-	static get END_TIME() {
-		return _END_TIME
-	}
+  static get END_TIME() {
+    return _END_TIME
+  }
 
-	static get ID() {
-		return _ID
-	}
+  static get ID() {
+    return _ID
+  }
 
-	static get CREATION_DATE() {
-		return _CREATION_DATE
-	}
+  static get CREATION_DATE() {
+    return _CREATION_DATE
+  }
 
-	static get START_DATE() {
-		return _START_DATE
-	}
+  static get START_DATE() {
+    return _START_DATE
+  }
 
-	static get VALUES() {
-		return [
-			_PERIOD,
-			_AUXILIARY_ID,
-			_END_DATE,
-			_LAST_UPDATE_DATE,
-			_DAYS,
-			_START_TIME,
-			_END_TIME,
-			_ID,
-			_CREATION_DATE,
-			_START_DATE,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_PERIOD,
+    	_AUXILIARY_ID,
+    	_END_DATE,
+    	_LAST_UPDATE_DATE,
+    	_DAYS,
+    	_START_TIME,
+    	_END_TIME,
+    	_ID,
+    	_CREATION_DATE,
+    	_START_DATE,
+    ]
+  }
 
-	static get(id) {
-		for (let i = 0 ; i < IndisponibilityFields.VALUES.length ; i++) {
-			if (IndisponibilityFields.VALUES[i].key === id) {
-				return IndisponibilityFields.VALUES[i]
-			}
-		}
-	}
+  static get(id) {
+    for (let i = 0 ; i < IndisponibilityFields.VALUES.length ; i++) {
+    	if (IndisponibilityFields.VALUES[i].key === id) {
+    		return IndisponibilityFields.VALUES[i]
+    	}
+    }
+  }
 
 }
 let _PERIOD = {

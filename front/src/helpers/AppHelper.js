@@ -4,37 +4,37 @@ import { Dispatcher, StoreRegistry } from 'ap-flux'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class AppHelper {
 
-	register(path, callback) {
-		StoreRegistry.register('APP_STORE', (path ? path : ''), callback)
-	}
+  register(path, callback) {
+    StoreRegistry.register('APP_STORE', (path ? path : ''), callback)
+  }
 
-	unregister(path, callback) {
-		StoreRegistry.unregister('APP_STORE', (path ? path : ''), callback)
-	}
+  unregister(path, callback) {
+    StoreRegistry.unregister('APP_STORE', (path ? path : ''), callback)
+  }
 
-	getData(path) {
-		return StoreRegistry.getStore('APP_STORE').getData(path);
-	}
+  getData(path) {
+    return StoreRegistry.getStore('APP_STORE').getData(path);
+  }
 
-	navigate(path) {
-		return Dispatcher.issue('NAVIGATE', { path: path });
-	}
+  navigate(path) {
+    return Dispatcher.issue('NAVIGATE', { path: path });
+  }
 
-	navigateBack() {
-		return Dispatcher.issue('NAVIGATE_BACK', {});
-	}
+  navigateBack() {
+    return Dispatcher.issue('NAVIGATE_BACK', {});
+  }
 
-	setBusy(busy) {
-		return Dispatcher.issue('SET_APP_DISPLAY', { path: '/busy', value: !!busy });
-	}
+  setBusy(busy) {
+    return Dispatcher.issue('SET_APP_DISPLAY', { path: '/busy', value: !!busy });
+  }
 
-	logOut() {
-		return Dispatcher.issue('LOGOUT', {});
-	}
+  logOut() {
+    return Dispatcher.issue('LOGOUT', {});
+  }
 
-	put(path, value) {
-		return Dispatcher.issue('PUT', { path: path, value: value });
-	}
+  put(path, value) {
+    return Dispatcher.issue('PUT', { path: path, value: value });
+  }
 
 }
 var AppHelperObj = new AppHelper()

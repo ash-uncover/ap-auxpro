@@ -5,37 +5,37 @@ import AuthHelper from 'helpers/AuthHelper'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class GeozoneHelper {
 
-	register(id, callback) {
-		StoreRegistry.register('REST_STORE', 'geozone' + (id ? '/' + id : ''), callback)
-	}
+  register(id, callback) {
+    StoreRegistry.register('REST_STORE', 'geozone' + (id ? '/' + id : ''), callback)
+  }
 
-	unregister(id, callback) {
-		StoreRegistry.unregister('REST_STORE', 'geozone' + (id ? '/' + id : ''), callback)
-	}
+  unregister(id, callback) {
+    StoreRegistry.unregister('REST_STORE', 'geozone' + (id ? '/' + id : ''), callback)
+  }
 
-	getAuxiliaryGeozones(auxiliaryId, query) {
-		return Dispatcher.issue('GET_AUXILIARY_GEOZONES', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
-	}
+  getAuxiliaryGeozones(auxiliaryId, query) {
+    return Dispatcher.issue('GET_AUXILIARY_GEOZONES', {token: AuthHelper.getToken(), auxiliaryId: auxiliaryId, query: query});
+  }
 
-	postGeozone(data) {
-		return Dispatcher.issue('POST_GEOZONE', {token: AuthHelper.getToken(), data: data});
-	}
+  postGeozone(data) {
+    return Dispatcher.issue('POST_GEOZONE', {token: AuthHelper.getToken(), data: data});
+  }
 
-	getGeozone(id) {
-		return Dispatcher.issue('GET_GEOZONE', {token: AuthHelper.getToken(), id: id});
-	}
+  getGeozone(id) {
+    return Dispatcher.issue('GET_GEOZONE', {token: AuthHelper.getToken(), id: id});
+  }
 
-	putGeozone(data) {
-		return Dispatcher.issue('PUT_GEOZONE', {token: AuthHelper.getToken(), id: data.id, data: data});
-	}
+  putGeozone(data) {
+    return Dispatcher.issue('PUT_GEOZONE', {token: AuthHelper.getToken(), id: data.id, data: data});
+  }
 
-	deleteGeozone(id) {
-		return Dispatcher.issue('DELETE_GEOZONE', {token: AuthHelper.getToken(), id: id});
-	}
+  deleteGeozone(id) {
+    return Dispatcher.issue('DELETE_GEOZONE', {token: AuthHelper.getToken(), id: id});
+  }
 
-	getData(id) {
-		return StoreRegistry.getStore('REST_STORE').getData('/geozone' + (id ? '/' + id : ''));
-	}
+  getData(id) {
+    return StoreRegistry.getStore('REST_STORE').getData('/geozone' + (id ? '/' + id : ''));
+  }
 
 }
 var GeozoneObj = new GeozoneHelper()

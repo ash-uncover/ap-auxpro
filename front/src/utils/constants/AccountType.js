@@ -3,24 +3,24 @@
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class AccountType {
 
-	static get BASIQUE() {
-		return _BASIQUE
-	}
+  static get BASIQUE() {
+    return _BASIQUE
+  }
 
-	static get PREMIUM() {
-		return _PREMIUM
-	}
+  static get PREMIUM() {
+    return _PREMIUM
+  }
 
-	static get VALUES() {
-		return [
-			_BASIQUE,
-			_PREMIUM,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_BASIQUE,
+    	_PREMIUM,
+    ]
+  }
 
-	static get(id) {
-		return id && AccountType[id.toUpperCase()]
-	}
+  static get(id) {
+    return id && AccountType[id.toUpperCase()]
+  }
 
 }
 const _BASIQUE = { key: 'Basique', keyName: 'BASIQUE' }

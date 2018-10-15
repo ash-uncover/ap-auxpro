@@ -3,34 +3,34 @@
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class InterventionStatus {
 
-	static get PENDING() {
-		return _PENDING
-	}
+  static get PENDING() {
+    return _PENDING
+  }
 
-	static get MATCHING() {
-		return _MATCHING
-	}
+  static get MATCHING() {
+    return _MATCHING
+  }
 
-	static get ON_GOING() {
-		return _ON_GOING
-	}
+  static get ON_GOING() {
+    return _ON_GOING
+  }
 
-	static get CANCELED() {
-		return _CANCELED
-	}
+  static get CANCELED() {
+    return _CANCELED
+  }
 
-	static get VALUES() {
-		return [
-			_PENDING,
-			_MATCHING,
-			_ON_GOING,
-			_CANCELED,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_PENDING,
+    	_MATCHING,
+    	_ON_GOING,
+    	_CANCELED,
+    ]
+  }
 
-	static get(id) {
-		return id && InterventionStatus[id.toUpperCase()]
-	}
+  static get(id) {
+    return id && InterventionStatus[id.toUpperCase()]
+  }
 
 }
 const _PENDING = { key: 'Pending', keyName: 'PENDING' }

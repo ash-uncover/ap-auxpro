@@ -66,672 +66,672 @@ let get_service_offers = new ActionBase({ name: 'GET_SERVICE_OFFERS' })
 let get_service_missions = new ActionBase({ name: 'GET_SERVICE_MISSIONS' })
 
 get_auth.do = function(args) {
-	Utils.checkMembers(args, ['token']);
-	var reqParam = {
-		method: 'GET',
-		url: '/auth',
-		token : args.token
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/auth',
+  	token : args.token
+  };
+  return RestService.request(reqParam);
 }
 
 post_auth.do = function(args) {
-	Utils.checkMembers(args, ['data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/auth',
-		data: args.data
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/auth',
+  	data: args.data
+  };
+  return RestService.request(reqParam);
 }
 
 put_auth_password.do = function(args) {
-	Utils.checkMembers(args, ['data', 'token']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/auth/password',
-		token : args.token,
-		data: args.data
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['data', 'token']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/auth/password',
+  	token : args.token,
+  	data: args.data
+  };
+  return RestService.request(reqParam);
 }
 
 post_auth_register.do = function(args) {
-	Utils.checkMembers(args, ['data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/auth/register',
-		data: args.data
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/auth/register',
+  	data: args.data
+  };
+  return RestService.request(reqParam);
 }
 
 post_auth_recover.do = function(args) {
-	Utils.checkMembers(args, ['data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/auth/recover',
-		data: args.data
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/auth/recover',
+  	data: args.data
+  };
+  return RestService.request(reqParam);
 }
 
 post_auth_recover_check.do = function(args) {
-	Utils.checkMembers(args, ['data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/auth/recover/check',
-		data: args.data
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/auth/recover/check',
+  	data: args.data
+  };
+  return RestService.request(reqParam);
 }
 
 put_auth_recover.do = function(args) {
-	Utils.checkMembers(args, ['data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/auth/recover',
-		data: args.data
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['data']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/auth/recover',
+  	data: args.data
+  };
+  return RestService.request(reqParam);
 }
 
 post_auth_changemail.do = function(args) {
-	Utils.checkMembers(args, ['token']);
-	var reqParam = {
-		method: 'POST',
-		url: '/auth/changemail',
-		token : args.token
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/auth/changemail',
+  	token : args.token
+  };
+  return RestService.request(reqParam);
 }
 
 post_auth_changemail_check.do = function(args) {
-	Utils.checkMembers(args, ['data', 'token']);
-	var reqParam = {
-		method: 'POST',
-		url: '/auth/changemail/check',
-		token : args.token,
-		data: args.data
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['data', 'token']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/auth/changemail/check',
+  	token : args.token,
+  	data: args.data
+  };
+  return RestService.request(reqParam);
 }
 
 put_auth_changemail.do = function(args) {
-	Utils.checkMembers(args, ['data', 'token']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/auth/changemail',
-		token : args.token,
-		data: args.data
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['data', 'token']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/auth/changemail',
+  	token : args.token,
+  	data: args.data
+  };
+  return RestService.request(reqParam);
 }
 
 post_auth_changemail_confirm.do = function(args) {
-	Utils.checkMembers(args, ['data', 'token']);
-	var reqParam = {
-		method: 'POST',
-		url: '/auth/changemail/confirm',
-		token : args.token,
-		data: args.data
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['data', 'token']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/auth/changemail/confirm',
+  	token : args.token,
+  	data: args.data
+  };
+  return RestService.request(reqParam);
 }
 
 get_image.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'GET',
-		token : args.token,
-		url: '/image/' + args.id,
-		type  : 'arraybuffer'
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'GET',
+  	token : args.token,
+  	url: '/image/' + args.id,
+  	type  : 'arraybuffer'
+  };
+  return RestService.request(reqParam);
 }
 
 post_image.do = function(args) {
-	Utils.checkMembers(args, ['token', 'data']);
-	var reqParam = {
-		method: 'POST',
-		token : args.token,
-		url: '/image',
-		data  : args.data
-	};
-	return RestService.sendData(reqParam);
+  Utils.checkMembers(args, ['token', 'data']);
+  var reqParam = {
+  	method: 'POST',
+  	token : args.token,
+  	url: '/image',
+  	data  : args.data
+  };
+  return RestService.sendData(reqParam);
 }
 
 get_auxiliarys.do = function(args) {
-	Utils.checkMembers(args, ['token']);
-	var reqParam = {
-		method: 'GET',
-		url: '/auxiliarys',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/auxiliarys',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 post_auxiliary.do = function(args) {
-	Utils.checkMembers(args, ['data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/auxiliarys',
-		data: args.data,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/auxiliarys',
+  	data: args.data,
+  };
+  return RestService.request(reqParam);
 }
 
 get_auxiliary.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'GET',
-		url: '/auxiliarys/' + args.id + '',
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/auxiliarys/' + args.id + '',
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 put_auxiliary.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/auxiliarys/' + args.id + '',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/auxiliarys/' + args.id + '',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 post_auxiliary_code.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/auxiliarys/' + args.id + '/code',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/auxiliarys/' + args.id + '/code',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_auxiliary_services.do = function(args) {
-	Utils.checkMembers(args, ['token', 'auxiliaryId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/auxiliarys/' + args.auxiliaryId + '/services',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'auxiliaryId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/auxiliarys/' + args.auxiliaryId + '/services',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_auxiliary_customers.do = function(args) {
-	Utils.checkMembers(args, ['token', 'auxiliaryId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/auxiliarys/' + args.auxiliaryId + '/customers',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'auxiliaryId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/auxiliarys/' + args.auxiliaryId + '/customers',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_auxiliary_interventions.do = function(args) {
-	Utils.checkMembers(args, ['token', 'auxiliaryId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/auxiliarys/' + args.auxiliaryId + '/interventions',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'auxiliaryId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/auxiliarys/' + args.auxiliaryId + '/interventions',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_auxiliary_offers.do = function(args) {
-	Utils.checkMembers(args, ['token', 'auxiliaryId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/auxiliarys/' + args.auxiliaryId + '/offers',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'auxiliaryId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/auxiliarys/' + args.auxiliaryId + '/offers',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_auxiliary_missions.do = function(args) {
-	Utils.checkMembers(args, ['token', 'auxiliaryId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/auxiliarys/' + args.auxiliaryId + '/missions',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'auxiliaryId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/auxiliarys/' + args.auxiliaryId + '/missions',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_auxiliary_indisponibilitys.do = function(args) {
-	Utils.checkMembers(args, ['token', 'auxiliaryId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/auxiliarys/' + args.auxiliaryId + '/indisponibilitys',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'auxiliaryId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/auxiliarys/' + args.auxiliaryId + '/indisponibilitys',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_auxiliary_geozones.do = function(args) {
-	Utils.checkMembers(args, ['token', 'auxiliaryId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/auxiliarys/' + args.auxiliaryId + '/geozones',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'auxiliaryId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/auxiliarys/' + args.auxiliaryId + '/geozones',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 post_customer.do = function(args) {
-	Utils.checkMembers(args, ['token', 'data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/customers',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/customers',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_customer.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'GET',
-		url: '/customers/' + args.id + '',
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/customers/' + args.id + '',
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 put_customer.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/customers/' + args.id + '',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/customers/' + args.id + '',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 delete_customer.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'DELETE',
-		url: '/customers/' + args.id + '',
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'DELETE',
+  	url: '/customers/' + args.id + '',
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_customer_interventions.do = function(args) {
-	Utils.checkMembers(args, ['token', 'customerId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/customers/' + args.customerId + '/interventions',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'customerId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/customers/' + args.customerId + '/interventions',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 post_geozone.do = function(args) {
-	Utils.checkMembers(args, ['token', 'data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/geozones',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/geozones',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_geozone.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'GET',
-		url: '/geozones/' + args.id + '',
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/geozones/' + args.id + '',
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 put_geozone.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/geozones/' + args.id + '',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/geozones/' + args.id + '',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 delete_geozone.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'DELETE',
-		url: '/geozones/' + args.id + '',
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'DELETE',
+  	url: '/geozones/' + args.id + '',
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_help_topics.do = function(args) {
-	var reqParam = {
-		method: 'GET',
-		url: '/help/topics',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/help/topics',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_help_faqs.do = function(args) {
-	var reqParam = {
-		method: 'GET',
-		url: '/help/faqs',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/help/faqs',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 post_indisponibility.do = function(args) {
-	Utils.checkMembers(args, ['token', 'data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/indisponibilitys',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/indisponibilitys',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_indisponibility.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'GET',
-		url: '/indisponibilitys/' + args.id + '',
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/indisponibilitys/' + args.id + '',
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 put_indisponibility.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/indisponibilitys/' + args.id + '',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/indisponibilitys/' + args.id + '',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 delete_indisponibility.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'DELETE',
-		url: '/indisponibilitys/' + args.id + '',
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'DELETE',
+  	url: '/indisponibilitys/' + args.id + '',
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 post_intervention.do = function(args) {
-	Utils.checkMembers(args, ['token', 'data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/interventions',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/interventions',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_intervention.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'GET',
-		url: '/interventions/' + args.id + '',
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/interventions/' + args.id + '',
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 put_intervention.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/interventions/' + args.id + '',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/interventions/' + args.id + '',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_intervention_match.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'GET',
-		url: '/interventions/' + args.id + '/match',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/interventions/' + args.id + '/match',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 put_intervention_cancel.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/interventions/' + args.id + '/cancel',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/interventions/' + args.id + '/cancel',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_mission.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'GET',
-		url: '/missions/' + args.id + '',
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/missions/' + args.id + '',
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 put_mission.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/missions/' + args.id + '',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/missions/' + args.id + '',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 delete_mission.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'DELETE',
-		url: '/missions/' + args.id + '',
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'DELETE',
+  	url: '/missions/' + args.id + '',
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 post_offer.do = function(args) {
-	Utils.checkMembers(args, ['token', 'data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/offers',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/offers',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_offer.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'GET',
-		url: '/offers/' + args.id + '',
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/offers/' + args.id + '',
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 put_offer_accept.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/offers/' + args.id + '/accept',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/offers/' + args.id + '/accept',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 put_offer_decline.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/offers/' + args.id + '/decline',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/offers/' + args.id + '/decline',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 put_offer_confirm.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/offers/' + args.id + '/confirm',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/offers/' + args.id + '/confirm',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_services.do = function(args) {
-	Utils.checkMembers(args, ['token']);
-	var reqParam = {
-		method: 'GET',
-		url: '/services',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/services',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 post_service.do = function(args) {
-	Utils.checkMembers(args, ['data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/services',
-		data: args.data,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/services',
+  	data: args.data,
+  };
+  return RestService.request(reqParam);
 }
 
 get_service.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id']);
-	var reqParam = {
-		method: 'GET',
-		url: '/services/' + args.id + '',
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/services/' + args.id + '',
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 put_service.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'PUT',
-		url: '/services/' + args.id + '',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'PUT',
+  	url: '/services/' + args.id + '',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 post_service_code.do = function(args) {
-	Utils.checkMembers(args, ['token', 'id', 'data']);
-	var reqParam = {
-		method: 'POST',
-		url: '/services/' + args.id + '/code',
-		data: args.data,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'id', 'data']);
+  var reqParam = {
+  	method: 'POST',
+  	url: '/services/' + args.id + '/code',
+  	data: args.data,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_service_auxiliarys.do = function(args) {
-	Utils.checkMembers(args, ['token', 'serviceId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/services/' + args.serviceId + '/auxiliarys',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'serviceId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/services/' + args.serviceId + '/auxiliarys',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_service_customers.do = function(args) {
-	Utils.checkMembers(args, ['token', 'serviceId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/services/' + args.serviceId + '/customers',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'serviceId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/services/' + args.serviceId + '/customers',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_service_interventions.do = function(args) {
-	Utils.checkMembers(args, ['token', 'serviceId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/services/' + args.serviceId + '/interventions',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'serviceId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/services/' + args.serviceId + '/interventions',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_service_offers.do = function(args) {
-	Utils.checkMembers(args, ['token', 'serviceId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/services/' + args.serviceId + '/offers',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'serviceId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/services/' + args.serviceId + '/offers',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 
 get_service_missions.do = function(args) {
-	Utils.checkMembers(args, ['token', 'serviceId']);
-	var reqParam = {
-		method: 'GET',
-		url: '/services/' + args.serviceId + '/missions',
-		query: args.query,
-		token: args.token,
-	};
-	return RestService.request(reqParam);
+  Utils.checkMembers(args, ['token', 'serviceId']);
+  var reqParam = {
+  	method: 'GET',
+  	url: '/services/' + args.serviceId + '/missions',
+  	query: args.query,
+  	token: args.token,
+  };
+  return RestService.request(reqParam);
 }
 

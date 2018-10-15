@@ -8,248 +8,248 @@ import AuxiliaryStatus from 'utils/constants/AuxiliaryStatus'
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class AuxiliaryFields {
 
-	static get COUNTRY() {
-		return _COUNTRY
-	}
+  static get COUNTRY() {
+    return _COUNTRY
+  }
 
-	static get LAST_NAME() {
-		return _LAST_NAME
-	}
+  static get LAST_NAME() {
+    return _LAST_NAME
+  }
 
-	static get CIVILITY() {
-		return _CIVILITY
-	}
+  static get CIVILITY() {
+    return _CIVILITY
+  }
 
-	static get CITY() {
-		return _CITY
-	}
+  static get CITY() {
+    return _CITY
+  }
 
-	static get SKILL_CHILDREN_GAME() {
-		return _SKILL_CHILDREN_GAME
-	}
+  static get SKILL_CHILDREN_GAME() {
+    return _SKILL_CHILDREN_GAME
+  }
 
-	static get SKILL_HOUSE() {
-		return _SKILL_HOUSE
-	}
+  static get SKILL_HOUSE() {
+    return _SKILL_HOUSE
+  }
 
-	static get LAST_UPDATE_DATE() {
-		return _LAST_UPDATE_DATE
-	}
+  static get LAST_UPDATE_DATE() {
+    return _LAST_UPDATE_DATE
+  }
 
-	static get POSTAL_CODE() {
-		return _POSTAL_CODE
-	}
+  static get POSTAL_CODE() {
+    return _POSTAL_CODE
+  }
 
-	static get IS_TUTO_SKIPPED() {
-		return _IS_TUTO_SKIPPED
-	}
+  static get IS_TUTO_SKIPPED() {
+    return _IS_TUTO_SKIPPED
+  }
 
-	static get DESCRIPTION() {
-		return _DESCRIPTION
-	}
+  static get DESCRIPTION() {
+    return _DESCRIPTION
+  }
 
-	static get SOCIAL_NUMBER() {
-		return _SOCIAL_NUMBER
-	}
+  static get SOCIAL_NUMBER() {
+    return _SOCIAL_NUMBER
+  }
 
-	static get ACCOUNT_EXPIRY_DATE() {
-		return _ACCOUNT_EXPIRY_DATE
-	}
+  static get ACCOUNT_EXPIRY_DATE() {
+    return _ACCOUNT_EXPIRY_DATE
+  }
 
-	static get PROFIL_PROGRESSION() {
-		return _PROFIL_PROGRESSION
-	}
+  static get PROFIL_PROGRESSION() {
+    return _PROFIL_PROGRESSION
+  }
 
-	static get SKILL_BEAUTY() {
-		return _SKILL_BEAUTY
-	}
+  static get SKILL_BEAUTY() {
+    return _SKILL_BEAUTY
+  }
 
-	static get NOTIFY_OFFERS_SMS() {
-		return _NOTIFY_OFFERS_SMS
-	}
+  static get NOTIFY_OFFERS_SMS() {
+    return _NOTIFY_OFFERS_SMS
+  }
 
-	static get NOTIFY_AUXPROS() {
-		return _NOTIFY_AUXPROS
-	}
+  static get NOTIFY_AUXPROS() {
+    return _NOTIFY_AUXPROS
+  }
 
-	static get SKILL_HANDICAP() {
-		return _SKILL_HANDICAP
-	}
+  static get SKILL_HANDICAP() {
+    return _SKILL_HANDICAP
+  }
 
-	static get SKILL_ILLNESS() {
-		return _SKILL_ILLNESS
-	}
+  static get SKILL_ILLNESS() {
+    return _SKILL_ILLNESS
+  }
 
-	static get BIRTH_COUNTRY() {
-		return _BIRTH_COUNTRY
-	}
+  static get BIRTH_COUNTRY() {
+    return _BIRTH_COUNTRY
+  }
 
-	static get SKILL_CHILDREN_SCHOOL() {
-		return _SKILL_CHILDREN_SCHOOL
-	}
+  static get SKILL_CHILDREN_SCHOOL() {
+    return _SKILL_CHILDREN_SCHOOL
+  }
 
-	static get PROFIL_COMPLETED() {
-		return _PROFIL_COMPLETED
-	}
+  static get PROFIL_COMPLETED() {
+    return _PROFIL_COMPLETED
+  }
 
-	static get ID() {
-		return _ID
-	}
+  static get ID() {
+    return _ID
+  }
 
-	static get DIPLOMA() {
-		return _DIPLOMA
-	}
+  static get DIPLOMA() {
+    return _DIPLOMA
+  }
 
-	static get SKILL_CHILDREN_KEEP() {
-		return _SKILL_CHILDREN_KEEP
-	}
+  static get SKILL_CHILDREN_KEEP() {
+    return _SKILL_CHILDREN_KEEP
+  }
 
-	static get SKILL_OLD_CARE() {
-		return _SKILL_OLD_CARE
-	}
+  static get SKILL_OLD_CARE() {
+    return _SKILL_OLD_CARE
+  }
 
-	static get LONGITUDE() {
-		return _LONGITUDE
-	}
+  static get LONGITUDE() {
+    return _LONGITUDE
+  }
 
-	static get ADDRESS() {
-		return _ADDRESS
-	}
+  static get ADDRESS() {
+    return _ADDRESS
+  }
 
-	static get SKILL_NURSING() {
-		return _SKILL_NURSING
-	}
+  static get SKILL_NURSING() {
+    return _SKILL_NURSING
+  }
 
-	static get SKILL_CHILDREN_CARE() {
-		return _SKILL_CHILDREN_CARE
-	}
+  static get SKILL_CHILDREN_CARE() {
+    return _SKILL_CHILDREN_CARE
+  }
 
-	static get LATTITUDE() {
-		return _LATTITUDE
-	}
+  static get LATTITUDE() {
+    return _LATTITUDE
+  }
 
-	static get SKILL_FOOD() {
-		return _SKILL_FOOD
-	}
+  static get SKILL_FOOD() {
+    return _SKILL_FOOD
+  }
 
-	static get ACCOUNT_TYPE() {
-		return _ACCOUNT_TYPE
-	}
+  static get ACCOUNT_TYPE() {
+    return _ACCOUNT_TYPE
+  }
 
-	static get NOTIFY_PARTNERS() {
-		return _NOTIFY_PARTNERS
-	}
+  static get NOTIFY_PARTNERS() {
+    return _NOTIFY_PARTNERS
+  }
 
-	static get BIRTH_CITY() {
-		return _BIRTH_CITY
-	}
+  static get BIRTH_CITY() {
+    return _BIRTH_CITY
+  }
 
-	static get AVATAR() {
-		return _AVATAR
-	}
+  static get AVATAR() {
+    return _AVATAR
+  }
 
-	static get CREATION_DATE() {
-		return _CREATION_DATE
-	}
+  static get CREATION_DATE() {
+    return _CREATION_DATE
+  }
 
-	static get SKILL_COMPANY() {
-		return _SKILL_COMPANY
-	}
+  static get SKILL_COMPANY() {
+    return _SKILL_COMPANY
+  }
 
-	static get BIRTH_DATE() {
-		return _BIRTH_DATE
-	}
+  static get BIRTH_DATE() {
+    return _BIRTH_DATE
+  }
 
-	static get FIRST_NAME() {
-		return _FIRST_NAME
-	}
+  static get FIRST_NAME() {
+    return _FIRST_NAME
+  }
 
-	static get NATIONALITY() {
-		return _NATIONALITY
-	}
+  static get NATIONALITY() {
+    return _NATIONALITY
+  }
 
-	static get IS_ENTREPRENEUR() {
-		return _IS_ENTREPRENEUR
-	}
+  static get IS_ENTREPRENEUR() {
+    return _IS_ENTREPRENEUR
+  }
 
-	static get PHONE() {
-		return _PHONE
-	}
+  static get PHONE() {
+    return _PHONE
+  }
 
-	static get SKILL_TRANSPORT() {
-		return _SKILL_TRANSPORT
-	}
+  static get SKILL_TRANSPORT() {
+    return _SKILL_TRANSPORT
+  }
 
-	static get SKILL_CLOTHES() {
-		return _SKILL_CLOTHES
-	}
+  static get SKILL_CLOTHES() {
+    return _SKILL_CLOTHES
+  }
 
-	static get NOTIFY_OFFERS_MAIL() {
-		return _NOTIFY_OFFERS_MAIL
-	}
+  static get NOTIFY_OFFERS_MAIL() {
+    return _NOTIFY_OFFERS_MAIL
+  }
 
-	static get SKILL_PET() {
-		return _SKILL_PET
-	}
+  static get SKILL_PET() {
+    return _SKILL_PET
+  }
 
-	static get VALUES() {
-		return [
-			_COUNTRY,
-			_LAST_NAME,
-			_CIVILITY,
-			_CITY,
-			_SKILL_CHILDREN_GAME,
-			_SKILL_HOUSE,
-			_LAST_UPDATE_DATE,
-			_POSTAL_CODE,
-			_IS_TUTO_SKIPPED,
-			_DESCRIPTION,
-			_SOCIAL_NUMBER,
-			_ACCOUNT_EXPIRY_DATE,
-			_PROFIL_PROGRESSION,
-			_SKILL_BEAUTY,
-			_NOTIFY_OFFERS_SMS,
-			_NOTIFY_AUXPROS,
-			_SKILL_HANDICAP,
-			_SKILL_ILLNESS,
-			_BIRTH_COUNTRY,
-			_SKILL_CHILDREN_SCHOOL,
-			_PROFIL_COMPLETED,
-			_ID,
-			_DIPLOMA,
-			_SKILL_CHILDREN_KEEP,
-			_SKILL_OLD_CARE,
-			_LONGITUDE,
-			_ADDRESS,
-			_SKILL_NURSING,
-			_SKILL_CHILDREN_CARE,
-			_LATTITUDE,
-			_SKILL_FOOD,
-			_ACCOUNT_TYPE,
-			_NOTIFY_PARTNERS,
-			_BIRTH_CITY,
-			_AVATAR,
-			_CREATION_DATE,
-			_SKILL_COMPANY,
-			_BIRTH_DATE,
-			_FIRST_NAME,
-			_NATIONALITY,
-			_IS_ENTREPRENEUR,
-			_PHONE,
-			_SKILL_TRANSPORT,
-			_SKILL_CLOTHES,
-			_NOTIFY_OFFERS_MAIL,
-			_SKILL_PET,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_COUNTRY,
+    	_LAST_NAME,
+    	_CIVILITY,
+    	_CITY,
+    	_SKILL_CHILDREN_GAME,
+    	_SKILL_HOUSE,
+    	_LAST_UPDATE_DATE,
+    	_POSTAL_CODE,
+    	_IS_TUTO_SKIPPED,
+    	_DESCRIPTION,
+    	_SOCIAL_NUMBER,
+    	_ACCOUNT_EXPIRY_DATE,
+    	_PROFIL_PROGRESSION,
+    	_SKILL_BEAUTY,
+    	_NOTIFY_OFFERS_SMS,
+    	_NOTIFY_AUXPROS,
+    	_SKILL_HANDICAP,
+    	_SKILL_ILLNESS,
+    	_BIRTH_COUNTRY,
+    	_SKILL_CHILDREN_SCHOOL,
+    	_PROFIL_COMPLETED,
+    	_ID,
+    	_DIPLOMA,
+    	_SKILL_CHILDREN_KEEP,
+    	_SKILL_OLD_CARE,
+    	_LONGITUDE,
+    	_ADDRESS,
+    	_SKILL_NURSING,
+    	_SKILL_CHILDREN_CARE,
+    	_LATTITUDE,
+    	_SKILL_FOOD,
+    	_ACCOUNT_TYPE,
+    	_NOTIFY_PARTNERS,
+    	_BIRTH_CITY,
+    	_AVATAR,
+    	_CREATION_DATE,
+    	_SKILL_COMPANY,
+    	_BIRTH_DATE,
+    	_FIRST_NAME,
+    	_NATIONALITY,
+    	_IS_ENTREPRENEUR,
+    	_PHONE,
+    	_SKILL_TRANSPORT,
+    	_SKILL_CLOTHES,
+    	_NOTIFY_OFFERS_MAIL,
+    	_SKILL_PET,
+    ]
+  }
 
-	static get(id) {
-		for (let i = 0 ; i < AuxiliaryFields.VALUES.length ; i++) {
-			if (AuxiliaryFields.VALUES[i].key === id) {
-				return AuxiliaryFields.VALUES[i]
-			}
-		}
-	}
+  static get(id) {
+    for (let i = 0 ; i < AuxiliaryFields.VALUES.length ; i++) {
+    	if (AuxiliaryFields.VALUES[i].key === id) {
+    		return AuxiliaryFields.VALUES[i]
+    	}
+    }
+  }
 
 }
 let _COUNTRY = {

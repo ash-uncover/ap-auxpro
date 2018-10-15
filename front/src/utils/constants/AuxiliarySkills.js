@@ -3,89 +3,89 @@
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class AuxiliarySkills {
 
-	static get SKILL_CHILDREN_CARE() {
-		return _SKILL_CHILDREN_CARE
-	}
+  static get SKILL_CHILDREN_CARE() {
+    return _SKILL_CHILDREN_CARE
+  }
 
-	static get SKILL_CHILDREN_SCHOOL() {
-		return _SKILL_CHILDREN_SCHOOL
-	}
+  static get SKILL_CHILDREN_SCHOOL() {
+    return _SKILL_CHILDREN_SCHOOL
+  }
 
-	static get SKILL_CHILDREN_GAME() {
-		return _SKILL_CHILDREN_GAME
-	}
+  static get SKILL_CHILDREN_GAME() {
+    return _SKILL_CHILDREN_GAME
+  }
 
-	static get SKILL_CHILDREN_KEEP() {
-		return _SKILL_CHILDREN_KEEP
-	}
+  static get SKILL_CHILDREN_KEEP() {
+    return _SKILL_CHILDREN_KEEP
+  }
 
-	static get SKILL_OLD_CARE() {
-		return _SKILL_OLD_CARE
-	}
+  static get SKILL_OLD_CARE() {
+    return _SKILL_OLD_CARE
+  }
 
-	static get SKILL_FOOD() {
-		return _SKILL_FOOD
-	}
+  static get SKILL_FOOD() {
+    return _SKILL_FOOD
+  }
 
-	static get SKILL_TRANSPORT() {
-		return _SKILL_TRANSPORT
-	}
+  static get SKILL_TRANSPORT() {
+    return _SKILL_TRANSPORT
+  }
 
-	static get SKILL_ILLNESS() {
-		return _SKILL_ILLNESS
-	}
+  static get SKILL_ILLNESS() {
+    return _SKILL_ILLNESS
+  }
 
-	static get SKILL_NURSING() {
-		return _SKILL_NURSING
-	}
+  static get SKILL_NURSING() {
+    return _SKILL_NURSING
+  }
 
-	static get SKILL_CLOTHES() {
-		return _SKILL_CLOTHES
-	}
+  static get SKILL_CLOTHES() {
+    return _SKILL_CLOTHES
+  }
 
-	static get SKILL_HOUSE() {
-		return _SKILL_HOUSE
-	}
+  static get SKILL_HOUSE() {
+    return _SKILL_HOUSE
+  }
 
-	static get SKILL_COMPANY() {
-		return _SKILL_COMPANY
-	}
+  static get SKILL_COMPANY() {
+    return _SKILL_COMPANY
+  }
 
-	static get SKILL_PET() {
-		return _SKILL_PET
-	}
+  static get SKILL_PET() {
+    return _SKILL_PET
+  }
 
-	static get SKILL_HANDICAP() {
-		return _SKILL_HANDICAP
-	}
+  static get SKILL_HANDICAP() {
+    return _SKILL_HANDICAP
+  }
 
-	static get SKILL_BEAUTY() {
-		return _SKILL_BEAUTY
-	}
+  static get SKILL_BEAUTY() {
+    return _SKILL_BEAUTY
+  }
 
-	static get VALUES() {
-		return [
-			_SKILL_CHILDREN_CARE,
-			_SKILL_CHILDREN_SCHOOL,
-			_SKILL_CHILDREN_GAME,
-			_SKILL_CHILDREN_KEEP,
-			_SKILL_OLD_CARE,
-			_SKILL_FOOD,
-			_SKILL_TRANSPORT,
-			_SKILL_ILLNESS,
-			_SKILL_NURSING,
-			_SKILL_CLOTHES,
-			_SKILL_HOUSE,
-			_SKILL_COMPANY,
-			_SKILL_PET,
-			_SKILL_HANDICAP,
-			_SKILL_BEAUTY,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_SKILL_CHILDREN_CARE,
+    	_SKILL_CHILDREN_SCHOOL,
+    	_SKILL_CHILDREN_GAME,
+    	_SKILL_CHILDREN_KEEP,
+    	_SKILL_OLD_CARE,
+    	_SKILL_FOOD,
+    	_SKILL_TRANSPORT,
+    	_SKILL_ILLNESS,
+    	_SKILL_NURSING,
+    	_SKILL_CLOTHES,
+    	_SKILL_HOUSE,
+    	_SKILL_COMPANY,
+    	_SKILL_PET,
+    	_SKILL_HANDICAP,
+    	_SKILL_BEAUTY,
+    ]
+  }
 
-	static get(id) {
-		return id && AuxiliarySkills[id.toUpperCase()]
-	}
+  static get(id) {
+    return id && AuxiliarySkills[id.toUpperCase()]
+  }
 
 }
 const _SKILL_CHILDREN_CARE = { key: 'skillChildrenCare', keyName: 'SKILL_CHILDREN_CARE' }

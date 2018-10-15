@@ -3,204 +3,204 @@
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class Diploma {
 
-	static get DIPLOMA_NONE() {
-		return _DIPLOMA_NONE
-	}
+  static get DIPLOMA_NONE() {
+    return _DIPLOMA_NONE
+  }
 
-	static get DIPLOMA_STUDY() {
-		return _DIPLOMA_STUDY
-	}
+  static get DIPLOMA_STUDY() {
+    return _DIPLOMA_STUDY
+  }
 
-	static get DIPLOMA_1() {
-		return _DIPLOMA_1
-	}
+  static get DIPLOMA_1() {
+    return _DIPLOMA_1
+  }
 
-	static get DIPLOMA_2() {
-		return _DIPLOMA_2
-	}
+  static get DIPLOMA_2() {
+    return _DIPLOMA_2
+  }
 
-	static get DIPLOMA_3() {
-		return _DIPLOMA_3
-	}
+  static get DIPLOMA_3() {
+    return _DIPLOMA_3
+  }
 
-	static get DIPLOMA_4() {
-		return _DIPLOMA_4
-	}
+  static get DIPLOMA_4() {
+    return _DIPLOMA_4
+  }
 
-	static get DIPLOMA_5() {
-		return _DIPLOMA_5
-	}
+  static get DIPLOMA_5() {
+    return _DIPLOMA_5
+  }
 
-	static get DIPLOMA_6() {
-		return _DIPLOMA_6
-	}
+  static get DIPLOMA_6() {
+    return _DIPLOMA_6
+  }
 
-	static get DIPLOMA_7() {
-		return _DIPLOMA_7
-	}
+  static get DIPLOMA_7() {
+    return _DIPLOMA_7
+  }
 
-	static get DIPLOMA_8() {
-		return _DIPLOMA_8
-	}
+  static get DIPLOMA_8() {
+    return _DIPLOMA_8
+  }
 
-	static get DIPLOMA_9() {
-		return _DIPLOMA_9
-	}
+  static get DIPLOMA_9() {
+    return _DIPLOMA_9
+  }
 
-	static get DIPLOMA_10() {
-		return _DIPLOMA_10
-	}
+  static get DIPLOMA_10() {
+    return _DIPLOMA_10
+  }
 
-	static get DIPLOMA_11() {
-		return _DIPLOMA_11
-	}
+  static get DIPLOMA_11() {
+    return _DIPLOMA_11
+  }
 
-	static get DIPLOMA_12() {
-		return _DIPLOMA_12
-	}
+  static get DIPLOMA_12() {
+    return _DIPLOMA_12
+  }
 
-	static get DIPLOMA_13() {
-		return _DIPLOMA_13
-	}
+  static get DIPLOMA_13() {
+    return _DIPLOMA_13
+  }
 
-	static get DIPLOMA_14() {
-		return _DIPLOMA_14
-	}
+  static get DIPLOMA_14() {
+    return _DIPLOMA_14
+  }
 
-	static get DIPLOMA_15() {
-		return _DIPLOMA_15
-	}
+  static get DIPLOMA_15() {
+    return _DIPLOMA_15
+  }
 
-	static get DIPLOMA_16() {
-		return _DIPLOMA_16
-	}
+  static get DIPLOMA_16() {
+    return _DIPLOMA_16
+  }
 
-	static get DIPLOMA_17() {
-		return _DIPLOMA_17
-	}
+  static get DIPLOMA_17() {
+    return _DIPLOMA_17
+  }
 
-	static get DIPLOMA_18() {
-		return _DIPLOMA_18
-	}
+  static get DIPLOMA_18() {
+    return _DIPLOMA_18
+  }
 
-	static get DIPLOMA_19() {
-		return _DIPLOMA_19
-	}
+  static get DIPLOMA_19() {
+    return _DIPLOMA_19
+  }
 
-	static get DIPLOMA_20() {
-		return _DIPLOMA_20
-	}
+  static get DIPLOMA_20() {
+    return _DIPLOMA_20
+  }
 
-	static get DIPLOMA_21() {
-		return _DIPLOMA_21
-	}
+  static get DIPLOMA_21() {
+    return _DIPLOMA_21
+  }
 
-	static get DIPLOMA_22() {
-		return _DIPLOMA_22
-	}
+  static get DIPLOMA_22() {
+    return _DIPLOMA_22
+  }
 
-	static get DIPLOMA_23() {
-		return _DIPLOMA_23
-	}
+  static get DIPLOMA_23() {
+    return _DIPLOMA_23
+  }
 
-	static get DIPLOMA_24() {
-		return _DIPLOMA_24
-	}
+  static get DIPLOMA_24() {
+    return _DIPLOMA_24
+  }
 
-	static get DIPLOMA_25() {
-		return _DIPLOMA_25
-	}
+  static get DIPLOMA_25() {
+    return _DIPLOMA_25
+  }
 
-	static get DIPLOMA_26() {
-		return _DIPLOMA_26
-	}
+  static get DIPLOMA_26() {
+    return _DIPLOMA_26
+  }
 
-	static get DIPLOMA_27() {
-		return _DIPLOMA_27
-	}
+  static get DIPLOMA_27() {
+    return _DIPLOMA_27
+  }
 
-	static get DIPLOMA_28() {
-		return _DIPLOMA_28
-	}
+  static get DIPLOMA_28() {
+    return _DIPLOMA_28
+  }
 
-	static get DIPLOMA_29() {
-		return _DIPLOMA_29
-	}
+  static get DIPLOMA_29() {
+    return _DIPLOMA_29
+  }
 
-	static get DIPLOMA_30() {
-		return _DIPLOMA_30
-	}
+  static get DIPLOMA_30() {
+    return _DIPLOMA_30
+  }
 
-	static get DIPLOMA_31() {
-		return _DIPLOMA_31
-	}
+  static get DIPLOMA_31() {
+    return _DIPLOMA_31
+  }
 
-	static get DIPLOMA_32() {
-		return _DIPLOMA_32
-	}
+  static get DIPLOMA_32() {
+    return _DIPLOMA_32
+  }
 
-	static get DIPLOMA_33() {
-		return _DIPLOMA_33
-	}
+  static get DIPLOMA_33() {
+    return _DIPLOMA_33
+  }
 
-	static get DIPLOMA_34() {
-		return _DIPLOMA_34
-	}
+  static get DIPLOMA_34() {
+    return _DIPLOMA_34
+  }
 
-	static get DIPLOMA_35() {
-		return _DIPLOMA_35
-	}
+  static get DIPLOMA_35() {
+    return _DIPLOMA_35
+  }
 
-	static get DIPLOMA_36() {
-		return _DIPLOMA_36
-	}
+  static get DIPLOMA_36() {
+    return _DIPLOMA_36
+  }
 
-	static get VALUES() {
-		return [
-			_DIPLOMA_NONE,
-			_DIPLOMA_STUDY,
-			_DIPLOMA_1,
-			_DIPLOMA_2,
-			_DIPLOMA_3,
-			_DIPLOMA_4,
-			_DIPLOMA_5,
-			_DIPLOMA_6,
-			_DIPLOMA_7,
-			_DIPLOMA_8,
-			_DIPLOMA_9,
-			_DIPLOMA_10,
-			_DIPLOMA_11,
-			_DIPLOMA_12,
-			_DIPLOMA_13,
-			_DIPLOMA_14,
-			_DIPLOMA_15,
-			_DIPLOMA_16,
-			_DIPLOMA_17,
-			_DIPLOMA_18,
-			_DIPLOMA_19,
-			_DIPLOMA_20,
-			_DIPLOMA_21,
-			_DIPLOMA_22,
-			_DIPLOMA_23,
-			_DIPLOMA_24,
-			_DIPLOMA_25,
-			_DIPLOMA_26,
-			_DIPLOMA_27,
-			_DIPLOMA_28,
-			_DIPLOMA_29,
-			_DIPLOMA_30,
-			_DIPLOMA_31,
-			_DIPLOMA_32,
-			_DIPLOMA_33,
-			_DIPLOMA_34,
-			_DIPLOMA_35,
-			_DIPLOMA_36,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_DIPLOMA_NONE,
+    	_DIPLOMA_STUDY,
+    	_DIPLOMA_1,
+    	_DIPLOMA_2,
+    	_DIPLOMA_3,
+    	_DIPLOMA_4,
+    	_DIPLOMA_5,
+    	_DIPLOMA_6,
+    	_DIPLOMA_7,
+    	_DIPLOMA_8,
+    	_DIPLOMA_9,
+    	_DIPLOMA_10,
+    	_DIPLOMA_11,
+    	_DIPLOMA_12,
+    	_DIPLOMA_13,
+    	_DIPLOMA_14,
+    	_DIPLOMA_15,
+    	_DIPLOMA_16,
+    	_DIPLOMA_17,
+    	_DIPLOMA_18,
+    	_DIPLOMA_19,
+    	_DIPLOMA_20,
+    	_DIPLOMA_21,
+    	_DIPLOMA_22,
+    	_DIPLOMA_23,
+    	_DIPLOMA_24,
+    	_DIPLOMA_25,
+    	_DIPLOMA_26,
+    	_DIPLOMA_27,
+    	_DIPLOMA_28,
+    	_DIPLOMA_29,
+    	_DIPLOMA_30,
+    	_DIPLOMA_31,
+    	_DIPLOMA_32,
+    	_DIPLOMA_33,
+    	_DIPLOMA_34,
+    	_DIPLOMA_35,
+    	_DIPLOMA_36,
+    ]
+  }
 
-	static get(id) {
-		return id && Diploma[id.toUpperCase()]
-	}
+  static get(id) {
+    return id && Diploma[id.toUpperCase()]
+  }
 
 }
 const _DIPLOMA_NONE = { key: 'diploma_none', keyName: 'DIPLOMA_NONE' }

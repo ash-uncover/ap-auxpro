@@ -3,29 +3,29 @@
 /* DO NOT MODIFY THIS FILE IT WILL BE REGENERATED IN THE FUTURE */
 class MissionStatus {
 
-	static get PENDING() {
-		return _PENDING
-	}
+  static get PENDING() {
+    return _PENDING
+  }
 
-	static get CANCELED() {
-		return _CANCELED
-	}
+  static get CANCELED() {
+    return _CANCELED
+  }
 
-	static get COMPLETED() {
-		return _COMPLETED
-	}
+  static get COMPLETED() {
+    return _COMPLETED
+  }
 
-	static get VALUES() {
-		return [
-			_PENDING,
-			_CANCELED,
-			_COMPLETED,
-		]
-	}
+  static get VALUES() {
+    return [
+    	_PENDING,
+    	_CANCELED,
+    	_COMPLETED,
+    ]
+  }
 
-	static get(id) {
-		return id && MissionStatus[id.toUpperCase()]
-	}
+  static get(id) {
+    return id && MissionStatus[id.toUpperCase()]
+  }
 
 }
 const _PENDING = { key: 'Pending', keyName: 'PENDING' }
