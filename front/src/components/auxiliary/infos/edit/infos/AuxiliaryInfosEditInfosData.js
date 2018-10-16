@@ -102,7 +102,7 @@ class AuxiliaryInfosEditInfosData extends BaseData {
       AuxiliaryFields.DIPLOMA, 
       { values: AuxiliaryDiploma.VALUES.map((value) => ({ key: value.key })) }
     )
-    
+
     const SKILL_CHILDREN_CARE = Object.assign(
       {
         defaultValue: 0,
@@ -123,7 +123,8 @@ class AuxiliaryInfosEditInfosData extends BaseData {
       {
         defaultValue: 0,
         name: 'SKILL_CHILDREN_GAME',
-        hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_CHILDREN_GAME) },
+        hidden: this.checkSkillHidden.bind(this, AuxiliaryFields.SKILL_CHILDREN_GAME)
+      },
       AuxiliaryFields.SKILL_CHILDREN_GAME
     )
     const SKILL_CHILDREN_KEEP = Object.assign(
