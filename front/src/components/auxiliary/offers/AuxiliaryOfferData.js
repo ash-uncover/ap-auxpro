@@ -13,37 +13,37 @@ import InterventionUtils from 'utils-lib/entities/InterventionUtils'
 
 class AuxiliaryOfferData extends BaseData {
 
-    register(obj, offerId) {
-        super.register(obj)
+	register(obj, offerId) {
+		super.register(obj)
 
-        this.declareFunction('onCancel')
+		this.declareFunction('onCancel')
 
-        this.offerId = offerId
+		this.offerId = offerId
 
-        let offer = OfferHelper.getData(offerId)
-        let service = ServiceHelper.getData(offer.serviceId)
-        let customer = CustomerHelper.getData(offer.customerId)
-        let intervention = InterventionHelper.getData(offer.interventionId)
-        
-        this.setState({
-            serviceName: service.socialReason,
-            serviceAddress1: service.address,
-            serviceAddress2: service.postalCode + ' ' + service.city,
-            serviceEmail: service.email,
-            servicePhone: service.phone,
-            customerName: CustomerUtils.getShortName(customer),
-            customerAddress: CustomerUtils.getShortAddress(customer),
-            interventionText: InterventionUtils.getText(intervention),
+		let offer = OfferHelper.getData(offerId)
+		let service = ServiceHelper.getData(offer.serviceId)
+		let customer = CustomerHelper.getData(offer.customerId)
+		let intervention = InterventionHelper.getData(offer.interventionId)
+		
+		this.setState({
+			serviceName: service.socialReason,
+			serviceAddress1: service.address,
+			serviceAddress2: service.postalCode + ' ' + service.city,
+			serviceEmail: service.email,
+			servicePhone: service.phone,
+			customerName: CustomerUtils.getShortName(customer),
+			customerAddress: CustomerUtils.getShortAddress(customer),
+			interventionText: InterventionUtils.getText(intervention),
             missionType: AuxiliaryStatusUtils.getNameIntervention(intervention.missionType || AuxiliaryStatus.BOTH)
-        })
-    }
+		})
+	}
 
-    unregister() {
-    }
+	unregister() {
+	}
 
-    onCancel() {
-        AppHelper.navigateBack()
-    }
+	onCancel() {
+		AppHelper.navigateBack()
+	}
 
 }
 let AuxiliaryOfferObj = new AuxiliaryOfferData()
